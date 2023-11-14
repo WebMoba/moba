@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+        Schema::create('team_works', function (Blueprint $table) {
+            $table->integer('id', true);
+            $table->string('specialty', 65)->nullable();
+            $table->text('assigned_work')->nullable();
+            $table->date('assigned_date')->nullable();
             $table->timestamps();
+            $table->integer('projects_id')->index('fk_team_works_projects1_idx');
         });
     }
 
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('team_works');
     }
 };
