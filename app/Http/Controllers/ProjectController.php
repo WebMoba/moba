@@ -48,7 +48,7 @@ class ProjectController extends Controller
         $project = Project::create($request->all());
 
         return redirect()->route('projects.index')
-            ->with('success', 'Project created successfully.');
+            ->with('success', 'Proyecto creado con éxito.');
     }
 
     /**
@@ -91,7 +91,7 @@ class ProjectController extends Controller
         $project->update($request->all());
 
         return redirect()->route('projects.index')
-            ->with('success', 'Project updated successfully');
+            ->with('success', 'Proyecto actualizado con éxito');
     }
 
     /**
@@ -104,6 +104,6 @@ class ProjectController extends Controller
         $project = Project::find($id)->delete();
 
         return redirect()->route('projects.index')
-            ->with('success', 'Project deleted successfully');
+            ->with('success', 'Proyecto borrado con éxito');
     }
 }

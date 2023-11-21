@@ -13,7 +13,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Update') }} Team Work</span>
+                        <span class="card-title">{{ __('Actualizar') }} equipo de trabajo</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('team-works.update', $teamWork->id) }}"  role="form" enctype="multipart/form-data">

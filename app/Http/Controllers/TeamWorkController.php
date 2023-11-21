@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TeamWork;
 use Illuminate\Http\Request;
+use App\Models\Project;
 
 /**
  * Class TeamWorkController
@@ -32,7 +33,8 @@ class TeamWorkController extends Controller
     public function create()
     {
         $teamWork = new TeamWork();
-        return view('team-work.create', compact('teamWork'));
+        $projects = Project::pluck('name','id');
+        return view('team-work.create', compact('teamWork','projects'));
     }
 
     /**
@@ -48,7 +50,7 @@ class TeamWorkController extends Controller
         $teamWork = TeamWork::create($request->all());
 
         return redirect()->route('team-works.index')
-            ->with('success', 'TeamWork created successfully.');
+            ->with('success', 'Equipo de trabajo creado de forma satisfactoria.');
     }
 
     /**
@@ -91,7 +93,7 @@ class TeamWorkController extends Controller
         $teamWork->update($request->all());
 
         return redirect()->route('team-works.index')
-            ->with('success', 'TeamWork updated successfully');
+            ->with('success', 'Equipo de trabajo actualizado con éxito');
     }
 
     /**
@@ -104,6 +106,6 @@ class TeamWorkController extends Controller
         $teamWork = TeamWork::find($id)->delete();
 
         return redirect()->route('team-works.index')
-            ->with('success', 'TeamWork deleted successfully');
+            ->with('success', 'Equipo de trabajo actualizado con éxito');
     }
 }

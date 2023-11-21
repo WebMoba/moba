@@ -11,29 +11,29 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} Team Work</span>
+                            <span class="card-title">{{ __('Ver') }} equipo de trabajo</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('team-works.index') }}"> {{ __('Back') }}</a>
+                            <a class="btn btn-primary" href="{{ route('team-works.index') }}"> {{ __('Volver') }}</a>
                         </div>
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Specialty:</strong>
+                            <strong>Especialidad:</strong>
                             {{ $teamWork->specialty }}
                         </div>
                         <div class="form-group">
-                            <strong>Assigned Work:</strong>
+                            <strong>Trabajo asignado:</strong>
                             {{ $teamWork->assigned_work }}
                         </div>
                         <div class="form-group">
-                            <strong>Assigned Date:</strong>
+                            <strong>Fecha asignada:</strong>
                             {{ $teamWork->assigned_date }}
                         </div>
                         <div class="form-group">
-                            <strong>Projects Id:</strong>
+                            <strong>Proyecto:</strong>
                             {{ $teamWork->projects_id }}
                         </div>
 
