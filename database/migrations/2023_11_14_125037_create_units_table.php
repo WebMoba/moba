@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+        Schema::create('units', function (Blueprint $table) {
+            $table->integer('id', true);
+            $table->enum('unit_type', ['unidad', 'docena', 'centena', 'mil']);
+            $table->enum('size', ['mm', 'cm', 'm'])->nullable();
+            $table->enum('area', ['cm2', 'm2'])->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('units');
     }
 };
