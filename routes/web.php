@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\PersonController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -28,7 +30,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('events', \App\Http\Controllers\EventController::class);
+Route::resource('events', EventController::class);
+Route::resource('person', PersonController::class);
 
 require __DIR__.'/auth.php';
 
