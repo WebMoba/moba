@@ -105,6 +105,9 @@ class EventController extends Controller
     {
         $customMessages = [
             'date_end.after_or_equal' => 'La fecha de finalización debe ser igual o posterior a la fecha de inicio.',
+            'required' => 'El campo :attribute es obligatorio.',
+            'string' => 'El campo :attribute debe ser una cadena de texto.',
+            'date' => 'El campo :attribute no debe ser una fecha anterior al dia de Hoy.',
         ];
 
         $request->validate([

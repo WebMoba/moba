@@ -8,13 +8,16 @@
     <section class="content container-fluid">
         <div class="row">
             <div class="col-md-12">
+                <a class="btn btn-primary" href="{{ route('events.index') }}"> {{ __('Volver') }}</a>
+                <br>   <br>
+
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
                             <span class="card-title">{{ __('Mostrar') }} Evento</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('events.index') }}"> {{ __('Volver') }}</a>
+
                         </div>
                     </div>
 
