@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\TeamWork;
+use App\Models\User;
+use App\Models\Town;
+use App\Models\NumberPhone;
 
 use App\Models\Person;
 use Illuminate\Http\Request;
@@ -33,7 +36,11 @@ class PersonController extends Controller
     public function create()
     {
         $person = new Person();
-        return view('person.create', compact('person'));
+        $teamWorks = TeamWork::pluck('assigned_work', 'id')->toArray();
+        $users = User::pluck('email', 'id');
+        $towns = Town::pluck('name','id');
+        $numberPhones = NumberPhone::pluck('number','id');
+        return view('person.create', compact('person', 'teamWorks', 'users', 'towns', 'numberPhones'));
     }
 
     /**
@@ -48,7 +55,7 @@ class PersonController extends Controller
 
         $person = Person::create($request->all());
 
-        return redirect()->route('people.index')
+        return redirect()->route('person.index')
             ->with('success', 'Person created successfully.');
     }
 
@@ -91,7 +98,7 @@ class PersonController extends Controller
 
         $person->update($request->all());
 
-        return redirect()->route('people.index')
+        return redirect()->route('person.index')
             ->with('success', 'Person updated successfully');
     }
 
@@ -104,7 +111,7 @@ class PersonController extends Controller
     {
         $person = Person::find($id)->delete();
 
-        return redirect()->route('people.index')
+        return redirect()->route('person.index')
             ->with('success', 'Person deleted successfully');
     }
 }
