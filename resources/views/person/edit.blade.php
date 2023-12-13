@@ -5,7 +5,9 @@
 @endsection
 
 @section('content')
+
     <section class="content container-fluid">
+        <a class="btn btn-primary" href="{{ route('person.index') }}"> {{ __('Back') }}</a>
         <div class="">
             <div class="col-md-12">
 

@@ -36,7 +36,7 @@ class PersonController extends Controller
     public function create()
     {
         $person = new Person();
-        $teamWorks = TeamWork::pluck('assigned_work', 'id')->toArray();
+        $teamWorks = TeamWork::pluck('assigned_work', 'id');
         $users = User::pluck('email', 'id');
         $towns = Town::pluck('name','id');
         $numberPhones = NumberPhone::pluck('number','id');
@@ -51,12 +51,25 @@ class PersonController extends Controller
      */
     public function store(Request $request)
     {
+        $customMessages = [
+            'required' => 'El campo es obligatorio.',
+           
+        ];
+        $request->validate([
+            'id_card' => 'required',
+            'addres' => 'required',
+            'team_works_id' => 'required',
+            'number_phones_id' => 'required',
+            'towns_id' => 'required',
+            'users_id' => 'required',
+        ], $customMessages);
+
         request()->validate(Person::$rules);
 
         $person = Person::create($request->all());
 
         return redirect()->route('person.index')
-            ->with('success', 'Person created successfully.');
+            ->with('success', 'Persona creada exitosamente.');
     }
 
     /**
@@ -81,6 +94,12 @@ class PersonController extends Controller
     public function edit($id)
     {
         $person = Person::find($id);
+        $person = new Person();
+        $teamWorks = TeamWork::pluck('assigned_work', 'id');
+        $users = User::pluck('email', 'id');
+        $towns = Town::pluck('name','id');
+        $numberPhones = NumberPhone::pluck('number','id');
+        return view('person.create', compact('person', 'teamWorks', 'users', 'towns', 'numberPhones'));
 
         return view('person.edit', compact('person'));
     }
@@ -99,7 +118,7 @@ class PersonController extends Controller
         $person->update($request->all());
 
         return redirect()->route('person.index')
-            ->with('success', 'Person updated successfully');
+            ->with('success', 'Persona actualizada exitosamente');
     }
 
     /**

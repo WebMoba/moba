@@ -13,12 +13,12 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Person') }}
+                                {{ __('Persona') }}
                             </span>
 
                              <div class="float-right">
                                 <a href="{{ route('person.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('Crear Nuevo') }}
                                 </a>
                               </div>
                         </div>
@@ -36,12 +36,12 @@
                                     <tr>
                                         <th>No</th>
 
-										<th>Id Card</th>
-										<th>Addres</th>
-										<th>Team Works Id</th>
-										<th>Number Phones Id</th>
-										<th>Towns Id</th>
-										<th>Users Id</th>
+										<th>Identificacion</th>
+										<th>Direccion</th>
+										<th>Equipo de trabajo</th>
+										<th>Numero Celular</th>
+										<th>Ciudad</th>
+										<th>Usuario</th>
 
                                         <th></th>
                                     </tr>
@@ -60,11 +60,11 @@
 
                                             <td>
                                                 <form action="{{ route('person.destroy',$person->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('person.show',$person->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('person.edit',$person->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('person.show',$person->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('person.edit',$person->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    </b><button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Está seguro de que desea eliminar el evento?')"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
                                                 </form>
                                             </td>
                                         </tr>

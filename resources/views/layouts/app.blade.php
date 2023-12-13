@@ -34,7 +34,7 @@
                             <a class="nav-link" href="{{ route('events.index') }}">{{ __('Eventos') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('person.index') }}">{{ __('People') }}</a>
+                            <a class="nav-link" href="{{ route('person.index') }}">{{ __('Personas') }}</a>
                         </li>
                     </ul>
 
