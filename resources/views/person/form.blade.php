@@ -10,7 +10,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('Direccion') }}
-            {{ Form::text('addres', $person->addres, ['class' => 'form-control' . ($errors->has('addres') ? ' is-invalid' : ''), 'placeholder' => 'Direccion']) }}
+            {{ Form::text('addres', $person->addres ?: 'N/A', ['class' => 'form-control' . ($errors->has('addres') ? ' is-invalid' : ''), 'placeholder' => 'Direccion']) }}
             {!! $errors->first('addres', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">

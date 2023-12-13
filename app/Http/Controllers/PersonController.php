@@ -53,11 +53,10 @@ class PersonController extends Controller
     {
         $customMessages = [
             'required' => 'El campo es obligatorio.',
-           
+
         ];
         $request->validate([
             'id_card' => 'required',
-            'addres' => 'required',
             'team_works_id' => 'required',
             'number_phones_id' => 'required',
             'towns_id' => 'required',

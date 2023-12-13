@@ -22,27 +22,27 @@
                     <div class="card-body">
 
                         <div class="form-group">
-                            <strong>Id Card:</strong>
+                            <strong>Identificacion:</strong>
                             {{ $person->id_card }}
                         </div>
                         <div class="form-group">
-                            <strong>Addres:</strong>
+                            <strong>Direccion:</strong>
                             {{ $person->addres }}
                         </div>
                         <div class="form-group">
-                            <strong>Team Works Id:</strong>
+                            <strong>Equipo de trabajo:</strong>
                             {{ $person->team_works_id }}
                         </div>
                         <div class="form-group">
-                            <strong>Number Phones Id:</strong>
+                            <strong>Numero Celular:</strong>
                             {{ $person->number_phones_id }}
                         </div>
                         <div class="form-group">
-                            <strong>Towns Id:</strong>
+                            <strong>Ciudad:</strong>
                             {{ $person->towns_id }}
                         </div>
                         <div class="form-group">
-                            <strong>Users Id:</strong>
+                            <strong>Usuarios:</strong>
                             {{ $person->users_id }}
                         </div>
 
