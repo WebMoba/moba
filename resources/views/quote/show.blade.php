@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} Quote</span>
+                            <span class="card-title">{{ __('Ver') }} Cotización</span>
                         </div>
                         <div class="float-right">
                             <a class="btn btn-primary" href="{{ route('quotes.index') }}"> {{ __('Back') }}</a>
@@ -21,11 +21,11 @@
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Date Issuance:</strong>
+                            <strong>Fecha de expedición:</strong>
                             {{ $quote->date_issuance }}
                         </div>
                         <div class="form-group">
-                            <strong>Description:</strong>
+                            <strong>Descripción:</strong>
                             {{ $quote->description }}
                         </div>
                         <div class="form-group">
@@ -33,15 +33,15 @@
                             {{ $quote->total }}
                         </div>
                         <div class="form-group">
-                            <strong>Discount:</strong>
+                            <strong>Descuento:</strong>
                             {{ $quote->discount }}
                         </div>
                         <div class="form-group">
-                            <strong>Status:</strong>
+                            <strong>Estado:</strong>
                             {{ $quote->status }}
                         </div>
                         <div class="form-group">
-                            <strong>People Id:</strong>
+                            <strong>Persona:</strong>
                             {{ $quote->people_id }}
                         </div>
 

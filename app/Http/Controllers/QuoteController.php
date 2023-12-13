@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Quote;
 use Illuminate\Http\Request;
-
+use App\Models\People;
 /**
  * Class QuoteController
  * @package App\Http\Controllers
@@ -32,7 +32,8 @@ class QuoteController extends Controller
     public function create()
     {
         $quote = new Quote();
-        return view('quote.create', compact('quote'));
+        $peoples = new People::pluck('name','id');
+        return view('quote.create', compact('quote','peoples'));
     }
 
     /**

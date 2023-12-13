@@ -13,12 +13,12 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Quote') }}
+                                {{ __('Cottizaciones') }}
                             </span>
 
                              <div class="float-right">
                                 <a href="{{ route('quotes.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('Crear Cotización') }}
                                 </a>
                               </div>
                         </div>
@@ -34,14 +34,14 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No</th>
+                                        <th>Id</th>
                                         
-										<th>Date Issuance</th>
-										<th>Description</th>
+										<th>Fecha de expedición</th>
+										<th>Descripción</th>
 										<th>Total</th>
-										<th>Discount</th>
-										<th>Status</th>
-										<th>People Id</th>
+										<th>Descuento</th>
+										<th>Estado</th>
+										<th>Persona</th>
 
                                         <th></th>
                                     </tr>

@@ -34,6 +34,7 @@
                         </div>
                         <div class="form-group">
                             <strong>Proyecto:</strong>
+                            
                             {{ $teamWork->projects_id }}
                         </div>
 

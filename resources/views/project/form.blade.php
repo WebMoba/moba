@@ -1,9 +1,9 @@
 <div class="box box-info padding-1">
     <div class="box-body">
-        
         <div class="form-group">
-            <label for="name">Nombre</label>
-            <input type="text" class="form-control" name="name" id="name" value="{{ isset($project->name)?$project->name:old('name')}}">
+            {{Form::label('Nombre')}}
+            {{Form::text ('name',$project->name, ['class' => 'form-control' . ($errors->has('name') ? 'is-invalid':'')])}}
+            {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Descripción</label>

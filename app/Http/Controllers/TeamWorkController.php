@@ -62,8 +62,8 @@ class TeamWorkController extends Controller
     public function show($id)
     {
         $teamWork = TeamWork::find($id);
-
-        return view('team-work.show', compact('teamWork'));
+        $projects = Project::pluck('name','id');
+        return view('team-work.show', compact('teamWork','projects'));
     }
 
     /**
@@ -75,8 +75,8 @@ class TeamWorkController extends Controller
     public function edit($id)
     {
         $teamWork = TeamWork::find($id);
-
-        return view('team-work.edit', compact('teamWork'));
+        $projects = Project::pluck('name','id');
+        return view('team-work.edit', compact('teamWork','projects'));
     }
 
     /**
@@ -91,7 +91,7 @@ class TeamWorkController extends Controller
         request()->validate(TeamWork::$rules);
 
         $teamWork->update($request->all());
-
+        
         return redirect()->route('team-works.index')
             ->with('success', 'Equipo de trabajo actualizado con éxito');
     }

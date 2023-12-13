@@ -13,12 +13,12 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Detail Quote') }}
+                                {{ __('Detalle de Cotización') }}
                             </span>
 
                              <div class="float-right">
                                 <a href="{{ route('detail-quotes.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('Crear') }}
                                 </a>
                               </div>
                         </div>
@@ -36,10 +36,10 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Services Id</th>
-										<th>Products Id</th>
-										<th>Projects Id</th>
-										<th>Quotes Id</th>
+										<th>Servicios</th>
+										<th>Productos </th>
+										<th>Projectos</th>
+										<th>Cotización</th>
 
                                         <th></th>
                                     </tr>
@@ -56,11 +56,11 @@
 
                                             <td>
                                                 <form action="{{ route('detail-quotes.destroy',$detailQuote->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('detail-quotes.show',$detailQuote->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('detail-quotes.edit',$detailQuote->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('detail-quotes.show',$detailQuote->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('detail-quotes.edit',$detailQuote->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Borrar') }}</button>
                                                 </form>
                                             </td>
                                         </tr>

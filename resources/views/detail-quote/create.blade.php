@@ -13,7 +13,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Create') }} Detail Quote</span>
+                        <span class="card-title">{{ __('Crear') }} Detalle de Cotización</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('detail-quotes.store') }}"  role="form" enctype="multipart/form-data">
