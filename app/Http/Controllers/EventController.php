@@ -50,7 +50,7 @@ class EventController extends Controller
             'date_end.after_or_equal' => 'La fecha de finalización debe ser igual o posterior a la fecha de inicio.',
             'required' => 'El campo es obligatorio.',
             'string' => 'El campo debe ser una cadena de texto.',
-            'date' => 'El campo :no debe ser una fecha anterior al dia de Hoy.',
+            'date' => 'El campo no debe ser una fecha anterior al dia de Hoy.',
         ];
 
         $request->validate([
@@ -62,7 +62,7 @@ class EventController extends Controller
             'importance_range' => 'required|string|in:baja,media,alta',
         ], $customMessages);
 
-
+        $event = Event::create($request->all());
 
         return redirect()->route('events.index')
             ->with('success', 'Evento creado con exito.');
