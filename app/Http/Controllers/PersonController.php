@@ -130,6 +130,6 @@ class PersonController extends Controller
         $person = Person::find($id)->delete();
 
         return redirect()->route('person.index')
-            ->with('success', 'Person deleted successfully');
+            ->with('success', 'Persona eliminada con exito');
     }
 }
