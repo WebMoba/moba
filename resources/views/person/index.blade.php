@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Person
+    Persona
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Persona') }}
+                                {{ __('Personas') }}
                             </span>
 
                              <div class="float-right">
