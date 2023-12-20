@@ -47,7 +47,7 @@ class CategoriesProductsServiceController extends Controller
 
         $categoriesProductsService = CategoriesProductsService::create($request->all());
 
-        return redirect()->route('categories-products-services.index')
+        return redirect()->route('categories-products-service.index')
             ->with('success', 'CategoriesProductsService created successfully.');
     }
 
@@ -90,7 +90,7 @@ class CategoriesProductsServiceController extends Controller
 
         $categoriesProductsService->update($request->all());
 
-        return redirect()->route('categories-products-services.index')
+        return redirect()->route('categories-products-service.index')
             ->with('success', 'CategoriesProductsService updated successfully');
     }
 
@@ -103,7 +103,7 @@ class CategoriesProductsServiceController extends Controller
     {
         $categoriesProductsService = CategoriesProductsService::find($id)->delete();
 
-        return redirect()->route('categories-products-services.index')
+        return redirect()->route('categories-products-service.index')
             ->with('success', 'CategoriesProductsService deleted successfully');
     }
 }

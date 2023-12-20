@@ -32,6 +32,9 @@ class UnitController extends Controller
     public function create()
     {
         $unit = new Unit();
+        $unit->unit_type = str_replace(['Docena', 'Centena', 'Mil'], ['docena', 'centena', 'mil'], $unit->unit_type);
+        $unit->size = str_replace(['Cm', 'M'], ['cm', 'm'], $unit->size);
+        $unit->area = str_replace(['M2'], ['m2'], $unit->area);
         return view('unit.create', compact('unit'));
     }
 
@@ -43,12 +46,14 @@ class UnitController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Unit::$rules);
+        $customMessages = ['required' => 'El campo es obligatorio.',];
+
+        request()->validate(Unit::$rules, $customMessages);
 
         $unit = Unit::create($request->all());
 
-        return redirect()->route('units.index')
-            ->with('success', 'Unit created successfully.');
+        return redirect()->route('unit.index')
+            ->with('success', 'Unidad creada exitosamente.');
     }
 
     /**
@@ -73,7 +78,9 @@ class UnitController extends Controller
     public function edit($id)
     {
         $unit = Unit::find($id);
-
+        $unit->unit_type = str_replace(['Docena', 'Centena', 'Mil'], ['docena', 'centena', 'mil'], $unit->unit_type);
+        $unit->size = str_replace(['Cm', 'M'], ['cm', 'm'], $unit->size);
+        $unit->area = str_replace(['M2'], ['m2'], $unit->area);
         return view('unit.edit', compact('unit'));
     }
 
@@ -90,8 +97,8 @@ class UnitController extends Controller
 
         $unit->update($request->all());
 
-        return redirect()->route('units.index')
-            ->with('success', 'Unit updated successfully');
+        return redirect()->route('unit.index')
+            ->with('success', 'Unidad editada exitosamente.');
     }
 
     /**
@@ -101,9 +108,23 @@ class UnitController extends Controller
      */
     public function destroy($id)
     {
-        $unit = Unit::find($id)->delete();
+        // Buscar la unidad por su ID
+        $unit = Unit::find($id);
 
-        return redirect()->route('units.index')
-            ->with('success', 'Unit deleted successfully');
+        // Verificar si la unidad existe
+        if (!$unit) {
+            return redirect()->route('unit.index')->with('error', 'Unidad no encontrada.');
+        }
+
+        // Verificar si hay productos asociados a esta unidad
+        if ($unit->products->isNotEmpty()) {
+            // Mostrar mensaje de error si hay productos asociados
+            return redirect()->route('unit.index')->with('error', 'No se puede eliminar la unidad porque tiene productos asociados.');
+        }
+
+        // Eliminar la unidad
+        $unit->delete();
+
+        return redirect()->route('unit.index')->with('success', 'Unidad eliminada exitosamente.');
     }
 }

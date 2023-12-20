@@ -108,12 +108,7 @@ class ProductController extends Controller
         $product->update($request->except('image'));
         
         return redirect()->route('product.index')
-            ->with('success', 'Producto Editado Exitosamente.');
-        /*request()->validate(Product::$rules);
-
-        $product->update($request->all());*/
-
-        
+            ->with('success', 'Producto Editado Exitosamente.');        
     }
 
     /**

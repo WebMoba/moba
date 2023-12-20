@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ __('Update') }} Unit
+    {{ __('Editar') }} Unit
 @endsection
 
 @section('content')
@@ -16,11 +16,11 @@
                         <span class="card-title">{{ __('Update') }} Unit</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('units.update', $unit->id) }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('unit.update', $unit->id) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
 
-                            @include('unit.form')
+                            @include('unit.form', ['mode'=>'Editar'])
 
                         </form>
                     </div>

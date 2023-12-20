@@ -11,21 +11,21 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} Unit</span>
+                            <span class="card-title">{{ __('Mostrar') }} Unidad</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('units.index') }}"> {{ __('Back') }}</a>
+                            <a class="btn btn-primary" href="{{ route('unit.index') }}"> {{ __('Volver') }}</a>
                         </div>
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Unit Type:</strong>
+                            <strong>Tipo de unidad:</strong>
                             {{ $unit->unit_type }}
                         </div>
                         <div class="form-group">
-                            <strong>Size:</strong>
+                            <strong>Tamaño:</strong>
                             {{ $unit->size }}
                         </div>
                         <div class="form-group">

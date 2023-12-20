@@ -24,6 +24,8 @@ class Unit extends Model
     
     static $rules = [
 		'unit_type' => 'required',
+        'size' => 'required',
+        'area' => 'required',
     ];
 
     protected $perPage = 20;

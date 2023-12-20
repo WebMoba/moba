@@ -16,7 +16,7 @@
                         <span class="card-title">{{ __('Create') }} Categories Products Service</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('categories-products-services.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('categories-products-service.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
                             @include('categories-products-service.form')
