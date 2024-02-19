@@ -35,6 +35,6 @@
     </div>
     <br>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">{{ __('Crear') }}</button>
+        <button type="submit" class="btn btn-primary" onclick="return confirm('¿Está seguro de que desea editar el evento?')">{{ __('Crear') }}</button>
     </div>
 </div>
