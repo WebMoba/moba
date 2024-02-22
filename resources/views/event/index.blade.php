@@ -11,10 +11,15 @@
                 <div class="card">
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-
+                        
                             <span id="card_title">
                                 {{ __('Eventos') }}
                             </span>
+
+                        <form action="{{ route('buscar') }}" method="GET">
+                        <input type="text" name="termino" placeholder="Buscar por lugar...">
+                        <button type="submit">Buscar</button>
+                        </form>
 
                              <div class="float-right">
                                 <a href="{{ route('events.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
@@ -47,6 +52,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+
                                     @foreach ($events as $event)
                                         <tr>
                                             <td>{{ ++$i }}</td>

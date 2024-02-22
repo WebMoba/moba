@@ -16,6 +16,11 @@
                                 {{ __('Personas') }}
                             </span>
 
+                            <form action="{{ route('buscarPeople') }}" method="GET">
+                            <input type="text" name="findId" placeholder="Buscar por ID...">
+                            <button type="submit">Buscar</button>
+                            </form>
+
                              <div class="float-right">
                                 <a href="{{ route('person.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Crear Nuevo') }}

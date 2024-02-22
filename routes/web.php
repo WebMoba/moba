@@ -3,6 +3,7 @@
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\BusquedaController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -32,6 +33,9 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('events', EventController::class);
 Route::resource('person', PersonController::class);
+Route::get('/buscar', [BusquedaController::class, 'buscar'])->name('buscar');
+Route::get('/buscarPeople', [BusquedaController::class, 'buscarPeople'])->name('buscarPeople');
+
 
 require __DIR__.'/auth.php';
 

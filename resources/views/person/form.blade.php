@@ -36,6 +36,6 @@
 
     </div>
     <div class="box-footer mt20">
-        <br><button type="submit" class="btn btn-primary" onclick="return confirm('¿Está seguro de que desea editar a la persona?')" >{{ __('Crear') }}</button>
+        <br><button type="submit" class="btn btn-primary" onclick="return confirm('¿Está seguro de que desea crear a la persona?')" >{{ __('Crear') }}</button>
     </div>
 </div>
