@@ -18,11 +18,13 @@
             {{ Form::select('team_works_id', $teamWorks, $person->team_works_id, ['class' => 'form-control' . ($errors->has('team_works_id') ? ' is-invalid' : ''), 'placeholder' => 'Grupo de trabajo']) }}
             {!! $errors->first('team_works_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+
         <div class="form-group">
             {{ Form::label('Numero Celular') }}
             {{ Form::select('number_phones_id',$numberPhones, $person->number_phones_id, ['class' => 'form-control' . ($errors->has('number_phones_id') ? ' is-invalid' : ''), 'placeholder' => 'Numero Celular']) }}
             {!! $errors->first('number_phones_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        
         <div class="form-group">
             {{ Form::label('Ciudad') }}
             {{ Form::select('towns_id', $towns, $person->towns_id, ['class' => 'form-control' . ($errors->has('towns_id') ? ' is-invalid' : ''), 'placeholder' => 'Ciudad']) }}
@@ -36,6 +38,6 @@
 
     </div>
     <div class="box-footer mt20">
-        <br><button type="submit" class="btn btn-primary" onclick="return confirm('¿Está seguro de que desea crear a la persona?')" >{{ __('Crear') }}</button>
+        <br><button type="submit" class="btn btn-primary" onclick="return confirm('¿Está seguro de que desea crear a la persona?')">{{ __('Crear') }}</button>
     </div>
 </div>

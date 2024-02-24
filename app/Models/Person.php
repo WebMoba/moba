@@ -63,6 +63,7 @@ class Person extends Model
     public function numberPhone()
     {
         return $this->hasOne('App\Models\NumberPhone', 'id', 'number_phones_id');
+        
     }
     
     /**

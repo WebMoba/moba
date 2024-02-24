@@ -47,7 +47,7 @@ class NumberPhoneController extends Controller
 
         $numberPhone = NumberPhone::create($request->all());
 
-        return redirect()->route('number-phones.index')
+        return redirect()->route('number-phone.index')
             ->with('success', 'NumberPhone created successfully.');
     }
 
@@ -90,7 +90,7 @@ class NumberPhoneController extends Controller
 
         $numberPhone->update($request->all());
 
-        return redirect()->route('number-phones.index')
+        return redirect()->route('number-phone.index')
             ->with('success', 'NumberPhone updated successfully');
     }
 
@@ -103,7 +103,7 @@ class NumberPhoneController extends Controller
     {
         $numberPhone = NumberPhone::find($id)->delete();
 
-        return redirect()->route('number-phones.index')
+        return redirect()->route('number-phone.index')
             ->with('success', 'NumberPhone deleted successfully');
     }
 }

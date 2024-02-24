@@ -16,8 +16,13 @@
                                 {{ __('Number Phone') }}
                             </span>
 
+                            <form action="{{ route('buscarCel') }}" method="GET">
+                            <input type="text" name="findCel" placeholder="Buscar por Celular...">
+                            <button type="submit">Buscar</button>
+                            </form>
+
                              <div class="float-right">
-                                <a href="{{ route('number-phones.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('number-phone.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -49,9 +54,9 @@
 											<td>{{ $numberPhone->number }}</td>
 
                                             <td>
-                                                <form action="{{ route('number-phones.destroy',$numberPhone->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('number-phones.show',$numberPhone->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('number-phones.edit',$numberPhone->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                <form action="{{ route('number-phone.destroy',$numberPhone->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('number-phone.show',$numberPhone->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('number-phone.edit',$numberPhone->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>

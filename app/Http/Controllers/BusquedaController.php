@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Event;
 use App\Models\Person;
+use App\Models\NumberPhone;
+
 
 
 class BusquedaController extends Controller
@@ -35,5 +37,16 @@ class BusquedaController extends Controller
     ->with('i', (request()->input('page', 1) - 1) * $people->perPage());
 
 }
+public function buscarCel(Request $request)
+{
+    // Obtener el término de búsqueda del formulario
+    $findCel = $request->input('findCel');
 
+    // Realizar la consulta para buscar números de teléfono que coincidan con el término
+    $numberPhones = NumberPhone::where('number', 'LIKE', "%$findCel%")->paginate();
+
+    // Pasar los resultados de la búsqueda a la vista 'number-phone.index' y paginarlos
+    return view('number-phone.index', compact('numberPhones'))
+        ->with('i', (request()->input('page', 1) - 1) * $numberPhones->perPage());
+}
 }

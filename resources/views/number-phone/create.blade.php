@@ -16,7 +16,7 @@
                         <span class="card-title">{{ __('Create') }} Number Phone</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('number-phones.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('number-phone.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
                             @include('number-phone.form')

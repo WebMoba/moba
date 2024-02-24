@@ -92,15 +92,17 @@ class PersonController extends Controller
      */
     public function edit($id)
     {
+        // Obtener la persona a editar
         $person = Person::find($id);
-        $person = new Person();
+        
+        // Obtener listas de selección para otros campos
         $teamWorks = TeamWork::pluck('assigned_work', 'id');
         $users = User::pluck('email', 'id');
         $towns = Town::pluck('name','id');
         $numberPhones = NumberPhone::pluck('number','id');
-        return view('person.create', compact('person', 'teamWorks', 'users', 'towns', 'numberPhones'));
-
-        return view('person.edit', compact('person'));
+    
+        // Pasar los datos a la vista de edición
+        return view('person.edit', compact('person', 'teamWorks', 'users', 'towns', 'numberPhones'));
     }
 
     /**
