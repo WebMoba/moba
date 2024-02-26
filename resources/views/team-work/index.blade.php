@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@if(Session::has('msj'))
+{{ Session::get('msj')}}
+@endif
+
 @section('template_title')
     Team Work
 @endsection
@@ -31,6 +35,19 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
+                            
+                            <div class="col-xl-12">
+                                <form action="{{route('team-works.index')}}" method="get">
+                                    <div class="form-row">
+                                        <div class="col-sm-4 my-1">
+                                            <input type="text" class="form-control" name="search" id="search" value="{{$search}}">
+                                        </div>
+                                        <div class="col-auto my-1">
+                                            <input type="submit" value="Buscar" class="btn btn-primary">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>

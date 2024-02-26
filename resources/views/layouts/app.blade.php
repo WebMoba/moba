@@ -39,9 +39,9 @@
                         <li class="nav-item">
                             <a href="{{ route('quotes.index') }}" class="nav-link">{{__('Cotizaciones')}}</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="{{ route('detail-quotes.index') }}" class="nav-link">{{__('Detalle de cotizaciones')}}</a>
-                        </li>
+                        </li> -->
                     </ul>
 
                     <!-- Right Side Of Navbar -->

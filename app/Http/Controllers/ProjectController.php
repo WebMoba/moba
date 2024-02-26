@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class ProjectController
@@ -16,11 +17,17 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $projects = Project::paginate();
+        $search = trim($request->get('search'));
+        $projects=DB::table('projects')
+                    ->select('id','name','description','date_start','date_end','status')
+                    ->where('id','LIKE','%'.$search.'%')
+                    ->orWhere('name','LIKE','%'.$search.'%')
+                    ->orderBy('date_start','asc')
+                    ->paginate(4);
 
-        return view('project.index', compact('projects'))
+        return view('project.index', compact('projects','search')) 
             ->with('i', (request()->input('page', 1) - 1) * $projects->perPage());
     }
 
@@ -43,6 +50,20 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+
+        $area=[
+            'name'=>'required|string|max:100',
+            'description'=>'required|string|max:300',
+            'date_start'=>'required|date',
+            'date_end'=>'required|date',
+            'status'=>'required|select',
+        ];
+        $msj=[
+            'required'=>'El atributo es requerido',
+            'max'=>'No puede ingresar mas caracteres en este campo',
+        ];
+        $this->validate($request, $area, $msj);
+
         request()->validate(Project::$rules);
 
         $project = Project::create($request->all());
@@ -86,6 +107,19 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
+        $area=[
+            'name'=>'required|string|max:100',
+            'description'=>'required|string|max:300',
+            'date_start'=>'required|date',
+            'date_end'=>'required|date',
+            'status'=>'required|select',
+        ];
+        $msj=[
+            'required'=>'El atributo es requerido',
+            'max'=>'No puede ingresar mas caracteres en este campo',
+        ];
+        $this->validate($request, $area, $msj);
+        
         request()->validate(Project::$rules);
 
         $project->update($request->all());

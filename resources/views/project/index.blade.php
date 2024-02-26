@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@if(Session::has('msj'))
+{{ Session::get('msj')}}
+@endif
 @section('template_title')
     Project
 @endsection
@@ -13,7 +15,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Projectos') }}
+                                {{ __('Proyectos') }}
                             </span>
 
                              <div class="float-right">
@@ -30,6 +32,18 @@
                     @endif
 
                     <div class="card-body">
+                        <div class="col-xl-12">
+                            <form action="{{route('projects.index')}}" method="get">
+                                <div class="form-row">
+                                    <div class="col-sm-4 my-1">
+                                        <input type="text" class="form-control" name="search" id="search" value="{{$search}}">
+                                    </div>
+                                    <div class="col-auto my-1">
+                                        <input type="submit" value="Buscar" class="btn btn-primary">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
                                 <thead class="thead">

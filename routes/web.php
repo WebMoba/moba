@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,16 +17,16 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
-Route::resource('projects', App\Http\Controllers\ProjectController::class);
-Route::resource('team-works', App\Http\Controllers\TeamWorkController::class);
-Route::resource('quotes', App\Http\Controllers\QuoteController::class);
-Route::resource('detail-quotes', App\Http\Controllers\DetailQuoteController::class);
+Route::resource('projects', App\Http\Controllers\ProjectController::class)->middleware('auth');
+Route::resource('team-works', App\Http\Controllers\TeamWorkController::class)->middleware('auth');
+Route::resource('quotes', App\Http\Controllers\QuoteController::class)->middleware('auth');
+Route::resource('detail-quotes', App\Http\Controllers\DetailQuoteController::class)->middleware('auth');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('home');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -38,4 +39,9 @@ require __DIR__.'/auth.php';
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\ProjectController::class, 'index'])->name('home');
+
+Route::group(['middleware'=>'auth'], function(){
+    Route::get('/',[App\Http\Controllers\ProjectController::class, 'index'])->name('home');  //listado de proyectos
+});
+Auth::routes(['register'=>false, 'reset'=>false]);

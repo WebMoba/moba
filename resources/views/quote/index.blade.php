@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@if(Session::has('msj'))
+{{ Session::get('msj')}}
+@endif
 @section('template_title')
     Quote
 @endsection
@@ -32,6 +34,19 @@
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
+                                
+                                <div class="col-xl-12">
+                                    <form action="{{route('quotes.index')}}" method="get">
+                                        <div class="form-row">
+                                            <div class="col-sm-4 my-1">
+                                                <input type="text" class="form-control" name="search" id="search" value="{{$search}}">
+                                            </div>
+                                            <div class="col-auto my-1">
+                                                <input type="submit" value="Buscar" class="btn btn-primary">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                                 <thead class="thead">
                                     <tr>
                                         <th>Id</th>
@@ -43,7 +58,7 @@
 										<th>Estado</th>
 										<th>Persona</th>
 
-                                        <th></th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -60,11 +75,11 @@
 
                                             <td>
                                                 <form action="{{ route('quotes.destroy',$quote->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('quotes.show',$quote->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('quotes.edit',$quote->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('quotes.show',$quote->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('quotes.edit',$quote->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Borrar') }}</button>
                                                 </form>
                                             </td>
                                         </tr>

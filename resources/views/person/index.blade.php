@@ -1,9 +1,7 @@
 @extends('layouts.app')
-@if(Session::has('msj'))
-{{ Session::get('msj')}}
-@endif
+
 @section('template_title')
-    Detail Quote
+    Person
 @endsection
 
 @section('content')
@@ -15,12 +13,12 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Detalle de Cotización') }}
+                                {{ __('Person') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('detail-quotes.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear') }}
+                                <a href="{{ route('people.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                  {{ __('Create New') }}
                                 </a>
                               </div>
                         </div>
@@ -38,31 +36,35 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Servicios</th>
-										<th>Productos </th>
-										<th>Projectos</th>
-										<th>Cotización</th>
-                                        
-                                        <th>Acciones</th>
+										<th>Id Card</th>
+										<th>Addres</th>
+										<th>Team Works Id</th>
+										<th>Number Phones Id</th>
+										<th>Towns Id</th>
+										<th>Users Id</th>
+
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($detailQuotes as $detailQuote)
+                                    @foreach ($people as $person)
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $detailQuote->services_id }}</td>
-											<td>{{ $detailQuote->products_id }}</td>
-											<td>{{ $detailQuote->projects_id }}</td>
-											<td>{{ $detailQuote->quotes_id }}</td>
+											<td>{{ $person->id_card }}</td>
+											<td>{{ $person->addres }}</td>
+											<td>{{ $person->team_works_id }}</td>
+											<td>{{ $person->number_phones_id }}</td>
+											<td>{{ $person->towns_id }}</td>
+											<td>{{ $person->users_id }}</td>
 
                                             <td>
-                                                <form action="{{ route('detail-quotes.destroy',$detailQuote->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('detail-quotes.show',$detailQuote->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('detail-quotes.edit',$detailQuote->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
+                                                <form action="{{ route('people.destroy',$person->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('people.show',$person->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('people.edit',$person->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Borrar') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -72,7 +74,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $detailQuotes->links() !!}
+                {!! $people->links() !!}
             </div>
         </div>
     </div>

@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\DetailQuote;
 use Illuminate\Http\Request;
+use App\Models\Project;
+use App\Models\Service;
+use App\Models\Product;
+use App\Models\Quote;
 
 /**
  * Class DetailQuoteController
@@ -18,7 +22,7 @@ class DetailQuoteController extends Controller
      */
     public function index()
     {
-        $detailQuotes = DetailQuote::paginate();
+        $detailQuotes = DetailQuote::paginate(1);
 
         return view('detail-quote.index', compact('detailQuotes'))
             ->with('i', (request()->input('page', 1) - 1) * $detailQuotes->perPage());
@@ -32,7 +36,11 @@ class DetailQuoteController extends Controller
     public function create()
     {
         $detailQuote = new DetailQuote();
-        return view('detail-quote.create', compact('detailQuote'));
+        $services = Service::pluck('name','id');
+        $products = Product::pluck('name','id');
+        $projects = Project::pluck('name','id');
+        $quotes = Quote::pluck('description','id');
+        return view('detail-quote.create', compact('detailQuote', 'services', 'products', 'projects', 'quotes'));
     }
 
     /**
@@ -43,6 +51,17 @@ class DetailQuoteController extends Controller
      */
     public function store(Request $request)
     {
+        $area=[
+            'services_id'=>'required|select',
+            'products_id'=>'required|select',
+            'projects_id'=>'required|select',
+            'quotes_id'=>'required|select',
+        ];
+        $msj=[
+            'required'=>'El atributo es requerido',
+        ];
+        $this->validate($request, $area,$msj);
+
         request()->validate(DetailQuote::$rules);
 
         $detailQuote = DetailQuote::create($request->all());
@@ -86,6 +105,17 @@ class DetailQuoteController extends Controller
      */
     public function update(Request $request, DetailQuote $detailQuote)
     {
+        $area=[
+            'services_id'=>'required|select',
+            'products_id'=>'required|select',
+            'projects_id'=>'required|select',
+            'quotes_id'=>'required|select',
+        ];
+        $msj=[
+            'required'=>'El atributo es requerido',
+        ];
+        $this->validate($request, $area,$msj);
+
         request()->validate(DetailQuote::$rules);
 
         $detailQuote->update($request->all());
