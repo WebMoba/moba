@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('detail_purchases', function (Blueprint $table) {
             $table->foreign(['materials_raws_id'], 'fk_detail_purchases_materials_raws1')->references(['id'])->on('materials_raws')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-            $table->foreign(['purchases_id'], 'fk_detail_purchases_purchases1')->references(['id'])->on('purchases')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+            $table->foreign(['purchases_id'], 'fk_detail_purchases_purchases1')->references(['id'])->on('purchases')->onUpdate('NO ACTION')->onDelete('CASCADE');
         });
     }
 
