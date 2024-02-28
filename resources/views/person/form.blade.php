@@ -20,8 +20,8 @@
         </div>
 
         <div class="form-group">
-        {{ Form::label('Numero Celular') }}
-        {{ Form::text('number_phones_id', request('numberPhone'), ['class' => 'form-control', 'readonly' => true]) }}
+            {{ Form::label('Numero Celular') }}
+            {{ Form::text('number_phones_id', request('numberPhone'), ['class' => 'form-control', 'readonly' => true]) }}
         </div>
         <a href="{{ route('number-phone.index') }}" class="btn btn-primary mt-2">Seleccionar Celular</a>
         </div>

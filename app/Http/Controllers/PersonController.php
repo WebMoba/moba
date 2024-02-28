@@ -78,11 +78,19 @@ class PersonController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        $person = Person::find($id);
+{
+    // Recuperar los datos de la persona junto con sus relaciones
+    $person = Person::with('teamWork', 'numberPhone', 'town')->find($id);
 
-        return view('person.show', compact('person'));
+    // Verificar si la persona existe
+    if (!$person) {
+        // Manejar el caso en que la persona no existe, por ejemplo, redirigir a una página de error 404
+        abort(404);
     }
+
+    // Devolver la vista con los datos de la persona
+    return view('person.show', compact('person'));
+}
 
     /**
      * Show the form for editing the specified resource.

@@ -3,15 +3,18 @@
 @section('template_title')
     Number Phone
 @endsection
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 @section('content')
     <div class="container-fluid">
+    <a class="btn btn-primary" href="{{ route('person.create') }}"> {{ __('Volver') }}</a><br><br>
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
+                    
                     <div class="card-header">
+                        
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-
+                        
                             <span id="card_title">
                                 {{ __('Celular') }}
                             </span>
@@ -47,23 +50,27 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($numberPhones as $numberPhone)
-                                        <tr>
-                                            <td>{{ ++$i }}</td>
-                                            
-											<td data-number="{{ $numberPhone->number }}"> {{ $numberPhone->number }}</td>
-
-                                            <td>
-                                                <form action="{{ route('number-phone.destroy',$numberPhone->id) }}" method="POST">
-                                                <a class="btn btn-sm btn-primary" href="{{ route('person.create', ['numberPhone' => $numberPhone->number]) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('number-phone.edit',$numberPhone->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                @foreach ($numberPhones as $numberPhone)
+                                <tr>
+                                <td>{{ ++$i }}</td>
+                                <td data-number="{{ $numberPhone->number }}">{{ $numberPhone->number }}</td>
+                                <td>
+                                <form action="{{ route('number-phone.destroy',$numberPhone->id) }}" method="POST">
+                                    <a class="btn btn-sm btn-primary show-phone" href="#" data-number-id="{{ $numberPhone->id }}">
+                                        <i class="fa fa-fw fa-eye"></i> {{ __('Agregar') }}
+                                    </a>
+                                    <a class="btn btn-sm btn-success" href="{{ route('number-phone.edit',$numberPhone->id) }}">
+                                        <i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}
+                                    </a>
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}
+                                    </button>
+                                </form>
+                                 </td>
+                                  </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -74,12 +81,13 @@
         </div>
     </div>
     <script>
-        $(document).ready(function() {
-            $('a.show-phone').click(function(event) {
-                event.preventDefault();
-                var phoneNumber = $(this).data('number');
-                window.location.href = "{{ route('person.create') }}?numberPhone=" + phoneNumber;
-            });
-        });
-    </script>
+    $(document).ready(function() {
+        $('a.show-phone').click(function(event) {
+    event.preventDefault();
+    var numberId = $(this).data('number-id');
+    console.log(numberId); // Verifica el número de teléfono ID en la consola del navegador
+    window.location.href = "{{ route('person.create') }}?numberPhone=" + numberId;
+});
+    });
+</script>
 @endsection

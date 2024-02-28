@@ -6,6 +6,7 @@
 
 @section('content')
     <section class="content container-fluid">
+    <a class="btn btn-primary" href="{{ route('number-phone.index') }}"> {{ __('Volver') }}</a><br><br>
         <div class="row">
             <div class="col-md-12">
 
