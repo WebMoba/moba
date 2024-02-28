@@ -47,7 +47,7 @@ class NumberPhoneController extends Controller
         $numberPhone = NumberPhone::create($request->all());
 
         return redirect()->route('number-phone.index')
-            ->with('success', 'NumberPhone created successfully.');
+            ->with('success', 'Numero de Telefono creado con exito.');
     }
 
     /**
@@ -90,7 +90,7 @@ class NumberPhoneController extends Controller
         $numberPhone->update($request->all());
 
         return redirect()->route('number-phone.index')
-            ->with('success', 'NumberPhone updated successfully');
+            ->with('success', 'Numero de telefono actualizado correctamente');
     }
 
     /**
@@ -100,9 +100,27 @@ class NumberPhoneController extends Controller
      */
     public function destroy($id)
     {
-        $numberPhone = NumberPhone::find($id)->delete();
-
+        // Buscar el número de teléfono por su ID
+        $numberPhone = NumberPhone::find($id);
+    
+        // Verificar si el número de teléfono existe
+        if (!$numberPhone) {
+            return redirect()->route('number-phone.index')
+                ->with('error', 'El número de teléfono no existe.');
+        }
+    
+        // Verificar si el número de teléfono está asociado a alguna persona
+        if ($numberPhone->people()->exists()) {
+            return redirect()->route('number-phone.index')
+                ->with('warning', 'El número de teléfono está asociado a una o más personas y no puede ser eliminado.');
+        }
+    
+        // Si no está asociado a ninguna persona, eliminar el número de teléfono
+        $numberPhone->delete();
+    
+        // Redireccionar a la página de índice con un mensaje de éxito
         return redirect()->route('number-phone.index')
-            ->with('success', 'NumberPhone deleted successfully');
+            ->with('success', 'El número de teléfono fue eliminado con éxito.');
     }
 }
+

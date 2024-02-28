@@ -14,7 +14,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Update') }} Number Phone</span>
+                        <span class="card-title">{{ __('Editar') }} Number de Telefono</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('number-phone.update', $numberPhone->id) }}"  role="form" enctype="multipart/form-data">

@@ -5,7 +5,27 @@
 @endsection
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 @section('content')
+
     <div class="container-fluid">
+    @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+
+        @if (session('warning'))
+            <div class="alert alert-warning">
+                {{ session('warning') }}
+            </div>
+        @endif
+
+
     <a class="btn btn-primary" href="{{ route('person.create') }}"> {{ __('Volver') }}</a><br><br>
         <div class="row">
             <div class="col-sm-12">
@@ -64,7 +84,7 @@
                                     </a>
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm">
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Está seguro de que desea eliminar el numero telefonico?')">
                                         <i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}
                                     </button>
                                 </form>
