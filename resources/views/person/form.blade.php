@@ -20,9 +20,10 @@
         </div>
 
         <div class="form-group">
-            {{ Form::label('Numero Celular') }}
-            {{ Form::select('number_phones_id',$numberPhones, $person->number_phones_id, ['class' => 'form-control' . ($errors->has('number_phones_id') ? ' is-invalid' : ''), 'placeholder' => 'Numero Celular']) }}
-            {!! $errors->first('number_phones_id', '<div class="invalid-feedback">:message</div>') !!}
+        {{ Form::label('Numero Celular') }}
+        {{ Form::text('number_phones_id', request('numberPhone'), ['class' => 'form-control', 'readonly' => true]) }}
+        </div>
+        <a href="{{ route('number-phone.index') }}" class="btn btn-primary mt-2">Seleccionar Celular</a>
         </div>
         
         <div class="form-group">

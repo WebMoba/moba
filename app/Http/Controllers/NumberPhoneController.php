@@ -17,13 +17,12 @@ class NumberPhoneController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $numberPhones = NumberPhone::paginate();
+{
+    $numberPhones = NumberPhone::orderBy('created_at', 'desc')->paginate();
 
-        return view('number-phone.index', compact('numberPhones'))
-            ->with('i', (request()->input('page', 1) - 1) * $numberPhones->perPage());
-    }
-
+    return view('number-phone.index', compact('numberPhones'))
+        ->with('i', (request()->input('page', 1) - 1) * $numberPhones->perPage());
+}
     /**
      * Show the form for creating a new resource.
      *

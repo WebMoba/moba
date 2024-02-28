@@ -128,10 +128,20 @@ class PersonController extends Controller
      * @throws \Exception
      */
     public function destroy($id)
-    {
-        $person = Person::find($id)->delete();
-
-        return redirect()->route('person.index')
-            ->with('success', 'Persona eliminada con exito');
+{
+    // Encuentra y elimina la persona con el ID dado
+    $person = Person::find($id);
+    if (!$person) {
+        return redirect()->route('person.index')->with('error', 'La persona no existe');
     }
+    $person->delete();
+    
+    // Luego, busca y elimina el registro de número de teléfono asociado a esa persona
+    $numberPhoneId = $person->number_phones_id;
+    NumberPhone::where('id', $numberPhoneId)->delete();
+
+    return redirect()->route('person.index')->with('success', 'Persona y su número de teléfono asociado eliminados con éxito');
+}
+
+
 }

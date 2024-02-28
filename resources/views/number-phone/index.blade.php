@@ -13,7 +13,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Number Phone') }}
+                                {{ __('Celular') }}
                             </span>
 
                             <form action="{{ route('buscarCel') }}" method="GET">
@@ -23,7 +23,7 @@
 
                              <div class="float-right">
                                 <a href="{{ route('number-phone.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('Crear') }}
                                 </a>
                               </div>
                         </div>
@@ -41,7 +41,7 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Number</th>
+										<th>Numero</th>
 
                                         <th></th>
                                     </tr>
@@ -51,15 +51,15 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $numberPhone->number }}</td>
+											<td data-number="{{ $numberPhone->number }}"> {{ $numberPhone->number }}</td>
 
                                             <td>
                                                 <form action="{{ route('number-phone.destroy',$numberPhone->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('number-phone.show',$numberPhone->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('number-phone.edit',$numberPhone->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                <a class="btn btn-sm btn-primary" href="{{ route('person.create', ['numberPhone' => $numberPhone->number]) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('number-phone.edit',$numberPhone->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -73,4 +73,13 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            $('a.show-phone').click(function(event) {
+                event.preventDefault();
+                var phoneNumber = $(this).data('number');
+                window.location.href = "{{ route('person.create') }}?numberPhone=" + phoneNumber;
+            });
+        });
+    </script>
 @endsection
