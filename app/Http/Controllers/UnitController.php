@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\MaterialsRaw;
+use App\Models\Product;
 use App\Models\Unit;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,14 @@ class UnitController extends Controller
      */
     public function index()
     {
-        $units = Unit::paginate();
+        
+        $search = request()->input('search');
+
+        if (!empty($search)) {
+            $units = Unit::where('unit_type', 'like', '%' . $search . '%')->paginate();
+        } else {
+            $units = Unit::paginate();
+        }
 
         return view('unit.index', compact('units'))
             ->with('i', (request()->input('page', 1) - 1) * $units->perPage());
@@ -108,23 +116,20 @@ class UnitController extends Controller
      */
     public function destroy($id)
     {
-        // Buscar la unidad por su ID
         $unit = Unit::find($id);
-
-        // Verificar si la unidad existe
+        
         if (!$unit) {
             return redirect()->route('unit.index')->with('error', 'Unidad no encontrada.');
         }
+        $materialsRaws = $unit->materialsRaws();
 
-        // Verificar si hay productos asociados a esta unidad
-        if ($unit->products->isNotEmpty()) {
-            // Mostrar mensaje de error si hay productos asociados
-            return redirect()->route('unit.index')->with('error', 'No se puede eliminar la unidad porque tiene productos asociados.');
+        if ($unit->products()->exists() || $materialsRaws->exists()) {
+            return redirect()->route('unit.index')->with('warning', 'Esta unidad esta asociada a un producto o materia prima.');
         }
 
-        // Eliminar la unidad
         $unit->delete();
 
         return redirect()->route('unit.index')->with('success', 'Unidad eliminada exitosamente.');
+        
     }
 }

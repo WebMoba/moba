@@ -21,8 +21,19 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate();
-        $products = Product::with('unit', 'categoriesProductsService')->paginate();
+        $search = request()->input('search');
+
+        if (!empty($search)) {
+            $products = Product::where(function ($query) use ($search) {
+                $query->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('price', 'like', '%' . $search . '%');
+            })
+                ->with('unit', 'categoriesProductsService')
+                ->paginate();
+        } else {
+            $products = Product::with('unit', 'categoriesProductsService')->paginate();
+        }
+
         return view('product.index', compact('products'))
             ->with('i', (request()->input('page', 1) - 1) * $products->perPage());
     }
@@ -35,8 +46,8 @@ class ProductController extends Controller
     public function create()
     {
         $product = new Product();
-        $unit = Unit::pluck('unit_type','id');
-        $categories_products_service = CategoriesProductsService::pluck('name','id');
+        $unit = Unit::pluck('unit_type', 'id');
+        $categories_products_service = CategoriesProductsService::pluck('name', 'id');
         return view('product.create', compact('product', 'unit', 'categories_products_service'));
     }
 
@@ -50,7 +61,7 @@ class ProductController extends Controller
     {
 
         $customMessages = ['required' => 'El campo es obligatorio.',];
-        
+
         $product = request()->validate(Product::$rules, $customMessages);
 
         $product = Product::create(array_merge($request->all(), ['image' => $request->file('image')->store('uploads', 'public')]));
@@ -81,8 +92,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::find($id);
-        $unit = Unit::pluck('unit_type','id');
-        $categories_products_service = CategoriesProductsService::pluck('name','id');
+        $unit = Unit::pluck('unit_type', 'id');
+        $categories_products_service = CategoriesProductsService::pluck('name', 'id');
         return view('product.edit', compact('product', 'unit', 'categories_products_service'));
     }
 
@@ -104,11 +115,11 @@ class ProductController extends Controller
             Storage::disk('public')->delete($product->image);
             $product->image = $request->file('image')->store('uploads', 'public');
         }
-    
+
         $product->update($request->except('image'));
-        
+
         return redirect()->route('product.index')
-            ->with('success', 'Producto Editado Exitosamente.');        
+            ->with('success', 'Producto Editado Exitosamente.');
     }
 
     /**
