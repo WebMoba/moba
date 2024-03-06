@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Dompdf\Dompdf;
 
 use App\Models\CategoriesProductsService;
 use Illuminate\Http\Request;
@@ -18,7 +19,18 @@ class CategoriesProductsServiceController extends Controller
      */
     public function index()
     {
-        $categoriesProductsServices = CategoriesProductsService::paginate();
+        $search = request()->input('search');
+
+        if (!empty($search)) {
+            $categoriesProductsServices = CategoriesProductsService::where(function ($query) use ($search) {
+                $query->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('status', 'like', '%' . $search . '%')
+                    ->orWhere('type', 'like', '%' . $search . '%');
+            })
+                ->paginate();
+        } else {
+            $categoriesProductsServices = CategoriesProductsService::paginate();
+        }
 
         return view('categories-products-service.index', compact('categoriesProductsServices'))
             ->with('i', (request()->input('page', 1) - 1) * $categoriesProductsServices->perPage());
@@ -43,7 +55,8 @@ class CategoriesProductsServiceController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(CategoriesProductsService::$rules);
+        $customMessages = ['required' => 'El campo es obligatorio.'];
+        request()->validate(CategoriesProductsService::$rules, $customMessages);
 
         $categoriesProductsService = CategoriesProductsService::create($request->all());
 
@@ -100,10 +113,44 @@ class CategoriesProductsServiceController extends Controller
      * @throws \Exception
      */
     public function destroy($id)
-    {
-        $categoriesProductsService = CategoriesProductsService::find($id)->delete();
-
+    { //busca la categoria por su id
+        $categoriesProductsService = CategoriesProductsService::find($id);
+        //verifica si la categoria existe 
+        if (!$categoriesProductsService) {
+            return redirect()->route('categories-products-service.index')->with('error', 'categoria no encontrada.');
+        }
+        //verifica si la categoria esta asociada a un producto o un servicio
+        if ($categoriesProductsService->services()->exists()) {
+            return redirect()->route('categories-products-service.index')->with('warning', 'Esta categoria esta asociada a un servicio o producto.');
+        }
+        //si no esta asociada elimina la categoria 
+        $categoriesProductsService->delete();
+        //terona a la pagina de indice con un mensaje de exito
         return redirect()->route('categories-products-service.index')
             ->with('success', 'Categoria Eliminada Exitosamente');
+    }
+    public function generatePDF(Request $request)
+    {
+        // Obtener el filtro de la solicitud
+        $filter = $request->input('findId');
+
+        // Obtener los datos de las personas filtradas si se aplicó un filtro
+        if ($filter) {
+            $categoriesProductsServices = CategoriesProductsService::where('name', $filter)->get();
+        } else {
+            // Si no hay filtro, obtener todas las personas
+            $categoriesProductsServices = CategoriesProductsService::all();
+        }
+        // Pasar los datos a la vista pdf-template
+        $data = [
+            'categoriesProductsServices' => $categoriesProductsServices
+        ];
+
+        // Generar el PDF
+        $pdf = new Dompdf();
+        $pdf->loadHtml(view('categories-products-service.pdf-template', $data));
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->render();
+        return $pdf->stream('categorias.pdf');
     }
 }

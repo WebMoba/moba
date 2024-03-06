@@ -18,10 +18,11 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/pdf/categories-products-service', [CategoriesProductsServiceController::class, 'generatePDF'])->name('pdf.categories-products-service');
 
 Route::resource('service', ServiceController::class);
 Route::resource('categories-products-service', CategoriesProductsServiceController::class);
+Route::get('/pdf/service', [ServiceController::class, 'generatePDF'])->name('pdf.service');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

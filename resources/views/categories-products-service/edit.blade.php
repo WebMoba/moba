@@ -12,8 +12,10 @@
                 @includeif('partials.errors')
 
                 <div class="card card-default">
-                    <div class="card-header">
+                    <div class="card-header">//card-header d-flex justify-content-between align-items-center(sustituyendolo sirve  para ponerlo al final)
                         <span class="card-title">{{ __('Editar') }} Categorias </span>
+                        <a class="btn btn-primary" href="{{ route('categories-products-service.index') }}"> {{ __('Volver') }}</a>
+
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('categories-products-service.update', $categoriesProductsService->id) }}"  role="form" enctype="multipart/form-data">

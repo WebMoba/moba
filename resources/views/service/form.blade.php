@@ -13,12 +13,13 @@
         </div>
         <div class="form-group">
             {{ Form::label('Fecha de inicio') }}
-            {{ Form::date('date_start', $service->date_start, ['class' => 'form-control' . ($errors->has('date_start') ? ' is-invalid' : '')]) }}
+            {{ Form::date('date_start', $service->date_start, ['class' => 'form-control' . ($errors->has('date_start') ? ' is-invalid' : ''), 'min' => now()->format('Y-m-d')]) }}
             {!! $errors->first('date_start', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+
         <div class="form-group">
             {{ Form::label('Fecha de finalizacion') }}
-            {{ Form::date('date_end', $service->date_end, ['class' => 'form-control' . ($errors->has('date_end') ? ' is-invalid' : '')]) }}
+            {{ Form::date('date_end', $service->date_end, ['class' => 'form-control' . ($errors->has('date_end') ? ' is-invalid' : ''), 'min' => now()->format('Y-m-d')]) }}
             {!! $errors->first('date_end', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">

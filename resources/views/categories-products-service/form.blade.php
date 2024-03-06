@@ -12,8 +12,8 @@
             {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('Estado (active, inactive)') }}
-            {{ Form::text('status', $categoriesProductsService->status, ['class' => 'form-control' . ($errors->has('status') ? ' is-invalid' : '')]) }}
+            {{ Form::label('Estado') }}
+            {{ Form::select('status', ['active' => 'Activo', 'inactive' => 'Inactivo'], $categoriesProductsService->status, ['class' => 'form-control' . ($errors->has('status') ? ' is-invalid' : '')]) }}
             {!! $errors->first('status', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -22,13 +22,13 @@
             {!! $errors->first('quantity', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('Popular (Alta, Media, Baja)') }}
-            {{ Form::text('popular', $categoriesProductsService->popular, ['class' => 'form-control' . ($errors->has('popular') ? ' is-invalid' : '')]) }}
+            {{ Form::label('Popular') }}
+            {{ Form::select('popular',['Alta' => 'Alta', 'Media' => 'Media','Baja'=> 'Baja'], $categoriesProductsService->popular, ['class' => 'form-control' . ($errors->has('popular') ? ' is-invalid' : '')]) }}
             {!! $errors->first('popular', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('Tipo (servicio, producto)') }}
-            {{ Form::text('type', $categoriesProductsService->type, ['class' => 'form-control' . ($errors->has('type') ? ' is-invalid' : '')]) }}
+            {{ Form::label('Tipo') }}
+            {{ Form::select('type', ['servicio' => 'Servicio', 'producto' => 'Producto'],$categoriesProductsService->type, ['class' => 'form-control' . ($errors->has('type') ? ' is-invalid' : '')]) }}
             {!! $errors->first('type', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
