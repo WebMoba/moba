@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
+    return view('auth.login');
     return view('auth.login');
 });
 
