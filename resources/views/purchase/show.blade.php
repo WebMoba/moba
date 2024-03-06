@@ -29,8 +29,8 @@
                             {{ $purchase->date }}
                         </div>
                         <div class="form-group">
-                            <strong>Documento - Dirección del proveedor:</strong>
-                            {{ $purchase->person->id_card }}
+                            <strong>Documento y Dirección del proveedor:</strong>
+                            {{ $purchase->person->id_card }} - {{ $purchase->person->addres }}
                         </div>
 
                         <h2>Detalle de la compra</h2>
@@ -52,7 +52,7 @@
                             {{ $detailPurchase->subtotal }}
                         </div>
                         <div class="form-group">
-                            <strong>Descuento:</strong>
+                            <strong>Porcentaje de descuento:</strong>
                             {{ $detailPurchase->discount }}
                         </div>
                         <div class="form-group">

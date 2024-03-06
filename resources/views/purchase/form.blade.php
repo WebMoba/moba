@@ -3,13 +3,13 @@
 
         <div class="form-group">
             {{ Form::label('Nombre de la compra') }}
-            {{ Form::text('name', $purchase->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Name', 'required']) }}
+            {{ Form::text('name', $purchase->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Name']) }}
             {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
         <div class="form-group">
             {{ Form::label('Fecha') }}
-            {{ Form::text('date', $purchase->date, ['class' => 'form-control' . ($errors->has('date') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Date', 'disabled' => $purchase->exists, 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
+            {{ Form::text('date', $purchase->date, [ 'class' => 'form-control' . ($errors->has('date') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Date', 'readonly' => true, 'style' => 'background-color: #f8f9fa; cursor: not-allowed;', ]) }}
             {!! $errors->first('date', '<div class="invalid-feedback">:message</div>') !!}
 
             <small class="text-muted">Por cuestiones de seguridad este campo no es editable.</small>

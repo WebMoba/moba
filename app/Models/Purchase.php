@@ -24,6 +24,13 @@ class Purchase extends Model
 
     static $rules = [
         'people_id' => 'required',
+        'materials_raws_id' => 'required',
+        'name' => 'required',
+        'quantity' => 'required|numeric',
+        'price_unit' => 'required|numeric',
+        'subtotal' => 'required|numeric',
+        'discount' => 'required|numeric',
+        'total' => 'required|numeric',
     ];
 
     protected $perPage = 20;

@@ -3,17 +3,17 @@
 
         <div class="form-group">
             {{ Form::label('Nombre de materia prima comprada') }}
-            {{ Form::select('materials_raws_id', $materialsRaws, $detailPurchase->materials_raws_id, ['class' => 'form-control' . ($errors->has('materials_raws_id') ? ' is-invalid' : '')]) }}
+            {{ Form::select('materials_raws_id', $materialsRaws, $detailPurchase->materials_raws_id, ['class' => 'form-control' . ($errors->has('materials_raws_id') ? ' is-invalid' : ''), 'placeholder' => 'Seleccione una materia prima']) }}
             {!! $errors->first('materials_raws_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('Cantidad') }}
-            {{ Form::text('quantity', $detailPurchase->quantity, ['class' => 'form-control' . ($errors->has('quantity') ? ' is-invalid' : ''), 'placeholder' => 'Quantity', 'required']) }}
+            {{ Form::text('quantity', $detailPurchase->quantity, ['class' => 'form-control' . ($errors->has('quantity') ? ' is-invalid' : ''), 'placeholder' => 'Quantity']) }}
             {!! $errors->first('quantity', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('Precio unitario') }}
-            {{ Form::text('price_unit', $detailPurchase->price_unit, ['class' => 'form-control' . ($errors->has('price_unit') ? ' is-invalid' : ''), 'placeholder' => 'Price Unit', 'required']) }}
+            {{ Form::text('price_unit', $detailPurchase->price_unit, ['class' => 'form-control' . ($errors->has('price_unit') ? ' is-invalid' : ''), 'placeholder' => 'Price Unit']) }}
             {!! $errors->first('price_unit', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -22,13 +22,13 @@
             {!! $errors->first('subtotal', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('Descuento') }}
+            {{ Form::label('Porcentaje de descuento') }}
             {{ Form::text('discount', $detailPurchase->discount ?? '0', ['class' => 'form-control' . ($errors->has('discount') ? ' is-invalid' : ''), 'placeholder' => 'Discount']) }}
             {!! $errors->first('discount', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('Total') }}
-            {{ Form::text('total', $detailPurchase->total, ['class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''), 'placeholder' => 'Total', 'required']) }}
+            {{ Form::text('total', $detailPurchase->total, ['class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''), 'placeholder' => 'Total']) }}
             {!! $errors->first('total', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -42,7 +42,12 @@
 
     </div>
     <div class="box-footer mt20 my-2">
-        <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+        @if ($confirm)
+            <button type="submit" class="btn btn-primary"
+                onclick="return confirm('¿Está seguro de editar este registro?');">{{ __('Submit') }}</button>
+        @else
+            <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+        @endif
         <a class="btn btn-primary" href="{{ route('purchases.index') }}"> {{ __('Back') }}</a>
 
     </div>

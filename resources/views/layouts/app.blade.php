@@ -39,9 +39,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('purchases.index') }}"> {{ trans('Compras') }}</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('detail_purchases.index') }}"> {{ trans('Detalle compras') }}</a>
-                            </li>
+                            
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('materials_raws.index') }}"> {{ trans('Materia prima') }}</a>
                             </li>

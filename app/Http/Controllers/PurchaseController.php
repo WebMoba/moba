@@ -51,8 +51,9 @@ class PurchaseController extends Controller
         $detailPurchase = new DetailPurchase();
         $purchases = Purchase::pluck('name', 'id');
         $materialsRaws = MaterialsRaw::pluck('name', 'id');
+        $confirm = false;
 
-        return view('purchase.create', compact('purchase', 'people', 'detailPurchase', 'purchases', 'materialsRaws', 'purchaseName'));
+        return view('purchase.create', compact('purchase', 'people', 'detailPurchase', 'purchases', 'materialsRaws', 'purchaseName', 'confirm'));
     }
 
     /**
@@ -80,7 +81,6 @@ class PurchaseController extends Controller
         $detailPurchaseData['materials_raws_id'] = $request->input('materials_raws_id');
         $purchase->detailPurchases()->create($detailPurchaseData);
 
-        // Redireccionar al índice con un mensaje de éxito
         return redirect()->route('purchases.index')
             ->with('success', 'Registro creado exitosamente')
             ->with('purchaseName', $purchase->name);
@@ -132,7 +132,9 @@ class PurchaseController extends Controller
         $purchases = Purchase::pluck('name', 'id');
         $materialsRaws = MaterialsRaw::pluck('name', 'id');
 
-        return view('purchase.edit', compact('purchase', 'people', 'purchaseName', 'detailPurchase', 'purchases', 'materialsRaws'));
+        $confirm = true;
+
+        return view('purchase.edit', compact('purchase', 'people', 'purchaseName', 'detailPurchase', 'purchases', 'materialsRaws', 'confirm'));
     }
 
     /**
@@ -156,7 +158,6 @@ class PurchaseController extends Controller
         $request->validate(DetailPurchase::$rules);
         $detailPurchase->update($request->input('detail_purchase'));
 
-        // Redireccionar al índice con un mensaje de éxito
         return redirect()->route('purchases.index')
             ->with('success', 'Registro actualizado exitosamente');
     }

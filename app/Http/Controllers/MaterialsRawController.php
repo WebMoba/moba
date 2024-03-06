@@ -24,7 +24,6 @@ class MaterialsRawController extends Controller
         $materialsRaws = MaterialsRaw::with('unit')
             ->where('name', 'LIKE', '%' . $search . '%')
             ->orwhere('existing_quantity', 'LIKE', '%' . $search . '%')
-            ->orderBy('name', 'asc')
             ->paginate(10);
 
         return view('materials-raw.index', compact('materialsRaws', 'search'))
@@ -40,7 +39,8 @@ class MaterialsRawController extends Controller
     {
         $materialsRaw = new MaterialsRaw();
         $units = Unit::pluck('unit_type', 'id');
-        return view('materials-raw.create', compact('materialsRaw', 'units'));
+        $confirm = false;
+        return view('materials-raw.create', compact('materialsRaw', 'units', 'confirm'));
     }
 
     /**
@@ -82,7 +82,8 @@ class MaterialsRawController extends Controller
     {
         $materialsRaw = MaterialsRaw::find($id);
         $units = Unit::pluck('unit_type', 'id');
-        return view('materials-raw.edit', compact('materialsRaw', 'units'));
+        $confirm = true;
+        return view('materials-raw.edit', compact('materialsRaw', 'units', 'confirm'));
     }
 
     /**

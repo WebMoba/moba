@@ -29,6 +29,11 @@ class DetailPurchase extends Model
     static $rules = [
         'materials_raws_id' => 'required',
         'purchases_id' => 'required',
+        'quantity' => 'required|numeric',
+        'price_unit' => 'required|numeric',
+        'subtotal' => 'required|numeric',
+        'discount' => 'required|numeric',
+        'total' => 'required|numeric',
     ];
 
     protected $perPage = 20;

@@ -73,7 +73,6 @@
                                                         href="{{ route('materials_raws.show', $materialsRaw->id) }}"><i
                                                             class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
                                                     <a class="btn btn-sm btn-success"
-                                                        onclick="return confirm('¿Está seguro de editar este registro?');"
                                                         href="{{ route('materials_raws.edit', $materialsRaw->id) }}"><i
                                                             class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
