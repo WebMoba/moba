@@ -44,6 +44,22 @@
                             <strong>Persona:</strong>
                             {{ $quote->people_id }}
                         </div>
+                        <div class="form-group">
+                            <strong>Servicio:</strong>
+                            {{ $quote->services_id }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Producto:</strong>
+                            {{ $quote->products_id }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Proyecto:</strong>
+                            {{ $quote->projects_id }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Cotización:</strong>
+                            {{ $quote->quotes_id }}
+                        </div>
 
                     </div>
                 </div>

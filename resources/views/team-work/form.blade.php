@@ -14,16 +14,11 @@
 
         <div class="form-group">
             {{ Form::label('Fecha asignada') }}
-            {{ Form::text('assigned_date', $teamWork->assigned_date, [ 'class' => 'form-control' . ($errors->has('date') ? ' is-invalid' : ''), 'required','placeholder' => 'Date', 'disabled' => $teamWork->exists, 'style' =>  'background-color: #f8f9fa; cursor: not-allowed;' ]) }}
+            {{ Form::text('assigned_date', $teamWork->assigned_date, ['class' => 'form-control' . ($errors->has('assigned_date') ? ' is-invalid' : ''), 'required', 'readonly' => 'readonly', 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
             {!! $errors->first('assigned_date', '<div class="invalid-feedback">:message</div>') !!}
 
             <small class="text-muted">Por cuestiones de seguridad este campo no es editable.</small>
-        </div>
-        <!-- <div class="form-group">
-            {{ Form::label('Fecha asignada') }}
-            {{ Form::date('assigned_date', $teamWork->assigned_date, ['class' => 'form-control' . ($errors->has('assigned_date') ? ' is-invalid' : '')]) }}
-            {!! $errors->first('assigned_date', '<div class="invalid-feedback">:message</div>') !!}
-        </div> -->
+        </div> 
 
         <div class="form-group">
             {{ Form::label('Proyecto') }}

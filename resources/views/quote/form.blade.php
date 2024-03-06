@@ -1,19 +1,13 @@
 <div class="box box-info padding-1">
     <div class="box-body">
-    
+
         <div class="form-group">
             {{ Form::label('Fecha de expedición') }}
-            {{ Form::text('date_issuance', $quote->date_issuance, ['class' => 'form-control' . ($errors->has('date_issuance') ? ' is-invalid' : ''),'required', 'disabled' => $quote->exists, 'style' =>  'background-color: #f8f9fa; cursor: not-allowed;' ]) }}
-            {!! $errors->first('assigned_date', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::text('date_issuance', $quote->date_issuance, ['class' => 'form-control' . ($errors->has('date_issuance') ? ' is-invalid' : ''), 'required', 'readonly' => 'readonly', 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
+            {!! $errors->first('date_issuance', '<div class="invalid-feedback">:message</div>') !!}
 
             <small class="text-muted">Por cuestiones de seguridad este campo no es editable.</small>
         </div>    
-<!-- 
-        <div class="form-group">
-            {{ Form::label('Fecha de expedición') }}
-            {{ Form::date('date_issuance', $quote->date_issuance, ['class' => 'form-control' . ($errors->has('date_issuance') ? ' is-invalid' : ''),'required']) }}
-            {!! $errors->first('date_issuance', '<div class="invalid-feedback">:message</div>') !!}
-        </div> -->
         <div class="form-group">
             {{ Form::label('Descripción') }}
             {{ Form::text('description', $quote->description, ['class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''),'required']) }}

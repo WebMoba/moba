@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 /**
  * Class ProjectController
  * @package App\Http\Controllers
@@ -27,8 +27,8 @@ class ProjectController extends Controller
                     ->orderBy('date_start','asc')
                     ->paginate(4);
 
-        return view('project.index', compact('projects','search')) 
-            ->with('i', (request()->input('page', 1) - 1) * $projects->perPage());
+        return view('project.index', compact('projects','search')) ;
+            // ->with('i', (request()->input('page', 1) - 1) * $projects->perPage());
     }
 
     /**
@@ -39,6 +39,8 @@ class ProjectController extends Controller
     public function create()
     {
         $project = new Project();
+        $project->date_start = now()->format('Y-m-d');
+        $project->date_end = now()->format('Y-m-d');
         return view('project.create', compact('project'));
     }
 
@@ -50,24 +52,26 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-
-        $area=[
-            'name'=>'required|string|max:100',
-            'description'=>'required|string|max:300',
-            'date_start'=>'required|date',
-            'date_end'=>'required|date',
-            'status'=>'required|select',
-        ];
-        $msj=[
-            'required'=>'El atributo es requerido',
-            'max'=>'No puede ingresar mas caracteres en este campo',
-        ];
-        $this->validate($request, $area, $msj);
+        
+        // $area=[
+        //     'name'=>'required|string|max:100',
+        //     'description'=>'required|string|max:300',
+        //     'date_start'=>'required|date',
+        //     'date_end'=>'required|text',
+        //     'status'=>'required|select',
+        // ];
+        // $msj=[
+        //     'required'=>'El atributo es requerido',
+        //     'max'=>'No puede ingresar mas caracteres en este campo',
+        // ];
+        // $this->validate($request, $area, $msj);
 
         request()->validate(Project::$rules);
 
         $project = Project::create($request->all());
 
+        $project->date_start = now()->format('Y-m-d');
+        $project->date_end = now()->format('Y-m-d');
         return redirect()->route('projects.index')
             ->with('success', 'Proyecto creado con éxito.');
     }
@@ -107,18 +111,18 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        $area=[
-            'name'=>'required|string|max:100',
-            'description'=>'required|string|max:300',
-            'date_start'=>'required|date',
-            'date_end'=>'required|date',
-            'status'=>'required|select',
-        ];
-        $msj=[
-            'required'=>'El atributo es requerido',
-            'max'=>'No puede ingresar mas caracteres en este campo',
-        ];
-        $this->validate($request, $area, $msj);
+        // $area=[
+        //     'name'=>'required|string|max:100',
+        //     'description'=>'required|string|max:300',
+        //     'date_start'=>'required|date',
+        //     'date_end'=>'required|date',
+        //     'status'=>'required|select',
+        // ];
+        // $msj=[
+        //     'required'=>'El atributo es requerido',
+        //     'max'=>'No puede ingresar mas caracteres en este campo',
+        // ];
+        // $this->validate($request, $area, $msj);
         
         request()->validate(Project::$rules);
 
@@ -140,4 +144,32 @@ class ProjectController extends Controller
         return redirect()->route('projects.index')
             ->with('success', 'Proyecto borrado con éxito');
     }
+
+    public function generatePDF(Request $request)
+    {
+        // Obtener el filtro de la solicitud
+        $filter = $request->input('findId');
+        
+        // Obtener los datos de las personas filtradas si se aplicó un filtro
+        if ($filter) {
+            $project = Project::where('id', $filter)->get();
+            
+        } else {
+            // Si no hay filtro, obtener todas las personas
+            $project = Project::all();
+        }
+        // Pasar los datos a la vista pdf-template
+        $data = [
+            'project' => $project
+        ];    
+
+        // Generar el PDF
+        $pdf = new Dompdf();
+        $pdf->loadHtml(view('project.pdf-template', $data));
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->render();
+        return $pdf->stream('document.pdf');
+    }
+
 }
+

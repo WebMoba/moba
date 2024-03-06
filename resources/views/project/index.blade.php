@@ -36,7 +36,7 @@
                             <form action="{{route('projects.index')}}" method="get">
                                 <div class="form-row">
                                     <div class="col-sm-4 my-1">
-                                        <input type="text" class="form-control" name="search" id="search" value="{{$search}}">
+                                        <input type="text" class="form-control" name="search" id="search" placeholder="Buscar por id o nombre" value="{{$search}}">
                                     </div>
                                     <div class="col-auto my-1">
                                         <input type="submit" value="Buscar" class="btn btn-primary">
@@ -62,7 +62,7 @@
                                 <tbody>
                                     @foreach ($projects as $project)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
+                                            <td>{{ $project->id }}</td>
                                             
 											<td>{{ $project->name }}</td>
 											<td>{{ $project->description }}</td>

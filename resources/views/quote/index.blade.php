@@ -39,7 +39,7 @@
                                     <form action="{{route('quotes.index')}}" method="get">
                                         <div class="form-row">
                                             <div class="col-sm-4 my-1">
-                                                <input type="text" class="form-control" name="search" id="search" value="{{$search}}">
+                                                <input type="text" class="form-control" name="search" placeholder="Buscar por id o descripción" id="search" value="{{$search}}">
                                             </div>
                                             <div class="col-auto my-1">
                                                 <input type="submit" value="Buscar" class="btn btn-primary">
@@ -64,7 +64,7 @@
                                 <tbody>
                                     @foreach ($quotes as $quote)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
+                                            <td>{{ $quote->id }}</td>
                                             
 											<td>{{ $quote->date_issuance }}</td>
 											<td>{{ $quote->description }}</td>

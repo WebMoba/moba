@@ -9,20 +9,19 @@
             <label for="description" class="form-label">Descripción</label>
             <textarea class="form-control" name="description" required id="description" rows="3">{{ isset($project->description) ? $project->description : old('description')}}</textarea>
         </div>
+
         <div class="form-group">
             {{ Form::label('Fecha de inicio') }}
-            {{ Form::text('date_start', $project->date_start, [ 'class' => 'form-control' . ($errors->has('date_start') ? ' is-invalid' : ''), 'required', 'disabled' => $project->exists, 'style' =>  'background-color: #f8f9fa; cursor: not-allowed;' ]) }}
+            {{ Form::date('date_start', $project->date_start, ['class' => 'form-control' . ($errors->has('date_start') ? ' is-invalid' : ''), 'required', 'readonly' => 'readonly', 'style' => 'background-color: #f8f9fa; cursor: not-allowed;','id' => 'date_start' ]) }}
             {!! $errors->first('date_start', '<div class="invalid-feedback">:message</div>') !!}
 
             <small class="text-muted">Por cuestiones de seguridad este campo no es editable.</small>
         </div>
-        <!-- <div class="form-group">
-            <label for="date_start">Fecha de inicio</label>
-            <input type="date" class="form-control" name="date_start" id="date_start" value="{{ isset($project->date_start)?$project->date_start:old('date_start')}}">
-        </div> -->
+        
         <div class="form-group">
-            <label for="date_end">Fecha de finalización</label>
-            <input type="date" class="form-control" required name="date_end" id="date_end" value="{{ isset($project->date_end)?$project->date_end:old('date_end')}}">
+            {{ Form::label('Fecha de finalización') }}
+            {{ Form::text('date_end', $project->date_end, ['class' => 'form-control' . ($errors->has('date_end') ? ' is-invalid' : ''), 'required', 'disabled' => $project-> exists, 'style' => 'background-color: #f8f9fa; cursor: allowed;','id' => 'date_end']) }}
+            {!! $errors->first('date_end', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             <label for="status">Estado</label>

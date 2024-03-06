@@ -40,7 +40,7 @@
                                 <form action="{{route('team-works.index')}}" method="get">
                                     <div class="form-row">
                                         <div class="col-sm-4 my-1">
-                                            <input type="text" class="form-control" name="search" id="search" value="{{$search}}">
+                                            <input type="text" class="form-control" name="search" id="search" placeholder="Buscar por id o especialidad" value="{{$search}}">
                                         </div>
                                         <div class="col-auto my-1">
                                             <input type="submit" value="Buscar" class="btn btn-primary">
@@ -63,7 +63,7 @@
                                 <tbody>
                                     @foreach ($teamWorks as $teamWork)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
+                                            <td>{{ $teamWork->id }}</td>
                                             
 											<td>{{ $teamWork->specialty }}</td>
 											<td>{{ $teamWork->assigned_work }}</td>

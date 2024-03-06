@@ -31,8 +31,8 @@ class QuoteController extends Controller
                     ->orderBy('date_issuance','asc')
                     ->paginate(4);
 
-        return view('quote.index', compact('quotes','search'))
-            ->with('i', (request()->input('page', 1) - 1) * $quotes->perPage());
+        return view('quote.index', compact('quotes','search'));
+            // ->with('i', (request()->input('page', 1) - 1) * $quotes->perPage());
     }
 
     /**
@@ -48,6 +48,7 @@ class QuoteController extends Controller
         $products = Product::pluck('name','id');
         $projects = Project::pluck('name','id');
         $quotes = Quote::pluck('description','id');
+        $quote->date_issuance = now()->format('Y-m-d');
         return view('quote.create', compact('quote','persons','services','products','projects','quotes'));
     }
 
@@ -62,7 +63,7 @@ class QuoteController extends Controller
     request()->validate(Quote::$rules);
 
     $quote = Quote::create($request->all());
-
+    $quote->date_issuance = now()->format('Y-m-d');
     $servicesId = $request->input('services_id');
     $productsId = $request->input('products_id');
     $projectsId = $request->input('projects_id');
@@ -114,8 +115,13 @@ class QuoteController extends Controller
     public function edit($id)
     {
         $quote = Quote::find($id);
-
-        return view('quote.edit', compact('quote'));
+        $persons = Person::pluck('id_card','id');
+        $services = Service::pluck('name','id');
+        $products = Product::pluck('name','id');
+        $projects = Project::pluck('name','id');
+        $quotes = Quote::pluck('description','id');
+        $quote->date_issuance = now()->format('Y-m-d');
+        return view('quote.create', compact('quote','persons','services','products','projects','quotes'));
     }
 
     /**

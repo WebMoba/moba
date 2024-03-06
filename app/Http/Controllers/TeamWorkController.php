@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\TeamWork;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 
 /**
  * Class TeamWorkController
  * @package App\Http\Controllers
  */
+
+
 class TeamWorkController extends Controller
 {
     /**
@@ -18,18 +21,22 @@ class TeamWorkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
+    }
     public function index(Request $request)
     {
         $search = trim($request->get('search'));
-        $teamWorks=DB::table('team_works')
-                    ->select('id','specialty','assigned_work','assigned_date','projects_id')
+        $teamWorks=TeamWork::with('project')
                     ->where('id','LIKE','%'.$search.'%')
                     ->orWhere('specialty','LIKE','%'.$search.'%')
                     ->orderBy('assigned_date','asc')
-                    ->paginate(4);
+                    ->paginate(10);
 
-        return view('team-work.index', compact('teamWorks','search'))
-            ->with('i', (request()->input('page', 1) - 1) * $teamWorks->perPage());
+        return view('team-work.index', compact('teamWorks','search'));
+            // ->with('i', (request()->input('page', 1) - 1) * $teamWorks->perPage());
     }
 
     /**
@@ -41,6 +48,7 @@ class TeamWorkController extends Controller
     {
         $teamWork = new TeamWork();
         $projects = Project::pluck('name','id');
+        $teamWork -> assigned_date = now()->format('Y-m-d');
         return view('team-work.create', compact('teamWork','projects'));
     }
 
@@ -52,24 +60,23 @@ class TeamWorkController extends Controller
      */
     public function store(Request $request)
     {
-        $area=[
-            'specialty'=>'required|string|max:100',
-            'assigned_work'=>'required|string|max:100',
-            'assigned_date'=>'required|date',
-            'project'=>'required|select',
-        ];
-        $msj=[
-            'required'=>'El atributo es requerido',
-            'max'=>'No puede ingresar mas caracteres en este campo',
-        ];
-        $this->validate($request, $area,$msj);
+        // $area=[
+        //     'specialty'=>'required|string|max:100',
+        //     'assigned_work'=>'required|string|max:100',
+        //     'project'=>'required|select',
+        // ];
+        // $msj=[
+        //     'required'=>'El atributo es requerido',
+        //     'max'=>'No puede ingresar mas caracteres en este campo',
+        // ];
+        // $this->validate($request, $area,$msj);
 
         request()->validate(TeamWork::$rules);
 
         $teamWork = TeamWork::create($request->all());
 
         return redirect()->route('team-works.index')
-            ->with('msj', 'Equipo de trabajo creado de forma satisfactoria.');
+            ->with('success', 'Equipo de trabajo creado de forma satisfactoria.');
     }
 
     /**
@@ -107,17 +114,17 @@ class TeamWorkController extends Controller
      */
     public function update(Request $request, TeamWork $teamWork)
     {
-        $area=[
-            'specialty'=>'required|string|max:100',
-            'assigned_work'=>'required|string|max:100',
-            'assigned_date'=>'required|date',
-            'project'=>'required|select',
-        ];
-        $msj=[
-            'required'=>'El atributo es requerido',
-            'max'=>'No puede ingresar mas caracteres en este campo',
-        ];
-        $this->validate($request, $area,$msj);
+        // $area=[
+        //     'specialty'=>'required|string|max:100',
+        //     'assigned_work'=>'required|string|max:100',
+        //     'assigned_date'=>'required|date',
+        //     'project'=>'required|select',
+        // ];
+        // $msj=[
+        //     'required'=>'El atributo es requerido',
+        //     'max'=>'No puede ingresar mas caracteres en este campo',
+        // ];
+        // $this->validate($request, $area,$msj);
 
         request()->validate(TeamWork::$rules);
 
@@ -140,3 +147,4 @@ class TeamWorkController extends Controller
             ->with('success', 'Equipo de trabajo actualizado con éxito');
     }
 }
+
