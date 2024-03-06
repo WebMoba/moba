@@ -18,7 +18,7 @@
 
                         <form action="{{ route('buscar') }}" method="GET">
                         <input type="text" name="termino" placeholder="Buscar por lugar...">
-                        <button type="submit">Buscar</button>
+                        <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
                         </form>
 
                              <div class="float-right">
@@ -79,7 +79,12 @@
                             </table>
                         </div>
                     </div>
-                </div>
+                </div><br>
+                <div class="float-right">
+                            <a href="{{ route('pdf.event') }}" class="btn btn-info btn-sm float-right">
+                            <i class="fa fa-file-pdf"></i> {{ __('Generar PDF') }}
+                            </a>
+                            </div>
                 {!! $events->links() !!}
             </div>
         </div>

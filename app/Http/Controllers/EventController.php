@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 /**
  * Class EventController
  * @package App\Http\Controllers
@@ -20,7 +23,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::paginate();
+        $events = Event::orderBy('created_at', 'desc')->paginate();
 
         return view('event.index', compact('events'))
             ->with('i', (request()->input('page', 1) - 1) * $events->perPage());
@@ -138,4 +141,34 @@ class EventController extends Controller
 
            ->with('success', 'Evento Eliminado con Exito');
     }
+
+    public function generatePDF(Request $request)
+{
+    // Obtener el filtro de la solicitud
+    $filter = $request->input('findId');
+    
+    // Obtener los datos de los eventos filtrados si se aplicó un filtro
+    if ($filter) {
+        $events = Event::where('place', $filter)->get();
+    } else {
+        // Si no hay filtro, obtener todos los eventos
+        $events = Event::all();
+    }
+    
+    // Pasar los datos a la vista pdf-template
+    $data = [
+        'events' => $events
+    ];
+    
+    // Generar el PDF
+    $pdf = new Dompdf();
+    $pdf->loadHtml(view('event.pdf-template', $data));
+
+    $pdf->setPaper('A4', 'portrait');
+
+    $pdf->render();
+
+    return $pdf->stream('document.pdf');
+}
+
 }

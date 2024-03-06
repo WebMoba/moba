@@ -39,6 +39,8 @@ Route::resource('number-phone', NumberPhoneController::class);
 Route::get('/buscar', [BusquedaController::class, 'buscar'])->name('buscar');
 Route::get('/buscarPeople', [BusquedaController::class, 'buscarPeople'])->name('buscarPeople');
 Route::get('/buscarCel', [BusquedaController::class, 'buscarCel'])->name('buscarCel');
+Route::get('/pdf/person', [PersonController::class, 'generatePDF'])->name('pdf.person');
+Route::get('/pdf/event', [EventController::class, 'generatePDF'])->name('pdf.event');
 
 
 require __DIR__.'/auth.php';

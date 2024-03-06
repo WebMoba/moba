@@ -21,9 +21,13 @@
 
         <div class="form-group">
             {{ Form::label('Numero Celular') }}
-            {{ Form::text('number_phones_id', request('numberPhone'), ['class' => 'form-control', 'readonly' => true]) }}
+            {{ Form::text('number_phones_id', request('numberPhoneId'), ['class' => 'form-control', 'readonly' => true]) }} <!-- Mostrar el ID del número de teléfono -->
         </div>
-        <a href="{{ route('number-phone.index') }}" class="btn btn-primary mt-2">Seleccionar Celular</a>
+        <div class="form-group">
+            {{ Form::label('Numero de Teléfono') }}
+        <input type="text" class="form-control" value="{{ request('phoneNumber') }}" readonly> <!-- Mostrar el número de teléfono -->
+        </div>
+            <a href="{{ route('number-phone.index') }}" class="btn btn-primary mt-2">Seleccionar Celular</a>
         </div>
         
         <div class="form-group">

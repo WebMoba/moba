@@ -40,8 +40,8 @@
                             </span>
 
                             <form action="{{ route('buscarCel') }}" method="GET">
-                            <input type="text" name="findCel" placeholder="Buscar por Celular...">
-                            <button type="submit">Buscar</button>
+                                <input type="text" name="findCel" placeholder="Buscar por Celular...">
+                                <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
                             </form>
 
                              <div class="float-right">
@@ -103,11 +103,13 @@
     <script>
     $(document).ready(function() {
         $('a.show-phone').click(function(event) {
-    event.preventDefault();
-    var numberId = $(this).data('number-id');
-    console.log(numberId); // Verifica el número de teléfono ID en la consola del navegador
-    window.location.href = "{{ route('person.create') }}?numberPhone=" + numberId;
-});
+            event.preventDefault();
+            var numberId = $(this).data('number-id');
+            var phoneNumber = $(this).closest('tr').find('td[data-number]').data('number'); // Obtener el número de teléfono del atributo data-number
+            console.log(numberId); // Verificar el ID del número de teléfono en la consola del navegador
+            console.log(phoneNumber); // Verificar el número de teléfono en la consola del navegador
+            window.location.href = "{{ route('person.create') }}?numberPhoneId=" + numberId + "&phoneNumber=" + phoneNumber; // Pasar el ID y el número de teléfono como parámetros
+        });
     });
 </script>
 @endsection

@@ -5,6 +5,8 @@ use App\Models\TeamWork;
 use App\Models\User;
 use App\Models\Town;
 use App\Models\NumberPhone;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 use App\Models\Person;
 use Illuminate\Http\Request;
@@ -22,7 +24,7 @@ class PersonController extends Controller
      */
     public function index()
     {
-        $people = Person::paginate();
+        $people = Person::orderBy('created_at','desc')->paginate();
 
         return view('person.index', compact('people'))
             ->with('i', (request()->input('page', 1) - 1) * $people->perPage());
@@ -151,5 +153,36 @@ class PersonController extends Controller
     return redirect()->route('person.index')->with('success', 'Persona y su número de teléfono asociado eliminados con éxito');
 }
 
+public function generatePDF(Request $request)
+{
+    // Obtener el filtro de la solicitud
+    $filter = $request->input('findId');
+    
+    // Obtener los datos de las personas filtradas si se aplicó un filtro
+    if ($filter) {
+        $people = Person::where('id_card', $filter)->get();
+        
+    } else {
+        // Si no hay filtro, obtener todas las personas
+        $people = Person::all();
+    }
+    // Pasar los datos a la vista pdf-template
+    $data = [
+        'people' => $people
+    ];
+    
+
+    // Generar el PDF
+    $pdf = new Dompdf();
+    $pdf->loadHtml(view('person.pdf-template', $data));
+
+    $pdf->setPaper('A4', 'portrait');
+
+    $pdf->render();
+
+    return $pdf->stream('document.pdf');
+    
+    
+}
 
 }

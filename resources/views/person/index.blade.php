@@ -18,14 +18,14 @@
 
                             <form action="{{ route('buscarPeople') }}" method="GET">
                             <input type="text" name="findId" placeholder="Buscar por Identificacion">
-                            <button type="submit">Buscar</button>
+                            <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
                             </form>
 
-                             <div class="float-right">
+                            <div class="float-right">
                                 <a href="{{ route('person.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Crear Nuevo') }}
                                 </a>
-                              </div>
+                            </div>
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -72,13 +72,21 @@
                                                     </b><button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Está seguro de que desea eliminar a la persona?')"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
                                                 </form>
                                             </td>
+                                            
                                         </tr>
                                     @endforeach
                                 </tbody>
-                            </table>
+                                </table>
                         </div>
+                        
                     </div>
-                </div>
+                    
+                </div><br>
+                <div class="float-right">
+                            <a href="{{ route('pdf.person') }}" class="btn btn-info btn-sm float-right">
+                            <i class="fa fa-file-pdf"></i> {{ __('Generar PDF') }}
+                            </a>
+                            </div>
                 {!! $people->links() !!}
             </div>
         </div>
