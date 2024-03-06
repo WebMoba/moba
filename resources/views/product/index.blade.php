@@ -18,13 +18,16 @@
 
                             <form action="{{ route('product.index') }}" method="GET" class="d-flex align-items-center">
                                 <div class="col-auto mr-2">
-                                <input type="text" class="form-control" id="search" name="search">
+                                    <input type="text" class="form-control" id="search" name="search"
+                                        placeholder="Buscar por Nombre">
                                 </div>
                                 <div class="col-auto">
                                     <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
                                 </div>
                             </form>
-                            
+                            <a href="{{ route('pdf.product') }}" class="btn btn-info btn-sm float-right">
+                                <i class="fa fa-file-pdf"></i> {{ __('Generar PDF') }}
+                            </a>
                             <div class="float-right">
                                 <a href="{{ route('product.create') }}" class="btn btn-primary btn-sm float-right"
                                     data-placement="left">
@@ -53,14 +56,12 @@
                                         <th>Unidades</th>
                                         <th>Categoria</th>
 
-                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($products as $product)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-
                                             <td>{{ $product->name }}</td>
                                             <td><img src="{{ asset('storage/' . $product->image) }}" width="150"
                                                     height="150"></td>
@@ -68,7 +69,6 @@
                                             <td>{{ $product->price }}</td>
                                             <td>{{ $product->unit->unit_type }}</td>
                                             <td>{{ $product->categoriesProductsService->name }}</td>
-
                                             <td>
                                                 <form action="{{ route('product.destroy', $product->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary "

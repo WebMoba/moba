@@ -24,7 +24,9 @@ Route::get('/', function () {
 
 Route::resource('product', ProductController::class);
 Route::resource('unit', UnitController::class);
-Route::resource('categories-products-service', CategoriesProductsServiceController::class);
+
+Route::get('/pdf/product', [ProductController::class, 'generatePDF'])->name('pdf.product');
+Route::get('/pdf/unit', [UnitController::class, 'generatePDF'])->name('pdf.unit');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -36,7 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Auth::routes();
 

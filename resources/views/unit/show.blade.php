@@ -10,16 +10,13 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <div class="float-left">
+                        <div class="d-flex justify-content-between align-items-center">
                             <span class="card-title">{{ __('Mostrar') }} Unidad</span>
-                        </div>
-                        <div class="float-right">
                             <a class="btn btn-primary" href="{{ route('unit.index') }}"> {{ __('Volver') }}</a>
                         </div>
                     </div>
 
                     <div class="card-body">
-                        
                         <div class="form-group">
                             <strong>Tipo de unidad:</strong>
                             {{ $unit->unit_type }}

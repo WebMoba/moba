@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Dompdf\Dompdf;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Unit;
 use App\Models\CategoriesProductsService;
@@ -24,11 +25,7 @@ class ProductController extends Controller
         $search = request()->input('search');
 
         if (!empty($search)) {
-            $products = Product::where(function ($query) use ($search) {
-                $query->where('name', 'like', '%' . $search . '%')
-                    ->orWhere('price', 'like', '%' . $search . '%');
-            })
-                ->with('unit', 'categoriesProductsService')
+            $products = Product::where('name', 'like', '%' . $search . '%')->with('unit', 'categoriesProductsService')
                 ->paginate();
         } else {
             $products = Product::with('unit', 'categoriesProductsService')->paginate();
@@ -46,7 +43,9 @@ class ProductController extends Controller
     public function create()
     {
         $product = new Product();
-        $unit = Unit::pluck('unit_type', 'id');
+        $unit = Unit::pluck('unit_type', 'id')
+            ->merge(Unit::pluck('size', 'id'))
+            ->merge(Unit::pluck('area', 'id'));
         $categories_products_service = CategoriesProductsService::pluck('name', 'id');
         return view('product.create', compact('product', 'unit', 'categories_products_service'));
     }
@@ -133,5 +132,30 @@ class ProductController extends Controller
 
         return redirect()->route('product.index')
             ->with('success', 'Producto Borrado Exitosamente.');
+    }
+
+    public function generatePDF(Request $request)
+    {
+        // Obtener el filtro de la solicitud
+        $filter = $request->input('findId');
+
+        // Obtener los datos de las personas filtradas si se aplicó un filtro
+        if ($filter) {
+            $products = Product::where('name', $filter)->get();
+        } else {
+            // Si no hay filtro, obtener todas las personas
+            $products = Product::all();
+        }
+        // Pasar los datos a la vista pdf-template
+        $data = [
+            'products' => $products
+        ];
+
+        // Generar el PDF
+        $pdf = new Dompdf();
+        $pdf->loadHtml(view('product.pdf-template', $data));
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->render();
+        return $pdf->stream('Productos.pdf');
     }
 }

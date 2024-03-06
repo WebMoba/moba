@@ -36,13 +36,16 @@
 
                             <form action="{{ route('unit.index') }}" method="GET" class="d-flex align-items-center">
                                 <div class="col-auto mr-2">
-                                    <input type="text" class="form-control" id="search" name="search">
+                                    <input type="text" class="form-control" id="search" name="search"
+                                        placeholder="Buscar por Unidad">
                                 </div>
                                 <div class="col-auto">
                                     <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
                                 </div>
                             </form>
-
+                            <a href="{{ route('pdf.unit') }}" class="btn btn-info btn-sm float-right">
+                                <i class="fa fa-file-pdf"></i> {{ __('Generar PDF') }}
+                            </a>
                             <div class="float-right">
                                 <a href="{{ route('unit.create') }}" class="btn btn-primary btn-sm float-right"
                                     data-placement="left">
@@ -58,29 +61,24 @@
                     @endif
 
                     <div class="card-body">
-                        
+
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-
                                         <th>Tipo de unidad</th>
                                         <th>Tamaño</th>
                                         <th>Area</th>
-
-                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($units as $unit)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-
                                             <td>{{ $unit->unit_type }}</td>
                                             <td>{{ $unit->size }}</td>
                                             <td>{{ $unit->area }}</td>
-
                                             <td>
                                                 <form action="{{ route('unit.destroy', $unit->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary "

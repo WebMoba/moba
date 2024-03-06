@@ -36,9 +36,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('unit.index')}}">{{__('Unidades')}}</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('categories-products-service.index')}}">{{__('Categorias')}}</a>
-                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Dompdf\Dompdf;
 use App\Models\MaterialsRaw;
 use App\Models\Product;
 use App\Models\Unit;
@@ -19,11 +20,14 @@ class UnitController extends Controller
      */
     public function index()
     {
-        
+
         $search = request()->input('search');
 
         if (!empty($search)) {
-            $units = Unit::where('unit_type', 'like', '%' . $search . '%')->paginate();
+            $units = Unit::where('unit_type', 'like', '%' . $search . '%')
+                ->orWhere('size', 'like', '%' . $search . '%')
+                ->orWhere('area', 'like', '%' . $search . '%')
+                ->paginate();
         } else {
             $units = Unit::paginate();
         }
@@ -117,7 +121,7 @@ class UnitController extends Controller
     public function destroy($id)
     {
         $unit = Unit::find($id);
-        
+
         if (!$unit) {
             return redirect()->route('unit.index')->with('error', 'Unidad no encontrada.');
         }
@@ -130,6 +134,29 @@ class UnitController extends Controller
         $unit->delete();
 
         return redirect()->route('unit.index')->with('success', 'Unidad eliminada exitosamente.');
-        
+    }
+    public function generatePDF(Request $request)
+    {
+        // Obtener el filtro de la solicitud
+        $filter = $request->input('findId');
+
+        // Obtener los datos de las personas filtradas si se aplicó un filtro
+        if ($filter) {
+            $units = Unit::where('unit_type', $filter)->get();
+        } else {
+            // Si no hay filtro, obtener todas las personas
+            $units = Unit::all();
+        }
+        // Pasar los datos a la vista pdf-template
+        $data = [
+            'units' => $units
+        ];
+
+        // Generar el PDF
+        $pdf = new Dompdf();
+        $pdf->loadHtml(view('unit.pdf-template', $data));
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->render();
+        return $pdf->stream('Unidades.pdf');
     }
 }
