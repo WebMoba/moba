@@ -21,25 +21,39 @@
 
                     <div class="card-body">
 
+                    <div class="form-group">
+                            <strong>Rol:</strong>
+                            {{ $person->rol ?? __('N/A') }}
+                        </div>
+                        
                         <div class="form-group">
                             <strong>Identificación:</strong>
-                            {{ $person->id_card }}
+                            {{ $person->identification_type ?? __('N/A') }}
+                        </div>                      
+                        
+                        <div class="form-group">
+                            <strong>ID Card:</strong>
+                            {{ $person->id_card ?? __('N/A') }}
                         </div>
                         <div class="form-group">
-                            <strong>Direccion:</strong>
-                            {{ $person->addres }}
+                            <strong>Dirección:</strong>
+                            {{ $person->addres ?? __('N/A') }}
                         </div>
                         <div class="form-group">
                             <strong>Equipo de trabajo:</strong>
-                            {{ $person->teamWork ? $person->teamWork->assigned_work : 'N/A'}}
+                            {{ $person->teamWork ? $person->teamWork->assigned_work : __('N/A')}}
                         </div>
                         <div class="form-group">
                             <strong>Número Celular:</strong>
-                            {{ $person->numberPhone ? $person->numberPhone->number : 'N/A'}}
+                            {{ $person->numberPhone ? $person->numberPhone->number : __('N/A')}}
+                        </div>
+                        <div class="form-group">
+                            <strong>Departamento:</strong>
+                            {{ $person->region ?: __('N/A') }}
                         </div>
                         <div class="form-group">
                             <strong>Ciudad:</strong>
-                            {{ $person->town -> name ?? __('N/A')}}
+                            {{ $person->town->name ?? __('N/A')}}
                         </div>
                         <div class="form-group">
                             <strong>Usuario:</strong>

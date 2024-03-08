@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Town;
+use App\Models\Region;
 use Illuminate\Http\Request;
 
 /**
- * Class TownController
+ * Class RegionController
  * @package App\Http\Controllers
  */
-class TownController extends Controller
+class RegionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +18,10 @@ class TownController extends Controller
      */
     public function index()
     {
-        $towns = Town::paginate();
+        $regions = Region::paginate();
 
-        return view('town.index', compact('towns'))
-            ->with('i', (request()->input('page', 1) - 1) * $towns->perPage());
+        return view('region.index', compact('regions'))
+            ->with('i', (request()->input('page', 1) - 1) * $regions->perPage());
     }
 
     /**
@@ -31,8 +31,8 @@ class TownController extends Controller
      */
     public function create()
     {
-        $town = new Town();
-        return view('town.create', compact('town'));
+        $region = new Region();
+        return view('region.create', compact('region'));
     }
 
     /**
@@ -43,12 +43,12 @@ class TownController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Town::$rules);
+        request()->validate(Region::$rules);
 
-        $town = Town::create($request->all());
+        $region = Region::create($request->all());
 
-        return redirect()->route('towns.index')
-            ->with('success', 'Town created successfully.');
+        return redirect()->route('regions.index')
+            ->with('success', 'Region created successfully.');
     }
 
     /**
@@ -59,9 +59,9 @@ class TownController extends Controller
      */
     public function show($id)
     {
-        $town = Town::find($id);
+        $region = Region::find($id);
 
-        return view('town.show', compact('town'));
+        return view('region.show', compact('region'));
     }
 
     /**
@@ -72,26 +72,26 @@ class TownController extends Controller
      */
     public function edit($id)
     {
-        $town = Town::find($id);
+        $region = Region::find($id);
 
-        return view('town.edit', compact('town'));
+        return view('region.edit', compact('region'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  Town $town
+     * @param  Region $region
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Town $town)
+    public function update(Request $request, Region $region)
     {
-        request()->validate(Town::$rules);
+        request()->validate(Region::$rules);
 
-        $town->update($request->all());
+        $region->update($request->all());
 
-        return redirect()->route('towns.index')
-            ->with('success', 'Town updated successfully');
+        return redirect()->route('regions.index')
+            ->with('success', 'Region updated successfully');
     }
 
     /**
@@ -101,11 +101,9 @@ class TownController extends Controller
      */
     public function destroy($id)
     {
-        $town = Town::find($id)->delete();
+        $region = Region::find($id)->delete();
 
-        return redirect()->route('towns.index')
-            ->with('success', 'Town deleted successfully');
+        return redirect()->route('regions.index')
+            ->with('success', 'Region deleted successfully');
     }
-
-    
 }

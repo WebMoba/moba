@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\BusquedaController;
 use App\Http\Controllers\NumberPhoneController;
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -41,6 +42,8 @@ Route::get('/buscarPeople', [BusquedaController::class, 'buscarPeople'])->name('
 Route::get('/buscarCel', [BusquedaController::class, 'buscarCel'])->name('buscarCel');
 Route::get('/pdf/person', [PersonController::class, 'generatePDF'])->name('pdf.person');
 Route::get('/pdf/event', [EventController::class, 'generatePDF'])->name('pdf.event');
+Route::get('get-towns-by-region', [PersonController::class, 'getTownsByRegion'])->name('get_towns_by_region');
+
 
 
 require __DIR__.'/auth.php';
