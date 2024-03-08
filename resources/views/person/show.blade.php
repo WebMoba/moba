@@ -49,7 +49,7 @@
                         </div>
                         <div class="form-group">
                             <strong>Departamento:</strong>
-                            {{ $person->region ?: __('N/A') }}
+                            {{ $person->region ? $person->region->name : 'N/A' }}
                         </div>
                         <div class="form-group">
                             <strong>Ciudad:</strong>

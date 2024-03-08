@@ -88,7 +88,7 @@ class PersonController extends Controller
         $person->team_works_id = $request->input('team_works_id');
         $person->number_phones_id = $request->input('number_phones_id');
         $person->addres = $request->input('addres');
-        $person->region = $request->input('region');
+        $person->region_id = $request->input('region');
         $person->towns_id = $request->input('towns_id');
         $person->users_id = $request->input('users_id');
         $person->rol = $request->input('rol');

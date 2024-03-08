@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('name', 100)->nullable();
             $table->enum('rol',['Administrador', 'Cliente', 'Proveedor']);
             $table->timestamps();
-            $table->string('region')->nullable();
+            $table->string('region_id')->nullable();
             $table->integer('team_works_id')->index('fk_people_team_works1_idx');
             $table->integer('number_phones_id')->index('fk_people_number_phones1_idx');
             $table->integer('towns_id')->index('fk_people_towns1_idx');

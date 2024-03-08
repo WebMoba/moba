@@ -65,7 +65,7 @@
 											<td>{{ $person->addres }}</td>
 											<td>{{ $person->teamWork ? $person->teamWork->assigned_work : 'N/A'}}</td>
 											<td>{{ $person->numberPhone ? $person->numberPhone->number : 'N/A'}}</td>
-                                            <td>{{ $person->region ? $person->region: 'N/A'}}</td>
+                                            <td>{{ $person->region ? $person->region->name : 'N/A' }}</td>
 											<td>{{ $person->town ? $person->town->name : 'N/A'}}</td>
 											<td>{{ $person->user ? $person->user->email: 'N/A' }}</td>
 
