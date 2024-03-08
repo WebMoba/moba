@@ -7,6 +7,7 @@ use App\Models\DetailPurchase;
 use App\Models\MaterialsRaw;
 use App\Models\Person;
 use Illuminate\Http\Request;
+use Dompdf\Dompdf;
 
 /**
  * Class PurchaseController
@@ -14,6 +15,32 @@ use Illuminate\Http\Request;
  */
 class PurchaseController extends Controller
 {
+    public function generatePDF(Request $request)
+{
+    // Obtener el filtro de la solicitud
+    $filter = $request->input('findId');
+    
+    // Obtener los datos de las personas filtradas si se aplicó un filtro
+    if ($filter) {
+        $purchases = Purchase::where('id_card', $filter)->get();
+        
+    } else {
+        // Si no hay filtro, obtener todas las personas
+        $purchases = Purchase::all();
+    }
+    // Pasar los datos a la vista pdf-template
+    $data = [
+        'purchases' => $purchases
+    ];    
+
+    // Generar el PDF
+    $pdf = new Dompdf();
+    $pdf->loadHtml(view('purchase.pdf-template', $data));
+    $pdf->setPaper('A4', 'portrait');
+    $pdf->render();
+    return $pdf->stream('document.pdf');
+    }
+
     /**
      * Display a listing of the resource.
      *

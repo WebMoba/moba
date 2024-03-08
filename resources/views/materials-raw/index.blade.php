@@ -16,7 +16,7 @@
                                 placeholder="Buscar por nombre o cantidad">
                         </div>
                         <div>
-                            <input type="submit" class="btn btn-primary" value="Buscar">
+                            <input type="submit" class="btn btn-primary ms-2" value="Buscar">
                         </div>
                     </form>
                 </div>
@@ -30,6 +30,9 @@
                             </span>
 
                             <div class="float-right">
+                                <a href="{{ route('pdf.materials_raw') }}" class="btn btn-info btn-sm float-right">
+                                    <i class="fa fa-file-pdf"></i> {{ __('Generar PDF') }}
+                                </a>
                                 <a href="{{ route('materials_raws.create') }}" class="btn btn-primary btn-sm float-right"
                                     data-placement="left">
                                     {{ __('Crear nuevo') }}

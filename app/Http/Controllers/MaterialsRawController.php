@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\MaterialsRaw;
 use App\Models\Unit;
 use Illuminate\Http\Request;
+use Dompdf\Dompdf;
 
 /**
  * Class MaterialsRawController
@@ -12,6 +13,32 @@ use Illuminate\Http\Request;
  */
 class MaterialsRawController extends Controller
 {
+    public function generatePDF(Request $request)
+{
+    // Obtener el filtro de la solicitud
+    $filter = $request->input('findId');
+    
+    // Obtener los datos de las personas filtradas si se aplicó un filtro
+    if ($filter) {
+        $materials_raws = MaterialsRaw::where('id_card', $filter)->get();
+        
+    } else {
+        // Si no hay filtro, obtener todas las personas
+        $materials_raws = MaterialsRaw::all();
+    }
+    // Pasar los datos a la vista pdf-template
+    $data = [
+        'materials_raws' => $materials_raws
+    ];    
+
+    // Generar el PDF
+    $pdf = new Dompdf();
+    $pdf->loadHtml(view('materials-raw.pdf-template', $data));
+    $pdf->setPaper('A4', 'portrait');
+    $pdf->render();
+    return $pdf->stream('document.pdf');
+    }
+
     /**
      * Display a listing of the resource.
      *
