@@ -36,7 +36,7 @@
             {!! $errors->first('team_works_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
-        <div class="form-group" style="display none">
+        <div class="form-group" style="display: none">
             {{ Form::label('Numero Celular') }}
             {{ Form::text('number_phones_id', request('numberPhoneId'), ['class' => 'form-control', 'readonly' => true]) }} <!-- Mostrar el ID del número de teléfono -->
         </div>

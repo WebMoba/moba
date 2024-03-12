@@ -16,7 +16,11 @@ class BusquedaController extends Controller
     // Obtener el término de búsqueda del formulario
     $termino = $request->input('termino');
     // Realizar la consulta para buscar eventos que coincidan con el término
-    $events = Event::where('place', 'LIKE', "%$termino%")->paginate();
+    $events = Event::where('place', 'LIKE', "%$termino%")
+    ->orWhere('title', 'LIKE', "%$termino%")
+    ->orWhere('description', 'LIKE', "%$termino%")
+    ->orWhere('importance', 'LIKE', "%$termino%")
+    ->paginate();
     // Imprimir los resultados para verificar si hay resultados en la consulta
     // Pasar los resultados de la búsqueda a la vista 'event.index' y paginarlos
     return view('event.index', compact('events'))

@@ -135,12 +135,16 @@ class PersonController extends Controller
         $person = Person::find($id);
         
         // Obtener listas de selección para otros campos
-        $teamWorks = TeamWork::pluck('assigned_work', 'id');
-        $regions = Region::pluck('name', 'id');
+       
         $usersName = User::pluck('name', 'id');
-        $users = User::pluck('email', 'id');
-        $towns = Town::pluck('name','id');
+        $teamWorks = TeamWork::pluck('assigned_work', 'id');
         $numberPhones = NumberPhone::pluck('number','id');
+        $regions = Region::pluck('name', 'id');;
+        $towns = Town::pluck('name','id');
+        $users = User::pluck('email', 'id');
+
+        
+        
     
         // Pasar los datos a la vista de edición
         return view('person.edit', compact('person', 'teamWorks', 'users', 'towns', 'numberPhones', 'usersName', 'regions'));

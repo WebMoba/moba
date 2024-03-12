@@ -27,22 +27,33 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
+/* Rutas Perfil usuario */
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+/*Controladores tablas Eventos, People, Buscar */
+
 Route::resource('events', EventController::class);
 Route::resource('person', PersonController::class);
 Route::resource('number-phone', NumberPhoneController::class);
-
 Route::get('/buscar', [BusquedaController::class, 'buscar'])->name('buscar');
 Route::get('/buscarPeople', [BusquedaController::class, 'buscarPeople'])->name('buscarPeople');
 Route::get('/buscarCel', [BusquedaController::class, 'buscarCel'])->name('buscarCel');
 Route::get('/pdf/person', [PersonController::class, 'generatePDF'])->name('pdf.person');
 Route::get('/pdf/event', [EventController::class, 'generatePDF'])->name('pdf.event');
 Route::get('get-towns-by-region', [PersonController::class, 'getTownsByRegion'])->name('get_towns_by_region');
+
+ /* fin tablas  Eventos, Buscar, People */
+
+
+
+
 
 
 

@@ -29,7 +29,9 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
+                    
                     <ul class="navbar-nav me-auto">
+                      <!-- Inicio vistas Personas Eventos y Celular -->
                     <li class="nav-item">
                             <a class="nav-link" href="{{ route('person.index') }}">{{ __('Personas') }}</a>
                         </li>
@@ -40,6 +42,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('number-phone.index') }}">{{ __('Celular') }}</a>
                         </li>
+                         <!-- Fin vistas Personas Eventos y Celular -->
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -87,6 +90,10 @@
 
         <main class="py-4">
             @yield('content')
+
+
+       <!-- Aca va el conteniddo de la pagina-->
+            
         </main>
     </div>
 </body>

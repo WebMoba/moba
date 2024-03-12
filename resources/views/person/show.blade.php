@@ -36,6 +36,10 @@
                             {{ $person->id_card ?? __('N/A') }}
                         </div>
                         <div class="form-group">
+                            <strong>Nombre:</strong>
+                            {{ $person->user->name ?? __('N/A') }}
+                        </div>
+                        <div class="form-group">
                             <strong>Dirección:</strong>
                             {{ $person->addres ?? __('N/A') }}
                         </div>
@@ -57,7 +61,7 @@
                         </div>
                         <div class="form-group">
                             <strong>Usuario:</strong>
-                            {{ $person->user->name ?? __('N/A') }}
+                            {{ $person->user->email ?? __('N/A') }}
                         </div>
 
                     </div>
