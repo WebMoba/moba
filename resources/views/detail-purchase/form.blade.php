@@ -18,7 +18,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('Subtotal') }}
-            {{ Form::text('subtotal', $detailPurchase->subtotal, ['id' => 'subtotal', 'class' => 'form-control' . ($errors->has('subtotal') ? ' is-invalid' : ''), 'placeholder' => 'Subtotal', 'placeholder' => 'Date', 'readonly' => true, 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
+            {{ Form::text('subtotal', $detailPurchase->subtotal, ['id' => 'subtotal', 'class' => 'form-control' . ($errors->has('subtotal') ? ' is-invalid' : ''), 'placeholder' => 'Subtotal', 'readonly' => true, 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
             {!! $errors->first('subtotal', '<div class="invalid-feedback">:message</div>') !!}
             <small class="text-muted">El valor de este campo es generado automaticamente. No es editable.</small>
         </div>
@@ -29,7 +29,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('Total') }}
-            {{ Form::text('total', $detailPurchase->total, ['id' => 'total', 'class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''), 'placeholder' => 'Total', 'placeholder' => 'Date', 'readonly' => true, 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
+            {{ Form::text('total', $detailPurchase->total, ['id' => 'total', 'class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''), 'placeholder' => 'Total', 'readonly' => true, 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
             {!! $errors->first('total', '<div class="invalid-feedback">:message</div>') !!}
             <small class="text-muted">El valor de este campo es generado automaticamente. No es editable.</small>
         </div>

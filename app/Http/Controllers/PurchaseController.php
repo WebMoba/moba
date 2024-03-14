@@ -16,29 +16,24 @@ use Dompdf\Dompdf;
 class PurchaseController extends Controller
 {
     public function generatePDF(Request $request)
-{
-    // Obtener el filtro de la solicitud
-    $filter = $request->input('findId');
-    
-    // Obtener los datos de las personas filtradas si se aplicó un filtro
-    if ($filter) {
-        $purchases = Purchase::where('id_card', $filter)->get();
-        
-    } else {
-        // Si no hay filtro, obtener todas las personas
-        $purchases = Purchase::all();
-    }
-    // Pasar los datos a la vista pdf-template
-    $data = [
-        'purchases' => $purchases
-    ];    
+    {
+        $filter = $request->input('findId');
 
-    // Generar el PDF
-    $pdf = new Dompdf();
-    $pdf->loadHtml(view('purchase.pdf-template', $data));
-    $pdf->setPaper('A4', 'portrait');
-    $pdf->render();
-    return $pdf->stream('document.pdf');
+        if ($filter) {
+            $purchases = Purchase::where('id_card', $filter)->get();
+        } else {
+            $purchases = Purchase::all();
+        }
+
+        $data = [
+            'purchases' => $purchases
+        ];
+
+        $pdf = new Dompdf();
+        $pdf->loadHtml(view('purchase.pdf-template', $data));
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->render();
+        return $pdf->stream('Registro_Compras.pdf');
     }
 
     /**
@@ -67,12 +62,12 @@ class PurchaseController extends Controller
     {
         $purchase = new Purchase();
         $purchase->date = now()->format('Y-m-d');
+
         $people = Person::pluck('id_card', 'id')->map(function ($id_card, $id) {
             $person = Person::find($id);
             return "$id_card - $person->addres";
         })->toArray();
 
-        // Obtener el nombre de la compra
         $purchaseName = $purchase->name;
 
         $detailPurchase = new DetailPurchase();
@@ -104,8 +99,8 @@ class PurchaseController extends Controller
         $detailPurchaseData['subtotal'] = $request->input('subtotal');
         $detailPurchaseData['discount'] = $request->input('discount');
         $detailPurchaseData['total'] = $request->input('total');
-
         $detailPurchaseData['materials_raws_id'] = $request->input('materials_raws_id');
+
         $purchase->detailPurchases()->create($detailPurchaseData);
 
         return redirect()->route('purchases.index')
@@ -122,6 +117,7 @@ class PurchaseController extends Controller
     public function show($id)
     {
         $purchase = Purchase::find($id);
+
         $people = Person::pluck('id_card', 'id')->map(function ($id_card, $id) {
             $person = Person::find($id);
             return "$id_card - $person->addres";

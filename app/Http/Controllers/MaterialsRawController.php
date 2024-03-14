@@ -36,7 +36,7 @@ class MaterialsRawController extends Controller
     $pdf->loadHtml(view('materials-raw.pdf-template', $data));
     $pdf->setPaper('A4', 'portrait');
     $pdf->render();
-    return $pdf->stream('document.pdf');
+    return $pdf->stream('Registro_Materias_Primas.pdf');
     }
 
     /**

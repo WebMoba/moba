@@ -28,9 +28,7 @@ class Purchase extends Model
         'name' => 'required',
         'quantity' => 'required|numeric',
         'price_unit' => 'required|numeric',
-        'subtotal' => 'required|numeric',
         'discount' => 'required|numeric',
-        'total' => 'required|numeric',
     ];
 
     protected $perPage = 20;
