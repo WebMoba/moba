@@ -2,8 +2,8 @@
     <div class="box-body">
         
         <div class="form-group">
-            {{ Form::label('number') }}
-            {{ Form::text('number', $numberPhone->number, ['class' => 'form-control' . ($errors->has('number') ? ' is-invalid' : ''), 'placeholder' => 'Number']) }}
+            {{ Form::label('Numero Telefono') }}
+            {{ Form::text('number', $numberPhone->number, ['class' => 'form-control' . ($errors->has('number') ? ' is-invalid' : ''), 'placeholder' => 'Numero Telefono']) }}
             {!! $errors->first('number', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 

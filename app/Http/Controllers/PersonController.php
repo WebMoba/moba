@@ -11,6 +11,8 @@ use Dompdf\Options;
 use Illuminate\Validation\Rule;
 
 
+
+
 use App\Models\Person;
 use Illuminate\Http\Request;
 
@@ -196,31 +198,29 @@ public function generatePDF(Request $request)
     $filter = $request->input('findId');
     
     // Obtener los datos de las personas filtradas si se aplicó un filtro
+    $people = Person::query();
+
     if ($filter) {
-        $people = Person::where('id_card', $filter)->get();
-        
-    } else {
-        // Si no hay filtro, obtener todas las personas
-        $people = Person::all();
+        $people->where('id_card', 'LIKE', "%$filter%");
     }
-    // Pasar los datos a la vista pdf-template
+
+    $people = $people->get();
+    
+    // Pasar los datos filtrados a la vista pdf-template
     $data = [
         'people' => $people
     ];
-    
 
     // Generar el PDF
     $pdf = new Dompdf();
     $pdf->loadHtml(view('person.pdf-template', $data));
 
     $pdf->setPaper('A4', 'portrait');
-
     $pdf->render();
 
     return $pdf->stream('document.pdf');
-    
-    
 }
+
 public function getTownsByRegion(Request $request)
 {
     $regionId = $request->input('regions_id'); // Cambiado de 'region_id' a 'regions_id'

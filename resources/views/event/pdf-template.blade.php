@@ -24,6 +24,10 @@
         th {
             background-color: #f2f2f2;
         }
+
+        @page{
+            size: landscape;
+        }
         /* Agrega más estilos según sea necesario */
     </style>
 </head>

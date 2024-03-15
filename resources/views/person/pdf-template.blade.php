@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            font-size: 12px;
+            font-size: 10px;
         }
         h1 {
             color: #333;
@@ -24,6 +24,10 @@
         th {
             background-color: #f2f2f2;
         }
+
+        @page {
+            size: landscape;
+        }
         /* Agrega más estilos según sea necesario */
     </style>
 </head>
@@ -33,26 +37,35 @@
     <table>
         <thead>
             <tr>
-                <th>No</th>
-                <th>Identificación</th>
-                <th>Dirección</th>
-                <th>Equipo de Trabajo</th>
-                <th>Número Celular</th>
-                <th>Ciudad</th>
-                <th>Usuario</th>
+            <th>No</th>
+                <th>Rol</th>
+                <th>Tipo Identificacion</th>
+				<th>Identificacion</th>
+                <th>Nombre</th>
+				<th>Direccion</th>
+				<th>Equipo de trabajo</th>
+				<th>Numero Celular</th>
+                <th>Departamento</th>
+				<th>Ciudad</th>
+				<th>Usuario</th>
             </tr>
         </thead>
         <tbody>
             @php $i = 0; @endphp
             @foreach ($people as $person)
                 <tr>
-                    <td>{{ ++$i }}</td>
-                    <td>{{ $person->id_card }}</td>
-                    <td>{{ $person->addres }}</td>
-                    <td>{{ $person->teamWork ? $person->teamWork->assigned_work : 'N/A' }}</td>
-                    <td>{{ $person->numberPhone ? $person->numberPhone->number : 'N/A' }}</td>
-                    <td>{{ $person->town ? $person->town->name : 'N/A' }}</td>
-                    <td>{{ $person->user ? $person->user->email : 'N/A' }}</td>
+                <td>{{ ++$i }}</td>
+                <td>{{ $person->rol}}</td>
+                <td>{{ $person->identification_type}}</td>
+                <td>{{ $person->id_card }}</td>
+                <td>{{ $person->user ? $person->user->name : 'N/A' }}</td>
+				<td>{{ $person->addres }}</td>
+				<td>{{ $person->teamWork ? $person->teamWork->assigned_work : 'N/A'}}</td>
+				<td>{{ $person->numberPhone ? $person->numberPhone->number : 'N/A'}}</td>
+                <td>{{ $person->region ? $person->region->name : 'N/A' }}</td>
+				<td>{{ $person->town ? $person->town->name : 'N/A'}}</td>
+				<td>{{ $person->user ? $person->user->email: 'N/A' }}</td>
+
                 </tr>
             @endforeach
         </tbody>
