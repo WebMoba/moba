@@ -8,6 +8,8 @@ use App\Models\Town;
 use App\Models\NumberPhone;
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use Illuminate\Validation\Rule;
+
 
 use App\Models\Person;
 use Illuminate\Http\Request;
@@ -36,23 +38,24 @@ class PersonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        $person = new Person();
-        
-        
-        $regions = Region::pluck('name', 'id');
-        $usersName = User::pluck('name', 'id');
-        $teamWorks = TeamWork::pluck('assigned_work', 'id');
-        $users = User::pluck('email', 'id');
-        $towns = Town::pluck('name','id');
-        $numberPhones = NumberPhone::pluck('number','id');
-        $roles = ['Administrador' => 'Administrador', 'Cliente' => 'Cliente', 'Proveedor' => 'Proveedor'];
-        $identificationTypes = ['cedula' => 'Cedula', 'cedula Extranjeria' => 'Cedula Extranjeria', 'NIT' => 'NIT'];
+   public function create()
+{
+    $person = new Person();
+    
+    // Obtener listas de datos necesarios para los campos select en el formulario
+    $regions = Region::pluck('name', 'id');
+    $usersName = User::pluck('name', 'id');
+    $teamWorks = TeamWork::pluck('assigned_work', 'id');
+    $users = User::pluck('email', 'id');
+    $towns = Town::pluck('name', 'id');
+    $numberPhones = NumberPhone::pluck('number', 'id');
+    
+    // Definir opciones para roles y tipos de identificación
+    $roles = ['Administrador' => 'Administrador', 'Cliente' => 'Cliente', 'Proveedor' => 'Proveedor'];
+    $identificationTypes = ['cedula' => 'Cedula', 'cedula Extranjeria' => 'Cedula Extranjeria', 'NIT' => 'NIT'];
 
-
-        return view('person.create', compact('person', 'teamWorks', 'users', 'towns', 'numberPhones', 'usersName', 'regions', 'roles', 'identificationTypes' ));
-    }
+    return view('person.create', compact('person', 'teamWorks', 'users', 'towns', 'numberPhones', 'usersName', 'regions', 'roles', 'identificationTypes'));
+}
 
     /**
      * Store a newly created resource in storage.
@@ -61,47 +64,46 @@ class PersonController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $customMessages = [
-            'required' => 'El campo es obligatorio.',
+{
+    $customMessages = [
+        'required' => 'El campo es obligatorio.',
+        'id_card.unique' => 'El número de identificación ya esta en uso',
+    ];
 
-        ];
-        $request->validate([
-            'id_card' => 'required',
-            'team_works_id' => 'required',
-            'number_phones_id' => 'required',
-            'region' => 'required',
-            'towns_id' => 'required',
-            'users_id' => 'required',
-            'rol' => 'required',
-            'identification_type'=>'required',
-            'user_name' =>'required',
-        ], $customMessages);
+    $request->validate([
+        'id_card' => [
+            'required',
+            Rule::unique('people', 'id_card')->ignore($request->id),
+        ],
+        'team_works_id' => 'required',
+        'number_phones_id' => 'required',
+        'region' => 'required',
+        'towns_id' => 'required',
+        'users_id' => 'required',
+        'rol' => 'required',
+        'identification_type' => 'required',
+        'user_name' => 'required',
+    ], $customMessages);
 
-        request()->validate(Person::$rules);
+    // Crear una nueva instancia de Persona y asignar los valores del formulario
+    $person = new Person();
+    $person->id_card = $request->input('id_card');
+    $person->name = $request->input('user_name');
+    $person->team_works_id = $request->input('team_works_id');
+    $person->number_phones_id = $request->input('number_phones_id');
+    $person->addres = $request->input('addres');
+    $person->region_id = $request->input('region');
+    $person->towns_id = $request->input('towns_id');
+    $person->users_id = $request->input('users_id');
+    $person->rol = $request->input('rol');
+    $person->identification_type = $request->input('identification_type');
 
-       
-        // Crear una nueva instancia de Persona y asignar los valores del formulario
-        $person = new Person();
-        $person->id_card = $request->input('id_card');
-        $person->name = $request->input('user_name');
-        $person->team_works_id = $request->input('team_works_id');
-        $person->number_phones_id = $request->input('number_phones_id');
-        $person->addres = $request->input('addres');
-        $person->region_id = $request->input('region');
-        $person->towns_id = $request->input('towns_id');
-        $person->users_id = $request->input('users_id');
-        $person->rol = $request->input('rol');
-        $person->identification_type =$request->input('identification_type');
-        // Asigna los valores para otros campos según sea necesario
+    // Guardar la persona en la base de datos
+    $person->save();
 
-        // Guardar la persona en la base de datos
-        $person->save();
-
-        return redirect()->route('person.index')
-            ->with('success', 'Persona creada exitosamente.');
-    }
-
+    return redirect()->route('person.index')
+        ->with('success', 'Persona creada exitosamente.');
+}
     /**
      * Display the specified resource.
      *

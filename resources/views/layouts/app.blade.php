@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,6 +17,7 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
+
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -23,58 +25,95 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    
                     <ul class="navbar-nav me-auto">
-                      <!-- Inicio vistas Personas Eventos y Celular -->
-                    <li class="nav-item">
-                            <a class="nav-link" href="{{ route('person.index') }}">{{ __('Personas') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('events.index') }}">{{ __('Eventos') }}</a>
-                        </li>
-                       
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('number-phone.index') }}">{{ __('Celular') }}</a>
-                        </li>
-                         <!-- Fin vistas Personas Eventos y Celular -->
+
+                        @auth
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('person.index') }}">{{ __('Personas') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('events.index') }}">{{ __('Eventos') }}</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('number-phone.index') }}">{{ __('Celular') }}</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('purchases.index') }}"> {{ trans('Compras') }}</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                    href="{{ route('materials_raws.index') }}">{{ trans('Materia prima') }}</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('sales.index') }}">{{ __('Ventas') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('product.index') }}">{{ __('Productos') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('unit.index') }}">{{ __('Unidades') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('categories-products-service.index') }}">{{ __('Categorias') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('service.index') }}">{{ __('Servicios') }}</a>
+                            </li>
+                            <!-- fabian -->
+                            <li class="nav-item">
+                            <a href="{{ route('projects.index') }}" class="nav-link">{{__('Proyectos')}}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('team-works.index') }}" class="nav-link">{{__('Equipo de trabajo')}}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('quotes.index') }}" class="nav-link">{{__('Cotizaciones')}}</a>
+                            </li>
+                            <!-- finfabian -->
+                        @endauth
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
-
                         <!-- Authentication Links -->
-
-
-
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar sesion') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Registrar') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
+                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Salir') }}
+                                        {{ __('Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -90,11 +129,8 @@
 
         <main class="py-4">
             @yield('content')
-
-
-       <!-- Aca va el conteniddo de la pagina-->
-            
         </main>
     </div>
 </body>
+
 </html>
