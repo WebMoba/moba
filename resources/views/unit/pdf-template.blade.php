@@ -43,8 +43,6 @@
             <tr>
                 <th>No</th>
                 <th>Tipo de unidad</th>
-                <th>Tamaño</th>
-                <th>Area</th>
             </tr>
         </thead>
         <tbody>
@@ -53,8 +51,6 @@
                 <tr>
                     <td>{{ ++$i }}</td>
                     <td>{{ $unit->unit_type }}</td>
-                    <td>{{ $unit->size }}</td>
-                    <td>{{ $unit->area }}</td>
                 </tr>
             @endforeach
         </tbody>

@@ -25,8 +25,6 @@ class UnitController extends Controller
 
         if (!empty($search)) {
             $units = Unit::where('unit_type', 'like', '%' . $search . '%')
-                ->orWhere('size', 'like', '%' . $search . '%')
-                ->orWhere('area', 'like', '%' . $search . '%')
                 ->paginate();
         } else {
             $units = Unit::paginate();
@@ -44,9 +42,7 @@ class UnitController extends Controller
     public function create()
     {
         $unit = new Unit();
-        $unit->unit_type = str_replace(['Docena', 'Centena', 'Mil'], ['docena', 'centena', 'mil'], $unit->unit_type);
-        $unit->size = str_replace(['Cm', 'M'], ['cm', 'm'], $unit->size);
-        $unit->area = str_replace(['M2'], ['m2'], $unit->area);
+        $unit->unit_type = str_replace(['Unidad', 'Docena', 'Centena', 'Mil', 'MM', 'CM', 'M', 'CM2', 'M2'], ['unidad', 'docena', 'centena', 'mil', 'mm', 'cm', 'm', 'cm2', 'm2'], $unit->unit_type);
         return view('unit.create', compact('unit'));
     }
 
@@ -90,9 +86,7 @@ class UnitController extends Controller
     public function edit($id)
     {
         $unit = Unit::find($id);
-        $unit->unit_type = str_replace(['Docena', 'Centena', 'Mil'], ['docena', 'centena', 'mil'], $unit->unit_type);
-        $unit->size = str_replace(['Cm', 'M'], ['cm', 'm'], $unit->size);
-        $unit->area = str_replace(['M2'], ['m2'], $unit->area);
+        $unit->unit_type = str_replace(['Unidad', 'Docena', 'Centena', 'Mil', 'MM', 'CM', 'M', 'CM2', 'M2'], ['unidad', 'docena', 'centena', 'mil', 'mm', 'cm', 'm', 'cm2', 'm2'], $unit->unit_type);
         return view('unit.edit', compact('unit'));
     }
 

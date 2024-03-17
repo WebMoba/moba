@@ -21,15 +21,6 @@
                             <strong>Tipo de unidad:</strong>
                             {{ $unit->unit_type }}
                         </div>
-                        <div class="form-group">
-                            <strong>Tamaño:</strong>
-                            {{ $unit->size }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Area:</strong>
-                            {{ $unit->area }}
-                        </div>
-
                     </div>
                 </div>
             </div>

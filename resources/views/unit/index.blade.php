@@ -54,11 +54,7 @@
                             </div>
                         </div>
                     </div>
-                    @if ($message = Session::get('success'))
-                        <div class="alert alert-success">
-                            <p>{{ $message }}</p>
-                        </div>
-                    @endif
+                    
 
                     <div class="card-body">
 
@@ -68,8 +64,6 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Tipo de unidad</th>
-                                        <th>Tamaño</th>
-                                        <th>Area</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -77,8 +71,6 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             <td>{{ $unit->unit_type }}</td>
-                                            <td>{{ $unit->size }}</td>
-                                            <td>{{ $unit->area }}</td>
                                             <td>
                                                 <form action="{{ route('unit.destroy', $unit->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary "

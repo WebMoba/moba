@@ -43,11 +43,9 @@ class ProductController extends Controller
     public function create()
     {
         $product = new Product();
-        $unit = Unit::pluck('unit_type', 'id')
-            ->merge(Unit::pluck('size', 'id'))
-            ->merge(Unit::pluck('area', 'id'));
+        $units = Unit::pluck('unit_type', 'id');
         $categories_products_service = CategoriesProductsService::pluck('name', 'id');
-        return view('product.create', compact('product', 'unit', 'categories_products_service'));
+        return view('product.create', compact('product', 'units', 'categories_products_service'));
     }
 
     /**
@@ -58,12 +56,18 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $customMessages = ['required' => 'El campo es obligatorio.'];
 
-        $customMessages = ['required' => 'El campo es obligatorio.',];
+        $request->validate(Product::$rules, $customMessages);
 
-        $product = request()->validate(Product::$rules, $customMessages);
+        // Obtener el ID de la unidad desde la solicitud
+        $units_id = $request->input('units_id');
 
-        $product = Product::create(array_merge($request->all(), ['image' => $request->file('image')->store('uploads', 'public')]));
+        // Crear el producto utilizando el ID de la unidad extraído
+        $product = Product::create(array_merge($request->all(), [
+            'units_id' => $units_id,
+            'image' => $request->file('image')->store('uploads', 'public')
+        ]));
 
         return redirect()->route('product.index')
             ->with('success', 'Producto Creado Exitosamente.');

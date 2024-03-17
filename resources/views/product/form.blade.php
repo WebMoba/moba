@@ -24,9 +24,9 @@
         </div>
         <div class="form-group">
             {{ Form::label('Unidad') }}
-            {{ Form::select('units_id', $unit, $product->units_id, ['class' => 'form-control' . ($errors->has('units_id') ? ' is-invalid' : '')]) }}
+            {{ Form::select('units_id', $units, $product->units_id, ['class' => 'form-control' . ($errors->has('units_id') ? ' is-invalid' : '')]) }}
             {!! $errors->first('units_id', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
+        </div>       
         <div class="form-group">
             {{ Form::label('Categoria') }}
             {{ Form::select('categories_products_services_id', $categories_products_service, $product->categories_products_services_id, ['class' => 'form-control' . ($errors->has('categories_products_services_id') ? ' is-invalid' : '')]) }}

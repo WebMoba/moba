@@ -31,7 +31,7 @@ class Product extends Model
     static $rules = [
 		'units_id' => 'required',
 		'categories_products_services_id' => 'required',
-        'image' => 'image|mimes:jpeg,png,jpg|max:10000',
+        'image' => 'image|mimes:jpeg,png,jpg|max:100000',
         'name' => 'required',
         'quantity' => 'required',
         'price' => 'required',
