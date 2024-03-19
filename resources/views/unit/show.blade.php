@@ -10,29 +10,17 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} Unit</span>
-                        </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('units.index') }}"> {{ __('Back') }}</a>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="card-title">{{ __('Mostrar') }} Unidad</span>
+                            <a class="btn btn-primary" href="{{ route('unit.index') }}"> {{ __('Volver') }}</a>
                         </div>
                     </div>
 
                     <div class="card-body">
-                        
                         <div class="form-group">
-                            <strong>Unit Type:</strong>
+                            <strong>Tipo de unidad:</strong>
                             {{ $unit->unit_type }}
                         </div>
-                        <div class="form-group">
-                            <strong>Size:</strong>
-                            {{ $unit->size }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Area:</strong>
-                            {{ $unit->area }}
-                        </div>
-
                     </div>
                 </div>
             </div>

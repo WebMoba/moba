@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Dompdf\Dompdf;
+use App\Models\MaterialsRaw;
+use App\Models\Product;
 use App\Models\Unit;
 use Illuminate\Http\Request;
 
@@ -18,7 +20,15 @@ class UnitController extends Controller
      */
     public function index()
     {
-        $units = Unit::paginate();
+
+        $search = request()->input('search');
+
+        if (!empty($search)) {
+            $units = Unit::where('unit_type', 'like', '%' . $search . '%')
+                ->paginate();
+        } else {
+            $units = Unit::paginate();
+        }
 
         return view('unit.index', compact('units'))
             ->with('i', (request()->input('page', 1) - 1) * $units->perPage());
@@ -32,6 +42,7 @@ class UnitController extends Controller
     public function create()
     {
         $unit = new Unit();
+        $unit->unit_type = str_replace(['Unidad', 'Docena', 'Centena', 'Mil', 'MM', 'CM', 'M', 'CM2', 'M2'], ['unidad', 'docena', 'centena', 'mil', 'mm', 'cm', 'm', 'cm2', 'm2'], $unit->unit_type);
         return view('unit.create', compact('unit'));
     }
 
@@ -43,12 +54,14 @@ class UnitController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Unit::$rules);
+        $customMessages = ['required' => 'El campo es obligatorio.',];
+
+        request()->validate(Unit::$rules, $customMessages);
 
         $unit = Unit::create($request->all());
 
-        return redirect()->route('units.index')
-            ->with('success', 'Unit creado exitosamente');
+        return redirect()->route('unit.index')
+            ->with('success', 'Unidad creada exitosamente.');
     }
 
     /**
@@ -73,7 +86,7 @@ class UnitController extends Controller
     public function edit($id)
     {
         $unit = Unit::find($id);
-
+        $unit->unit_type = str_replace(['Unidad', 'Docena', 'Centena', 'Mil', 'MM', 'CM', 'M', 'CM2', 'M2'], ['unidad', 'docena', 'centena', 'mil', 'mm', 'cm', 'm', 'cm2', 'm2'], $unit->unit_type);
         return view('unit.edit', compact('unit'));
     }
 
@@ -90,8 +103,8 @@ class UnitController extends Controller
 
         $unit->update($request->all());
 
-        return redirect()->route('units.index')
-            ->with('success', 'Unit actualizado exitosamente');
+        return redirect()->route('unit.index')
+            ->with('success', 'Unidad editada exitosamente.');
     }
 
     /**
@@ -101,9 +114,43 @@ class UnitController extends Controller
      */
     public function destroy($id)
     {
-        $unit = Unit::find($id)->delete();
+        $unit = Unit::find($id);
 
-        return redirect()->route('units.index')
-            ->with('success', 'Unit eliminado exitosamente');
+        if (!$unit) {
+            return redirect()->route('unit.index')->with('error', 'Unidad no encontrada.');
+        }
+        $materialsRaws = $unit->materialsRaws();
+
+        if ($unit->products()->exists() || $materialsRaws->exists()) {
+            return redirect()->route('unit.index')->with('warning', 'Esta unidad esta asociada a un producto o materia prima.');
+        }
+
+        $unit->delete();
+
+        return redirect()->route('unit.index')->with('success', 'Unidad eliminada exitosamente.');
+    }
+    public function generatePDF(Request $request)
+    {
+        // Obtener el filtro de la solicitud
+        $filter = $request->input('findId');
+
+        // Obtener los datos de las personas filtradas si se aplicó un filtro
+        if ($filter) {
+            $units = Unit::where('unit_type', $filter)->get();
+        } else {
+            // Si no hay filtro, obtener todas las personas
+            $units = Unit::all();
+        }
+        // Pasar los datos a la vista pdf-template
+        $data = [
+            'units' => $units
+        ];
+
+        // Generar el PDF
+        $pdf = new Dompdf();
+        $pdf->loadHtml(view('unit.pdf-template', $data));
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->render();
+        return $pdf->stream('Unidades.pdf');
     }
 }

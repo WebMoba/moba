@@ -1,29 +1,11 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Unit
+    Product
 @endsection
 
 @section('content')
     <div class="container-fluid">
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-
-        @if (session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
-
-        @if (session('warning'))
-            <div class="alert alert-warning">
-                {{ session('warning') }}
-            </div>
-        @endif
-
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
@@ -31,60 +13,68 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Unidad') }}
+                                {{ __('Productos') }}
                             </span>
 
-                            <form action="{{ route('unit.index') }}" method="GET" class="d-flex align-items-center">
+                            <form action="{{ route('product.index') }}" method="GET" class="d-flex align-items-center">
                                 <div class="col-auto mr-2">
                                     <input type="text" class="form-control" id="search" name="search"
-                                        placeholder="Buscar por Unidad">
+                                        placeholder="Buscar por Nombre">
                                 </div>
                                 <div class="col-auto">
                                     <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
                                 </div>
                             </form>
-                            <a href="{{ route('pdf.unit') }}" class="btn btn-info btn-sm float-right">
+                            <a href="{{ route('pdf.product') }}" class="btn btn-info btn-sm float-right">
                                 <i class="fa fa-file-pdf"></i> {{ __('Generar PDF') }}
                             </a>
                             <div class="float-right">
-                                <a href="{{ route('unit.create') }}" class="btn btn-primary btn-sm float-right"
+                                <a href="{{ route('product.create') }}" class="btn btn-primary btn-sm float-right"
                                     data-placement="left">
-                                    {{ __('Crear Unidad') }}
+                                    {{ __('Crear Producto') }}
                                 </a>
                             </div>
                         </div>
                     </div>
                     
-
                     <div class="card-body">
-
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        <th>Tipo de unidad</th>
+                                        <th>Nombre</th>
+                                        <th>Imagen</th>
+                                        <th>Cantidad</th>
+                                        <th>Precio</th>
+                                        <th>Unidades</th>
+                                        <th>Categoria</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($units as $unit)
+                                    @foreach ($products as $product)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            <td>{{ $unit->unit_type }}</td>
+                                            <td>{{ $product->name }}</td>
+                                            <td><img src="{{ asset('storage/' . $product->image) }}" width="150"
+                                                    height="150"></td>
+                                            <td>{{ $product->quantity }}</td>
+                                            <td>{{ $product->price }}</td>
+                                            <td>{{ $product->unit->unit_type }}</td>
+                                            <td>{{ $product->categoriesProductsService->name }}</td>
                                             <td>
-                                                <form action="{{ route('unit.destroy', $unit->id) }}" method="POST">
+                                                <form action="{{ route('product.destroy', $product->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary "
-                                                        href="{{ route('unit.show', $unit->id) }}"><i
+                                                        href="{{ route('product.show', $product->id) }}"><i
                                                             class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}</a>
                                                     <a class="btn btn-sm btn-success"
-                                                        href="{{ route('unit.edit', $unit->id) }}"><i
+                                                        href="{{ route('product.edit', $product->id) }}"><i
                                                             class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"
-                                                        onclick="return confirm('¿Está seguro de que desea Eliminar la unidad?')">
-                                                        <i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}
-                                                    </button>
+                                                        onclick="return confirm ('¿Esta seguro que de que desea Eliminar el producto?')"><i
+                                                            class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -94,7 +84,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $units->links() !!}
+                {!! $products->links() !!}
             </div>
         </div>
     </div>

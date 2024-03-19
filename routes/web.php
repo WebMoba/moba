@@ -37,6 +37,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('product', ProductController::class);
+Route::resource('unit', UnitController::class);
+
+Route::get('/pdf/product', [ProductController::class, 'generatePDF'])->name('pdf.product');
+Route::get('/pdf/unit', [UnitController::class, 'generatePDF'])->name('pdf.unit');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

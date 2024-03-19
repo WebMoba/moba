@@ -33,7 +33,7 @@ class Unit extends Model
      *
      * @var array
      */
-    protected $fillable = ['unit_type','size','area'];
+    protected $fillable = ['unit_type',];
 
 
     /**
