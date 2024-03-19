@@ -5,7 +5,9 @@
 @endsection
 
 @section('content')
+
     <section class="content container-fluid">
+        <a class="btn btn-primary" href="{{ route('person.index') }}"> {{ __('Volver') }}</a>
         <div class="">
             <div class="col-md-12">
 
@@ -13,10 +15,10 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Update') }} Person</span>
+                        <span class="card-title">{{ __('Editar') }} Person</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('people.update', $person->id) }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('person.update', $person->id) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
 

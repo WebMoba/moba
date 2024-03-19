@@ -61,32 +61,39 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($purchases as $purchase)
+                                    @if ($purchases === null || count($purchases) <= 0)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
-
-                                            <td>{{ $purchase->name }}</td>
-                                            <td>{{ $purchase->date }}</td>
-                                            <td>{{ $purchase->person->id_card }} - {{ $purchase->person->addres }}</td>
-
-                                            <td>
-                                                <form action="{{ route('purchases.destroy', $purchase->id) }}"
-                                                    method="POST">
-                                                    <a class="btn btn-sm btn-primary "
-                                                        href="{{ route('purchases.show', $purchase->id) }}"><i
-                                                            class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success"
-                                                        href="{{ route('purchases.edit', $purchase->id) }}"><i
-                                                            class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"
-                                                        onclick="return confirm('¿Está seguro de eliminar esta compra? Ten en cuenta que esto eliminará todos los registro asociados');"><i
-                                                            class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
-                                                </form>
-                                            </td>
+                                            <td colspan="4">No se encontraron resultados en su busqueda.</td>
                                         </tr>
-                                    @endforeach
+                                    @else
+                                        @foreach ($purchases as $purchase)
+                                            <tr>
+                                                <td>{{ ++$i }}</td>
+
+                                                <td>{{ $purchase->name }}</td>
+                                                <td>{{ $purchase->date }}</td>
+                                                <td>{{ $purchase->person->id_card }} - {{ $purchase->person->addres }}
+                                                </td>
+
+                                                <td>
+                                                    <form action="{{ route('purchases.destroy', $purchase->id) }}"
+                                                        method="POST">
+                                                        <a class="btn btn-sm btn-primary "
+                                                            href="{{ route('purchases.show', $purchase->id) }}"><i
+                                                                class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                        <a class="btn btn-sm btn-success"
+                                                            href="{{ route('purchases.edit', $purchase->id) }}"><i
+                                                                class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm"
+                                                            onclick="return confirm('¿Está seguro de eliminar esta compra? Ten en cuenta que esto eliminará todos los registro asociados');"><i
+                                                                class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                         </div>

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Models\Region;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -63,6 +64,7 @@ class Person extends Model
     public function numberPhone()
     {
         return $this->hasOne('App\Models\NumberPhone', 'id', 'number_phones_id');
+        
     }
     
     /**
@@ -112,6 +114,8 @@ class Person extends Model
     {
         return $this->hasOne('App\Models\User', 'id', 'users_id');
     }
-    
-
+    public function region()
+    {
+        return $this->belongsTo(Region::class, 'region_id');
+    }
 }

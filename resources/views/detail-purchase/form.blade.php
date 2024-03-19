@@ -1,4 +1,4 @@
-<div class="box box-info padding-1">
+<div class="box box-info padding-1" id="formulario-original">
     <div class="box-body">
 
         <div class="form-group">
@@ -43,19 +43,29 @@
         </div>
 
     </div>
-    <div class="box-footer mt20 my-2">
-        @if ($confirm)
-            <button type="submit" class="btn btn-primary"
-                onclick="return confirm('¿Está seguro de editar este registro?');">{{ __('Submit') }}</button>
-        @else
-            <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
-        @endif
-        <a class="btn btn-primary" href="{{ route('purchases.index') }}"> {{ __('Back') }}</a>
 
-    </div>
+    <button type="button" class="btn btn-primary" onclick="clonarFormulario()">Nuevo detalle</button>
+
+    
 </div>
 
 <script>
+    function clonarFormulario() {
+        // Clonar el formulario original
+        var formularioOriginal = document.getElementById('formulario-original');
+        var formularioClonado = formularioOriginal.cloneNode(true);
+
+        // Limpia los campos clonados (si es necesario)
+        var campos = formularioClonado.querySelectorAll('input[type="text"]');
+        campos.forEach(function(campo) {
+            campo.value = '';
+        });
+
+        // Inserta el formulario clonado después del formulario original
+        formularioOriginal.parentNode.insertBefore(formularioClonado, formularioOriginal.nextSibling);
+    }
+
+
     document.addEventListener('DOMContentLoaded', function() {
         const quantityField = document.getElementById('quantity');
         const priceUnitField = document.getElementById('price_unit');

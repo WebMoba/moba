@@ -125,7 +125,7 @@ class PurchaseController extends Controller
 
         $purchaseName = $purchase->name;
 
-        $detailPurchase = $purchase->detailPurchases()->first();
+        $detailPurchase = $purchase->detailPurchases();
 
         $purchases = Purchase::pluck('name', 'id');
         $materialsRaws = MaterialsRaw::pluck('name', 'id');
@@ -150,7 +150,7 @@ class PurchaseController extends Controller
 
         $purchaseName = $purchase->name;
 
-        $detailPurchase = $purchase->detailPurchases()->first();
+        $detailPurchase = $purchase->detailPurchases();
 
         $purchases = Purchase::pluck('name', 'id');
         $materialsRaws = MaterialsRaw::pluck('name', 'id');
@@ -175,7 +175,7 @@ class PurchaseController extends Controller
         $purchase->update($request->all());
 
         // Obtener el detalle relacionado con la compra
-        $detailPurchase = $purchase->detailPurchases()->first();
+        $detailPurchase = $purchase->detailPurchases();
 
         // Validar y actualizar el detalle de compra
         $request->validate(DetailPurchase::$rules);
