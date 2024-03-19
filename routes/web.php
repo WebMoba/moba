@@ -2,11 +2,9 @@
 
 
 use App\Http\Controllers\PersonController;
-
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\BusquedaController;
 use App\Http\Controllers\NumberPhoneController;
-
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -16,12 +14,8 @@ use App\Http\Controllers\DetailSaleController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UnitController;
 /*Fin Importartación de controladores product y unit*/
-/**/
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CategoriesProductsServiceController;
-/**/
-
-
 //controladores project,teamwork y quote/fabian
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\QuoteController;
@@ -40,7 +34,7 @@ use App\Http\Controllers\TeamWorkController;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('welcome');
 });
 
 Route::get('/dashboard', function () {
@@ -68,7 +62,6 @@ Route::middleware('auth')->group(function () {
     /*Rutas product y unit*/
     Route::resource('product', ProductController::class);
     Route::resource('unit', UnitController::class);
-
     Route::get('/pdf/product', [ProductController::class, 'generatePDF'])->name('pdf.product');
     Route::get('/pdf/unit', [UnitController::class, 'generatePDF'])->name('pdf.unit');
     /*Fin Rutas product y uni*/
@@ -76,7 +69,6 @@ Route::middleware('auth')->group(function () {
     /*Rutas categories_products_services y services*/
     Route::resource('service', ServiceController::class);
     Route::resource('categories-products-service', CategoriesProductsServiceController::class);
-
     Route::get('/pdf/service', [ServiceController::class, 'generatePDF'])->name('pdf.service');
     Route::get('/pdf/categories-products-service', [CategoriesProductsServiceController::class, 'generatePDF'])->name('pdf.categories-products-service');
     /*Fin Rutas categories_products_services y services*/
@@ -85,11 +77,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('units', App\Http\Controllers\UnitController::class);
     Route::get('/pdf/materials_raw', [App\Http\Controllers\MaterialsRawController::class, 'generatePDF'])->name('pdf.materials_raw');
     Route::group(['prefix' => 'purchasesD'], function () {
-        Route::resource('purchases', App\Http\Controllers\PurchaseController::class);
-        Route::resource('detail_purchases', App\Http\Controllers\DetailPurchaseController::class);
-        Route::get('/pdf/purchase', [App\Http\Controllers\PurchaseController::class, 'generatePDF'])->name('pdf.purchase');
+    Route::resource('purchases', App\Http\Controllers\PurchaseController::class);
+    Route::resource('detail_purchases', App\Http\Controllers\DetailPurchaseController::class);
+    Route::get('/pdf/purchase', [App\Http\Controllers\PurchaseController::class, 'generatePDF'])->name('pdf.purchase');
     });
-
     /* fin tablas  Eventos, Buscar, People */
 
     /** Inicio de Controladores Sale y DetailSale */
@@ -101,7 +92,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('projects', App\Http\Controllers\ProjectController::class)->middleware('auth');
     Route::resource('team-works', App\Http\Controllers\TeamWorkController::class)->middleware('auth');
     Route::resource('quotes', App\Http\Controllers\QuoteController::class)->middleware('auth');
-    
     Route::get('/pdf/project', [ProjectController::class, 'generatePDF'])->name('pdf.project');
     Route::get('/pdf/teamwork', [TeamWorkController::class, 'generatePDF'])->name('pdf.teamwork');
     Route::get('/pdf/quote', [QuoteController::class, 'generatePDF'])->name('pdf.quote');
