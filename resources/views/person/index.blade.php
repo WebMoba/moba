@@ -17,7 +17,7 @@
                             </span>
 
                             <form action="{{ route('buscarPeople') }}" method="GET">
-                            <input type="text" name="findId" placeholder="Buscar por Identificacion">
+                            <input type="text" name="findId" placeholder="Buscar....">
                             <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
                             </form>
 

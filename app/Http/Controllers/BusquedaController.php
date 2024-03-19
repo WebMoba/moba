@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Event;
 use App\Models\Person;
 use App\Models\NumberPhone;
-
+use Dompdf\Dompdf;
 
 
 class BusquedaController extends Controller
@@ -17,9 +17,12 @@ class BusquedaController extends Controller
     $termino = $request->input('termino');
     // Realizar la consulta para buscar eventos que coincidan con el término
     $events = Event::where('place', 'LIKE', "%$termino%")
+    ->orWhere('id', 'LIKE', "%$termino%")
     ->orWhere('title', 'LIKE', "%$termino%")
     ->orWhere('description', 'LIKE', "%$termino%")
-    ->orWhere('importance', 'LIKE', "%$termino%")
+    ->orWhere('importance_range', 'LIKE', "%$termino%")
+    ->orWhere('date_start', 'LIKE', "%$termino%")
+    ->orWhere('date_end', 'LIKE', "%$termino%")
     ->paginate();
     // Imprimir los resultados para verificar si hay resultados en la consulta
     // Pasar los resultados de la búsqueda a la vista 'event.index' y paginarlos
@@ -33,7 +36,18 @@ class BusquedaController extends Controller
     // Obtener el término de búsqueda del formulario
     $findId = $request->input('findId');
     // Realizar la consulta para buscar eventos que coincidan con el término
-    $people = Person::where('id_card', 'LIKE', "%$findId%")->paginate();
+    $people = Person::where('id_card', 'LIKE', "%$findId%")
+    ->orWhere('id', 'LIKE',"%$findId%")
+    ->orWhere('addres', 'LIKE', "%$findId%")
+    ->orWhere('identification_type', 'LIKE',"%$findId%")
+    ->orWhere('name', 'LIKE', "%$findId%")
+    ->orWhere('rol', 'LIKE',"%$findId%")
+    ->orWhere('region_id', 'LIKE', "%$findId%")
+    ->orWhere('team_works_id', 'LIKE', "%$findId%")
+    ->orWhere('number_phones_id', 'LIKE', "%$findId%")
+    ->orWhere('towns_id', 'LIKE', "%$findId%")
+    ->orWhere('users_id', 'LIKE', "%$findId%")
+    ->paginate();
     // Imprimir los resultados para verificar si hay resultados en la consulta
     // Pasar los resultados de la búsqueda a la vista 'event.index' y paginarlos
     return view('person.index', compact('people'))

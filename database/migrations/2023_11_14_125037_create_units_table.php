@@ -15,9 +15,7 @@ return new class extends Migration
     {
         Schema::create('units', function (Blueprint $table) {
             $table->integer('id', true);
-            $table->enum('unit_type', ['unidad', 'docena', 'centena', 'mil']);
-            $table->enum('size', ['mm', 'cm', 'm'])->nullable();
-            $table->enum('area', ['cm2', 'm2'])->nullable();
+            $table->enum('unit_type', ['unidad', 'docena', 'centena', 'mil','mm', 'cm', 'm','cm2', 'm2'])->nullable();
             $table->timestamps();
         });
     }

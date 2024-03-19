@@ -41,6 +41,7 @@
                     <ul class="navbar-nav me-auto">
 
                         @auth
+
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('person.index') }}">{{ __('Personas') }}</a>
                             </li>
@@ -57,8 +58,36 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('materials_raws.index') }}">{{ trans('Materia prima') }}</a>
+                                <a class="nav-link"
+                                    href="{{ route('materials_raws.index') }}">{{ trans('Materia prima') }}</a>
                             </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('sales.index') }}">{{ __('Ventas') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('product.index') }}">{{ __('Productos') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('unit.index') }}">{{ __('Unidades') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('categories-products-service.index') }}">{{ __('Categorias') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('service.index') }}">{{ __('Servicios') }}</a>
+                            </li>
+                            <!-- fabian -->
+                            <li class="nav-item">
+                            <a href="{{ route('projects.index') }}" class="nav-link">{{__('Proyectos')}}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('team-works.index') }}" class="nav-link">{{__('Equipo de trabajo')}}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('quotes.index') }}" class="nav-link">{{__('Cotizaciones')}}</a>
+                            </li>
+                            <!-- finfabian -->
                         @endauth
 
                     </ul>
