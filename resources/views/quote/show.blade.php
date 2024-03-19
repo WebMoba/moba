@@ -44,23 +44,24 @@
                             <strong>Persona:</strong>
                             {{ $quote->people_id }}
                         </div>
-                        <div class="form-group">
-                            <strong>Servicio:</strong>
-                            {{ $quote->services_id }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Producto:</strong>
-                            {{ $quote->products_id }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Proyecto:</strong>
-                            {{ $quote->projects_id }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Cotización:</strong>
-                            {{ $quote->quotes_id }}
-                        </div>
-
+                            @foreach ($quote->detailQuotes as $detail)
+                                <div class="form-group">
+                                    <strong>Servicio:</strong>
+                                    {{ $detail->service->name }}
+                                </div>
+                                <div class="form-group">
+                                    <strong>Producto:</strong>
+                                    {{ $detail->product->name }}
+                                </div>
+                                <div class="form-group">
+                                    <strong>Proyecto:</strong>
+                                    {{ $detail->project->name }}
+                                </div>
+                                <div class="form-group">
+                                    <strong>Cotización:</strong>
+                                    {{ $detail->quotes_id }}
+                                </div>
+                            @endforeach
                     </div>
                 </div>
             </div>

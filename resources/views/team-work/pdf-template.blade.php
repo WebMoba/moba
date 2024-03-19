@@ -34,7 +34,7 @@
                 alt="Logo de la Empresa" height="50">
         </div>
         <div style="text-align: right; margin-bottom: 20px;">
-            <h3>Listado de Projectos</h3>
+            <h3>Listado de Equipos de Trabajo</h3>
             <p>Fecha: {{ date(now()->format('Y-m-d')) }}</p>
         </div>
     </header>
@@ -42,23 +42,21 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Nombre</th>
-                <th>Descripción</th>
-				<th>Fecha de inicio</th>
-				<th>Fecha de finalización</th>
-				<th>Estado</th>
+				<th>Especialidad</th>
+				<th>Trabajo asignado</th>
+				<th>Fecha asignada</th>
+				<th>Proyecto</th>
             </tr>
         </thead>
         <tbody>
             <!-- @php $i = 0; @endphp -->
-            @foreach ($project as $projects)
+            @foreach ($teamwork as $teamWork)
                 <tr>
-                    <td>{{ $projects->id }}</td>               
-					<td>{{ $projects->name }}</td>
-					<td>{{ $projects->description }}</td>
-					<td>{{ $projects->date_start }}</td>
-					<td>{{ $projects->date_end }}</td>
-					<td>{{ $projects->status }}</td>
+                    <td>{{ $teamWork->id }}</td>
+					<td>{{ $teamWork->specialty }}</td>
+					<td>{{ $teamWork->assigned_work }}</td>
+					<td>{{ $teamWork->assigned_date }}</td>
+					<td>{{ $teamWork->project->name }}</td>
                 </tr>
             @endforeach
         </tbody>

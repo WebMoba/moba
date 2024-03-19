@@ -10,6 +10,9 @@ use App\Models\Project;
 use App\Models\Service;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
+use Dompdf\Dompdf as DompdfDompdf;
+use PhpParser\Node\Expr\New_;
+
 /**
  * Class QuoteController
  * @package App\Http\Controllers
@@ -43,13 +46,14 @@ class QuoteController extends Controller
     public function create()
     {
         $quote = new Quote();
-        $persons = Person::pluck('id_card','id');
+        $detailQuote = new DetailQuote() ;
+        $persons = Person::pluck( 'id_card','id');
         $services = Service::pluck('name','id');
         $products = Product::pluck('name','id');
         $projects = Project::pluck('name','id');
         $quotes = Quote::pluck('description','id');
         $quote->date_issuance = now()->format('Y-m-d');
-        return view('quote.create', compact('quote','persons','services','products','projects','quotes'));
+        return view('quote.create', compact('quote','detailQuote','persons','services','products','projects','quotes'));
     }
 
     /**
@@ -63,6 +67,7 @@ class QuoteController extends Controller
     request()->validate(Quote::$rules);
 
     $quote = Quote::create($request->all());
+    $detailQuote = new DetailQuote() ;
     $quote->date_issuance = now()->format('Y-m-d');
     $servicesId = $request->input('services_id');
     $productsId = $request->input('products_id');
@@ -102,8 +107,10 @@ class QuoteController extends Controller
     public function show($id)
     {
         $quote = Quote::find($id);
-
-        return view('quote.show', compact('quote'));
+        $detailQuote = DetailQuote::where('quotes_id', $quote->id)->get();
+        $detailQuote = $quote->detailQuotes;
+        $quote->load('detailQuotes');
+        return view('quote.show', compact('quote', 'detailQuote'));
     }
 
     /**
@@ -115,13 +122,14 @@ class QuoteController extends Controller
     public function edit($id)
     {
         $quote = Quote::find($id);
-        $persons = Person::pluck('id_card','id');
+        $detailQuote = new DetailQuote() ;
+        $persons = Person::pluck( 'id_card','id');
         $services = Service::pluck('name','id');
         $products = Product::pluck('name','id');
         $projects = Project::pluck('name','id');
         $quotes = Quote::pluck('description','id');
         $quote->date_issuance = now()->format('Y-m-d');
-        return view('quote.create', compact('quote','persons','services','products','projects','quotes'));
+        return view('quote.create', compact('quote','detailQuote','persons','services','products','projects','quotes'));
     }
 
     /**
@@ -170,5 +178,36 @@ class QuoteController extends Controller
 
         return redirect()->route('quotes.index')
             ->with('success', 'Quote deleted successfully');
+    }
+    
+    public function generatePDF(Request $request)
+    {
+        
+        // $quote = new Quote();
+        // $detailQuote = new DetailQuote();  
+        
+        // return view('quote.pdf-template', compact('quote','detailQuote')); <td>{{ $detailQuote ? $detailQuote->service->name : 'N/A' }} </td>
+        // Obtener el filtro de la solicitud
+        $filter = $request->input('findId');
+        
+        // Obtener los datos de las personas filtradas si se aplicó un filtro
+        if ($filter) {
+            $quote = Quote::where('id', $filter)->get();
+            
+        } else {
+            // Si no hay filtro, obtener todas las personas
+            $quote = Quote::all();
+        }
+        // Pasar los datos a la vista pdf-template
+        $data = [
+            'quote' => $quote
+        ];   
+
+        // Generar el PDF
+        $pdf = new DompdfDompdf();
+        $pdf->loadHtml(view('quote.pdf-template', $data));
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->render();
+        return $pdf->stream('document.pdf');
     }
 }

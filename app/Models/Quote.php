@@ -43,6 +43,21 @@ class Quote extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
+    }
+
     public function detailQuotes()
     {
         return $this->hasMany('App\Models\DetailQuote', 'quotes_id', 'id');

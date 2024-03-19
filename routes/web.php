@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\QuoteController;
+use App\Http\Controllers\TeamWorkController;
+use App\Models\TeamWork;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,6 +27,10 @@ Route::resource('projects', App\Http\Controllers\ProjectController::class)->midd
 Route::resource('team-works', App\Http\Controllers\TeamWorkController::class)->middleware('auth');
 Route::resource('quotes', App\Http\Controllers\QuoteController::class)->middleware('auth');
 Route::resource('detail-quotes', App\Http\Controllers\DetailQuoteController::class)->middleware('auth');
+
+Route::get('/pdf/project', [ProjectController::class, 'generatePDF'])->name('pdf.project');
+Route::get('/pdf/teamwork', [TeamWorkController::class, 'generatePDF'])->name('pdf.teamwork');
+Route::get('/pdf/quote', [QuoteController::class, 'generatePDF'])->name('pdf.quote');
 
 Route::get('/dashboard', function () {
     return view('home');

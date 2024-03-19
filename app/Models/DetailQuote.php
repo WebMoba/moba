@@ -63,7 +63,7 @@ class DetailQuote extends Model
      */
     public function quote()
     {
-        return $this->hasOne('App\Models\Quote', 'id', 'quotes_id');
+        return $this->belongsTo('App\Models\Quote', 'id', 'quotes_id');
     }
     
     /**

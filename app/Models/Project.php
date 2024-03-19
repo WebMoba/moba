@@ -53,5 +53,9 @@ class Project extends Model
         return $this->hasMany('App\Models\TeamWork', 'projects_id', 'id');
     }
     
+    public function quotes()
+    {
+        return $this->hasMany(Quote::class);
+    }
 
 }

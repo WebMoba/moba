@@ -34,7 +34,7 @@
                 alt="Logo de la Empresa" height="50">
         </div>
         <div style="text-align: right; margin-bottom: 20px;">
-            <h3>Listado de Projectos</h3>
+            <h3>Listado de Cotizaciones</h3>
             <p>Fecha: {{ date(now()->format('Y-m-d')) }}</p>
         </div>
     </header>
@@ -42,23 +42,26 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Nombre</th>
-                <th>Descripción</th>
-				<th>Fecha de inicio</th>
-				<th>Fecha de finalización</th>
+				<th>Fecha de expedición</th>
+				<th>Descripción</th>
+				<th>Total</th>
+				<th>Descuento</th>
 				<th>Estado</th>
+				<th>Persona</th>
             </tr>
         </thead>
         <tbody>
             <!-- @php $i = 0; @endphp -->
-            @foreach ($project as $projects)
+            @foreach ($quote as $quotes)
                 <tr>
-                    <td>{{ $projects->id }}</td>               
-					<td>{{ $projects->name }}</td>
-					<td>{{ $projects->description }}</td>
-					<td>{{ $projects->date_start }}</td>
-					<td>{{ $projects->date_end }}</td>
-					<td>{{ $projects->status }}</td>
+                    <td>{{ $quotes->id }}</td>
+				    <td>{{ $quotes->date_issuance }}</td>
+				    <td>{{ $quotes->description }}</td>
+				    <td>{{ $quotes->total }}</td>
+				    <td>{{ $quotes->discount }}</td>
+				    <td>{{ $quotes->status }}</td>
+				    <td>{{ $quotes->people_id }}</td>
+                    
                 </tr>
             @endforeach
         </tbody>

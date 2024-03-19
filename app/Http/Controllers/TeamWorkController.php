@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Project;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
+use Dompdf\Dompdf as DompdfDompdf;
 
 /**
  * Class TeamWorkController
@@ -145,6 +146,32 @@ class TeamWorkController extends Controller
 
         return redirect()->route('team-works.index')
             ->with('success', 'Equipo de trabajo actualizado con éxito');
+    }
+    
+    public function generatePDF(Request $request)
+    {
+        // Obtener el filtro de la solicitud
+        $filter = $request->input('findId');
+        
+        // Obtener los datos de las personas filtradas si se aplicó un filtro
+        if ($filter) {
+            $teamwork = Teamwork::where('id', $filter)->get();
+            
+        } else {
+            // Si no hay filtro, obtener todas las personas
+            $teamwork = Teamwork::all();
+        }
+        // Pasar los datos a la vista pdf-template
+        $data = [
+            'teamwork' => $teamwork
+        ];    
+
+        // Generar el PDF
+        $pdf = new DompdfDompdf();
+        $pdf->loadHtml(view('team-work.pdf-template', $data));
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->render();
+        return $pdf->stream('document.pdf');
     }
 }
 

@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Barryvdh\DomPDF\Facade\Pdf;
+use Dompdf\Dompdf as DompdfDompdf;
+
 /**
  * Class ProjectController
  * @package App\Http\Controllers
@@ -164,7 +165,7 @@ class ProjectController extends Controller
         ];    
 
         // Generar el PDF
-        $pdf = new Dompdf();
+        $pdf = new DompdfDompdf();
         $pdf->loadHtml(view('project.pdf-template', $data));
         $pdf->setPaper('A4', 'portrait');
         $pdf->render();

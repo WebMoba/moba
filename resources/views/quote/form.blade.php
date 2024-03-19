@@ -37,6 +37,19 @@
             {{ Form::select('people_id',$persons, $quote->people_id, ['class' => 'form-control' . ($errors->has('people_id') ? ' is-invalid' : ''),'required']) }}
             {!! $errors->first('people_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+            <br>
+    </div>
+    <div class="box-footer mt20">
+        <button type="submit" class="btn btn-success">{{ __('Enviar') }}</button>
+        <a type="submit" class="btn btn-primary" href="{{ route('quotes.index') }}">Volver</a>
+    </div>
+</div>
+
+<div class="box box-info padding-1">
+    <div class="box-body">
+        <div class="form-group">
+            {{ Form::label('Detalle') }}
+        </div>
         <div class="form-group">
             {{ Form::label('Servicio') }}
             {{ Form::select('services_id',$services, $quote->services_id, ['class' => 'form-control' . ($errors->has('services_id') ? ' is-invalid' : ''),'required']) }}
@@ -57,10 +70,5 @@
             {{ Form::select('quotes_id',$quotes, $quote->quotes_id, ['class' => 'form-control' . ($errors->has('quotes_id') ? ' is-invalid' : ''),'required']) }}
             {!! $errors->first('quotes_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-            <br>
-    </div>
-    <div class="box-footer mt20">
-        <button type="submit" class="btn btn-success">{{ __('Enviar') }}</button>
-        <a type="submit" class="btn btn-primary" href="{{ route('quotes.index') }}">Volver</a>
     </div>
 </div>

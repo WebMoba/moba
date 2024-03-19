@@ -55,5 +55,10 @@ class Service extends Model
         return $this->hasMany('App\Models\DetailQuote', 'services_id', 'id');
     }
     
+    public function quotes()
+    {
+        return $this->hasMany(Quote::class);
+    }
+    
 
 }

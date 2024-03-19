@@ -83,5 +83,9 @@ class Product extends Model
         return $this->hasOne('App\Models\Unit', 'id', 'units_id');
     }
     
+    public function quotes()
+    {
+        return $this->hasMany(Quote::class);
+    }
 
 }
