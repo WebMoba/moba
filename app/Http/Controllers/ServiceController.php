@@ -46,7 +46,11 @@ class ServiceController extends Controller
     public function create()
     {
         $service = new Service();
-        $categories_products_service = CategoriesProductsService::pluck('name', 'id');
+        $categories_products_service = CategoriesProductsService::where('type', 'servicio')->pluck('name', 'id');
+
+        if ($categories_products_service->isEmpty()) {
+            return redirect()->back()->with('error', 'No hay categorías de producto disponibles.');
+        }
         return view('service.create', compact('service', 'categories_products_service'));
     }
 
