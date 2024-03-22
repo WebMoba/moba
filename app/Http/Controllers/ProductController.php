@@ -42,9 +42,15 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $categories_products_service = CategoriesProductsService::where('type', 'producto')->pluck('name', 'id');
+
+        if ($categories_products_service->isEmpty()) {
+            return redirect()->back()->with('error', 'No hay categorías de producto disponibles.');
+        }
+
         $product = new Product();
         $units = Unit::pluck('unit_type', 'id');
-        $categories_products_service = CategoriesProductsService::pluck('name', 'id');
+
         return view('product.create', compact('product', 'units', 'categories_products_service'));
     }
 
@@ -95,9 +101,9 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::find($id);
-        $unit = Unit::pluck('unit_type', 'id');
+        $units = Unit::pluck('unit_type', 'id');
         $categories_products_service = CategoriesProductsService::pluck('name', 'id');
-        return view('product.edit', compact('product', 'unit', 'categories_products_service'));
+        return view('product.edit', compact('product', 'units', 'categories_products_service'));
     }
 
     /**
