@@ -13,6 +13,9 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <!--Script-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])

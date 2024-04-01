@@ -108,9 +108,6 @@ Route::middleware('auth')->group(function () {
     //fin-fabian
 });
 
-
-
-
 require __DIR__ . '/auth.php';
 
 Auth::routes();

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Dompdf\Dompdf as DompdfDompdf;
 use PhpParser\Node\Expr\New_;
 
+
 /**
  * Class QuoteController
  * @package App\Http\Controllers
@@ -32,7 +33,7 @@ class QuoteController extends Controller
                     ->where('id','LIKE','%'.$search.'%')
                     ->orWhere('description','LIKE','%'.$search.'%')
                     ->orderBy('date_issuance','asc')
-                    ->paginate(4);
+                    ->paginate(6);
 
         return view('quote.index', compact('quotes','search'));
             // ->with('i', (request()->input('page', 1) - 1) * $quotes->perPage());
@@ -74,28 +75,40 @@ class QuoteController extends Controller
     $projectsId = $request->input('projects_id');
     $quotesId = $request->input('quotes_id');
 
-    // Comprobar que los valores existen en las tablas correspondientes
-    $existsServices = Product::find($servicesId);
-    $existsProducts = Service::find($productsId);
-    $existsProjects = Project::find($projectsId);
-    $existsQuotes = Quote::find($quotesId);
+    // // Comprobar que los valores existen en las tablas correspondientes
+    // $existsServices = Product::find($servicesId);
+    // $existsProducts = Service::find($productsId);
+    // $existsProjects = Project::find($projectsId);
+    // $existsQuotes = Quote::find($quotesId);
 
-    if ($existsServices && $existsProducts && $existsProjects && $existsQuotes) {
-        $detailCuote = new DetailQuote([
-            'services_id' => $servicesId,
-            'products_id' => $productsId,
-            'projects_id' => $projectsId,
-            'quotes_id' => $quotesId,
-        ]);
-        $quote->detailQuotes()->save($detailCuote);
-    }
-        return redirect()->route('quotes.index')
-            ->with('success', 'Cotización creada correctamente.');
-    // } else {
-    //     // Manipular el caso en que alguno de los valores no exista
-    //     return redirect()->route('quotes.create')
-    //     ->with('error', 'Alguno de los valores no existe en la base de datos.');
+    // if ($existsServices && $existsProducts && $existsProjects && $existsQuotes) {
+    //     $detailCuote = new DetailQuote([
+    //         'services_id' => $servicesId,
+    //         'products_id' => $productsId,
+    //         'projects_id' => $projectsId,
+    //         'quotes_id' => $quotesId,
+    //     ]);
+    //     $quote->detailQuotes()->save($detailCuote);
     // }
+    //     return redirect()->route('quotes.index')
+    //         ->with('success', 'Cotización creada correctamente.');
+   
+    // Crear los detalles de la cotización
+    if ($request->has('services_id')) {
+        foreach ($request->services_id as $key => $serviceId) {
+            $detalle = new DetailQuote([
+                'services_id' => $serviceId,
+                'products_id' => $request->products_id[$key],
+                'projects_id' => $request->projects_id[$key],
+                'quotes_id' => $request->quotes_id[$key],
+                // Agrega aquí los demás campos necesarios para los detalles de la cotización
+            ]);
+            $quote->detailQuotes()->save($detalle);
+        }
+    }
+
+    return redirect()->route('quotes.index')->with('success', 'Cotización creada correctamente.');
+    
 }
 
     /**
@@ -210,4 +223,6 @@ class QuoteController extends Controller
         $pdf->render();
         return $pdf->stream('document.pdf');
     }
+
+
 }

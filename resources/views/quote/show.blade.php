@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ $quote->name ?? "{{ __('Show') Quote" }}
+    {{ $quote->name ?? __('Show Quote') }}
 @endsection
 
 @section('content')
@@ -11,57 +11,57 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Ver') }} Cotización</span>
+                            <span class="card-title">{{ __('Ver Cotización') }}</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('quotes.index') }}"> {{ __('Back') }}</a>
+                            <a class="btn btn-primary" href="{{ route('quotes.index') }}">{{ __('Volver') }}</a>
                         </div>
                     </div>
 
                     <div class="card-body">
-                        
-                        <div class="form-group">
-                            <strong>Fecha de expedición:</strong>
-                            {{ $quote->date_issuance }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Descripción:</strong>
-                            {{ $quote->description }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Total:</strong>
-                            {{ $quote->total }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Descuento:</strong>
-                            {{ $quote->discount }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Estado:</strong>
-                            {{ $quote->status }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Persona:</strong>
-                            {{ $quote->people_id }}
-                        </div>
-                            @foreach ($quote->detailQuotes as $detail)
-                                <div class="form-group">
-                                    <strong>Servicio:</strong>
-                                    {{ $detail->service->name }}
-                                </div>
-                                <div class="form-group">
-                                    <strong>Producto:</strong>
-                                    {{ $detail->product->name }}
-                                </div>
-                                <div class="form-group">
-                                    <strong>Proyecto:</strong>
-                                    {{ $detail->project->name }}
-                                </div>
-                                <div class="form-group">
-                                    <strong>Cotización:</strong>
-                                    {{ $detail->quotes_id }}
-                                </div>
-                            @endforeach
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th>Fecha de expedición:</th>
+                                    <td>{{ $quote->date_issuance }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Descripción:</th>
+                                    <td>{{ $quote->description }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Total:</th>
+                                    <td>{{ $quote->total }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Descuento:</th>
+                                    <td>{{ $quote->discount }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Estado:</th>
+                                    <td>{{ $quote->status }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Persona:</th>
+                                    <td>{{ $quote->people_id }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Detalles de la cotización:</th>
+                                    <td>
+                                        <ul>
+                                            @foreach ($quote->detailQuotes as $detail)
+                                                <li>
+                                                    <strong>Servicio:</strong> {{ $detail->service->name }}<br>
+                                                    <strong>Producto:</strong> {{ $detail->product->name }}<br>
+                                                    <strong>Proyecto:</strong> {{ $detail->project->name }}<br>
+                                                    <strong>Cotización:</strong> {{ $detail->quotes_id }}
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
