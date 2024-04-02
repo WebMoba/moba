@@ -40,7 +40,7 @@ class PersonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   public function create()
+    public function create(Request $request)
 {
     $person = new Person();
     
@@ -55,10 +55,14 @@ class PersonController extends Controller
     // Definir opciones para roles y tipos de identificación
     $roles = ['Administrador' => 'Administrador', 'Cliente' => 'Cliente', 'Proveedor' => 'Proveedor'];
     $identificationTypes = ['cedula' => 'Cedula', 'cedula Extranjeria' => 'Cedula Extranjeria', 'NIT' => 'NIT'];
-
-    return view('person.create', compact('person', 'teamWorks', 'users', 'towns', 'numberPhones', 'usersName', 'regions', 'roles', 'identificationTypes'));
+    
+    $numberPhoneId = request('numberPhoneId');
+    
+    // Obtener el número de teléfono correspondiente al ID seleccionado
+    $numberPhone = NumberPhone::find($numberPhoneId);
+    
+    return view('person.create', compact('person', 'teamWorks', 'users', 'towns', 'numberPhones', 'usersName', 'regions', 'roles', 'identificationTypes', 'numberPhoneId', 'numberPhone'));
 }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -69,7 +73,8 @@ class PersonController extends Controller
 {
     $customMessages = [
         'required' => 'El campo es obligatorio.',
-        'id_card.unique' => 'El número de identificación ya esta en uso',
+        'id_card.unique' => 'El número de identificación ya está en uso',
+        'users_id.unique' => 'El correo electrónico ya está en uso',
     ];
 
     $request->validate([
@@ -77,22 +82,32 @@ class PersonController extends Controller
             'required',
             Rule::unique('people', 'id_card')->ignore($request->id),
         ],
+        'user_name' => 'required',
         'team_works_id' => 'required',
-        'number_phones_id' => 'required',
+        'phone_number' => 'required', // Asegúrate de que el campo del número de teléfono esté presente en la solicitud
         'region' => 'required',
         'towns_id' => 'required',
-        'users_id' => 'required',
+        'users_id' => [
+            'required',
+            Rule::unique('people', 'users_id')->ignore($request->id),
+        ],
         'rol' => 'required',
         'identification_type' => 'required',
-        'user_name' => 'required',
     ], $customMessages);
 
-    // Crear una nueva instancia de Persona y asignar los valores del formulario
+
+    
+    // Crear el número telefónico
+    $numberPhone = NumberPhone::create([
+        'number' => $request->input('phone_number')
+    ]);
+
+    // Crear la persona y asignar el ID del número telefónico
     $person = new Person();
     $person->id_card = $request->input('id_card');
     $person->name = $request->input('user_name');
     $person->team_works_id = $request->input('team_works_id');
-    $person->number_phones_id = $request->input('number_phones_id');
+    $person->number_phones_id = $numberPhone->id; // Asignar el ID del número telefónico
     $person->addres = $request->input('addres');
     $person->region_id = $request->input('region');
     $person->towns_id = $request->input('towns_id');
@@ -134,25 +149,28 @@ class PersonController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        // Obtener la persona a editar
-        $person = Person::find($id);
-        
-        // Obtener listas de selección para otros campos
-       
-        $usersName = User::pluck('name', 'id');
-        $teamWorks = TeamWork::pluck('assigned_work', 'id');
-        $numberPhones = NumberPhone::pluck('number','id');
-        $regions = Region::pluck('name', 'id');;
-        $towns = Town::pluck('name','id');
-        $users = User::pluck('email', 'id');
-
-        
-        
+{
+    // Obtener la persona a editar
+    $person = Person::find($id);
     
-        // Pasar los datos a la vista de edición
-        return view('person.edit', compact('person', 'teamWorks', 'users', 'towns', 'numberPhones', 'usersName', 'regions'));
-    }
+    // Obtener el número de teléfono asociado a la persona
+    $numberPhoneId = $person->number_phones_id;
+    $numberPhone = NumberPhone::find($numberPhoneId);
+   
+    // Obtener listas de selección para otros campos
+    $usersName = User::pluck('name', 'id');
+    $teamWorks = TeamWork::pluck('assigned_work', 'id');
+
+    
+    $regions = Region::pluck('name', 'id');
+
+
+    $towns = Town::pluck('name','id');
+    $users = User::pluck('email', 'id');
+
+    // Pasar los datos a la vista de edición
+    return view('person.edit', compact('person', 'teamWorks', 'users', 'towns', 'numberPhone', 'usersName', 'regions', 'numberPhoneId'));
+}
 
     /**
      * Update the specified resource in storage.
@@ -162,15 +180,43 @@ class PersonController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Person $person)
-    {
-        request()->validate(Person::$rules);
+{
+    // Validar la solicitud
+ 
+        
+        $customMessages = [
+            'required' => 'El campo es obligatorio.',
+            'id_card.unique' => 'El número de identificación ya está en uso',
+            'users_id.unique' => 'El correo electrónico ya está en uso',
+        ];
+    
+        $request->validate([
+           
+            'user_name' => 'required',
+            'team_works_id' => 'required',
+            'phone_number' => 'required', // Asegúrate de que el campo del número de teléfono esté presente en la solicitud
+            'region' => 'required',
+            'towns_id' => 'required',
+            'rol' => 'required',
+            'identification_type' => 'required',
+        ], $customMessages);
 
-        $person->update($request->all());
 
-        return redirect()->route('person.index')
-            ->with('success', 'Persona actualizada exitosamente');
+    
+
+    // Actualizar los datos de la persona
+    $person->update($request->all());
+
+    // Actualizar el número de teléfono asociado a la persona si se ha cambiado en el formulario
+    if ($request->has('phone_number')) {
+        $numberPhoneId = $person->number_phones_id;
+        $numberPhone = NumberPhone::find($numberPhoneId);
+        $numberPhone->update(['number' => $request->phone_number]);
     }
 
+    return redirect()->route('person.index')
+        ->with('success', 'Persona actualizada exitosamente');
+}
     /**
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
