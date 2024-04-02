@@ -13,16 +13,19 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Update') }} Detail Sale</span>
+                        <span class="card-title">{{ __('Editar') }} detalle Venta </span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('detail-sale.update', $detailSale->id) }}"  role="form" enctype="multipart/form-data">
+
+                        <form method="POST" action="{{ route('detail-sale.update', $detailSale->id ) }}"
+                            role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
 
                             @include('detail-sale.form')
-
+                            
                         </form>
+
                     </div>
                 </div>
             </div>

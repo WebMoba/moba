@@ -46,16 +46,17 @@ class DetailSale extends Model
      */
     public function product()
     {
-        return $this->hasOne('App\Models\Product', 'id', 'products_id');
+        return $this->belongsTo(Product::class, 'product_id');
     }
+    
     
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function sale()
     {
-        return $this->hasOne('App\Models\Sale', 'id', 'sales_id');
+        return $this->belongsTo(Sale::class, 'sales_id');
     }
-    
+        
 
 }

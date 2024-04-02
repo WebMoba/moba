@@ -13,8 +13,17 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Detail Sale') }}
+                                {{ __('Detalle venta') }}
                             </span>
+
+                            <form action= "{{ route('detail-sale.index' )}}" method="GET" class="d-flex align-items-center;">
+                                <div class="col-auto">
+                                <input type="text" class="form-control" id="search" name="search" placeholder="Buscar por Nombre">
+                                </div>
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
+                                </div>
+                            </form>
 
                              <div class="float-right">
                                 <a href="{{ route('detail-sale.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
@@ -48,22 +57,22 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($detailSales as $detailSale)
+                                    @foreach ($detailSale as $detailSales)
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $detailSale->quantity }}</td>
-											<td>{{ $detailSale->price_unit }}</td>
-											<td>{{ $detailSale->subtotal }}</td>
-											<td>{{ $detailSale->discount }}</td>
-											<td>{{ $detailSale->total }}</td>
-											<td>{{ $detailSale->sales_id }}</td>
-											<td>{{ $detailSale->products_id }}</td>
+											<td>{{ $detailSales->quantity }}</td>
+											<td>{{ $detailSales->price_unit }}</td>
+											<td>{{ $detailSales->subtotal }}</td>
+											<td>{{ $detailSales->discount }}</td>
+											<td>{{ $detailSales->total }}</td>
+											<td>{{ $detailSales->sales_id }}</td>
+											<td>{{ $detailSales->products_id }}</td>
 
                                             <td>
-                                                <form action="{{ route('detail-sale.destroy',$detailSale->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('detail-sale.show',$detailSale->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('detail-sale.edit',$detailSale->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
+                                                <form action="{{ route('detail-sale.destroy',$detailSales->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('detail-sale.show',$detailSales->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('detail-sale.edit',$detailSales->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
@@ -71,12 +80,18 @@
                                             </td>
                                         </tr>
                                     @endforeach
+
+
+                                    
                                 </tbody>
                             </table>
                         </div>
                     </div>
+
+
+                    
                 </div>
-                {!! $detailSales->links() !!}
+                {!! $detailSale->links() !!}
             </div>
         </div>
     </div>

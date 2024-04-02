@@ -42,7 +42,9 @@ class Sale extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function detailSales()
+   
+
+     public function detailSales()
     {
         return $this->hasMany('App\Models\DetailSale', 'sales_id', 'id');
     }
@@ -63,5 +65,15 @@ class Sale extends Model
         return $this->hasOne('App\Models\Quote', 'id', 'quotes_id');
     }
     
-
+    public function product()
+{
+    return $this->hasManyThrough(
+        Product::class,
+        DetailSale::class,
+        'sales_id', // Clave foránea en la tabla intermedia (DetailSale) que apunta a Sale
+        'id', // Clave foránea en la tabla intermedia (DetailSale) que apunta a Product
+        'id', // Clave local en el modelo Sale
+        'products_id' // Clave local en el modelo Product
+    );
+}
 }

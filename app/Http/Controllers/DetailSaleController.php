@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\Sale;
 use App\Models\DetailSale;
 use Illuminate\Http\Request;
-
 /**
  * Class DetailSaleController
  * @package App\Http\Controllers
@@ -18,10 +19,10 @@ class DetailSaleController extends Controller
      */
     public function index()
     {
-        $detailSales = DetailSale::paginate();
+        $detailSale = DetailSale::paginate();
 
-        return view('detail-sale.index', compact('detailSales'))
-            ->with('i', (request()->input('page', 1) - 1) * $detailSales->perPage());
+        return view('detail-sale.index', compact('detailSale'))
+            ->with('i', (request()->input('page', 1) - 1) * $detailSale->perPage());
     }
 
     /**
@@ -29,10 +30,12 @@ class DetailSaleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+        public function create()
     {
         $detailSale = new DetailSale();
-        return view('detail-sale.create', compact('detailSale'));
+        $products = Product::pluck('name', 'id'); // Obtener los productos
+
+        return view('detail-sale.create', compact('detailSale', 'products'));
     }
 
     /**
@@ -45,7 +48,9 @@ class DetailSaleController extends Controller
     {
         request()->validate(DetailSale::$rules);
 
-        $detailSale = DetailSale::create($request->all());
+        $detailSale = DetailSale::create([
+            'products_id' => $request->product_id,
+        ]);
 
         return redirect()->route('detail-sale.index')
             ->with('success', 'DetailSale created successfully.');
@@ -75,15 +80,17 @@ class DetailSaleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        $detailSale = DetailSale::find($id);
-       
-        if(!$detailSale){
-            return redirect()->route('detail-sale.index')->with('error', 'DetailSale no funciona');
-        }
+{
+    $detailSale = DetailSale::find($id);
 
-        return view('detail-sale.edit', compact('detailSale'));
+    if (!$detailSale) {
+        return redirect()->route('detail-sale.index')->with('error', 'DetailSale no funciona');
     }
+
+    $products = Product::pluck('name', 'id'); // Obtener los productos
+
+    return view('detail-sale.edit', compact('detailSale', 'products'));
+}
 
     /**
      * Update the specified resource in storage.
@@ -112,6 +119,6 @@ class DetailSaleController extends Controller
         $detailSale = DetailSale::find($id)->delete();
 
         return redirect()->route('detail-sale.index')
-            ->with('success', 'DetailSale deleted successfully');
+            ->with('success', 'detalle de venta eliminada con exito');
     }
 }

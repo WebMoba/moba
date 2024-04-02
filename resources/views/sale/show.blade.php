@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ $sale->name ?? "{{ __('Show') Sale" }}
+    {{ $sale->name ?? "{{ __('mostrar') Sale" }}
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} Sale</span>
+                            <span class="card-title">{{ __('Vista') }} Venta</span>
                         </div>
                         <div class="float-right">
                             <a class="btn btn-danger" href="{{ route('sales.index') }}"> {{ __('Volver') }}</a>
@@ -36,6 +36,44 @@
                             <strong>Id Cotización:</strong>
                             {{ $sale->quotes_id }}
                         </div>
+
+                  
+
+
+
+                                <h2> <strong> Detalle de la Venta</strong></h2>
+
+                                <div class="form-group">
+                                    <strong>Nombre Producto:</strong>
+                                    {{ $detailSale->products_id }}
+                                </div>
+
+
+                                <div class="form-group">
+                                    <strong>Cantidad:</strong>
+                                    {{ $detailSale->quantity }}
+                                </div>
+                                <div class="form-group">
+                                    <strong>Precio unitario:</strong>
+                                    {{ $detailSale->price_unit }}
+                                </div>
+                                <div class="form-group">
+                                    <strong>Subtotal:</strong>
+                                    {{ $detailSale->subtotal }}
+                                </div>
+                                <div class="form-group">
+                                    <strong>Porcentaje de descuento:</strong>
+                                    {{ $detailSale->discount }}
+                                </div>
+                                <div class="form-group">
+                                    <strong>Total:</strong>
+                                    {{ $detailSale->total }}
+                                </div>
+
+                                <div class="form-group">
+                                    <strong>Nombre Producto:</strong>
+                                    {{ $detailSale->products_id }}
+                                </div>
 
                     </div>
                 </div>

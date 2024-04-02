@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} Detail Sale</span>
+                            <span class="card-title">{{ __('Vista') }} Detalle venta</span>
                         </div>
                         <div class="float-right">
                             <a class="btn btn-danger" href="{{ route('detail-sale.index') }}"> {{ __('Volver') }}</a>
@@ -46,8 +46,8 @@
                             {{ $detailSale->sales_id }}
                         </div>
                         <div class="form-group">
-                            <strong>Producto Id:</strong>
-                            {{ $detailSale->products_id }}
+                            <strong>Nombre Producto:</strong>
+                            {{ $detailSale->product_name }}
                         </div>
 
                     </div>
@@ -55,4 +55,5 @@
             </div>
         </div>
     </section>
+    
 @endsection
