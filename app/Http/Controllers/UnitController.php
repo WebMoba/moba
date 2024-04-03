@@ -99,6 +99,9 @@ class UnitController extends Controller
      */
     public function update(Request $request, Unit $unit)
     {
+        if ($unit->products()->exists() || $unit->materialsRaws()->exists()) {
+            return redirect()->back()->with('danger', 'Esta unidad está asociada a un producto o materia prima.');
+        }
         request()->validate(Unit::$rules);
 
         $unit->update($request->all());
@@ -116,13 +119,10 @@ class UnitController extends Controller
     {
         $unit = Unit::find($id);
 
-        if (!$unit) {
-            return redirect()->route('unit.index')->with('error', 'Unidad no encontrada.');
-        }
         $materialsRaws = $unit->materialsRaws();
 
         if ($unit->products()->exists() || $materialsRaws->exists()) {
-            return redirect()->route('unit.index')->with('warning', 'Esta unidad esta asociada a un producto o materia prima.');
+            return redirect()->route('unit.index')->with('danger', 'Esta unidad esta asociada a un producto o materia prima.');
         }
 
         $unit->delete();

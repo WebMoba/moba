@@ -5,6 +5,16 @@
 @endsection
 
 @section('content')
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success text-center">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
+    @if ($message = Session::get('danger'))
+        <div class="alert alert-danger text-center">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -36,7 +46,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">

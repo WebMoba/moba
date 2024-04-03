@@ -44,8 +44,8 @@ class ProductController extends Controller
     {
         $categories_products_service = CategoriesProductsService::where('type', 'producto')->pluck('name', 'id');
 
-        if ($categories_products_service->isEmpty()) {
-            return redirect()->back()->with('error', 'No hay categorías de producto disponibles.');
+        if (empty($categories_products_service)) {
+            return redirect()->back()->with('danger', 'No hay categorías de producto disponibles.');
         }
 
         $product = new Product();
@@ -115,6 +115,11 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        if ($product->detailQuotes()->exists() || $product->detailSales()->exists()) {
+            // Show alert if the product is in use
+            return redirect()->back()->with('danger', 'Este producto está asociado a una cotización, venta o materia prima.');
+        }
+    
         $customMessages = ['required' => 'El campo es obligatorio.'];
 
         $request->validate(Product::$rules, $customMessages);
@@ -138,7 +143,12 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = Product::find($id)->delete();
+        $product = Product::find($id);
+
+        if ($product->detailQuotes()->exists() || $product->detailSales()->exists()) {
+            return redirect()->route('product.index')->with('danger', 'Este producto está asociado a una cotización, venta o materia prima.');
+        }
+        $product->delete();
 
         return redirect()->route('product.index')
             ->with('success', 'Producto Borrado Exitosamente.');
