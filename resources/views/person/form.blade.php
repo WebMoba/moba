@@ -4,17 +4,9 @@
 
     <div class="box-body">
 
-    <div class="form-group" style="display: none">
-            {{ Form::label('Numero Celular') }}
-            {{ Form::text('number_phones_id', request('numberPhoneId'), ['class' => 'form-control', 'readonly' => true]) }} <!-- Mostrar el ID del número de teléfono -->
-        </div>
-        
-        <div class="form-group">
-            {{ Form::label('Numero de Celular') }}
-        <input type="text" class="form-control" value="{{ request('phoneNumber') }}" readonly> <!-- Mostrar el número de teléfono -->
-        </div>
-            <a href="{{ route('number-phone.index') }}" class="btn btn-primary mt-2">Seleccionar Celular</a>
-        </div>
+       
+   
+
         <div class="form-group">
             {{ Form::label('Rol') }}
             {{ Form::select('rol', ['Administrador' => 'Administrador', 'Cliente' => 'Cliente', 'Proveedor' => 'Proveedor'], $person->rol, ['class' => 'form-control' . ($errors->has('rol') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona un rol']) }}
@@ -42,6 +34,16 @@
             {{ Form::text('addres', $person->addres ?: 'N/A', ['class' => 'form-control' . ($errors->has('addres') ? ' is-invalid' : ''), 'placeholder' => 'Direccion']) }}
             {!! $errors->first('addres', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+
+        <div class="form-group" style="display: none">
+        {{ Form::label('Numero Celular') }}
+        {{ Form::text('number_phones_id', $numberPhoneId, ['class' => 'form-control', 'readonly' => true]) }} <!-- Mostrar el ID del número de teléfono -->
+        </div>
+        
+        <div class="form-group">
+         {{ Form::label('Número de Celular') }}
+        {{ Form::text('phone_number', isset($numberPhone) ? $numberPhone->number : '', ['class' => 'form-control', 'placeholder' => 'Número de teléfono']) }}
+        </div>
         <div class="form-group">
             {{ Form::label('Grupo de Trabajo') }}
             {{ Form::select('team_works_id', $teamWorks, $person->team_works_id, ['class' => 'form-control' . ($errors->has('team_works_id') ? ' is-invalid' : ''), 'placeholder' => 'Grupo de trabajo']) }}
@@ -66,7 +68,7 @@
 
         <div class="form-group">
             {{ Form::label('Usuario') }}
-            {{ Form::select('users_id', $users, $person->users_id, ['class' => 'form-control' . ($errors->has('users_id') ? ' is-invalid' : ''), 'placeholder' => 'Usuario']) }}
+            {{ Form::select('users_id', $users, $person->users_id, ['class' => 'form-control' . ($errors->has('users_id') ? ' is-invalid' : ''), 'placeholder' => 'Correo Electronico']) }}
             {!! $errors->first('users_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 

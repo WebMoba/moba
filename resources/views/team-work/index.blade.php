@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@if(Session::has('msj'))
+{{ Session::get('msj')}}
+@endif
+
 @section('template_title')
     Team Work
 @endsection
@@ -13,12 +17,20 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Team Work') }}
+                                {{ __('Equipo de trabajo') }}
                             </span>
+                                <form action="{{route('team-works.index')}}" method="get" class="d-flex align-items-center">
+                                        <div class="col-auto mx-1">
+                                            <input type="text" class="form-control" name="search" id="search" placeholder="Buscar por id o especialidad" value="{{$search}}" >
+                                        </div>
+                                        <div class="col-auto mx-1">
+                                            <input type="submit" value="Buscar" class="btn btn-primary">
+                                        </div>
+                                </form>
 
                              <div class="float-right">
                                 <a href="{{ route('team-works.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('Crear equipo de trabajo') }}
                                 </a>
                               </div>
                         </div>
@@ -34,34 +46,36 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No</th>
-                                        
-										<th>Specialty</th>
-										<th>Assigned Work</th>
-										<th>Assigned Date</th>
-										<th>Projects Id</th>
-
-                                        <th></th>
+                                        <th>Id</th>
+										<th>Especialidad</th>
+										<th>Trabajo asignado</th>
+										<th>Fecha asignada</th>
+										<th>Proyecto</th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($teamWorks as $teamWork)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
-                                            
+                                            <td>{{ $teamWork->id }}</td>
 											<td>{{ $teamWork->specialty }}</td>
 											<td>{{ $teamWork->assigned_work }}</td>
 											<td>{{ $teamWork->assigned_date }}</td>
-											<td>{{ $teamWork->projects_id }}</td>
+											<td>{{ $teamWork->project->name }}</td>
 
                                             <td>
                                                 <form action="{{ route('team-works.destroy',$teamWork->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('team-works.show',$teamWork->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('team-works.edit',$teamWork->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('team-works.show',$teamWork->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('team-works.edit',$teamWork->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Borrar') }}</button>
                                                 </form>
+                                                <div class="float-right">
+                                                    <a href="{{ route('pdf.teamwork') }}" class="btn btn-info btn-sm float-right">
+                                                    <i class="fa fa-file-pdf"></i> {{ __('Generar PDF') }}
+                                                    </a>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach

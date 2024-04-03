@@ -42,14 +42,18 @@ class NumberPhoneController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(NumberPhone::$rules);
+        // Validar la solicitud
+        $request->validate([
+            'number' => 'required', // Asegúrate de que el campo 'number' no esté vacío
+        ]);
 
+        // Crear el número de teléfono en la base de datos
         $numberPhone = NumberPhone::create($request->all());
 
+        // Redirigir con un mensaje de éxito
         return redirect()->route('number-phone.index')
-            ->with('success', 'Numero de Telefono creado con exito.');
+            ->with('success', 'Número de Teléfono creado con éxito.');
     }
-
     /**
      * Display the specified resource.
      *
