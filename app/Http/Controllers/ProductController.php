@@ -148,6 +148,9 @@ class ProductController extends Controller
         if ($product->detailQuotes()->exists() || $product->detailSales()->exists()) {
             return redirect()->route('product.index')->with('danger', 'Este producto está asociado a una cotización, venta o materia prima.');
         }
+
+        Storage::disk('public')->delete($product->image);
+        
         $product->delete();
 
         return redirect()->route('product.index')
