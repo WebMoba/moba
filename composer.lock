@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "284c8b786095eb8273609a08a9654555",
+    "content-hash": "a06f588b84852c6edd442153ee9d313f",
     "packages": [
         {
             "name": "archtechx/enums",
@@ -1557,16 +1557,16 @@
         },
         {
             "name": "laravel-lang/lang",
-            "version": "14.6.0",
+            "version": "14.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Laravel-Lang/lang.git",
-                "reference": "eb3e2cc02c5e498063adb3be090e629c1c13ab65"
+                "reference": "6b196fc8d22fc1775d8acb15059814470687b275"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Laravel-Lang/lang/zipball/eb3e2cc02c5e498063adb3be090e629c1c13ab65",
-                "reference": "eb3e2cc02c5e498063adb3be090e629c1c13ab65",
+                "url": "https://api.github.com/repos/Laravel-Lang/lang/zipball/6b196fc8d22fc1775d8acb15059814470687b275",
+                "reference": "6b196fc8d22fc1775d8acb15059814470687b275",
                 "shasum": ""
             },
             "require": {
@@ -1613,7 +1613,7 @@
                 "issues": "https://github.com/Laravel-Lang/lang/issues",
                 "source": "https://github.com/Laravel-Lang/lang"
             },
-            "time": "2024-03-19T02:58:45+00:00"
+            "time": "2024-03-22T18:18:21+00:00"
         },
         {
             "name": "laravel-lang/locale-list",
