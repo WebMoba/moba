@@ -1,26 +1,26 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ __('Update') }} Team Work
+    {{ __('Update') }} Project
 @endsection
 
 @section('content')
     <section class="content container-fluid">
-        <div class="row">
+        <div class="">
             <div class="col-md-12">
 
                 @includeif('partials.errors')
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Actualizar') }} equipo de trabajo</span>
+                        <span class="card-title">{{ __('Editar') }} Proyecto</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('team-works.update', $teamWork->id) }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('projects.update', $project->id) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
 
-                            @include('team-work.form')
+                            @include('project.form')
 
                         </form>
                     </div>

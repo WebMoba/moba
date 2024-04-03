@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ $teamWork->name ?? __('Show Team Work') }}
+    {{ $detailQuote->name ?? __('Show Detail Quote') }}
 @endsection
 
 @section('content')
@@ -11,31 +11,30 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Ver') }} equipo de trabajo</span>
+                            <span class="card-title">{{ __('Show') }} Detail Quote</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('team-works.index') }}"> {{ __('Volver') }}</a>
+                            <a class="btn btn-primary" href="{{ route('detail-quotes.index') }}"> {{ __('Back') }}</a>
                         </div>
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Especialidad:</strong>
-                            {{ $teamWork->specialty }}
+                            <strong>Services Id:</strong>
+                            {{ $detailQuote->services_id }}
                         </div>
                         <div class="form-group">
-                            <strong>Trabajo asignado:</strong>
-                            {{ $teamWork->assigned_work }}
+                            <strong>Products Id:</strong>
+                            {{ $detailQuote->products_id }}
                         </div>
                         <div class="form-group">
-                            <strong>Fecha asignada:</strong>
-                            {{ $teamWork->assigned_date }}
+                            <strong>Projects Id:</strong>
+                            {{ $detailQuote->projects_id }}
                         </div>
                         <div class="form-group">
-                            <strong>Proyecto:</strong>
-                            
-                            {{ $teamWork->projects_id }}
+                            <strong>Quotes Id:</strong>
+                            {{ $detailQuote->quotes_id }}
                         </div>
 
                     </div>

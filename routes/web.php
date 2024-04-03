@@ -33,7 +33,7 @@ use App\Http\Controllers\TeamWorkController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::resource('product', ProductController::class);

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ __('Update') }} Team Work
+    {{ __('Create') }} Detail Quote
 @endsection
 
 @section('content')
@@ -13,14 +13,13 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Actualizar') }} equipo de trabajo</span>
+                        <span class="card-title">{{ __('Crear') }} Detalle de Cotización</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('team-works.update', $teamWork->id) }}"  role="form" enctype="multipart/form-data">
-                            {{ method_field('PATCH') }}
+                        <form method="POST" action="{{ route('detail-quotes.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
-                            @include('team-work.form')
+                            @include('detail-quote.form')
 
                         </form>
                     </div>

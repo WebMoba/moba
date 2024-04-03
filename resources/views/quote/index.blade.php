@@ -1,11 +1,9 @@
 @extends('layouts.app')
-
 @if(Session::has('msj'))
 {{ Session::get('msj')}}
 @endif
-
 @section('template_title')
-    Team Work
+    Quote
 @endsection
 
 @section('content')
@@ -17,20 +15,20 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Equipo de trabajo') }}
+                                {{ __('Cottizaciones') }}
                             </span>
-                                <form action="{{route('team-works.index')}}" method="get" class="d-flex align-items-center">
-                                        <div class="col-auto mx-1">
-                                            <input type="text" class="form-control" name="search" id="search" placeholder="Buscar por id o especialidad" value="{{$search}}" >
-                                        </div>
-                                        <div class="col-auto mx-1">
-                                            <input type="submit" value="Buscar" class="btn btn-primary">
-                                        </div>
-                                </form>
+                                    <form action="{{route('quotes.index')}}" method="get" class="d-flex align-items-center">
+                                            <div class="col-auto mx-1">
+                                                <input type="text" class="form-control" name="search" placeholder="Buscar por id o descripción" id="search" value="{{$search}}">
+                                            </div>
+                                            <div class="col-auto mx-1">
+                                                <input type="submit" value="Buscar" class="btn btn-primary">
+                                            </div>
+                                    </form>
 
                              <div class="float-right">
-                                <a href="{{ route('team-works.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear equipo de trabajo') }}
+                                <a href="{{ route('quotes.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                  {{ __('Crear Cotización') }}
                                 </a>
                               </div>
                         </div>
@@ -47,32 +45,39 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>Id</th>
-										<th>Especialidad</th>
-										<th>Trabajo asignado</th>
-										<th>Fecha asignada</th>
-										<th>Proyecto</th>
+                                        
+										<th>Fecha de expedición</th>
+										<th>Descripción</th>
+										<th>Total</th>
+										<th>Descuento</th>
+										<th>Estado</th>
+										<th>Persona</th>
+
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($teamWorks as $teamWork)
+                                    @foreach ($quotes as $quote)
                                         <tr>
-                                            <td>{{ $teamWork->id }}</td>
-											<td>{{ $teamWork->specialty }}</td>
-											<td>{{ $teamWork->assigned_work }}</td>
-											<td>{{ $teamWork->assigned_date }}</td>
-											<td>{{ $teamWork->project->name }}</td>
+                                            <td>{{ $quote->id }}</td>
+                                            
+											<td>{{ $quote->date_issuance }}</td>
+											<td>{{ $quote->description }}</td>
+											<td>{{ $quote->total }}</td>
+											<td>{{ $quote->discount }}</td>
+											<td>{{ $quote->status }}</td>
+											<td>{{ $quote->people_id }}</td>
 
                                             <td>
-                                                <form action="{{ route('team-works.destroy',$teamWork->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('team-works.show',$teamWork->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('team-works.edit',$teamWork->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
+                                                <form action="{{ route('quotes.destroy',$quote->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('quotes.show',$quote->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('quotes.edit',$quote->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Borrar') }}</button>
                                                 </form>
                                                 <div class="float-right">
-                                                    <a href="{{ route('pdf.teamwork') }}" class="btn btn-info btn-sm float-right">
+                                                    <a href="{{ route('pdf.quote') }}" class="btn btn-info btn-sm float-right">
                                                     <i class="fa fa-file-pdf"></i> {{ __('Generar PDF') }}
                                                     </a>
                                                 </div>
@@ -84,7 +89,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $teamWorks->links() !!}
+                {!! $quotes->links() !!}
             </div>
         </div>
     </div>
