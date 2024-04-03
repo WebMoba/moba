@@ -12,7 +12,7 @@
                 @includeif('partials.errors')
 
                 <div class="card card-default">
-                    <div class="card-header">
+                    <div class="card-header d-flex justify-content-between align-items-center">
                         <span class="card-title">{{ __('Crear') }} Unidad</span>
                         <a class="btn btn-primary" href="{{ route('unit.index') }}">{{ __('Volver') }}</a>
                     </div>
