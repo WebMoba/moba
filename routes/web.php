@@ -1,6 +1,5 @@
 <?php
 
-
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\BusquedaController;
@@ -36,6 +35,12 @@ use App\Http\Controllers\TeamWorkController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('product', ProductController::class);
+Route::resource('unit', UnitController::class);
+
+Route::get('/pdf/product', [ProductController::class, 'generatePDF'])->name('pdf.product');
+Route::get('/pdf/unit', [UnitController::class, 'generatePDF'])->name('pdf.unit');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -89,9 +94,9 @@ Route::middleware('auth')->group(function () {
     /** fin de Controladores Sale y DetailSale  */
 
     //projects,teamwork y quote - fabian
-    Route::resource('projects', App\Http\Controllers\ProjectController::class)->middleware('auth');
-    Route::resource('team-works', App\Http\Controllers\TeamWorkController::class)->middleware('auth');
-    Route::resource('quotes', App\Http\Controllers\QuoteController::class)->middleware('auth');
+    Route::resource('projects', ProjectController::class)->middleware('auth');
+    Route::resource('team-works', TeamWorkController::class)->middleware('auth');
+    Route::resource('quotes', QuoteController::class)->middleware('auth');
     Route::get('/pdf/project', [ProjectController::class, 'generatePDF'])->name('pdf.project');
     Route::get('/pdf/teamwork', [TeamWorkController::class, 'generatePDF'])->name('pdf.teamwork');
     Route::get('/pdf/quote', [QuoteController::class, 'generatePDF'])->name('pdf.quote');

@@ -93,10 +93,11 @@ class EventController extends Controller
     public function edit($id)
     {
         $event = Event::find($id);
-
+        // Formatea las fechas para que se muestren correctamente en los campos de entrada de fecha
+        $event->date_start = optional($event->date_start)->format('Y-m-d');
+        $event->date_end = optional($event->date_end)->format('Y-m-d');
         return view('event.edit', compact('event'));
     }
-
     /**
      * Update the specified resource in storage.
      *

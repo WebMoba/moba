@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ $event->name ?? "{{ __('Show') Event" }}
+    {{ $event->name ??  __('Show Event') }}
 @endsection
 
 @section('content')

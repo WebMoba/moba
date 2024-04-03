@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ $teamWork->name ?? "{{ __('Show') Team Work" }}
+    {{ $teamWork->name ??  __('Show Team Work') }}
 @endsection
 
 @section('content')
