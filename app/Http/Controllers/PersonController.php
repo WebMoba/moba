@@ -44,6 +44,8 @@ class PersonController extends Controller
 {
     $person = new Person();
     
+    $person->disable = false;
+    
     // Obtener listas de datos necesarios para los campos select en el formulario
     $regions = Region::pluck('name', 'id');
     $usersName = User::pluck('name', 'id');
@@ -114,6 +116,8 @@ class PersonController extends Controller
     $person->users_id = $request->input('users_id');
     $person->rol = $request->input('rol');
     $person->identification_type = $request->input('identification_type');
+
+    $person->disable = false;
 
     // Guardar la persona en la base de datos
     $person->save();
@@ -223,20 +227,19 @@ class PersonController extends Controller
      * @throws \Exception
      */
     public function destroy($id)
-{
-    // Encuentra y elimina la persona con el ID dado
-    $person = Person::find($id);
-    if (!$person) {
-        return redirect()->route('person.index')->with('error', 'La persona no existe');
-    }
-    $person->delete();
+    {
+        // Encuentra la persona con el ID dado
+        $person = Person::find($id);
+        if (!$person) {
+            return redirect()->route('person.index')->with('error', 'La persona no existe');
+        }
     
-    // Luego, busca y elimina el registro de número de teléfono asociado a esa persona
-    $numberPhoneId = $person->number_phones_id;
-    NumberPhone::where('id', $numberPhoneId)->delete();
-
-    return redirect()->route('person.index')->with('success', 'Persona y su número de teléfono asociado eliminados con éxito');
-}
+        // Cambia el estado de la persona
+        $person->disable = !$person->disable;
+        $person->save();
+    
+        return redirect()->route('person.index')->with('success', 'Estado de la persona cambiado con éxito');
+    }
 
 public function generatePDF(Request $request)
 {

@@ -76,13 +76,15 @@
 											<td>{{ $person->user ? $person->user->email: 'N/A' }}</td>
 
                                             <td>
-                                                <form action="{{ route('person.destroy',$person->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('person.show',$person->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('person.edit',$person->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Está seguro de que desea eliminar a la persona?')"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
-                                                </form>
+                                            <form action="{{ route('person.destroy',$person->id) }}" method="POST">
+    <a class="btn btn-sm btn-primary {{ $person->disable ? 'disabled' : '' }}" href="{{ route('person.show',$person->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}</a>
+    <a class="btn btn-sm btn-success {{ $person->disable ? 'disabled' : '' }}" href="{{ route('person.edit',$person->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Está seguro de que desea cambiar el estado de la persona?')">
+        <i class="fa fa-fw fa-trash"></i> {{ $person->disable ? 'Habilitar' : 'Deshabilitar' }}
+    </button>
+</form>
                                             </td>
                                         </tr>
                                     @endforeach
