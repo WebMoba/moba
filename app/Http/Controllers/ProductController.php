@@ -26,9 +26,9 @@ class ProductController extends Controller
 
         if (!empty($search)) {
             $products = Product::where('name', 'like', '%' . $search . '%')->with('unit', 'categoriesProductsService')
-                ->paginate();
+                ->paginate(10);
         } else {
-            $products = Product::with('unit', 'categoriesProductsService')->paginate();
+            $products = Product::with('unit', 'categoriesProductsService')->paginate(10);
         }
 
         return view('product.index', compact('products'))

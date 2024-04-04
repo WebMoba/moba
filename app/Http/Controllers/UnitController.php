@@ -25,9 +25,9 @@ class UnitController extends Controller
 
         if (!empty($search)) {
             $units = Unit::where('unit_type', 'like', '%' . $search . '%')
-                ->paginate();
+                ->paginate(10);
         } else {
-            $units = Unit::paginate();
+            $units = Unit::paginate(10);
         }
 
         return view('unit.index', compact('units'))
