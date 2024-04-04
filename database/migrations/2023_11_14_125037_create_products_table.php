@@ -19,6 +19,7 @@ return new class extends Migration
             $table->binary('image')->nullable();
             $table->integer('quantity')->nullable();
             $table->integer('price')->nullable();
+            $table->boolean('disable')->default(true);
             $table->timestamps();
             $table->integer('units_id')->index('fk_products_units1_idx');
             $table->integer('categories_products_services_id')->index('fk_products_categories_products_services1_idx');

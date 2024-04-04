@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('id', true);
             $table->string('name', 55)->nullable();
             $table->integer('existing_quantity')->nullable();
+            $table->boolean('disable')->default(true);
             $table->timestamps();
             $table->integer('units_id')->index('fk_materials_raws_units1_idx');
         });
