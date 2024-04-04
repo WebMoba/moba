@@ -264,7 +264,7 @@ public function generatePDF(Request $request)
     $pdf->setPaper('A4', 'portrait');
     $pdf->render();
 
-    return $pdf->stream('document.pdf');
+    return $pdf->stream('Personas.pdf');
 }
 
 public function getTownsByRegion(Request $request)
