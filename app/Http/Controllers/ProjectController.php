@@ -140,10 +140,22 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        $project = Project::find($id)->delete();
-
-        return redirect()->route('projects.index')
-            ->with('success', 'Proyecto borrado con éxito');
+        $project = Project::find($id);
+    
+        if (!$project) {
+            return redirect()->route('projects.index')
+                ->with('error', 'El número de teléfono no existe.');
+        }
+    
+        if ($project->detailQuotes()->exists()) {
+            return redirect()->route('projects.index')
+                ->with('warning', 'El proyecto está asociado a uno o más detalles de cotización y no puede ser eliminado.');
+        }else{
+            $project->delete();
+        
+            return redirect()->route('projects.index')
+                ->with('success', 'Proyecto borrado con éxito');;
+        }
     }
 
     public function generatePDF(Request $request)
@@ -169,7 +181,7 @@ class ProjectController extends Controller
         $pdf->loadHtml(view('project.pdf-template', $data));
         $pdf->setPaper('A4', 'portrait');
         $pdf->render();
-        return $pdf->stream('document.pdf');
+        return $pdf->stream('Listado_Proyectos.pdf');
     }
 
 }

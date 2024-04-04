@@ -20,7 +20,7 @@
         
         <div class="form-group">
             {{ Form::label('Fecha de finalización') }}
-            {{ Form::text('date_end', $project->date_end, ['class' => 'form-control' . ($errors->has('date_end') ? ' is-invalid' : ''), 'required', 'disabled' => $project-> exists, 'style' => 'background-color: #f8f9fa; cursor: allowed;','id' => 'date_end']) }}
+            {{ Form::date('date_end', $project->date_end, ['class' => 'form-control' . ($errors->has('date_end') ? ' is-invalid' : ''), 'required', 'disabled' => $project-> exists, 'style' => 'background-color: #f8f9fa; cursor: allowed;','id' => 'date_end']) }}
             {!! $errors->first('date_end', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">

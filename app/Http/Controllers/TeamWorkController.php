@@ -145,7 +145,7 @@ class TeamWorkController extends Controller
         $teamWork = TeamWork::find($id)->delete();
 
         return redirect()->route('team-works.index')
-            ->with('success', 'Equipo de trabajo actualizado con éxito');
+            ->with('success', 'Equipo de trabajo eliminado con éxito');
     }
     
     public function generatePDF(Request $request)
@@ -171,7 +171,7 @@ class TeamWorkController extends Controller
         $pdf->loadHtml(view('team-work.pdf-template', $data));
         $pdf->setPaper('A4', 'portrait');
         $pdf->render();
-        return $pdf->stream('document.pdf');
+        return $pdf->stream('Listado_Equipos_De_Trabajo.pdf');
     }
 }
 

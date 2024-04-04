@@ -100,7 +100,7 @@ class QuoteController extends Controller
                 'services_id' => $serviceId,
                 'products_id' => $request->products_id[$key],
                 'projects_id' => $request->projects_id[$key],
-                'quotes_id' => $request->quotes_id[$key],
+                // 'quotes_id' => $request->quotes_id[$key],
                 // Agrega aquí los demás campos necesarios para los detalles de la cotización
             ]);
             $quote->detailQuotes()->save($detalle);
@@ -221,7 +221,7 @@ class QuoteController extends Controller
         $pdf->loadHtml(view('quote.pdf-template', $data));
         $pdf->setPaper('A4', 'portrait');
         $pdf->render();
-        return $pdf->stream('document.pdf');
+        return $pdf->stream('Listado_Cotizaciones.pdf');
     }
 
 
