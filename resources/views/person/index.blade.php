@@ -17,7 +17,7 @@
                             </span>
 
                             <form action="{{ route('buscarPeople') }}" method="GET">
-                            <input type="text" name="findId" placeholder="Buscar....">
+                            <input type="text" name="findId" placeholder="Rol, Id, Direccion">
                             <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
                             </form>
 
@@ -31,6 +31,12 @@
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success">
                             <p>{{ $message }}</p>
+                        </div>
+                    @endif
+
+                    @if (!empty($mensaje))
+                        <div class="alert alert-warning">
+                            <p>{{ $mensaje }}</p>
                         </div>
                     @endif
 
@@ -75,10 +81,9 @@
                                                     <a class="btn btn-sm btn-success" href="{{ route('person.edit',$person->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    </b><button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Está seguro de que desea eliminar a la persona?')"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Está seguro de que desea eliminar a la persona?')"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
                                                 </form>
                                             </td>
-                                            
                                         </tr>
                                     @endforeach
                                 </tbody>
