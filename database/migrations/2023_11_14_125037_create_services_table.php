@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('date_start')->nullable();
             $table->date('date_end')->nullable();
             $table->binary('image')->nullable();
+            $table->boolean('disable')->default(true);
             $table->timestamps();
             $table->integer('categories_products_services_id')->index('fk_services_categories_products_services1_idx');
         });

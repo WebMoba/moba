@@ -19,3 +19,5 @@
 </x-app-layout>
  <!-- Aca va el inicio de las tablas -->
 
+
+ <h1>ESPACIO PARA PONER DISEÑO </h1>
