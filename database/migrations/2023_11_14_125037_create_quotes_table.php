@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('total')->nullable();
             $table->integer('discount')->nullable();
             $table->enum('status', ['aprobado', 'rechazado', 'pendiente'])->nullable();
+            $table->boolean('disable')->default(true);
             $table->timestamps();
             $table->integer('people_id')->index('fk_quotes_people1_idx');
         });

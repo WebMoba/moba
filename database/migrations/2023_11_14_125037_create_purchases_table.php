@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('id', true);
             $table->string('name', 55)->nullable();
             $table->date('date')->nullable();
+            $table->boolean('disable')->default(true);
             $table->timestamps();
             $table->integer('people_id')->index('fk_purchases_people1_idx');
         });

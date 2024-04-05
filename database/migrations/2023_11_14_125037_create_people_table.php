@@ -22,10 +22,12 @@ return new class extends Migration
             $table->enum('rol',['Administrador', 'Cliente', 'Proveedor']);
             $table->timestamps();
             $table->string('region_id')->nullable();
+            $table->boolean('disable')->default(true);
             $table->integer('team_works_id')->index('fk_people_team_works1_idx');
             $table->integer('number_phones_id')->index('fk_people_number_phones1_idx');
             $table->integer('towns_id')->index('fk_people_towns1_idx');
             $table->unsignedBigInteger('users_id')->index('fk_people_users1_idx');
+            
         });
     }
 
