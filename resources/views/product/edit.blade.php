@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ __('Editar') }} Product
+    {{ __('Editar') }} Producto
 @endsection
 
 @section('content')

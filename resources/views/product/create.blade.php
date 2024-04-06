@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ __('Crear') }} Product
+    {{ __('Crear') }} Producto
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
 
                 <div class="card card-default">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <span class="card-title">{{ __('Crear') }} Product</span>
+                        <span class="card-title">{{ __('Crear') }} Producto</span>
                         <a class="btn btn-primary" href="{{ route('product.index') }}">{{ __('Volver') }}</a>
                     </div>
                     <div class="card-body">

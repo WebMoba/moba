@@ -1,0 +1,19 @@
+.navbar {
+    background-color: #ccc;
+    /* Fondo gris */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.navbar-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.navbar-img-left,
+.navbar-img-right {
+    max-width: 50px;
+    height: auto;
+}
