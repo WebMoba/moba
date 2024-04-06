@@ -12,7 +12,11 @@
     gap: 10px;
 }
 
-.navbar-img-left,
+.navbar-img-left {
+    max-width: 50px;
+    height: auto;
+}
+
 .navbar-img-right {
     max-width: 50px;
     height: auto;
