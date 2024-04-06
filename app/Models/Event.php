@@ -36,6 +36,7 @@ class Event extends Model
      */
     protected $fillable = ['place','title','description','date_start','date_end','importance_range'];
 
+    
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

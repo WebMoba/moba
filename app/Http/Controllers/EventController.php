@@ -23,7 +23,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::orderBy('created_at', 'desc')->paginate();
+        $events = Event::orderBy('created_at', 'desc')->paginate(10);
 
         return view('event.index', compact('events'))
             ->with('i', (request()->input('page', 1) - 1) * $events->perPage());
@@ -93,10 +93,11 @@ class EventController extends Controller
     public function edit($id)
     {
         $event = Event::find($id);
-
+        // Formatea las fechas para que se muestren correctamente en los campos de entrada de fecha
+        $event->date_start = optional($event->date_start)->format('Y-m-d');
+        $event->date_end = optional($event->date_end)->format('Y-m-d');
         return view('event.edit', compact('event'));
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -143,32 +144,32 @@ class EventController extends Controller
     }
 
     public function generatePDF(Request $request)
-{
-    // Obtener el filtro de la solicitud
-    $filter = $request->input('findId');
+    {
+        // Obtener el filtro de la solicitud
+        $filter = $request->input('findId');
+        
+        // Obtener los datos de los eventos filtrados si se aplicó un filtro
+        if ($filter) {
+            $events = Event::where('place', $filter)->get();
+        } else {
+            // Si no hay filtro, obtener todos los eventos
+            $events = Event::all();
+        }
+        
+        // Pasar los datos a la vista pdf-template
+        $data = [
+            'events' => $events
+        ];
+        
+        // Generar el PDF
+        $pdf = new Dompdf();
+        $pdf->loadHtml(view('event.pdf-template', $data));
     
-    // Obtener los datos de los eventos filtrados si se aplicó un filtro
-    if ($filter) {
-        $events = Event::where('place', $filter)->get();
-    } else {
-        // Si no hay filtro, obtener todos los eventos
-        $events = Event::all();
+        $pdf->setPaper('A4', 'portrait');
+    
+        $pdf->render();
+    
+        return $pdf->stream('Eventos.pdf'); // Cambiado el nombre del archivo a "Eventos.pdf"
     }
-    
-    // Pasar los datos a la vista pdf-template
-    $data = [
-        'events' => $events
-    ];
-    
-    // Generar el PDF
-    $pdf = new Dompdf();
-    $pdf->loadHtml(view('event.pdf-template', $data));
-
-    $pdf->setPaper('A4', 'portrait');
-
-    $pdf->render();
-
-    return $pdf->stream('document.pdf');
-}
 
 }

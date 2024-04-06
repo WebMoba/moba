@@ -26,7 +26,7 @@
         @endif
 
 
-    <a class="btn btn-primary" href="{{ route('person.create') }}"> {{ __('Volver') }}</a><br><br>
+    <a class="btn btn-primary" href="{{ route('person.index') }}"> {{ __('Volver') }}</a><br><br>
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
@@ -70,27 +70,35 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($numberPhones as $numberPhone)
-                                <tr>
-                                <td>{{ ++$i }}</td>
-                                <td data-number="{{ $numberPhone->number }}">{{ $numberPhone->number }}</td>
-                                <td>
-                                <form action="{{ route('number-phone.destroy',$numberPhone->id) }}" method="POST">
-                                    <a class="btn btn-sm btn-primary show-phone" href="#" data-number-id="{{ $numberPhone->id }}">
-                                        <i class="fa fa-fw fa-eye"></i> {{ __('Agregar') }}
-                                    </a>
-                                    <a class="btn btn-sm btn-success" href="{{ route('number-phone.edit',$numberPhone->id) }}">
-                                        <i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}
-                                    </a>
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Está seguro de que desea eliminar el numero telefonico?')">
-                                        <i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}
-                                    </button>
-                                </form>
-                                 </td>
-                                  </tr>
-                                @endforeach
+
+                                
+@foreach ($numberPhones as $numberPhone)
+<tr>
+    <td>{{ ++$i }}</td>
+    <td>
+     
+            {{ $numberPhone->number }}
+        </a>
+    </td>
+    <td>
+        <form action="{{ route('number-phone.destroy',$numberPhone->id) }}" method="POST">
+            <a class="btn btn-sm btn-primary" href="{{ route('number-phone.show',$numberPhone->id) }}">
+                <i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}
+            </a>
+            <a class="btn btn-sm btn-success" href="{{ route('number-phone.edit',$numberPhone->id) }}">
+                <i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}
+            </a>
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Está seguro de que desea eliminar el número telefónico?')">
+                <i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}
+            </button>
+        </form>
+    </td>
+</tr>
+@endforeach
+
+
                                 </tbody>
                             </table>
                         </div>
