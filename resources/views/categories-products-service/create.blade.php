@@ -12,8 +12,9 @@
                 @includeif('partials.errors')
 
                 <div class="card card-default">
-                    <div class="card-header">
+                    <div class="card-header d-flex justify-content-between align-items-center">
                         <span class="card-title">{{ __('Crear') }} Categorias </span>
+                        <a class="btn btn-primary" href="{{ route('categories-products-service.index') }}"> {{ __('Volver') }}</a>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('categories-products-service.store') }}"  role="form" enctype="multipart/form-data">

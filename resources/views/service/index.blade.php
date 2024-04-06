@@ -5,6 +5,16 @@
 @endsection
 
 @section('content')
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success text-center">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
+    @if ($message = Session::get('danger'))
+        <div class="alert alert-danger text-center">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -18,14 +28,13 @@
                             <a href="{{ route('pdf.service') }}" class="btn btn-info btn-sm float-right">
                                 <i class="fa fa-file-pdf"></i> {{ __('Generar PDF') }}
                             </a>
-                            <form action="{{ route('service.index') }}" method="GET"
-                            class="d-flex align-items-center">
-                            <div class="col-auto">
-                                <input type="text" class="form-control " id="search" name="search">
-                                    
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
-                        </form>
+                            <form action="{{ route('service.index') }}" method="GET" class="d-flex align-items-center">
+                                <div class="col-auto">
+                                    <input type="text" class="form-control " id="search" name="search">
+
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
+                            </form>
                             <div class="float-right">
                                 <a href="{{ route('service.create') }}" class="btn btn-primary btn-sm float-right"
                                     data-placement="left">
@@ -41,7 +50,7 @@
                     @endif
 
                     <div class="card-body">
-                        
+
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
                                 <thead class="thead">

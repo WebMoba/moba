@@ -117,11 +117,11 @@ class CategoriesProductsServiceController extends Controller
         $categoriesProductsService = CategoriesProductsService::find($id);
         //verifica si la categoria existe 
         if (!$categoriesProductsService) {
-            return redirect()->route('categories-products-service.index')->with('error', 'categoria no encontrada.');
+            return redirect()->route('categories-products-service.index')->with('danger', 'categoria no encontrada.');
         }
         //verifica si la categoria esta asociada a un producto o un servicio
         if ($categoriesProductsService->services()->exists()) {
-            return redirect()->route('categories-products-service.index')->with('warning', 'Esta categoria esta asociada a un servicio o producto.');
+            return redirect()->route('categories-products-service.index')->with('danger', 'Esta categoria esta asociada a un servicio o producto.');
         }
         //si no esta asociada elimina la categoria 
         $categoriesProductsService->delete();

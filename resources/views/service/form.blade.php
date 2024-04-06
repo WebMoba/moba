@@ -13,15 +13,17 @@
         </div>
         <div class="form-group">
             {{ Form::label('Fecha de inicio') }}
-            {{ Form::date('date_start', $service->date_start, ['class' => 'form-control' . ($errors->has('date_start') ? ' is-invalid' : ''), 'min' => now()->format('Y-m-d')]) }}
+            {{ Form::date('date_start', $service->date_start ?? null, ['class' => 'form-control' . ($errors->has('date_start') ? ' is-invalid' : '')]) }}
             {!! $errors->first('date_start', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-
+        
         <div class="form-group">
-            {{ Form::label('Fecha de finalizacion') }}
-            {{ Form::date('date_end', $service->date_end, ['class' => 'form-control' . ($errors->has('date_end') ? ' is-invalid' : ''), 'min' => now()->format('Y-m-d')]) }}
+            {{ Form::label('Fecha final') }}
+            {{ Form::date('date_end', $service->date_end ?? null, ['class' => 'form-control' . ($errors->has('date_end') ? ' is-invalid' : '')]) }}
             {!! $errors->first('date_end', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        
+        
         <div class="form-group">
             {{ Form::label('Imagen') }}
             <br><img src="{{ asset('storage/' . $service->image) }}" width='150' height="150">

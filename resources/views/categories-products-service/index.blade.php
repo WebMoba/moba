@@ -5,8 +5,17 @@
 @endsection
 
 @section('content')
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success text-center">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
+    @if ($message = Session::get('danger'))
+        <div class="alert alert-danger text-center">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
     <div class="container-fluid">
-        
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
@@ -22,10 +31,11 @@
                             <form action="{{ route('categories-products-service.index') }}" method="GET"
                                 class="d-flex align-items-center">
                                 <div class="col-auto mr-2">
-                                    <input type="text" class="form-control " id="search" name="search" ></div>
-                                    <div class="col-auto">
-                                        <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
-                                    </div>
+                                    <input type="text" class="form-control " id="search" name="search">
+                                </div>
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
+                                </div>
                             </form>
 
                             <div class="float-right">
@@ -36,11 +46,6 @@
                             </div>
                         </div>
                     </div>
-                    @if ($message = Session::get('success'))
-                        <div class="alert alert-success">
-                            <p>{{ $message }}</p>
-                        </div>
-                    @endif
 
                     <div class="card-body">
                         <div class="card-body">
