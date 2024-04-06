@@ -46,7 +46,6 @@ class Product extends Model
      */
     protected $fillable = ['name','image','quantity','price','units_id','categories_products_services_id', 'disable'];
 
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */

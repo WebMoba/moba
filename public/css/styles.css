@@ -1,6 +1,5 @@
 .navbar {
-    background-color: #ccc;
-    /* Fondo gris */
+    background-color: #3E3E3F;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -9,15 +8,57 @@
 
 .navbar-buttons {
     display: flex;
-    gap: 10px;
+    gap: 20px;
 }
 
 .navbar-img-left {
-    max-width: 50px;
+    max-width: 5%;
     height: auto;
 }
 
 .navbar-img-right {
     max-width: 50px;
     height: auto;
+}
+
+.btn-primary {
+    background-color: transparent !important;
+    color: #fff;
+    border-color: transparent !important;
+}
+
+.btn-primary:hover {
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+
+.btn-primary:active,
+.btn-primary:focus {
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    border: none;
+}
+
+.dropdown-item:hover {
+    color: #24AAE1 !important;
+}
+
+.dropdown-menu {
+    background-color: transparent !important;
+    border-color: #9BBFCD !important;
+}
+
+.dropdown-menu .dropdown-item {
+    color: #24AAE1 !important;
+    background-color: transparent !important;
+    border-color: #9BBFCD !important;
+}
+
+.dropdown-menu .dropdown-divider {
+    border-top: 1px solid #9BBFCD;
 }

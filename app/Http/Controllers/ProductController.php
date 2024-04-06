@@ -48,7 +48,7 @@ class ProductController extends Controller
         if (empty($categories_products_service)) {
             return redirect()->back()->with('danger', 'No hay categorías de producto disponibles.');
         }
-
+        
         $product = new Product();
         $units = Unit::pluck('unit_type', 'id');
 
@@ -74,7 +74,7 @@ class ProductController extends Controller
         $product = Product::create(array_merge($request->all(), [
             'units_id' => $units_id,
             'image' => $request->file('image')->store('uploads', 'public'),
-            'disable' => 0, // Aquí estableces el valor de disable a 0
+            'disable' => 0,
         ]));
 
         return redirect()->route('product.index')
