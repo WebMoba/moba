@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('specialty', 65)->nullable();
             $table->text('assigned_work')->nullable();
             $table->date('assigned_date')->nullable();
+            $table->boolean('disable')->default(true);
             $table->timestamps();
             $table->integer('projects_id')->index('fk_team_works_projects1_idx');
         });

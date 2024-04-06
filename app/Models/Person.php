@@ -119,4 +119,6 @@ class Person extends Model
     {
         return $this->belongsTo(Region::class, 'region_id');
     }
+
+    
 }

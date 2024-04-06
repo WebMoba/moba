@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('description', 65)->nullable();
             $table->date('date_start')->nullable();
             $table->date('date_end')->nullable();
+            $table->boolean('disable')->default(true);
             $table->enum('status', ['en curso', 'finalizado', 'pausado', 'pendiente'])->nullable();
             $table->timestamps();
         });

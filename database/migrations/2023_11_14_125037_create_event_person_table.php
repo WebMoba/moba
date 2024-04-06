@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('event_person', function (Blueprint $table) {
+            $table->boolean('disable')->default(true);
             $table->integer('people_id')->index('fk_event_person_people1_idx');
             $table->integer('events_id')->index('fk_event_person_events1_idx');
         });
