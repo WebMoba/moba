@@ -44,10 +44,35 @@
            
             <!-- Contenido -->
             <div class="logo">
-
+             <!-- Logo instagram y facebook   -->
+            <div class="links">
+            <div class="linea grey"></div> <!-- Línea vertical antes de los logos -->
+                <div class="columna">
+                    <div class="logoRedes">
+                        <img src="{{ asset('storage/imgMoba/facebookGris.png') }}" alt="Logo de Facebook">
+                    </div>
+                    <div class="logoRedes">
+                        <img src="{{ asset('storage/imgMoba/instagramGris.png') }}" alt="Logo de Instagram">
+                    </div>
+                </div>
+                <div class="linea grey"></div> <!-- Línea vertical después de los logos -->
+            </div>
               <!-- Insersion de imagenes  -->
             <div class="logos"><img src="{{ asset('storage/imgMoba/LogoMoba.png') }}" alt="Imagen"></div>
             <div class="logos"><img src="{{ asset('storage/imgMoba/LogotipoTuArte.png') }}" alt="Imagen" id="img2"></div>
+            <div class="links">
+            <div class="linea"></div> <!-- Línea vertical antes de los logos -->
+                <div class="columna">
+                    <div class="logoRedes">
+                        <img src="{{ asset('storage/imgMoba/facebookRojo.png') }}" alt="Logo de Facebook">
+                    </div>
+                    <div class="logoRedes">
+                        <img src="{{ asset('storage/imgMoba/instagramRojo.png') }}" alt="Logo de Instagram">
+                    </div>
+                </div>
+                <div class="linea"></div> <!-- Línea vertical después de los logos -->
+            </div>
+            </div>
             </div>
             <!-- Contenido -->
 
@@ -68,12 +93,15 @@
         .container {
             
             height: 100%; /* Ajuste la altura del contenedor al 100% */
+       
         }
         .nav {
           
             height: 5vh;
             text-align: right;
             padding:20px 10px 1px 1px;
+            
+            
         }
         .letter{
             font-size: 14.4px Nunito, sans-serif;
@@ -91,6 +119,7 @@
             height: 60vh;
             width: 100%;
             margin-top: 8%;
+            
         }
         .logos{
             display: flex;
@@ -98,26 +127,49 @@
             justify-content: center;
             width: 45%;
             height: 95%;
+          
         }
 
         /* Ajustar el ancho y alto de la imagen 1 */
         .logos img {
-        width: 90%; 
-        height: 55%;
-        transition: width 0.7s, height 0.7s; 
-        cursor: pointer;
+            width: 80%; 
+            height: 35%;
+            transition: width 0.7s, height 0.7s; 
+            cursor: pointer;
         }
         /* Ajustar el ancho y alto de la imagen 1 */
         #img2{
-            width: 60%;
-            height: 95%
+            width: 53%;
+            height: 85%
         }
         .logos img:hover{
-            width: 92%;
-            height: 57%
+            width: 85%;
+            height: 40%
         }
         #img2:hover{
-            width: 62%;
-            height: 97%
+            width: 55%;
+            height: 90%
+        }
+        .links{
+            display: flex;
+            flex-direction: column; /* Establecer el diseño en columna */
+            align-items: center; /* Centrar verticalmente los elementos */
+            justify-content: center;
+            width: 5%;
+            height: 80%;
+        }
+        .logoRedes img{
+            width: 20px;
+            height: 20px;
+            margin-bottom: 10px;
+        }
+        .linea{
+            border: none;
+            border-left: 1px solid #F21630; /* Estilo de la línea vertical */
+            height: 50%; /* Altura de la línea */
+            margin: 10px 0; /* Espacio entre la línea y los elementos */
+        }
+        .linea.grey{
+            border-left: 1px solid #BCCCE0;
         }
 </style>
