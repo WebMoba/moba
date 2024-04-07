@@ -9,9 +9,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
-<body style="background-color: #000000;">
+<body>
 
     <nav class="navbar">
         <div class="container-fluid">
@@ -36,17 +37,31 @@
         </div>
     </nav>
 
+    <!-- Líneas verticales con iconos -->
+    <div class="vertical-line left-line">
+        <hr class="linea1">
+        <a href="https://www.instagram.com/moba_agencia"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.facebook.com/MOBAcomunicacionGrafica/"><i class="bi bi-facebook"></i></a>
+        <hr class="linea1">
+    </div>
+    <div class="vertical-line right-line">
+        <hr class="linea2">
+        <a href="https://www.instagram.com/moba_agencia"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.facebook.com/MOBAcomunicacionGrafica/"><i class="bi bi-facebook"></i></a>
+        <hr class="linea2">
+    </div>
+
     <!-- Contenido de la página aquí -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
     <script>
-        document.querySelector('.dropdown').addEventListener('mouseenter', function () {
+        document.querySelector('.dropdown').addEventListener('mouseenter', function() {
             this.querySelector('.dropdown-menu').classList.add('show');
         });
 
-        document.querySelector('.dropdown').addEventListener('mouseleave', function () {
+        document.querySelector('.dropdown').addEventListener('mouseleave', function() {
             this.querySelector('.dropdown-menu').classList.remove('show');
         });
     </script>
