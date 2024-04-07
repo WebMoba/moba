@@ -4,29 +4,27 @@
 
     <div class="box-body">
 
-       
-   
-
         <div class="form-group">
-            {{ Form::label('Rol') }}
+            {{ Form::label('Rol', null, ['class' => 'required']) }}
             {{ Form::select('rol', ['Administrador' => 'Administrador', 'Cliente' => 'Cliente', 'Proveedor' => 'Proveedor'], $person->rol, ['class' => 'form-control' . ($errors->has('rol') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona un rol']) }}
             {!! $errors->first('rol', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
         <div class="form-group">
-            {{ Form::label('Tipo Identificacion') }}
+            {{ Form::label('Tipo Identificacion', null, ['class' => 'required']) }}
             {{ Form::select('identification_type', ['cedula' => 'Cedula', 'cedula Extranjeria' => 'Cedula Extranjeria', 'NIT' => 'NIT'], $person->identification_type ?? null, ['class' => 'form-control' . ($errors->has('identification_type') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona un tipo de identificación']) }}
             {!! $errors->first('identification_type', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+
         <div class="form-group">
-            {{ Form::label('Identificacion') }}
+            {{ Form::label('Identificacion' , null, ['class' => 'required']) }}
             {{ Form::text('id_card', $person->id_card, ['class' => 'form-control' . ($errors->has('id_card') ? ' is-invalid' : ''), 'placeholder' => 'Identificacion']) }}
             {!! $errors->first('id_card', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-        {{ Form::label('Nombre') }}
-        {{ Form::select('user_name', $usersName, $person->user_id, ['class' => 'form-control' . ($errors->has('user_name') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
-        {!! $errors->first('user_name', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::label('Nombre' , null, ['class' => 'required']) }}
+            {{ Form::select('user_name', $usersName, $person->user_id, ['class' => 'form-control' . ($errors->has('user_name') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
+            {!! $errors->first('user_name', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
         <div class="form-group">
@@ -36,38 +34,35 @@
         </div>
 
         <div class="form-group" style="display: none">
-        {{ Form::label('Numero Celular') }}
-        {{ Form::text('number_phones_id', $numberPhoneId, ['class' => 'form-control', 'readonly' => true]) }} <!-- Mostrar el ID del número de teléfono -->
+            {{ Form::label('Numero Celular' , null, ['class' => 'required']) }}
+            {{ Form::text('number_phones_id', $numberPhoneId, ['class' => 'form-control', 'readonly' => true]) }} <!-- Mostrar el ID del número de teléfono -->
         </div>
         
         <div class="form-group">
-         {{ Form::label('Número de Celular') }}
-        {{ Form::text('phone_number', isset($numberPhone) ? $numberPhone->number : '', ['class' => 'form-control', 'placeholder' => 'Número de teléfono']) }}
+            {{ Form::label('Número de Celular' , null, ['class' => 'required']) }}
+            {{ Form::text('phone_number', isset($numberPhone) ? $numberPhone->number : '', ['class' => 'form-control', 'placeholder' => 'Número de teléfono']) }}
         </div>
+
         <div class="form-group">
-            {{ Form::label('Grupo de Trabajo') }}
+            {{ Form::label('Grupo de Trabajo' , null, ['class' => 'required']) }}
             {{ Form::select('team_works_id', $teamWorks, $person->team_works_id, ['class' => 'form-control' . ($errors->has('team_works_id') ? ' is-invalid' : ''), 'placeholder' => 'Grupo de trabajo']) }}
             {!! $errors->first('team_works_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
-       
-
-
         <div class="form-group">
-    {{ Form::label('Departamento') }}
-    {{ Form::select('region', $regions, $person->region, ['id' => 'regions_select', 'class' => 'form-control' . ($errors->has('region') ? ' is-invalid' : ''), 'placeholder' => 'Departamento']) }}
-    {!! $errors->first('region', '<div class="invalid-feedback">:message</div>') !!}
-</div>
+            {{ Form::label('Departamento' , null, ['class' => 'required']) }}
+            {{ Form::select('region', $regions, $person->region, ['id' => 'regions_select', 'class' => 'form-control' . ($errors->has('region') ? ' is-invalid' : ''), 'placeholder' => 'Departamento']) }}
+            {!! $errors->first('region', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
         
-    <div class="form-group">
-        {{ Form::label('Ciudad') }}
-        {{ Form::select('towns_id', $towns, $person->towns_id, ['id' => 'towns_select', 'class' => 'form-control' . ($errors->has('towns_id') ? ' is-invalid' : ''), 'placeholder' => 'Ciudad']) }}
-        {!! $errors->first('towns_id', '<div class="invalid-feedback">:message</div>') !!}
-    </div>
-
+        <div class="form-group">
+            {{ Form::label('Ciudad' , null, ['class' => 'required']) }}
+            {{ Form::select('towns_id', $towns, $person->towns_id, ['id' => 'towns_select', 'class' => 'form-control' . ($errors->has('towns_id') ? ' is-invalid' : ''), 'placeholder' => 'Ciudad']) }}
+            {!! $errors->first('towns_id', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
 
         <div class="form-group">
-            {{ Form::label('Usuario') }}
+            {{ Form::label('Usuario' , null, ['class' => 'required']) }}
             {{ Form::select('users_id', $users, $person->users_id, ['class' => 'form-control' . ($errors->has('users_id') ? ' is-invalid' : ''), 'placeholder' => 'Correo Electronico']) }}
             {!! $errors->first('users_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
@@ -105,3 +100,12 @@
         });
     });
 </script>
+
+
+<style>
+    .required::after {
+    content: "*";
+    color: red;
+    margin-left: 4px;
+}
+</style>

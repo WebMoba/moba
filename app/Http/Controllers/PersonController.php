@@ -86,7 +86,10 @@ class PersonController extends Controller
         ],
         'user_name' => 'required',
         'team_works_id' => 'required',
-        'phone_number' => 'required', // Asegúrate de que el campo del número de teléfono esté presente en la solicitud
+        'phone_number' => 'required', 
+        'numberPhone' => 'required',
+        'numberPhones'=>'required',
+        'numberPhoneId'=>'required',// Asegúrate de que el campo del número de teléfono esté presente en la solicitud
         'region' => 'required',
         'towns_id' => 'required',
         'users_id' => [

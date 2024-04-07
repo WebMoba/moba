@@ -64,13 +64,19 @@
 											<td>{{ $event->importance_range }}</td>
 
                                             <td>
-                                                <form action="{{ route('events.destroy',$event->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('events.show',$event->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('events.edit',$event->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Está seguro de que desea eliminar el evento?')"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
-                                                </form>
+                                            <form action="{{ route('events.destroy', $event->id) }}" method="POST">
+    <a class="btn btn-sm btn-primary {{ $event->disable ? 'disabled' : '' }}" href="{{ route('events.show', $event->id) }}">
+        <i class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}
+    </a>
+    <a class="btn btn-sm btn-success {{ $event->disable ? 'disabled' : '' }}" href="{{ route('events.edit', $event->id) }}">
+        <i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}
+    </a>
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Está seguro de que desea {{ $event->disable ? 'Habilitar' : 'Deshabilitar' }} el evento?')">
+        <i class="fa fa-fw fa-trash"></i> {{ $event->disable ? 'Habilitar' : 'Deshabilitar' }}
+    </button>
+</form>
                                             </td>
                                         </tr>
                                     @endforeach

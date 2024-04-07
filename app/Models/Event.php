@@ -45,6 +45,15 @@ class Event extends Model
     {
         return $this->hasMany('App\Models\EventPerson', 'events_id', 'id');
     }
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Al crear un nuevo evento, establecer el campo disable como false por defecto
+        static::creating(function ($event) {
+            $event->disable = false;
+        });
+    }
     
 
 }

@@ -65,6 +65,8 @@ class EventController extends Controller
             'importance_range' => 'required|string|in:baja,media,alta',
         ], $customMessages);
 
+
+        $request->merge(['disable' => false]);
         $event = Event::create($request->all());
 
         return redirect()->route('events.index')
@@ -135,13 +137,23 @@ class EventController extends Controller
      * @throws \Exception
      */
     public function destroy($id)
-    {
-        $event = Event::find($id)->delete();
-
-        return redirect()->route('events.index')
-
-           ->with('success', 'Evento Eliminado con Exito');
+{
+    $event = Event::find($id);
+    
+    if (!$event) {
+        return redirect()->route('events.index')->with('error', 'El evento no existe');
     }
+    
+    if ($event->disable) {
+        $event->disable = false;
+    } else {
+        $event->disable = true;
+    }
+    
+    $event->save();
+
+    return redirect()->route('events.index')->with('success', 'Estado del evento actualizado con éxito');
+}
 
     public function generatePDF(Request $request)
     {
