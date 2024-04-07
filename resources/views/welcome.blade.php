@@ -44,7 +44,9 @@
            
             <!-- Contenido -->
             <div class="logo">
-            <div class="logos"><img src="{{ asset('storage/imgMoba/Logotipo Moba-02.png') }}" alt="Imagen"></div>
+
+              <!-- Insersion de imagenes  -->
+            <div class="logos"><img src="{{ asset('storage/imgMoba/LogoMoba.png') }}" alt="Imagen"></div>
             <div class="logos"><img src="{{ asset('storage/imgMoba/LogotipoTuArte.png') }}" alt="Imagen" id="img2"></div>
             </div>
             <!-- Contenido -->
@@ -87,6 +89,7 @@
             align-items: center;
             justify-content: center;
             height: 60vh;
+            width: 100%;
             margin-top: 8%;
         }
         .logos{
@@ -96,13 +99,25 @@
             width: 45%;
             height: 95%;
         }
-        .logos img {
-        width: 90%; /* Ajustar el ancho de la imagen al 90% del div .logos */
-        height: 55%
-        }
-        #img2{
-            width: 68%;
-            height: 90%
-        }
 
+        /* Ajustar el ancho y alto de la imagen 1 */
+        .logos img {
+        width: 90%; 
+        height: 55%;
+        transition: width 0.7s, height 0.7s; 
+        cursor: pointer;
+        }
+        /* Ajustar el ancho y alto de la imagen 1 */
+        #img2{
+            width: 60%;
+            height: 95%
+        }
+        .logos img:hover{
+            width: 92%;
+            height: 57%
+        }
+        #img2:hover{
+            width: 62%;
+            height: 97%
+        }
 </style>
