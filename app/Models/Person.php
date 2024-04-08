@@ -81,7 +81,7 @@ class Person extends Model
      */
     public function quotes()
     {
-        return $this->hasMany('App\Models\Quote', 'people_id', 'id');
+        return $this->hasMany(Quote::class);
     }
     
     /**

@@ -74,7 +74,7 @@
                                                     <a class="btn btn-sm btn-success" href="{{ route('quotes.edit',$quote->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" onclick="return confirm('¿Está seguro de que desea eliminar esta cotización?')" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Borrar') }}</button>
+                                                    <button type="submit" onclick="return confirm('¿Está seguro de que desea cambiar el estado de esta cotización?')" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Cambiar estado') }}</button>
                                                 </form>
                                                 <div class="float-right">
                                                     <a href="{{ route('pdf.quote') }}" class="btn btn-info btn-sm float-right">

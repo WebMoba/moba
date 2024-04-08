@@ -71,7 +71,7 @@
                                                     <a class="btn btn-sm btn-success" href="{{ route('projects.edit',$project->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" onclick="return confirm('¿Está seguro de que desea eliminar este proyecto?')" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Borrar') }}</button>
+                                                    <button type="submit" onclick="return confirm('¿Está seguro de que desea cambiar el estado de este proyecto?')" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Cambiar estado') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
