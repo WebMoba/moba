@@ -69,13 +69,8 @@
                                                     <a class="btn btn-sm btn-success" href="{{ route('team-works.edit',$teamWork->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Borrar') }}</button>
+                                                    <button type="submit" onclick="return confirm('¿Está seguro de que desea cambiar el estado de este equipo de trabajo?')" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Cambiar estado') }}</button>
                                                 </form>
-                                                <div class="float-right">
-                                                    <a href="{{ route('pdf.teamwork') }}" class="btn btn-info btn-sm float-right">
-                                                    <i class="fa fa-file-pdf"></i> {{ __('Generar PDF') }}
-                                                    </a>
-                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -84,6 +79,13 @@
                         </div>
                     </div>
                 </div>
+                <br>
+                <div class="float-right">
+                    <a href="{{ route('pdf.teamwork') }}" class="btn btn-info btn-sm float-right">
+                        <i class="fa fa-file-pdf"></i> {{ __('Generar PDF') }}
+                    </a>
+                </div>
+                <br>
                 {!! $teamWorks->links() !!}
             </div>
         </div>

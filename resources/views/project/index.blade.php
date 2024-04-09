@@ -71,14 +71,8 @@
                                                     <a class="btn btn-sm btn-success" href="{{ route('projects.edit',$project->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Borrar') }}</button>
+                                                    <button type="submit" onclick="return confirm('¿Está seguro de que desea cambiar el estado de este proyecto?')" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Cambiar estado') }}</button>
                                                 </form>
-                                                <div class="float-right">
-                                                    <a href="{{ route('pdf.project') }}" class="btn btn-info btn-sm float-right">
-                                                    <i class="fa fa-file-pdf"></i> {{ __('Generar PDF') }}
-                                                    </a>
-                                                </div>
-
                                             </td>
                                         </tr>
                                     @endforeach
@@ -86,6 +80,13 @@
                             </table>
                         </div>
                     </div>
+                </div>
+                <br>
+                <div class="float-right">
+                    <a href="{{ route('pdf.project') }}" class="btn btn-info btn-sm float-right">
+                        <i class="fa fa-file-pdf"></i> {{ __('Generar PDF') }}
+                    </a>
+                    <br>
                 </div>
                 {!! $projects->links() !!}
             </div>

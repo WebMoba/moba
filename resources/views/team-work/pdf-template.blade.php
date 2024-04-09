@@ -30,7 +30,7 @@
 <body>
     <header>
         <div style="text-align: left; margin-bottom: 20px;">
-            <img src="/resources/img/zoroChikito.jpg"
+            <img src=""
                 alt="Logo de la Empresa" height="50">
         </div>
         <div style="text-align: right; margin-bottom: 20px;">

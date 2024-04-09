@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Quote;
+
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Models\Person;
 use App\Models\DetailQuote;
 use App\Models\Project;
@@ -48,7 +50,7 @@ class QuoteController extends Controller
     {
         $quote = new Quote();
         $detailQuote = new DetailQuote() ;
-        $persons = Person::pluck( 'id_card','id');
+        $persons = Person::pluck('id_card', 'id');
         $services = Service::pluck('name','id');
         $products = Product::pluck('name','id');
         $projects = Project::pluck('name','id');
@@ -67,7 +69,24 @@ class QuoteController extends Controller
 {
     request()->validate(Quote::$rules);
 
+    $msj=[
+        'required'=>'El atributo es requerido',
+        'max'=>'No puede ingresar mas caracteres en este campo',
+        'string' => 'El campo debe ser una cadena de texto.',
+        'date' => 'El campo no debe ser una fecha anterior al dia de Hoy.',
+    ];
+
+    $request->validate([
+        'date_issuance'=>'required|date',
+        'description'=>'required|string|max:300',
+        'total'=>'required|number|max:20',
+        'discount'=>'required|number|max:20',
+        'status' => 'required|in: aprobado, rechazado, pendiente',
+        'people_id'=>'required',
+    ], $msj);
+
     $quote = Quote::create($request->all());
+
     $detailQuote = new DetailQuote() ;
     $quote->date_issuance = now()->format('Y-m-d');
     $servicesId = $request->input('services_id');
@@ -100,7 +119,7 @@ class QuoteController extends Controller
                 'services_id' => $serviceId,
                 'products_id' => $request->products_id[$key],
                 'projects_id' => $request->projects_id[$key],
-                'quotes_id' => $request->quotes_id[$key],
+                // 'quotes_id' => $request->quotes_id[$key],
                 // Agrega aquí los demás campos necesarios para los detalles de la cotización
             ]);
             $quote->detailQuotes()->save($detalle);
@@ -154,25 +173,24 @@ class QuoteController extends Controller
      */
     public function update(Request $request, Quote $quote)
     {
-        $area=[
-            'date_issuance'=>'required|date',
-            'description'=>'required|string|max:300',
-            'total'=>'required|number|max:50',
-            'discount'=>'required|text|max:50',
-            'status'=>'required|select',
-            'people'=>'required|select',
-            'services_id'=>'required|select',
-            'products_id'=>'required|select',
-            'projects_id'=>'required|select',
-            'quotes_id'=>'required|select',
-        ];
-        $messaje=[
+        
+        $msj=[
             'required'=>'El atributo es requerido',
             'max'=>'No puede ingresar mas caracteres en este campo',
+            'string' => 'El campo debe ser una cadena de texto.',
+            'date' => 'El campo no debe ser una fecha anterior al dia de Hoy.',
         ];
-        $this->validate($request, $area, $messaje);
 
-        request()->validate(Quote::$rules);
+        $request->validate([
+            'date_issuance'=>'required|date',
+            'description'=>'required|string|max:300',
+            'total'=>'required|number|max:20',
+            'discount'=>'required|number|max:20',
+            'status' => 'required|in: aprobado, rechazado, pendiente',
+            'people_id'=>'required',
+        ], $msj);
+
+        // request()->validate(Quote::$rules);
 
         $quote->update($request->all());
 
@@ -187,10 +205,17 @@ class QuoteController extends Controller
      */
     public function destroy($id)
     {
-        $quote = Quote::find($id)->delete();
+        $quote = Quote::find($id);
 
-        return redirect()->route('quotes.index')
-            ->with('success', 'Quote deleted successfully');
+        if (!$quote) {
+            return redirect()->route('quotes.index')->with('error', 'La cotización no existe');
+        }
+    
+        // Cambia el estado del proyecto
+        $quote->disable = !$quote->disable;
+        $quote->save();
+    
+        return redirect()->route('quotes.index')->with('success', 'Estado de la cotización cambiada con éxito');
     }
     
     public function generatePDF(Request $request)
@@ -221,7 +246,7 @@ class QuoteController extends Controller
         $pdf->loadHtml(view('quote.pdf-template', $data));
         $pdf->setPaper('A4', 'portrait');
         $pdf->render();
-        return $pdf->stream('document.pdf');
+        return $pdf->stream('Listado_Cotizaciones.pdf');
     }
 
 
