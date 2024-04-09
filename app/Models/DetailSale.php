@@ -48,9 +48,7 @@ class DetailSale extends Model
     {
         return $this->belongsTo('App\Models\Product', 'products_id', 'id');
     }
-  
-    
-    /**
+      /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function sale()
