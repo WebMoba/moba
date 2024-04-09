@@ -28,7 +28,7 @@
         
         <div class="form-group">
             {{ Form::label('Estado', null, ['class' => 'required']) }}
-            {{ Form::select('status', ['en surso' => 'En Curso', 'finalizado' => 'Finalizado','pausado'=> 'Pausado' , 'pendiente' => 'Pendiente'], isset($project->status) ? $project->status : old('status'), ['id' => 'Estado', 'class' => 'form-control' . ($errors->has('status') ? ' is-invalid' : ''), 'required' => 'required']) }}
+            {{ Form::select('status', ['en curso' => 'En Curso', 'finalizado' => 'Finalizado','pausado'=> 'Pausado' , 'pendiente' => 'Pendiente'], isset($project->status) ? $project->status : old('status'), ['id' => 'Estado', 'class' => 'form-control' . ($errors->has('status') ? ' is-invalid' : ''), 'required' => 'required']) }}
             {!! $errors->first('status', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <br>

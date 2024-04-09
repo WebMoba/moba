@@ -44,7 +44,7 @@ class ProjectController extends Controller
     public function create()
     {
         $project = new Project();
-        $proyect->disable=false;
+        // $proyect->disable=false;
         $project->date_start = now()->format('Y-m-d');
         $project->date_end = now()->format('Y-m-d');
         return view('project.create', compact('project'));
@@ -76,7 +76,7 @@ class ProjectController extends Controller
         
         // request()->validate(Project::$rules);
         
-        $proyect->disable=false;
+        // $proyect->disable=false;
         $project = Project::create($request->all());
 
         return redirect()->route('projects.index')
