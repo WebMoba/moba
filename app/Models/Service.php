@@ -26,12 +26,7 @@ class Service extends Model
 {
     
     static $rules = [
-		'categories_products_services_id' => 'required',
-        'image' => 'image|mimes:jpeg,png,jpg|max:10000',
-        'name' => 'required',
-        'description' => 'required',
-        'date_start' => 'required',
-        'date_end' => 'required',
+		
       
     ];
 

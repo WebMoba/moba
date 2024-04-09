@@ -576,6 +576,7 @@
                 }
             ],
             "time": "2024-02-05T11:56:58+00:00"
+            "time": "2024-02-05T11:56:58+00:00"
         },
         {
             "name": "dompdf/dompdf",
@@ -642,13 +643,17 @@
         {
             "name": "dragon-code/contracts",
             "version": "2.23.0",
+            "version": "2.23.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TheDragonCode/contracts.git",
                 "reference": "44dbad923f152e0dc2699fbac2d33b65dd6a8f7d"
+                "reference": "44dbad923f152e0dc2699fbac2d33b65dd6a8f7d"
             },
             "dist": {
                 "type": "zip",
+                "url": "https://api.github.com/repos/TheDragonCode/contracts/zipball/44dbad923f152e0dc2699fbac2d33b65dd6a8f7d",
+                "reference": "44dbad923f152e0dc2699fbac2d33b65dd6a8f7d",
                 "url": "https://api.github.com/repos/TheDragonCode/contracts/zipball/44dbad923f152e0dc2699fbac2d33b65dd6a8f7d",
                 "reference": "44dbad923f152e0dc2699fbac2d33b65dd6a8f7d",
                 "shasum": ""
@@ -663,6 +668,7 @@
                 "andrey-helldar/contracts": "*"
             },
             "require-dev": {
+                "illuminate/database": "^10.0 || ^11.0",
                 "illuminate/database": "^10.0 || ^11.0",
                 "phpdocumentor/reflection-docblock": "^5.0"
             },
@@ -680,6 +686,7 @@
                 {
                     "name": "Andrey Helldar",
                     "email": "helldar@dragon-code.pro",
+                    "homepage": "https://dragon-code.pro"
                     "homepage": "https://dragon-code.pro"
                 }
             ],
@@ -705,6 +712,7 @@
                     "type": "yoomoney"
                 }
             ],
+            "time": "2024-03-11T20:15:12+00:00"
             "time": "2024-03-11T20:15:12+00:00"
         },
         {
@@ -787,13 +795,17 @@
         {
             "name": "dragon-code/support",
             "version": "6.13.0",
+            "version": "6.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TheDragonCode/support.git",
                 "reference": "a6f0468e32581efbccb23190b6d5c880cc519747"
+                "reference": "a6f0468e32581efbccb23190b6d5c880cc519747"
             },
             "dist": {
                 "type": "zip",
+                "url": "https://api.github.com/repos/TheDragonCode/support/zipball/a6f0468e32581efbccb23190b6d5c880cc519747",
+                "reference": "a6f0468e32581efbccb23190b6d5c880cc519747",
                 "url": "https://api.github.com/repos/TheDragonCode/support/zipball/a6f0468e32581efbccb23190b6d5c880cc519747",
                 "reference": "a6f0468e32581efbccb23190b6d5c880cc519747",
                 "shasum": ""
@@ -1614,6 +1626,7 @@
                     "type": "tidelift"
                 }
             ],
+            "time": "2023-12-03T19:50:20+00:00"
             "time": "2023-12-03T19:50:20+00:00"
         },
         {
@@ -7333,6 +7346,7 @@
             ],
             "support": {
                 "source": "https://github.com/symfony/var-dumper/tree/v6.4.6"
+                "source": "https://github.com/symfony/var-dumper/tree/v6.4.6"
             },
             "funding": [
                 {
@@ -8191,6 +8205,7 @@
         },
         {
             "name": "ibex/crud-generator",
+            "version": "v1.6",
             "version": "v1.6",
             "source": {
                 "type": "git",

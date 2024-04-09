@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Dompdf\Dompdf;
 use Illuminate\Support\Facades\Storage;
 use App\Models\CategoriesProductsService;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 /**
  * Class ServiceController
@@ -46,7 +48,11 @@ class ServiceController extends Controller
     public function create()
     {
         $service = new Service();
-        $categories_products_service = CategoriesProductsService::pluck('name', 'id');
+        $categories_products_service = CategoriesProductsService::where('type', 'servicio')->pluck('name', 'id');
+
+        if ($categories_products_service->isEmpty()) {
+            return redirect()->back()->with('danger', 'No hay categorías de producto disponibles.');
+        }
         return view('service.create', compact('service', 'categories_products_service'));
     }
 
@@ -58,9 +64,21 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        $customMessages = ['required' => 'El campo es obligatorio.'];
+        $customMessages = [
+            'required' => 'El campo es obligatorio.',
+            'date' => 'La fecha de inicio debe ser anterior a la fecha final.',
+        ];
 
-        $service = request()->validate(Service::$rules, $customMessages);
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'status' => 'required',
+            'quantity' => 'required|numeric',
+            'popular' => 'required',
+            'type' => 'required',
+            'date_start' => 'required|date',
+            'date_end' => 'required|date|after_or_equal:date_start',
+        ], $customMessages);
 
         $service = Service::create(array_merge($request->all(), ['image' => $request->file('image')->store('uploads', 'public')]));
 
@@ -103,9 +121,21 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        $customMessages = ['required' => 'El campo es obligatorio.'];
+        $customMessages = [
+            'required' => 'El campo es obligatorio.',
+            'date' => 'La fecha de inicio debe ser anterior a la fecha final.',
+        ];
 
-        $request->validate(Service::$rules, $customMessages);
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'status' => 'required',
+            'quantity' => 'required|numeric',
+            'popular' => 'required',
+            'type' => 'required',
+            'date_start' => 'required|date',
+            'date_end' => 'required|date|after_or_equal:date_start',
+        ], $customMessages);
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             // Guardar la nueva imagen y eliminar la antigua
