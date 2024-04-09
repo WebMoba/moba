@@ -85,13 +85,13 @@
                         </div>
                     </div>
                 </div><br>
-                
+
                 <div class="float-right">
                     <a href="{{ route('pdf.event', ['findId' => request()->get('findId')]) }}" class="btn btn-info btn-sm float-right">
-                    <i class="fa fa-file-pdf"></i> {{ __('Generar PDF') }}
+                    <i class="fa fa-file-pdf"></i> {{ __('PDF') }}
                     </a>
                     <a href="{{ route('excel.events') }}" class="btn btn-success btn-sm float-right">
-                    <i class="fa fa-file-excel"></i> {{ __('Generar Excel') }}
+                    <i class="fa fa-file-excel"></i> {{ __('Excel') }}
                     </a>
                 </div>
                 {!! $events->links() !!}

@@ -99,11 +99,11 @@
                  <!---Generar archivo Pdf -->
                 <div class="float-right">
                             <a href="{{ route('pdf.person') }}" class="btn btn-info btn-sm float-right">
-                            <i class="fa fa-file-pdf"></i> {{ __('Generar PDF') }}
+                            <i class="fa fa-file-pdf"></i> {{ __('PDF') }}
                             </a>
                               <!---Generar archivo excel -->
                             <a href="{{ route('excel.person') }}" class="btn btn-success btn-sm float-right">
-                            <i class="fa fa-file-excel"></i> {{ __('Generar Excel') }}
+                            <i class="fa fa-file-excel"></i> {{ __('Excel') }}
                             </a>
                 </div>
                 {!! $people->links() !!} 
