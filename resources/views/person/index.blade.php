@@ -95,13 +95,22 @@
                     </div>
                     
                 </div><br>
+
+                 <!---Generar archivo Pdf -->
                 <div class="float-right">
                             <a href="{{ route('pdf.person') }}" class="btn btn-info btn-sm float-right">
                             <i class="fa fa-file-pdf"></i> {{ __('Generar PDF') }}
                             </a>
-                            </div>
-                {!! $people->links() !!}
+                              <!---Generar archivo excel -->
+                            <a href="{{ route('excel.person') }}" class="btn btn-success btn-sm float-right">
+                            <i class="fa fa-file-excel"></i> {{ __('Generar Excel') }}
+                            </a>
+                </div>
+                {!! $people->links() !!} 
+               
             </div>
+           
+
         </div>
     </div>
 @endsection

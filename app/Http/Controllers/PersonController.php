@@ -9,6 +9,8 @@ use App\Models\NumberPhone;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use Illuminate\Validation\Rule;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\PeopleExport;
 
 
 
@@ -278,6 +280,11 @@ public function getTownsByRegion(Request $request)
     $regionId = $request->input('regions_id'); // Cambiado de 'region_id' a 'regions_id'
     $towns = Town::where('regions_id', $regionId)->pluck('name', 'id');
     return response()->json($towns);
+}
+
+public function export() 
+{
+    return Excel::download(new PeopleExport, 'people.xlsx');
 }
 
 }

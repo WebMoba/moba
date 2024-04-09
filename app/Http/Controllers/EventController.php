@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use Maatwebsite\Excel\Facades\Excel;
 
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use App\Exports\EventsExport;
+
+
 /**
  * Class EventController
  * @package App\Http\Controllers
@@ -183,5 +187,10 @@ class EventController extends Controller
     
         return $pdf->stream('Eventos.pdf'); // Cambiado el nombre del archivo a "Eventos.pdf"
     }
+
+    public function export() 
+{
+    return Excel::download(new EventsExport, 'events.xlsx');
+}
 
 }

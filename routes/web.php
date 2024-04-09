@@ -5,6 +5,9 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\BusquedaController;
 use App\Http\Controllers\NumberPhoneController;
 use App\Http\Controllers\ProfileController;
+use App\Exports\PeopleExport;
+use App\Exports\EventsExport;
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SaleController;
@@ -63,6 +66,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/pdf/person', [PersonController::class, 'generatePDF'])->name('pdf.person');
     Route::get('/pdf/event', [EventController::class, 'generatePDF'])->name('pdf.event');
     Route::get('get-towns-by-region', [PersonController::class, 'getTownsByRegion'])->name('get_towns_by_region');
+    Route::get('/export-person', [PersonController::class, 'export'])->name('excel.person');
+    Route::get('/export-events', [EventController::class, 'export'])->name('excel.events');
 
     /*Rutas product y unit*/
     Route::resource('product', ProductController::class);
