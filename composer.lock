@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "17d904797c98f77ff01e2837fee8f95a",
+    "content-hash": "7b4588c8ff49e331e640deebb7a49b4d",
     "packages": [
         {
             "name": "archtechx/enums",
@@ -576,7 +576,6 @@
                 }
             ],
             "time": "2024-02-05T11:56:58+00:00"
-            "time": "2024-02-05T11:56:58+00:00"
         },
         {
             "name": "dompdf/dompdf",
@@ -643,17 +642,13 @@
         {
             "name": "dragon-code/contracts",
             "version": "2.23.0",
-            "version": "2.23.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TheDragonCode/contracts.git",
                 "reference": "44dbad923f152e0dc2699fbac2d33b65dd6a8f7d"
-                "reference": "44dbad923f152e0dc2699fbac2d33b65dd6a8f7d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TheDragonCode/contracts/zipball/44dbad923f152e0dc2699fbac2d33b65dd6a8f7d",
-                "reference": "44dbad923f152e0dc2699fbac2d33b65dd6a8f7d",
                 "url": "https://api.github.com/repos/TheDragonCode/contracts/zipball/44dbad923f152e0dc2699fbac2d33b65dd6a8f7d",
                 "reference": "44dbad923f152e0dc2699fbac2d33b65dd6a8f7d",
                 "shasum": ""
@@ -668,7 +663,6 @@
                 "andrey-helldar/contracts": "*"
             },
             "require-dev": {
-                "illuminate/database": "^10.0 || ^11.0",
                 "illuminate/database": "^10.0 || ^11.0",
                 "phpdocumentor/reflection-docblock": "^5.0"
             },
@@ -686,7 +680,6 @@
                 {
                     "name": "Andrey Helldar",
                     "email": "helldar@dragon-code.pro",
-                    "homepage": "https://dragon-code.pro"
                     "homepage": "https://dragon-code.pro"
                 }
             ],
@@ -712,7 +705,6 @@
                     "type": "yoomoney"
                 }
             ],
-            "time": "2024-03-11T20:15:12+00:00"
             "time": "2024-03-11T20:15:12+00:00"
         },
         {
@@ -795,17 +787,13 @@
         {
             "name": "dragon-code/support",
             "version": "6.13.0",
-            "version": "6.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TheDragonCode/support.git",
                 "reference": "a6f0468e32581efbccb23190b6d5c880cc519747"
-                "reference": "a6f0468e32581efbccb23190b6d5c880cc519747"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TheDragonCode/support/zipball/a6f0468e32581efbccb23190b6d5c880cc519747",
-                "reference": "a6f0468e32581efbccb23190b6d5c880cc519747",
                 "url": "https://api.github.com/repos/TheDragonCode/support/zipball/a6f0468e32581efbccb23190b6d5c880cc519747",
                 "reference": "a6f0468e32581efbccb23190b6d5c880cc519747",
                 "shasum": ""
@@ -1627,7 +1615,6 @@
                 }
             ],
             "time": "2023-12-03T19:50:20+00:00"
-            "time": "2023-12-03T19:50:20+00:00"
         },
         {
             "name": "laravel-lang/lang",
@@ -1748,16 +1735,16 @@
         },
         {
             "name": "laravel-lang/locales",
-            "version": "2.6.0",
+            "version": "2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Laravel-Lang/locales.git",
-                "reference": "8cd288c5041731befc3b8cf9e63b8cc44b62cdc0"
+                "reference": "35aa06ee4ea58d210fca305341220698aeb6b356"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Laravel-Lang/locales/zipball/8cd288c5041731befc3b8cf9e63b8cc44b62cdc0",
-                "reference": "8cd288c5041731befc3b8cf9e63b8cc44b62cdc0",
+                "url": "https://api.github.com/repos/Laravel-Lang/locales/zipball/35aa06ee4ea58d210fca305341220698aeb6b356",
+                "reference": "35aa06ee4ea58d210fca305341220698aeb6b356",
                 "shasum": ""
             },
             "require": {
@@ -1816,7 +1803,7 @@
                 "issues": "https://github.com/Laravel-Lang/locales/issues",
                 "source": "https://github.com/Laravel-Lang/locales"
             },
-            "time": "2024-03-13T09:48:27+00:00"
+            "time": "2024-04-06T12:33:47+00:00"
         },
         {
             "name": "laravel-lang/native-country-names",
@@ -2186,16 +2173,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v10.48.4",
+            "version": "v10.48.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "7e0701bf59cb76a51f7c1f7bea51c0c0c29c0b72"
+                "reference": "a8b682e1371338848637f638aedaef2f7607d36f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/7e0701bf59cb76a51f7c1f7bea51c0c0c29c0b72",
-                "reference": "7e0701bf59cb76a51f7c1f7bea51c0c0c29c0b72",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/a8b682e1371338848637f638aedaef2f7607d36f",
+                "reference": "a8b682e1371338848637f638aedaef2f7607d36f",
                 "shasum": ""
             },
             "require": {
@@ -2389,20 +2376,20 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-03-21T13:36:36+00:00"
+            "time": "2024-04-09T14:48:50+00:00"
         },
         {
             "name": "laravel/prompts",
-            "version": "v0.1.17",
+            "version": "v0.1.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/prompts.git",
-                "reference": "8ee9f87f7f9eadcbe21e9e72cd4176b2f06cd5b5"
+                "reference": "3b5e6b03f1f1175574b5a32331d99c9819da9848"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/prompts/zipball/8ee9f87f7f9eadcbe21e9e72cd4176b2f06cd5b5",
-                "reference": "8ee9f87f7f9eadcbe21e9e72cd4176b2f06cd5b5",
+                "url": "https://api.github.com/repos/laravel/prompts/zipball/3b5e6b03f1f1175574b5a32331d99c9819da9848",
+                "reference": "3b5e6b03f1f1175574b5a32331d99c9819da9848",
                 "shasum": ""
             },
             "require": {
@@ -2444,9 +2431,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/prompts/issues",
-                "source": "https://github.com/laravel/prompts/tree/v0.1.17"
+                "source": "https://github.com/laravel/prompts/tree/v0.1.18"
             },
-            "time": "2024-03-13T16:05:43+00:00"
+            "time": "2024-04-04T17:41:50+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -2966,16 +2953,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "3.26.0",
+            "version": "3.27.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "072735c56cc0da00e10716dd90d5a7f7b40b36be"
+                "reference": "4729745b1ab737908c7d055148c9a6b3e959832f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/072735c56cc0da00e10716dd90d5a7f7b40b36be",
-                "reference": "072735c56cc0da00e10716dd90d5a7f7b40b36be",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/4729745b1ab737908c7d055148c9a6b3e959832f",
+                "reference": "4729745b1ab737908c7d055148c9a6b3e959832f",
                 "shasum": ""
             },
             "require": {
@@ -3040,7 +3027,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/3.26.0"
+                "source": "https://github.com/thephpleague/flysystem/tree/3.27.0"
             },
             "funding": [
                 {
@@ -3052,7 +3039,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-25T11:49:53+00:00"
+            "time": "2024-04-07T19:17:50+00:00"
         },
         {
             "name": "league/flysystem-local",
@@ -7346,7 +7333,6 @@
             ],
             "support": {
                 "source": "https://github.com/symfony/var-dumper/tree/v6.4.6"
-                "source": "https://github.com/symfony/var-dumper/tree/v6.4.6"
             },
             "funding": [
                 {
@@ -7416,45 +7402,6 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/v2.2.7"
             },
             "time": "2023-12-08T13:03:43+00:00"
-        },
-        {
-            "name": "twbs/bootstrap-icons",
-            "version": "v1.11.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/twbs/icons.git",
-                "reference": "8d88686c03c3768a2d82ba4f20c3c4e1b100fa29"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/twbs/icons/zipball/8d88686c03c3768a2d82ba4f20c3c4e1b100fa29",
-                "reference": "8d88686c03c3768a2d82ba4f20c3c4e1b100fa29",
-                "shasum": ""
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mark Otto",
-                    "email": "markdotto@gmail.com"
-                }
-            ],
-            "description": "Official open source SVG icon library for Bootstrap",
-            "homepage": "https://icons.getbootstrap.com/",
-            "keywords": [
-                "bootstrap",
-                "icon font",
-                "icons",
-                "svg"
-            ],
-            "support": {
-                "issues": "https://github.com/twbs/icons/issues",
-                "source": "https://github.com/twbs/icons/tree/v1.11.3"
-            },
-            "time": "2024-01-03T15:44:45+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -8206,7 +8153,6 @@
         {
             "name": "ibex/crud-generator",
             "version": "v1.6",
-            "version": "v1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/awais-vteams/laravel-crud-generator.git",
@@ -8680,6 +8626,78 @@
                 "source": "https://github.com/Laravel-Lang/json-fallback/tree/2.1.0"
             },
             "time": "2024-03-13T09:18:03+00:00"
+        },
+        {
+            "name": "laravel/dusk",
+            "version": "v8.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/dusk.git",
+                "reference": "037c8a8d4efba70106493eae9669de0244e9f9de"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/dusk/zipball/037c8a8d4efba70106493eae9669de0244e9f9de",
+                "reference": "037c8a8d4efba70106493eae9669de0244e9f9de",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-zip": "*",
+                "guzzlehttp/guzzle": "^7.5",
+                "illuminate/console": "^10.0|^11.0",
+                "illuminate/support": "^10.0|^11.0",
+                "php": "^8.1",
+                "php-webdriver/webdriver": "^1.9.0",
+                "symfony/console": "^6.2|^7.0",
+                "symfony/finder": "^6.2|^7.0",
+                "symfony/process": "^6.2|^7.0",
+                "vlucas/phpdotenv": "^5.2"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.6",
+                "orchestra/testbench": "^8.19|^9.0",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^10.1|^11.0",
+                "psy/psysh": "^0.11.12|^0.12"
+            },
+            "suggest": {
+                "ext-pcntl": "Used to gracefully terminate Dusk when tests are running."
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Dusk\\DuskServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Dusk\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Laravel Dusk provides simple end-to-end testing and browser automation.",
+            "keywords": [
+                "laravel",
+                "testing",
+                "webdriver"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/dusk/issues",
+                "source": "https://github.com/laravel/dusk/tree/v8.1.1"
+            },
+            "time": "2024-03-28T09:24:55+00:00"
         },
         {
             "name": "laravel/pint",
