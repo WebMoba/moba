@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@if(Session::has('msj'))
+{{Session::get('msj')}}
+@endif
 @section('template_title')
     Sale
 @endsection
@@ -8,7 +10,6 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-
                 <div class="col-sm-12">
                     <form class="d-flex my-2" action="{{ route('sales.index') }}" method="GET">
                         <div class="mr-2">
@@ -27,9 +28,6 @@
                             <span id="card_title">
                                 {{ __('Ventas') }}
                             </span>
-
-
-
                              <div class="float-right">
                                 <a href="{{ route('sales.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Crear Nuevo') }}
@@ -43,18 +41,17 @@
                         </div>
                     @endif
 
-                    <div class="card-body">
-                        
+                    <div class="card-body">                        
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
                                         
-                                            <th>Nombre</th>
-                                            <th>Fecha</th>
+                                            <th>Nombre Cliente</th>
                                             <th>Id Persona</th>
-                                            <th>Id Cotización</th>
+                                            <th>Fecha venta</th>                                            
+                                            <th>Fecha de Cotización</th>
 
                                         <th></th>
                                     </tr>
@@ -64,11 +61,10 @@
                                         @foreach ($sales as $sale)
                                             <tr>
                                                 <td>{{ ++$i }}</td>
-                                                <td>{{ $sale->name }}</td>
-                                                <td>{{ $sale->date }}</td>
-                                                <td>{{ $sale->people_id }}</td>
-                                                <td>{{ $sale->quotes_id }}</td>
-
+                                                <td>{{ $sale->person->name }}</td>
+                                                <td>{{ $sale->person->id_card }}</td>
+                                                <td>{{ $sale->date }}</td>                                                
+                                                <td>{{ $sale->quote->date_issuance }}</td>
                                                 <td>
                                                     <form action="{{ route('sales.destroy',$sale->id) }}" method="POST">
                                                         <a class="btn btn-sm btn-primary " href="{{ route('sales.show',$sale->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}</a>
@@ -77,10 +73,10 @@
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
                                                     </form>
+                                                    
                                                 </td>
                                             </tr>
                                         @endforeach
-
                                         
                                         
 

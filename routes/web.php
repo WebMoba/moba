@@ -34,6 +34,12 @@ use App\Http\Controllers\TeamWorkController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::resources([
+    'product'   => ProductController::class,
+    'detail-sale'=> DetailSaleController::class,
+    'quotes'    => QuotesController::class,
+    'sale'      => SaleController::class
+]);
 
 Route::get('/', function () {
     return view('welcome');

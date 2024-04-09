@@ -47,9 +47,13 @@
                         </div>
                         <div class="form-group">
                             <strong>Nombre Producto:</strong>
-                            {{ $detailSale->product_name }}
+                            {{ $detailSale->products_id->name }}
                         </div>
 
+                        <div class="form-group">
+                            <strong>Nombre Producto:</strong>
+                            {{ $detailSale->products_id }}
+                        </div>
                     </div>
                 </div>
             </div>

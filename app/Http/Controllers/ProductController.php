@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Unit;
 use App\Models\CategoriesProductsService;
 use App\Models\Product;
+use App\Models\Quote;
+use App\Models\User;
+use App\Models\Person;
+use App\Models\Sale;
+use App\Models\DetailSale;
 use Illuminate\Http\Request;
 
 /**
