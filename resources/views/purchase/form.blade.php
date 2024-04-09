@@ -1,6 +1,6 @@
-<div class="box box-info padding-1">
+<div class="box box-small">
+    <h2>Compra</h2>
     <div class="box-body">
-
         <div class="form-group">
             {{ Form::label('Nombre del proveedor') }}
             {{ Form::text('name', $purchase->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Name']) }}
@@ -20,20 +20,9 @@
             {{ Form::select('people_id', $people, $purchase->people_id, ['class' => 'form-control' . ($errors->has('people_id') ? ' is-invalid' : ''), 'placeholder' => 'Seleccione un proveedor']) }}
             {!! $errors->first('people_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-
-        <div class="box-footer mt20 my-2">
-            @if ($confirm)
-                <button type="submit" class="btn btn-primary"
-                    onclick="return confirm('¿Está seguro de editar este registro?');">{{ __('Submit') }}</button>
-            @else
-                <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
-            @endif
-            <a class="btn btn-primary" href="{{ route('purchases.index') }}"> {{ __('Back') }}</a>
-
-        </div>
-
-
-
     </div>
-
+    <div class="box-footer">
+        <button type="submit" class="btn btn-success">Enviar</button>
+        <a type="submit" class="btn btn-primary" href="{{ route('purchases.index') }}">Volver</a>
+    </div>
 </div>

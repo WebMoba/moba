@@ -29,17 +29,6 @@
                                 'purchaseName' => isset($purchaseName) ? $purchaseName : null,
                                 'creating' => true,
                             ])
-
-
-
-
-
-
-
-
-
-
-
                         </form>
 
                     </div>
