@@ -49,12 +49,15 @@ class DetailPurchaseController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(DetailPurchase::$rules);
+        // Validar los datos del detalle de compra
+        $request->validate(DetailPurchase::$rules);
 
+        // Crear el detalle de compra
         $detailPurchase = DetailPurchase::create($request->all());
 
+        // Redirigir de vuelta con un mensaje de éxito
         return redirect()->route('detail_purchases.index')
-            ->with('success', 'Registro creado exitosamente');
+            ->with('success', 'Detalle de compra creado exitosamente');
     }
 
     /**

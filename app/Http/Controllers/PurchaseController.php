@@ -16,24 +16,29 @@ use Dompdf\Dompdf;
 class PurchaseController extends Controller
 {
     public function generatePDF(Request $request)
-    {
-        $filter = $request->input('findId');
+{
+    // Obtener el filtro de la solicitud
+    $filter = $request->input('findId');
+    
+    // Obtener los datos de las personas filtradas si se aplicó un filtro
+    if ($filter) {
+        $purchases = Purchase::where('id_card', $filter)->get();
+        
+    } else {
+        // Si no hay filtro, obtener todas las personas
+        $purchases = Purchase::all();
+    }
+    // Pasar los datos a la vista pdf-template
+    $data = [
+        'purchases' => $purchases
+    ];    
 
-        if ($filter) {
-            $purchases = Purchase::where('id_card', $filter)->get();
-        } else {
-            $purchases = Purchase::all();
-        }
-
-        $data = [
-            'purchases' => $purchases
-        ];
-
-        $pdf = new Dompdf();
-        $pdf->loadHtml(view('purchase.pdf-template', $data));
-        $pdf->setPaper('A4', 'portrait');
-        $pdf->render();
-        return $pdf->stream('Registro_Compras.pdf');
+    // Generar el PDF
+    $pdf = new Dompdf();
+    $pdf->loadHtml(view('purchase.pdf-template', $data));
+    $pdf->setPaper('A4', 'portrait');
+    $pdf->render();
+    return $pdf->stream('document.pdf');
     }
 
     /**
@@ -62,12 +67,12 @@ class PurchaseController extends Controller
     {
         $purchase = new Purchase();
         $purchase->date = now()->format('Y-m-d');
-
         $people = Person::pluck('id_card', 'id')->map(function ($id_card, $id) {
             $person = Person::find($id);
             return "$id_card - $person->addres";
         })->toArray();
 
+        // Obtener el nombre de la compra
         $purchaseName = $purchase->name;
 
         $detailPurchase = new DetailPurchase();
@@ -85,28 +90,46 @@ class PurchaseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        request()->validate(Purchase::$rules);
+{
+    //dd($request->all());
+    // Validar los datos de la compra
+    $request->validate(Purchase::$rules);
 
-        $purchase = Purchase::create($request->all());
+    // Crear la compra
+    $purchase = Purchase::create($request->all());
 
-        // Crear detalle de compra relacionado con la compra recién creada
-        $detailPurchaseData = $request->input('detail_purchase');
+    // Obtener todos los datos de los detalles de compra de la solicitud
+    $detailPurchaseData = $request->all();
 
-        $detailPurchaseData['materials_raws_id'] = $request->input('materials_raws_id');
-        $detailPurchaseData['quantity'] = $request->input('quantity');
-        $detailPurchaseData['price_unit'] = $request->input('price_unit');
-        $detailPurchaseData['subtotal'] = $request->input('subtotal');
-        $detailPurchaseData['discount'] = $request->input('discount');
-        $detailPurchaseData['total'] = $request->input('total');
-        $detailPurchaseData['materials_raws_id'] = $request->input('materials_raws_id');
+    // Iterar sobre los datos de detalle de compra
+    $detailKeys = array_filter(array_keys($detailPurchaseData), function ($key) {
+        return strpos($key, 'materials_raws_id_') === 0;
+    });
 
-        $purchase->detailPurchases()->create($detailPurchaseData);
+    foreach ($detailKeys as $key) {
+        // Obtener el índice del detalle de compra
+        $index = substr($key, strrpos($key, '_') + 1);
 
-        return redirect()->route('purchases.index')
-            ->with('success', 'Registro creado exitosamente')
-            ->with('purchaseName', $purchase->name);
+        // Construir el conjunto de datos del detalle de compra
+        $detailData = [
+            'materials_raws_id' => $detailPurchaseData['materials_raws_id_' . $index],
+            'quantity' => $detailPurchaseData['quantity_' . $index],
+            'price_unit' => $detailPurchaseData['price_unit_' . $index],
+            'subtotal' => $detailPurchaseData['subtotal_' . $index],
+            'discount' => $detailPurchaseData['discount_' . $index],
+            'total' => $detailPurchaseData['total_' . $index],
+        ];
+
+        // Crear el detalle de compra y asociarlo con la compra principal
+        $purchase->detailPurchases()->create($detailData);
     }
+
+    return redirect()->route('purchases.index')
+        ->with('success', 'Registro creado exitosamente')
+        ->with('purchaseName', $purchase->name);
+}
+
+
 
     /**
      * Display the specified resource.
@@ -117,7 +140,6 @@ class PurchaseController extends Controller
     public function show($id)
     {
         $purchase = Purchase::find($id);
-
         $people = Person::pluck('id_card', 'id')->map(function ($id_card, $id) {
             $person = Person::find($id);
             return "$id_card - $person->addres";
@@ -125,7 +147,7 @@ class PurchaseController extends Controller
 
         $purchaseName = $purchase->name;
 
-        $detailPurchase = $purchase->detailPurchases();
+        $detailPurchase = $purchase->detailPurchases()->get();
 
         $purchases = Purchase::pluck('name', 'id');
         $materialsRaws = MaterialsRaw::pluck('name', 'id');
@@ -150,15 +172,26 @@ class PurchaseController extends Controller
 
         $purchaseName = $purchase->name;
 
-        $detailPurchase = $purchase->detailPurchases();
+        //$detailPurchase = $purchase->detailPurchases()->get();
+
+        $detailPurchase = DetailPurchase::find($id);
+
 
         $purchases = Purchase::pluck('name', 'id');
         $materialsRaws = MaterialsRaw::pluck('name', 'id');
 
         $confirm = true;
 
-        return view('purchase.edit', compact('purchase', 'people', 'purchaseName', 'detailPurchase', 'purchases', 'materialsRaws', 'confirm'));
+
+        return view('purchase.create', compact('purchase', 'people', 'detailPurchase', 'purchases', 'materialsRaws', 'purchaseName', 'confirm'));
     }
+
+
+
+
+
+
+
 
     /**
      * Update the specified resource in storage.
@@ -175,7 +208,7 @@ class PurchaseController extends Controller
         $purchase->update($request->all());
 
         // Obtener el detalle relacionado con la compra
-        $detailPurchase = $purchase->detailPurchases();
+        $detailPurchase = $purchase->detailPurchases()->get();
 
         // Validar y actualizar el detalle de compra
         $request->validate(DetailPurchase::$rules);

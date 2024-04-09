@@ -60,8 +60,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
     /*Controladores tablas Eventos, People, Buscar */
-
     Route::resource('events', EventController::class);
     Route::resource('person', PersonController::class);
     Route::resource('number-phone', NumberPhoneController::class);
@@ -89,15 +89,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/pdf/categories-products-service', [CategoriesProductsServiceController::class, 'generatePDF'])->name('pdf.categories-products-service');
     /*Fin Rutas categories_products_services y services*/
 
+    /*Incio Rutas purchases, detailPurchases, y materialsRaws*/
     Route::resource('materials_raws', App\Http\Controllers\MaterialsRawController::class);
     Route::resource('units', App\Http\Controllers\UnitController::class);
     Route::get('/pdf/materials_raw', [App\Http\Controllers\MaterialsRawController::class, 'generatePDF'])->name('pdf.materials_raw');
     Route::group(['prefix' => 'purchasesD'], function () {
-    Route::resource('purchases', App\Http\Controllers\PurchaseController::class);
-    Route::resource('detail_purchases', App\Http\Controllers\DetailPurchaseController::class);
-    Route::get('/pdf/purchase', [App\Http\Controllers\PurchaseController::class, 'generatePDF'])->name('pdf.purchase');
+        Route::resource('purchases', App\Http\Controllers\PurchaseController::class);
+        Route::resource('detail_purchases', App\Http\Controllers\DetailPurchaseController::class);
+        Route::get('/pdf/purchase', [App\Http\Controllers\PurchaseController::class, 'generatePDF'])->name('pdf.purchase');
     });
-    /* fin tablas  Eventos, Buscar, People */
+   /*Fin Rutas purchases, detailPurchases, y materialsRaws*/
 
     /** Inicio de Controladores Sale y DetailSale */
     Route::resource('sales', SaleController::class)->middleware('auth');
