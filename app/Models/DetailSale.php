@@ -28,7 +28,7 @@ class DetailSale extends Model
     
     static $rules = [
 		'sales_id' => 'required',
-		'products_id' => 'required',
+		'product_id' => 'required',
     ];
 
     protected $perPage = 20;
@@ -44,19 +44,26 @@ class DetailSale extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function product()
+        public function product()
     {
-        return $this->belongsTo(Product::class, 'product_id');
+        return $this->belongsTo('App\Models\Product', 'products_id', 'id');
     }
-    
+  
     
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function sale()
     {
-        return $this->belongsTo(Sale::class, 'sales_id');
+        return $this->belongsTo(Sale::class,'id', 'sales_id');
     }
         
-
+    public function user()
+     {
+         return $this->hasOne('App\Models\user', 'id', 'user_id');
+     }
+     public function person()
+    {
+        return $this->hasOne('App\Models\Person', 'id', 'people_id');
+    }
 }

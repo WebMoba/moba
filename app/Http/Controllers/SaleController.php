@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Quote;
+use App\Models\User;
 use App\Models\Person;
-
 use App\Models\Sale;
 use App\Models\DetailSale;
 use Illuminate\Http\Request;
@@ -24,10 +24,9 @@ class SaleController extends Controller
         //Obtener el filtro de la solicitud
         $filter = $request->input('findId');
 
-        //Obtener los datos de las ** filtrados si se apica un filtro
+        //Obtener los datos de las ventas filtrados si se aplica un filtro
         if ($filter) {
-            $sales = Sale::where('id_card', $filter)->get();
-        
+            $sales = Sale::where('id', $filter)->get();        
         } else {
             // si no hay filtro, obtener todos los datos
             $sales = Sale::all();
@@ -39,10 +38,9 @@ class SaleController extends Controller
 
         //Generar el PDF
         $pdf = new Dompdf();
-        $pdf = loadHtml(view('sale.pdf-template', $data));
-        $pdf = setPaper('A4', 'portrait');
-        $pdf = render(); 
-
+        $pdf->loadHtml(view('sale.pdf-template', $data));
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->render(); 
         return $pdf->stream('Registro_Venta.pdf');
     }
     
@@ -54,10 +52,21 @@ class SaleController extends Controller
     public function index(Request $request)
     {
         $search = trim($request->get('search'));
+        $sales = Sale::with('person', 'quote', 'detailSales.product')
+            ->where('name', 'LIKE', '%' . $search . '%')
+            ->orWhere('date', 'LIKE', '%' . $search . '%')
+            ->paginate(10);
+
+        /**
         $sales = Sale::with('person') 
             ->where('name', 'LIKE', '%' . $search . '%')
-            ->orwhere('date', 'LIKE', '%' . $search . '%')
+            ->orWhere('date', 'LIKE', '%' . $search . '%')
             ->paginate(10);
+         */
+
+        // Obtener los detalles de las ventas
+        $detailSales = DetailSale::all(); // o alguna otra forma de obtener los detalles de las ventas
+        
         
         return view('sale.index', compact('sales', 'search'))
             ->with('i', (request()->input('page', 1) - 1) * $sales->perPage());
@@ -68,197 +77,138 @@ class SaleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
-    {
-        $sale = new Sale();
-        $sale->date = now()->format('Y-m-d');
-        $people = Person::pluck('id_card', 'id')->map(function ($id_card, $id) {
-        
-            $person = Person::find($id);
-            return "$id_card - $person->addres";
-        })->toArray();
-
-        // Obtener el nombre de la compra
-        $salesName = $sale->name;
-
-        $detailSale = new DetailSale();
-        $quote = Quote::pluck('people_id', 'id');
-        $confirm = false;
-        
-        $detailSale->products_id = $request->input('product_id');
-        
-        // Obtener los productos de la tabla 'products'
-        $products = Product::pluck('name', 'id');
-
-        return view('sale.create', compact('sale', 'detailSale', 'people', 'quote', 'salesName', 'confirm', 'products'));
-        
-    }
-
-
-   public function store(Request $request)
+    public function create()
 {
-    // Valida los datos de la solicitud según las reglas definidas en el modelo Sale
-    $request->validate(Sale::$rules);
+    $sale = new Sale();
+    $sale->date = now()->format('Y-m-d');
+    
+    $people = Person::pluck('name', 'id')->map(function ($name, $id) {
+        $person = Person::find($id);
+        return "$name - $person->id_card - $person->address";
+    })->toArray();
+    
+    $salesName = $sale->name;
+    
+    $products = Product::pluck('name', 'id'); // Cargar todos los productos
+    
+    $quote = Quote::pluck('people_id', 'id');
+    
+    $confirm = false;
 
-    // Crea una nueva venta con los datos proporcionados en la solicitud
+    // Aquí creamos una nueva instancia de detalle de venta
+    $detailSale = new DetailSale();
+
+    return view('sale.create', compact('sale', 'people', 'quote', 'salesName', 'confirm', 'products', 'detailSale'));
+}
+
+    
+    
+
+    public function store(Request $request)
+{
+    $request->validate([
+        'name' => 'required',
+        'people_id' => 'required',
+        'date' => 'required|date',
+        'quotes_id' => 'required',
+    ]);
+
     $sale = Sale::create($request->all());
 
-    // Crea el detalle de la venta relacionado con la venta recién creada
-    $detailSaleData = $request->input('detail-sale', []);
-
-    // Verifica si se proporcionó información de detalle de venta
-    if (!empty($detailSaleData)) {
-        foreach ($detailSaleData as $detail) {
-            // Asigna el ID de la venta recién creada al detalle de venta
-            $detail['sales_id'] = $sale->id;
-            // Crea el detalle de la venta en la base de datos
-            $sale->detailSales()->create($detail);
+    if ($request->has('products_id')) {
+        foreach ($request->products_id as $key => $productId) {
+            $detailSale = new DetailSale([
+                'products_id' => $productId,
+                'quantity' => $request->quantity[$key], 
+                'price_unit' => $request->price_unit[$key],
+                'subtotal' => $request->subtotal[$key],
+                'discount' => $request->discount[$key],
+                'total' => $request->total[$key]
+            ]);
+            $sale->detailSales()->save($detailSale);
         }
     }
 
-    // Redirige a la ruta de índice de ventas con un mensaje de éxito
-    return redirect()->route('sales.index')
-        ->with('success', 'Registro creado exitosamente')
-        ->with('saleName', $sale->name);
+    return redirect()->route('sales.index')->with('success', 'Registro creado exitosamente');
 }
 
- 
+        public function show($id)
+        {
+            $sale = Sale::findOrFail($id);
+            
+            // Obtener el nombre de la persona asociada a la venta
+            $personName = $sale->person->name;
 
-/*
+            // Obtener los detalles de la venta
+            $detailSale = $sale->detailSales;
 
-    public function store(Request $request)
-    {
-        request()->validate(Sale::$rules);
+            // Obtener los productos asociados a los detalles de la venta
+            $products = Product::pluck('name', 'id');
 
-        $sale = Sale::create($request->all());
+            return view('sale.show', compact('sale', 'detailSale', 'personName', 'products'));
+        }
 
-        //Crear detalle de compra relacionado con la compra recién creada
-        $detailSaleData = $request->input('detail-sale');
 
-        $detailSaleData['products_id'] = $request->input('products_id');
-        $detailSaleData['quantity'] = $request->input('quantity');
-        $detailSaleData['price_unit'] = $request->input('price_unit');
-        $detailSaleData['subtotal'] = $request->input('subtotal');
-        $detailSaleData['discount'] = $request->input('discount');
-        $detailSaleData['total'] = $request->input('total');
-
-        $detailSaleData['product_id']= $request->input('product_id');
-        $sale->detailSales()->create($detailSaleData);
-
-        return redirect()->route('sales.index')
-            ->with('success', 'Registro creado exitosamente')
-            ->with('sailName', $sale->name); 
-
-        
-    }
-*/
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        
-        $sale = Sale::with('product')->findOrFail($id);
-        $people = Person::pluck('id_card', 'id')->map(function ($id_card, $id) {
-            $person = Person::find($id);
-            return "$id_card - $person->addres";
-    })->toArray();
-
-        $salesName = $sale->name;
-        $detailSale = $sale->detailSales()->first();
-        $sales = Sale::pluck('name', 'id');
-        $products = Product::pluck('name', 'id');
-        $productNames = $sale->product->pluck('name')->toArray();
-        
-
-    return view('sale.show', compact('sale', 'detailSale', 'people', 'salesName', 'productNames'));
-            }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-
-    
-     public function edit($id)
-    {
+     
+        public function edit($id)
+        {
             $sale = Sale::find($id);
-            $people = person::pluck('id_card', 'id')->map(function ($id_card, $id){
+            $people = Person::pluck('id_card', 'id')->map(function ($id_card, $id){
                 $person = Person::find($id);
-                return "$id_card - $person->addres";
+                return "$id_card - $person->address";
             })->toArray();
-
-        $salesName = $sale->name;
-
-        $detailSale = $sale->detailSales()->first();
-
-        $sales = Sale::pluck('name', 'id');
-        $products = Product::pluck('name', 'id');
-        $confirm = true;
         
-        return view('sale.edit', compact('sale', 'detailSale', 'people', 'confirm',  'products', 'salesName'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  Sale $sale
-     * @return \Illuminate\Http\Response
-     */
+            $salesName = $sale->name;
+            $products = Product::pluck('name', 'id'); // Cargar todos los productos
+            $detailSale = $sale->detailSales()->first();
+        
+            $sales = Sale::pluck('name', 'id');
+            $confirm = true;
+            
+            return view('sale.edit', compact('sale', 'detailSale', 'people', 'confirm',  'products', 'salesName'));
+        }
+        
     public function update(Request $request, Sale $sale)
     {
-       
-       request()->validate(Sale::$rules);
+        $request->validate(Sale::$rules);
 
-       // Actualizar la venta
-       $sale->update($request->all());
+        // Actualizar la venta
+        $sale->update($request->all());
 
-       //obtener el detalle relacionado con la venta
-       $detailSale = $sale->detailSales()->first();
+        //obtener el detalle relacionado con la venta
+        $detailSale = $sale->detailSales()->first();
 
-       if ($detailSale) {
+        if ($detailSale) {
 
-       //Validar y actualizar el detalle de compra
-       $request->validate(DetailSale::$rules);
+            //Validar y actualizar el detalle de compra
+            $request->validate(DetailSale::$rules);
 
-       $detailSaleData = $request->only([
-        'products_id',
-        'quantity',
-        'price_unit',
-        'subtotal',
-        'discount',
-        'total',
-    ]);
+            $detailSaleData = $request->only([
+                'products_id',
+                'quantity',
+                'price_unit',
+                'subtotal',
+                'discount',
+                'total',
+            ]);
 
-
-        $detailSale->update($detailSaleData);
-       }
+            $detailSale->update($detailSaleData);
+        }
        
         return redirect()->route('sales.index')
-            ->with('success', 'Venta actualizada con Exitosamente');
-}    
-
-    /**
-     * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
+            ->with('success', 'Venta actualizada con éxito');
+    }
 
     public function destroy($id)
     {
         $sales = Sale::find($id);
 
-        DetailSale::where('sales_id', $id)->delete();
+        DetailSale::where('sale_id', $id)->delete();
        
         $sales->delete();
 
         return redirect()->route('sales.index')
-            ->with('success', 'Venta eliminada con exito');
+            ->with('success', 'Venta eliminada con éxito');
     }
+
 }

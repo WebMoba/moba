@@ -65,6 +65,10 @@
                                 <a class="nav-link" href="{{ route('sales.index') }}">{{ __('Ventas') }}</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ route('detail-sale.index') }}">{{ __('Detalle Venta') }}</a>
+                            </li>
+
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('product.index') }}">{{ __('Productos') }}</a>
                             </li>
                             <li class="nav-item">

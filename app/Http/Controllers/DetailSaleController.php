@@ -1,8 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Dompdf\Dompdf;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Product;
+use App\Models\Quote;
+use App\Models\User;
+use App\Models\Person;
 use App\Models\Sale;
 use App\Models\DetailSale;
 use Illuminate\Http\Request;
@@ -19,10 +23,16 @@ class DetailSaleController extends Controller
      */
     public function index()
     {
-        $detailSale = DetailSale::paginate();
+        $detailSales = DetailSale::paginate();
+                   
 
-        return view('detail-sale.index', compact('detailSale'))
-            ->with('i', (request()->input('page', 1) - 1) * $detailSale->perPage());
+        return view('detail-sale.index', compact('detailSales'))
+            ->with('i', (request()->input('page', 1) - 1) * $detailSales->perPage());
+
+        $product = Product::all(); // o alguna otra forma de obtener los detalles de las ventas
+        
+        return view('detail-sale.index', compact('name', 'id'));
+            
     }
 
     /**
@@ -44,17 +54,24 @@ class DetailSaleController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+
+        public function store(Request $request)
     {
         request()->validate(DetailSale::$rules);
 
+        $product = Product::find($request->product_id);
+
         $detailSale = DetailSale::create([
-            'products_id' => $request->product_id,
+            'products_id' => $product->id,
+            'price_unit' => $product->price,
+            'products_name' => $product->name,
+            // Asegúrate de agregar otros campos necesarios aquí
         ]);
 
         return redirect()->route('detail-sale.index')
-            ->with('success', 'DetailSale created successfully.');
+            ->with('success', 'Detalle de venta creado exitosamente.');
     }
+
 
     /**
      * Display the specified resource.
@@ -62,6 +79,7 @@ class DetailSaleController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
+    
     public function show($id)
     {
         $detailSale = DetailSale::find($id);
