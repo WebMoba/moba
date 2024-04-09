@@ -24,11 +24,12 @@ class ProductController extends Controller
     {
         $search = request()->input('search');
 
+
         if (!empty($search)) {
             $products = Product::where('name', 'like', '%' . $search . '%')->with('unit', 'categoriesProductsService')
-                ->paginate();
+                ->paginate(10);
         } else {
-            $products = Product::with('unit', 'categoriesProductsService')->paginate();
+            $products = Product::with('unit', 'categoriesProductsService')->paginate(10);
         }
 
         return view('product.index', compact('products'))
@@ -44,10 +45,10 @@ class ProductController extends Controller
     {
         $categories_products_service = CategoriesProductsService::where('type', 'producto')->pluck('name', 'id');
 
-        if ($categories_products_service->isEmpty()) {
-            return redirect()->back()->with('error', 'No hay categorías de producto disponibles.');
+        if (empty($categories_products_service)) {
+            return redirect()->back()->with('danger', 'No hay categorías de producto disponibles.');
         }
-
+        
         $product = new Product();
         $units = Unit::pluck('unit_type', 'id');
 
@@ -72,12 +73,14 @@ class ProductController extends Controller
         // Crear el producto utilizando el ID de la unidad extraído
         $product = Product::create(array_merge($request->all(), [
             'units_id' => $units_id,
-            'image' => $request->file('image')->store('uploads', 'public')
+            'image' => $request->file('image')->store('uploads', 'public'),
+            'disable' => 0,
         ]));
 
         return redirect()->route('product.index')
             ->with('success', 'Producto Creado Exitosamente.');
     }
+
 
     /**
      * Display the specified resource.
@@ -88,7 +91,6 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
-
         return view('product.show', compact('product'));
     }
 
@@ -115,6 +117,11 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        if ($product->detailQuotes()->exists() || $product->detailSales()->exists()) {
+            // Show alert if the product is in use
+            return redirect()->back()->with('danger', 'Este producto está asociado a una cotización, venta o materia prima.');
+        }
+
         $customMessages = ['required' => 'El campo es obligatorio.'];
 
         $request->validate(Product::$rules, $customMessages);
@@ -138,10 +145,20 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = Product::find($id)->delete();
+        $product = Product::find($id);
+
+        if ($product->detailQuotes()->exists() || $product->detailSales()->exists()) {
+            return redirect()->route('product.index')->with('danger', 'Este producto está asociado a una cotización, venta o materia prima.');
+        }
+
+        // Cambiar el estado disable del producto
+        $product->disable = !$product->disable; // Cambiar el estado al contrario del estado actual
+        $product->save();
+
+        //Storage::disk('public')->delete($product->image);
 
         return redirect()->route('product.index')
-            ->with('success', 'Producto Borrado Exitosamente.');
+            ->with('success', 'Estado del producto cambiado con éxito.');
     }
 
     public function generatePDF(Request $request)

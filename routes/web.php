@@ -106,6 +106,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/pdf/teamwork', [TeamWorkController::class, 'generatePDF'])->name('pdf.teamwork');
     Route::get('/pdf/quote', [QuoteController::class, 'generatePDF'])->name('pdf.quote');
     //fin-fabian
+
+    //Vistas carpeta servicios
+    Route::get('/mobaMenu/Servicios/index', function () {
+        return view('mobaMenu.Servicios.index');
+    });
+    //Fin vistas carpeta servicios
 });
 
 
