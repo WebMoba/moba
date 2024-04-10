@@ -47,10 +47,6 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('number-phone.index') }}">{{ __('Celular') }}</a>
-                            </li>
-
-                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('purchases.index') }}"> {{ trans('Compras') }}</a>
                             </li>
 
