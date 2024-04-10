@@ -109,7 +109,7 @@ body {
 
 .linea1 {
     border: none;
-    border-right: 3px solid #4aa5c9; /* Agrega una unidad de medida (px) */
+    border-right: 3px solid #BCCCE0; /* Agrega una unidad de medida (px) */
 }
 
 .linea2 {
@@ -118,7 +118,7 @@ body {
 }
 
 .vertical-line.left-line i {
-    color: #4aa5c9;
+    color: #BCCCE0;
     /* Color para los íconos de la izquierda */
 }
 
