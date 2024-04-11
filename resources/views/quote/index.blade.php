@@ -32,7 +32,6 @@
                                     <i class="fa fa-file-pdf"></i> {{ __('PDF') }}
                                 </a>
                             </div>
-                            
                             <div class="float-right">
                                 <a href="{{ route('quotes.create') }}" class="btn btn-primary btn-sm float-right"
                                     data-placement="left">
