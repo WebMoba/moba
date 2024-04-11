@@ -35,8 +35,8 @@
                                     <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
                                 </div>
                             </form>
-                            <a href="{{ route('pdf.product') }}" class="btn btn-info btn-sm float-right">
-                                <i class="fa fa-file-pdf"></i> {{ __('Generar PDF') }}
+                            <a href="{{ route('pdf.product') }}" class="btn btn-danger btn-sm float-right">
+                                <i class="fa fa-file-pdf"></i> {{ __('PDF') }}
                             </a>
                             <div class="float-right">
                                 <a href="{{ route('product.create') }}" class="btn btn-primary btn-sm float-right"
