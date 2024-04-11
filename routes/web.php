@@ -1,5 +1,8 @@
 <?php
 
+/*controlador para envio de correo electronico*/
+use App\Http\Controllers\ContactoController;
+
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\BusquedaController;
@@ -124,6 +127,10 @@ Route::middleware('auth')->group(function () {
     //Vistas fronted Moba
     Route::view('/mobaMenu/Servicios/index', 'mobaMenu.servicios.index')->name('mobaMenu.servicios.index');
     Route::view('/mobaMenu/Contacto/index', 'mobaMenu.Contacto.index')->name('mobaMenu.Contacto.index');
+
+
+    //ruta Correo electronico
+    Route::post('/enviar-correo', [ContactoController::class, 'enviarCorreo'])->name('enviar-correo');
 
 });
 

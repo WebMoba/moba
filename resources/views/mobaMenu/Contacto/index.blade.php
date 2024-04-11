@@ -60,7 +60,8 @@
  <!-- Contenido formulario de contacto -->
 
     <div class="box">
-    <form>
+    <form method="POST" action="{{ route('enviar-correo') }}">
+    @csrf
 		<label for="nombre">Nombre:</label>
 		<input type="text" id="nombre" name="nombre" required><br><br>
 
