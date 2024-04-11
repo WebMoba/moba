@@ -6,16 +6,16 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
-        "barryvdh/laravel-dompdf": "^2.1",
+        "barryvdh/laravel-dompdf": "*",
         "dompdf/dompdf": "^2.0",
         "guzzlehttp/guzzle": "^7.2",
-        "laravel-lang/lang": "^14.7",
+        "laravel-lang/lang": "*",
         "laravel/breeze": "^1.26",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "laravel/ui": "^4.4",
-        "laravelcollective/html": "^6.4",
+        "laravelcollective/html": "*",
         "maatwebsite/excel": "^3.1"
     },
     "require-dev": {
