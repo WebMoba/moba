@@ -69,7 +69,7 @@
 		<input type="email" id="email" name="email" required><br><br>
 
 		<label for="telefono">Teléfono:</label>
-		<input type="tel" id="telefono" name="telefono"><br><br>
+		<input type="tel" id="telefono" name="telefono" required><br><br>
 
 		<label for="mensaje">Mensaje:</label>
 		<textarea id="mensaje" name="mensaje" rows="5" ></textarea><br><br>

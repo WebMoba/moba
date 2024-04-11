@@ -12,9 +12,10 @@ class ContactoController extends Controller
         // Lógica para enviar el correo electrónico
         $nombre = $request->input('nombre');
         $email = $request->input('email');
+        $telefono = $request->input('telefono');
         $mensaje = $request->input('mensaje');
 
-        Mail::send('mobaMenu.contacto.index', ['nombre' => $nombre, 'email' => $email, 'mensaje' => $mensaje], function ($message) {
+        Mail::send('mobaMenu.contacto.index', ['nombre' => $nombre, 'email' => $email, 'telefono' => $telefono,'mensaje' => $mensaje], function ($message) {
             $message->to('destinatario@example.com', 'Destinatario')->subject('Nuevo mensaje de contacto');
         });
 
