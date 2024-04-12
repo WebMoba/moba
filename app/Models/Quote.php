@@ -79,6 +79,14 @@ class Quote extends Model
     {
         return $this->hasMany('App\Models\Sale', 'quotes_id', 'id');
     }
-    
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Al crear un nuevo evento, establecer el campo disable como false por defecto
+        static::creating(function ($quote) {
+            $quote->disable = false;
+        });
+    }
 
 }

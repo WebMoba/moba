@@ -32,8 +32,7 @@ class QuoteController extends Controller
     public function index(Request $request)
     {
         $search = trim($request->get('search'));
-        $quotes=DB::table('quotes')
-                    ->select('id','date_issuance','description','total','discount','status','people_id')
+        $quotes = Quote::select('id','date_issuance','description','total','discount','status','people_id')
                     ->where('id','LIKE','%'.$search.'%')
                     ->orWhere('description','LIKE','%'.$search.'%')
                     ->orderBy('date_issuance','asc')
@@ -213,11 +212,7 @@ class QuoteController extends Controller
             return redirect()->route('quotes.index')->with('error', 'La cotización no existe');
         }
     
-        if ($quote->disable) {
-            $quote->disable = false;
-        } else {
-            $quote->disable = true;
-        }
+        $quote->disable = !$quote->disable;
         $quote->save();
     
         return redirect()->route('quotes.index')->with('success', 'Estado de la cotización cambiada con éxito');

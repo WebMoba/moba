@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Servicios</title>
+    <title>Contacto</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
@@ -31,7 +31,7 @@
                 </div>
                 <a href="#" class="btn btn-primary">Proyectos</a>
                 <a href="#" class="btn btn-primary">Equipo de trabajo</a>
-                <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
+                <a href="#" class="btn btn-primary">Contáctanos</a>
             </div>
             <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte">
         </div>
@@ -44,6 +44,40 @@
         <a href="https://www.facebook.com/MOBAcomunicacionGrafica/"><i class="bi bi-facebook"></i></a>
         <hr class="linea1">
     </div>
+
+<div class="container">
+
+ <!-- Contenido contacto  -->
+
+    <div class="box"><h1>Contacto</h1><br><br>
+    <h3>¡Somos el estudio de diseño y comunicación que buscabas!</h3>
+    <h3>Las soluciones en comunicación que ofrecemos a nuestros 
+    clientes son completamente personalizadas y adaptadas a 
+    cada necesidad.</h3>
+    <h3> Haz clic al botón azul para coordinar una reunión estratégica con LA AGENCIA</h3><br>
+    <h3> Contacto: (051) 933 375 953</h3></div>
+
+ <!-- Contenido formulario de contacto -->
+
+    <div class="box">
+    <form>
+		<label for="nombre">Nombre:</label>
+		<input type="text" id="nombre" name="nombre" required><br><br>
+
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email" required><br><br>
+
+		<label for="telefono">Teléfono:</label>
+		<input type="tel" id="telefono" name="telefono"><br><br>
+
+		<label for="mensaje">Mensaje:</label>
+		<textarea id="mensaje" name="mensaje" rows="5" ></textarea><br><br>
+
+		<input type="submit" value="Enviar" id="submit">
+	</form>
+    </div>
+</div>
+
     <div class="vertical-line right-line">
         <hr class="linea2">
         <a href="https://www.instagram.com/moba_agencia"><i class="bi bi-instagram"></i></a>
@@ -68,3 +102,46 @@
 </body>
 
 </html>
+
+<style>
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    
+}
+.box{
+    height: 70%;
+    width: 50%;
+    margin-top:5%;
+}
+h1, h3{
+    color: #BCCCE0;
+}
+label{
+    color:  #BCCCE0 ;
+}
+form{
+    margin-top: 10%;
+    margin-left: 10%;
+}
+input{
+    width: 90%;
+    margin-right: 10%;
+    background-color: #3E3E3F;
+    color: white;
+}
+textarea{
+    width: 90%;
+    background-color: #3E3E3F;
+    color: white;
+}
+#submit{
+    background-color: #BCCCE0;
+    width: 25%;
+    color: black;
+    
+}
+</style>

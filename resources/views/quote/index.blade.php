@@ -71,10 +71,13 @@
                                             <td>
                                                 <form action="{{ route('quotes.destroy',$quote->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('quotes.show',$quote->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('quotes.edit',$quote->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
+                                                    <a class="btn btn-sm btn-success " href="{{ route('quotes.edit',$quote->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" onclick="return confirm('¿Está seguro de que desea cambiar el estado de esta cotización?')" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Cambiar estado') }}</button>
+                                                    <button type="submit" onclick="return confirm('¿Está seguro de que desea {{ dd($quote->disable ? 'Habilitar' : 'Deshabilitar') }} el estado de esta cotización?')" class="btn btn-danger btn-sm">
+                                                        <i class="fa fa-fw fa-trash"></i> 
+                                                        {{ $quote->disable ? 'Habilitar' : 'Deshabilitar' }}
+                                                    </button>
                                                 </form>
                                                 <div class="float-right">
                                                     <a href="{{ route('pdf.quote') }}" class="btn btn-info btn-sm float-right">

@@ -119,6 +119,12 @@ Route::middleware('auth')->group(function () {
         return view('mobaMenu.Servicios.index');
     });
     //Fin vistas carpeta servicios
+
+
+    //Vistas fronted Moba
+    Route::view('/mobaMenu/Servicios/index', 'mobaMenu.servicios.index')->name('mobaMenu.servicios.index');
+    Route::view('/mobaMenu/Contacto/index', 'mobaMenu.Contacto.index')->name('mobaMenu.Contacto.index');
+
 });
 
 
