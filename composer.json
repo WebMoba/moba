@@ -9,7 +9,7 @@
         "barryvdh/laravel-dompdf": "^2.1",
         "dompdf/dompdf": "^2.0",
         "guzzlehttp/guzzle": "^7.2",
-        "laravel-lang/lang": "^14.7",
+        "laravel-lang/lang": "^14.5",
         "laravel/breeze": "^1.26",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",

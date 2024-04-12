@@ -59,7 +59,9 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $customMessages = ['required' => 'El campo es obligatorio.'];
+        $customMessages = ['required' => 'El campo es obligatorio.'];
 
+        $service = request()->validate(Service::$rules, $customMessages);
         $service = request()->validate(Service::$rules, $customMessages);
 
         $service = Service::create(array_merge($request->all(), ['image' => $request->file('image')->store('uploads', 'public')]));
@@ -104,7 +106,9 @@ class ServiceController extends Controller
     public function update(Request $request, Service $service)
     {
         $customMessages = ['required' => 'El campo es obligatorio.'];
+        $customMessages = ['required' => 'El campo es obligatorio.'];
 
+        $request->validate(Service::$rules, $customMessages);
         $request->validate(Service::$rules, $customMessages);
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
