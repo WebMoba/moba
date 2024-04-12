@@ -25,9 +25,7 @@
                             <span id="card_title">
                                 {{ __('Servicio') }}
                             </span>
-                            <a href="{{ route('pdf.service') }}" class="btn btn-info btn-sm float-right">
-                                <i class="fa fa-file-pdf"></i> {{ __('Generar PDF') }}
-                            </a>
+
                             <form action="{{ route('service.index') }}" method="GET" class="d-flex align-items-center">
                                 <div class="col-auto">
                                     <input type="text" class="form-control " id="search" name="search">
@@ -35,6 +33,11 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
                             </form>
+                            <div class="float-right">
+                                <a href="{{ route('pdf.service') }}" class="btn btn-danger btn-sm float-right">
+                                    <i class="fa fa-file-pdf"></i> {{ __('PDF') }}
+                                </a>
+                            </div>
                             <div class="float-right">
                                 <a href="{{ route('service.create') }}" class="btn btn-primary btn-sm float-right"
                                     data-placement="left">
@@ -81,18 +84,20 @@
                                             <td>{{ $service->categoriesProductsService->name }}</td>
 
                                             <td>
-                                                <form action="{{ route('service.destroy', $service->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary "
-                                                        href="{{ route('service.show', $service->id) }}"><i
+                                                <form action="{{ route('service.destroy',  $service->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary {{  $service->disable ? 'disabled' : '' }}"
+                                                        href="{{ route('service.show',  $service->id) }}"><i
                                                             class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}</a>
-                                                    <a class="btn btn-sm btn-success"
-                                                        href="{{ route('service.edit', $service->id) }}"><i
+                                                    <a class="btn btn-sm btn-success {{  $service->disable ? 'disabled' : '' }}"
+                                                        href="{{ route('service.edit',  $service->id) }}"><i
                                                             class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"
-                                                        onclick="return confirm ('¿Esta seguro que de que desea Eliminar el Servicio?')"><i
-                                                            class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
+                                                        onclick="return confirm('¿Está seguro de que desea {{  $service->disable ? 'Habilitar' : 'Deshabilitar' }}el servicio?')">
+                                                        <i class="fa fa-fw fa-trash"></i>
+                                                        {{  $service->disable ? 'Habilitar' : 'Deshabilitar' }}
+                                                    </button>
                                                 </form>
                                             </td>
                                         </tr>

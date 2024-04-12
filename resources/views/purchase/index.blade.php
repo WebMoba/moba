@@ -8,19 +8,6 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-
-                <div class="col-sm-12">
-                    <form class="d-flex my-2" action="{{ route('purchases.index') }}" method="GET">
-                        <div class="mr-2">
-                            <input type="text" class="form-control" name="search" placeholder="Buscar por nombre o fecha">
-                        </div>
-                        <div>
-                            <input type="submit" class="btn btn-primary ms-2" value="Buscar">
-                        </div>
-                    </form>
-                </div>
-
-
                 <div class="card">
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -29,10 +16,21 @@
                                 {{ __('Compras') }}
                             </span>
 
+                            <form action="{{ route('purchases.index') }}" method="GET"
+                                class="d-flex align-items-center">
+                                <div class="col-auto mr-2">
+                                    <input type="text" class="form-control" name="search" placeholder="Buscar...">
+                                </div>
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
+                                </div>
+                            </form>
                             <div class="float-right">
-                                <a href="{{ route('pdf.purchase') }}" class="btn btn-info btn-sm float-right">
-                                    <i class="fa fa-file-pdf"></i> {{ __('Generar PDF') }}
+                                <a href="{{ route('pdf.purchase') }}" class="btn btn-danger btn-sm float-right">
+                                    <i class="fa fa-file-pdf"></i> {{ __('PDF') }}
                                 </a>
+                            </div>
+                            <div class="float-right">
                                 <a href="{{ route('purchases.create') }}" class="btn btn-primary btn-sm float-right"
                                     data-placement="left">
                                     {{ __('Crear nuevo') }}

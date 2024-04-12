@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
-<body>
+<body class="background-image">
 
     <nav class="navbar">
         <div class="container-fluid">
@@ -44,6 +44,9 @@
         <a href="https://www.facebook.com/MOBAcomunicacionGrafica/"><i class="bi bi-facebook"></i></a>
         <hr class="linea1">
     </div>
+
+
+    
     <div class="vertical-line right-line">
         <hr class="linea2">
         <a href="https://www.instagram.com/moba_agencia"><i class="bi bi-instagram"></i></a>

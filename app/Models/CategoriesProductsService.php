@@ -41,7 +41,7 @@ class CategoriesProductsService extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'description', 'status', 'quantity', 'popular', 'type'];
+    protected $fillable = ['name', 'description', 'status', 'quantity', 'popular', 'type', 'disable'];
 
 
     /**

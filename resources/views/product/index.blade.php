@@ -35,9 +35,14 @@
                                     <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
                                 </div>
                             </form>
-                            <a href="{{ route('pdf.product') }}" class="btn btn-info btn-sm float-right">
-                                <i class="fa fa-file-pdf"></i> {{ __('Generar PDF') }}
-                            </a>
+                            <div class="float-right">
+                                <a href="{{ route('pdf.product') }}" class="btn btn-danger btn-sm float-right">
+                                    <i class="fa fa-file-pdf"></i> {{ __('PDF') }}
+                                </a>
+                                <a href="{{ route('excel.product') }}" class="btn btn-success btn-sm float-right">
+                                    <i class="fa fa-file-excel"></i> {{ __('Excel') }}
+                                </a>
+                            </div>
                             <div class="float-right">
                                 <a href="{{ route('product.create') }}" class="btn btn-primary btn-sm float-right"
                                     data-placement="left">

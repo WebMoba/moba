@@ -12,6 +12,8 @@ use App\Models\User;
 use App\Models\Person;
 use App\Models\Sale;
 use App\Models\DetailSale;
+use App\Exports\ProductExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 /**
@@ -53,7 +55,7 @@ class ProductController extends Controller
         if (empty($categories_products_service)) {
             return redirect()->back()->with('danger', 'No hay categorías de producto disponibles.');
         }
-        
+
         $product = new Product();
         $units = Unit::pluck('unit_type', 'id');
 
@@ -189,5 +191,10 @@ class ProductController extends Controller
         $pdf->setPaper('A4', 'portrait');
         $pdf->render();
         return $pdf->stream('Productos.pdf');
+    }
+
+    public function export()
+    {
+        return Excel::download(new ProductExport, 'productos.xlsx');
     }
 }

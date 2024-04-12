@@ -37,7 +37,7 @@ class Service extends Model
      *
      * @var array
      */
-    protected $fillable = ['name','description','date_start','date_end','image','categories_products_services_id'];
+    protected $fillable = ['name','description','date_start','date_end','image','categories_products_services_id', 'disable'];
 
 
     /**
