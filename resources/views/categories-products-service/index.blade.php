@@ -31,10 +31,11 @@
                             <form action="{{ route('categories-products-service.index') }}" method="GET"
                                 class="d-flex align-items-center">
                                 <div class="col-auto mr-2">
-                                    <input type="text" class="form-control " id="search" name="search" ></div>
-                                    <div class="col-auto">
-                                        <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
-                                    </div>
+                                    <input type="text" class="form-control " id="search" name="search">
+                                </div>
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
+                                </div>
                             </form>
 
                             <div class="float-right">
@@ -45,11 +46,6 @@
                             </div>
                         </div>
                     </div>
-                    @if ($message = Session::get('success'))
-                        <div class="alert alert-success">
-                            <p>{{ $message }}</p>
-                        </div>
-                    @endif
 
                     <div class="card-body">
                         <div class="card-body">
@@ -83,21 +79,21 @@
                                                 <td>{{ $categoriesProductsService->type }}</td>
 
                                                 <td>
-                                                    <form
-                                                        action="{{ route('categories-products-service.destroy', $categoriesProductsService->id) }}"
+                                                    <form action="{{ route('categories-products-service.destroy',$categoriesProductsService->id) }}"
                                                         method="POST">
-                                                        <a class="btn btn-sm btn-primary "
+                                                        <a class="btn btn-sm btn-primary {{ $categoriesProductsService->disable ? 'disabled' : '' }}"
                                                             href="{{ route('categories-products-service.show', $categoriesProductsService->id) }}"><i
                                                                 class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}</a>
-                                                        <a class="btn btn-sm btn-success"
+                                                        <a class="btn btn-sm btn-success {{ $categoriesProductsService->disable ? 'disabled' : '' }}"
                                                             href="{{ route('categories-products-service.edit', $categoriesProductsService->id) }}"><i
                                                                 class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger btn-sm"
-                                                            onclick="return confirm ('¿Esta seguro que de que desea Eliminar la Categoria?')"><i
-                                                                class="fa fa-fw fa-trash"></i>
-                                                            {{ __('Eliminar') }}</button>
+                                                            onclick="return confirm('¿Está seguro de que desea {{ $categoriesProductsService->disable ? 'Habilitar' : 'Deshabilitar' }} la categoria?')">
+                                                            <i class="fa fa-fw fa-trash"></i>
+                                                            {{ $categoriesProductsService->disable ? 'Habilitar' : 'Deshabilitar' }}
+                                                        </button>
                                                     </form>
                                                 </td>
                                             </tr>
