@@ -19,7 +19,7 @@
                         <form method="POST" action="{{ route('detail_purchases.update', $detailPurchase->id) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
-
+dd($detailPurchase)
                             @include('detail-purchase.form')
 
                         </form>

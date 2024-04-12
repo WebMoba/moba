@@ -44,8 +44,7 @@ class Product extends Model
      *
      * @var array
      */
-    protected $fillable = ['name','image','quantity','price','units_id','categories_products_services_id'];
-
+    protected $fillable = ['name','image','quantity','price','units_id','categories_products_services_id', 'disable'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
@@ -68,7 +67,11 @@ class Product extends Model
      */
     public function detailSales()
     {
-        return $this->hasMany('App\Models\DetailSale', 'products_id', 'id');
+        return $this->hasMany('App\Models\DetailSale', 
+        'id', 'product_id', 
+        'id', 'sales_id'
+        
+        );
     }
     
     /**
@@ -85,6 +88,16 @@ class Product extends Model
     public function unit()
     {
         return $this->hasOne('App\Models\Unit', 'id', 'units_id');
+    }
+
+    public function sales()
+    {
+        return $this->belongsToMany('App\Models\Sale', 'detail_sales', 'product_id', 'sales_id');
+    }
+
+    public function quotes()
+    {
+        return $this->hasMany('App\Models\DetailQuote', 'products_id', 'id');
     }
     
 

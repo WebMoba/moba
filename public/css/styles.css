@@ -1,0 +1,143 @@
+body {
+    position: relative;
+    /* Aseguramos que el body tenga una posición relativa para que el ::after funcione correctamente */
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../Imagenes/FondoPrueba.png');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    opacity: 0.89;/*Ajustar transparencia de la imagen de fondo*/
+    z-index: -1;
+}
+
+.navbar {
+    background-color: #3E3E3F;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-img-left {
+    max-width: 59px;
+    height: auto;
+}
+
+.navbar-img-right {
+    max-width: 50px;
+    height: auto;
+}
+
+.btn-primary {
+    background-color: transparent !important;
+    color: #fff;
+    border-color: transparent !important;
+}
+
+.btn-primary:hover {
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+
+.btn-primary:active,
+.btn-primary:focus {
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    border: none;
+    text-shadow: 0 0 5px #00b7ff;
+}
+
+.dropdown-item:hover {
+    color: #00b7ff !important;
+}
+
+.dropdown-menu {
+    background-color: transparent !important;
+    border-color: #73a3b6 !important;
+}
+
+.dropdown-menu .dropdown-item {
+    color: #24AAE1 !important;
+    background-color: transparent !important;
+    border-color: #9BBFCD !important;
+}
+
+.dropdown-menu .dropdown-divider {
+    border-top: 1px solid #9BBFCD;
+}
+
+.vertical-line {
+    position: fixed;
+    bottom: 0;
+    width: 60px;
+    display: flex;
+    flex-direction: column;
+    /* Alinea los elementos verticalmente */
+    justify-content: center;
+    /* Centra los elementos verticalmente */
+    align-items: center;
+    /* Centra los elementos horizontalmente */
+}
+
+.left-line {
+    top: 0;
+    left: 0;
+}
+
+.right-line {
+    top: 0;
+    right: 0;
+}
+
+.vertical-line hr {
+    margin: 5px 0;
+    /* Ancho de las líneas */
+    height: 60px;
+    /* Altura de las líneas */
+    border-radius: 6px;
+    /* Agrega este estilo para redondear los bordes */
+}
+
+.linea1 {
+    border: none;
+    border-right: 3px solid #00c8ff;
+    /* Agrega una unidad de medida (px) */
+}
+
+.linea2 {
+    border: none;
+    border-left: 3px solid #f80008;
+    /* Agrega una unidad de medida (px) */
+}
+
+.vertical-line.left-line i {
+    color: #00c8ff;
+    /* Color para los íconos de la izquierda */
+}
+
+.vertical-line.right-line i {
+    color: #ff0008;
+    /* Color para los íconos de la derecha */
+}

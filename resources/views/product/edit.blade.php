@@ -1,10 +1,15 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ __('Editar') }} Product
+    {{ __('Editar') }} Producto
 @endsection
 
 @section('content')
+    @if ($message = Session::get('danger'))
+        <div class="alert alert-danger text-center">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
     <section class="content container-fluid">
         <div class="">
             <div class="col-md-12">

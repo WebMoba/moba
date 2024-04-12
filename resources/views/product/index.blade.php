@@ -5,6 +5,16 @@
 @endsection
 
 @section('content')
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success text-center">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
+    @if ($message = Session::get('danger'))
+        <div class="alert alert-danger text-center">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -25,9 +35,14 @@
                                     <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
                                 </div>
                             </form>
-                            <a href="{{ route('pdf.product') }}" class="btn btn-info btn-sm float-right">
-                                <i class="fa fa-file-pdf"></i> {{ __('Generar PDF') }}
-                            </a>
+                            <div class="float-right">
+                                <a href="{{ route('pdf.product') }}" class="btn btn-danger btn-sm float-right">
+                                    <i class="fa fa-file-pdf"></i> {{ __('PDF') }}
+                                </a>
+                                <a href="{{ route('excel.product') }}" class="btn btn-success btn-sm float-right">
+                                    <i class="fa fa-file-excel"></i> {{ __('Excel') }}
+                                </a>
+                            </div>
                             <div class="float-right">
                                 <a href="{{ route('product.create') }}" class="btn btn-primary btn-sm float-right"
                                     data-placement="left">
@@ -36,7 +51,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
@@ -64,17 +79,19 @@
                                             <td>{{ $product->categoriesProductsService->name }}</td>
                                             <td>
                                                 <form action="{{ route('product.destroy', $product->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary "
+                                                    <a class="btn btn-sm btn-primary {{ $product->disable ? 'disabled' : '' }}"
                                                         href="{{ route('product.show', $product->id) }}"><i
                                                             class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}</a>
-                                                    <a class="btn btn-sm btn-success"
+                                                    <a class="btn btn-sm btn-success {{ $product->disable ? 'disabled' : '' }}"
                                                         href="{{ route('product.edit', $product->id) }}"><i
                                                             class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"
-                                                        onclick="return confirm ('¿Esta seguro que de que desea Eliminar el producto?')"><i
-                                                            class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
+                                                        onclick="return confirm('¿Está seguro de que desea {{ $product->disable ? 'Habilitar' : 'Deshabilitar' }} el producto?')">
+                                                        <i class="fa fa-fw fa-trash"></i>
+                                                        {{ $product->disable ? 'Habilitar' : 'Deshabilitar' }}
+                                                    </button>
                                                 </form>
                                             </td>
                                         </tr>

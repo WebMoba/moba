@@ -9,11 +9,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -27,7 +25,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Moba') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -49,10 +47,6 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('number-phone.index') }}">{{ __('Celular') }}</a>
-                            </li>
-
-                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('purchases.index') }}"> {{ trans('Compras') }}</a>
                             </li>
 
@@ -63,12 +57,9 @@
 
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('sales.index') }}">{{ __('Ventas') }}</a>
-                            </li>
+                            </li>                            
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('product.index') }}">{{ __('Productos') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('unit.index') }}">{{ __('Unidades') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('categories-products-service.index') }}">{{ __('Categorias') }}</a>

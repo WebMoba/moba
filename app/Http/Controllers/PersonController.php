@@ -9,6 +9,8 @@ use App\Models\NumberPhone;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use Illuminate\Validation\Rule;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\PeopleExport;
 
 
 
@@ -86,7 +88,10 @@ class PersonController extends Controller
         ],
         'user_name' => 'required',
         'team_works_id' => 'required',
-        'phone_number' => 'required', // Asegúrate de que el campo del número de teléfono esté presente en la solicitud
+        'phone_number' => 'required', 
+        'numberPhone' => 'required',
+        'numberPhones'=>'required',
+        'numberPhoneId'=>'required',// Asegúrate de que el campo del número de teléfono esté presente en la solicitud
         'region' => 'required',
         'towns_id' => 'required',
         'users_id' => [
@@ -275,6 +280,11 @@ public function getTownsByRegion(Request $request)
     $regionId = $request->input('regions_id'); // Cambiado de 'region_id' a 'regions_id'
     $towns = Town::where('regions_id', $regionId)->pluck('name', 'id');
     return response()->json($towns);
+}
+
+public function export() 
+{
+    return Excel::download(new PeopleExport, 'people.xlsx');
 }
 
 }

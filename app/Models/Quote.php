@@ -66,10 +66,11 @@ class Quote extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function person()
-    {
-        return $this->hasOne('App\Models\Person', 'id', 'people_id');
-    }
+   
+     public function person()
+     {
+         return $this->belongsTo(Person::class);
+     }
     
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

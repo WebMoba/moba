@@ -115,19 +115,21 @@ class TeamWorkController extends Controller
      */
     public function update(Request $request, TeamWork $teamWork)
     {
-        // $area=[
-        //     'specialty'=>'required|string|max:100',
-        //     'assigned_work'=>'required|string|max:100',
-        //     'assigned_date'=>'required|date',
-        //     'project'=>'required|select',
-        // ];
-        // $msj=[
-        //     'required'=>'El atributo es requerido',
-        //     'max'=>'No puede ingresar mas caracteres en este campo',
-        // ];
-        // $this->validate($request, $area,$msj);
+        $msj=[
+            'required'=>'El atributo es requerido',
+            'max'=>'No puede ingresar mas caracteres en este campo',
+            'string' => 'El campo debe ser una cadena de texto.',
+            'date' => 'El campo no debe ser una fecha anterior al dia de Hoy.',
+        ];
 
-        request()->validate(TeamWork::$rules);
+        $request->validate([
+            'specialty'=>'required|string|max:100',
+            'assigned_work'=>'required|string|max:100',
+            'assigned_date'=>'required|date',
+            'project'=>'required',
+        ], $msj);
+
+        // request()->validate(TeamWork::$rules);
 
         $teamWork->update($request->all());
         
@@ -142,10 +144,17 @@ class TeamWorkController extends Controller
      */
     public function destroy($id)
     {
-        $teamWork = TeamWork::find($id)->delete();
-
-        return redirect()->route('team-works.index')
-            ->with('success', 'Equipo de trabajo actualizado con éxito');
+        $teamWork = TeamWork::find($id);
+        
+        if (!$teamWork) {
+            return redirect()->route('team-works.index')->with('error', 'El equipo de trabajo no existe');
+        }
+    
+        // Cambia el estado del proyecto
+        $teamWork->disable = !$teamWork->disable;
+        $teamWork->save();
+    
+        return redirect()->route('team-works.index')->with('success', 'Estado del equipo de trabajo cambiado con éxito');
     }
     
     public function generatePDF(Request $request)
@@ -171,7 +180,7 @@ class TeamWorkController extends Controller
         $pdf->loadHtml(view('team-work.pdf-template', $data));
         $pdf->setPaper('A4', 'portrait');
         $pdf->render();
-        return $pdf->stream('document.pdf');
+        return $pdf->stream('Listado_Equipos_De_Trabajo.pdf');
     }
 }
 

@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use Dompdf\Dompdf as DompdfDompdf;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 /**
  * Class ProjectController
@@ -40,6 +44,7 @@ class ProjectController extends Controller
     public function create()
     {
         $project = new Project();
+        // $proyect->disable=false;
         $project->date_start = now()->format('Y-m-d');
         $project->date_end = now()->format('Y-m-d');
         return view('project.create', compact('project'));
@@ -53,26 +58,27 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+        $msj=[
+            'date_end.after_or_equal' => 'La fecha de finalización debe ser igual o posterior a la fecha de inicio.',
+            'required'=>'El atributo es requerido',
+            'max'=>'No puede ingresar mas caracteres en este campo',
+            'string' => 'El campo debe ser una cadena de texto.',
+            'date' => 'El campo no debe ser una fecha anterior al dia de Hoy.',
+        ];
+
+        $request->validate([
+            'name' => 'required|string|max:100',
+            'description' => 'required|string|max:300',
+            'date_start' => 'required|date',
+            'date_end' => 'required|date|after_or_equal:date_start',
+            'status' => 'required|in:en curso,finalizado,pausado,pendiente',
+        ], $msj);
         
-        // $area=[
-        //     'name'=>'required|string|max:100',
-        //     'description'=>'required|string|max:300',
-        //     'date_start'=>'required|date',
-        //     'date_end'=>'required|text',
-        //     'status'=>'required|select',
-        // ];
-        // $msj=[
-        //     'required'=>'El atributo es requerido',
-        //     'max'=>'No puede ingresar mas caracteres en este campo',
-        // ];
-        // $this->validate($request, $area, $msj);
-
-        request()->validate(Project::$rules);
-
+        // request()->validate(Project::$rules);
+        
+        // $proyect->disable=false;
         $project = Project::create($request->all());
 
-        $project->date_start = now()->format('Y-m-d');
-        $project->date_end = now()->format('Y-m-d');
         return redirect()->route('projects.index')
             ->with('success', 'Proyecto creado con éxito.');
     }
@@ -100,6 +106,8 @@ class ProjectController extends Controller
     {
         $project = Project::find($id);
 
+        $project->date_start = optional($project->date_start)->format('Y-m-d');
+        $project->date_end = optional($project->date_end)->format('Y-m-d');
         return view('project.edit', compact('project'));
     }
 
@@ -112,20 +120,23 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        // $area=[
-        //     'name'=>'required|string|max:100',
-        //     'description'=>'required|string|max:300',
-        //     'date_start'=>'required|date',
-        //     'date_end'=>'required|date',
-        //     'status'=>'required|select',
-        // ];
-        // $msj=[
-        //     'required'=>'El atributo es requerido',
-        //     'max'=>'No puede ingresar mas caracteres en este campo',
-        // ];
-        // $this->validate($request, $area, $msj);
+        $msj=[
+            'date_end.after_or_equal' => 'La fecha de finalización debe ser igual o posterior a la fecha de inicio.',
+            'required'=>'El atributo es requerido',
+            'max'=>'No puede ingresar mas caracteres en este campo',
+            'string' => 'El campo debe ser una cadena de texto.',
+            'date' => 'El campo no debe ser una fecha anterior al dia de Hoy.',
+        ];
+
+        $request->validate([
+            'name'=>'required|string|max:100',
+            'description'=>'required|string|max:300',
+            'date_start'=>'required|date',
+            'date_end'=>'required|date|after_or_equal:date_start',
+            'status'=>'required|select',
+        ],$msj);
         
-        request()->validate(Project::$rules);
+        // request()->validate(Project::$rules);
 
         $project->update($request->all());
 
@@ -140,10 +151,18 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        $project = Project::find($id)->delete();
+        $project = Project::find($id);
 
-        return redirect()->route('projects.index')
-            ->with('success', 'Proyecto borrado con éxito');
+        if (!$project) {
+            return redirect()->route('projects.index')->with('error', 'El proyecto no existe');
+        }
+    
+        // Cambia el estado del proyecto
+        $project->disable = !$project->disable;
+        $project->save();
+    
+        return redirect()->route('projects.index')->with('success', 'Estado del proyecto cambiado con éxito');
+
     }
 
     public function generatePDF(Request $request)
@@ -169,7 +188,7 @@ class ProjectController extends Controller
         $pdf->loadHtml(view('project.pdf-template', $data));
         $pdf->setPaper('A4', 'portrait');
         $pdf->render();
-        return $pdf->stream('document.pdf');
+        return $pdf->stream('Listado_Proyectos.pdf');
     }
 
 }

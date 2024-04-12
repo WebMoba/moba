@@ -23,14 +23,7 @@
 
 
                             @include('sale.form')
-                            <div class="p-3 mb-1 text-dark my-1 mx-auto p-2" style="width: 300px;">
-                                <h3>Detalle de la Venta</h3>
-                            </div>
-                            @include('detail-sale.form', [
-                                'saleId' => $sale->id,
-                                'salesName' => isset($saleName) ? $salesName : null,
-                                'creating' => true,
-                            ])
+                            
                         </form>
                     </div>
                 </div>

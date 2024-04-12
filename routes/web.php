@@ -1,10 +1,17 @@
 <?php
 
+/*controlador para envio de correo electronico*/
+
+use App\Http\Controllers\ContactoController;
+
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\BusquedaController;
 use App\Http\Controllers\NumberPhoneController;
 use App\Http\Controllers\ProfileController;
+use App\Exports\PeopleExport;
+use App\Exports\EventsExport;
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SaleController;
@@ -19,6 +26,8 @@ use App\Http\Controllers\CategoriesProductsServiceController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\TeamWorkController;
+use App\Models\Product;
+
 //fin fabian
 
 /*
@@ -31,6 +40,13 @@ use App\Http\Controllers\TeamWorkController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::resources([
+    'product'   => ProductController::class,
+    'detail-sale' => DetailSaleController::class,
+    'quotes'    => QuotesController::class,
+    'sale'      => SaleController::class
+]);
 
 Route::get('/', function () {
     return view('welcome');
@@ -51,8 +67,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    /*Controladores tablas Eventos, People, Buscar */
 
+    /*Controladores tablas Eventos, People, Buscar */
     Route::resource('events', EventController::class);
     Route::resource('person', PersonController::class);
     Route::resource('number-phone', NumberPhoneController::class);
@@ -63,12 +79,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/pdf/person', [PersonController::class, 'generatePDF'])->name('pdf.person');
     Route::get('/pdf/event', [EventController::class, 'generatePDF'])->name('pdf.event');
     Route::get('get-towns-by-region', [PersonController::class, 'getTownsByRegion'])->name('get_towns_by_region');
+    Route::get('/export-person', [PersonController::class, 'export'])->name('excel.person');
+    Route::get('/export-events', [EventController::class, 'export'])->name('excel.events');
 
     /*Rutas product y unit*/
     Route::resource('product', ProductController::class);
     Route::resource('unit', UnitController::class);
     Route::get('/pdf/product', [ProductController::class, 'generatePDF'])->name('pdf.product');
     Route::get('/pdf/unit', [UnitController::class, 'generatePDF'])->name('pdf.unit');
+    Route::get('/export-product', [ProductController::class, 'export'])->name('excel.product');;
     /*Fin Rutas product y uni*/
 
     /*Rutas categories_products_services y services*/
@@ -78,15 +97,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/pdf/categories-products-service', [CategoriesProductsServiceController::class, 'generatePDF'])->name('pdf.categories-products-service');
     /*Fin Rutas categories_products_services y services*/
 
+    /*Incio Rutas purchases, detailPurchases, y materialsRaws*/
     Route::resource('materials_raws', App\Http\Controllers\MaterialsRawController::class);
     Route::resource('units', App\Http\Controllers\UnitController::class);
     Route::get('/pdf/materials_raw', [App\Http\Controllers\MaterialsRawController::class, 'generatePDF'])->name('pdf.materials_raw');
     Route::group(['prefix' => 'purchasesD'], function () {
-    Route::resource('purchases', App\Http\Controllers\PurchaseController::class);
-    Route::resource('detail_purchases', App\Http\Controllers\DetailPurchaseController::class);
-    Route::get('/pdf/purchase', [App\Http\Controllers\PurchaseController::class, 'generatePDF'])->name('pdf.purchase');
+        Route::resource('purchases', App\Http\Controllers\PurchaseController::class);
+        Route::resource('detail_purchases', App\Http\Controllers\DetailPurchaseController::class);
+        Route::get('/pdf/purchase', [App\Http\Controllers\PurchaseController::class, 'generatePDF'])->name('pdf.purchase');
     });
-    /* fin tablas  Eventos, Buscar, People */
+    /*Fin Rutas purchases, detailPurchases, y materialsRaws*/
 
     /** Inicio de Controladores Sale y DetailSale */
     Route::resource('sales', SaleController::class)->middleware('auth');
@@ -101,6 +121,21 @@ Route::middleware('auth')->group(function () {
     Route::get('/pdf/teamwork', [TeamWorkController::class, 'generatePDF'])->name('pdf.teamwork');
     Route::get('/pdf/quote', [QuoteController::class, 'generatePDF'])->name('pdf.quote');
     //fin-fabian
+
+    //Vistas carpeta servicios
+    Route::get('/mobaMenu/Servicios/index', function () {
+        return view('mobaMenu.Servicios.index');
+    });
+    //Fin vistas carpeta servicios
+
+
+    //Vistas fronted Moba
+    Route::view('/mobaMenu/Servicios/index', 'mobaMenu.servicios.index')->name('mobaMenu.servicios.index');
+    Route::view('/mobaMenu/Contacto/index', 'mobaMenu.Contacto.index')->name('mobaMenu.Contacto.index');
+
+
+    //ruta Correo electronico
+    Route::post('/enviar-correo', [ContactoController::class, 'enviarCorreo'])->name('enviar-correo');
 });
 
 

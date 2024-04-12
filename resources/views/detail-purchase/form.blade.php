@@ -1,95 +1,116 @@
-<div class="box box-info padding-1" id="formulario-original">
-    <div class="box-body">
 
-        <div class="form-group">
-            {{ Form::label('Nombre de materia prima comprada') }}
-            {{ Form::select('materials_raws_id', $materialsRaws, $detailPurchase->materials_raws_id, ['class' => 'form-control' . ($errors->has('materials_raws_id') ? ' is-invalid' : ''), 'placeholder' => 'Seleccione una materia prima']) }}
+<div class="box box-large">
+            <h2>Detalle Compra</h2>
+            <div class="box-body">
+                <table id="detalle-table" class="table">
+                    <thead>
+                        <tr>
+                            <th>Materia prima</th>
+                            <th>Cantidad</th>
+                            <th>Precio unitario</th>
+                            <th>Subtotal</th>
+                            <th>Descuento</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                <div class="form-group">
+                                    {{ Form::select('materials_raws_id', $materialsRaws, $detailPurchase->materials_raws_id, ['class' => 'form-control' . ($errors->has('materials_raws_id') ? ' is-invalid' : ''), 'placeholder' => 'Seleccione una materia prima']) }}
             {!! $errors->first('materials_raws_id', '<div class="invalid-feedback">:message</div>') !!}
+                                </div>
+                            </th>
+                            <th>
+                                <div class="form-group">
+                                    {{ Form::text('quantity', $detailPurchase->quantity, ['id' => 'quantity', 'class' => 'form-control' . ($errors->has('quantity') ? ' is-invalid' : ''), 'placeholder' => 'Quantity']) }}
+                                    {!! $errors->first('quantity', '<div class="invalid-feedback">:message</div>') !!}
+                                </div>
+                            </th>
+                            <th>
+                                <div class="form-group">
+                                    {{ Form::text('price_unit', $detailPurchase->price_unit, ['id' => 'price_unit', 'class' => 'form-control' . ($errors->has('price_unit') ? ' is-invalid' : ''), 'placeholder' => 'Price Unit']) }}
+                                    {!! $errors->first('price_unit', '<div class="invalid-feedback">:message</div>') !!}
+                                </div>
+                            </th>
+                            <th>
+                                <div class="form-group">
+                                    {{ Form::text('subtotal', $detailPurchase->subtotal, ['id' => 'subtotal', 'class' => 'form-control' . ($errors->has('subtotal') ? ' is-invalid' : ''), 'placeholder' => 'Subtotal', 'readonly' => true, 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
+                                    {!! $errors->first('subtotal', '<div class="invalid-feedback">:message</div>') !!}
+                                    <small class="text-muted">No es editable.</small>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="form-group">
+                                    {{ Form::text('discount', $detailPurchase->discount, ['id' => 'discount', 'class' => 'form-control' . ($errors->has('discount') ? ' is-invalid' : ''), 'placeholder' => 'Discount']) }}
+                                    {!! $errors->first('discount', '<div class="invalid-feedback">:message</div>') !!}
+                                </div>
+                            </th>
+                            <th>
+                                <div class="form-group">
+                                    {{ Form::text('total', $detailPurchase->total, ['id' => 'total', 'class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''), 'placeholder' => 'Total', 'readonly' => true, 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
+                                    {!! $errors->first('total', '<div class="invalid-feedback">:message</div>') !!}
+                                    <small class="text-muted">No
+                                        es editable.</small>
+                                </div>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="box-footer">
+                <button type="button" id="agregarDetalle" class="btn btn-primary">Agregar detalle</button>
+            </div>
         </div>
-        <div class="form-group">
-            {{ Form::label('Cantidad') }}
-            {{ Form::text('quantity', $detailPurchase->quantity, ['id' => 'quantity', 'class' => 'form-control' . ($errors->has('quantity') ? ' is-invalid' : ''), 'placeholder' => 'Quantity']) }}
-            {!! $errors->first('quantity', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group">
-            {{ Form::label('Precio unitario') }}
-            {{ Form::text('price_unit', $detailPurchase->price_unit, ['id' => 'price_unit', 'class' => 'form-control' . ($errors->has('price_unit') ? ' is-invalid' : ''), 'placeholder' => 'Price Unit']) }}
-            {!! $errors->first('price_unit', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group">
-            {{ Form::label('Subtotal') }}
-            {{ Form::text('subtotal', $detailPurchase->subtotal, ['id' => 'subtotal', 'class' => 'form-control' . ($errors->has('subtotal') ? ' is-invalid' : ''), 'placeholder' => 'Subtotal', 'readonly' => true, 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
-            {!! $errors->first('subtotal', '<div class="invalid-feedback">:message</div>') !!}
-            <small class="text-muted">El valor de este campo es generado automaticamente. No es editable.</small>
-        </div>
-        <div class="form-group">
-            {{ Form::label('Porcentaje de descuento') }}
-            {{ Form::text('discount', $detailPurchase->discount, ['id' => 'discount', 'class' => 'form-control' . ($errors->has('discount') ? ' is-invalid' : ''), 'placeholder' => 'Discount']) }}
-            {!! $errors->first('discount', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group">
-            {{ Form::label('Total') }}
-            {{ Form::text('total', $detailPurchase->total, ['id' => 'total', 'class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''), 'placeholder' => 'Total', 'readonly' => true, 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
-            {!! $errors->first('total', '<div class="invalid-feedback">:message</div>') !!}
-            <small class="text-muted">El valor de este campo es generado automaticamente. No es editable.</small>
-        </div>
-        <div class="form-group">
-            @if (isset($creating))
-                {{ Form::text('detail_purchase[purchases_id]', $purchaseName, ['class' => 'form-control', 'hidden']) }}
-            @else
-                {{ Form::select('detail_purchase[purchases_id]', $purchases, $detailPurchase->purchases_id, ['class' => 'form-control' . ($errors->has('detail_purchase.purchases_id') ? ' is-invalid' : '')]) }}
-            @endif
-            {!! $errors->first('detail_purchase.purchases_id', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-
     </div>
 
-    <button type="button" class="btn btn-primary" onclick="clonarFormulario()">Nuevo detalle</button>
+    <script>
+        document.getElementById('agregarDetalle').addEventListener('click', function() {
+    var container = document.querySelector('#detalle-table tbody');
+    var nuevoDetalle = container.children[0].cloneNode(true);
 
-    
-</div>
+    // Limpiar los campos del nuevo detalle clonado
+    nuevoDetalle.querySelectorAll('select, input').forEach(function(element) {
+        element.value = '';
+        // Agregar un índice único a los nombres de los campos clonados
+        element.name = element.name + '_' + container.children.length;
+    });
 
-<script>
-    function clonarFormulario() {
-        // Clonar el formulario original
-        var formularioOriginal = document.getElementById('formulario-original');
-        var formularioClonado = formularioOriginal.cloneNode(true);
+    // Agregar eventos de escucha para el nuevo detalle
+    addEventListeners(nuevoDetalle);
 
-        // Limpia los campos clonados (si es necesario)
-        var campos = formularioClonado.querySelectorAll('input[type="text"]');
-        campos.forEach(function(campo) {
-            campo.value = '';
-        });
-
-        // Inserta el formulario clonado después del formulario original
-        formularioOriginal.parentNode.insertBefore(formularioClonado, formularioOriginal.nextSibling);
-    }
+    // Agregar el nuevo detalle a la tabla
+    container.appendChild(nuevoDetalle);
+});
 
 
-    document.addEventListener('DOMContentLoaded', function() {
-        const quantityField = document.getElementById('quantity');
-        const priceUnitField = document.getElementById('price_unit');
-        const discountField = document.getElementById('discount');
-        const subtotalField = document.getElementById('subtotal');
-        const totalField = document.getElementById('total');
+        function addEventListeners(detalle) {
+            const quantityField = detalle.querySelector('#quantity');
+            const priceUnitField = detalle.querySelector('#price_unit');
+            const discountField = detalle.querySelector('#discount');
+            const subtotalField = detalle.querySelector('#subtotal');
+            const totalField = detalle.querySelector('#total');
 
-        //calcula subtotal y total
-        function calculateSubtotalAndTotal() {
-            const quantity = parseFloat(quantityField.value) || 0;
-            const priceUnit = parseFloat(priceUnitField.value) || 0;
-            const discount = parseFloat(discountField.value) || 0;
+            function calculateSubtotalAndTotal() {
+                const quantity = parseFloat(quantityField.value) || 0;
+                const priceUnit = parseFloat(priceUnitField.value) || 0;
+                const discount = parseFloat(discountField.value) || 0;
 
-            const subtotal = quantity * priceUnit;
-            const total = subtotal - (subtotal * (discount / 100));
+                const subtotal = quantity * priceUnit;
+                const total = subtotal - (subtotal * (discount / 100));
 
-            // Muestra los valores en los campos
-            subtotalField.value = subtotal.toFixed(2);
-            totalField.value = total.toFixed(2);
+                subtotalField.value = subtotal.toFixed(2);
+                totalField.value = total.toFixed(2);
+            }
+
+            quantityField.addEventListener('input', calculateSubtotalAndTotal);
+            priceUnitField.addEventListener('input', calculateSubtotalAndTotal);
+            discountField.addEventListener('input', calculateSubtotalAndTotal);
         }
 
-        // Asocia la función al evento de cambio en los campos relevantes
-        quantityField.addEventListener('input', calculateSubtotalAndTotal);
-        priceUnitField.addEventListener('input', calculateSubtotalAndTotal);
-        discountField.addEventListener('input', calculateSubtotalAndTotal);
-    });
-</script>
+        // Agregar eventos de escucha para el detalle inicial
+        document.addEventListener('DOMContentLoaded', function() {
+            const initialDetail = document.querySelector('#detalle-table tbody tr');
+            addEventListeners(initialDetail);
+        });
+    </script>

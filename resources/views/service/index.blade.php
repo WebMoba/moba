@@ -25,9 +25,7 @@
                             <span id="card_title">
                                 {{ __('Servicio') }}
                             </span>
-                            <a href="{{ route('pdf.service') }}" class="btn btn-info btn-sm float-right">
-                                <i class="fa fa-file-pdf"></i> {{ __('Generar PDF') }}
-                            </a>
+
                             <form action="{{ route('service.index') }}" method="GET" class="d-flex align-items-center">
                                 <div class="col-auto">
                                     <input type="text" class="form-control " id="search" name="search">
@@ -35,6 +33,11 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
                             </form>
+                            <div class="float-right">
+                                <a href="{{ route('pdf.service') }}" class="btn btn-danger btn-sm float-right">
+                                    <i class="fa fa-file-pdf"></i> {{ __('PDF') }}
+                                </a>
+                            </div>
                             <div class="float-right">
                                 <a href="{{ route('service.create') }}" class="btn btn-primary btn-sm float-right"
                                     data-placement="left">

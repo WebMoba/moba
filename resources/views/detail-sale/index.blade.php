@@ -57,28 +57,34 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($detailSale as $detailSales)
-                                        <tr>
-                                            <td>{{ ++$i }}</td>
-                                            
-											<td>{{ $detailSales->quantity }}</td>
-											<td>{{ $detailSales->price_unit }}</td>
-											<td>{{ $detailSales->subtotal }}</td>
-											<td>{{ $detailSales->discount }}</td>
-											<td>{{ $detailSales->total }}</td>
-											<td>{{ $detailSales->sales_id }}</td>
-											<td>{{ $detailSales->products_id }}</td>
+                                    @foreach ($detailSales as $detailSale)
+                                                <tr>
+                                                    <td>{{ ++$i }}</td>
+                                                    
+                                                    <td>{{ $detailSale->quantity }}</td>
+                                                    <td>{{ $detailSale->products_price }}</td>
+                                                    <td>{{ $detailSale->subtotal }}</td>
+                                                    <td>{{ $detailSale->discount }}</td>
+                                                    <td>{{ $detailSale->total }}</td>
+                                                    <td>{{ $detailSale->sales_id }}</td>
+                                                    <td>{{ $detailSale->products_id }}</td>
 
-                                            <td>
-                                                <form action="{{ route('detail-sale.destroy',$detailSales->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('detail-sale.show',$detailSales->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('detail-sale.edit',$detailSales->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
-                                                </form>
-                                            </td>
-                                        </tr>
+                                                    <td>
+                                                        <form action="{{ route('detail-sale.destroy', $detailSale->id) }}" method="POST">
+                                                            <a class="btn btn-sm btn-primary" href="{{ route('detail-sale.show', $detailSale->id) }}">
+                                                                <i class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}
+                                                            </a>
+                                                            <a class="btn btn-sm btn-success" href="{{ route('detail-sale.edit', $detailSale->id) }}">
+                                                                <i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}
+                                                            </a>
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                                <i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}
+                                                            </button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
                                     @endforeach
 
 
@@ -91,7 +97,7 @@
 
                     
                 </div>
-                {!! $detailSale->links() !!}
+                {!! $detailSales->links() !!}
             </div>
         </div>
     </div>

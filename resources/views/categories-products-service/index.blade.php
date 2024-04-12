@@ -25,9 +25,7 @@
                             <span id="card_title">
                                 {{ __('Categorias') }}
                             </span>
-                            <a href="{{ route('pdf.categories-products-service') }}" class="btn btn-info btn-sm float-right">
-                                <i class="fa fa-file-pdf"></i> {{ __('Generar PDF') }}
-                            </a>
+
                             <form action="{{ route('categories-products-service.index') }}" method="GET"
                                 class="d-flex align-items-center">
                                 <div class="col-auto mr-2">
@@ -37,7 +35,12 @@
                                     <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
                                 </div>
                             </form>
-
+                            <div class="float-right">
+                                <a href="{{ route('pdf.categories-products-service') }}"
+                                    class="btn btn-danger btn-sm float-right">
+                                    <i class="fa fa-file-pdf"></i> {{ __('PDF') }}
+                                </a>
+                            </div>
                             <div class="float-right">
                                 <a href="{{ route('categories-products-service.create') }}"
                                     class="btn btn-primary btn-sm float-right" data-placement="left">
