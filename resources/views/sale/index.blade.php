@@ -49,7 +49,7 @@
                                         <th>No</th>
                                         
                                             <th>Nombre Cliente</th>
-                                            <th>Id Persona</th>
+                                            <th>Id Cliente</th>
                                             <th>Fecha venta</th>                                            
                                             <th>Fecha de Cotización</th>
 

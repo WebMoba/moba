@@ -42,23 +42,24 @@
         <thead>
             <tr>
                 <th>Id</th>
-				<th>Fecha de expedición</th>
-				<th>Descripción</th>
-				<th>Total</th>
-				<th>Descuento</th>
-				<th>Estado</th>
-				<th>Persona</th>
+                <th>Nombre Cliente</th>
+                <th>Id Cliente</th>
+                <th>Fecha venta</th>                                            
+                <th>Fecha de Cotización</th>
+
             </tr>
         </thead>
         <tbody>
             <!-- @php $i = 0; @endphp -->
             @foreach ($sale as $sales)
                 <tr>
-                    <td>{{ $sales->id }}</td>
-				    <td>{{ $sales->name }}</td>
-				    <td>{{ $sales->date }}</td>
-				    <td>{{ $sales->people_id }}</td>
-				    <td>{{ $sales->quotes_id }}</td>
+                    @foreach ($sales as $sale)
+                    <tr>
+                        <td>{{ ++$i }}</td>
+                        <td>{{ $sale->person->name }}</td>
+                        <td>{{ $sale->person->id_card }}</td>
+                        <td>{{ $sale->date }}</td>                                                
+                        <td>{{ $sale->quote->date_issuance }}</td>
 				                        
                 </tr>
             @endforeach
