@@ -80,7 +80,7 @@ class ServiceController extends Controller
             'date_end' => 'required|date|after_or_equal:date_start',
         ], $customMessages);
 
-        $service = Service::create(array_merge($request->all(), ['image' => $request->file('image')->store('uploads', 'public')]));
+        $service = Service::create(array_merge($request->all(), ['image' => $request->file('image')->store('uploads', 'public'),'disable' => 0,]));
 
         return redirect()->route('service.index')
             ->with('success', 'Servicio Creado Exitosamente.');
@@ -156,7 +156,7 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        $service = Service::find($id)->delete();
+        $service = Service::find($id);
 
         return redirect()->route('service.index')
             ->with('success', 'Servicio Eliminado Exitosamente');

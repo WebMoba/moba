@@ -81,18 +81,20 @@
                                             <td>{{ $service->categoriesProductsService->name }}</td>
 
                                             <td>
-                                                <form action="{{ route('service.destroy', $service->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary "
-                                                        href="{{ route('service.show', $service->id) }}"><i
+                                                <form action="{{ route('service.destroy',  $service->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary {{  $service->disable ? 'disabled' : '' }}"
+                                                        href="{{ route('service.show',  $service->id) }}"><i
                                                             class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}</a>
-                                                    <a class="btn btn-sm btn-success"
-                                                        href="{{ route('service.edit', $service->id) }}"><i
+                                                    <a class="btn btn-sm btn-success {{  $service->disable ? 'disabled' : '' }}"
+                                                        href="{{ route('service.edit',  $service->id) }}"><i
                                                             class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"
-                                                        onclick="return confirm ('¿Esta seguro que de que desea Eliminar el Servicio?')"><i
-                                                            class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
+                                                        onclick="return confirm('¿Está seguro de que desea {{  $service->disable ? 'Habilitar' : 'Deshabilitar' }}el servicio?')">
+                                                        <i class="fa fa-fw fa-trash"></i>
+                                                        {{  $service->disable ? 'Habilitar' : 'Deshabilitar' }}
+                                                    </button>
                                                 </form>
                                             </td>
                                         </tr>
