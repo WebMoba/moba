@@ -25,9 +25,7 @@
                             <span id="card_title">
                                 {{ __('Categorias') }}
                             </span>
-                            <a href="{{ route('pdf.categories-products-service') }}" class="btn btn-info btn-sm float-right">
-                                <i class="fa fa-file-pdf"></i> {{ __('Generar PDF') }}
-                            </a>
+
                             <form action="{{ route('categories-products-service.index') }}" method="GET"
                                 class="d-flex align-items-center">
                                 <div class="col-auto mr-2">
@@ -37,7 +35,12 @@
                                     <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
                                 </div>
                             </form>
-
+                            <div class="float-right">
+                                <a href="{{ route('pdf.categories-products-service') }}"
+                                    class="btn btn-danger btn-sm float-right">
+                                    <i class="fa fa-file-pdf"></i> {{ __('PDF') }}
+                                </a>
+                            </div>
                             <div class="float-right">
                                 <a href="{{ route('categories-products-service.create') }}"
                                     class="btn btn-primary btn-sm float-right" data-placement="left">
@@ -79,21 +82,21 @@
                                                 <td>{{ $categoriesProductsService->type }}</td>
 
                                                 <td>
-                                                    <form
-                                                        action="{{ route('categories-products-service.destroy', $categoriesProductsService->id) }}"
+                                                    <form action="{{ route('categories-products-service.destroy',$categoriesProductsService->id) }}"
                                                         method="POST">
-                                                        <a class="btn btn-sm btn-primary "
+                                                        <a class="btn btn-sm btn-primary {{ $categoriesProductsService->disable ? 'disabled' : '' }}"
                                                             href="{{ route('categories-products-service.show', $categoriesProductsService->id) }}"><i
                                                                 class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}</a>
-                                                        <a class="btn btn-sm btn-success"
+                                                        <a class="btn btn-sm btn-success {{ $categoriesProductsService->disable ? 'disabled' : '' }}"
                                                             href="{{ route('categories-products-service.edit', $categoriesProductsService->id) }}"><i
                                                                 class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger btn-sm"
-                                                            onclick="return confirm ('¿Esta seguro que de que desea Eliminar la Categoria?')"><i
-                                                                class="fa fa-fw fa-trash"></i>
-                                                            {{ __('Eliminar') }}</button>
+                                                            onclick="return confirm('¿Está seguro de que desea {{ $categoriesProductsService->disable ? 'Habilitar' : 'Deshabilitar' }} la categoria?')">
+                                                            <i class="fa fa-fw fa-trash"></i>
+                                                            {{ $categoriesProductsService->disable ? 'Habilitar' : 'Deshabilitar' }}
+                                                        </button>
                                                     </form>
                                                 </td>
                                             </tr>

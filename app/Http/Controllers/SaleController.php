@@ -77,28 +77,78 @@ class SaleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+
+    /**
+     public function create()
+    {
+         $sale = new Sale();
+         $sale->date = now()->format('Y-m-d');
+         $detailSale = null;
+     
+         // Obtener una lista de personas con el formato adecuado para el select
+         $people = Person::pluck('name', 'id');
+     
+         // Obtener una lista de productos para el select
+         $products = Product::pluck('name', 'id');
+     
+         // Obtener una lista de cotizaciones para el select
+         $quotes = Quote::pluck('id', 'id');
+     
+         $confirm = false;
+     
+         // Crear una nueva instancia de detalle de venta
+         $detailSale = new DetailSale();
+     
+         return view('sale.create', compact('sale', 'people', 'quotes', 'confirm', 'products', 'detailSale'));
+     }
+ 
+         public function create()
+     {
+         $sale = new Sale();
+         $sale->date = now()->format('Y-m-d');
+         $detailSale = null;
+      
+         // Obtener una lista de personas con el formato adecuado para el select
+         $people = Person::pluck('id_card', 'id');
+      
+         // Obtener una lista de productos para el select
+         $products = Product::pluck('name', 'id');
+      
+         // Obtener una lista de cotizaciones para el select
+         $quotes = Quote::pluck('id', 'id');
+      
+         $confirm = false;
+      
+         // Crear una nueva instancia de detalle de venta
+         $detailSale = new DetailSale();
+      
+         return view('sale.create', compact('sale', 'people', 'quotes', 'confirm', 'products', 'detailSale'));
+     }
+     */
+
+ 
+     
+     public function create()
 {
     $sale = new Sale();
     $sale->date = now()->format('Y-m-d');
-    
-    $people = Person::pluck('name', 'id')->map(function ($name, $id) {
-        $person = Person::find($id);
-        return "$name - $person->id_card - $person->address";
-    })->toArray();
-    
-    $salesName = $sale->name;
-    
-    $products = Product::pluck('name', 'id'); // Cargar todos los productos
-    
-    $quote = Quote::pluck('people_id', 'id');
-    
+    $detailSale = null;
+
+    // Obtener una lista de personas con el formato adecuado para el select
+    $people = Person::pluck('name', 'id_card', 'id');
+
+    // Obtener una lista de productos para el select
+    $products = Product::pluck('name', 'id');
+
+    // Obtener una lista de cotizaciones para el select
+    $quotes = Quote::pluck('id', 'id');
+
     $confirm = false;
 
-    // Aquí creamos una nueva instancia de detalle de venta
+    // Crear una nueva instancia de detalle de venta
     $detailSale = new DetailSale();
 
-    return view('sale.create', compact('sale', 'people', 'quote', 'salesName', 'confirm', 'products', 'detailSale'));
+    return view('sale.create', compact('sale', 'people', 'quotes', 'confirm', 'products', 'detailSale'));
 }
 
     
@@ -113,7 +163,11 @@ class SaleController extends Controller
         'quotes_id' => 'required',
     ]);
 
-    $sale = Sale::create($request->all());
+    $sale = Sale::create ([
+        'people_id' => $request->people_id,
+        'date' => $request->date,
+        'quotes_id' => $request->quotes_id,
+    ]);
 
     if ($request->has('products_id')) {
         foreach ($request->products_id as $key => $productId) {
@@ -131,42 +185,82 @@ class SaleController extends Controller
 
     return redirect()->route('sales.index')->with('success', 'Registro creado exitosamente');
 }
+       
 
-        public function show($id)
+   
+
+public function show($id)
+{
+    $sale = Sale::findOrFail($id);
+    // Obtener el nombre de la persona asociada a la venta
+    $people = Person::pluck('name', 'id_card', 'id');
+    $products = Product::pluck('name', 'id');
+    // Obtener los detalles de la venta
+    $detailSale = $sale->detailSales->first();
+    // Verificar si $detailSale no es null antes de continuar
+    if ($detailSale) {
+        // Obtener los productos asociados a los detalles de la venta
+        return view('sale.show', compact('sale', 'detailSale', 'people', 'products'));
+    } else {
+        // Si no hay detalles de venta, enviar null a la vista
+        return view('sale.show', compact('sale', 'detailSale', 'people', 'products'));
+    }
+}
+
+  /**
+   *      public function show($id)
         {
             $sale = Sale::findOrFail($id);
-            
             // Obtener el nombre de la persona asociada a la venta
-            $personName = $sale->person->name;
-
+            $people = Person::pluck('name', 'id_card', 'id');
+            $products = Product::pluck('name', 'id');
+            // Obtener los detalles de la venta
+            $detailSale = $sale->detailSales->first();
+            // Obtener los productos asociados a los detalles de la venta
+            //$products = Product::pluck('name', 'id'); // Esta línea estaba causando el error
+            return view('sale.show', compact('sale', 'detailSale', 'people', 'products')); // Corregido para incluir 'products' en la compactación
+        }
+   * 
+ public function show($id)
+        {
+            $sale = Sale::findOrFail($id);
+            // Obtener el nombre de la persona asociada a la venta
+            $people = Person::pluck('name', 'id_card', 'id');
+            $products = Product::pluck('name', 'id');
             // Obtener los detalles de la venta
             $detailSale = $sale->detailSales;
-
             // Obtener los productos asociados a los detalles de la venta
             $products = Product::pluck('name', 'id');
-
-            return view('sale.show', compact('sale', 'detailSale', 'personName', 'products'));
+            return view('sale.show', compact('sale', 'detailSale', 'people' , 'product'));
         }
 
+  *         public function edit($id)
+{
+    $sale = Sale::find($id);
+    $people = Person::pluck('name', 'id');
+    $salesName = $sale->name;
+    $products = Product::pluck('name', 'id');
+    $detailSale = $sale->detailSales()->first();
+    $sales = Sale::pluck('name', 'id');
+    $confirm = true;
+    
+    return view('sale.edit', compact('sale', 'detailSale', 'people', 'confirm', 'products', 'salesName'));
+}
+*/
 
-     
-        public function edit($id)
-        {
-            $sale = Sale::find($id);
-            $people = Person::pluck('id_card', 'id')->map(function ($id_card, $id){
-                $person = Person::find($id);
-                return "$id_card - $person->address";
-            })->toArray();
-        
-            $salesName = $sale->name;
-            $products = Product::pluck('name', 'id'); // Cargar todos los productos
-            $detailSale = $sale->detailSales()->first();
-        
-            $sales = Sale::pluck('name', 'id');
-            $confirm = true;
-            
-            return view('sale.edit', compact('sale', 'detailSale', 'people', 'confirm',  'products', 'salesName'));
-        }
+public function edit($id)
+{
+    $sale = Sale::find($id);
+    $people = Person::pluck('name', 'id');
+    $salesName = $sale->name;
+    $products = Product::pluck('name', 'id');
+    $detailSale = $sale->detailSales()->first();
+    $sales = Sale::pluck('name', 'id');
+    $confirm = true;
+
+    return view('sale.edit', compact('sale', 'detailSale', 'people', 'confirm', 'products', 'salesName'));
+}
+
         
     public function update(Request $request, Sale $sale)
     {

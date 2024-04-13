@@ -1,5 +1,9 @@
 <?php
 
+/*controlador para envio de correo electronico*/
+
+use App\Http\Controllers\ContactoController;
+
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\BusquedaController;
@@ -22,6 +26,8 @@ use App\Http\Controllers\CategoriesProductsServiceController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\TeamWorkController;
+use App\Models\Product;
+
 //fin fabian
 
 /*
@@ -34,10 +40,11 @@ use App\Http\Controllers\TeamWorkController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::resources([
     'product'   => ProductController::class,
-    'detail-sale'=> DetailSaleController::class,
-    'quotes'    => QuotesController::class,
+    'detail-sale' => DetailSaleController::class,
+    'quotes'    => QuoteController::class,
     'sale'      => SaleController::class
 ]);
 
@@ -60,7 +67,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
+
     /*Controladores tablas Eventos, People, Buscar */
     Route::resource('events', EventController::class);
     Route::resource('person', PersonController::class);
@@ -80,6 +87,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('unit', UnitController::class);
     Route::get('/pdf/product', [ProductController::class, 'generatePDF'])->name('pdf.product');
     Route::get('/pdf/unit', [UnitController::class, 'generatePDF'])->name('pdf.unit');
+    Route::get('/export-product', [ProductController::class, 'export'])->name('excel.product');;
     /*Fin Rutas product y uni*/
 
     /*Rutas categories_products_services y services*/
@@ -98,7 +106,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('detail_purchases', App\Http\Controllers\DetailPurchaseController::class);
         Route::get('/pdf/purchase', [App\Http\Controllers\PurchaseController::class, 'generatePDF'])->name('pdf.purchase');
     });
-   /*Fin Rutas purchases, detailPurchases, y materialsRaws*/
+    /*Fin Rutas purchases, detailPurchases, y materialsRaws*/
 
     /** Inicio de Controladores Sale y DetailSale */
     Route::resource('sales', SaleController::class)->middleware('auth');
@@ -119,6 +127,15 @@ Route::middleware('auth')->group(function () {
         return view('mobaMenu.Servicios.index');
     });
     //Fin vistas carpeta servicios
+
+
+    //Vistas fronted Moba
+    Route::view('/mobaMenu/Servicios/index', 'mobaMenu.servicios.index')->name('mobaMenu.servicios.index');
+    Route::view('/mobaMenu/Contacto/index', 'mobaMenu.Contacto.index')->name('mobaMenu.Contacto.index');
+
+
+    //ruta Correo electronico
+    Route::post('/enviar-correo', [ContactoController::class, 'enviarCorreo'])->name('enviar-correo');
 });
 
 

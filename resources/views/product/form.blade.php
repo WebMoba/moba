@@ -7,9 +7,11 @@
             {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('Imagen', null,['class' => 'required']) }}
-            <br><img src="{{ asset('storage/' . $product->image) }}" width="150" height="150">
-            {{ Form::file('image', ['class' => 'form-control' . ($errors->has('image') ? ' is-invalid' : '')]) }}
+            {{ Form::label('Imagen', null, ['class' => 'required']) }}
+            <br>
+            <img id="image-preview" src="#" alt="Vista previa de la imagen"
+                style="display: none; width: 150px; height: 150px;">
+            {{ Form::file('image', ['class' => 'form-control' . ($errors->has('image') ? ' is-invalid' : ''), 'onchange' => 'previewImage(event)']) }}
             {!! $errors->first('image', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -26,7 +28,7 @@
             {{ Form::label('Unidad', null, ['class' => 'required']) }}
             {{ Form::select('units_id', $units, $product->units_id, ['class' => 'form-control' . ($errors->has('units_id') ? ' is-invalid' : '')]) }}
             {!! $errors->first('units_id', '<div class="invalid-feedback">:message</div>') !!}
-        </div>       
+        </div>
         <div class="form-group">
             {{ Form::label('Categoria', null, ['class' => 'required']) }}
             {{ Form::select('categories_products_services_id', $categories_products_service, $product->categories_products_services_id, ['class' => 'form-control' . ($errors->has('categories_products_services_id') ? ' is-invalid' : '')]) }}
@@ -39,10 +41,38 @@
             @if ($mode == 'Editar') onclick="return confirm('¿Está seguro de que desea {{ $mode }} el producto?')" @endif>{{ $mode }}</button>
     </div>
 </div>
+<script>
+    function previewImage(event) {
+        var input = event.target;
+        var preview = document.getElementById('image-preview');
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            preview.src = '#';
+            preview.style.display = 'none';
+        }
+    }
+</script>
 <style>
     .required::after {
-    content: "*";
-    color: red;
-    margin-left: 4px;
-}
+        content: "*";
+        color: red;
+        margin-left: 4px;
+    }
 </style>
+<style>
+    #image-preview {
+        display: none;
+        width: 150px;
+        height: 150px;
+    }
+</style>
+

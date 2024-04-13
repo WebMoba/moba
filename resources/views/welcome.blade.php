@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Moba</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -58,8 +58,13 @@
                 <div class="linea grey"></div> <!-- Línea vertical después de los logos -->
             </div>
               <!-- Insersion de imagenes  -->
+            <a href="{{ route('mobaMenu.servicios.index') }}" class="logos">
             <div class="logos"><img src="{{ asset('storage/imgMoba/LogoMoba.png') }}" alt="Imagen"></div>
+            </a>
+
             <div class="logos"><img src="{{ asset('storage/imgMoba/LogotipoTuArte.png') }}" alt="Imagen" id="img2"></div>
+
+
             <div class="links">
             <div class="linea"></div> <!-- Línea vertical antes de los logos -->
                 <div class="columna">
