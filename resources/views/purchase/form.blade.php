@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="box-footer">
-        <button type="submit" class="btn btn-success">Enviar</button>
-        <a type="submit" class="btn btn-primary" href="{{ route('purchases.index') }}">Volver</a>
-    </div>
+    <button type="button" class="btn btn-success" onclick="enviarDetalles()">Enviar</button>
+    <a type="submit" class="btn btn-primary" href="{{ route('purchases.index') }}">Volver</a>
+</div>
 </div>
