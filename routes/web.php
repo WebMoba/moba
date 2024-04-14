@@ -126,6 +126,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/mobaMenu/Servicios/index', function () {
         return view('mobaMenu.Servicios.index');
     });
+    Route::view('/mobaMenu/Servicios/identidad', 'mobaMenu.servicios.identidad')->name('mobaMenu.servicios.identidad');
     //Fin vistas carpeta servicios
 
 
