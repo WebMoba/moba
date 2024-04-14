@@ -1,3 +1,4 @@
+
 body {
     position: relative;
     /* Aseguramos que el body tenga una posición relativa para que el ::after funcione correctamente */
@@ -14,8 +15,9 @@ body::after {
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
-    opacity: 0.89;/*Ajustar transparencia de la imagen de fondo*/
+    opacity: 1;/*Ajustar transparencia de la imagen de fondo*/
     z-index: -1;
+    filter: brightness(30%);
 }
 
 .navbar {
@@ -36,7 +38,7 @@ body::after {
 }
 
 .navbar-img-left {
-    max-width: 59px;
+    width: 69px;
     height: auto;
 }
 

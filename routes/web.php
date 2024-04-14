@@ -44,7 +44,7 @@ use App\Models\Product;
 Route::resources([
     'product'   => ProductController::class,
     'detail-sale' => DetailSaleController::class,
-    'quotes'    => QuotesController::class,
+    'quotes'    => QuoteController::class,
     'sale'      => SaleController::class
 ]);
 
@@ -126,12 +126,19 @@ Route::middleware('auth')->group(function () {
     Route::get('/mobaMenu/Servicios/index', function () {
         return view('mobaMenu.Servicios.index');
     });
+    Route::view('/mobaMenu/Servicios/identidad', 'mobaMenu.servicios.identidad')->name('mobaMenu.servicios.identidad');
     //Fin vistas carpeta servicios
 
 
     //Vistas fronted Moba
     Route::view('/mobaMenu/Servicios/index', 'mobaMenu.servicios.index')->name('mobaMenu.servicios.index');
     Route::view('/mobaMenu/Contacto/index', 'mobaMenu.Contacto.index')->name('mobaMenu.Contacto.index');
+
+
+    //vistas froted tu arte 
+    Route::view('/tuArteMenu/categorias/index', 'tuArteMenu.categorias.index')->name('tuArteMenu.categorias.index');
+    Route::view('/tuArteMenu/productos/index', 'tuArteMenu.productos.index')->name('tuArteMenu.productos.index');
+    Route::view('/tuArteMenu/galeria/index', 'tuArteMenu.galeria.index')->name('tuArteMenu.galeria.index');
 
 
     //ruta Correo electronico

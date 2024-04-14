@@ -163,6 +163,32 @@
                 // Agregar el nuevo detalle a la tabla
                 container.appendChild(nuevoDetalle);
 
+                // Obtener el botón de eliminar del nuevo detalle y agregar el evento de clic
+                var botonEliminar = nuevoDetalle.querySelector('.eliminar-detalle');
+                botonEliminar.addEventListener('click', function() {
+                    // Obtén la fila a la que pertenece el botón
+                    var fila = this.closest('tr');
+                    
+                    // Elimina la fila
+                    fila.parentNode.removeChild(fila);
+                });
+            });
+        </script>
+
+
+        <!-- <script>
+            document.getElementById('agregarDetalle').addEventListener('click', function() {
+                var container = document.querySelector('#detalle-table tbody');
+                var nuevoDetalle = container.children[0].cloneNode(true);
+
+                // Limpiar los campos del nuevo detalle clonado
+                nuevoDetalle.querySelectorAll('select').forEach(function(select) {
+                    select.selectedIndex = 0;
+                });
+
+                // Agregar el nuevo detalle a la tabla
+                container.appendChild(nuevoDetalle);
+
                 var botonesEliminar = document.querySelectorAll('.eliminar-detalle');
 
                 // Agrega un evento de clic a cada botón de eliminar detalle
@@ -187,7 +213,7 @@
                 // // Agregar el nuevo detalle a la tabla
                 // container.appendChild(nuevoDetalle);
             });
-        </script>
+        </script> -->
 
     </body>
 </html>

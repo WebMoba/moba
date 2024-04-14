@@ -29,7 +29,7 @@
                                 </tr>
                                 <tr>
                                     <div class="form-group">
-                                    <strong>Id Persona:</strong>
+                                    <strong>Id Cliente:</strong>
                                     {{ $sale->person->id_card }}
                                     </div>
                                 </tr>
@@ -47,48 +47,43 @@
                                     </div>
                                 </tr>
                         
-                        
-                        
-                                
-                                <div class="container ms-1"> 
-                                    <h2> <strong> Detalle de la Venta</strong></h2>
-                                    @if($detailSale)
-                                        <div class="form-group">
-                                            <strong>Nombre Producto:</strong>
-                                            {{ $detailSale->product->name }}
-
-                                        </div>
-                                        <div class="form-group">
-                                            <strong>Cantidad:</strong>
-                                            {{ $detailSale->quantity }}
-                                        </div>
-                                        <div class="form-group">
-                                            <strong>Precio unitario:</strong>
-                                            {{ $detailSale->price_unit }}
-                                        </div>
-                                        <div class="form-group">
-                                            <strong>Subtotal:</strong>
-                                            {{ $detailSale->subtotal }}
-                                        </div>
-                                        <div class="form-group">
-                                            <strong>Porcentaje de descuento:</strong>
-                                            {{ $detailSale->discount }}
-                                        </div>
-                                        <div class="form-group">
-                                            <strong>Total:</strong>
-                                            {{ $detailSale->total }}
-                                        </div>
-                                        <div class="form-group">
-                                            <strong>Nombre Producto:</strong>
-                                            {{ $detailSale->products_id }}
-                                        </div>
-                                    @else
-                                        <div class="alert alert-info" role="alert">
-                                            No hay detalles asociados a esta venta.
-                                        </div>
-                                    @endif
-                                </div>
-                                
+                                <tr>
+                                    <div class="container ms-1">
+                                        <h2><strong>Detalle de la Venta</strong></h2>
+                                        @if($detailSale)
+                                            <div class="form-group">
+                                                <strong>Nombre Producto:</strong>
+                                                {{ $detailSale->product->name }}
+                                            </div>
+                                            <div class="form-group">
+                                                <strong>Cantidad:</strong>
+                                                {{ $detailSale->quantity }}
+                                            </div>
+                                            <div class="form-group">
+                                                <strong>Precio unitario:</strong>
+                                                {{ $detailSale->price_unit }}
+                                            </div>
+                                            <div class="form-group">
+                                                <strong>Subtotal:</strong>
+                                                {{ $detailSale->subtotal }}
+                                            </div>
+                                            <div class="form-group">
+                                                <strong>Porcentaje de descuento:</strong>
+                                                {{ $detailSale->discount }}
+                                            </div>
+                                            <div class="form-group">
+                                                <strong>Total:</strong>
+                                                {{ $detailSale->total }}
+                                            </div>
+                                        @else
+                                            <div class="alert alert-info" role="alert">
+                                                No hay detalles asociados a esta venta.
+                                            </div>
+                                        @endif
+                                    </div>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

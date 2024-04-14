@@ -46,7 +46,7 @@ class Sale extends Model
 
      public function detailSales()
     {
-        return $this->belongsTo('App\Models\DetailSale', 'id','sales_id', 'id', 'product_id' );
+        return $this->hasMany('App\Models\DetailSale','sales_id', 'id', 'id', 'product_id' );
     }
     
     /**

@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\DB;
 use Dompdf\Dompdf as DompdfDompdf;
 use PhpParser\Node\Expr\New_;
 
+use Maatwebsite\Excel\Facades\Excel;
+
 
 /**
  * Class QuoteController
@@ -30,8 +32,7 @@ class QuoteController extends Controller
     public function index(Request $request)
     {
         $search = trim($request->get('search'));
-        $quotes=DB::table('quotes')
-                    ->select('id','date_issuance','description','total','discount','status','people_id')
+        $quotes = Quote::select('id','date_issuance','description','total','discount','status','people_id')
                     ->where('id','LIKE','%'.$search.'%')
                     ->orWhere('description','LIKE','%'.$search.'%')
                     ->orderBy('date_issuance','asc')
@@ -79,9 +80,9 @@ class QuoteController extends Controller
     $request->validate([
         'date_issuance'=>'required|date',
         'description'=>'required|string|max:300',
-        'total'=>'required|number|max:20',
-        'discount'=>'required|number|max:20',
-        'status' => 'required|in: aprobado, rechazado, pendiente',
+        'total'=>'required|numeric',
+        'discount'=>'required|numeric',
+        'status' => 'required|in:aprobado,rechazado,pendiente',
         'people_id'=>'required',
     ], $msj);
 
@@ -184,9 +185,9 @@ class QuoteController extends Controller
         $request->validate([
             'date_issuance'=>'required|date',
             'description'=>'required|string|max:300',
-            'total'=>'required|number|max:20',
-            'discount'=>'required|number|max:20',
-            'status' => 'required|in: aprobado, rechazado, pendiente',
+            'total'=>'required|numeric',
+            'discount'=>'required|numeric',
+            'status' => 'required|in:aprobado,rechazado,pendiente',
             'people_id'=>'required',
         ], $msj);
 
@@ -211,8 +212,11 @@ class QuoteController extends Controller
             return redirect()->route('quotes.index')->with('error', 'La cotización no existe');
         }
     
-        // Cambia el estado del proyecto
-        $quote->disable = !$quote->disable;
+        if ($quote->disable) {
+            $quote->disable = false;
+        } else {
+            $quote->disable = true;
+        }
         $quote->save();
     
         return redirect()->route('quotes.index')->with('success', 'Estado de la cotización cambiada con éxito');

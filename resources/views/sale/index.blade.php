@@ -46,13 +46,10 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-
                                         <th>Nombre Cliente</th>
                                         <th>Id Persona</th>
                                         <th>Fecha venta</th>
                                         <th>Fecha de Cotización</th>
-
-                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
