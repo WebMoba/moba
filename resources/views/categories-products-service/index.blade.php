@@ -40,6 +40,9 @@
                                     class="btn btn-danger btn-sm float-right">
                                     <i class="fa fa-file-pdf"></i> {{ __('PDF') }}
                                 </a>
+                                <a href="{{ route('excel.categories-products-service') }}" class="btn btn-success btn-sm float-right">
+                                    <i class="fa fa-file-excel"></i> {{ __('Excel') }}
+                                </a>
                             </div>
                             <div class="float-right">
                                 <a href="{{ route('categories-products-service.create') }}"
@@ -82,7 +85,8 @@
                                                 <td>{{ $categoriesProductsService->type }}</td>
 
                                                 <td>
-                                                    <form action="{{ route('categories-products-service.destroy',$categoriesProductsService->id) }}"
+                                                    <form
+                                                        action="{{ route('categories-products-service.destroy', $categoriesProductsService->id) }}"
                                                         method="POST">
                                                         <a class="btn btn-sm btn-primary {{ $categoriesProductsService->disable ? 'disabled' : '' }}"
                                                             href="{{ route('categories-products-service.show', $categoriesProductsService->id) }}"><i

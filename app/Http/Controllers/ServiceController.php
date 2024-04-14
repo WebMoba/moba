@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Dompdf\Dompdf;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ServiceExport;
 use Illuminate\Support\Facades\Storage;
 use App\Models\CategoriesProductsService;
 use App\Models\Service;
@@ -162,5 +164,9 @@ class ServiceController extends Controller
         $pdf->setPaper('A4', 'portrait');
         $pdf->render();
         return $pdf->stream('vista de servicios.pdf');
+    }
+    public function export()
+    {
+        return Excel::download(new ServiceExport, 'servicios.xlsx');
     }
 }

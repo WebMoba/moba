@@ -2,6 +2,7 @@
 
 /*controlador para envio de correo electronico*/
 
+use App\Exports\CategoriesExport;
 use App\Http\Controllers\ContactoController;
 
 use App\Http\Controllers\PersonController;
@@ -95,6 +96,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('categories-products-service', CategoriesProductsServiceController::class);
     Route::get('/pdf/service', [ServiceController::class, 'generatePDF'])->name('pdf.service');
     Route::get('/pdf/categories-products-service', [CategoriesProductsServiceController::class, 'generatePDF'])->name('pdf.categories-products-service');
+    Route::get('/export-categories-products-service', [CategoriesProductsServiceController::class, 'export'])->name('excel.categories-products-service');
+    Route::get('/export-service', [ServiceController::class, 'export'])->name('excel.service');
     /*Fin Rutas categories_products_services y services*/
 
     /*Incio Rutas purchases, detailPurchases, y materialsRaws*/
