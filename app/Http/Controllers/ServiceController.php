@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\CategoriesProductsService;
 use App\Models\Service;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 
 /**
  * Class ServiceController
@@ -30,9 +29,9 @@ class ServiceController extends Controller
                     ->orWhere('date_start', 'like', '%' . $search . '%')
                     ->orWhere('date_end', 'like', '%' . $search . '%');
             })
-                ->paginate();
+                ->paginate(10);
         } else {
-            $services = Service::paginate();
+            $services = Service::paginate(10);
         }
 
 
@@ -49,10 +48,6 @@ class ServiceController extends Controller
     {
         $service = new Service();
         $categories_products_service = CategoriesProductsService::where('type', 'servicio')->pluck('name', 'id');
-
-        if ($categories_products_service->isEmpty()) {
-            return redirect()->back()->with('danger', 'No hay categorías de producto disponibles.');
-        }
         return view('service.create', compact('service', 'categories_products_service'));
     }
 
@@ -69,18 +64,10 @@ class ServiceController extends Controller
             'date' => 'La fecha de inicio debe ser anterior a la fecha final.',
         ];
 
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'status' => 'required',
-            'quantity' => 'required|numeric',
-            'popular' => 'required',
-            'type' => 'required',
-            'date_start' => 'required|date',
-            'date_end' => 'required|date|after_or_equal:date_start',
-        ], $customMessages);
+        $service = request()->validate(Service::$rules, $customMessages);
 
-        $service = Service::create(array_merge($request->all(), ['image' => $request->file('image')->store('uploads', 'public'),'disable' => 0,]));
+
+        $service = Service::create(array_merge($request->all(), ['image' => $request->file('image')->store('uploads', 'public'), 'disable' => 0,]));
 
         return redirect()->route('service.index')
             ->with('success', 'Servicio Creado Exitosamente.');
@@ -126,16 +113,7 @@ class ServiceController extends Controller
             'date' => 'La fecha de inicio debe ser anterior a la fecha final.',
         ];
 
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'status' => 'required',
-            'quantity' => 'required|numeric',
-            'popular' => 'required',
-            'type' => 'required',
-            'date_start' => 'required|date',
-            'date_end' => 'required|date|after_or_equal:date_start',
-        ], $customMessages);
+        $request->validate(Service::$rules, $customMessages);
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             // Guardar la nueva imagen y eliminar la antigua
@@ -156,7 +134,7 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        $service = Service::find($id);
+        $service = Service::find($id)->delete();
 
         return redirect()->route('service.index')
             ->with('success', 'Servicio Eliminado Exitosamente');

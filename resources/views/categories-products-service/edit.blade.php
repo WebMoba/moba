@@ -11,8 +11,8 @@
 
                 @includeif('partials.errors')
 
-                <div class="card card-default">
-                    <div class="card-header">//card-header d-flex justify-content-between align-items-center(sustituyendolo sirve  para ponerlo al final)
+                <div class="card card-default ">
+                    <div class="card-header d-flex justify-content-between align-items-center">
                         <span class="card-title">{{ __('Editar') }} Categorias </span>
                         <a class="btn btn-primary" href="{{ route('categories-products-service.index') }}"> {{ __('Volver') }}</a>
 
@@ -29,5 +29,5 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>//card-header d-flex justify-content-between align-items-center(sustituyendolo sirve  para ponerlo al final)
 @endsection
