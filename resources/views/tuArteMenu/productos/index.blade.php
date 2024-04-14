@@ -24,13 +24,14 @@
                         Servicios
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#">Identidad Corporativa</a></li>
-                        <li><a class="dropdown-item" href="#">Avisos y Publicidad para interiores</a></li>
-                        <li><a class="dropdown-item" href="#">POP y álgo más</a></li>
+                        <li><a class="dropdown-item" href="#">Accesorios</a></li>
+                        <li><a class="dropdown-item" href="#">Decoracion</a></li>
+                        <li><a class="dropdown-item" href="#">Joditas pa'l Recuerdo</a></li>
+                        <li><a class="dropdown-item" href="#">Mascotas</a></li>
                     </ul>
                 </div>
-                <a href="#" class="btn btn-primary">Proyectos</a>
-                <a href="#" class="btn btn-primary">Equipo de trabajo</a>
+                <a href="#" class="btn btn-primary">Categorias</a>
+                <a href="#" class="btn btn-primary">Galeria</a>
                 <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
             <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte">
@@ -71,3 +72,33 @@
 </body>
 
 </html>
+
+
+<style>
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    border: none;
+    text-shadow: 0 0 5px #f80008;
+}
+
+.dropdown-item:hover {
+    color: #f80008!important;
+}
+
+.dropdown-menu {
+    background-color: transparent !important;
+    border-color: #73a3b6 !important;
+}
+
+.dropdown-menu .dropdown-item {
+    color: #f80008 !important;
+    background-color: transparent !important;
+    border-color: #f80008 !important;
+}
+
+.dropdown-menu .dropdown-divider {
+    border-top: 1px solid #f80008;
+}
+</style>
