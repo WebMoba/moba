@@ -44,25 +44,80 @@
             <hr class="linea1">
         </div>
     
+        <div class="contenido">
+            <div class="contenido1">
+                <div class="titulo">
+                    <h1>Servicios</h1>
+                </div>
+                <div class="subtitulo">
+                    <h4>
+                        ¿Buscas llevar la comunicación de tu empresa al siguiente nivel?
+                    </h4>
+                    <h5>
+                        ¡Has llegado al lugar indicado!
+                    </h5>
+                </div>
+                <div class="lineatexto">
+                    <div class="linea">
+                        linea
+                    </div>
+                    <div class="texto">
+                        <p>
+                            Como expertos en diseño y comunicación, somos el proveedor ideal para ayudarte a crear piezas de 
+                            comunicación interna de alto rendimiento y brindarte la asesoría que necesitas para lograr una comunicación 
+                            interna efectiva. ¡Contáctanos hoy y transforma la forma en que te comunicas con tus clientes!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contenido2">
+                <div class="creatividad">
+                    <h1>creatividad....</h1>
+                </div>
+                <div class="contenedor">
+                    <div class="cuadro" id="cuadro1">
+                        <div class="texto">
+                            <h2>Cuadro 1</h2>
+                            <p>Este es el contenido del primer cuadro.</p>
+                        </div>
+                        <div class="botones">
+                            <button onclick="mostrarCuadroAnterior(3)">Mostrar anterior cuadro</button>
+                            <button onclick="mostrarCuadroSiguiente(2)">Mostrar siguiente cuadro</button>
+                        </div>
+                    </div>
+
+                    <div class="cuadro" id="cuadro2" style="display: none;">
+                        <div class="texto">
+                            <h2>Cuadro 2</h2>
+                            <p>Este es el contenido del segundo cuadro.</p>
+                        </div>
+                        <div class="botones">
+                            <button onclick="mostrarCuadroAnterior(1)">Mostrar anterior cuadro</button>
+                            <button onclick="mostrarCuadroSiguiente(3)">Mostrar siguiente cuadro</button>
+                        </div>
+                    </div>
+
+                    <div class="cuadro" id="cuadro3" style="display: none;">
+                        <div class="texto">
+                            <h2>Cuadro 3</h2>
+                            <p>Este es el contenido del tercer cuadro.</p>
+                        </div>
+                        <div class="botones">
+                            <button onclick="mostrarCuadroAnterior(2)">Mostrar anterior cuadro</button>
+                            <button onclick="mostrarCuadroSiguiente(1)">Mostrar siguiente cuadro</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="vertical-line right-line">
             <hr class="linea2">
             <a href="https://www.instagram.com/moba_agencia"><i class="bi bi-instagram"></i></a>
             <a href="https://www.facebook.com/MOBAcomunicacionGrafica/"><i class="bi bi-facebook"></i></a>
             <hr class="linea2">
-        </div>
-    </div>
-    <div class="contenedor">
-        <div class="cuadro visible">
-            <h2>Primer Cuadro</h2>
-            <p>Contenido del primer cuadro...</p>
-        </div>
-        <div class="cuadro">
-            <h2>Segundo Cuadro</h2>
-            <p>Contenido del segundo cuadro...</p>
-        </div>
-        <div class="cuadro">
-            <h2>Tercer Cuadro</h2>
-            <p>Contenido del tercer cuadro...</p>
         </div>
     </div>
 
@@ -82,35 +137,147 @@
 
     <!--identidad y demas-->
     <script>
-        const cuadros = document.querySelectorAll('.cuadro');
-        const botones = document.querySelectorAll('button');
+        function mostrarCuadroAnterior(numeroCuadro) {
+            // Obtener el cuadro actual
+            var cuadroActual = document.querySelector('.cuadro[style="display: block;"]');
+            
+            // Oculta el cuadro actual
+            cuadroActual.style.display = 'none';
+            
+            // Muestra el cuadro anterior
+            document.getElementById(`cuadro${numeroCuadro}`).style.display = 'block';
+        }
 
-        botones.forEach((boton, index) => {
-            boton.addEventListener('click', () => {
-                cuadros.forEach((cuadro) => cuadro.classList.remove('visible'));
-                cuadros[index].classList.add('visible');
-            });
-        });
+        function mostrarCuadroSiguiente(numeroCuadro) {
+            // Obtener el cuadro actual
+            var cuadroActual = document.querySelector('.cuadro[style="display: block;"]');
+            
+            // Oculta el cuadro actual
+            cuadroActual.style.display = 'none';
+            
+            // Muestra el cuadro siguiente
+            document.getElementById(`cuadro${numeroCuadro}`).style.display = 'block';
+        }
+
+
+        // Función para mostrar el siguiente cuadro
+        // function mostrarSiguienteCuadro(numeroCuadro) {
+        //     document.getElementById(`cuadro${numeroCuadro - 1}`).style.display = 'none';
+        //     document.getElementById(`cuadro${numeroCuadro}`).style.display = 'block';
+        // }
+
+        // // Función para volver al cuadro inicial
+        // function mostrarCuadroInicial() {
+        //     document.getElementById('cuadro3').style.display = 'none';
+        //     document.getElementById('cuadro1').style.display = 'block';
+        // }
+        // function mostrarSegundoCuadro() {
+        //     const segundoCuadro = document.querySelector('.cuadro:nth-child(2)');
+        //     segundoCuadro.classList.add('visible');
+        // }
+
+        // function mostrarTercerCuadro() {
+        //     const tercerCuadro = document.querySelector('.cuadro:nth-child(3)');
+        //     tercerCuadro.classList.add('visible');
+        // }
+
+        // function mostrarPrimerCuadro() {
+        //     const primerCuadro = document.querySelector('.cuadro:nth-child(1)');
+        //     primerCuadro.classList.add('visible');
+        // }
     </script>
 
     <style>
-        .contenedor {
+        .contenido{
             display: flex;
-            justify-content: space-between;
-            max-width: 800px;
-            margin: 0 auto;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 90%;
+            margin-top: 10%;
+            margin-left: 5%;
+        }
+        .contenido1{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70%;
+            flex-direction: column;
+        }
+        .titulo{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            
+        }
+        .subtitulo{
+            display: flex;
+            align-items: center;
+            justify-content: center;    
+            flex-direction: column;
+            color: white;
+        }
+        .lineatexto{
+            display: flex;
+            align-items: center;
+            justify-content: center;    
+            flex-direction: row;
+        }
+        .linea{
+
+        }
+        .texto{
+            
+            color: white;
+        }
+
+        .contenido2{
+            display: flex;
+            align-items: center;
+            justify-content: center;    
+            flex-direction: row;
+            width: 100%;
+        }
+        .creatividad{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40%;
+            color: white;
+        }
+
+        .contenedor {
+            margin-top: 50px; /* Ajusta según tu diseño */
         }
 
         .cuadro {
-            background-color: #f2f2f2;
+            border: 2px solid grey;
             padding: 20px;
-            border: 1px solid #ddd;
-            display: none; /* Ocultamos todos los cuadros inicialmente */
+            background-color: transparent;
+            display: none; /* Por defecto, todos ocultos */
         }
 
-        .cuadro.visible {
-            display: block; /* Mostramos el cuadro con la clase "visible" */
+        .cuadro:first-child {
+            display: block; /* El primero visible por defecto */
         }
+
+        .texto h2 {
+            margin-top: 0; /* Elimina el margen superior del título */
+        }
+
+        .botones {
+            margin-top: 20px;
+        }
+
+        .botones button {
+            margin-right: 10px;
+            border: 1px solid grey;
+            background-color: transparent;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
     </style>
 
 </body>
