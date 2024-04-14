@@ -53,7 +53,7 @@ class DetailSale extends Model
      */
     public function sale()
     {
-        return $this->belongsTo(Sale::class,'id', 'sales_id');
+        return $this->belongsTo('App\Models\Sale', 'sales_id', 'id');
     }
         
     public function user()

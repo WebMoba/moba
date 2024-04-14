@@ -21,7 +21,7 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('sales.store') }}" role="form" enctype="multipart/form-data">
                             @csrf
-                            @include('Sale.form')
+                            @include('sale.form')
                             
                         </form>
 
