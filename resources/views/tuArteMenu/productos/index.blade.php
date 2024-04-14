@@ -16,7 +16,9 @@
 
     <nav class="navbar">
         <div class="container-fluid">
+        <a href="{{ asset('/') }}">
             <img src="{{ asset('Imagenes/Logomoba.png') }}" class="navbar-img-left" alt="Logo Moba">
+            </a>
             <div class="navbar-buttons">
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
@@ -34,7 +36,9 @@
                 <a href="#" class="btn btn-primary">Galeria</a>
                 <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
+            <a href="{{ asset('/') }}">
             <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte">
+            </a>
         </div>
     </nav>
 
