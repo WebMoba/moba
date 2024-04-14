@@ -134,6 +134,10 @@ Route::middleware('auth')->group(function () {
     Route::view('/mobaMenu/Contacto/index', 'mobaMenu.Contacto.index')->name('mobaMenu.Contacto.index');
 
 
+    //vistas froted tu arte 
+    Route::view('/tuArteMenu/categorias/index', 'tuArteMenu.categorias.index')->name('tuArteMenu.categorias.index');
+
+
     //ruta Correo electronico
     Route::post('/enviar-correo', [ContactoController::class, 'enviarCorreo'])->name('enviar-correo');
 });
