@@ -50,12 +50,12 @@
                     <h1>Servicios</h1>
                 </div>
                 <div class="subtitulo">
-                    <h4>
+                    <h3>
                         ¿Buscas llevar la comunicación de tu empresa al siguiente nivel?
-                    </h4>
-                    <h5>
+                    </h3>
+                    <h4>
                         ¡Has llegado al lugar indicado!
-                    </h5>
+                    </h4>
                 </div>
                 <div class="lineatexto">
                     <div class="linea">
@@ -73,39 +73,75 @@
 
             <div class="contenido2">
                 <div class="creatividad">
-                    <h1>creatividad....</h1>
+                    <p>
+                        <h1>Creatividad y dedicación</h1>
+                        <h2>son las cosas que nuestra</h2>
+                        <h1><a href="">agencia MOBA</a></h1>
+                        <h2><a href="">aporta a tu negocio.</a></h2>
+                    </p>
                 </div>
                 <div class="contenedor">
                     <div class="cuadro" id="cuadro1">
-                        <div class="texto">
-                            <h2>Cuadro 1</h2>
-                            <p>Este es el contenido del primer cuadro.</p>
+                        <div class="texto-cuadro">
+                            <div class="titulos-cuadro">
+                                <h1>IDENTIDAD</h1>
+                                <h2>CORPORATIVA</h2>
+                            </div>
+                            <div class="contenido-cuadro">
+
+                                <p>
+                                    Nuestra Agencia se enfoca en el sentido de cada marca que manejamos, lo que
+                                    quieren y deben transmitir con su imagen corporativa, cada detalle cuenta
+                                    y lo más importante estamos siempre en movimiento, aportando, creando, mejorando...
+                                </p>    
+                            </div>
                         </div>
                         <div class="botones">
-                            <button onclick="mostrarCuadroAnterior(3)">Mostrar anterior cuadro</button>
-                            <button onclick="mostrarCuadroSiguiente(2)">Mostrar siguiente cuadro</button>
+                            <button onclick="mostrarCuadroAnterior()"><h1><</h1></button>
+                            <button onclick="mostrarCuadroSiguiente()"><h1>></h1></button>
                         </div>
                     </div>
 
                     <div class="cuadro" id="cuadro2" style="display: none;">
-                        <div class="texto">
-                            <h2>Cuadro 2</h2>
-                            <p>Este es el contenido del segundo cuadro.</p>
+                        <div class="texto-cuadro">
+                            <div class="titulos-cuadro">
+                                <h1>AVISOS</h1>
+                                <h2>y PUBLICIDAD</h2>
+                                <h2>para interiores</h2>
+                            </div>
+                            <div class="contenido-cuadro">
+                                <p>
+                                    La primera impresión que las marcas que manejamos dejan en sus clientes debe
+                                    ser siempre positiva, debe transmitir el ser de cada empresa y generar en el 
+                                    espectador seguridad y seriedad de la marca, por tanto cada detalle que plasmamos...
+                                </p>
+                            </div>
+                            
                         </div>
                         <div class="botones">
-                            <button onclick="mostrarCuadroAnterior(1)">Mostrar anterior cuadro</button>
-                            <button onclick="mostrarCuadroSiguiente(3)">Mostrar siguiente cuadro</button>
+                            <button onclick="mostrarCuadroAnterior()"><h1><</h1></button>
+                            <button onclick="mostrarCuadroSiguiente()"><h1>></h1></button>
                         </div>
                     </div>
 
                     <div class="cuadro" id="cuadro3" style="display: none;">
-                        <div class="texto">
-                            <h2>Cuadro 3</h2>
-                            <p>Este es el contenido del tercer cuadro.</p>
+                        <div class="texto-cuadro">
+                            <div class="titulos-cuadro">
+                                <h1>POP</h1>
+                                <h2>y algo mas.</h2>
+                            </div>
+                            <div class="contenido-cuadro">
+                                <p>
+                                    Nuestra empresa cuenta con servicios y productos adicionales que complementan 
+                                    y suman a cada uno de nuestros clientes, los cuales están elaborados con la mayor calidad 
+                                    y detalle posible, entregando en cada trabajo nuestro mejor
+                                </p>
+                            </div>
+                            
                         </div>
                         <div class="botones">
-                            <button onclick="mostrarCuadroAnterior(2)">Mostrar anterior cuadro</button>
-                            <button onclick="mostrarCuadroSiguiente(1)">Mostrar siguiente cuadro</button>
+                            <button onclick="mostrarCuadroAnterior()"><h1><</h1></button>
+                            <button onclick="mostrarCuadroSiguiente()"><h1>></h1></button>
                         </div>
                     </div>
                 </div>
@@ -137,54 +173,29 @@
 
     <!--identidad y demas-->
     <script>
-        function mostrarCuadroAnterior(numeroCuadro) {
-            // Obtener el cuadro actual
-            var cuadroActual = document.querySelector('.cuadro[style="display: block;"]');
-            
+        let indiceCuadroActual = 1;
+
+        function mostrarCuadroAnterior() {
             // Oculta el cuadro actual
-            cuadroActual.style.display = 'none';
+            document.getElementById(`cuadro${indiceCuadroActual}`).style.display = 'none';
+            
+            // Actualiza el índice al cuadro anterior
+            indiceCuadroActual = (indiceCuadroActual - 1) > 0 ? (indiceCuadroActual - 1) : 3;
             
             // Muestra el cuadro anterior
-            document.getElementById(`cuadro${numeroCuadro}`).style.display = 'block';
+            document.getElementById(`cuadro${indiceCuadroActual}`).style.display = 'block';
         }
 
-        function mostrarCuadroSiguiente(numeroCuadro) {
-            // Obtener el cuadro actual
-            var cuadroActual = document.querySelector('.cuadro[style="display: block;"]');
-            
+        function mostrarCuadroSiguiente() {
             // Oculta el cuadro actual
-            cuadroActual.style.display = 'none';
+            document.getElementById(`cuadro${indiceCuadroActual}`).style.display = 'none';
+            
+            // Actualiza el índice al cuadro siguiente
+            indiceCuadroActual = (indiceCuadroActual + 1) > 3 ? 1 : (indiceCuadroActual + 1);
             
             // Muestra el cuadro siguiente
-            document.getElementById(`cuadro${numeroCuadro}`).style.display = 'block';
+            document.getElementById(`cuadro${indiceCuadroActual}`).style.display = 'block';
         }
-
-
-        // Función para mostrar el siguiente cuadro
-        // function mostrarSiguienteCuadro(numeroCuadro) {
-        //     document.getElementById(`cuadro${numeroCuadro - 1}`).style.display = 'none';
-        //     document.getElementById(`cuadro${numeroCuadro}`).style.display = 'block';
-        // }
-
-        // // Función para volver al cuadro inicial
-        // function mostrarCuadroInicial() {
-        //     document.getElementById('cuadro3').style.display = 'none';
-        //     document.getElementById('cuadro1').style.display = 'block';
-        // }
-        // function mostrarSegundoCuadro() {
-        //     const segundoCuadro = document.querySelector('.cuadro:nth-child(2)');
-        //     segundoCuadro.classList.add('visible');
-        // }
-
-        // function mostrarTercerCuadro() {
-        //     const tercerCuadro = document.querySelector('.cuadro:nth-child(3)');
-        //     tercerCuadro.classList.add('visible');
-        // }
-
-        // function mostrarPrimerCuadro() {
-        //     const primerCuadro = document.querySelector('.cuadro:nth-child(1)');
-        //     primerCuadro.classList.add('visible');
-        // }
     </script>
 
     <style>
@@ -208,7 +219,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: #2bb9e5;
             
         }
         .subtitulo{
@@ -217,6 +228,11 @@
             justify-content: center;    
             flex-direction: column;
             color: white;
+            padding: 1%;
+        }
+        .subtitulo h4{
+            font-weight: bold;
+            padding: 1%;
         }
         .lineatexto{
             display: flex;
@@ -238,28 +254,67 @@
             justify-content: center;    
             flex-direction: row;
             width: 100%;
+            padding-top: 5%;
         }
         .creatividad{
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
+            height: 100%;
             width: 40%;
             color: white;
         }
+        .creatividad p{
+            text-align:left;
+        }
+        .creatividad h1, h2{
+            text-align: justify;
+        }
+        .creatividad a{
+            text-align: justify;
+        }
 
         .contenedor {
-            margin-top: 50px; /* Ajusta según tu diseño */
+            height: 100%;
+            width: 40%;
+            margin-left: 10%;
+        }
+        .contenedor h1{
+            color: #2bb9e5;
+            font-weight: bold;
+        }
+        .contenedor h2{
+            color: white;
+        } 
+        .contenedor p{
+            color: #6094b0;
         }
 
         .cuadro {
-            border: 2px solid grey;
-            padding: 20px;
             background-color: transparent;
             display: none; /* Por defecto, todos ocultos */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction:column ;
         }
-
         .cuadro:first-child {
             display: block; /* El primero visible por defecto */
+        }
+
+        .texto-cuadro{
+            border: 2px solid grey;
+            padding: 20px;
+        }
+
+        .cuadro .botones{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .cuadro .botones h1{
+            color: white;
         }
 
         .texto h2 {
