@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Dompdf\Dompdf;
-
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\CategoriesExport;
 use App\Models\CategoriesProductsService;
 use Illuminate\Http\Request;
 
@@ -154,5 +155,10 @@ class CategoriesProductsServiceController extends Controller
         $pdf->setPaper('A4', 'portrait');
         $pdf->render();
         return $pdf->stream('categorias.pdf');
+    }
+
+    public function export()
+    {
+        return Excel::download(new CategoriesExport, 'categorias.xlsx');
     }
 }
