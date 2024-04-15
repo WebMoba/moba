@@ -22,43 +22,13 @@
 
                         <div class="form-group">
                             <strong>Nombre de la compra:</strong>
-                            {{ $purchase->name }}
+                            
                         </div>
-                        <div class="form-group">
-                            <strong>Fecha realizacion de la compra:</strong>
-                            {{ $purchase->date }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Documento y Dirección del proveedor:</strong>
-                            {{ $purchase->person->id_card }} - {{ $purchase->person->addres }}
-                        </div>
+                       
 
                         <h2>Detalle de la compra</h2>
 
-                        <div class="form-group">
-                            <strong>Nombre de materia prima comprada:</strong>
-                            {{ $detailPurchase->materialsRaw->name }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Cantidad:</strong>
-                            {{ $detailPurchase->quantity }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Precio unitario:</strong>
-                            {{ $detailPurchase->price_unit }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Subtotal:</strong>
-                            {{ $detailPurchase->subtotal }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Porcentaje de descuento:</strong>
-                            {{ $detailPurchase->discount }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Total:</strong>
-                            {{ $detailPurchase->total }}
-                        </div>
+                        
 
                     </div>
                 </div>
