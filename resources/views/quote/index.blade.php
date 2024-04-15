@@ -72,25 +72,20 @@
                                             <td>{{ $quote->people_id }}</td>
                                             <td>
                                                 <form action="{{ route('quotes.destroy', $quote->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary "
+                                                    <a class="btn btn-sm btn-primary {{ $quote->disable ? 'disabled' : '' }}"
                                                         href="{{ route('quotes.show', $quote->id) }}"><i
                                                             class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
-                                                    <a class="btn btn-sm btn-success "
+                                                    <a class="btn btn-sm btn-success {{ $quote->disable ? 'disabled' : '' }}"
                                                         href="{{ route('quotes.edit', $quote->id) }}"><i
                                                             class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" onclick="return confirm('¿Está seguro de que desea {{ dd($quote->disable ? 'Habilitar' : 'Deshabilitar') }} el estado de esta cotización?')" class="btn btn-danger btn-sm">
+                                                    <button type="submit" class="btn btn-danger btn-sm"
+                                                        onclick="return confirm('¿Está seguro de que desea {{ $quote->disable ? 'Habilitar' : 'Deshabilitar' }} la cotización?')">
                                                         <i class="fa fa-fw fa-trash"></i> 
                                                         {{ $quote->disable ? 'Habilitar' : 'Deshabilitar' }}
                                                     </button>
                                                 </form>
-                                                <div class="float-right">
-                                                    <a href="{{ route('pdf.quote') }}"
-                                                        class="btn btn-info btn-sm float-right">
-                                                        <i class="fa fa-file-pdf"></i> {{ __('Generar PDF') }}
-                                                    </a>
-                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach

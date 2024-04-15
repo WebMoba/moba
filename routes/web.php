@@ -2,6 +2,7 @@
 
 /*controlador para envio de correo electronico*/
 
+use App\Exports\CategoriesExport;
 use App\Http\Controllers\ContactoController;
 
 use App\Http\Controllers\PersonController;
@@ -95,6 +96,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('categories-products-service', CategoriesProductsServiceController::class);
     Route::get('/pdf/service', [ServiceController::class, 'generatePDF'])->name('pdf.service');
     Route::get('/pdf/categories-products-service', [CategoriesProductsServiceController::class, 'generatePDF'])->name('pdf.categories-products-service');
+    Route::get('/export-categories-products-service', [CategoriesProductsServiceController::class, 'export'])->name('excel.categories-products-service');
+    Route::get('/export-service', [ServiceController::class, 'export'])->name('excel.service');
     /*Fin Rutas categories_products_services y services*/
 
     /*Incio Rutas purchases, detailPurchases, y materialsRaws*/
@@ -126,12 +129,21 @@ Route::middleware('auth')->group(function () {
     Route::get('/mobaMenu/Servicios/index', function () {
         return view('mobaMenu.Servicios.index');
     });
+    Route::view('/mobaMenu/Servicios/identidad', 'mobaMenu.servicios.identidad')->name('mobaMenu.servicios.identidad');
+    Route::view('/mobaMenu/Servicios/identidad', 'mobaMenu.servicios.identidad')->name('mobaMenu.servicios.identidad');    
+    Route::view('/mobaMenu/Servicios/identidad', 'mobaMenu.servicios.identidad')->name('mobaMenu.servicios.identidad');
     //Fin vistas carpeta servicios
 
 
     //Vistas fronted Moba
     Route::view('/mobaMenu/Servicios/index', 'mobaMenu.servicios.index')->name('mobaMenu.servicios.index');
     Route::view('/mobaMenu/Contacto/index', 'mobaMenu.Contacto.index')->name('mobaMenu.Contacto.index');
+
+
+    //vistas froted tu arte 
+    Route::view('/tuArteMenu/categorias/index', 'tuArteMenu.categorias.index')->name('tuArteMenu.categorias.index');
+    Route::view('/tuArteMenu/productos/index', 'tuArteMenu.productos.index')->name('tuArteMenu.productos.index');
+    Route::view('/tuArteMenu/galeria/index', 'tuArteMenu.galeria.index')->name('tuArteMenu.galeria.index');
 
 
     //ruta Correo electronico

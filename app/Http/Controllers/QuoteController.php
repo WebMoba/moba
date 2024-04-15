@@ -212,7 +212,11 @@ class QuoteController extends Controller
             return redirect()->route('quotes.index')->with('error', 'La cotización no existe');
         }
     
-        $quote->disable = !$quote->disable;
+        if ($quote->disable) {
+            $quote->disable = false;
+        } else {
+            $quote->disable = true;
+        }
         $quote->save();
     
         return redirect()->route('quotes.index')->with('success', 'Estado de la cotización cambiada con éxito');

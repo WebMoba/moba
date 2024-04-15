@@ -62,7 +62,9 @@
             <div class="logos"><img src="{{ asset('storage/imgMoba/LogoMoba.png') }}" alt="Imagen"></div>
             </a>
 
+            <a href="{{ route('tuArteMenu.categorias.index') }}" class="logos">
             <div class="logos"><img src="{{ asset('storage/imgMoba/LogotipoTuArte.png') }}" alt="Imagen" id="img2"></div>
+            </a>
 
 
             <div class="links">
@@ -135,24 +137,26 @@
           
         }
 
-        /* Ajustar el ancho y alto de la imagen 1 */
+        /* Ajustar el ancho y alto de la imagen Moba */
         .logos img {
-            width: 80%; 
+            width: 90%; 
             height: 35%;
             transition: width 0.7s, height 0.7s; 
             cursor: pointer;
         }
-        /* Ajustar el ancho y alto de la imagen 1 */
-        #img2{
-            width: 53%;
-            height: 85%
-        }
+       
         .logos img:hover{
-            width: 85%;
+            width: 95%;
             height: 40%
         }
+
+         /* Ajustar el ancho y alto de la imagen tu arte */
+         #img2{
+            width: 90%;
+            height: 85%
+        }
         #img2:hover{
-            width: 55%;
+            width: 95%;
             height: 90%
         }
         .links{

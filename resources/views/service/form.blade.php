@@ -16,18 +16,19 @@
             {{ Form::date('date_start', $service->date_start ?? null, ['class' => 'form-control' . ($errors->has('date_start') ? ' is-invalid' : '')]) }}
             {!! $errors->first('date_start', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        
+
         <div class="form-group">
             {{ Form::label('Fecha final', null, ['class' => 'required']) }}
             {{ Form::date('date_end', $service->date_end ?? null, ['class' => 'form-control' . ($errors->has('date_end') ? ' is-invalid' : '')]) }}
             {!! $errors->first('date_end', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        
-        
+
+
         <div class="form-group">
             {{ Form::label('Imagen', null, ['class' => 'required']) }}
-            <br><img src="{{ asset('storage/' . $service->image) }}" width='150' height="150">
-            {{ Form::file('image', ['class' => 'form-control' . ($errors->has('image') ? ' is-invalid' : '')]) }}
+            <br><img id="image-preview" src="#" alt="vista previa de la imagen"
+                style="display: none; width: 150px; height: 150px;">
+            {{ Form::file('image', ['class' => 'form-control' . ($errors->has('image') ? ' is-invalid' : ''), 'onchange' => 'previewImage(event)']) }}
             {!! $errors->first('image', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -45,8 +46,35 @@
 </div>
 <style>
     .required::after {
-    content: "*";
-    color: red;
-    margin-left: 4px;
-}
+        content: "*";
+        color: red;
+        margin-left: 4px;
+    }
+</style>
+<script>
+    function previewImage(event) {
+        var input = event.target;
+        var preview = document.getElementById('image-preview');
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            preview.src = '#';
+            preview.style.display = 'none';
+        }
+    }
+</script>
+<style>
+    #image-preview {
+        display: none;
+        width: 150px;
+        height: 150px;
+    }
 </style>
