@@ -16,8 +16,8 @@
 
     <nav class="navbar">
         <div class="container-fluid">
-        <a href="{{ asset('/') }}">
-            <img src="{{ asset('Imagenes/Logomoba.png') }}" class="navbar-img-left" alt="Logo Moba">
+            <a href="{{ asset('/') }}">
+                <img src="{{ asset('Imagenes/Logomoba.png') }}" class="navbar-img-left" alt="Logo Moba">
             </a>
             <div class="navbar-buttons">
                 <div class="dropdown">
@@ -33,11 +33,11 @@
                     </ul>
                 </div>
                 <a href="#" class="btn btn-primary">Categorias</a>
-                <a href="#" class="btn btn-primary">Galeria</a>
+                <a href="{{ route('tuArteMenu.galeria.index') }}" class="btn btn-primary">Galeria</a>
                 <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
             <a href="{{ asset('/') }}">
-            <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte">
+                <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte">
             </a>
         </div>
     </nav>
@@ -50,7 +50,7 @@
         <hr class="linea1">
     </div>
 
-          
+
 
     <div class="vertical-line right-line">
         <hr class="linea2">
@@ -73,36 +73,121 @@
             this.querySelector('.dropdown-menu').classList.remove('show');
         });
     </script>
+
+
+
+
+    <!-- Gallery -->
+    <div class="container col-lg-9">
+        <div class="lightbox" data-mdb-lightbox-init>
+            <div class="row">
+                <div class="col-lg-4">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp" alt="Table Full of Spices"
+                        class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Square/1.webp"
+                        alt="Coconut with Strawberries" class="w-100 shadow-1-strong " />
+                </div>
+                <div class="col-lg-8">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Vertical/1.webp"
+                        alt="Dark Roast Iced Coffee" class="w-100 shadow-1-strong" />
+                </div>
+                <div class="mt-4 col-lg-4">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp" alt="Table Full of Spices"
+                        class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                </div>
+                <div class=" ult col-lg-4">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp" alt="Table Full of Spices"
+                        class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                </div>
+                <div class="ult col-lg-4">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp" alt="Table Full of Spices"
+                        class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Gallery -->
+
+
+
+
+
+
 </body>
 
 </html>
 
 
+
 <style>
+    .container {
+        margin-top: 9em;
+    }
 
-.dropdown-menu .dropdown-item:hover {
-    background-color: transparent !important;
-    border-color: transparent !important;
-    border: none;
-    text-shadow: 0 0 5px #f80008;
-}
+    .col-lg-8 img {
+        height: 40em;
+    }
 
-.dropdown-item:hover {
-    color: #f80008!important;
-}
+    .col-lg-4 img {
+        height: 21em;
+    }
 
-.dropdown-menu {
-    background-color: transparent !important;
-    border-color: #73a3b6 !important;
-}
+    .mt-4 img {
+        height: 17.8em;
+    }
 
-.dropdown-menu .dropdown-item {
-    color: #f80008 !important;
-    background-color: transparent !important;
-    border-color: #f80008 !important;
-}
+    .ult img {
+        height: 21em;
+        margin-top: -1.9em;
+    }
 
-.dropdown-menu .dropdown-divider {
-    border-top: 1px solid #f80008;
-}
+    .container img {
+        border: 10px solid red;
+    }
+
+    
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    .dropdown-menu .dropdown-item:hover {
+        background-color: transparent !important;
+        border-color: transparent !important;
+        border: none;
+        text-shadow: 0 0 5px #f80008;
+    }
+
+    .dropdown-item:hover {
+        color: #f80008 !important;
+    }
+
+    .dropdown-menu {
+        background-color: transparent !important;
+        border-color: #73a3b6 !important;
+    }
+
+    .dropdown-menu .dropdown-item {
+        color: #f80008 !important;
+        background-color: transparent !important;
+        border-color: #f80008 !important;
+    }
+
+    .dropdown-menu .dropdown-divider {
+        border-top: 1px solid #f80008;
+    }
 </style>

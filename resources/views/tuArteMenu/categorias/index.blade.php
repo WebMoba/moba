@@ -33,7 +33,7 @@
                     </ul>
                 </div>
                 <a href="#" class="btn btn-primary">Categorias</a>
-                <a href="#" class="btn btn-primary">Galeria</a>
+                <a href="{{ route('tuArteMenu.galeria.index') }}" class="btn btn-primary">Galeria</a>
                 <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
             <a href="{{ asset('/') }}">
