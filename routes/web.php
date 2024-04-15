@@ -141,9 +141,12 @@ Route::middleware('auth')->group(function () {
 
 
     //vistas froted tu arte 
-    Route::view('/tuArteMenu/categorias/index', 'tuArteMenu.categorias.index')->name('tuArteMenu.categorias.index');
+    Route::view('/tuArteMenu/index', 'tuArteMenu.index')->name('tuArteMenu.index');
     Route::view('/tuArteMenu/productos/index', 'tuArteMenu.productos.index')->name('tuArteMenu.productos.index');
     Route::view('/tuArteMenu/galeria/index', 'tuArteMenu.galeria.index')->name('tuArteMenu.galeria.index');
+    Route::view('/tuArteMenu/categorias/index', 'tuArteMenu.categorias.index')->name('tuArteMenu.categorias.index');
+    
+
 
 
     //ruta Correo electronico
