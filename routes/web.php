@@ -131,7 +131,9 @@ Route::middleware('auth')->group(function () {
 
     //Vistas fronted Moba
     Route::view('/mobaMenu/Servicios/index', 'mobaMenu.servicios.index')->name('mobaMenu.servicios.index');
+    Route::view('/mobaMenu/EquipoTrabajo/index', 'mobaMenu.EquipoTrabajo.index')->name('mobaMenu.EquipoTrabajo.index');
     Route::view('/mobaMenu/Contacto/index', 'mobaMenu.Contacto.index')->name('mobaMenu.Contacto.index');
+    
 
 
     //ruta Correo electronico

@@ -30,7 +30,7 @@
                     </ul>
                 </div>
                 <a href="#" class="btn btn-primary">Proyectos</a>
-                <a href="#" class="btn btn-primary">Equipo de trabajo</a>
+                <a href="{{ route('mobaMenu.EquipoTrabajo.index') }}" class="btn btn-primary">Equipo de trabajo</a>
                 <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
             <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte">
