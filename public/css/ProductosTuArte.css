@@ -15,9 +15,10 @@ body::after {
     background-position: center top;
     background-repeat: no-repeat;
     opacity: 1;
-    /*Ajustar transparencia de la imagen de fondo*/
+    /*Ajustartransparenciadelaimagendefondo*/
     z-index: -1;
     filter: brightness(30%);
+    -webkit-filter: brightness(30%);
 }
 
 .navbar {
