@@ -28,7 +28,9 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\TeamWorkController;
 use App\Models\Product;
-
+use App\Exports\ProjectExport;
+use App\Exports\QuoteExport;
+use App\Exports\TeamWorkExport;
 //fin fabian
 
 /*
@@ -123,6 +125,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/pdf/project', [ProjectController::class, 'generatePDF'])->name('pdf.project');
     Route::get('/pdf/teamwork', [TeamWorkController::class, 'generatePDF'])->name('pdf.teamwork');
     Route::get('/pdf/quote', [QuoteController::class, 'generatePDF'])->name('pdf.quote');
+    Route::get('/export-project', [ProjectController::class, 'export'])->name('excel.project');
+    Route::get('/export-quote', [QuoteController::class, 'export'])->name('excel.quote');
+    Route::get('/export-teamwork', [TeamWorkController::class, 'export'])->name('excel.teamwork');
     //fin-fabian
 
     //Vistas carpeta servicios

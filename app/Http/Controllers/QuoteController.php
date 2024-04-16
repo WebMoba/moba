@@ -14,7 +14,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Dompdf\Dompdf as DompdfDompdf;
 use PhpParser\Node\Expr\New_;
-
+use App\Exports\QuoteExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -66,70 +66,54 @@ class QuoteController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-{
-    request()->validate(Quote::$rules);
+        public function store(Request $request)
+    {
+        request()->validate(Quote::$rules);
 
-    $msj=[
-        'required'=>'El atributo es requerido',
-        'max'=>'No puede ingresar mas caracteres en este campo',
-        'string' => 'El campo debe ser una cadena de texto.',
-        'date' => 'El campo no debe ser una fecha anterior al dia de Hoy.',
-    ];
+        $msj=[
+            'required'=>'El atributo es requerido',
+            'max'=>'No puede ingresar mas caracteres en este campo',
+            'string' => 'El campo debe ser una cadena de texto.',
+            'date' => 'El campo no debe ser una fecha anterior al dia de Hoy.',
+        ];
 
-    $request->validate([
-        'date_issuance'=>'required|date',
-        'description'=>'required|string|max:300',
-        'total'=>'required|numeric',
-        'discount'=>'required|numeric',
-        'status' => 'required|in:aprobado,rechazado,pendiente',
-        'people_id'=>'required',
-    ], $msj);
+        $request->validate([
+            'date_issuance'=>'required|date',
+            'description'=>'required|string|max:300',
+            'total'=>'required|numeric',
+            'discount'=>'required|numeric',
+            'status' => 'required|in:aprobado,rechazado,pendiente',
+            'people_id'=>'required',
+        ], $msj);
 
-    $quote = Quote::create($request->all());
+        $quote = Quote::create($request->all(),[
+            'disable' => 0,
+        ]);
 
-    $detailQuote = new DetailQuote() ;
-    $quote->date_issuance = now()->format('Y-m-d');
-    $servicesId = $request->input('services_id');
-    $productsId = $request->input('products_id');
-    $projectsId = $request->input('projects_id');
-    $quotesId = $request->input('quotes_id');
-
-    // // Comprobar que los valores existen en las tablas correspondientes
-    // $existsServices = Product::find($servicesId);
-    // $existsProducts = Service::find($productsId);
-    // $existsProjects = Project::find($projectsId);
-    // $existsQuotes = Quote::find($quotesId);
-
-    // if ($existsServices && $existsProducts && $existsProjects && $existsQuotes) {
-    //     $detailCuote = new DetailQuote([
-    //         'services_id' => $servicesId,
-    //         'products_id' => $productsId,
-    //         'projects_id' => $projectsId,
-    //         'quotes_id' => $quotesId,
-    //     ]);
-    //     $quote->detailQuotes()->save($detailCuote);
-    // }
-    //     return redirect()->route('quotes.index')
-    //         ->with('success', 'Cotización creada correctamente.');
-   
-    // Crear los detalles de la cotización
-    if ($request->has('services_id')) {
-        foreach ($request->services_id as $key => $serviceId) {
-            $detalle = new DetailQuote([
-                'services_id' => $serviceId,
-                'products_id' => $request->products_id[$key],
-                'projects_id' => $request->projects_id[$key],
-                // 'quotes_id' => $request->quotes_id[$key],
-                // Agrega aquí los demás campos necesarios para los detalles de la cotización
-            ]);
-            $quote->detailQuotes()->save($detalle);
-        }
-    }
-
-    return redirect()->route('quotes.index')->with('success', 'Cotización creada correctamente.');
+        $detailQuote = new DetailQuote() ;
+        $quote->date_issuance = now()->format('Y-m-d');
+        $servicesId = $request->input('services_id');
+        $productsId = $request->input('products_id');
+        $projectsId = $request->input('projects_id');
+        $quotesId = $request->input('quotes_id');
     
-}
+        // Crear los detalles de la cotización
+        if ($request->has('services_id')) {
+            foreach ($request->services_id as $key => $serviceId) {
+                $detalle = new DetailQuote([
+                    'services_id' => $serviceId,
+                    'products_id' => $request->products_id[$key],
+                    'projects_id' => $request->projects_id[$key],
+                    // 'quotes_id' => $request->quotes_id[$key],
+                    // Agrega aquí los demás campos necesarios para los detalles de la cotización
+                ]);
+                $quote->detailQuotes()->save($detalle);
+            }
+        }
+
+        return redirect()->route('quotes.index')->with('success', 'Cotización creada correctamente.');
+        
+    }
 
     /**
      * Display the specified resource.
@@ -212,11 +196,7 @@ class QuoteController extends Controller
             return redirect()->route('quotes.index')->with('error', 'La cotización no existe');
         }
     
-        if ($quote->disable) {
-            $quote->disable = false;
-        } else {
-            $quote->disable = true;
-        }
+        $quote->disable = !$quote->disable;
         $quote->save();
     
         return redirect()->route('quotes.index')->with('success', 'Estado de la cotización cambiada con éxito');
@@ -252,6 +232,12 @@ class QuoteController extends Controller
         $pdf->render();
         return $pdf->stream('Listado_Cotizaciones.pdf');
     }
+
+    public function export()
+    {
+        return Excel::download(new QuoteExport, 'Listado_Cotizaciones.xlsx');
+    }
+
 
 
 }
