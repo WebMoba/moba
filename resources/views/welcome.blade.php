@@ -62,7 +62,7 @@
             <div class="logos"><img src="{{ asset('storage/imgMoba/LogoMoba.png') }}" alt="Imagen"></div>
             </a>
 
-            <a href="{{ route('tuArteMenu.categorias.index') }}" class="logos">
+            <a href="{{ route('tuArteMenu.index') }}" class="logos">
             <div class="logos"><img src="{{ asset('storage/imgMoba/LogotipoTuArte.png') }}" alt="Imagen" id="img2"></div>
             </a>
 

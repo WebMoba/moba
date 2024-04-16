@@ -37,7 +37,7 @@ class Quote extends Model
      *
      * @var array
      */
-    protected $fillable = ['date_issuance','description','total','discount','status','people_id'];
+    protected $fillable = ['date_issuance','description','total','discount','status','people_id','disable'];
 
 
     /**

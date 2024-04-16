@@ -194,6 +194,7 @@ public function show($id)
     $sale = Sale::findOrFail($id);
     // Obtener el nombre de la persona asociada a la venta
     $people = Person::pluck('name', 'id_card', 'id');
+    
     $products = Product::pluck('name', 'id');
     // Obtener los detalles de la venta
     $detailSale = $sale->detailSales->first();

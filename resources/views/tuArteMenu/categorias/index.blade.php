@@ -16,7 +16,7 @@
 
     <nav class="navbar">
         <div class="container-fluid">
-            <a href="{{ asset('/') }}">
+        <a href="{{ asset('/') }}">
             <img src="{{ asset('Imagenes/Logomoba.png') }}" class="navbar-img-left" alt="Logo Moba">
             </a>
             <div class="navbar-buttons">
@@ -32,8 +32,9 @@
                         <li><a class="dropdown-item" href="#">Mascotas</a></li>
                     </ul>
                 </div>
-                <a href="#" class="btn btn-primary">Categorias</a>
-                <a href="#" class="btn btn-primary">Galeria</a>
+                <a href="{{ route('tuArteMenu.index') }}" class="btn btn-primary">Nosotros</a>
+                <a href="{{route('tuArteMenu.categorias.index')}}"class="btn btn-primary">Categorias</a>
+                <a href="{{ route('tuArteMenu.galeria.index') }}" class="btn btn-primary">Galeria</a>
                 <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
             <a href="{{ asset('/') }}">
@@ -50,8 +51,21 @@
         <hr class="linea1">
     </div>
 
-          
+        <!-- Contenido de la página aquí -->
+        
+       <div class="container">
+       <div class="contenedor">
+        <div class="campo campo1">Mascotas</div>
+        <div class="contenedor-columna">
+            <div class="campo campo2">Accesorios</div>
+            <div class="campo campo3">Decoracion</div>
+        </div>
+        <div class="campo campo4">Joditas pal recuerdo</div>
+        </div>
+       </div>
 
+
+       
     <div class="vertical-line right-line">
         <hr class="linea2">
         <a href="https://www.instagram.com/moba_agencia"><i class="bi bi-instagram"></i></a>
@@ -59,7 +73,7 @@
         <hr class="linea2">
     </div>
 
-    <!-- Contenido de la página aquí -->
+    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
@@ -105,4 +119,46 @@
 .dropdown-menu .dropdown-divider {
     border-top: 1px solid #f80008;
 }
-</style>
+
+.container{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 90%;
+    height: 100vh;
+}
+.contenedor {
+  display: flex;
+  height: 80%; /* 100% de la altura de la ventana */
+  width: 90%;
+  margin-top: 8%;
+
+}
+
+.contenedor-columna {
+  display: flex;
+  flex-direction: column; /* Apila los elementos verticalmente */
+  flex: 1; /* El contenedor-columna ocupa el espacio restante */
+}
+
+.campo {
+  border: 20px solid white;
+  color: white;
+}
+
+.campo1 {
+  flex: 0 0 30%; /* No crecerá, no se encogerá, 30% de ancho */
+  height: 100%; /* 100% de altura */
+}
+
+.campo2,
+.campo3 {
+  flex: 1; /* Los campos 2 y 3 se expanden para ocupar el espacio disponible */
+}
+
+.campo4 {
+  flex: 0 0 30%; /* No crecerá, no se encogerá, 30% de ancho */
+  height: 100%; /* 100% de altura */
+}
+    </style>
