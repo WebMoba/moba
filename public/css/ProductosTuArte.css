@@ -1,0 +1,215 @@
+body {
+    position: relative;
+    /* Aseguramos que el body tenga una posición relativa para que el ::after funcione correctamente */
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    opacity: 1;
+    /*Ajustar transparencia de la imagen de fondo*/
+    z-index: -1;
+    filter: brightness(30%);
+}
+
+.navbar {
+    background-color: #3E3E3F;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-img-left {
+    width: 69px;
+    height: auto;
+}
+
+.navbar-img-right {
+    max-width: 50px;
+    height: auto;
+}
+
+.btn-primary {
+    background-color: transparent !important;
+    color: #fff;
+    border-color: transparent !important;
+}
+
+.btn-primary:hover {
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+
+.btn-primary:active,
+.btn-primary:focus {
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    border: none;
+    text-shadow: 0 0 5px #00b7ff;
+}
+
+.dropdown-item:hover {
+    color: #00b7ff !important;
+}
+
+.dropdown-menu {
+    background-color: transparent !important;
+    border-color: #73a3b6 !important;
+}
+
+.dropdown-menu .dropdown-item {
+    color: #24AAE1 !important;
+    background-color: transparent !important;
+    border-color: #9BBFCD !important;
+}
+
+.dropdown-menu .dropdown-divider {
+    border-top: 1px solid #9BBFCD;
+}
+
+.vertical-line {
+    position: fixed;
+    bottom: 0;
+    width: 60px;
+    display: flex;
+    flex-direction: column;
+    /* Alinea los elementos verticalmente */
+    justify-content: center;
+    /* Centra los elementos verticalmente */
+    align-items: center;
+    /* Centra los elementos horizontalmente */
+}
+
+.left-line {
+    top: 0;
+    left: 0;
+}
+
+.right-line {
+    top: 0;
+    right: 0;
+}
+
+.vertical-line hr {
+    margin: 5px 0;
+    /* Ancho de las líneas */
+    height: 60px;
+    /* Altura de las líneas */
+    border-radius: 6px;
+    /* Agrega este estilo para redondear los bordes */
+}
+
+.linea1 {
+    border: none;
+    border-right: 3px solid #00c8ff;
+    /* Agrega una unidad de medida (px) */
+}
+
+.linea2 {
+    border: none;
+    border-left: 3px solid #f80008;
+    /* Agrega una unidad de medida (px) */
+}
+
+.vertical-line.left-line i {
+    color: #00c8ff;
+    /* Color para los íconos de la izquierda */
+}
+
+.vertical-line.right-line i {
+    color: #ff0008;
+    /* Color para los íconos de la derecha */
+}
+
+
+.title-container {
+    text-align: center;
+    margin-top: 220px;
+}
+
+.big-title {
+    color: red;
+    font-size: 3em;
+}
+
+.txt1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.txts1 {
+    color: rgb(255, 255, 255);
+    font-size: 1.7em;
+    font-weight: normal;
+}
+
+.txt2 {
+    text-align: center;
+}
+
+.txts2 {
+    color: rgb(255, 255, 255);
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.txt3 {
+    text-align: justify;
+    max-width: 1000px;
+    /* Ancho máximo del contenedor del texto */
+    margin: 25px auto;
+    /* Centra el contenedor horizontalmente */
+}
+
+.txts3 {
+    color: #99C1DA;
+    font-size: 24px;
+    /* Tamaño de la fuente */
+    position: relative;
+    /* Establece la posición relativa para que sea la referencia para el HR */
+}
+
+.txts3:not(:last-child)::after {
+    content: '';
+    /* Contenido generado */
+    position: absolute;
+    /* Posicionamiento absoluto */
+    top: 1px;
+    /* Arriba */
+    left: -28px;
+    /* Alineado a la izquierda del texto */
+    width: 5px;
+    /* Ancho del HR vertical */
+    height: 160%;
+    /* Altura del HR vertical */
+    background-color: red;
+    /* Color del HR vertical */
+}
+
+.txt3 h1:last-child {
+    margin-top: 30px;
+    /* Ajusta el espacio en la parte superior del último h1 */
+}

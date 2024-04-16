@@ -90,7 +90,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('unit', UnitController::class);
     Route::get('/pdf/product', [ProductController::class, 'generatePDF'])->name('pdf.product');
     Route::get('/pdf/unit', [UnitController::class, 'generatePDF'])->name('pdf.unit');
-    Route::get('/export-product', [ProductController::class, 'export'])->name('excel.product');;
+    Route::get('/export-product', [ProductController::class, 'export'])->name('excel.product');
     /*Fin Rutas product y uni*/
 
     /*Rutas categories_products_services y services*/
