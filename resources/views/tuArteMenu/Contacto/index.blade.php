@@ -33,7 +33,7 @@
                 </div>
                 <a href="{{ route('tuArteMenu.index') }}" class="btn btn-primary">Nosotros</a>
                 <a href="{{ route('tuArteMenu.galeria.index') }}" class="btn btn-primary">Galeria</a>
-                <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
+                <a href="{{ route('tuArteMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
             <a href="{{ asset('/') }}">
                 <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte">
@@ -60,7 +60,7 @@
                 clientes son completamente personalizadas y adaptadas a
                 cada necesidad.</h3>
             <h3> Haz clic al botón azul para coordinar una reunión estratégica con LA AGENCIA</h3><br>
-            <h3> Contacto: (051) 933 375 953</h3>
+            <h3> Contacto: +57 3106584795</h3>
         </div>
 
         <!-- Contenido formulario de contacto -->

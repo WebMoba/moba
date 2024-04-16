@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Servicios</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
@@ -53,14 +54,13 @@
     <!-- Contenido de la página aquí -->
     <div class="container">
         <div class="box">
-                    <p>Tu arte es un emprendimiento sogamoseño, dedicado a la creación, 
-        producción y comercialización de accesorios y decoración, elaborada 
-        en mdf (madera reciclada) de distintos grosores, cortado y grabado a 
-        laser, y pintado a mano con los mas nos detalles de creatividad y 
-        realismo, logrando así un equilibrio perfecto entre la industria y el 
-        trabajo artesanal.</p><br>
-        <h4>Nos caracteriza nuestra honestidad, entrega, creatividad y nuestra...</h4><br>
-        <h1>"Buena Onda"</h1>
+            <p>Nuestro deseo más grande es que te hallas enamorado de
+                cada pieza tanto como nosotros, si deseas una pieza personalizada,
+                o adquirir alguna de las piezas que se encuentran
+                en nuestro portafolio, solo debes contactarnos, estaremos
+                muy felices de hablar contigo.</p><br>
+            <h4>Nos caracteriza nuestra honestidad, entrega, creatividad y nuestra...</h4><br>
+            <h1>"Buena Onda"</h1>
         </div>
         <div class="box">
             <img src="{{ asset('storage/imgMoba/LogotipoTuArte.png') }}" alt="">
@@ -75,9 +75,10 @@
         <hr class="linea2">
     </div>
 
-    
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
     <script>
         document.querySelector('.dropdown').addEventListener('mouseenter', function() {
@@ -128,33 +129,35 @@
         justify-content: center;
         width: 90%;
         height: 100vh;
-        
+
     }
-    .box{
+
+    .box {
         display: inline-block;
         margin-top: 2%;
         width: 90%;
         height: 80%;
-        
+
     }
-    
-    p{
-        color:   #BCCCE0;
-       margin-top: 30%;
+
+    p {
+        color: #BCCCE0;
+        margin-top: 30%;
     }
-    h4{
+
+    h4 {
         color: #BCCCE0;
     }
-    h1{
-        color:   #BCCCE0;
+
+    h1 {
+        color: #BCCCE0;
         font-size: 70px;
     }
 
-    .box img{
-        
+    .box img {
+
         margin-top: 20%;
         width: 55%;
         height: 60%;
     }
 </style>
-
