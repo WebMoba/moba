@@ -54,6 +54,7 @@
         <!-- Contenido de la página aquí -->
         
        <div class="container">
+        
        <div class="contenedor">
         <div class="campo campo1"><h1>Mascotas</h1></div>
         <div class="contenedor-columna">
