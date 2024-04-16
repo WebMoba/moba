@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\DB;
 use Dompdf\Dompdf as DompdfDompdf;
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use App\Exports\ProjectExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 /**
  * Class ProjectController
@@ -189,6 +191,11 @@ class ProjectController extends Controller
         $pdf->setPaper('A4', 'portrait');
         $pdf->render();
         return $pdf->stream('Listado_Proyectos.pdf');
+    }
+
+    public function export()
+    {
+        return Excel::download(new ProjectExport, 'Listado_Proyectos.xlsx');
     }
 
 }

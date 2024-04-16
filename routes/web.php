@@ -28,7 +28,9 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\TeamWorkController;
 use App\Models\Product;
-
+use App\Exports\ProjectExport;
+use App\Exports\QuoteExport;
+use App\Exports\TeamWorkExport;
 //fin fabian
 
 /*
@@ -88,7 +90,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('unit', UnitController::class);
     Route::get('/pdf/product', [ProductController::class, 'generatePDF'])->name('pdf.product');
     Route::get('/pdf/unit', [UnitController::class, 'generatePDF'])->name('pdf.unit');
-    Route::get('/export-product', [ProductController::class, 'export'])->name('excel.product');;
+    Route::get('/export-product', [ProductController::class, 'export'])->name('excel.product');
     /*Fin Rutas product y uni*/
 
     /*Rutas categories_products_services y services*/
@@ -123,20 +125,21 @@ Route::middleware('auth')->group(function () {
     Route::get('/pdf/project', [ProjectController::class, 'generatePDF'])->name('pdf.project');
     Route::get('/pdf/teamwork', [TeamWorkController::class, 'generatePDF'])->name('pdf.teamwork');
     Route::get('/pdf/quote', [QuoteController::class, 'generatePDF'])->name('pdf.quote');
+    Route::get('/export-project', [ProjectController::class, 'export'])->name('excel.project');
+    Route::get('/export-quote', [QuoteController::class, 'export'])->name('excel.quote');
+    Route::get('/export-teamwork', [TeamWorkController::class, 'export'])->name('excel.teamwork');
     //fin-fabian
 
     //Vistas carpeta servicios
-    Route::get('/mobaMenu/Servicios/index', function () {
-        return view('mobaMenu.Servicios.index');
+    Route::get('/mobaMenu/index', function () {
+        return view('mobaMenu.index');
     });
-    Route::view('/mobaMenu/Servicios/identidad', 'mobaMenu.servicios.identidad')->name('mobaMenu.servicios.identidad');
-    Route::view('/mobaMenu/Servicios/identidad', 'mobaMenu.servicios.identidad')->name('mobaMenu.servicios.identidad');    
-    Route::view('/mobaMenu/Servicios/identidad', 'mobaMenu.servicios.identidad')->name('mobaMenu.servicios.identidad');
+    Route::view('/mobaMenu/Servicios/servicios', 'mobaMenu.servicios.servicios')->name('mobaMenu.Servicios.servicios');
     //Fin vistas carpeta servicios
 
 
     //Vistas fronted Moba
-    Route::view('/mobaMenu/Servicios/index', 'mobaMenu.servicios.index')->name('mobaMenu.servicios.index');
+    Route::view('/mobaMenu/index', 'mobaMenu.index')->name('mobaMenu.index');
     Route::view('/mobaMenu/EquipoTrabajo/index', 'mobaMenu.EquipoTrabajo.index')->name('mobaMenu.EquipoTrabajo.index');
     Route::view('/mobaMenu/Contacto/index', 'mobaMenu.Contacto.index')->name('mobaMenu.Contacto.index');
     

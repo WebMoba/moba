@@ -30,6 +30,10 @@
                                 <a href="{{ route('pdf.project') }}" class="btn btn-danger btn-sm float-right">
                                     <i class="fa fa-file-pdf"></i> {{ __('PDF') }}
                                 </a>
+                                
+                                <a href="{{ route('excel.project') }}" class="btn btn-success btn-sm float-right">
+                                    <i class="fa fa-file-excel"></i> {{ __('Excel') }}
+                                </a>
                             </div>
                             <div class="float-right">
                                 <a href="{{ route('projects.create') }}" class="btn btn-primary btn-sm float-right"
