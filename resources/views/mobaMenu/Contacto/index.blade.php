@@ -27,9 +27,9 @@
                         </button>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="{{route('mobaMenu.servicios.identidad')}}">Identidad Corporativa</a></li>
-                        <li><a class="dropdown-item" href="{{route('mobaMenu.servicios.identidad')}}">Avisos y Publicidad para interiores</a></li>
-                        <li><a class="dropdown-item" href="{{route('mobaMenu.servicios.identidad')}}">POP y álgo más</a></li>
+                        <li><a class="dropdown-item" href="{{route('mobaMenu.Servicios.servicios')}}">Identidad Corporativa</a></li>
+                        <li><a class="dropdown-item" href="{{route('mobaMenu.Servicios.servicios')}}">Avisos y Publicidad para interiores</a></li>
+                        <li><a class="dropdown-item" href="{{route('mobaMenu.Servicios.servicios')}}">POP y álgo más</a></li>
                     </ul>
                 </div>
                 <a href="{{ route('mobaMenu.index')}}" class="btn btn-primary">Nosotros</a>
