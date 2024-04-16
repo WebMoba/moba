@@ -20,6 +20,7 @@
             </a>
             <div class="navbar-buttons">
                 <div class="dropdown">
+                
                     <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
                         Servicios
                     </button>
@@ -30,6 +31,7 @@
                         <li><a class="dropdown-item" href="#">Mascotas</a></li>
                     </ul>
                 </div>
+                <a href="{{ route('tuArteMenu.index') }}" class="btn btn-primary">Nosotros</a>
                 <a href="{{route('tuArteMenu.categorias.index')}}" class="btn btn-primary">Categorias</a>
                 <a href="#" class="btn btn-primary">Galeria</a>
                 <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
@@ -152,7 +154,7 @@
     .box img{
         
         margin-top: 20%;
-        width: 60%;
+        width: 55%;
         height: 60%;
     }
 </style>

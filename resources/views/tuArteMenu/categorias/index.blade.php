@@ -32,7 +32,8 @@
                         <li><a class="dropdown-item" href="#">Mascotas</a></li>
                     </ul>
                 </div>
-                <a href="#" class="btn btn-primary">Categorias</a>
+                <a href="{{ route('tuArteMenu.index') }}" class="btn btn-primary">Nosotros</a>
+                <a href="{{route('tuArteMenu.categorias.index')}}"class="btn btn-primary">Categorias</a>
                 <a href="{{ route('tuArteMenu.galeria.index') }}" class="btn btn-primary">Galeria</a>
                 <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
@@ -124,8 +125,6 @@
     justify-content: center;
     text-align: center;
     align-items: center;
-
-    border: solid 3px yellow;
     width: 90%;
     height: 100vh;
 }
@@ -133,7 +132,7 @@
   display: flex;
   height: 80%; /* 100% de la altura de la ventana */
   width: 90%;
-  margin-top: 5%;
+  margin-top: 8%;
 
 }
 
@@ -144,7 +143,7 @@
 }
 
 .campo {
-  border: 15px solid white;
+  border: 20px solid white;
   color: white;
 }
 
