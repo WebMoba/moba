@@ -30,7 +30,8 @@
                         <li><a class="dropdown-item" href="{{route('mobaMenu.servicios.identidad')}}">POP y álgo más</a></li>
                     </ul>
                 </div>
-                <a href="#" class="btn btn-primary">Proyectos</a>
+                <a href="{{ route('mobaMenu.proyectos.index') }}" class="btn btn-primary">Contáctanos</a>
+                <a href="" class="btn btn-primary">Proyectos</a>
                 <a href="#" class="btn btn-primary">Equipo de trabajo</a>
                 <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
