@@ -34,7 +34,7 @@
                 </div>
                 <a href="#" class="btn btn-primary">Categorias</a>
                 <a href="{{ route('tuArteMenu.galeria.index') }}" class="btn btn-primary">Galeria</a>
-                <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
+                <a href="{{ route('tuArteMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
             <a href="{{ asset('/') }}">
                 <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte">
@@ -77,39 +77,146 @@
 
 
 
-    <!-- Gallery -->
-    <div class="container col-lg-9">
-        <div class="lightbox" data-mdb-lightbox-init>
-            <div class="row">
-                <div class="col-lg-4">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp" alt="Table Full of Spices"
-                        class="w-100 mb-2 mb-md-4 shadow-1-strong" />
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Square/1.webp"
-                        alt="Coconut with Strawberries" class="w-100 shadow-1-strong " />
-                </div>
-                <div class="col-lg-8">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Vertical/1.webp"
-                        alt="Dark Roast Iced Coffee" class="w-100 shadow-1-strong" />
-                </div>
-                <div class="mt-4 col-lg-4">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp" alt="Table Full of Spices"
-                        class="w-100 mb-2 mb-md-4 shadow-1-strong" />
-                </div>
-                <div class=" ult col-lg-4">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp" alt="Table Full of Spices"
-                        class="w-100 mb-2 mb-md-4 shadow-1-strong" />
-                </div>
-                <div class="ult col-lg-4">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp" alt="Table Full of Spices"
-                        class="w-100 mb-2 mb-md-4 shadow-1-strong" />
-                </div>
 
 
 
+
+
+
+
+    <div id="carouselExampleIndicators" class="carousel slide">
+        <div class="carousel-indicators ">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active "
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <!-- Gallery -->
+                <div class="container col-lg-9">
+                    <div class="lightbox" data-mdb-lightbox-init>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp"
+                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Square/1.webp"
+                                    alt="Coconut with Strawberries" class="w-100 shadow-1-strong " />
+                            </div>
+                            <div class="col-lg-8">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Vertical/1.webp"
+                                    alt="Dark Roast Iced Coffee" class="w-100 shadow-1-strong" />
+                            </div>
+                            <div class="mt-4 col-lg-4">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp"
+                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                            </div>
+                            <div class=" ult col-lg-4">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp"
+                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                            </div>
+                            <div class="ult col-lg-4">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp"
+                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery -->
+            </div>
+            <div class="carousel-item">
+                <!-- Gallery -->
+                <div class="container col-lg-9">
+                    <div class="lightbox" data-mdb-lightbox-init>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp"
+                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Square/1.webp"
+                                    alt="Coconut with Strawberries" class="w-100 shadow-1-strong " />
+                            </div>
+                            <div class="col-lg-8">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Vertical/1.webp"
+                                    alt="Dark Roast Iced Coffee" class="w-100 shadow-1-strong" />
+                            </div>
+                            <div class="mt-4 col-lg-4">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp"
+                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                            </div>
+                            <div class=" ult col-lg-4">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp"
+                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                            </div>
+                            <div class="ult col-lg-4">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp"
+                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery -->
+            </div>
+            <div class="carousel-item">
+                <!-- Gallery -->
+                <div class="container col-lg-9">
+                    <div class="lightbox" data-mdb-lightbox-init>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp"
+                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Square/1.webp"
+                                    alt="Coconut with Strawberries" class="w-100 shadow-1-strong " />
+                            </div>
+                            <div class="col-lg-8">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Vertical/1.webp"
+                                    alt="Dark Roast Iced Coffee" class="w-100 shadow-1-strong" />
+                            </div>
+                            <div class="mt-4 col-lg-4">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp"
+                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                            </div>
+                            <div class=" ult col-lg-4">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp"
+                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                            </div>
+                            <div class="ult col-lg-4">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp"
+                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery -->
             </div>
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
-    <!-- Gallery -->
+
+
+
+
+
+
 
 
 
@@ -123,6 +230,21 @@
 
 
 <style>
+    /* Estilos para los botones de indicadores */
+    .carousel-indicators [data-bs-target] {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #ff0000;
+        margin: 0 10px;
+    }
+
+    /* Estilos para el contenedor de los indicadores */
+    .carousel-indicators {
+        margin-bottom: -30px;
+    }
+
+    /* Estilo de galeria */
     .container {
         margin-top: 9em;
     }
@@ -145,26 +267,15 @@
     }
 
     .container img {
-        border: 10px solid red;
+          border: 2px solid #d9534f;
     }
 
-    
-</style>
+    body {
+        background-color: #333333;
+    }
 
+    /* ---------- */
 
-
-
-
-
-
-
-
-
-
-
-
-
-<style>
     .dropdown-menu .dropdown-item:hover {
         background-color: transparent !important;
         border-color: transparent !important;
