@@ -76,19 +76,34 @@
                                 
                                 
                             </div>
-                            <div class="form-group">
 
+                            <div class="form-group">
                                 <label for="people_id">Id Cliente</label>
                                 <select name="people_id" class="form-control{{ $errors->has('people_id') ? ' is-invalid' : '' }}">
-                                    @foreach ($people as $personId => $personName)
-                                    <option value="{{ $personId }}">{{ $personId }}</option>
-                                
-                                @endforeach
-                                    </select>
-                                    @if ($errors->has('people_id'))
-                                        <div class="invalid-feedback">{{ $errors->first('people_id') }}</div>
-                                    @endif
+                                    @foreach ($people as $idCard => $personName)
+                                        <option value="{{ $idCard }}">{{ $idCard }}</option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('people_id'))
+                                    <div class="invalid-feedback">{{ $errors->first('people_id') }}</div>
+                                @endif
                             </div>
+                            
+
+
+                            
+                            <div class="form-group">
+                                <label for="people_id">Id Cliente</label>
+                                <select name="people_id" class="form-control{{ $errors->has('people_id') ? ' is-invalid' : '' }}">
+                                    @foreach ($people as $idCard => $personName)
+                                        <option value="{{ $idCard }}">{{ $idCard }}</option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('people_id'))
+                                    <div class="invalid-feedback">{{ $errors->first('people_id') }}</div>
+                                @endif
+                            </div>
+                            
                             
                             <div class="form-group">
                                 <label for="date">Fecha Venta</label>

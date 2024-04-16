@@ -45,11 +45,9 @@
         <hr class="linea1">
     </div>
 
-
-    
-        <div class=" col-10 container-fluid text-center text-white mb-0 p-5 fs-4 mt-5 my-2 align-baseline">
+        <div class=" container-fluid text-center text-white mb-0 p-5 fs-4 mt-5 my-2 align-baseline">
                 
-            <h1 class="text-blue fs-1"> EQUIPO DE TRABAJO </h1>
+            <h1 class="text-blue fs-1"> Javier Mauricio Mojica </h1>
                 <p>
                     Este es el espacio donde seguramente una agencia diría que, en efecto, es una agencia.
                     Nosotros nos consideramos una familia, porque estamos hechos de personas, con todo tipo de talentos.
@@ -65,7 +63,7 @@
 
 
 
-    <div class="container col-10 ps-0 text-center text-white-50 fs-1">
+    <div class="container col ps-0 text-center text-white-50 fs-1">
          <div class="row ">
           <div class="col-4 ">        
             <p class="text-white">Y si... </p>
@@ -78,13 +76,13 @@
             <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img src="{{ asset('Imagenes/imgs-gallery/javier.jpg') }}" class="d-block w-50 p-3" width=100% height=100% alt="Javier">
+                    <img src="{{ asset('Imagenes/imgs-gallery/javier.jpg') }}" class="d-block w-50 p-3" style="width: 100px" alt="Javier">
                   </div>
                   <div class="carousel-item">
-                    <img src="{{ asset('Imagenes/imgs-gallery/8.jpg') }}" class="d-block w-50" width=100% height=400px alt="Sofia">
+                    <img src="{{ asset('Imagenes/imgs-gallery/8.jpg') }}" class="d-block w-50" style="width: 150px" alt="Sofia">
                   </div>
                   <div class="carousel-item">
-                    <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }}" class="d-block w-50" width=100% height=400px alt="">
+                    <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }}" class="d-block w-50" style="width: 180px" alt="">
                   </div>
                 </div>
 
