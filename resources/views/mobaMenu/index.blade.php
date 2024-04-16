@@ -16,25 +16,30 @@
 
     <nav class="navbar">
         <div class="container-fluid">
+            <a href="{{ asset('/') }}">
             <img src="{{ asset('Imagenes/Logomoba.png') }}" class="navbar-img-left" alt="Logo Moba">
+            </a>
             <div class="navbar-buttons">
                 <div class="dropdown">
-                    <a href="{{route('mobaMenu.servicios.index')}}">
+                    <a href="{{route('mobaMenu.Servicios.servicios')}}">
                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"aria-haspopup="true" aria-expanded="false">
                             Servicios
                         </button>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="{{route('mobaMenu.servicios.identidad')}}">Identidad Corporativa</a></li>
-                        <li><a class="dropdown-item" href="{{route('mobaMenu.servicios.identidad')}}">Avisos y Publicidad para interiores</a></li>
-                        <li><a class="dropdown-item" href="{{route('mobaMenu.servicios.identidad')}}">POP y álgo más</a></li>
+                        <li><a class="dropdown-item" href="{{route('mobaMenu.Servicios.servicios')}}">Identidad Corporativa</a></li>
+                        <li><a class="dropdown-item" href="{{route('mobaMenu.Servicios.servicios')}}">Avisos y Publicidad para interiores</a></li>
+                        <li><a class="dropdown-item" href="{{route('mobaMenu.Servicios.servicios')}}">POP y álgo más</a></li>
                     </ul>
                 </div>
+                <a href="{{ route('mobaMenu.index')}}">Nosotros</a>
                 <a href="#" class="btn btn-primary">Proyectos</a>
-                <a href="#" class="btn btn-primary">Equipo de trabajo</a>
+                <a href="{{ route('mobaMenu.EquipoTrabajo.index') }}" class="btn btn-primary">Equipo de trabajo</a>
                 <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
+            <a href="{{ asset('/') }}">
             <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte">
+            </a>
         </div>
     </nav>
     <div class="content">

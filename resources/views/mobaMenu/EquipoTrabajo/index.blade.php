@@ -27,9 +27,9 @@
                         </button>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="{{route('mobaMenu.Servicios.servicios')}}">Identidad Corporativa</a></li>
-                        <li><a class="dropdown-item" href="{{route('mobaMenu.Servicios.servicios')}}">Avisos y Publicidad para interiores</a></li>
-                        <li><a class="dropdown-item" href="{{route('mobaMenu.Servicios.servicios')}}">POP y álgo más</a></li>
+                        <li><a class="dropdown-item" href="{{ route('mobaMenu.Servicios.servicios') }}">Identidad Corporativa</a></li>
+                        <li><a class="dropdown-item" href="{{ route('mobaMenu.Servicios.servicios') }}">Avisos y Publicidad para interiores</a></li>
+                        <li><a class="dropdown-item" href="{{ route('mobaMenu.Servicios.servicios') }}">POP y álgo más</a></li>
                     </ul>
                 </div>
                 <a href="{{ route('mobaMenu.index')}}" class="btn btn-primary">Nosotros</a>
@@ -53,37 +53,41 @@
 
 <div class="container">
 
- <!-- Contenido contacto  -->
+ <!-- Contenido ¿QUIÉNES SOMOS?  -->
 
-    <div class="box"><h1>Contacto</h1><br><br>
-    <h3>¡Somos el estudio de diseño y comunicación que buscabas!</h3>
-    <h3>Las soluciones en comunicación que ofrecemos a nuestros 
-    clientes son completamente personalizadas y adaptadas a 
-    cada necesidad.</h3>
-    <h3> Haz clic al botón azul para coordinar una reunión estratégica con LA AGENCIA</h3><br>
-    <h3> Contacto: (051) 933 375 953</h3></div>
+    <div class="box"><h1>¿QUIÉNES SOMOS?</h1><br><br>
+    <h3></h3>
+    <h3>Moba Comunicación Gráfica Agencia De Diseño Y Publicidad surge como una
+        propuesta novedosa, apostándole a la creatividad y a la imaginación, para satisfacer las necesidades de las marcas y sus clientes.
+        Hoy en día, somos un referente de diseño, comunicación y publicidad; contamos con talento humano capaz de crear, desarrollare implementar 
+        campañas eficaces en medios impresos, web, radiales y televisivos. Cada proceso que realizamos en nuestra compañía está fundamentado en el
+        valor agregado que le entregamos a nuestros clientes a través de la honestidad, la disciplina y la “buena onda”
+    </h3>
+    <section class="mapa">
+        <h3 class="titulo-principal">Nuestra Ubicación </h3>
+        <p>Nuestro establecimiento esta ubicado en el corazón de la ciudad</p>
 
- <!-- Contenido formulario de contacto -->
+        <div class="mapa-contenido">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d992.4982461547978!2d-72.93899077156787!3d5.714146134081456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e6a45d10a0669a7%3A0x5bd7c178ff586f57!2sCra.%2019%20%235115%2C%20Sogamoso%2C%20Boyac%C3%A1!5e0!3m2!1ses!2sco!4v1707448666257!5m2!1ses!2sco" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
 
-    <div class="box">
-    <form method="POST" action="{{ route('enviar-correo') }}">
-    @csrf
-		<label for="nombre">Nombre:</label>
-		<input type="text" id="nombre" name="nombre" required><br><br>
+    <section class="diferenciales">
 
-		<label for="email">Email:</label>
-		<input type="email" id="email" name="email" required><br><br>
+        <h3 class="titulo-principal">EQUIPO DE TRABAJO</h3>
+        
+        <div class="contenido-diferenciales">
+                
+            <ul class="lista-diferenciales">        
+                <li class="items"><Label>Lider</Label></li>
+                <li class="items">Espacio diferenciado</li>
+                <li class="items">Localización </li>
+                <li class="items">Profesionales calificados</li>
+                <li class="items">Puntualidad</li>
+                <li class="items">Limpieza</li>
+            </ul><img src="diferenciales/diferenciales.jpg" class="imagen-diferenciales">
+        </div>           
 
-		<label for="telefono">Teléfono:</label>
-		<input type="tel" id="telefono" name="telefono" required><br><br>
-
-		<label for="mensaje">Mensaje:</label>
-		<textarea id="mensaje" name="mensaje" rows="5" ></textarea><br><br>
-
-		<input type="submit" value="Enviar" id="submit">
-	</form>
-    </div>
-</div>
 
     <div class="vertical-line right-line">
         <hr class="linea2">
@@ -145,6 +149,40 @@ textarea{
     background-color: #3E3E3F;
     color: white;
 }
+.mapa{
+    padding: 3em 0;
+    background: linear-gradient(#fefefe, #888888);
+}
+
+.mapa p{ 
+    margin: 0 0 2em;
+    text-align: center;
+}
+
+.mapa-contenido{
+    width: 940px;
+    margin: 0 auto;
+}
+
+
+.diferenciales{
+    padding: 3em 0;
+    background: #888888;
+}
+
+
+.contenido-diferenciales{
+    width: 640px;
+    margin: 0 auto;
+
+}
+
+.lista-diferenciales{
+    width: 40%;
+    display: inline-block;
+    vertical-align: top;
+}
+
 #submit{
     background-color: #BCCCE0;
     width: 25%;
