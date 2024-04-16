@@ -131,17 +131,15 @@ Route::middleware('auth')->group(function () {
     //fin-fabian
 
     //Vistas carpeta servicios
-    Route::get('/mobaMenu/Servicios/index', function () {
-        return view('mobaMenu.Servicios.index');
+    Route::get('/mobaMenu/index', function () {
+        return view('mobaMenu.index');
     });
-    Route::view('/mobaMenu/Servicios/identidad', 'mobaMenu.servicios.identidad')->name('mobaMenu.servicios.identidad');
-    Route::view('/mobaMenu/Servicios/identidad', 'mobaMenu.servicios.identidad')->name('mobaMenu.servicios.identidad');    
-    Route::view('/mobaMenu/Servicios/identidad', 'mobaMenu.servicios.identidad')->name('mobaMenu.servicios.identidad');
+    Route::view('/mobaMenu/Servicios/servicios', 'mobaMenu.servicios.servicios')->name('mobaMenu.Servicios.servicios');
     //Fin vistas carpeta servicios
 
 
     //Vistas fronted Moba
-    Route::view('/mobaMenu/Servicios/index', 'mobaMenu.servicios.index')->name('mobaMenu.servicios.index');
+    Route::view('/mobaMenu/index', 'mobaMenu.index')->name('mobaMenu.index');
     Route::view('/mobaMenu/EquipoTrabajo/index', 'mobaMenu.EquipoTrabajo.index')->name('mobaMenu.EquipoTrabajo.index');
     Route::view('/mobaMenu/Contacto/index', 'mobaMenu.Contacto.index')->name('mobaMenu.Contacto.index');
     
