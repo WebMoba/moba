@@ -31,6 +31,10 @@
                                 <a href="{{ route('pdf.quote') }}" class="btn btn-danger btn-sm float-right">
                                     <i class="fa fa-file-pdf"></i> {{ __('PDF') }}
                                 </a>
+
+                                <a href="{{ route('excel.quote') }}" class="btn btn-success btn-sm float-right">
+                                    <i class="fa fa-file-excel"></i> {{ __('Excel') }}
+                                </a>
                             </div>
                             <div class="float-right">
                                 <a href="{{ route('quotes.create') }}" class="btn btn-primary btn-sm float-right"
@@ -73,16 +77,15 @@
                                             <td>
                                                 <form action="{{ route('quotes.destroy', $quote->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary {{ $quote->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('quotes.show', $quote->id) }}"><i
-                                                            class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
+                                                        href="{{ route('quotes.show', $quote->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
                                                     <a class="btn btn-sm btn-success {{ $quote->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('quotes.edit', $quote->id) }}"><i
-                                                            class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
+                                                        href="{{ route('quotes.edit', $quote->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"
-                                                        onclick="return confirm('¿Está seguro de que desea {{ $quote->disable ? 'Habilitar' : 'Deshabilitar' }} la cotización?')">
-                                                        <i class="fa fa-fw fa-trash"></i> 
+                                                        onclick="return confirm('¿Está seguro de que desea {{ $quote->disable ? 'Habilitar' : 'Deshabilitar' }} la cotización?')"
+                                                        {{ $quote->disable ? 'disabled' : '' }}>
+                                                        <i class="fa fa-fw fa-trash"></i>
                                                         {{ $quote->disable ? 'Habilitar' : 'Deshabilitar' }}
                                                     </button>
                                                 </form>

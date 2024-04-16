@@ -58,11 +58,11 @@
                 <div class="linea grey"></div> <!-- Línea vertical después de los logos -->
             </div>
               <!-- Insersion de imagenes  -->
-            <a href="{{ route('mobaMenu.servicios.index') }}" class="logos">
+            <a href="{{ route('mobaMenu.index') }}" class="logos">
             <div class="logos"><img src="{{ asset('storage/imgMoba/LogoMoba.png') }}" alt="Imagen"></div>
             </a>
 
-            <a href="{{ route('tuArteMenu.categorias.index') }}" class="logos">
+            <a href="{{ route('tuArteMenu.index') }}" class="logos">
             <div class="logos"><img src="{{ asset('storage/imgMoba/LogotipoTuArte.png') }}" alt="Imagen" id="img2"></div>
             </a>
 

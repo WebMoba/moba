@@ -8,6 +8,8 @@ use App\Models\Project;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use Dompdf\Dompdf as DompdfDompdf;
+use App\Exports\TeamWorkExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 /**
  * Class TeamWorkController
@@ -182,5 +184,11 @@ class TeamWorkController extends Controller
         $pdf->render();
         return $pdf->stream('Listado_Equipos_De_Trabajo.pdf');
     }
+
+    public function export()
+    {
+        return Excel::download(new TeamWorkExport, 'Listado_Equipos-De-Trabajo.xlsx');
+    }
+
 }
 
