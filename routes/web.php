@@ -142,13 +142,18 @@ Route::middleware('auth')->group(function () {
 
     //Vistas fronted Moba
     Route::view('/mobaMenu/Servicios/index', 'mobaMenu.servicios.index')->name('mobaMenu.servicios.index');
+    Route::view('/mobaMenu/EquipoTrabajo/index', 'mobaMenu.EquipoTrabajo.index')->name('mobaMenu.EquipoTrabajo.index');
     Route::view('/mobaMenu/Contacto/index', 'mobaMenu.Contacto.index')->name('mobaMenu.Contacto.index');
+    
 
 
     //vistas froted tu arte 
-    Route::view('/tuArteMenu/categorias/index', 'tuArteMenu.categorias.index')->name('tuArteMenu.categorias.index');
+    Route::view('/tuArteMenu/index', 'tuArteMenu.index')->name('tuArteMenu.index');
     Route::view('/tuArteMenu/productos/index', 'tuArteMenu.productos.index')->name('tuArteMenu.productos.index');
     Route::view('/tuArteMenu/galeria/index', 'tuArteMenu.galeria.index')->name('tuArteMenu.galeria.index');
+    Route::view('/tuArteMenu/categorias/index', 'tuArteMenu.categorias.index')->name('tuArteMenu.categorias.index');
+    
+
 
 
     //ruta Correo electronico

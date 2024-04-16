@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Servicios</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
@@ -21,8 +20,7 @@
             </a>
             <div class="navbar-buttons">
                 <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-                        aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
                         Servicios
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -32,8 +30,8 @@
                         <li><a class="dropdown-item" href="#">Mascotas</a></li>
                     </ul>
                 </div>
-                <a href="#" class="btn btn-primary">Categorias</a>
-                <a href="{{ route('tuArteMenu.galeria.index') }}" class="btn btn-primary">Galeria</a>
+                <a href="{{route('tuArteMenu.categorias.index')}}" class="btn btn-primary">Categorias</a>
+                <a href="#" class="btn btn-primary">Galeria</a>
                 <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
             <a href="{{ asset('/') }}">
@@ -51,6 +49,23 @@
     </div>
 
 
+    <!-- Contenido de la página aquí -->
+    <div class="container">
+        <div class="box">
+                    <p>Tu arte es un emprendimiento sogamoseño, dedicado a la creación, 
+        producción y comercialización de accesorios y decoración, elaborada 
+        en mdf (madera reciclada) de distintos grosores, cortado y grabado a 
+        laser, y pintado a mano con los mas nos detalles de creatividad y 
+        realismo, logrando así un equilibrio perfecto entre la industria y el 
+        trabajo artesanal.</p><br>
+        <h4>Nos caracteriza nuestra honestidad, entrega, creatividad y nuestra...</h4><br>
+        <h1>"Buena Onda"</h1>
+        </div>
+        <div class="box">
+            <img src="{{ asset('storage/imgMoba/LogotipoTuArte.png') }}" alt="">
+        </div>
+
+    </div>
 
     <div class="vertical-line right-line">
         <hr class="linea2">
@@ -59,10 +74,9 @@
         <hr class="linea2">
     </div>
 
-    <!-- Contenido de la página aquí -->
+    
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
     <script>
         document.querySelector('.dropdown').addEventListener('mouseenter', function() {
@@ -73,95 +87,9 @@
             this.querySelector('.dropdown-menu').classList.remove('show');
         });
     </script>
-
-
-
-
-    <!-- Gallery -->
-    <div class="container col-lg-9">
-        <div class="lightbox" data-mdb-lightbox-init>
-            <div class="row">
-                <div class="col-lg-4">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp" alt="Table Full of Spices"
-                        class="w-100 mb-2 mb-md-4 shadow-1-strong" />
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Square/1.webp"
-                        alt="Coconut with Strawberries" class="w-100 shadow-1-strong " />
-                </div>
-                <div class="col-lg-8">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Vertical/1.webp"
-                        alt="Dark Roast Iced Coffee" class="w-100 shadow-1-strong" />
-                </div>
-                <div class="mt-4 col-lg-4">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp" alt="Table Full of Spices"
-                        class="w-100 mb-2 mb-md-4 shadow-1-strong" />
-                </div>
-                <div class=" ult col-lg-4">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp" alt="Table Full of Spices"
-                        class="w-100 mb-2 mb-md-4 shadow-1-strong" />
-                </div>
-                <div class="ult col-lg-4">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp" alt="Table Full of Spices"
-                        class="w-100 mb-2 mb-md-4 shadow-1-strong" />
-                </div>
-
-
-
-            </div>
-        </div>
-    </div>
-    <!-- Gallery -->
-
-
-
-
-
-
 </body>
 
 </html>
-
-
-
-<style>
-    .container {
-        margin-top: 9em;
-    }
-
-    .col-lg-8 img {
-        height: 40em;
-    }
-
-    .col-lg-4 img {
-        height: 21em;
-    }
-
-    .mt-4 img {
-        height: 17.8em;
-    }
-
-    .ult img {
-        height: 21em;
-        margin-top: -1.9em;
-    }
-
-    .container img {
-        border: 10px solid red;
-    }
-
-    
-</style>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <style>
@@ -190,4 +118,42 @@
     .dropdown-menu .dropdown-divider {
         border-top: 1px solid #f80008;
     }
+
+
+    .container {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        width: 90%;
+        height: 100vh;
+        
+    }
+    .box{
+        display: inline-block;
+        margin-top: 2%;
+        width: 90%;
+        height: 80%;
+        
+    }
+    
+    p{
+        color:   #BCCCE0;
+       margin-top: 30%;
+    }
+    h4{
+        color: #BCCCE0;
+    }
+    h1{
+        color:   #BCCCE0;
+        font-size: 70px;
+    }
+
+    .box img{
+        
+        margin-top: 20%;
+        width: 60%;
+        height: 60%;
+    }
 </style>
+

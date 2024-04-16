@@ -21,14 +21,7 @@
                             @csrf
 
                             @include('purchase.form')
-                            <div class="p-3 mb-1 text-dark my-1 mx-auto p-2" style="width: 300px;">
-                                <h3>Detalle de la compra</h3>
-                            </div>
-                            @include('detail-purchase.form', [
-                                'purchaseId' => $purchase->id,
-                                'purchaseName' => isset($purchaseName) ? $purchaseName : null,
-                                'creating' => true,
-                            ])
+                            
                         </form>
 
                     </div>

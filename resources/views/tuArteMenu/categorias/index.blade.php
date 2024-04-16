@@ -16,7 +16,7 @@
 
     <nav class="navbar">
         <div class="container-fluid">
-            <a href="{{ asset('/') }}">
+        <a href="{{ asset('/') }}">
             <img src="{{ asset('Imagenes/Logomoba.png') }}" class="navbar-img-left" alt="Logo Moba">
             </a>
             <div class="navbar-buttons">
@@ -33,7 +33,7 @@
                     </ul>
                 </div>
                 <a href="#" class="btn btn-primary">Categorias</a>
-                <a href="#" class="btn btn-primary">Galeria</a>
+                <a href="{{ route('tuArteMenu.galeria.index') }}" class="btn btn-primary">Galeria</a>
                 <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
             <a href="{{ asset('/') }}">
@@ -50,7 +50,11 @@
         <hr class="linea1">
     </div>
 
-          
+        <!-- Contenido de la página aquí -->
+        
+       <div class="container">
+
+       </div>
 
     <div class="vertical-line right-line">
         <hr class="linea2">
@@ -59,7 +63,7 @@
         <hr class="linea2">
     </div>
 
-    <!-- Contenido de la página aquí -->
+    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
@@ -104,5 +108,11 @@
 
 .dropdown-menu .dropdown-divider {
     border-top: 1px solid #f80008;
+}
+
+.container{
+    border: solid 3px yellow;
+    width: 90%;
+    height: 100vh;
 }
 </style>
