@@ -52,10 +52,6 @@ class ProductController extends Controller
     {
         $categories_products_service = CategoriesProductsService::where('type', 'producto')->pluck('name', 'id');
 
-        if (empty($categories_products_service)) {
-            return redirect()->back()->with('danger', 'No hay categorías de producto disponibles.');
-        }
-
         $product = new Product();
         $units = Unit::pluck('unit_type', 'id');
 
