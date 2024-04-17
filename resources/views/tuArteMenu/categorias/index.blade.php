@@ -54,7 +54,7 @@
         <!-- Contenido de la página aquí -->
         
        <div class="container">
-        
+
        <div class="contenedor">
         <div class="campo campo1"><h1>Mascotas</h1></div>
         <div class="contenedor-columna">
@@ -154,6 +154,11 @@
   position: relative;
  
 }
+.campo1:hover, .campo2:hover, .campo3:hover, .campo4:hover {
+    background-color: red;
+    cursor: pointer;
+    color: white;
+}
 
 .campo2,
 .campo3 {
@@ -171,18 +176,18 @@
     position: absolute;
     bottom: 0;
     margin-left: 5%;
-    color: #f80008;
+    color: white;
     
 }
 .campo2 h1 , .campo3 h1{
     position: absolute;
     bottom: 0;
     margin-left: 5%;
-    color: #f80008;
+    color: white;;
 }
 .campo4 h1{
     position: absolute;
-    color: #f80008;
+    color: white;
 }
 
     </style>

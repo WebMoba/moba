@@ -130,6 +130,7 @@
         justify-content: center;
         width: 90%;
         height: 100vh;
+        
 
     }
 
