@@ -144,6 +144,7 @@ Route::middleware('auth')->group(function () {
  //Vistas fronted Moba
  Route::view('/mobaMenu/index', 'mobaMenu.index')->name('mobaMenu.index');
  Route::view('/mobaMenu/EquipoTrabajo/index', 'mobaMenu.EquipoTrabajo.index')->name('mobaMenu.EquipoTrabajo.index');
+
  Route::view('/mobaMenu/Contacto/index', 'mobaMenu.Contacto.index')->name('mobaMenu.Contacto.index');
  
 
