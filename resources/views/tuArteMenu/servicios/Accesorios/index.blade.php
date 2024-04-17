@@ -21,7 +21,7 @@
             <div class="navbar-buttons">
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-                        aria-haspopup="true" aria-expanded="false">
+                        aria-haspopup="true" aria-expanded="false" href="{{ route('tuArteMenu.servicios.index') }}">
                         Servicios
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
