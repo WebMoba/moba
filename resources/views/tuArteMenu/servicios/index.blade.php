@@ -26,7 +26,7 @@
                         Servicios
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#">Accesorios</a></li>
+                        <li><a class="dropdown-item" href="{{ route('tuArteMenu.servicios.Accesorios.index') }}">Accesorios</a></li>
                         <li><a class="dropdown-item" href="#">Decoracion</a></li>
                         <li><a class="dropdown-item" href="#">Joditas pa'l Recuerdo</a></li>
                         <li><a class="dropdown-item" href="#">Mascotas</a></li>
