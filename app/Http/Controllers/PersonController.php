@@ -117,6 +117,8 @@ class PersonController extends Controller
     $person->rol = $request->input('rol');
     $person->identification_type = $request->input('identification_type');
 
+    $person->disable = false;
+
     // Guardar la persona en la base de datos
     $person->save();
 
