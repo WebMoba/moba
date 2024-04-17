@@ -42,11 +42,9 @@ class PersonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+     public function create(Request $request)
 {
     $person = new Person();
-    
-    $person->disable = false;
     
     // Obtener listas de datos necesarios para los campos select en el formulario
     $regions = Region::pluck('name', 'id');
@@ -88,10 +86,7 @@ class PersonController extends Controller
         ],
         'user_name' => 'required',
         'team_works_id' => 'required',
-        'phone_number' => 'required', 
-        'numberPhone' => 'required',
-        'numberPhones'=>'required',
-        'numberPhoneId'=>'required',// Asegúrate de que el campo del número de teléfono esté presente en la solicitud
+        'phone_number' => 'required', // Asegúrate de que el campo del número de teléfono esté presente en la solicitud
         'region' => 'required',
         'towns_id' => 'required',
         'users_id' => [
@@ -122,8 +117,6 @@ class PersonController extends Controller
     $person->rol = $request->input('rol');
     $person->identification_type = $request->input('identification_type');
 
-    $person->disable = false;
-
     // Guardar la persona en la base de datos
     $person->save();
 
@@ -136,27 +129,7 @@ class PersonController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-{
-    // Recuperar los datos de la persona junto con sus relaciones
-    $person = Person::with('teamWork', 'numberPhone', 'town')->find($id);
 
-    // Verificar si la persona existe
-    if (!$person) {
-        // Manejar el caso en que la persona no existe, por ejemplo, redirigir a una página de error 404
-        abort(404);
-    }
-
-    // Devolver la vista con los datos de la persona
-    return view('person.show', compact('person'));
-}
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
 {
     // Obtener la persona a editar
