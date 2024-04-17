@@ -178,7 +178,7 @@ body::after {
 
 .txts2 {
     color: rgb(255, 255, 255);
-    font-size: 1.5em;
+    font-size: 1.8em;
     font-weight: bold;
 }
 
@@ -263,7 +263,7 @@ body::after {
     background-color: red;
     padding: 0 8px 0px 8px;
     /* Ajusta el espacio interior del cuadro rojo */
-    margin: 10px 2px 0 0;
+    margin: 10px 3px 0 0;
     /* Ajusta el espacio exterior del cuadro rojo */
     border-radius: 10px;
     /* Ajusta la esquina redondeada del cuadro rojo */

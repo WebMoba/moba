@@ -66,15 +66,19 @@
         <h1 class="big-title">JODITAS PA´L RECUERDO</h1>
     </div>
     <div class="txt1">
-        <h1 class="txts1">¿Buscas accesorios que vayan perfecto con tu personalidad?</h1>
+        <h1 class="txts1">¿Buscas el detalle perfecto?</h1>
     </div>
     <div class="txt2">
         <h1 class="txts2">¡Has llegado al lugar indicado!</h1>
     </div>
     <div class="txt3">
-        <h1 class="txts3">Nuestra Creatividad y enfoque en hacer productos unicos, hacen que tengamos en nuestro
-            portafolio piezas con las que te vas a identificar y que sin duda querras tener en tu joyero.</h1>
-        <h1 class="txts3">En esta línea encuentras aretes largos, aretes topitos, dijes, manillas, pines, anillos.</h1>
+        <h1 class="txts3">En esta sección encontraras piezas únicas que logran plasmar los items mas representativos
+            dde nuestra
+            cultura, piezas perfectas para regalar o para decorar tus espacios y a la vez sentirnos orgullosos de
+            nuestra
+            tierra.</h1>
+        <h1 class="txts3">En esta línea encuentran referentes culturales plasmados en imanes, pines, llaveros y mucho
+            más.</h1>
     </div>
     <!---Carrusel--->
     <div class="carousel-container">

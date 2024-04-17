@@ -66,15 +66,18 @@
         <h1 class="big-title">MASCOTAS</h1>
     </div>
     <div class="txt1">
-        <h1 class="txts1">¿Buscas accesorios que vayan perfecto con tu personalidad?</h1>
+        <h1 class="txts1">¿Buscas una pieza artesanal que transmita el amor real por tu mascota?</h1>
     </div>
     <div class="txt2">
         <h1 class="txts2">¡Has llegado al lugar indicado!</h1>
     </div>
     <div class="txt3">
-        <h1 class="txts3">Nuestra Creatividad y enfoque en hacer productos unicos, hacen que tengamos en nuestro
-            portafolio piezas con las que te vas a identificar y que sin duda querras tener en tu joyero.</h1>
-        <h1 class="txts3">En esta línea encuentras aretes largos, aretes topitos, dijes, manillas, pines, anillos.</h1>
+        <h1 class="txts3">Si alguna vez has pensado en piezas para ti o para regalar, que transmitan el amor real que
+            sentimos por
+            esos seres que nos acompañan a diario y que llamamos mascotas, has entrado a la pagina correcta.</h1>
+        <h1 class="txts3">Nuestros clientes aman a sus mascotas y con está línea expresamos todo el amor hacia ellos
+            todos nuestros
+            productos los personalizamos con la fotografía de nuestros amigos.</h1>
     </div>
     <!---Carrusel--->
     <div class="carousel-container">
