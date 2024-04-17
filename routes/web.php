@@ -130,16 +130,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/export-teamwork', [TeamWorkController::class, 'export'])->name('excel.teamwork');
     //fin-fabian
 
-    //Vistas carpeta servicios
-    Route::get('/mobaMenu/index', function () {
-        return view('mobaMenu.index');
-    });
-    Route::view('/mobaMenu/Servicios/servicios', 'mobaMenu.servicios.servicios')->name('mobaMenu.Servicios.servicios');
-    //Fin vistas carpeta servicios
-
+    
 
    
 });
+
+//Vistas carpeta servicios
+Route::get('/mobaMenu/index', function () {
+    return view('mobaMenu.index');
+});
+Route::view('/mobaMenu/Servicios/servicios', 'mobaMenu.servicios.servicios')->name('mobaMenu.Servicios.servicios');
+//Fin vistas carpeta servicios
+
 
  //Vistas fronted Moba
  Route::view('/mobaMenu/index', 'mobaMenu.index')->name('mobaMenu.index');
@@ -148,13 +150,13 @@ Route::middleware('auth')->group(function () {
  
 
 
-    //vistas froted tu arte 
-    Route::view('/tuArteMenu/index', 'tuArteMenu.index')->name('tuArteMenu.index');
-    Route::view('/tuArteMenu/galeria/index', 'tuArteMenu.galeria.index')->name('tuArteMenu.galeria.index');
-    Route::view('/tuArteMenu/categorias/index', 'tuArteMenu.categorias.index')->name('tuArteMenu.categorias.index');
-    Route::view('/tuArteMenu/servicios/index', 'tuArteMenu.servicios.index')->name('tuArteMenu.servicios.index');
-    Route::view('/tuArteMenu/servicios/Acccesorios/index', 'tuArteMenu.servicios.Accesorios.index')->name('tuArteMenu.servicios.Accesorios.index');
-    Route::view('/tuArteMenu/Contacto/index', 'tuArteMenu.Contacto.index')->name('tuArteMenu.Contacto.index');
+ //vistas froted tu arte 
+ Route::view('/tuArteMenu/index', 'tuArteMenu.index')->name('tuArteMenu.index');
+ Route::view('/tuArteMenu/galeria/index', 'tuArteMenu.galeria.index')->name('tuArteMenu.galeria.index');
+ Route::view('/tuArteMenu/categorias/index', 'tuArteMenu.categorias.index')->name('tuArteMenu.categorias.index');
+ Route::view('/tuArteMenu/servicios/index', 'tuArteMenu.servicios.index')->name('tuArteMenu.servicios.index');
+ Route::view('/tuArteMenu/servicios/Acccesorios/index', 'tuArteMenu.servicios.Accesorios.index')->name('tuArteMenu.servicios.Accesorios.index');
+ Route::view('/tuArteMenu/Contacto/index', 'tuArteMenu.Contacto.index')->name('tuArteMenu.Contacto.index');
 
  //vistas froted tu arte 
  Route::view('/tuArteMenu/index', 'tuArteMenu.index')->name('tuArteMenu.index');
