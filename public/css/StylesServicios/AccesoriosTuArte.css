@@ -236,7 +236,7 @@ body::after {
 .carousel-control-next {
     width: auto;
     /* Ajusta el ancho de las flechas automáticamente */
-    top: 50%;
+    top: 40%;
     /* Posiciona las flechas verticalmente en el centro */
     transform: translateY(-50%);
     /* Alinea verticalmente las flechas */
@@ -256,7 +256,7 @@ body::after {
     background-color: red;
     padding: 0 8px 0px 8px;
     /* Ajusta el espacio interior del cuadro rojo */
-    margin: 10px 0 0 0;
+    margin: 10px 2px 0 0;
     /* Ajusta el espacio exterior del cuadro rojo */
     border-radius: 10px;
     /* Ajusta la esquina redondeada del cuadro rojo */
@@ -282,10 +282,25 @@ body::after {
 /*texto*/
 
 .rating-text {
-    text-align: center;
-    margin-top: 5px;
+    text-align: left;
+    /* Alineación a la izquierda */
 }
 
 .rating-text p {
-    margin: 5px 0;
+    margin: 0;
+    /* Elimina el margen vertical para reducir el espacio entre los párrafos */
+}
+
+.rating-text p {
+    color: #fff;
+    /* Cambio de color a blanco para el texto de precio */
+    font-size: 14px;
+    /* Tamaño deseado para el texto de precio */
+}
+
+.rating-text p {
+    color: #fff;
+    /* Cambio de color a blanco para el texto de precio */
+    font-size: 16px;
+    /* Tamaño deseado para el texto de precio */
 }

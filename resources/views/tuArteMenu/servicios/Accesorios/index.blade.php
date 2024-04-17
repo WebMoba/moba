@@ -8,7 +8,7 @@
     <title>Servicios</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/AccesoriosTuArte.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/StylesServicios/AccesoriosTuArte.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
@@ -25,10 +25,15 @@
                         Servicios
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#">Accesorios</a></li>
-                        <li><a class="dropdown-item" href="#">Decoracion</a></li>
-                        <li><a class="dropdown-item" href="#">Joditas pa'l Recuerdo</a></li>
-                        <li><a class="dropdown-item" href="#">Mascotas</a></li>
+                        <li><a class="dropdown-item"
+                                href="{{ route('tuArteMenu.servicios.Accesorios.index') }}">Accesorios</a></li>
+                        <li><a class="dropdown-item"
+                                href="{{ route('tuArteMenu.servicios.Decoracion.index') }}">Decoracion</a></li>
+                        <li><a class="dropdown-item"
+                                href="{{ route('tuArteMenu.servicios.JoditasPa´lRecuerdo.index') }}">Joditas pa'l
+                                Recuerdo</a></li>
+                        <li><a class="dropdown-item"
+                                href="{{ route('tuArteMenu.servicios.Mascotas.index') }}">Mascotas</a></li>
                     </ul>
                 </div>
                 <a href="{{ route('tuArteMenu.index') }}" class="btn btn-primary">Nosotros</a>
@@ -89,8 +94,8 @@
                                 <i class="bi bi-star-fill"></i>
                             </div>
                             <div class="rating-text">
-                                <p class="text-muted">Selecciona tu calificación</p>
-                                <p class="text-warning">Excelente</p>
+                                <p class="textName">COLLAR STICH</p>
+                                <p class="textValue">$10.000</p>
                             </div>
                         </div>
                         <div class="col">
@@ -105,8 +110,8 @@
                                 <i class="bi bi-star-fill"></i>
                             </div>
                             <div class="rating-text">
-                                <p class="text-muted">Selecciona tu calificación</p>
-                                <p class="text-warning">Excelente</p>
+                                <p class="textName">ARETES PAISAJE</p>
+                                <p class="textValue">$10.000</p>
                             </div>
                         </div>
                         <div class="col">
@@ -121,8 +126,8 @@
                                 <i class="bi bi-star-fill"></i>
                             </div>
                             <div class="rating-text">
-                                <p class="text-muted">Selecciona tu calificación</p>
-                                <p class="text-warning">Excelente</p>
+                                <p class="textName">ARETES PERRO</p>
+                                <p class="textValue">$10.000</p>
                             </div>
                         </div>
                         <div class="col">
@@ -137,13 +142,81 @@
                                 <i class="bi bi-star-fill"></i>
                             </div>
                             <div class="rating-text">
-                                <p class="text-muted">Selecciona tu calificación</p>
-                                <p class="text-warning">Excelente</p>
+                                <p class="textName">ANILLO PAISAJE</p>
+                                <p class="textValue">$10.000</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- Agrega más imágenes aquí -->
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col">
+                            <div class="red-box">
+                                <img src="{{ asset('Imagenes/imgs-gallery/5.jpg') }}" class="d-block w-100">
+                            </div>
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <div class="rating-text">
+                                <p class="textName">COLLAR BOYACA</p>
+                                <p class="textValue">$10.000</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="red-box">
+                                <img src="{{ asset('Imagenes/imgs-gallery/6.jpg') }}" class="d-block w-100">
+                            </div>
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <div class="rating-text">
+                                <p class="textName">ARETES LUNA</p>
+                                <p class="textValue">$10.000</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="red-box">
+                                <img src="{{ asset('Imagenes/imgs-gallery/7.jpg') }}" class="d-block w-100">
+                            </div>
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <div class="rating-text">
+                                <p class="textName">ARETES CARACOLA</p>
+                                <p class="textValue">$10.000</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="red-box">
+                                <img src="{{ asset('Imagenes/imgs-gallery/8.jpg') }}" class="d-block w-100">
+                            </div>
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <div class="rating-text">
+                                <p class="textName">ANILLO GATO</p>
+                                <p class="textValue">$10.000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
                 data-bs-slide="prev">
@@ -183,7 +256,7 @@
                             if (i <= index) {
                                 s.classList.add(
                                     'active'
-                                    ); // Agregar la clase 'active' a las estrellas hasta la seleccionada
+                                ); // Agregar la clase 'active' a las estrellas hasta la seleccionada
                             } else {
                                 s.classList.remove('active');
                             }
