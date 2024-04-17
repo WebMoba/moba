@@ -26,10 +26,15 @@
                         Servicios
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#">Accesorios</a></li>
-                        <li><a class="dropdown-item" href="#">Decoracion</a></li>
-                        <li><a class="dropdown-item" href="#">Joditas pa'l Recuerdo</a></li>
-                        <li><a class="dropdown-item" href="#">Mascotas</a></li>
+                        <li><a class="dropdown-item"
+                                href="{{ route('tuArteMenu.servicios.Accesorios.index') }}">Accesorios</a></li>
+                        <li><a class="dropdown-item"
+                                href="{{ route('tuArteMenu.servicios.Decoracion.index') }}">Decoracion</a></li>
+                        <li><a class="dropdown-item"
+                                href="{{ route('tuArteMenu.servicios.JoditasPa´lRecuerdo.index') }}">Joditas pa'l
+                                Recuerdo</a></li>
+                        <li><a class="dropdown-item"
+                                href="{{ route('tuArteMenu.servicios.Mascotas.index') }}">Mascotas</a></li>
                     </ul>
                 </div>
                 <a href="{{ route('tuArteMenu.index') }}" class="btn btn-primary">Nosotros</a>
@@ -130,6 +135,7 @@
         justify-content: center;
         width: 90%;
         height: 100vh;
+
 
     }
 
