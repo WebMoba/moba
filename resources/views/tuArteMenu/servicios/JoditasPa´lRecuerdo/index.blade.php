@@ -63,7 +63,7 @@
     <!-- Contenido de la página aquí -->
 
     <div class="title-container">
-        <h1 class="big-title">ACCESORIOS</h1>
+        <h1 class="big-title">JODITAS PA´L RECUERDO</h1>
     </div>
     <div class="txt1">
         <h1 class="txts1">¿Buscas accesorios que vayan perfecto con tu personalidad?</h1>
