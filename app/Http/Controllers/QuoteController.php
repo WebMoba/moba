@@ -32,7 +32,7 @@ class QuoteController extends Controller
     public function index(Request $request)
     {
         $search = trim($request->get('search'));
-        $quotes = Quote::select('id', 'date_issuance', 'description', 'total', 'discount', 'status', 'people_id')
+        $quotes = Quote::select('id', 'date_issuance', 'description', 'total', 'discount', 'status', 'people_id', 'disable')
             ->where('id', 'LIKE', '%' . $search . '%')
             ->orWhere('description', 'LIKE', '%' . $search . '%')
             ->orderBy('date_issuance', 'asc')
@@ -170,7 +170,7 @@ class QuoteController extends Controller
         }
 
         // Cambiar el estado de habilitado/deshabilitado
-        $quote->disable = !$quote->disable; // Aquí está la corrección
+        $quote->disable = !$quote->disable; // Cambia disabled a disable
         $quote->save();
 
         // Redirigir de vuelta a la lista de cotizaciones
