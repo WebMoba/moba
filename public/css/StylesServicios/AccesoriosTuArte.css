@@ -72,6 +72,11 @@ body::after {
     text-shadow: 0 0 5px #ff0000;
 }
 
+.dropdown-menu .dropdown-item:hover {
+    background-color: rgba(255, 0, 0, 0.274) !important;
+    /* Cambia el color de fondo al pasar el cursor sobre las opciones del menú */
+}
+
 .dropdown-item:hover {
     color: #ff0000 !important;
 }
@@ -183,14 +188,16 @@ body::after {
     /* Ancho máximo del contenedor del texto */
     margin: 25px auto;
     /* Centra el contenedor horizontalmente */
+    font-weight: normal;
 }
 
 .txts3 {
-    color: #99C1DA;
+    color: #ffffff;
     font-size: 24px;
     /* Tamaño de la fuente */
     position: relative;
     /* Establece la posición relativa para que sea la referencia para el HR */
+    font-weight: normal;
 }
 
 .txts3:not(:last-child)::after {

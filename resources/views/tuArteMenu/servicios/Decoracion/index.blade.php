@@ -66,15 +66,18 @@
         <h1 class="big-title">DECORACIÓN</h1>
     </div>
     <div class="txt1">
-        <h1 class="txts1">¿Buscas accesorios que vayan perfecto con tu personalidad?</h1>
+        <h1 class="txts1">¿Buscas la mejor pieza de decoración para tus espacios?</h1>
     </div>
     <div class="txt2">
         <h1 class="txts2">¡Has llegado al lugar indicado!</h1>
     </div>
     <div class="txt3">
-        <h1 class="txts3">Nuestra Creatividad y enfoque en hacer productos unicos, hacen que tengamos en nuestro
-            portafolio piezas con las que te vas a identificar y que sin duda querras tener en tu joyero.</h1>
-        <h1 class="txts3">En esta línea encuentras aretes largos, aretes topitos, dijes, manillas, pines, anillos.</h1>
+        <h1 class="txts3">Nuestro portafolio cuenta con piezas unicas y diseñadas a tu gusto, que van con tu
+            personalidad y hacen
+            tus espacios mas agradables.</h1>
+        <h1 class="txts3">Esta línea nos trae gran variedad de productos como lo son porta esferos, porta celulares,
+            colgadores de
+            llaves, retablos, recordatorios, decoraciones para festas, imanes, joyeros, cajas y muchas cosas más...</h1>
     </div>
     <!---Carrusel--->
     <div class="carousel-container">
