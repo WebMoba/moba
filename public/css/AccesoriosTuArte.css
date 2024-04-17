@@ -69,11 +69,11 @@ body::after {
     background-color: transparent !important;
     border-color: transparent !important;
     border: none;
-    text-shadow: 0 0 5px #00b7ff;
+    text-shadow: 0 0 5px #ff0000;
 }
 
 .dropdown-item:hover {
-    color: #00b7ff !important;
+    color: #ff0000 !important;
 }
 
 .dropdown-menu {
@@ -82,7 +82,7 @@ body::after {
 }
 
 .dropdown-menu .dropdown-item {
-    color: #24AAE1 !important;
+    color: #ff0000 !important;
     background-color: transparent !important;
     border-color: #9BBFCD !important;
 }
@@ -213,4 +213,79 @@ body::after {
 .txt3 h1:last-child {
     margin-top: 30px;
     /* Ajusta el espacio en la parte superior del último h1 */
+}
+
+/*Carrusel*/
+.carousel-item img {
+    object-fit: contain;
+    /* Ajusta el tamaño de la imagen para que quepa completamente dentro del contenedor */
+    height: 200px;
+    /* Altura deseada para las imágenes */
+    width: 200px;
+}
+
+.carousel-container {
+    max-width: 900px;
+    /* Define el ancho máximo del contenedor */
+    margin: 50px auto;
+    /* Centra el contenedor horizontalmente */
+    max-height: auto;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: auto;
+    /* Ajusta el ancho de las flechas automáticamente */
+    top: 50%;
+    /* Posiciona las flechas verticalmente en el centro */
+    transform: translateY(-50%);
+    /* Alinea verticalmente las flechas */
+}
+
+.carousel-control-prev {
+    left: -50px;
+    /* Posiciona la flecha izquierda al inicio del carrusel */
+}
+
+.carousel-control-next {
+    right: -50px;
+    /* Posiciona la flecha derecha al final del carrusel */
+}
+
+.red-box {
+    background-color: red;
+    padding: 0 8px 0px 8px;
+    /* Ajusta el espacio interior del cuadro rojo */
+    margin: 10px 0 0 0;
+    /* Ajusta el espacio exterior del cuadro rojo */
+    border-radius: 10px;
+    /* Ajusta la esquina redondeada del cuadro rojo */
+}
+
+/*ESTRELLAS*/
+
+.stars {
+    margin-top: 5px;
+}
+
+.stars i {
+    color: #ddd;
+    /* Color inicial de las estrellas */
+    cursor: pointer;
+}
+
+.stars i.active {
+    color: yellow;
+    /* Color de las estrellas seleccionadas */
+}
+
+/*texto*/
+
+.rating-text {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.rating-text p {
+    margin: 5px 0;
 }
