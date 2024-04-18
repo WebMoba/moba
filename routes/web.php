@@ -23,6 +23,7 @@ use App\Http\Controllers\UnitController;
 /*Fin Importartación de controladores product y unit*/
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CategoriesProductsServiceController;
+use App\Models\CategoriesProductsService;
 //controladores project,teamwork y quote/fabian
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\QuoteController;
@@ -177,6 +178,14 @@ Route::view('/tuArteMenu/Contacto/index', 'tuArteMenu.Contacto.index')->name('tu
 Route::post('/enviar-correo', [ContactoController::class, 'enviarCorreo'])->name('enviar-correo');
 
 
+//ruta nombre categorias 
+
+Route::get('/tuArteMenu/categorias', function () {
+    $categorias = CategoriesProductsService::where('disable', false)
+                                            ->orderBy('created_at', 'asc')
+                                            ->get();
+    return view('tuArteMenu.categorias.index', compact('categorias'));
+})->name('tuArteMenu.categorias.index');
 require __DIR__ . '/auth.php';
 
 Auth::routes();

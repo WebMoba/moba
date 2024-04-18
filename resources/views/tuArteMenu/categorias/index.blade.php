@@ -59,23 +59,34 @@
     <!-- Contenido de la página aquí -->
 
     <div class="container">
-
-        <div class="contenedor">
-            <div class="campo campo1">
-                <h1>Mascotas</h1>
-            </div>
-            <div class="contenedor-columna">
-                <div class="campo campo2">
-                    <h1>Accesorios</h1>
-                </div>
-                <div class="campo campo3">
-                    <h1> Decoracion</h1>
-                </div>
-            </div>
-            <div class="campo campo4">
-                <h1>Joditas pal recuerdo</h1>
-            </div>
+    <div class="contenedor">
+    @foreach ($categorias as $categoria)
+        <div class="campo campo1">
+            <h1><a href="#" onclick="redirigir('{{ $categoria->name }}')">{{ $categoria->name }}</a></h1>
         </div>
+    @endforeach
+</div>
+
+<script>
+    function redirigir(nombreCategoria) {
+        switch (nombreCategoria) {
+            case 'Mascotas':
+                window.location.href = "{{ route('tuArteMenu.servicios.Mascotas.index') }}";
+                break;
+            case 'Accesorios':
+                window.location.href = "{{ route('tuArteMenu.servicios.Accesorios.index') }}";
+                break;
+            case 'Decoracion':
+                window.location.href = "{{ route('tuArteMenu.servicios.Decoracion.index') }}";
+                break;
+            case 'Joditas pal recuerdo':
+                window.location.href = "{{ route('tuArteMenu.servicios.JoditasPa´lRecuerdo.index') }}";
+                break;
+            default:
+                break;
+        }
+    }
+</script>
     </div>
 
 
@@ -148,79 +159,40 @@
     }
 
     .contenedor {
-        display: flex;
-        height: 80%;
-        /* 100% de la altura de la ventana */
-        width: 90%;
-        margin-top: 8%;
-
-    }
-
-    .contenedor-columna {
-        display: flex;
-        flex-direction: column;
-        /* Apila los elementos verticalmente */
-        flex: 1;
-        /* El contenedor-columna ocupa el espacio restante */
-    }
+     display: flex;
+    height: 80%;
+    /* 100% de la altura de la ventana */
+    width: 90%;
+    margin-top: 8%;
+}
 
     .campo {
         border: 20px solid white;
         color: white;
-    }
+}
 
-    .campo1 {
-        flex: 0 0 30%;
-        /* No crecerá, no se encogerá, 30% de ancho */
-        height: 100%;
-        /* 100% de altura */
-        position: relative;
+.campo1 {
+    flex-grow: 1; /* Hacer que el campo se expanda automáticamente */
+    height: 100%;
+    /* 100% de altura */
+    position: relative;
+}
 
-    }
-
-    .campo1:hover,
-    .campo2:hover,
-    .campo3:hover,
-    .campo4:hover {
+    .campo1:hover {
         background-color: red;
         cursor: pointer;
         color: white;
     }
 
-    .campo2,
-    .campo3 {
-        flex: 1;
-        /* Los campos 2 y 3 se expanden para ocupar el espacio disponible */
-        position: relative;
-    }
-
-    .campo4 {
-        flex: 0 0 30%;
-        /* No crecerá, no se encogerá, 30% de ancho */
-        height: 100%;
-        /* 100% de altura */
-        position: relative;
-    }
-
+   
     .campo1 h1 {
         position: absolute;
         bottom: 0;
         margin-left: 5%;
         color: white;
+        margin-bottom: 20%;
 
     }
 
-    .campo2 h1,
-    .campo3 h1 {
-        position: absolute;
-        bottom: 0;
-        margin-left: 5%;
-        color: white;
-        ;
-    }
-
-    .campo4 h1 {
-        position: absolute;
-        color: white;
-    }
+    
 </style>

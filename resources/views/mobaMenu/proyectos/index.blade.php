@@ -31,7 +31,7 @@
                     </ul>
                 </div>
                 <a href="{{ route('mobaMenu.proyectos.index') }}" class="btn btn-primary">Contáctanos</a>
-                <a href="" class="btn btn-primary">Proyectos</a>
+                <a href="" class="btn btn-primary active-link">Proyectos</a>
                 <a href="#" class="btn btn-primary">Equipo de trabajo</a>
                 <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
@@ -118,6 +118,22 @@
             width: 90%;
             margin-top: 10%;
             margin-left: 5%;
+        }
+
+        .active-link {
+            position: relative;
+            color:#2bb9e5;
+        }
+        
+        .active-link:after {
+            color:#2bb9e5;
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px; /* Grosor de la línea */
+            background-color: blue; /* Color de la línea */
         }
 
         .contenido1 {
