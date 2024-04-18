@@ -75,18 +75,18 @@
                                             <td>
                                                 <form action="{{ route('team-works.destroy', $teamWork->id) }}"
                                                     method="POST">
-                                                    <a class="btn btn-sm btn-primary "
-                                                        href="{{ route('team-works.show', $teamWork->id) }}"><i
+                                                    <a class="btn btn-sm btn-primary {{ $teamWork->disable ? 'disabled' : '' }}"
+                                                        href="{{ route('quotes.show', $teamWork->id) }}"><i
                                                             class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
-                                                    <a class="btn btn-sm btn-success"
-                                                        href="{{ route('team-works.edit', $teamWork->id) }}"><i
+                                                    <a class="btn btn-sm btn-success {{ $teamWork->disable ? 'disabled' : '' }}"
+                                                        href="{{ route('quotes.edit', $teamWork->id) }}"><i
                                                             class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit"
-                                                        onclick="return confirm('¿Está seguro de que desea cambiar el estado de este equipo de trabajo?')"
+                                                        onclick="return confirm('¿Está seguro de que desea {{ $teamWork->disable ? 'Habilitar' : 'Deshabilitar' }} este equipo de trabajo?')"
                                                         class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i>
-                                                        {{ __('Cambiar estado') }}</button>
+                                                        {{ $teamWork->disable ? 'Habilitar' : 'Deshabilitar' }}</button>
                                                 </form>
                                             </td>
                                         </tr>

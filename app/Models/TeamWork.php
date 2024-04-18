@@ -34,7 +34,7 @@ class TeamWork extends Model
      *
      * @var array
      */
-    protected $fillable = ['specialty','assigned_work','assigned_date','projects_id'];
+    protected $fillable = ['specialty','assigned_work','assigned_date','projects_id', 'disable'];
 
 
     /**

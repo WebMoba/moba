@@ -34,7 +34,7 @@ class Project extends Model
      *
      * @var array
      */
-    protected $fillable = ['name','description','date_start','date_end','status'];
+    protected $fillable = ['name','description','date_start','date_end','status','disable'];
 
 
     /**
