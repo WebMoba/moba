@@ -76,16 +76,18 @@
                                                     method="POST">
                                                     <a class="btn btn-sm btn-primary "
                                                         href="{{ route('projects.show', $project->id) }}"><i
-                                                            class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
+                                                            class="fa fa-fw fa-eye" {{ $project->disable ? 'disabled' : '' }}></i> {{ __('Ver') }}</a>
                                                     <a class="btn btn-sm btn-success"
                                                         href="{{ route('projects.edit', $project->id) }}"><i
-                                                            class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
+                                                            class="fa fa-fw fa-edit" {{ $project->disable ? 'disabled' : '' }}></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit"
-                                                        onclick="return confirm('¿Está seguro de que desea cambiar el estado de este proyecto?')"
-                                                        class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i>
-                                                        {{ __('Cambiar estado') }}</button>
+                                                        onclick="return confirm('¿Está seguro de que desea {{ $project->disable ? 'Habilitar' : 'Deshabilitar' }} este proyecto?')"
+                                                        class="btn btn-danger btn-sm">
+                                                        <i class="fa fa-fw fa-trash"></i>
+                                                        {{ $project->disable ? 'Habilitar' : 'Deshabilitar' }}
+                                                    </button>
                                                 </form>
                                             </td>
                                         </tr>

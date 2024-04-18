@@ -28,7 +28,7 @@ class ProjectController extends Controller
     {
         $search = trim($request->get('search'));
         $projects=DB::table('projects')
-                    ->select('id','name','description','date_start','date_end','status')
+                    ->select('id','name','description','date_start','date_end','status','disable')
                     ->where('id','LIKE','%'.$search.'%')
                     ->orWhere('name','LIKE','%'.$search.'%')
                     ->orderBy('date_start','asc')
