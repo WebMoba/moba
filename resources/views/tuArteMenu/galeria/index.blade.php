@@ -34,7 +34,7 @@
                 </div>
                 <a href="{{ route('tuArteMenu.index') }}" class="btn btn-primary">Nosotros</a>
                 <a href="{{ route('tuArteMenu.categorias.index') }}"class="btn btn-primary">Categorias</a>
-                <a href="{{ route('tuArteMenu.galeria.index') }}" class="btn btn-primary">Galeria</a>
+                <a href="{{ route('tuArteMenu.galeria.index') }}" class="btn btn-primary active-link">Galeria</a>
                 <a href="{{ route('tuArteMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
             <a href="{{ asset('/') }}">
@@ -226,7 +226,22 @@
 
 
 
-<style>
+<style> 
+ .active-link {
+        position: relative;
+        color:red;
+    }
+
+    .active-link:after {
+        color:red;
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px; /* Grosor de la línea */
+        background-color: red; /* Color de la línea */
+    }
     /* Estilos para los botones de indicadores */
     .carousel-indicators [data-bs-target] {
         width: 30px;

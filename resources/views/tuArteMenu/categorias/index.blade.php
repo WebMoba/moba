@@ -32,10 +32,10 @@
                         <li><a class="dropdown-item" href="#">Mascotas</a></li>
                     </ul>
                 </div>
-                <a href="{{ route('tuArteMenu.index') }}" class="btn btn-primary">Nosotros</a>
-                <a href="{{ route('tuArteMenu.categorias.index') }}"class="btn btn-primary">Categorias</a>
-                <a href="{{ route('tuArteMenu.galeria.index') }}" class="btn btn-primary">Galeria</a>
-                <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
+                <a href="{{ route('tuArteMenu.index') }}" class="btn btn-primary ">Nosotros</a>
+                <a href="{{ route('tuArteMenu.categorias.index') }}"class="btn btn-primary active-link ">Categorias</a>
+                <a href="{{ route('tuArteMenu.galeria.index') }}" class="btn btn-primary ">Galeria</a>
+                <a href="{{ route('tuArteMenu.Contacto.index') }}" class="btn btn-primary ">Contáctanos</a>
             </div>
             <a href="{{ asset('/') }}">
                 <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte">
@@ -152,6 +152,22 @@
         width: 90%;
         height: 100vh;
     }
+    
+    .active-link {
+        position: relative;
+        color:red;
+    }
+
+    .active-link:after {
+        color:red;
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px; /* Grosor de la línea */
+        background-color: red; /* Color de la línea */
+    }
 
     .contenedor {
      display: flex;
@@ -163,10 +179,16 @@
 
     .campo {
         border: 20px solid white;
+      
+        
+}
+    .campo a{
+        text-decoration: none;
         color: white;
+
 }
 
-.campo1 {
+    .campo1 {
     flex-grow: 1; /* Hacer que el campo se expanda automáticamente */
     height: 100%;
     /* 100% de altura */
