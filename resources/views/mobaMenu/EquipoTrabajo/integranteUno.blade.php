@@ -58,35 +58,20 @@
     <!---------------------------------------------------------------------------------------------------------------->
 
     <div class="container">
-        <div class="box-1">
-            <div class="texto">
-               
-                <h1 class="text"> EQUIPO DE TRABAJO </h1>
-
-                <p class="p">
-                    Este es el espacio donde seguramente una agencia diría que, en efecto, es una agencia. </p>
-                <p class="p">
-                    Nosotros nos consideramos una familia, porque estamos hechos de personas, con todo tipo de talentos.
-
-                    En esta familia hay artistas, músicos, emprendedores, deportistas, en fin. Y es gracias a esa
-                    calidad
-                    humana y todo ese talento reunido que también hacemos publicidad, porque así ayudamos a nuestras
-                    marcas a
-                    tener un rol significativo en la vida de las personas. Así que si quieres hacer parte de nuestra
-                    familia, eres
-                    bienvenido.
-                </p>
-            </div>
-
-        </div>
-
+        
 
         <div class="box-2">
+
             <div class="contenido">
 
-                <p class="text-white" style="text-align: justify; line-height: 1.5;">Y sí... </p>
-                <p class="text-white" style="text-align: justify; line-height: 1.5;">Estos somos</p>
-                <p class="text-1" style="text-align: justify; line-height: 1.5;">nosotros</p>
+                <h1 class="text-n" >Javier Mauricio Mojica </h1>
+        
+                <p class="text">
+        
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident nulla explicabo quod perspiciatis eaque nesciunt corrupti accusantium ex excepturi atque? Ea doloribus reprehenderit totam nisi, ullam odio rem nesciunt minus.
+                    
+                </p>
+                
             </div>
 
 
@@ -94,16 +79,6 @@
                
                 <a href="{{ route('mobaMenu.EquipoTrabajo.integranteUno') }}" target="_blank" class="imagen-contenedor">
                     <img src="{{ asset('Imagenes/imgs-gallery/javier.jpg') }}" alt="Imagen 1" class="img-thumbnail">
-                </a>
-                
-                <a href="{{ route('mobaMenu.EquipoTrabajo.integranteDos') }}" target="_blank" class="imagen-contenedor">
-                    <img src="{{ asset('Imagenes/imgs-gallery/SOFIA_PEREZ.jpg') }}" alt="Imagen 2" class="img-thumbnail">
-                </a>
-                <a href="{{ route('mobaMenu.EquipoTrabajo.integranteTres') }}" target="_blank" class="imagen-contenedor">
-                    <img src="{{ asset('Imagenes/imgs-gallery/DAYANA_FONSECA.jpg') }}" alt="Imagen 3" class="img-thumbnail">
-                </a>
-                <a href="{{ route('mobaMenu.EquipoTrabajo.integranteCuatro') }}" target="_blank" class="imagen-contenedor">
-                    <img src="{{ asset('Imagenes/imgs-gallery/LINDA_PEREZ_1.jpg') }}" alt="Imagen 4" class="img-thumbnail">
                 </a>
             </div>
             
@@ -155,7 +130,7 @@
         height: 100vh;
         width: 95%;
         # border: solid 3px yellow;
-        margin-top: 5%;
+        margin-top: 10%;
         display: flex;
         flex-direction: column;
     }
@@ -189,40 +164,39 @@
         margin-left: 10%;
         margin-right: 5%;
         padding: 2%;
-        font-weight: 600;
     }
 
-    .text {
-        color: #2bb9e5;
-        font-size: 280%;
-        font-weight: bold;
-        line-height: 1.5; 
-        margin-bottom: 2;
-    }
+    
 
-    .p {
-        border-left: 5px solid #2bb9e5;
-        padding-left: 10px;
-        text-align: justify;
-        line-height: 1.5;
-        margin-bottom: 0;
-    }
+  
 
     .box-2 {
+        #border: solid 3px red;
         display: flex;
         text-align: center;
         align-items: center;
         justify-content: center;
+        
 
     }
-
-    .text-1 {
+    .text-n {
         color: #2bb9e5;
-        font-size: 140%;
+        padding-top: 2%;
+        padding-bottom: 3%;
+        font-size: 300%;
         font-weight: bold;
-        line-height: 1.5; 
-        margin-bottom: 2;
-        font-weight: 1000;
+        text-align: justify;
+        line-height: 1.5;
+        
+    }
+
+    .text {
+        color:#ccc;
+        padding-top: 5%;
+        font-size: 160%;
+        font-weight: bold;
+        text-align: justify;
+        line-height: 1.5;
     }
 
     .contenido,
@@ -230,7 +204,6 @@
         #border: solid 3px red;
         height: 90%;
         width: 48%;
-        font-size: 350%
         
     }
 
@@ -248,8 +221,8 @@
     .imagenes img {
         background-color: #ccc;
         border: solid 2px #ccc;
-        width: 40%;
-        height: 40%;
+        width: 100%;
+        height: 100%;
         padding-top: 2%;
         padding-bottom: 2%;
         margin-block: 2%;
@@ -259,6 +232,6 @@
     }
 
     .img-thumbnail:hover {
-        transform: scale(2.2);
+        transform: scale(1.2);
     }
 </style>

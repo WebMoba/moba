@@ -106,29 +106,33 @@ public function store(Request $request)
         'date' => 'required|date',
         'quotes_id' => 'required',
     ]);
+    // Acceder a los datos enviados desde el formulario
+    $datos = $request->input('data');
 
-    $sale = Sale::create([
-        'name' => $request->name,
-        'people_id' => $request->people_id,
-        'date' => $request->date,
-        'quotes_id' => $request->quotes_id,
-    ]);
+    // Crear una nueva venta
+    $sale = new Sale();
+    $sale->name = $datos['nombre_cliente'];
+    $sale->people_id = $datos['id_cliente'];
+    $sale->date = $datos['fecha'];
+    $sale->quotes_id = $datos['cotizaciones'];
+    $sale->save();
 
-    if ($request->has('products_id')) {
-        foreach ($request->products_id as $key => $productId) {
-            $detailSale = new DetailSale([
-                'products_id' => $productId,
-                'quantity' => $request->quantity[$key],
-                'price_unit' => $request->price_unit[$key],
-                'subtotal' => $request->subtotal[$key],
-                'discount' => $request->discount[$key],
-                'total' => $request->total[$key]
-            ]);
-            $sale->detailSales()->save($detailSale);
-        }
-    }
+ // Recorrer los detalles de la venta y guardarlos en la base de datos
+ foreach ($datos['detalles'] as $detalle) {
+    $detalleVenta = new DetailSale();
+    $detalleVenta->quantity = $detalle['cantidad'];
+    $detalleVenta->price_unit = $detalle['precio_unitario'];
+    $detalleVenta->subtotal = $detalle['subtotal'];
+    $detalleVenta->discount = $detalle['descuento'];
+    $detalleVenta->total = $detalle['total'];
+    $detalleVenta->sale_id = $detalle['sale_id'];
+    $detalleVenta->product_id = $detalle['product'];
+    $detalleVenta->sales_id = $compra->id; // Asociar el detalle con la compra creada
+    $detalleVenta->save();
+}
 
-    return redirect()->route('sales.index')->with('success', 'Registro creado exitosamente');
+    return redirect()->route('sales.index')
+    ->with('success', 'Registro creado exitosamente');
 }
 
    

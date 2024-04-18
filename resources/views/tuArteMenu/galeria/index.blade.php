@@ -33,7 +33,7 @@
                     </ul>
                 </div>
                 <a href="{{ route('tuArteMenu.index') }}" class="btn btn-primary">Nosotros</a>
-                <a href="{{route('tuArteMenu.categorias.index')}}"class="btn btn-primary">Categorias</a>
+                <a href="{{ route('tuArteMenu.categorias.index') }}"class="btn btn-primary">Categorias</a>
                 <a href="{{ route('tuArteMenu.galeria.index') }}" class="btn btn-primary">Galeria</a>
                 <a href="{{ route('tuArteMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
@@ -262,7 +262,7 @@
     }
 
     .container img {
-          border: 2px solid #d9534f;
+        border: 2px solid #d9534f;
     }
 
     body {
@@ -280,6 +280,11 @@
         border-color: transparent !important;
         border: none;
         text-shadow: 0 0 5px #f80008;
+    }
+
+    .dropdown-menu .dropdown-item:hover {
+        background-color: rgba(255, 0, 0, 0.274) !important;
+        /* Cambia el color de fondo al pasar el cursor sobre las opciones del menú */
     }
 
     .dropdown-item:hover {

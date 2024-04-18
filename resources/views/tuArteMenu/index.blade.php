@@ -108,6 +108,11 @@
         text-shadow: 0 0 5px #f80008;
     }
 
+    .dropdown-menu .dropdown-item:hover {
+        background-color: rgba(255, 0, 0, 0.274) !important;
+        /* Cambia el color de fondo al pasar el cursor sobre las opciones del menú */
+    }
+
     .dropdown-item:hover {
         color: #f80008 !important;
     }

@@ -34,7 +34,7 @@
                 alt="Logo de la Empresa" height="50">
         </div>
         <div style="text-align: right; margin-bottom: 20px;">
-            <h3>Listado de Cotizaciones</h3>
+            <h3>listado de ventas</h3>
             <p>Fecha: {{ date(now()->format('Y-m-d')) }}</p>
         </div>
     </header>
@@ -51,10 +51,9 @@
         </thead>
         <tbody>
             <!-- @php $i = 0; @endphp -->
-            @foreach ($sale as $sales)
+            @foreach ($sales as $sale)
+               
                 <tr>
-                    @foreach ($sales as $sale)
-                    <tr>
                         <td>{{ ++$i }}</td>
                         <td>{{ $sale->person->name }}</td>
                         <td>{{ $sale->person->id_card }}</td>

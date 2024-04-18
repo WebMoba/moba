@@ -85,8 +85,7 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"
-                                                        onclick="return confirm('¿Está seguro de que desea {{ $quote->disable ? 'Habilitar' : 'Deshabilitar' }} la cotización?')"
-                                                        {{ $quote->disable ? 'disabled' : '' }}>
+                                                        onclick="return confirm('¿Está seguro de que desea {{ $quote->disable ? 'Habilitar' : 'Deshabilitar' }} la cotización?')">
                                                         <i class="fa fa-fw fa-trash"></i>
                                                         {{ $quote->disable ? 'Habilitar' : 'Deshabilitar' }}
                                                     </button>

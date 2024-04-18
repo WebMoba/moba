@@ -69,11 +69,16 @@ body::after {
     background-color: transparent !important;
     border-color: transparent !important;
     border: none;
-    text-shadow: 0 0 5px #00b7ff;
+    text-shadow: 0 0 5px #ff0000;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: rgba(255, 0, 0, 0.274) !important;
+    /* Cambia el color de fondo al pasar el cursor sobre las opciones del menú */
 }
 
 .dropdown-item:hover {
-    color: #00b7ff !important;
+    color: #ff0000 !important;
 }
 
 .dropdown-menu {
@@ -82,7 +87,7 @@ body::after {
 }
 
 .dropdown-menu .dropdown-item {
-    color: #24AAE1 !important;
+    color: #ff0000 !important;
     background-color: transparent !important;
     border-color: #9BBFCD !important;
 }
@@ -173,7 +178,7 @@ body::after {
 
 .txts2 {
     color: rgb(255, 255, 255);
-    font-size: 1.5em;
+    font-size: 1.8em;
     font-weight: bold;
 }
 
@@ -183,14 +188,16 @@ body::after {
     /* Ancho máximo del contenedor del texto */
     margin: 25px auto;
     /* Centra el contenedor horizontalmente */
+    font-weight: normal;
 }
 
 .txts3 {
-    color: #99C1DA;
+    color: #ffffff;
     font-size: 24px;
     /* Tamaño de la fuente */
     position: relative;
     /* Establece la posición relativa para que sea la referencia para el HR */
+    font-weight: normal;
 }
 
 .txts3:not(:last-child)::after {
@@ -213,4 +220,94 @@ body::after {
 .txt3 h1:last-child {
     margin-top: 30px;
     /* Ajusta el espacio en la parte superior del último h1 */
+}
+
+/*Carrusel*/
+.carousel-item img {
+    object-fit: contain;
+    /* Ajusta el tamaño de la imagen para que quepa completamente dentro del contenedor */
+    height: 200px;
+    /* Altura deseada para las imágenes */
+    width: 200px;
+}
+
+.carousel-container {
+    max-width: 900px;
+    /* Define el ancho máximo del contenedor */
+    margin: 50px auto;
+    /* Centra el contenedor horizontalmente */
+    max-height: auto;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: auto;
+    /* Ajusta el ancho de las flechas automáticamente */
+    top: 40%;
+    /* Posiciona las flechas verticalmente en el centro */
+    transform: translateY(-50%);
+    /* Alinea verticalmente las flechas */
+}
+
+.carousel-control-prev {
+    left: -50px;
+    /* Posiciona la flecha izquierda al inicio del carrusel */
+}
+
+.carousel-control-next {
+    right: -50px;
+    /* Posiciona la flecha derecha al final del carrusel */
+}
+
+.red-box {
+    background-color: red;
+    padding: 0 8px 0px 8px;
+    /* Ajusta el espacio interior del cuadro rojo */
+    margin: 10px 3px 0 0;
+    /* Ajusta el espacio exterior del cuadro rojo */
+    border-radius: 10px;
+    /* Ajusta la esquina redondeada del cuadro rojo */
+}
+
+/*ESTRELLAS*/
+
+.stars {
+    margin-top: 5px;
+}
+
+.stars i {
+    color: #ddd;
+    /* Color inicial de las estrellas */
+    cursor: pointer;
+}
+
+.stars i.active {
+    color: yellow;
+    /* Color de las estrellas seleccionadas */
+}
+
+/*texto*/
+
+.rating-text {
+    text-align: left;
+    /* Alineación a la izquierda */
+}
+
+.rating-text p {
+    margin: 0;
+    /* Elimina el margen vertical para reducir el espacio entre los párrafos */
+}
+
+.rating-text p {
+    color: #fff;
+    /* Cambio de color a blanco para el texto de precio */
+    font-size: 14px;
+    /* Tamaño deseado para el texto de precio */
+}
+
+.rating-text p {
+    color: #fff;
+    /* Cambio de color a blanco para el texto de precio */
+    font-size: 16px;
+    /* Tamaño deseado para el texto de precio */
 }
