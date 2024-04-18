@@ -4,7 +4,6 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
         <title>Título de tu página</title>
         <!-- Agrega enlaces a tus estilos CSS y a Bootstrap si los estás utilizando -->
@@ -34,7 +33,9 @@
             }
 
             .box-large {
-                width: 70%
+                width: 70%;
+
+                min-width: 1000px;
             }
 
             .box-body {
@@ -50,24 +51,66 @@
             }
 
 
-            #detalle-table th, #detalle-table td {
+            #detalle-table th,
+            #detalle-table td {
                 /* Ancho de columna predeterminado */
-                width: 100px;
-            }
-        
-            /* Anchos personalizados para ciertas columnas */
-            #detalle-table th:nth-child(1), #detalle-table td:nth-child(1) {
-                width: 200px; /* Ancho para la columna "Producto" */
-            }
-        
-            #detalle-table th:nth-child(4), #detalle-table td:nth-child(4) {
-                width: 150px; /* Ancho para la columna "Subtotal" */
+                padding: 8px;
+                text-align: center;
             }
 
+            #detalle-table th:nth-child(1),
+            #detalle-table td:nth-child(1) {
+                width: 250px;
+                /* Ancho para la columna "Producto" */
+                text-align: left;
+            }
+
+            #detalle-table th:nth-child(2),
+            #detalle-table td:nth-child(2) {
+                width: 120px;
+                /* Ancho para la columna "Cantidad" */
+            }
+
+            #detalle-table th:nth-child(3),
+            #detalle-table td:nth-child(3) {
+                width: 120px;
+                /* Ancho para la columna "Precio Unidad" */
+            }
+
+            #detalle-table th:nth-child(4),
+            #detalle-table td:nth-child(4) {
+                width: 120px;
+                /* Ancho para la columna "Subtotal" */
+            }
+
+            #detalle-table th:nth-child(5),
+            #detalle-table td:nth-child(5) {
+                width: 120px;
+                /* Ancho para la columna "Descuento" */
+            }
+
+            #detalle-table th:nth-child(6),
+            #detalle-table td:nth-child(6) {
+                width: 120px;
+                /* Ancho para la columna "Total" */
+            }
+
+            #detalle-table th:nth-child(7),
+            #detalle-table td:nth-child(7) {
+                width: 120px;
+                /* Ancho para la columna "Id Venta" */
+            }
+
+            #detalle-table th:nth-child(8),
+            #detalle-table td:nth-child(8) {
+                width: 120px;
+                /* Ancho para la columna de botones */
+            }
         </style>
     </head>
 
     <body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
         <div class="container">
@@ -136,8 +179,8 @@
                     </div>
                 </form>
             </div>
-        
-            <div class="box box-shadows ms-5 btn btn- ">
+
+            <div class="box box-large ms-5 btn btn- ">
                 <h2> Detalle de Ventas</h2>
                 <!-- contenido de la segunda tabla -->
 
@@ -322,26 +365,31 @@
                         detalles: detalles
                     };
 
-                    // Enviar datos al controlador de Laravel mediante AJAX
-                    $.ajax({
-                        type: "POST",
-                        url: "{{ route('sale.store') }}",
-                        data: {
-                            _token: '{{ csrf_token() }}',
-                            data: data
-                        },
-                        success: function(response) {
-                            // Manejar la respuesta del servidor si es necesario
-                            console.log(response);
-                        },
-                        error: function(err) {
-                            // Manejar errores si los hay
-                            console.error(err);
-                        }
-                    });
+                    console.log(data);
 
-                    // window.location.href = "purchases.index";
                 }
+                /**              
+                                            Enviar datos al controlador de Laravel mediante AJAX
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "{{ route('sale.store') }}",
+                                                data: {
+                                                    _token: '{{ csrf_token() }}',
+                                                    data: data
+                                                },
+                                                success: function(response) {
+                                                    // Manejar la respuesta del servidor si es necesario
+                                                    console.log(response);
+                                                },
+                                                error: function(err) {
+                                                    // Manejar errores si los hay
+                                                    console.error(err);
+                                                }
+                                            });
+
+                                            // window.location.href = "purchases.index";
+                                        }  // 
+                                            */
             </script>
 
 
