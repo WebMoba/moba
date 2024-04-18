@@ -36,9 +36,9 @@
                                 más</a></li>
                     </ul>
                 </div>
-                <a href="{{ route('mobaMenu.index') }}" class="btn btn-primary">Nosotros</a>
+                <a href="{{ route('mobaMenu.index') }}" class="btn btn-primary ">Nosotros</a>
                 <a href="#" class="btn btn-primary">Proyectos</a>
-                <a href="{{ route('mobaMenu.EquipoTrabajo.index') }}" class="btn btn-primary">Equipo de trabajo</a>
+                <a href="{{ route('mobaMenu.EquipoTrabajo.index') }}" class="btn btn-primary active-link">Equipo de trabajo</a>
                 <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
             <a href="{{ asset('/') }}">
@@ -158,6 +158,22 @@
         margin-top: 5%;
         display: flex;
         flex-direction: column;
+    }
+
+    .active-link {
+        position: relative;
+        color:#2bb9e5;
+    }
+    
+    .active-link:after {
+        color:#2bb9e5;
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px; /* Grosor de la línea */
+        background-color: blue; /* Color de la línea */
     }
 
     .box-1,
