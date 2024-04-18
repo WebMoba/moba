@@ -56,20 +56,11 @@
     <div class="container">
 
         <div class="contenedor">
+        @foreach ($categorias as $categoria)
             <div class="campo campo1">
-                <h1>Mascotas</h1>
+                <h1>{{ $categoria->name }}</h1>
             </div>
-            <div class="contenedor-columna">
-                <div class="campo campo2">
-                    <h1>Accesorios</h1>
-                </div>
-                <div class="campo campo3">
-                    <h1> Decoracion</h1>
-                </div>
-            </div>
-            <div class="campo campo4">
-                <h1>Joditas pal recuerdo</h1>
-            </div>
+        @endforeach
         </div>
     </div>
 
