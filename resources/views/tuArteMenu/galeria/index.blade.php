@@ -134,13 +134,14 @@
                     <div class="lightbox" data-mdb-lightbox-init>
                         <div class="row">
                             <div class="col-lg-4">
-                                <img  src="{{ asset('Imagenes/img-tuArte-gallery/Img1.jpeg') }}"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img3.webp') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                                 <img src="{{ asset('Imagenes/img-tuArte-gallery/Img2.jpg') }}"
                                     alt="Coconut with Strawberries" class="w-100 shadow-1-strong " />
                             </div>
                             <div class="col-lg-8">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img3.webp') }}"
+                                <img  src="{{ asset('Imagenes/img-tuArte-gallery/Img1.jpeg') }}"
+
                                     alt="Dark Roast Iced Coffee" class="w-100 shadow-1-strong" />
                             </div>
                             <div class="mt-4 col-lg-4">
@@ -148,11 +149,12 @@
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
                             <div class=" ult col-lg-4">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img5.webp') }}"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img6.webp') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
                             <div class="ult col-lg-4">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img6.webp') }}"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img4.webp') }}"
+
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
 
@@ -167,25 +169,25 @@
                     <div class="lightbox" data-mdb-lightbox-init>
                         <div class="row">
                             <div class="col-lg-4">
-                                <img  src="{{ asset('Imagenes/img-tuArte-gallery/Img1.jpeg') }}"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img4.webp') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img2.jpg') }}"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img3.webp') }}"
                                     alt="Coconut with Strawberries" class="w-100 shadow-1-strong " />
                             </div>
                             <div class="col-lg-8">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img3.webp') }}"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img6.webp') }}"
                                     alt="Dark Roast Iced Coffee" class="w-100 shadow-1-strong" />
                             </div>
                             <div class="mt-4 col-lg-4">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img4.webp') }}"
-                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
-                            </div>
-                            <div class=" ult col-lg-4">
                                 <img src="{{ asset('Imagenes/img-tuArte-gallery/Img5.webp') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
+                            <div class=" ult col-lg-4">
+                                <img  src="{{ asset('Imagenes/img-tuArte-gallery/Img1.jpeg') }}"
+                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                            </div>
                             <div class="ult col-lg-4">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img6.webp') }}"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img4.webp') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
 
