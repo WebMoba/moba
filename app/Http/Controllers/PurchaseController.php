@@ -91,34 +91,45 @@ class PurchaseController extends Controller
 
 
      public function store(Request $request)
-{
-    // Acceder a los datos enviados desde el formulario
-    $datos = $request->input('data');
-
-    // Crear una nueva compra
-    $compra = new Purchase();
-    $compra->name = $datos['nombre_proveedor'];
-    $compra->date = $datos['fecha'];
-    $compra->people_id = $datos['proveedor_id'];
-    $compra->save();
-
-    // Recorrer los detalles de la compra y guardarlos en la base de datos
-    foreach ($datos['detalles'] as $detalle) {
-        $detalleCompra = new DetailPurchase();
-        $detalleCompra->quantity = $detalle['cantidad'];
-        $detalleCompra->price_unit = $detalle['precio_unitario'];
-        $detalleCompra->subtotal = $detalle['subtotal'];
-        $detalleCompra->discount = $detalle['descuento'];
-        $detalleCompra->total = $detalle['total'];
-        $detalleCompra->materials_raws_id = $detalle['materia_prima'];
-        $detalleCompra->purchases_id = $compra->id; // Asociar el detalle con la compra creada
-        $detalleCompra->save();
-    }
-
-    // Retornar una respuesta de redirección
-    return redirect()->route('purchases.index')
-        ->with('success', 'Registro creado exitosamente');
-}
+     {
+         $request->validate([
+             'name' => 'required',
+             'people_id' => 'required',
+             'date' => 'required|date',
+             'quotes_id' => 'required',
+             'detalles.*.product' => 'required',
+             'detalles.*.quantity' => 'required|integer',
+             'detalles.*.price_unit' => 'required|numeric',
+             'detalles.*.subtotal' => 'required|numeric',
+             'detalles.*.discount' => 'required|numeric',
+             'detalles.*.total' => 'required|numeric',
+         ]);
+     
+         // Crear una nueva venta
+         $sale = new Sale();
+         $sale->name = $request->input('name');
+         $sale->people_id = $request->input('people_id');
+         $sale->date = $request->input('date');
+         $sale->quotes_id = $request->input('quotes_id');
+         $sale->save();
+     
+         // Recorrer los detalles de la venta y guardarlos en la base de datos
+         foreach ($request->input('detalles') as $detalle) {
+             $detalleVenta = new DetailSale();
+             $detalleVenta->quantity = $detalle['quantity'];
+             $detalleVenta->price_unit = $detalle['price_unit'];
+             $detalleVenta->subtotal = $detalle['subtotal'];
+             $detalleVenta->discount = $detalle['discount'];
+             $detalleVenta->total = $detalle['total'];
+             $detalleVenta->sale_id = $sale->id; // Asociar el detalle con la venta creada
+             $detalleVenta->product_id = $detalle['product'];
+             $detalleVenta->save();
+         }
+     
+         return redirect()->route('sales.index')
+             ->with('success', 'Registro creado exitosamente');
+     }
+     
 
     
 
