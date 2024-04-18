@@ -48,6 +48,22 @@
             .box-footer {
                 text-align: center;
             }
+
+
+            #detalle-table th, #detalle-table td {
+                /* Ancho de columna predeterminado */
+                width: 100px;
+            }
+        
+            /* Anchos personalizados para ciertas columnas */
+            #detalle-table th:nth-child(1), #detalle-table td:nth-child(1) {
+                width: 200px; /* Ancho para la columna "Producto" */
+            }
+        
+            #detalle-table th:nth-child(4), #detalle-table td:nth-child(4) {
+                width: 150px; /* Ancho para la columna "Subtotal" */
+            }
+
         </style>
     </head>
 
@@ -120,8 +136,8 @@
                     </div>
                 </form>
             </div>
-
-            <div class="box box-large ms-5 btn btn- ">
+        
+            <div class="box box-shadows ms-5 btn btn- ">
                 <h2> Detalle de Ventas</h2>
                 <!-- contenido de la segunda tabla -->
 
@@ -209,6 +225,7 @@
                     </div>
                 </div>
             </div>
+
             <script>
                 // Función para agregar un nuevo detalle vacío
                 function agregarDetalle() {
