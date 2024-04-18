@@ -80,10 +80,10 @@
             <div class="contenido2">
                 <div class="creatividad">
                     <p>
-                        <h1>Creatividad y dedicación</h1>
-                        <h2>son las cosas que nuestra</h2>
-                        <h1><a href="">agencia MOBA</a></h1>
-                        <h2><a href="">aporta a tu negocio.</a></h2>
+                        <h1 class="t1">Creatividad y dedicación</h1><br>
+                        <h2 class="t2">son las cosas que nuestra</h2><br>
+                        <h2 class="t3">agencia MOBA</h2> <br>
+                        <h2 class="t4">aporta a tu negocio.</h2><br>
                     </p>
                 </div>
                 <div class="contenedor">
@@ -94,7 +94,10 @@
                                 <h2>CORPORATIVA</h2>
                             </div>
                             <div class="contenido-cuadro">
-
+                                <div class="mayme">
+                                    <p><</p>
+                                    <p>></p>
+                                </div>
                                 <p>
                                     Nuestra Agencia se enfoca en el sentido de cada marca que manejamos, lo que
                                     quieren y deben transmitir con su imagen corporativa, cada detalle cuenta
@@ -116,6 +119,10 @@
                                 <h2>para interiores</h2>
                             </div>
                             <div class="contenido-cuadro">
+                                <div class="mayme">
+                                    <p><</p>
+                                    <p>></p>
+                                </div>
                                 <p>
                                     La primera impresión que las marcas que manejamos dejan en sus clientes debe
                                     ser siempre positiva, debe transmitir el ser de cada empresa y generar en el 
@@ -137,11 +144,17 @@
                                 <h2>y algo mas.</h2>
                             </div>
                             <div class="contenido-cuadro">
-                                <p>
-                                    Nuestra empresa cuenta con servicios y productos adicionales que complementan 
-                                    y suman a cada uno de nuestros clientes, los cuales están elaborados con la mayor calidad 
-                                    y detalle posible, entregando en cada trabajo nuestro mejor
-                                </p>
+                                <div class="mayme">
+                                    <p><</p>
+                                    <p>></p>
+                                </div>
+                                <div class="textoC">
+                                    <p>
+                                        Nuestra empresa cuenta con servicios y productos adicionales que complementan 
+                                        y suman a cada uno de nuestros clientes, los cuales están elaborados con la mayor calidad 
+                                        y detalle posible, entregando en cada trabajo nuestro mejor
+                                    </p>
+                                </div>
                             </div>
                             
                         </div>
@@ -254,6 +267,9 @@
             color: white;
         }
 
+        a{
+            text-decoration: none
+        }
         .contenido2{
             display: flex;
             align-items: center;
@@ -264,12 +280,12 @@
         }
         .creatividad{
             display: flex;
-            align-items: center;
             justify-content: center;
             flex-direction: column;
             height: 100%;
             width: 40%;
             color: white;
+            padding-bottom: 10%;
         }
         .creatividad p{
             text-align:left;
@@ -279,6 +295,22 @@
         }
         .creatividad a{
             text-align: justify;
+        }
+        .creatividad .t1{
+            font-size: 35px;
+            font-weight: bold
+        }
+        .creatividad .t2{
+            font-size: 30px;
+        }
+        .creatividad .t3{
+            font-size: 30px;
+            color: #2bb9e5; 
+            font-weight: bold;
+        }
+        .creatividad .t4{
+            font-size: 30px;
+            font-weight: bold;
         }
 
         .contenedor {
@@ -313,11 +345,50 @@
             border: 2px solid grey;
             padding: 20px;
         }
+        
+        .titulos-cuadro{
+            height: 60%;
+            width: 80%;
+        }
+
+        .contenido-cuadro{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            flex-direction: row;
+        }
+        .contenido-cuadro .mayme{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 40%;
+            flex-direction: column;
+            padding-left: 10%;
+            padding-right: 15%;
+        }
+        .contenido-cuadro .mayme p{
+            font-size: 50px;
+        }
+
+        .contenido-cuadro .textoC{
+            width: 60%;
+            height: 100%;
+        }
 
         .cuadro .botones{
             display: flex;
             align-items: center;
             justify-content: center;
+            height: 100%;
+            padding-bottom:3%;
+        }
+        .cuadro .botones button{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 60px; 
         }
         .cuadro .botones h1{
             color: white;
