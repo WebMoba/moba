@@ -53,7 +53,7 @@
                     <th class="required-label">Cantidad</th>
                     <th class="required-label">Precio unitario</th>
                     <th class="required-label">Subtotal</th>
-                    <th class="required-label">Descuento</th>
+                    <th class="required-label">% Descuento</th>
                     <th class="required-label">Total</th>
                 </tr>
             </thead>
@@ -97,6 +97,9 @@
                             <small class="text-muted">No
                                 es editable.</small>
                         </div>
+                    </th>
+                    <th>
+                        <button type="button" class="btn btn-danger" onclick="eliminarDetalle(this)">Eliminar</button>
                     </th>
                 </tr>
             </tbody>
@@ -152,12 +155,16 @@
         discountField.addEventListener('input', calculateSubtotalAndTotal);
     }
 
+    function eliminarDetalle(button) {
+        var row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+    }
+
     // Agregar eventos de escucha para el detalle inicial
     document.addEventListener('DOMContentLoaded', function() {
         const initialDetail = document.querySelector('#detalle-table tbody tr');
         addEventListeners(initialDetail);
     });
-
 
     // Modificar la función para recopilar tanto los detalles como la información principal del formulario de compra
     function enviarDetalles() {
@@ -210,6 +217,6 @@
             }
         });
 
-        //window.location.href = "purchases.index";
+        window.location.href = "purchases.index";
     }
 </script>

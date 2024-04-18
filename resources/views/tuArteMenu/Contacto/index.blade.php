@@ -56,10 +56,11 @@
         <div class="box">
             <h1>Contacto</h1><br><br>
             <h3>¡Somos el estudio de diseño y comunicación que buscabas!</h3>
-            <h3>Las soluciones en comunicación que ofrecemos a nuestros
-                clientes son completamente personalizadas y adaptadas a
-                cada necesidad.</h3>
-            <h3> Haz clic al botón azul para coordinar una reunión estratégica con LA AGENCIA</h3><br>
+            <h3>Nuestro deseo más grande es que te hallas enamorado de 
+cada pieza tanto como nosotros, si deseas una pieza personalizada, o adquirir alguna de las piezas que se encuentran 
+en nuestro portafolio, solo debes contactarnos, estaremos 
+muy felices de hablar contigo.
+</h3><br>
             <h3> Contacto: +57 3106584795</h3>
         </div>
 
