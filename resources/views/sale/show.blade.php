@@ -47,7 +47,9 @@
                                     </div>
                                 </tr>
                         
+
                                 <tr>
+                                    
                                     <div class="container ms-1">
                                         <h2><strong>Detalle de la Venta</strong></h2>
                                         @if($detailSale)
