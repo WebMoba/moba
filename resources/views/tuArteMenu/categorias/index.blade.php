@@ -79,8 +79,8 @@
             case 'Decoracion':
                 window.location.href = "{{ route('tuArteMenu.servicios.Decoracion.index') }}";
                 break;
-            case 'Joditas pal recuerdo':
-                window.location.href = "{{ route('tuArteMenu.servicios.JoditasPa´lRecuerdo.index') }}";
+            case 'Joditas pal Recuerdo':
+                window.location.href = "{{ route('tuArteMenu.servicios.JoditasPalRecuerdo.index') }}";
                 break;
             default:
                 break;
