@@ -164,6 +164,8 @@ class CategoriesProductsServiceController extends Controller
 
 
 
+    // Aca se obtienen los nombre para pásarlos a la visat tu Arete/categorias
+
     public function mostrarVista()
     {
         $nombreCategoria = $this->obtenerNombreCategoria();

@@ -180,14 +180,12 @@ Route::post('/enviar-correo', [ContactoController::class, 'enviarCorreo'])->name
 
 //ruta nombre categorias 
 
-
 Route::get('/tuArteMenu/categorias', function () {
     $categorias = CategoriesProductsService::where('disable', false)
-                                            ->orderBy('name', 'desc')
+                                            ->orderBy('created_at', 'asc')
                                             ->get();
     return view('tuArteMenu.categorias.index', compact('categorias'));
 })->name('tuArteMenu.categorias.index');
-
 require __DIR__ . '/auth.php';
 
 Auth::routes();
