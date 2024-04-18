@@ -69,7 +69,7 @@
             <h1>"Buena Onda"</h1>
         </div>
         <div class="box">
-            <img src="{{ asset('storage/imgMoba/LogotipoTuArte.png') }}" alt="">
+            <img src="{{ asset('Imagenes/imgPrincipalView/LogotipoTuArte.png') }}" alt="">
         </div>
 
     </div>
