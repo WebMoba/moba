@@ -90,37 +90,37 @@ class PurchaseController extends Controller
      */
 
 
-     public function store(Request $request)
-{
-    // Acceder a los datos enviados desde el formulario
-    $datos = $request->input('data');
+    public function store(Request $request)
+    {
+        // Acceder a los datos enviados desde el formulario
+        $datos = $request->input('data');
 
-    // Crear una nueva compra
-    $compra = new Purchase();
-    $compra->name = $datos['nombre_proveedor'];
-    $compra->date = $datos['fecha'];
-    $compra->people_id = $datos['proveedor_id'];
-    $compra->save();
+        // Crear una nueva compra
+        $compra = new Purchase();
+        $compra->name = $datos['nombre_proveedor'];
+        $compra->date = $datos['fecha'];
+        $compra->people_id = $datos['proveedor_id'];
+        $compra->save();
 
-    // Recorrer los detalles de la compra y guardarlos en la base de datos
-    foreach ($datos['detalles'] as $detalle) {
-        $detalleCompra = new DetailPurchase();
-        $detalleCompra->quantity = $detalle['cantidad'];
-        $detalleCompra->price_unit = $detalle['precio_unitario'];
-        $detalleCompra->subtotal = $detalle['subtotal'];
-        $detalleCompra->discount = $detalle['descuento'];
-        $detalleCompra->total = $detalle['total'];
-        $detalleCompra->materials_raws_id = $detalle['materia_prima'];
-        $detalleCompra->purchases_id = $compra->id; // Asociar el detalle con la compra creada
-        $detalleCompra->save();
+        // Recorrer los detalles de la compra y guardarlos en la base de datos
+        foreach ($datos['detalles'] as $detalle) {
+            $detalleCompra = new DetailPurchase();
+            $detalleCompra->quantity = $detalle['cantidad'];
+            $detalleCompra->price_unit = $detalle['precio_unitario'];
+            $detalleCompra->subtotal = $detalle['subtotal'];
+            $detalleCompra->discount = $detalle['descuento'];
+            $detalleCompra->total = $detalle['total'];
+            $detalleCompra->materials_raws_id = $detalle['materia_prima'];
+            $detalleCompra->purchases_id = $compra->id; // Asociar el detalle con la compra creada
+            $detalleCompra->save();
+        }
+
+        // Retornar una respuesta de redirección
+        return redirect()->route('purchases.index')
+            ->with('success', 'Registro creado exitosamente');
     }
 
-    // Retornar una respuesta de redirección
-    return redirect()->route('purchases.index')
-        ->with('success', 'Registro creado exitosamente');
-}
 
-    
 
     /**
      * Display the specified resource.
@@ -135,10 +135,6 @@ class PurchaseController extends Controller
             $person = Person::find($id);
             return "$id_card - $person->addres";
         })->toArray();
-
-        
-
-        
 
         $purchases = Purchase::pluck('name', 'id');
         $materialsRaws = MaterialsRaw::pluck('name', 'id');
@@ -176,13 +172,6 @@ class PurchaseController extends Controller
 
         return view('purchase.create', compact('purchase', 'people', 'detailPurchase', 'purchases', 'materialsRaws', 'purchaseName', 'confirm'));
     }
-
-
-
-
-
-
-
 
     /**
      * Update the specified resource in storage.
