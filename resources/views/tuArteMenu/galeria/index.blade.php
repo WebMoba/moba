@@ -26,10 +26,15 @@
                         Servicios
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#">Accesorios</a></li>
-                        <li><a class="dropdown-item" href="#">Decoracion</a></li>
-                        <li><a class="dropdown-item" href="#">Joditas pa'l Recuerdo</a></li>
-                        <li><a class="dropdown-item" href="#">Mascotas</a></li>
+                        <li><a class="dropdown-item"
+                                href="{{ route('tuArteMenu.servicios.Accesorios.index') }}">Accesorios</a></li>
+                        <li><a class="dropdown-item"
+                                href="{{ route('tuArteMenu.servicios.Decoracion.index') }}">Decoracion</a></li>
+                        <li><a class="dropdown-item"
+                                href="{{ route('tuArteMenu.servicios.JoditasPalRecuerdo.index') }}">Joditas pa'l
+                                Recuerdo</a></li>
+                        <li><a class="dropdown-item"
+                                href="{{ route('tuArteMenu.servicios.Mascotas.index') }}">Mascotas</a></li>
                     </ul>
                 </div>
                 <a href="{{ route('tuArteMenu.index') }}" class="btn btn-primary">Nosotros</a>
@@ -101,7 +106,7 @@
                     <div class="lightbox" data-mdb-lightbox-init>
                         <div class="row">
                             <div class="col-lg-4">
-                                <img  src="{{ asset('Imagenes/img-tuArte-gallery/Img1.jpeg') }}"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img1.jpeg') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                                 <img src="{{ asset('Imagenes/img-tuArte-gallery/Img2.jpg') }}"
                                     alt="Coconut with Strawberries" class="w-100 shadow-1-strong " />
@@ -140,8 +145,7 @@
                                     alt="Coconut with Strawberries" class="w-100 shadow-1-strong " />
                             </div>
                             <div class="col-lg-8">
-                                <img  src="{{ asset('Imagenes/img-tuArte-gallery/Img1.jpeg') }}"
-
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img1.jpeg') }}"
                                     alt="Dark Roast Iced Coffee" class="w-100 shadow-1-strong" />
                             </div>
                             <div class="mt-4 col-lg-4">
@@ -154,7 +158,6 @@
                             </div>
                             <div class="ult col-lg-4">
                                 <img src="{{ asset('Imagenes/img-tuArte-gallery/Img4.webp') }}"
-
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
 
@@ -183,7 +186,7 @@
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
                             <div class=" ult col-lg-4">
-                                <img  src="{{ asset('Imagenes/img-tuArte-gallery/Img1.jpeg') }}"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img1.jpeg') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
                             <div class="ult col-lg-4">
@@ -271,8 +274,9 @@
         background-color: #333333;
     }
 
-     .container img {
-        object-fit: cover; /* Ajusta la imagen manteniendo la relación de aspecto, cubriendo el contenedor */
+    .container img {
+        object-fit: cover;
+        /* Ajusta la imagen manteniendo la relación de aspecto, cubriendo el contenedor */
     }
 
     /* ---------- */
