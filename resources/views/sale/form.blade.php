@@ -7,106 +7,7 @@
 
         <title>Título de tu página</title>
         <!-- Agrega enlaces a tus estilos CSS y a Bootstrap si los estás utilizando -->
-        <style>
-            body {
-                background-color: white;
-                /* Cambia el color de fondo según sea necesario */
-            }
-
-            .container {
-                display: flex;
-                justify-content: space-between;
-                margin: 20px;
-            }
-
-            .box {
-                width: 48%;
-                background-color: white;
-                padding: 20px;
-                border-radius: 5px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                /* Agrega una sombra suave */
-            }
-
-            .box-small {
-                width: 30%
-            }
-
-            .box-large {
-                width: 70%;
-
-                min-width: 1000px;
-            }
-
-            .box-body {
-                margin-bottom: 20px;
-            }
-
-            .box-body {
-                margin-bottom: 20px;
-            }
-
-            .box-footer {
-                text-align: center;
-            }
-
-
-            #detalle-table th,
-            #detalle-table td {
-                /* Ancho de columna predeterminado */
-                padding: 8px;
-                text-align: center;
-            }
-
-            #detalle-table th:nth-child(1),
-            #detalle-table td:nth-child(1) {
-                width: 250px;
-                /* Ancho para la columna "Producto" */
-                text-align: left;
-            }
-
-            #detalle-table th:nth-child(2),
-            #detalle-table td:nth-child(2) {
-                width: 120px;
-                /* Ancho para la columna "Cantidad" */
-            }
-
-            #detalle-table th:nth-child(3),
-            #detalle-table td:nth-child(3) {
-                width: 120px;
-                /* Ancho para la columna "Precio Unidad" */
-            }
-
-            #detalle-table th:nth-child(4),
-            #detalle-table td:nth-child(4) {
-                width: 120px;
-                /* Ancho para la columna "Subtotal" */
-            }
-
-            #detalle-table th:nth-child(5),
-            #detalle-table td:nth-child(5) {
-                width: 120px;
-                /* Ancho para la columna "Descuento" */
-            }
-
-            #detalle-table th:nth-child(6),
-            #detalle-table td:nth-child(6) {
-                width: 120px;
-                /* Ancho para la columna "Total" */
-            }
-
-            #detalle-table th:nth-child(7),
-            #detalle-table td:nth-child(7) {
-                width: 120px;
-                /* Ancho para la columna "Id Venta" */
-            }
-
-            #detalle-table th:nth-child(8),
-            #detalle-table td:nth-child(8) {
-                width: 120px;
-                /* Ancho para la columna de botones */
-            }
-        </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha384-gfdkjbakdft3wmxhfz2r5cpxhc2igpamrkrjlellm3mtv5yzd5t2a5oupnbdedki" crossorigin="anonymous">
     </head>
 
     <body>
@@ -114,7 +15,7 @@
 
 
         <div class="container">
-            <div class="box box-small mt-2">
+            <div class="box mt-2">
                 <H2>Formulario de Venta</H2>
 
                 <!-- contenido de la primera tabla "ventas" -->
@@ -180,7 +81,7 @@
                 </form>
             </div>
 
-            <div class="box box-large ms-5 btn btn- ">
+            <div class="box mt-5  ">
                 <h2> Detalle de Ventas</h2>
                 <!-- contenido de la segunda tabla -->
 
@@ -252,8 +153,11 @@
                                     </th>
                                     <!-- boton para eliminar el detalle creado demás -->
                                     <th>
-                                        <button type="button" class="btn btn-danger"
-                                            onclick="eliminarDetalle(this)">Eliminar</button>
+                                           
+                                                <button type="button" class="btn btn-danger mt-3    " onclick="eliminarDetalle(this)">
+                                                    <i class="fas fa-trash-alt">Quitar</i> <!-- Icono de papelera de Font Awesome -->
+                                                </button>
+                                                
 
                                     </th>
                                 </tr>
