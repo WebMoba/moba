@@ -129,18 +129,13 @@ class PurchaseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        $purchase = Purchase::find($id);
-        $people = Person::pluck('id_card', 'id')->map(function ($id_card, $id) {
-            $person = Person::find($id);
-            return "$id_card - $person->addres";
-        })->toArray();
+{
+    $purchase = Purchase::findOrFail($id);
+    $details = DetailPurchase::where('purchases_id', $id)->get();
 
-        $purchases = Purchase::pluck('name', 'id');
-        $materialsRaws = MaterialsRaw::pluck('name', 'id');
+    return view('purchase.show', compact('purchase', 'details'));
+}
 
-        return view('purchase.show', compact('purchase', 'people', 'purchases', 'materialsRaws'));
-    }
 
     /**
      * Show the form for editing the specified resource.

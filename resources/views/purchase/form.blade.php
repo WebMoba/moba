@@ -61,7 +61,7 @@
                 <tr>
                     <th>
                         <div class="form-group">
-                            {{ Form::select('materials_raws_id', $materialsRaws, $detailPurchase->materials_raws_id, ['class' => 'form-control' . ($errors->has('materials_raws_id') ? ' is-invalid' : ''), 'placeholder' => 'Seleccione una materia prima']) }}
+                            {{ Form::select('materials_raws_id', $materialsRaws, $detailPurchase->materials_raws_id, ['class' => 'form-control' . ($errors->has('materials_raws_id') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Seleccione una materia prima']) }}
                             {!! $errors->first('materials_raws_id', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
                     </th>
@@ -217,6 +217,6 @@
             }
         });
 
-        window.location.href = "purchases.index";
+        window.location.href = "{{ route('purchases.index') }}";
     }
 </script>
