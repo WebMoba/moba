@@ -167,7 +167,7 @@ Route::view('/tuArteMenu/servicios/index', 'tuArteMenu.servicios.index')->name('
 Route::view('/tuArteMenu/servicios/Accesorios/index', 'tuArteMenu.servicios.Accesorios.index')->name('tuArteMenu.servicios.Accesorios.index');
 Route::view('/tuArteMenu/servicios/Decoracion/index', 'tuArteMenu.servicios.Decoracion.index')->name('tuArteMenu.servicios.Decoracion.index');
 Route::view('/tuArteMenu/servicios/Mascotas/index', 'tuArteMenu.servicios.Mascotas.index')->name('tuArteMenu.servicios.Mascotas.index');
-Route::view('/tuArteMenu/servicios/JoditasPa´lRecuerdo/index', 'tuArteMenu.servicios.JoditasPa´lRecuerdo.index')->name('tuArteMenu.servicios.JoditasPa´lRecuerdo.index');
+Route::view('/tuArteMenu/servicios/JoditasPalRecuerdo/index', 'tuArteMenu.servicios.JoditasPalRecuerdo.index')->name('tuArteMenu.servicios.JoditasPalRecuerdo.index');
 Route::view('/tuArteMenu/Contacto/index', 'tuArteMenu.Contacto.index')->name('tuArteMenu.Contacto.index');
 
 
