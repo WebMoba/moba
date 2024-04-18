@@ -259,6 +259,6 @@
     }
 
     .img-thumbnail:hover {
-        transform: scale(2.2);
+        transform: scale(1.2);
     }
 </style>
