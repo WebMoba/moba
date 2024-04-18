@@ -23,6 +23,7 @@ use App\Http\Controllers\UnitController;
 /*Fin Importartación de controladores product y unit*/
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CategoriesProductsServiceController;
+use App\Models\CategoriesProductsService;
 //controladores project,teamwork y quote/fabian
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\QuoteController;
@@ -147,17 +148,15 @@ Route::view('/mobaMenu/Servicios/servicios', 'mobaMenu.servicios.servicios')->na
 
 
 
- //Vistas fronted Moba
- Route::view('/mobaMenu/index', 'mobaMenu.index')->name('mobaMenu.index');
- Route::view('/mobaMenu/EquipoTrabajo/index', 'mobaMenu.EquipoTrabajo.index')->name('mobaMenu.EquipoTrabajo.index');
- 
- Route::view('/mobaMenu/EquipoTrabajo/integranteUno', 'mobaMenu.EquipoTrabajo.integranteUno')->name('mobaMenu.EquipoTrabajo.integranteUno');
- Route::view('/mobaMenu/EquipoTrabajo/integranteDos', 'mobaMenu.EquipoTrabajo.integranteDos')->name('mobaMenu.EquipoTrabajo.integranteDos');
- Route::view('/mobaMenu/EquipoTrabajo/integranteTres', 'mobaMenu.EquipoTrabajo.integranteTres')->name('mobaMenu.EquipoTrabajo.integranteTres');
- Route::view('/mobaMenu/EquipoTrabajo/integranteCuatro', 'mobaMenu.EquipoTrabajo.integranteCuatro')->name('mobaMenu.EquipoTrabajo.integranteCuatro'); 
- Route::view('/mobaMenu/Proyectos/index', 'mobaMenu.Proyectos.index')->name('mobaMenu.Proyectos.index');
- Route::view('/mobaMenu/Contacto/index', 'mobaMenu.Contacto.index')->name('mobaMenu.Contacto.index');
- 
+//Vistas fronted Moba
+Route::view('/mobaMenu/index', 'mobaMenu.index')->name('mobaMenu.index');
+Route::view('/mobaMenu/EquipoTrabajo/index', 'mobaMenu.EquipoTrabajo.index')->name('mobaMenu.EquipoTrabajo.index');
+Route::view('/mobaMenu/EquipoTrabajo/integranteUno', 'mobaMenu.EquipoTrabajo.integranteUno')->name('mobaMenu.EquipoTrabajo.integranteUno');
+Route::view('/mobaMenu/EquipoTrabajo/integranteDos', 'mobaMenu.EquipoTrabajo.integranteDos')->name('mobaMenu.EquipoTrabajo.integranteDos');
+Route::view('/mobaMenu/EquipoTrabajo/integranteTres', 'mobaMenu.EquipoTrabajo.integranteTres')->name('mobaMenu.EquipoTrabajo.integranteTres');
+Route::view('/mobaMenu/EquipoTrabajo/integranteCuatro', 'mobaMenu.EquipoTrabajo.integranteCuatro')->name('mobaMenu.EquipoTrabajo.integranteCuatro');
+Route::view('/mobaMenu/Contacto/index', 'mobaMenu.Contacto.index')->name('mobaMenu.Contacto.index');
+
 
 
 //vistas froted tu arte 
@@ -178,6 +177,16 @@ Route::view('/tuArteMenu/Contacto/index', 'tuArteMenu.Contacto.index')->name('tu
 //ruta Correo electronico
 Route::post('/enviar-correo', [ContactoController::class, 'enviarCorreo'])->name('enviar-correo');
 
+
+//ruta nombre categorias 
+
+
+Route::get('/tuArteMenu/categorias', function () {
+    $categorias = CategoriesProductsService::where('disable', false)
+                                            ->orderBy('name', 'desc')
+                                            ->get();
+    return view('tuArteMenu.categorias.index', compact('categorias'));
+})->name('tuArteMenu.categorias.index');
 
 require __DIR__ . '/auth.php';
 
