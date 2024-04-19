@@ -4,58 +4,18 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
         <title>Título de tu página</title>
         <!-- Agrega enlaces a tus estilos CSS y a Bootstrap si los estás utilizando -->
-        <style>
-            body {
-                background-color: white;
-                /* Cambia el color de fondo según sea necesario */
-            }
-
-            .container {
-                display: flex;
-                justify-content: space-between;
-                margin: 20px;
-            }
-
-            .box {
-                width: 48%;
-                background-color: white;
-                padding: 20px;
-                border-radius: 5px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                /* Agrega una sombra suave */
-            }
-
-            .box-small {
-                width: 30%
-            }
-
-            .box-large {
-                width: 70%
-            }
-
-            .box-body {
-                margin-bottom: 20px;
-            }
-
-            .box-body {
-                margin-bottom: 20px;
-            }
-
-            .box-footer {
-                text-align: center;
-            }
-        </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha384-gfdkjbakdft3wmxhfz2r5cpxhc2igpamrkrjlellm3mtv5yzd5t2a5oupnbdedki" crossorigin="anonymous">
     </head>
 
     <body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
         <div class="container">
-            <div class="box box-small mt-2">
+            <div class="box mt-2">
                 <H2>Formulario de Venta</H2>
 
                 <!-- contenido de la primera tabla "ventas" -->
@@ -121,7 +81,7 @@
                 </form>
             </div>
 
-            <div class="box box-large ms-5 btn btn- ">
+            <div class="box mt-5  ">
                 <h2> Detalle de Ventas</h2>
                 <!-- contenido de la segunda tabla -->
 
@@ -193,8 +153,11 @@
                                     </th>
                                     <!-- boton para eliminar el detalle creado demás -->
                                     <th>
-                                        <button type="button" class="btn btn-danger"
-                                            onclick="eliminarDetalle(this)">Eliminar</button>
+                                           
+                                                <button type="button" class="btn btn-danger mt-3    " onclick="eliminarDetalle(this)">
+                                                    <i class="fas fa-trash-alt">Quitar</i> <!-- Icono de papelera de Font Awesome -->
+                                                </button>
+                                                
 
                                     </th>
                                 </tr>
@@ -209,6 +172,7 @@
                     </div>
                 </div>
             </div>
+
             <script>
                 // Función para agregar un nuevo detalle vacío
                 function agregarDetalle() {
@@ -305,26 +269,31 @@
                         detalles: detalles
                     };
 
-                    // Enviar datos al controlador de Laravel mediante AJAX
-                    $.ajax({
-                        type: "POST",
-                        url: "{{ route('sale.store') }}",
-                        data: {
-                            _token: '{{ csrf_token() }}',
-                            data: data
-                        },
-                        success: function(response) {
-                            // Manejar la respuesta del servidor si es necesario
-                            console.log(response);
-                        },
-                        error: function(err) {
-                            // Manejar errores si los hay
-                            console.error(err);
-                        }
-                    });
+                    console.log(data);
 
-                    // window.location.href = "purchases.index";
                 }
+                /**              
+                                            Enviar datos al controlador de Laravel mediante AJAX
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "{{ route('sale.store') }}",
+                                                data: {
+                                                    _token: '{{ csrf_token() }}',
+                                                    data: data
+                                                },
+                                                success: function(response) {
+                                                    // Manejar la respuesta del servidor si es necesario
+                                                    console.log(response);
+                                                },
+                                                error: function(err) {
+                                                    // Manejar errores si los hay
+                                                    console.error(err);
+                                                }
+                                            });
+
+                                            // window.location.href = "purchases.index";
+                                        }  // 
+                                            */
             </script>
 
 

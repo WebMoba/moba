@@ -30,7 +30,7 @@
                                 <a href="{{ route('pdf.project') }}" class="btn btn-danger btn-sm float-right">
                                     <i class="fa fa-file-pdf"></i> {{ __('PDF') }}
                                 </a>
-                                
+
                                 <a href="{{ route('excel.project') }}" class="btn btn-success btn-sm float-right">
                                     <i class="fa fa-file-excel"></i> {{ __('Excel') }}
                                 </a>
@@ -74,20 +74,18 @@
                                             <td>
                                                 <form action="{{ route('projects.destroy', $project->id) }}"
                                                     method="POST">
-                                                    <a class="btn btn-sm btn-primary "
-                                                        href="{{ route('projects.show', $project->id) }}"><i
-                                                            class="fa fa-fw fa-eye" {{ $project->disable ? 'disabled' : '' }}></i> {{ __('Ver') }}</a>
-                                                    <a class="btn btn-sm btn-success"
-                                                        href="{{ route('projects.edit', $project->id) }}"><i
-                                                            class="fa fa-fw fa-edit" {{ $project->disable ? 'disabled' : '' }}></i> {{ __('Editar') }}</a>
+                                                    <a class="btn btn-sm btn-primary {{ $project->disable ? 'disabled' : '' }}"
+                                                        href="{{ route('quotes.show', $project->id) }}"><i
+                                                            class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
+                                                    <a class="btn btn-sm btn-success {{ $project->disable ? 'disabled' : '' }}"
+                                                        href="{{ route('quotes.edit', $project->id) }}"><i
+                                                            class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit"
-                                                        onclick="return confirm('¿Está seguro de que desea {{ $project->disable ? 'Habilitar' : 'Deshabilitar' }} este proyecto?')"
-                                                        class="btn btn-danger btn-sm">
-                                                        <i class="fa fa-fw fa-trash"></i>
-                                                        {{ $project->disable ? 'Habilitar' : 'Deshabilitar' }}
-                                                    </button>
+                                                        onclick="return confirm('¿Está seguro de que desea {{ $project->disable ? 'Habilitar' : 'Deshabilitar' }} el proyecto?')"
+                                                        class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i>
+                                                        {{ $project->disable ? 'Habilitar' : 'Deshabilitar' }}</button>
                                                 </form>
                                             </td>
                                         </tr>

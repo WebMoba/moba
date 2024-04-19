@@ -26,15 +26,20 @@
                         Servicios
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#">Accesorios</a></li>
-                        <li><a class="dropdown-item" href="#">Decoracion</a></li>
-                        <li><a class="dropdown-item" href="#">Joditas pa'l Recuerdo</a></li>
-                        <li><a class="dropdown-item" href="#">Mascotas</a></li>
+                        <li><a class="dropdown-item"
+                                href="{{ route('tuArteMenu.servicios.Accesorios.index') }}">Accesorios</a></li>
+                        <li><a class="dropdown-item"
+                                href="{{ route('tuArteMenu.servicios.Decoracion.index') }}">Decoracion</a></li>
+                        <li><a class="dropdown-item"
+                                href="{{ route('tuArteMenu.servicios.JoditasPalRecuerdo.index') }}">Joditas pa'l
+                                Recuerdo</a></li>
+                        <li><a class="dropdown-item"
+                                href="{{ route('tuArteMenu.servicios.Mascotas.index') }}">Mascotas</a></li>
                     </ul>
                 </div>
                 <a href="{{ route('tuArteMenu.index') }}" class="btn btn-primary">Nosotros</a>
                 <a href="{{ route('tuArteMenu.categorias.index') }}"class="btn btn-primary">Categorias</a>
-                <a href="{{ route('tuArteMenu.galeria.index') }}" class="btn btn-primary">Galeria</a>
+                <a href="{{ route('tuArteMenu.galeria.index') }}" class="btn btn-primary active-link">Galeria</a>
                 <a href="{{ route('tuArteMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
             <a href="{{ asset('/') }}">
@@ -101,29 +106,27 @@
                     <div class="lightbox" data-mdb-lightbox-init>
                         <div class="row">
                             <div class="col-lg-4">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img1.jpeg') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Square/1.webp"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img2.jpg') }}"
                                     alt="Coconut with Strawberries" class="w-100 shadow-1-strong " />
                             </div>
                             <div class="col-lg-8">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Vertical/1.webp"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img3.webp') }}"
                                     alt="Dark Roast Iced Coffee" class="w-100 shadow-1-strong" />
                             </div>
                             <div class="mt-4 col-lg-4">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img4.webp') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
                             <div class=" ult col-lg-4">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img5.webp') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
                             <div class="ult col-lg-4">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img6.webp') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
-
-
 
                         </div>
                     </div>
@@ -136,29 +139,27 @@
                     <div class="lightbox" data-mdb-lightbox-init>
                         <div class="row">
                             <div class="col-lg-4">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img3.webp') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Square/1.webp"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img2.jpg') }}"
                                     alt="Coconut with Strawberries" class="w-100 shadow-1-strong " />
                             </div>
                             <div class="col-lg-8">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Vertical/1.webp"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img1.jpeg') }}"
                                     alt="Dark Roast Iced Coffee" class="w-100 shadow-1-strong" />
                             </div>
                             <div class="mt-4 col-lg-4">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img4.webp') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
                             <div class=" ult col-lg-4">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img6.webp') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
                             <div class="ult col-lg-4">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img4.webp') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
-
-
 
                         </div>
                     </div>
@@ -171,29 +172,27 @@
                     <div class="lightbox" data-mdb-lightbox-init>
                         <div class="row">
                             <div class="col-lg-4">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img4.webp') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Square/1.webp"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img3.webp') }}"
                                     alt="Coconut with Strawberries" class="w-100 shadow-1-strong " />
                             </div>
                             <div class="col-lg-8">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Vertical/1.webp"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img6.webp') }}"
                                     alt="Dark Roast Iced Coffee" class="w-100 shadow-1-strong" />
                             </div>
                             <div class="mt-4 col-lg-4">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img5.webp') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
                             <div class=" ult col-lg-4">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img1.jpeg') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
                             <div class="ult col-lg-4">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img4.webp') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
-
-
 
                         </div>
                     </div>
@@ -230,7 +229,22 @@
 
 
 
-<style>
+<style> 
+ .active-link {
+        position: relative;
+        color:red;
+    }
+
+    .active-link:after {
+        color:red;
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px; /* Grosor de la línea */
+        background-color: red; /* Color de la línea */
+    }
     /* Estilos para los botones de indicadores */
     .carousel-indicators [data-bs-target] {
         width: 30px;
@@ -245,7 +259,7 @@
         margin-bottom: -30px;
     }
 
-    /* Estilo de galeria */
+    /* ------Estilo de galeria ----------*/
     .container {
         margin-top: 9em;
     }
@@ -273,6 +287,11 @@
 
     body {
         background-color: #333333;
+    }
+
+    .container img {
+        object-fit: cover;
+        /* Ajusta la imagen manteniendo la relación de aspecto, cubriendo el contenedor */
     }
 
     /* ---------- */

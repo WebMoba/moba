@@ -77,7 +77,7 @@
 
             <div class="imagenes">
                
-                <a href="{{ route('mobaMenu.EquipoTrabajo.integranteUno') }}" target="_blank" class="imagen-contenedor">
+                <a target="_blank" class="imagen-contenedor">
                     <img src="{{ asset('Imagenes/imgs-gallery/LINDA_PEREZ_1.jpg') }}" alt="Imagen 1" class="img-thumbnail">
                 </a>
             </div>
@@ -231,7 +231,7 @@
 
     }
 
-    .img-thumbnail:hover {
-        transform: scale(1.2);
+    #.img-thumbnail:hover {
+        transform: scale(0.8);
     }
 </style>

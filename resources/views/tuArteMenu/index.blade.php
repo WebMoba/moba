@@ -8,7 +8,7 @@
     <title>Servicios</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/StyleNosotrosTuArte/NosotrosTuArte.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
@@ -21,7 +21,7 @@
             </a>
             <div class="navbar-buttons">
                 <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    <button class="btn btn-primary dropdown-toggle " type="button" id="dropdownMenuButton"
                         aria-haspopup="true" aria-expanded="false">
                         Servicios
                     </button>
@@ -31,13 +31,13 @@
                         <li><a class="dropdown-item"
                                 href="{{ route('tuArteMenu.servicios.Decoracion.index') }}">Decoracion</a></li>
                         <li><a class="dropdown-item"
-                                href="{{ route('tuArteMenu.servicios.JoditasPa´lRecuerdo.index') }}">Joditas pa'l
+                                href="{{ route('tuArteMenu.servicios.JoditasPalRecuerdo.index') }}">Joditas pa'l
                                 Recuerdo</a></li>
                         <li><a class="dropdown-item"
                                 href="{{ route('tuArteMenu.servicios.Mascotas.index') }}">Mascotas</a></li>
                     </ul>
                 </div>
-                <a href="{{ route('tuArteMenu.index') }}" class="btn btn-primary">Nosotros</a>
+                <a href="{{ route('tuArteMenu.index') }}" class="btn btn-primary active-link">Nosotros</a>
                 <a href="{{ route('tuArteMenu.categorias.index') }}" class="btn btn-primary">Categorias</a>
                 <a href="{{ route('tuArteMenu.galeria.index') }}" class="btn btn-primary">Galeria</a>
                 <a href="{{ route('tuArteMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
@@ -69,7 +69,7 @@
             <h1>"Buena Onda"</h1>
         </div>
         <div class="box">
-            <img src="{{ asset('storage/imgMoba/LogotipoTuArte.png') }}" alt="">
+            <img src="{{ asset('Imagenes/imgPrincipalView/LogotipoTuArte.png') }}" alt="">
         </div>
 
     </div>
@@ -99,77 +99,3 @@
 
 </html>
 
-
-<style>
-    .dropdown-menu .dropdown-item:hover {
-        background-color: transparent !important;
-        border-color: transparent !important;
-        border: none;
-        text-shadow: 0 0 5px #f80008;
-    }
-
-    .dropdown-menu .dropdown-item:hover {
-        background-color: rgba(255, 0, 0, 0.274) !important;
-        /* Cambia el color de fondo al pasar el cursor sobre las opciones del menú */
-    }
-
-    .dropdown-item:hover {
-        color: #f80008 !important;
-    }
-
-    .dropdown-menu {
-        background-color: transparent !important;
-        border-color: #73a3b6 !important;
-    }
-
-    .dropdown-menu .dropdown-item {
-        color: #f80008 !important;
-        background-color: transparent !important;
-        border-color: #f80008 !important;
-    }
-
-    .dropdown-menu .dropdown-divider {
-        border-top: 1px solid #f80008;
-    }
-
-
-    .container {
-        display: flex;
-        align-items: center;
-        text-align: center;
-        justify-content: center;
-        width: 90%;
-        height: 100vh;
-
-
-    }
-
-    .box {
-        display: inline-block;
-        margin-top: 2%;
-        width: 90%;
-        height: 80%;
-
-    }
-
-    p {
-        color: #BCCCE0;
-        margin-top: 30%;
-    }
-
-    h4 {
-        color: #BCCCE0;
-    }
-
-    h1 {
-        color: #BCCCE0;
-        font-size: 70px;
-    }
-
-    .box img {
-
-        margin-top: 20%;
-        width: 55%;
-        height: 60%;
-    }
-</style>
