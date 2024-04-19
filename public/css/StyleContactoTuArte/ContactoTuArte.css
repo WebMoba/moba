@@ -157,7 +157,7 @@ body::after {
     .container {
         display: flex;
         justify-content: center;
-        text-align: center;
+        text-align: left;
         align-items: center;
         width: 90%;
         height: 100vh;
@@ -178,47 +178,45 @@ body::after {
         height: 2px; /* Grosor de la línea */
         background-color: red; /* Color de la línea */
     }
+    .box {
+        height: 70%;
+        width: 50%;
+        margin-top: 5%;
+    }
 
-    .contenedor {
-     display: flex;
-    height: 80%;
-    /* 100% de la altura de la ventana */
-    width: 90%;
-    margin-top: 8%;
-}
+    h1,
+    h3 {
+        color: #BCCCE0;
+    }
 
-    .campo {
-        border: 20px solid white;
-      
+    label {
+        color: #BCCCE0;
+    }
+
+    form {
+        text-align: left;
+        margin-top: 10%;
+        margin-left: 10%;
+    }
+
+    input {
+        width: 90%;
+        margin-right: 10%;
+        background-color: #3E3E3F;
+        color: white;
+    }
+
+    textarea {
+        margin-right: 10%;
+        width: 90%;
+        background-color: #3E3E3F;
+        color: white;
+    }
+
+    #submit {
         
-}
-    .campo a{
-        text-decoration: none;
-        color: white;
-
-}
-
-    .campo1 {
-    flex-grow: 1; /* Hacer que el campo se expanda automáticamente */
-    height: 100%;
-    /* 100% de altura */
-    position: relative;
-}
-
-    .campo1:hover {
-        background-color: red;
-        cursor: pointer;
-        color:  #BCCCE0;
-    }
-
-   
-    .campo1 h1 {
-        position: absolute;
-        bottom: 0;
-        margin-left: 5%;
-        color: white;
-        margin-bottom: 20%;
+        background-color: #BCCCE0;
+        width: 25%;
+        color: black;
 
     }
-
-    
