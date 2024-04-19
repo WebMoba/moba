@@ -121,6 +121,37 @@
 </html>
 
 <style>
+       .dropdown-menu .dropdown-item:hover {
+        background-color: transparent !important;
+        border-color: transparent !important;
+        border: none;
+        text-shadow: 0 0 5px #f80008;
+    }
+
+    .dropdown-menu .dropdown-item:hover {
+        background-color: rgba(255, 0, 0, 0.274) !important;
+        /* Cambia el color de fondo al pasar el cursor sobre las opciones del menú */
+    }
+
+    .dropdown-item:hover {
+        color: #f80008 !important;
+    }
+
+    .dropdown-menu {
+        background-color: transparent !important;
+        border-color: #73a3b6 !important;
+    }
+
+    .dropdown-menu .dropdown-item {
+        color: #f80008 !important;
+        background-color: transparent !important;
+        border-color: #f80008 !important;
+    }
+
+    .dropdown-menu .dropdown-divider {
+        border-top: 1px solid #f80008;
+    }
+
     .container {
         display: flex;
         align-items: center;
