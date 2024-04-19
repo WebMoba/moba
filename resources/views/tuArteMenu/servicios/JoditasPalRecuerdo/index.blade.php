@@ -12,7 +12,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
-<body class="background-image">
+<body style="position: relative;">
+    <div
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{ asset('Imagenes/FondoPrueba.png') }}'); background-size: cover; background-position: center top; background-repeat: no-repeat; opacity: 1; z-index: -1; filter: brightness(30%); -webkit-filter: brightness(30%);">
+    </div>
     <nav class="navbar">
         <div class="container-fluid">
             <a href="{{ asset('/') }}">
@@ -39,7 +42,7 @@
                 <a href="{{ route('tuArteMenu.index') }}" class="btn btn-primary">Nosotros</a>
                 <a href="{{ route('tuArteMenu.categorias.index') }}"class="btn btn-primary">Categorias</a>
                 <a href="{{ route('tuArteMenu.galeria.index') }}" class="btn btn-primary">Galeria</a>
-                <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
+                <a href="{{ route('tuArteMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
             <a href="{{ asset('/') }}">
                 <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte">
