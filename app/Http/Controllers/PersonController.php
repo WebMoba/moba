@@ -132,6 +132,18 @@ class PersonController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+
+     public function show($id)
+     {
+         // Lógica para mostrar los detalles de una persona por su ID
+         $person = Person::findOrFail($id);
+ 
+         // Retornar la vista con los detalles de la persona
+         return view('person.show', compact('person'));
+     }
+
+
+
     public function edit($id)
 {
     // Obtener la persona a editar
