@@ -23,6 +23,12 @@
                             <tbody>
                                 <tr>
                                     <div class="form-group">
+                                    <strong>N° venta:</strong>
+                                    {{ $sale->id }}
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div class="form-group">
                                     <strong>Nombre:</strong>
                                     {{ $sale->person->name }}
                                     </div>

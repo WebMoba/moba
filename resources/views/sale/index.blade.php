@@ -54,7 +54,8 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No</th>
+                                        <th>N°</th>
+                                        <th>N° venta</th>
                                         <th>Nombre Cliente</th>
                                         <th>Id Persona</th>
                                         <th>Fecha venta</th>
@@ -66,6 +67,7 @@
                                     @foreach ($sales as $sale)
                                         <tr>
                                             <td>{{ ++$i }}</td>
+                                            <td>{{ $sale->id }}</td>
                                             <td>{{ $sale->person->name }}</td>
                                             <td>{{ $sale->person->id_card }}</td>
                                             <td>{{ $sale->date }}</td>
