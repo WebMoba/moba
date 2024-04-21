@@ -145,6 +145,8 @@ Route::middleware('auth')->group(function () {
  Route::view('/mobaMenu/index', 'mobaMenu.index')->name('mobaMenu.index');
  Route::view('/mobaMenu/EquipoTrabajo/index', 'mobaMenu.EquipoTrabajo.index')->name('mobaMenu.EquipoTrabajo.index');
  Route::view('/mobaMenu/Contacto/index', 'mobaMenu.Contacto.index')->name('mobaMenu.Contacto.index');
+ Route::view('/mobaMenu/proyectos/index', 'mobaMenu.proyectos.index')->name('mobaMenu.proyectos.index');
+
  
 
 
