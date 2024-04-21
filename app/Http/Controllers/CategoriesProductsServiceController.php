@@ -161,4 +161,29 @@ class CategoriesProductsServiceController extends Controller
     {
         return Excel::download(new CategoriesExport, 'categorias.xlsx');
     }
+
+
+
+    // Aca se obtienen los nombre para pásarlos a la visat tu Arete/categorias
+
+    public function mostrarVista()
+    {
+        $nombreCategoria = $this->obtenerNombreCategoria();
+
+        return view('tuArteMenu.categorias.index', compact('nombreCategoria'));
+    }
+
+    public function obtenerNombreCategoria()
+    {
+        // Aquí obtenemos el nombre de la categoría, por ejemplo, la primera categoría
+        $categoria = CategoriesProductsService::first();
+
+        // Verificamos si la categoría existe
+        if ($categoria) {
+            return $categoria->name;
+        } else {
+            return 'Categoría no encontrada'; // Puedes manejar el caso donde no se encuentra la categoría
+        }
+    }
+    
 }

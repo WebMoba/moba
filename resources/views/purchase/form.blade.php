@@ -1,16 +1,25 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+
+<style>
+    .required-label::after {
+        content: "*";
+        color: red;
+        margin-left: 5px;
+    }
+</style>
+
 <div class="box box-small">
     <h2>Compra</h2>
     <div class="box-body">
         <div class="form-group">
-            {{ Form::label('Nombre del proveedor') }}
-            {{ Form::text('name', $purchase->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Name']) }}
+            {{ Form::label('Nombre del proveedor', null, ['class' => 'required-label']) }}
+            {{ Form::text('name', $purchase->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Name']) }}
             {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
         <div class="form-group">
-            {{ Form::label('Fecha') }}
+            {{ Form::label('Fecha', null, ['class' => 'required-label']) }}
             {{ Form::text('date', $purchase->date, ['class' => 'form-control' . ($errors->has('date') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Date', 'readonly' => true, 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
             {!! $errors->first('date', '<div class="invalid-feedback">:message</div>') !!}
 
@@ -18,12 +27,12 @@
         </div>
 
         <div class="form-group">
-            {{ Form::label('Documento y dirección del proveedor') }}
+            {{ Form::label('Documento y dirección del proveedor', null, ['class' => 'required-label']) }}
             {{ Form::select('people_id', $people, $purchase->people_id, ['class' => 'form-control' . ($errors->has('people_id') ? ' is-invalid' : ''), 'placeholder' => 'Seleccione un proveedor']) }}
             {!! $errors->first('people_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
     </div>
-    <div class="box-footer">
+    <div class="box-footer" style="margin: 20px;">
         <button type="button" class="btn btn-success" onclick="enviarDetalles()">Enviar</button>
         <a type="submit" class="btn btn-primary" href="{{ route('purchases.index') }}">Volver</a>
     </div>
@@ -40,19 +49,19 @@
         <table id="detalle-table" class="table">
             <thead>
                 <tr>
-                    <th>Materia prima</th>
-                    <th>Cantidad</th>
-                    <th>Precio unitario</th>
-                    <th>Subtotal</th>
-                    <th>Descuento</th>
-                    <th>Total</th>
+                    <th class="required-label">Materia prima</th>
+                    <th class="required-label">Cantidad</th>
+                    <th class="required-label">Precio unitario</th>
+                    <th class="required-label">Subtotal</th>
+                    <th class="required-label">% Descuento</th>
+                    <th class="required-label">Total</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <th>
                         <div class="form-group">
-                            {{ Form::select('materials_raws_id', $materialsRaws, $detailPurchase->materials_raws_id, ['class' => 'form-control' . ($errors->has('materials_raws_id') ? ' is-invalid' : ''), 'placeholder' => 'Seleccione una materia prima']) }}
+                            {{ Form::select('materials_raws_id', $materialsRaws, $detailPurchase->materials_raws_id, ['class' => 'form-control' . ($errors->has('materials_raws_id') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Seleccione una materia prima']) }}
                             {!! $errors->first('materials_raws_id', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
                     </th>
@@ -88,6 +97,9 @@
                             <small class="text-muted">No
                                 es editable.</small>
                         </div>
+                    </th>
+                    <th>
+                        <button type="button" class="btn btn-danger" onclick="eliminarDetalle(this)">Eliminar</button>
                     </th>
                 </tr>
             </tbody>
@@ -143,12 +155,16 @@
         discountField.addEventListener('input', calculateSubtotalAndTotal);
     }
 
+    function eliminarDetalle(button) {
+        var row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+    }
+
     // Agregar eventos de escucha para el detalle inicial
     document.addEventListener('DOMContentLoaded', function() {
         const initialDetail = document.querySelector('#detalle-table tbody tr');
         addEventListeners(initialDetail);
     });
-
 
     // Modificar la función para recopilar tanto los detalles como la información principal del formulario de compra
     function enviarDetalles() {
@@ -201,6 +217,6 @@
             }
         });
 
-        window.location.href = "purchases.index";
+        window.location.href = "{{ route('purchases.index') }}";
     }
 </script>

@@ -16,8 +16,7 @@
                                 {{ __('Compras') }}
                             </span>
 
-                            <form action="{{ route('purchases.index') }}" method="GET"
-                                class="d-flex align-items-center">
+                            <form action="{{ route('purchases.index') }}" method="GET" class="d-flex align-items-center">
                                 <div class="col-auto mr-2">
                                     <input type="text" class="form-control" name="search" placeholder="Buscar...">
                                 </div>
@@ -79,9 +78,6 @@
                                                         <a class="btn btn-sm btn-primary "
                                                             href="{{ route('purchases.show', $purchase->id) }}"><i
                                                                 class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                        <a class="btn btn-sm btn-success"
-                                                            href="{{ route('purchases.edit', $purchase->id) }}"><i
-                                                                class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger btn-sm"

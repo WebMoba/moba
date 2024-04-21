@@ -25,9 +25,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Quote extends Model
 {
-    
+
     static $rules = [
-		'people_id' => 'required',
+
     ];
 
     protected $perPage = 20;
@@ -37,7 +37,7 @@ class Quote extends Model
      *
      * @var array
      */
-    protected $fillable = ['date_issuance','description','total','discount','status','people_id','disable'];
+    protected $fillable = ['date_issuance', 'description', 'total', 'discount', 'status', 'disable', 'people_id'];
 
 
     /**
@@ -62,16 +62,16 @@ class Quote extends Model
     {
         return $this->hasMany('App\Models\DetailQuote', 'quotes_id', 'id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-   
-     public function person()
-     {
-         return $this->belongsTo(Person::class);
-     }
-    
+
+    public function person()
+    {
+        return $this->belongsTo(Person::class);
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -88,5 +88,4 @@ class Quote extends Model
             $quote->disable = false;
         });
     }
-
 }

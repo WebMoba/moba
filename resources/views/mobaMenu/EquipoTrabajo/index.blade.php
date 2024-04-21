@@ -16,25 +16,29 @@
 
     <nav class="navbar">
         <div class="container-fluid">
-        <a href="{{ asset('/') }}">
+            <a href="{{ asset('/') }}">
                 <img src="{{ asset('Imagenes/Logomoba.png') }}" class="navbar-img-left" alt="Logo Moba">
             </a>
             <div class="navbar-buttons">
                 <div class="dropdown">
-                    <a href="{{route('mobaMenu.Servicios.servicios')}}">
-                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
+                    <a href="{{ route('mobaMenu.Servicios.servicios') }}">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            aria-haspopup="true" aria-expanded="false">
                             Servicios
                         </button>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="{{ route('mobaMenu.Servicios.servicios') }}">Identidad Corporativa</a></li>
-                        <li><a class="dropdown-item" href="{{ route('mobaMenu.Servicios.servicios') }}">Avisos y Publicidad para interiores</a></li>
-                        <li><a class="dropdown-item" href="{{ route('mobaMenu.Servicios.servicios') }}">POP y álgo más</a></li>
+                        <li><a class="dropdown-item" href="{{ route('mobaMenu.Servicios.servicios') }}">Identidad
+                                Corporativa</a></li>
+                        <li><a class="dropdown-item" href="{{ route('mobaMenu.Servicios.servicios') }}">Avisos y
+                                Publicidad para interiores</a></li>
+                        <li><a class="dropdown-item" href="{{ route('mobaMenu.Servicios.servicios') }}">POP y álgo
+                                más</a></li>
                     </ul>
                 </div>
-                <a href="{{ route('mobaMenu.index')}}" class="btn btn-primary">Nosotros</a>
+                <a href="{{ route('mobaMenu.index') }}" class="btn btn-primary ">Nosotros</a>
                 <a href="#" class="btn btn-primary">Proyectos</a>
-                <a href="{{ route('mobaMenu.EquipoTrabajo.index') }}" class="btn btn-primary">Equipo de trabajo</a>
+                <a href="{{ route('mobaMenu.EquipoTrabajo.index') }}" class="btn btn-primary active-link">Equipo de trabajo</a>
                 <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
             <a href="{{ asset('/') }}">
@@ -51,165 +55,226 @@
         <hr class="linea1">
     </div>
 
+    <!---------------------------------------------------------------------------------------------------------------->
 
-    
-        <div class=" col-10 container-fluid text-center text-white mb-0 p-5 fs-4 mt-5 my-2 align-baseline">
-                
-            <h1 class="text-blue fs-1"> EQUIPO DE TRABAJO </h1>
-                <p>
-                    Este es el espacio donde seguramente una agencia diría que, en efecto, es una agencia.
+    <div class="container">
+        <div class="box-1">
+            <div class="texto">
+               
+                <h1 class="text"> EQUIPO DE TRABAJO </h1>
+
+                <p class="p">
+                    Este es el espacio donde seguramente una agencia diría que, en efecto, es una agencia. </p>
+                <p class="p">
                     Nosotros nos consideramos una familia, porque estamos hechos de personas, con todo tipo de talentos.
-                    En esta familia hay artistas, músicos, emprendedores, deportistas, en fin. Y es gracias a esa calidad
-                    humana
-                    y todo ese talento reunido que también hacemos publicidad, porque así ayudamos a nuestras marcas a
+
+                    En esta familia hay artistas, músicos, emprendedores, deportistas, en fin. Y es gracias a esa
+                    calidad
+                    humana y todo ese talento reunido que también hacemos publicidad, porque así ayudamos a nuestras
+                    marcas a
                     tener un rol significativo en la vida de las personas. Así que si quieres hacer parte de nuestra
                     familia, eres
                     bienvenido.
                 </p>
+            </div>
+
         </div>
 
 
+        <div class="box-2">
+            <div class="contenido">
+
+                <p class="text-white" style="text-align: justify; line-height: 1.5;">Y sí... </p>
+                <p class="text-white" style="text-align: justify; line-height: 1.5;">Estos somos</p>
+                <p class="text-1" style="text-align: justify; line-height: 1.5;">nosotros</p>
+            </div>
 
 
-    <div class="container col-10 ps-0 text-center text-white-50 fs-1">
-         <div class="row ">
-          <div class="col-4 ">        
-            <p class="text-white">Y si... </p>
-            <p class="text-white">Estos somos</p>
-            <p class="text-primary">nosotros</p>
-          </div>
-          
-          <div class="col mt-lg-0">
-           
-            <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="{{ asset('Imagenes/imgs-gallery/javier.jpg') }}" class="d-block w-50 p-3" width=100% height=100% alt="Javier">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="{{ asset('Imagenes/imgs-gallery/8.jpg') }}" class="d-block w-50" width=100% height=400px alt="Sofia">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }}" class="d-block w-50" width=100% height=400px alt="">
-                  </div>
-                </div>
-
-              </div> 
-              
-              <button class="carousel-control-prev mt-8 " type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon mt-5 bg-primary" aria-hidden="true"></span>
-                <span class="visually-hidden mt-5 ">Previous</span>
-              </button>
-              <button class="carousel-control-next mt-8" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
-                <span class="carousel-control-next-icon bg-primary mt-5" aria-hidden="true"></span>
-                <span class="visually-hidden mt-5 ">Next</span>
-              </button>
+            <div class="imagenes">
+               
+                <a href="{{ route('mobaMenu.EquipoTrabajo.integranteUno') }}" target="_blank" class="imagen-contenedor">
+                    <img src="{{ asset('Imagenes/imgs-gallery/javier.jpg') }}" alt="Imagen 1" class="img-thumbnail">
+                </a>
+                
+                <a href="{{ route('mobaMenu.EquipoTrabajo.integranteDos') }}" target="_blank" class="imagen-contenedor">
+                    <img src="{{ asset('Imagenes/imgs-gallery/SOFIA_PEREZ.jpg') }}" alt="Imagen 2" class="img-thumbnail">
+                </a>
+                <a href="{{ route('mobaMenu.EquipoTrabajo.integranteTres') }}" target="_blank" class="imagen-contenedor">
+                    <img src="{{ asset('Imagenes/imgs-gallery/DAYANA_FONSECA.jpg') }}" alt="Imagen 3" class="img-thumbnail">
+                </a>
+                <a href="{{ route('mobaMenu.EquipoTrabajo.integranteCuatro') }}" target="_blank" class="imagen-contenedor">
+                    <img src="{{ asset('Imagenes/imgs-gallery/LINDA_PEREZ_1.jpg') }}" alt="Imagen 4" class="img-thumbnail">
+                </a>
+            </div>
             
-          </div>
-          
         </div>
+
     </div>
 
 
-                < <!-- Contenido de la página aquí -->
+    <div class="vertical-line right-line">
+        <hr class="linea2">
+        <a href="https://www.instagram.com/moba_agencia"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.facebook.com/MOBAcomunicacionGrafica/"><i class="bi bi-facebook"></i></a>
+        <hr class="linea2">
+    </div>
 
-                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-                        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-                    </script>
-                    <script>
-                        document.querySelector('.dropdown').addEventListener('mouseenter', function() {
-                            this.querySelector('.dropdown-menu').classList.add('show');
-                        });
+    <!-- Contenido de la página aquí -->
 
-                        document.querySelector('.dropdown').addEventListener('mouseleave', function() {
-                            this.querySelector('.dropdown-menu').classList.remove('show');
-                        });
-                    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+    <script>
+        document.querySelector('.dropdown').addEventListener('mouseenter', function() {
+            this.querySelector('.dropdown-menu').classList.add('show');
+        });
+
+        document.querySelector('.dropdown').addEventListener('mouseleave', function() {
+            this.querySelector('.dropdown-menu').classList.remove('show');
+        });
+        
+        
+        // acción para realizar ampliación de la imagen
+
+        const imagen = document.getElementById('imaimg-thumbnail');
+
+        img-thumbnail.addEventListener('mouseover', () => {
+            img-thumbnail.classList.add('imagen-ampliada');
+        });
+
+        img-thumbnail.addEventListener('mouseout', () => {
+            img-thumbnail.classList.remove('imagen-ampliada');
+        });
+    </script>
 </body>
 
 </html>
 
 <style>
     .container {
+        height: 100vh;
+        width: 95%;
+        # border: solid 3px yellow;
+        margin-top: 5%;
         display: flex;
+        flex-direction: column;
+    }
+
+    .active-link {
+        position: relative;
+        color:#2bb9e5;
+    }
+    
+    .active-link:after {
+        color:#2bb9e5;
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px; /* Grosor de la línea */
+        background-color: blue; /* Color de la línea */
+    }
+
+    .box-1,
+    .box-2 {
+        # border: solid 3px blue;
+        height: 100%;
+        width: 95% display: inline-block;
+
+
+    }
+
+    .box-1 {
+        display: flex;
+        text-align: center;
         align-items: center;
         justify-content: center;
-        height: 100vh;
-        width: 100%;
+        margin-top: 2%;
 
     }
 
-    .box {
-        height: 70%;
-        width: 50%;
-        margin-top: 5%;
-    }
-
-    h1,
-    h3 {
-        color: #BCCCE0;
-    }
-
-    label {
-        color: #BCCCE0;
-    }
-
-    form {
-        margin-top: 10%;
-        margin-left: 10%;
-    }
-
-    input {
+    .texto {
+        # border: solid 3px red;
+        height: 90%;
         width: 90%;
-        margin-right: 10%;
-        background-color: #3E3E3F;
-        color: white;
-    }
-
-    textarea {
-        width: 90%;
-        background-color: #3E3E3F;
-        color: white;
-    }
-
-    .mapa {
-        padding: 3em 0;
-        background: linear-gradient(#fefefe, #888888);
-    }
-
-    .mapa p {
-        margin: 0 0 2em;
         text-align: center;
+        color: #BCCCE0;
+        margin-top: 0%;
+        font-size: 110%;
+        margin-left: 10%;
+        margin-right: 5%;
+        padding: 2%;
+        font-weight: 600;
     }
 
-    .mapa-contenido {
-        width: 940px;
-        margin: 0 auto;
+    .text {
+        color: #2bb9e5;
+        font-size: 280%;
+        font-weight: bold;
+        line-height: 1.5; 
+        margin-bottom: 2;
     }
 
-
-    .diferenciales {
-        padding: 3em 0;
-        background: #888888;
+    .p {
+        border-left: 5px solid #2bb9e5;
+        padding-left: 10px;
+        text-align: justify;
+        line-height: 1.5;
+        margin-bottom: 0;
     }
 
-
-    .contenido-diferenciales {
-        width: 640px;
-        margin: 0 auto;
+    .box-2 {
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
 
     }
 
-    .lista-diferenciales {
-        width: 40%;
+    .text-1 {
+        color: #2bb9e5;
+        font-size: 140%;
+        font-weight: bold;
+        line-height: 1.5; 
+        margin-bottom: 2;
+        font-weight: 1000;
+    }
+
+    .contenido,
+    .imagenes {
+        #border: solid 3px red;
+        height: 90%;
+        width: 48%;
+        font-size: 350%
+        
+    }
+
+    .imagenes {
+        margin-left: 3%;
+        margin-right: 2%;
+        padding-top: 1%;
+        border-radius: 10px;
+        position: relative;
         display: inline-block;
-        vertical-align: top;
+
+
     }
 
-    #submit {
-        background-color: #BCCCE0;
-        width: 25%;
-        color: black;
+    .imagenes img {
+        background-color: #ccc;
+        border: solid 2px #ccc;
+        width: 40%;
+        height: 40%;
+        padding-top: 2%;
+        padding-bottom: 2%;
+        margin-block: 2%;
+        margin-inline: 2%;
+        transition: transform 0.3s ease;
 
+    }
+
+    .img-thumbnail:hover {
+        transform: scale(1.2);
     }
 </style>

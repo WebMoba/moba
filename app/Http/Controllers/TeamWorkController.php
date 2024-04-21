@@ -133,7 +133,9 @@ class TeamWorkController extends Controller
 
         // request()->validate(TeamWork::$rules);
 
-        $teamWork->update($request->all());
+        $teamWork->update($request->all(), [
+            'disable' => 0,
+        ]);
         
         return redirect()->route('team-works.index')
             ->with('success', 'Equipo de trabajo actualizado con éxito');

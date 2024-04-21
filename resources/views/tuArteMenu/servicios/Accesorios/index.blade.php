@@ -8,11 +8,14 @@
     <title>Servicios</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/AccesoriosTuArte.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/StylesServicios/AccesoriosTuArte.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
-<body class="background-image">
+<body style="position: relative;">
+    <div
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{ asset('Imagenes/FondoPrueba.png') }}'); background-size: cover; background-position: center top; background-repeat: no-repeat; opacity: 1; z-index: -1; filter: brightness(30%); -webkit-filter: brightness(30%);">
+    </div>
     <nav class="navbar">
         <div class="container-fluid">
             <a href="{{ asset('/') }}">
@@ -25,16 +28,21 @@
                         Servicios
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#">Accesorios</a></li>
-                        <li><a class="dropdown-item" href="#">Decoración</a></li>
-                        <li><a class="dropdown-item" href="#">Joditas pal´Recuerdo</a></li>
-                        <li><a class="dropdown-item" href="#">Mascotas</a></li>
+                        <li><a class="dropdown-item"
+                                href="{{ route('tuArteMenu.servicios.Accesorios.index') }}">Accesorios</a></li>
+                        <li><a class="dropdown-item"
+                                href="{{ route('tuArteMenu.servicios.Decoracion.index') }}">Decoracion</a></li>
+                        <li><a class="dropdown-item"
+                                href="{{ route('tuArteMenu.servicios.JoditasPalRecuerdo.index') }}">Joditas pa'l
+                                Recuerdo</a></li>
+                        <li><a class="dropdown-item"
+                                href="{{ route('tuArteMenu.servicios.Mascotas.index') }}">Mascotas</a></li>
                     </ul>
                 </div>
                 <a href="{{ route('tuArteMenu.index') }}" class="btn btn-primary">Nosotros</a>
-                <a href="{{route('tuArteMenu.categorias.index')}}"class="btn btn-primary">Categorias</a>
+                <a href="{{ route('tuArteMenu.categorias.index') }}"class="btn btn-primary">Categorias</a>
                 <a href="{{ route('tuArteMenu.galeria.index') }}" class="btn btn-primary">Galeria</a>
-                <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
+                <a href="{{ route('tuArteMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
             <a href="{{ asset('/') }}">
                 <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte">
@@ -71,70 +79,160 @@
             portafolio piezas con las que te vas a identificar y que sin duda querras tener en tu joyero.</h1>
         <h1 class="txts3">En esta línea encuentras aretes largos, aretes topitos, dijes, manillas, pines, anillos.</h1>
     </div>
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-10"> <!-- Ajusta el ancho del carrusel -->
-                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <!-- Imágenes del carrusel -->
-                        <div class="carousel-item active">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img src="{{ asset('Imagenes/imgs-gallery/1.jpg') }}" class="d-block w-100"
-                                        alt="...">
-                                </div>
-                                <div class="col-md-3">
-                                    <img src="{{ asset('Imagenes/imgs-gallery/2.jpg') }}" class="d-block w-100"
-                                        alt="...">
-                                </div>
-                                <div class="col-md-3">
-                                    <img src="{{ asset('Imagenes/imgs-gallery/3.jpg') }}" class="d-block w-100"
-                                        alt="...">
-                                </div>
-                                <div class="col-md-3">
-                                    <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }}" class="d-block w-100"
-                                        alt="...">
-                                </div>
+    <!---Carrusel--->
+    <div class="carousel-container">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col">
+                            <div class="red-box">
+                                <img src="{{ asset('Imagenes/imgs-gallery/1.jpg') }}" class="d-block w-100">
+                            </div>
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <div class="rating-text">
+                                <p class="textName">COLLAR STICH</p>
+                                <p class="textValue">$10.000</p>
                             </div>
                         </div>
-                        <div class="carousel-item">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img src="{{ asset('Imagenes/imgs-gallery/5.jpg') }}" class="d-block w-100"
-                                        alt="...">
-                                </div>
-                                <div class="col-md-3">
-                                    <img src="{{ asset('Imagenes/imgs-gallery/6.jpg') }}" class="d-block w-100"
-                                        alt="...">
-                                </div>
-                                <div class="col-md-3">
-                                    <img src="{{ asset('Imagenes/imgs-gallery/7.jpg') }}" class="d-block w-100"
-                                        alt="...">
-                                </div>
-                                <div class="col-md-3">
-                                    <img src="{{ asset('Imagenes/imgs-gallery/8.jpg') }}" class="d-block w-100"
-                                        alt="...">
-                                </div>
+                        <div class="col">
+                            <div class="red-box">
+                                <img src="{{ asset('Imagenes/imgs-gallery/2.jpg') }}" class="d-block w-100">
+                            </div>
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <div class="rating-text">
+                                <p class="textName">ARETES PAISAJE</p>
+                                <p class="textValue">$10.000</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="red-box">
+                                <img src="{{ asset('Imagenes/imgs-gallery/3.jpg') }}" class="d-block w-100">
+                            </div>
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <div class="rating-text">
+                                <p class="textName">ARETES PERRO</p>
+                                <p class="textValue">$10.000</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="red-box">
+                                <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }}" class="d-block w-100">
+                            </div>
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <div class="rating-text">
+                                <p class="textName">ANILLO PAISAJE</p>
+                                <p class="textValue">$10.000</p>
                             </div>
                         </div>
                     </div>
-                    <!-- Flechas de navegación -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+                </div>
+                <!-- Agrega más imágenes aquí -->
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col">
+                            <div class="red-box">
+                                <img src="{{ asset('Imagenes/imgs-gallery/5.jpg') }}" class="d-block w-100">
+                            </div>
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <div class="rating-text">
+                                <p class="textName">COLLAR BOYACA</p>
+                                <p class="textValue">$10.000</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="red-box">
+                                <img src="{{ asset('Imagenes/imgs-gallery/6.jpg') }}" class="d-block w-100">
+                            </div>
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <div class="rating-text">
+                                <p class="textName">ARETES LUNA</p>
+                                <p class="textValue">$10.000</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="red-box">
+                                <img src="{{ asset('Imagenes/imgs-gallery/7.jpg') }}" class="d-block w-100">
+                            </div>
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <div class="rating-text">
+                                <p class="textName">ARETES CARACOLA</p>
+                                <p class="textValue">$10.000</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="red-box">
+                                <img src="{{ asset('Imagenes/imgs-gallery/8.jpg') }}" class="d-block w-100">
+                            </div>
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <div class="rating-text">
+                                <p class="textName">ANILLO GATO</p>
+                                <p class="textValue">$10.000</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
@@ -148,85 +246,29 @@
         });
     </script>
     <script>
-        // Espera a que el documento esté completamente cargado
         document.addEventListener("DOMContentLoaded", function() {
-            // Selecciona el carrusel por su ID
-            var myCarousel = document.getElementById('carouselExampleControls');
+            const starsContainers = document.querySelectorAll('.stars');
 
-            // Inicializa el carrusel con opciones personalizadas
-            var carousel = new bootstrap.Carousel(myCarousel, {
-                interval: 3000, // Intervalo de desplazamiento en milisegundos
-                wrap: true // Permite el desplazamiento continuo
+            starsContainers.forEach(starsContainer => {
+                const stars = starsContainer.querySelectorAll('i');
+
+                stars.forEach((star, index) => {
+                    star.addEventListener('click', function() {
+                        // Remover la clase 'active' de todas las estrellas
+                        stars.forEach((s, i) => {
+                            if (i <= index) {
+                                s.classList.add(
+                                    'active'
+                                ); // Agregar la clase 'active' a las estrellas hasta la seleccionada
+                            } else {
+                                s.classList.remove('active');
+                            }
+                        });
+                    });
+                });
             });
         });
     </script>
 </body>
 
 </html>
-
-
-<style>
-    .dropdown-menu .dropdown-item:hover {
-        background-color: transparent !important;
-        border-color: transparent !important;
-        border: none;
-        text-shadow: 0 0 5px #f80008;
-    }
-
-    .dropdown-item:hover {
-        color: #f80008 !important;
-    }
-
-    .dropdown-menu {
-        background-color: transparent !important;
-        border-color: #f80008 !important;
-    }
-
-    .dropdown-menu .dropdown-item {
-        color: #f80008 !important;
-        background-color: transparent !important;
-        border-color: #f80008 !important;
-    }
-
-    .dropdown-menu .dropdown-divider {
-        border-top: 1px solid #f80008;
-    }
-
-    .carousel-container {
-        background-color: red;
-        /* Color del rectángulo rojo */
-        padding: 20px;
-        /* Espacio alrededor del carrusel */
-        margin-top: 100px;
-        /* Espacio superior */
-        text-align: center;
-        /* Centrar texto */
-    }
-
-    .carousel-item {
-        display: none;
-        /* Ocultar todas las imágenes por defecto */
-    }
-
-    .carousel-item.active {
-        display: block;
-        /* Mostrar la imagen activa */
-    }
-
-    /* Estilos para el texto debajo de las imágenes */
-    .carousel-caption {
-        color: white;
-        /* Color del texto */
-        font-size: 18px;
-        /* Tamaño de la fuente */
-        margin-top: 10px;
-        /* Espacio superior */
-    }
-
-    /* Estilos para las flechas de navegación */
-    .carousel-control-prev,
-    .carousel-control-next {
-        width: 5%;
-        background: none;
-    }
-</style>

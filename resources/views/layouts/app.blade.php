@@ -45,6 +45,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('events.index') }}">{{ __('Eventos') }}</a>
                             </li>
+                            
 
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('purchases.index') }}"> {{ trans('Compras') }}</a>

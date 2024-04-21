@@ -23,6 +23,7 @@ use App\Http\Controllers\UnitController;
 /*Fin Importartación de controladores product y unit*/
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CategoriesProductsServiceController;
+use App\Models\CategoriesProductsService;
 //controladores project,teamwork y quote/fabian
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\QuoteController;
@@ -115,6 +116,7 @@ Route::middleware('auth')->group(function () {
 
     /** Inicio de Controladores Sale y DetailSale */
     Route::resource('sales', SaleController::class)->middleware('auth');
+    Route::get('/pdf/sales', [SaleController::class, 'generatePDF'])->name('pdf.sales');
     Route::resource('detail-sale', DetailSaleController::class)->middleware('auth');
     /** fin de Controladores Sale y DetailSale  */
 
@@ -130,47 +132,60 @@ Route::middleware('auth')->group(function () {
     Route::get('/export-teamwork', [TeamWorkController::class, 'export'])->name('excel.teamwork');
     //fin-fabian
 
-    //Vistas carpeta servicios
-    Route::get('/mobaMenu/index', function () {
-        return view('mobaMenu.index');
-    });
-    Route::view('/mobaMenu/Servicios/servicios', 'mobaMenu.servicios.servicios')->name('mobaMenu.Servicios.servicios');
-    //Fin vistas carpeta servicios
 
 
-   
+
 });
 
- //Vistas fronted Moba
- Route::view('/mobaMenu/index', 'mobaMenu.index')->name('mobaMenu.index');
- Route::view('/mobaMenu/EquipoTrabajo/index', 'mobaMenu.EquipoTrabajo.index')->name('mobaMenu.EquipoTrabajo.index');
- Route::view('/mobaMenu/Contacto/index', 'mobaMenu.Contacto.index')->name('mobaMenu.Contacto.index');
- Route::view('/mobaMenu/proyectos/index', 'mobaMenu.proyectos.index')->name('mobaMenu.proyectos.index');
-
- 
-
-
-    //vistas froted tu arte 
-    Route::view('/tuArteMenu/index', 'tuArteMenu.index')->name('tuArteMenu.index');
-    Route::view('/tuArteMenu/galeria/index', 'tuArteMenu.galeria.index')->name('tuArteMenu.galeria.index');
-    Route::view('/tuArteMenu/categorias/index', 'tuArteMenu.categorias.index')->name('tuArteMenu.categorias.index');
-    Route::view('/tuArteMenu/servicios/index', 'tuArteMenu.servicios.index')->name('tuArteMenu.servicios.index');
-    Route::view('/tuArteMenu/servicios/Acccesorios/index', 'tuArteMenu.servicios.Accesorios.index')->name('tuArteMenu.servicios.Accesorios.index');
-    Route::view('/tuArteMenu/Contacto/index', 'tuArteMenu.Contacto.index')->name('tuArteMenu.Contacto.index');
-
- //vistas froted tu arte 
- Route::view('/tuArteMenu/index', 'tuArteMenu.index')->name('tuArteMenu.index');
- Route::view('/tuArteMenu/productos/index', 'tuArteMenu.productos.index')->name('tuArteMenu.productos.index');
- Route::view('/tuArteMenu/galeria/index', 'tuArteMenu.galeria.index')->name('tuArteMenu.galeria.index');
- Route::view('/tuArteMenu/categorias/index', 'tuArteMenu.categorias.index')->name('tuArteMenu.categorias.index');
- 
+//Vistas carpeta servicios
+Route::get('/mobaMenu/index', function () {
+    return view('mobaMenu.index');
+});
+Route::view('/mobaMenu/Servicios/servicios', 'mobaMenu.servicios.servicios')->name('mobaMenu.Servicios.servicios');
+//Fin vistas carpeta servicios
 
 
 
- //ruta Correo electronico
- Route::post('/enviar-correo', [ContactoController::class, 'enviarCorreo'])->name('enviar-correo');
 
 
+//Vistas fronted Moba
+Route::view('/mobaMenu/index', 'mobaMenu.index')->name('mobaMenu.index');
+Route::view('/mobaMenu/EquipoTrabajo/index', 'mobaMenu.EquipoTrabajo.index')->name('mobaMenu.EquipoTrabajo.index');
+Route::view('/mobaMenu/EquipoTrabajo/integranteUno', 'mobaMenu.EquipoTrabajo.integranteUno')->name('mobaMenu.EquipoTrabajo.integranteUno');
+Route::view('/mobaMenu/EquipoTrabajo/integranteDos', 'mobaMenu.EquipoTrabajo.integranteDos')->name('mobaMenu.EquipoTrabajo.integranteDos');
+Route::view('/mobaMenu/EquipoTrabajo/integranteTres', 'mobaMenu.EquipoTrabajo.integranteTres')->name('mobaMenu.EquipoTrabajo.integranteTres');
+Route::view('/mobaMenu/EquipoTrabajo/integranteCuatro', 'mobaMenu.EquipoTrabajo.integranteCuatro')->name('mobaMenu.EquipoTrabajo.integranteCuatro');
+Route::view('/mobaMenu/Contacto/index', 'mobaMenu.Contacto.index')->name('mobaMenu.Contacto.index');
+
+
+
+//vistas froted tu arte 
+Route::view('/tuArteMenu/index', 'tuArteMenu.index')->name('tuArteMenu.index');
+Route::view('/tuArteMenu/galeria/index', 'tuArteMenu.galeria.index')->name('tuArteMenu.galeria.index');
+Route::view('/tuArteMenu/categorias/index', 'tuArteMenu.categorias.index')->name('tuArteMenu.categorias.index');
+Route::view('/tuArteMenu/servicios/index', 'tuArteMenu.servicios.index')->name('tuArteMenu.servicios.index');
+Route::view('/tuArteMenu/servicios/Accesorios/index', 'tuArteMenu.servicios.Accesorios.index')->name('tuArteMenu.servicios.Accesorios.index');
+Route::view('/tuArteMenu/servicios/Decoracion/index', 'tuArteMenu.servicios.Decoracion.index')->name('tuArteMenu.servicios.Decoracion.index');
+Route::view('/tuArteMenu/servicios/Mascotas/index', 'tuArteMenu.servicios.Mascotas.index')->name('tuArteMenu.servicios.Mascotas.index');
+Route::view('/tuArteMenu/servicios/JoditasPalRecuerdo/index', 'tuArteMenu.servicios.JoditasPalRecuerdo.index')->name('tuArteMenu.servicios.JoditasPalRecuerdo.index');
+Route::view('/tuArteMenu/Contacto/index', 'tuArteMenu.Contacto.index')->name('tuArteMenu.Contacto.index');
+
+
+
+
+
+//ruta Correo electronico
+Route::post('/enviar-correo', [ContactoController::class, 'enviarCorreo'])->name('enviar-correo');
+
+
+//ruta nombre categorias 
+
+Route::get('/tuArteMenu/categorias', function () {
+    $categorias = CategoriesProductsService::where('disable', false)
+                                            ->orderBy('created_at', 'asc')
+                                            ->get();
+    return view('tuArteMenu.categorias.index', compact('categorias'));
+})->name('tuArteMenu.categorias.index');
 require __DIR__ . '/auth.php';
 
 Auth::routes();

@@ -23,6 +23,12 @@
                             <tbody>
                                 <tr>
                                     <div class="form-group">
+                                    <strong>N° venta:</strong>
+                                    {{ $sale->id }}
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div class="form-group">
                                     <strong>Nombre:</strong>
                                     {{ $sale->person->name }}
                                     </div>
@@ -47,7 +53,9 @@
                                     </div>
                                 </tr>
                         
+
                                 <tr>
+                                    
                                     <div class="container ms-1">
                                         <h2><strong>Detalle de la Venta</strong></h2>
                                         @if($detailSale)

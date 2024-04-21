@@ -15,13 +15,13 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Cottizaciones') }}
+                                {{ __('Cotizaciones') }}
                             </span>
 
                             <form action="{{ route('quotes.index') }}" method="get" class="d-flex align-items-center">
                                 <div class="col-auto mr-2">
-                                    <input type="text" class="form-control" name="search"
-                                        placeholder="Buscar..." id="search">
+                                    <input type="text" class="form-control" name="search" placeholder="Buscar..."
+                                        id="search">
                                 </div>
                                 <div class="col-auto">
                                     <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
@@ -77,14 +77,15 @@
                                             <td>
                                                 <form action="{{ route('quotes.destroy', $quote->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary {{ $quote->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('quotes.show', $quote->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
+                                                        href="{{ route('quotes.show', $quote->id) }}"><i
+                                                            class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
                                                     <a class="btn btn-sm btn-success {{ $quote->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('quotes.edit', $quote->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
+                                                        href="{{ route('quotes.edit', $quote->id) }}"><i
+                                                            class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"
-                                                        onclick="return confirm('¿Está seguro de que desea {{ $quote->disable ? 'Habilitar' : 'Deshabilitar' }} la cotización?')"
-                                                        {{ $quote->disable ? 'disabled' : '' }}>
+                                                        onclick="return confirm('¿Está seguro de que desea {{ $quote->disable ? 'Habilitar' : 'Deshabilitar' }} la cotización?')">
                                                         <i class="fa fa-fw fa-trash"></i>
                                                         {{ $quote->disable ? 'Habilitar' : 'Deshabilitar' }}
                                                     </button>
