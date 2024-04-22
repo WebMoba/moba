@@ -49,10 +49,10 @@
             <div class="linea grey"></div> <!-- Línea vertical antes de los logos -->
                 <div class="columna">
                     <div class="logoRedes">
-                        <img src="{{ asset('Imagenes/imgPrincipalView/facebookGris.png') }}" alt="Logo de Facebook">
+                        <a href="https://www.facebook.com/MOBAcomunicacionGrafica/"><img src="{{ asset('Imagenes/imgPrincipalView/facebookGris.png') }}" alt="Logo de Facebook" ></a>
                     </div>
                     <div class="logoRedes">
-                        <img src="{{ asset('Imagenes/imgPrincipalView/instagramGris.png') }}" alt="Logo de Instagram">
+                       <a href="https://www.instagram.com/moba_agencia"> <img src="{{ asset('Imagenes/imgPrincipalView/instagramGris.png') }}" alt="Logo de Instagram"></a>
                     </div>
                 </div>
                 <div class="linea grey"></div> <!-- Línea vertical después de los logos -->
@@ -71,10 +71,10 @@
             <div class="linea"></div> <!-- Línea vertical antes de los logos -->
                 <div class="columna">
                     <div class="logoRedes">
-                        <img src="{{ asset('Imagenes/imgPrincipalView/facebookRojo.png') }}" alt="Logo de Facebook">
+                        <a href="https://www.facebook.com/MOBAcomunicacionGrafica/"><img src="{{ asset('Imagenes/imgPrincipalView/facebookRojo.png') }}" alt="Logo de Facebook"></a>
                     </div>
                     <div class="logoRedes">
-                        <img src="{{ asset('Imagenes/imgPrincipalView/instagramRojo.png') }}" alt="Logo de Instagram">
+                       <a href="https://www.instagram.com/moba_agencia"> <img src="{{ asset('Imagenes/imgPrincipalView/instagramRojo.png') }}" alt="Logo de Instagram"></a>
                     </div>
                 </div>
                 <div class="linea"></div> <!-- Línea vertical después de los logos -->

@@ -8,7 +8,7 @@
     <title>Servicios</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/StyleContactoTuArte/ContactoTuArte.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
@@ -120,68 +120,3 @@
 
 </html>
 
-<style>
-    .container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        width: 100%;
-
-    }
-    .active-link {
-        position: relative;
-        color:red;
-    }
-
-    .active-link:after {
-        color:red;
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 2px; /* Grosor de la línea */
-        background-color: red; /* Color de la línea */
-    }
-
-    .box {
-        height: 70%;
-        width: 50%;
-        margin-top: 5%;
-    }
-
-    h1,
-    h3 {
-        color: #BCCCE0;
-    }
-
-    label {
-        color: #BCCCE0;
-    }
-
-    form {
-        margin-top: 10%;
-        margin-left: 10%;
-    }
-
-    input {
-        width: 90%;
-        margin-right: 10%;
-        background-color: #3E3E3F;
-        color: white;
-    }
-
-    textarea {
-        width: 90%;
-        background-color: #3E3E3F;
-        color: white;
-    }
-
-    #submit {
-        background-color: #BCCCE0;
-        width: 25%;
-        color: black;
-
-    }
-</style>

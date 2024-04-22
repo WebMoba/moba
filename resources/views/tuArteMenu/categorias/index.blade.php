@@ -8,7 +8,7 @@
     <title>Servicios</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/StyleCategorias/categorias.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
@@ -116,105 +116,3 @@
 
 </html>
 
-
-<style>
-    .dropdown-menu .dropdown-item:hover {
-        background-color: transparent !important;
-        border-color: transparent !important;
-        border: none;
-        text-shadow: 0 0 5px #f80008;
-    }
-
-    .dropdown-menu .dropdown-item:hover {
-        background-color: rgba(255, 0, 0, 0.274) !important;
-        /* Cambia el color de fondo al pasar el cursor sobre las opciones del menú */
-    }
-
-    .dropdown-item:hover {
-        color: #f80008 !important;
-    }
-
-    .dropdown-menu {
-        background-color: transparent !important;
-        border-color: #73a3b6 !important;
-    }
-
-    .dropdown-menu .dropdown-item {
-        color: #f80008 !important;
-        background-color: transparent !important;
-        border-color: #f80008 !important;
-    }
-
-    .dropdown-menu .dropdown-divider {
-        border-top: 1px solid #f80008;
-    }
-
-    .container {
-        display: flex;
-        justify-content: center;
-        text-align: center;
-        align-items: center;
-        width: 90%;
-        height: 100vh;
-    }
-    
-    .active-link {
-        position: relative;
-        color:red;
-    }
-
-    .active-link:after {
-        color:red;
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 2px; /* Grosor de la línea */
-        background-color: red; /* Color de la línea */
-    }
-
-    .contenedor {
-     display: flex;
-    height: 80%;
-    /* 100% de la altura de la ventana */
-    width: 90%;
-    margin-top: 8%;
-}
-
-    .campo {
-        border: 20px solid white;
-      
-        
-}
-    .campo a{
-        text-decoration: none;
-        color: white;
-
-}
-
-    .campo1 {
-    flex-grow: 1; /* Hacer que el campo se expanda automáticamente */
-    height: 100%;
-    /* 100% de altura */
-    position: relative;
-}
-
-    .campo1:hover {
-        background-color: red;
-        cursor: pointer;
-        color: white;
-    }
-
-   
-    .campo1 h1 {
-        position: absolute;
-        bottom: 0;
-        margin-left: 5%;
-        color: white;
-        margin-bottom: 20%;
-
-    }
-
-    
-</style>

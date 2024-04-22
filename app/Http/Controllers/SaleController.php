@@ -78,11 +78,21 @@ class SaleController extends Controller
         $sale->date = now()->format('Y-m-d');
         $detailSale = null;
 
+        // Generar un id provisional para la venta
+        $tempSaleId = uniqid();
+
         // Obtener una lista de personas con el formato adecuado para el select
-        $people = Person::pluck('name', 'id_card', 'id');
+        $people = Person::select('id', 'name', 'id_card')->get()->pluck('name', 'id');
+
+        // Obtener los ID Cards de las personas para el select
+        $idCards = Person::pluck('id_card', 'id');
+
 
         // Obtener una lista de productos para el select
         $products = Product::pluck('name', 'id');
+
+        // Obtener los precios de los productos y pasarlos a la vista
+        $productPrices = Product::pluck('price', 'id')->toArray();
 
         // Obtener una lista de cotizaciones para el select
         $quotes = Quote::pluck('id', 'id');
@@ -92,7 +102,10 @@ class SaleController extends Controller
         // Crear una nueva instancia de detalle de venta
         $detailSale = new DetailSale();
 
-        return view('sale.create', compact('sale', 'people', 'quotes', 'confirm', 'products', 'detailSale'));
+        // Definir la variable $saleId
+        $saleId = $tempSaleId;
+
+        return view('sale.create', compact('sale', 'people', 'quotes', 'confirm', 'products', 'detailSale', 'productPrices', 'saleId', 'idCards'));
     }
 
 
@@ -100,45 +113,63 @@ class SaleController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        // Validar los datos recibidos
+        $validatedData = $request->validate([
             'people_id' => 'required',
             'date' => 'required|date',
-            'quotes_id' => 'required',
+            'cotizaciones' => 'nullable',
+            'detalles' => 'required|array',
+            'name' => 'required',
+            'disable' => 'required|boolean',
+            'detalles.*.product_id' => 'required|exists:products,id',
+            'detalles.*.quantity' => 'required|numeric|min:1',
+            'detalles.*.price_unit' => 'required|numeric|min:0',
+            'detalles.*.subtotal' => 'required|numeric|min:0',
+            'detalles.*.discount' => 'nullable|numeric|min:0|max:100',
+            'detalles.*.total' => 'required|numeric|min:0',
+            'detalles.*.sales_id' => 'nullable',
         ]);
 
-        // Crear una nueva venta
-        $sale = new Sale();
-        $sale->name = $request->input('nombre_cliente');
-        $sale->people_id = $request->input('id_cliente');
-        $sale->date = $request->input('fecha');
-        $sale->quotes_id = $request->input('cotizaciones');
-        $sale->save();
+        DB::beginTransaction();
 
-        // Recorrer los detalles de la venta y guardarlos en la base de datos
-        foreach ($request->input('detalles') as $detalle) {
-            $detalleVenta = new DetailSale();
-            $detalleVenta->quantity = $detalle['cantidad'];
-            $detalleVenta->price_unit = $detalle['precio_unitario'];
-            $detalleVenta->subtotal = $detalle['subtotal'];
-            $detalleVenta->discount = $detalle['descuento'];
-            $detalleVenta->total = $detalle['total'];
-            $detalleVenta->sale_id = $sale->id; // Asociar el detalle con la venta creada
-            $detalleVenta->product_id = $detalle['product'];
-            $detalleVenta->save();
+        try {
+            // Crear una nueva instancia de Sale
+            $sale = new Sale();
+            $sale->name = $validatedData['name']; // Aquí asignas el nombre del cliente
+            $sale->people_id = $validatedData['people_id'];
+            $sale->date = $validatedData['date'];
+            $sale->quotes_id = $validatedData['cotizaciones'];
+            $sale->disable = $validatedData['disable'];
+            $sale->save();
+
+            // Guardar los detalles de la venta
+            foreach ($validatedData['detalles'] as $detalle) {
+                $saleDetail = new DetailSale();
+                $saleDetail->product_id = $detalle['product_id'];
+                $saleDetail->quantity = $detalle['quantity'];
+                $saleDetail->price_unit = $detalle['price_unit'];
+                $saleDetail->subtotal = $detalle['subtotal'];
+                $saleDetail->discount = $detalle['discount'] ?? 0; // Valor por defecto si no se proporciona
+                $saleDetail->total = $detalle['total'];
+                $saleDetail->sale_id = $sale->id;
+                $saleDetail->save();
+            }
+
+            DB::commit();
+            return response()->json(['message' => 'Venta guardada correctamente']);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json(['error' => $e->getMessage()], 500);
         }
-
-        return redirect()->route('sales.index')->with('success', 'Registro creado exitosamente');
     }
-
-
-
 
     public function show($id)
     {
         $sale = Sale::findOrFail($id);
 
         // Obtener el nombre de la persona asociada a la venta
-        $people = Person::pluck('name', 'id_card', 'id');
+        $people = Person::select('id', 'name', 'id_card')->get()->pluck('name', 'id');
+
 
         $products = Product::pluck('name', 'id');
 
@@ -159,20 +190,18 @@ class SaleController extends Controller
     {
         $sale = Sale::find($id);
         $people = Person::pluck('name', 'id');
-        $salesName = $sale->name;
         $products = Product::pluck('name', 'id');
         $detailSale = $sale->detailSales()->first();
         $sales = Sale::pluck('name', 'id');
         $confirm = true;
 
-        return view('sale.edit', compact('sale', 'detailSale', 'people', 'confirm', 'products', 'salesName'));
+        return view('sale.edit', compact('sale', 'detailSale', 'people', 'confirm', 'products'));
     }
 
 
     public function update(Request $request, Sale $sale)
     {
         $request->validate([
-            'name' => 'required',
             'people_id' => 'required',
             'date' => 'required|date',
             'quotes_id' => 'required',
@@ -180,7 +209,6 @@ class SaleController extends Controller
 
         // Actualizar la venta
         $sale->update([
-            'name' => $request->name,
             'people_id' => $request->people_id,
             'date' => $request->date,
             'quotes_id' => $request->quotes_id,
