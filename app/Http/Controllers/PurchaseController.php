@@ -9,6 +9,10 @@ use App\Models\Person;
 use Illuminate\Http\Request;
 use Dompdf\Dompdf;
 
+use App\Exports\PurchasesExport;
+use Maatwebsite\Excel\Facades\Excel;
+
+
 /**
  * Class PurchaseController
  * @package App\Http\Controllers
@@ -209,6 +213,11 @@ class PurchaseController extends Controller
 
         return redirect()->route('purchases.index')
             ->with('success', 'Registro eliminado exitosamente');
+    }
+
+    public function exportToExcel()
+    {
+        return Excel::download(new PurchasesExport, 'purchases.xlsx');
     }
     
 }

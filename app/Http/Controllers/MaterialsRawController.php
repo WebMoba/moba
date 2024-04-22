@@ -7,6 +7,9 @@ use App\Models\Unit;
 use Illuminate\Http\Request;
 use Dompdf\Dompdf;
 
+use App\Exports\MaterialsRawExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 /**
  * Class MaterialsRawController
  * @package App\Http\Controllers
@@ -142,4 +145,9 @@ class MaterialsRawController extends Controller
         return redirect()->route('materials_raws.index')
             ->with('success', 'Registro eliminado exitosamente');
     }
+
+    public function exportToExcel()
+{
+    return Excel::download(new MaterialsRawExport(), 'materials_raw.xlsx');
+}
 }

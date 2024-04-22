@@ -28,6 +28,10 @@
                                 <a href="{{ route('pdf.purchase') }}" class="btn btn-danger btn-sm float-right">
                                     <i class="fa fa-file-pdf"></i> {{ __('PDF') }}
                                 </a>
+                                <a href="{{ route('excel.purchase') }}" class="btn btn-success btn-sm float-right">
+                                    <i class="fa fa-file-excel"></i> {{ __('Excel') }}
+                                </a>
+                             
                             </div>
                             <div class="float-right">
                                 <a href="{{ route('purchases.create') }}" class="btn btn-primary btn-sm float-right"
