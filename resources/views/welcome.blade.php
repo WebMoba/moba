@@ -59,7 +59,7 @@
             </div>
               <!-- Insersion de imagenes  -->
             <a href="{{ route('mobaMenu.index') }}" class="logos">
-            <div class="logos"><img src="{{ asset('Imagenes/imgPrincipalView/LogoMoba.png') }}" alt="Imagen"></div>
+            <div class="logos"><img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" alt="Imagen"></div>
             </a>
 
             <a href="{{ route('tuArteMenu.index') }}" class="logos">
@@ -139,15 +139,15 @@
 
         /* Ajustar el ancho y alto de la imagen Moba */
         .logos img {
-            width: 90%; 
-            height: 35%;
+            width: 120%; 
+            height: 65%;
             transition: width 0.7s, height 0.7s; 
             cursor: pointer;
         }
        
         .logos img:hover{
-            width: 95%;
-            height: 40%
+            width: 140%;
+            height: 85%
         }
 
          /* Ajustar el ancho y alto de la imagen tu arte */
@@ -156,8 +156,8 @@
             height: 85%
         }
         #img2:hover{
-            width: 95%;
-            height: 90%
+            width: 110%;
+            height: 105%
         }
         .links{
             display: flex;
