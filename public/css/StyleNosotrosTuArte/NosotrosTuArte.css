@@ -21,7 +21,6 @@ body::after {
     z-index: -1;
     filter: brightness(30%);
     -webkit-filter: brightness(30%);
-
 }
 
 .navbar {
