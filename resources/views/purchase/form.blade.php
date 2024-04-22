@@ -14,7 +14,7 @@
     <div class="box-body">
         <div class="form-group">
             {{ Form::label('Nombre del proveedor', null, ['class' => 'required-label']) }}
-            {{ Form::text('name', $purchase->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Name']) }}
+            {{ Form::select('name', $usersName, $purchase->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Name']) }}
             {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
@@ -188,7 +188,7 @@
         });
 
         // Recopilar información principal del formulario de compra
-        const nombreProveedor = document.querySelector('input[name="name"]').value;
+        const nombreProveedor = document.querySelector('select[name="name"]').value;
         const fecha = document.querySelector('input[name="date"]').value;
         const proveedorId = document.querySelector('select[name="people_id"]').value;
 

@@ -54,7 +54,7 @@
                                     <tr>
                                         <th>No</th>
 
-                                        <th>Nombre de compra</th>
+                                        <th>Nombre del proveedor</th>
                                         <th>Fecha realizacion de la compra</th>
                                         <th>Documento - Dirección del proveedor</th>
 
@@ -71,10 +71,10 @@
                                             <tr>
                                                 <td>{{ ++$i }}</td>
 
-                                                <td>{{ $purchase->name }}</td>
+                                                <td>{{ $purchase->user->name }}</td>
+
                                                 <td>{{ $purchase->date }}</td>
-                                                <td>{{ $purchase->person->id_card }} - {{ $purchase->person->addres }}
-                                                </td>
+                                                <td>{{ $purchase->person->id_card }} - {{ $purchase->person->addres }}</td>
 
                                                 <td>
                                                     <form action="{{ route('purchases.destroy', $purchase->id) }}"

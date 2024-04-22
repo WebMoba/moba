@@ -50,16 +50,16 @@ class PurchaseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
-        $search = trim($request->get('search'));
-        $purchases = Purchase::with('person')
-            ->where('name', 'LIKE', '%' . $search . '%')
-            ->orwhere('date', 'LIKE', '%' . $search . '%')
-            ->paginate(10);
+{
+    $search = trim($request->get('search'));
+    $purchases = Purchase::with('person', 'user')
+        ->where('name', 'LIKE', '%' . $search . '%')
+        ->orwhere('date', 'LIKE', '%' . $search . '%')
+        ->paginate(10);
 
-        return view('purchase.index', compact('purchases', 'search'))
-            ->with('i', (request()->input('page', 1) - 1) * $purchases->perPage());
-    }
+    return view('purchase.index', compact('purchases', 'search'))
+        ->with('i', (request()->input('page', 1) - 1) * $purchases->perPage());
+}
 
     /**
      * Show the form for creating a new resource.
@@ -74,6 +74,7 @@ class PurchaseController extends Controller
             $person = Person::find($id);
             return "$id_card - $person->addres";
         })->toArray();
+        $usersName = User::pluck('name', 'id');
 
         // Obtener el nombre de la compra
         $purchaseName = $purchase->name;
@@ -81,10 +82,10 @@ class PurchaseController extends Controller
         $detailPurchase = new DetailPurchase();
         $purchases = Purchase::pluck('name', 'id');
         $materialsRaws = MaterialsRaw::pluck('name', 'id');
-        
+
         $confirm = false;
 
-        return view('purchase.create', compact('purchase', 'people', 'detailPurchase', 'purchases', 'materialsRaws', 'purchaseName', 'confirm'));
+        return view('purchase.create', compact('purchase', 'people', 'detailPurchase', 'purchases', 'materialsRaws', 'purchaseName', 'confirm', 'usersName'));
     }
 
     /**
@@ -135,12 +136,11 @@ class PurchaseController extends Controller
      */
     public function show($id)
     {
-        $purchase = Purchase::findOrFail($id);
+        $purchase = Purchase::with('person', 'user')->findOrFail($id);
         $details = DetailPurchase::where('purchases_id', $id)->get();
-
+    
         return view('purchase.show', compact('purchase', 'details'));
     }
-
 
     /**
      * Show the form for editing the specified resource.
