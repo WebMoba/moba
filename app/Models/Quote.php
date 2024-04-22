@@ -27,7 +27,12 @@ class Quote extends Model
 {
 
     static $rules = [
-
+        'date_issuance' => 'required|date',
+        'description' => 'required|string|max:300',
+        'total' => 'required|numeric',
+        'discount' => 'required|numeric',
+        'status' => 'required|in:aprobado,rechazado,pendiente',
+        'people_id' => 'required',
     ];
 
     protected $perPage = 20;
