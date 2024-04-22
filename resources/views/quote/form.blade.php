@@ -135,13 +135,6 @@
                                 <th>
                                     <button class="btn btn-danger eliminar-detalle">Eliminar detalle</button>
                                 </th>
-                                <!-- <th>
-                                    <div class="form-group">
-                                    {{ Form::label('Cotización') }}
-                                    {{ Form::select('quotes_id[]', $quotes, null, ['class' => 'form-control' . ($errors->has('quotes_id') ? ' is-invalid' : ''), 'required']) }}
-                                    {!! $errors->first('quotes_id', '<div class="invalid-feedback">:message</div>') !!}
-                                    </div>
-                                </th> -->
                             </tr>
                         </tbody>
                     </table>

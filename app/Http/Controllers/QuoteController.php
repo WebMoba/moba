@@ -68,25 +68,51 @@ class QuoteController extends Controller
      */
     public function store(Request $request)
     {
-        // Crear la cotización
+        request()->validate(Quote::$rules);
+    
+        $msj=[
+            'required'=>'El atributo es requerido',
+            'max'=>'No puede ingresar mas caracteres en este campo',
+            'string' => 'El campo debe ser una cadena de texto.',
+            'date' => 'El campo no debe ser una fecha anterior al dia de Hoy.',
+        ];
+    
+        $request->validate([
+            'date_issuance'=>'required|date',
+            'description'=>'required|string|max:300',
+            'total'=>'required|numeric',
+            'discount'=>'required|numeric',
+            'status' => 'required|in:aprobado,rechazado,pendiente',
+            'people_id'=>'required',
+        ], $msj);
+    
         $quote = Quote::create($request->all());
-
-        // Obtener los datos de los detalles de la cotización desde el formulario
-        $detailData = $request->input('details');
-
-        // Guardar los detalles de la cotización
-        foreach ($detailData as $detail) {
-            $newDetail = new DetailQuote([
-                'services_id' => $detail['services_id'],
-                'products_id' => $detail['products_id'],
-                'projects_id' => $detail['projects_id'],
-                'disable' => 0,
-            ]);
-            $quote->detailQuotes()->save($newDetail);
+    
+        $detailQuote = new DetailQuote() ;
+        $quote->date_issuance = now()->format('Y-m-d');
+        $servicesId = $request->input('services_id');
+        $productsId = $request->input('products_id');
+        $projectsId = $request->input('projects_id');
+        $quotesId = $request->input('quotes_id');
+       
+        // Crear los detalles de la cotización
+        if ($request->has('services_id')) {
+            foreach ($request->services_id as $key => $serviceId) {
+                $detalle = new DetailQuote([
+                    'services_id' => $serviceId,
+                    'products_id' => $request->products_id[$key],
+                    'projects_id' => $request->projects_id[$key],
+                    // 'quotes_id' => $request->quotes_id[$key],
+                ]);
+                $quote->detailQuotes()->save($detalle);
+            }
         }
-
+    
         return redirect()->route('quotes.index')->with('success', 'Cotización creada correctamente.');
+        
     }
+
+    
 
     /**
      * Display the specified resource.
