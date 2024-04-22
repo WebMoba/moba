@@ -77,6 +77,7 @@ class PurchaseController extends Controller
         $detailPurchase = new DetailPurchase();
         $purchases = Purchase::pluck('name', 'id');
         $materialsRaws = MaterialsRaw::pluck('name', 'id');
+        
         $confirm = false;
 
         return view('purchase.create', compact('purchase', 'people', 'detailPurchase', 'purchases', 'materialsRaws', 'purchaseName', 'confirm'));
@@ -129,12 +130,12 @@ class PurchaseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-{
-    $purchase = Purchase::findOrFail($id);
-    $details = DetailPurchase::where('purchases_id', $id)->get();
+    {
+        $purchase = Purchase::findOrFail($id);
+        $details = DetailPurchase::where('purchases_id', $id)->get();
 
-    return view('purchase.show', compact('purchase', 'details'));
-}
+        return view('purchase.show', compact('purchase', 'details'));
+    }
 
 
     /**
@@ -209,4 +210,5 @@ class PurchaseController extends Controller
         return redirect()->route('purchases.index')
             ->with('success', 'Registro eliminado exitosamente');
     }
+    
 }

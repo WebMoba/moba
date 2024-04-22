@@ -29,6 +29,7 @@ class Purchase extends Model
         'quantity' => 'required|numeric',
         'price_unit' => 'required|numeric',
         'discount' => 'required|numeric',
+        
     ];
 
     protected $perPage = 20;
@@ -38,7 +39,7 @@ class Purchase extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'date', 'people_id'];
+    protected $fillable = ['name', 'date', 'people_id', 'disable'];
 
 
     /**

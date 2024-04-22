@@ -84,6 +84,9 @@
                                                             onclick="return confirm('¿Está seguro de eliminar esta compra? Ten en cuenta que esto eliminará todos los registro asociados');"><i
                                                                 class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
                                                     </form>
+
+
+
                                                 </td>
                                             </tr>
                                         @endforeach
