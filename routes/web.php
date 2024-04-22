@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\DetailSaleController;
+
 /*Importartación de controladores product y unit*/
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UnitController;
@@ -33,6 +34,10 @@ use App\Exports\ProjectExport;
 use App\Exports\QuoteExport;
 use App\Exports\TeamWorkExport;
 //fin fabian
+
+
+use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\MaterialsRawController;
 
 /*
 |--------------------------------------------------------------------------
@@ -111,6 +116,8 @@ Route::middleware('auth')->group(function () {
         Route::resource('purchases', App\Http\Controllers\PurchaseController::class);
         Route::resource('detail_purchases', App\Http\Controllers\DetailPurchaseController::class);
         Route::get('/pdf/purchase', [App\Http\Controllers\PurchaseController::class, 'generatePDF'])->name('pdf.purchase');
+        Route::get('/export/excel', [PurchaseController::class, 'exportToExcel'])->name('excel.purchase');
+        Route::get('/export/materials-raw', [MaterialsRawController::class, 'exportToExcel'])->name('export.materials.raw');
     });
     /*Fin Rutas purchases, detailPurchases, y materialsRaws*/
 
@@ -118,6 +125,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('sales', SaleController::class)->middleware('auth');
     Route::get('/pdf/sales', [SaleController::class, 'generatePDF'])->name('pdf.sales');
     Route::resource('detail-sale', DetailSaleController::class)->middleware('auth');
+    Route::get('/export/sales', [SaleController::class, 'exportToExcel'])->name('export.sales');
     /** fin de Controladores Sale y DetailSale  */
 
     //projects,teamwork y quote - fabian
