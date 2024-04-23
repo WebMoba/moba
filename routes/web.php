@@ -145,6 +145,9 @@ Route::view('/mobaMenu/Servicios/servicios', 'mobaMenu.servicios.servicios')->na
 //Fin vistas carpeta servicios
 
 
+//vistas de proyectos
+Route::view('/mobaMenu/proyectos/PARAISO', 'mobaMenu.proyectos.PARAISO')->name('mobaMenu.proyectos.PARAISO');
+
 
 
 
@@ -156,6 +159,8 @@ Route::view('/mobaMenu/EquipoTrabajo/integranteDos', 'mobaMenu.EquipoTrabajo.int
 Route::view('/mobaMenu/EquipoTrabajo/integranteTres', 'mobaMenu.EquipoTrabajo.integranteTres')->name('mobaMenu.EquipoTrabajo.integranteTres');
 Route::view('/mobaMenu/EquipoTrabajo/integranteCuatro', 'mobaMenu.EquipoTrabajo.integranteCuatro')->name('mobaMenu.EquipoTrabajo.integranteCuatro');
 Route::view('/mobaMenu/Contacto/index', 'mobaMenu.Contacto.index')->name('mobaMenu.Contacto.index');
+Route::view('/mobaMenu/proyectos/index', 'mobaMenu.proyectos.index')->name('mobaMenu.proyectos.index');
+
 
 
 
