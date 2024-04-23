@@ -24,7 +24,7 @@
 
                         <div class="form-group">
                             <strong>Nombre de la compra:</strong>
-{{ $purchase->user->name }}
+                            {{ $purchase->user->name }}
                         </div>
                         <div class="form-group">
                             <strong>Fecha realizacion de la compra:</strong>
