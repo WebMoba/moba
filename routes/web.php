@@ -172,7 +172,7 @@ Route::view('/tuArteMenu/index', 'tuArteMenu.index')->name('tuArteMenu.index');
 Route::view('/tuArteMenu/galeria/index', 'tuArteMenu.galeria.index')->name('tuArteMenu.galeria.index');
 Route::view('/tuArteMenu/categorias/index', 'tuArteMenu.categorias.index')->name('tuArteMenu.categorias.index');
 Route::view('/tuArteMenu/servicios/index', 'tuArteMenu.servicios.index')->name('tuArteMenu.servicios.index');
-Route::view('/tuArteMenu/servicios/Accesorios/index', 'tuArteMenu.servicios.Accesorios.index')->name('tuArteMenu.servicios.Accesorios.index');
+Route::get('/tuArteMenu/servicios/Accesorios/index', [ProductController::class, 'indexForAccessories'])->name('tuArteMenu.servicios.Accesorios.index');
 Route::view('/tuArteMenu/servicios/Decoracion/index', 'tuArteMenu.servicios.Decoracion.index')->name('tuArteMenu.servicios.Decoracion.index');
 Route::view('/tuArteMenu/servicios/Mascotas/index', 'tuArteMenu.servicios.Mascotas.index')->name('tuArteMenu.servicios.Mascotas.index');
 Route::view('/tuArteMenu/servicios/JoditasPalRecuerdo/index', 'tuArteMenu.servicios.JoditasPalRecuerdo.index')->name('tuArteMenu.servicios.JoditasPalRecuerdo.index');
