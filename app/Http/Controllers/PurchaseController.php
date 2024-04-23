@@ -1,13 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\User;
 use App\Models\Purchase;
 use App\Models\DetailPurchase;
 use App\Models\MaterialsRaw;
 use App\Models\Person;
 use Illuminate\Http\Request;
 use Dompdf\Dompdf;
+
+
+use App\Exports\PurchasesExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 /**
  * Class PurchaseController
@@ -48,7 +53,7 @@ class PurchaseController extends Controller
     public function index(Request $request)
     {
         $search = trim($request->get('search'));
-        $purchases = Purchase::with('person')
+        $purchases = Purchase::with('person', 'user')
             ->where('name', 'LIKE', '%' . $search . '%')
             ->orwhere('date', 'LIKE', '%' . $search . '%')
             ->paginate(10);
@@ -70,6 +75,7 @@ class PurchaseController extends Controller
             $person = Person::find($id);
             return "$id_card - $person->addres";
         })->toArray();
+        $usersName = User::pluck('name', 'id');
 
         // Obtener el nombre de la compra
         $purchaseName = $purchase->name;
@@ -77,10 +83,10 @@ class PurchaseController extends Controller
         $detailPurchase = new DetailPurchase();
         $purchases = Purchase::pluck('name', 'id');
         $materialsRaws = MaterialsRaw::pluck('name', 'id');
-        
+
         $confirm = false;
 
-        return view('purchase.create', compact('purchase', 'people', 'detailPurchase', 'purchases', 'materialsRaws', 'purchaseName', 'confirm'));
+        return view('purchase.create', compact('purchase', 'people', 'detailPurchase', 'purchases', 'materialsRaws', 'purchaseName', 'confirm','usersName'));
     }
 
     /**
@@ -130,13 +136,12 @@ class PurchaseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        $purchase = Purchase::findOrFail($id);
-        $details = DetailPurchase::where('purchases_id', $id)->get();
+{
+    $purchase = Purchase::with('person', 'user')->findOrFail($id);
+    $details = DetailPurchase::where('purchases_id', $id)->get();
 
-        return view('purchase.show', compact('purchase', 'details'));
-    }
-
+    return view('purchase.show', compact('purchase', 'details'));
+}
 
     /**
      * Show the form for editing the specified resource.
@@ -210,5 +215,9 @@ class PurchaseController extends Controller
         return redirect()->route('purchases.index')
             ->with('success', 'Registro eliminado exitosamente');
     }
-    
+
+    public function exportToExcel()
+    {
+        return Excel::download(new PurchasesExport, 'purchases.xlsx');
+    }
 }

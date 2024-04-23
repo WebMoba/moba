@@ -34,6 +34,9 @@
                                 <a href="{{ route('pdf.sales') }}" class="btn btn-danger btn-sm float-right">
                                     <i class="fa fa-file-pdf"></i> {{ __('PDF') }}
                                 </a>
+                                <a href="{{ route('export.sales') }}" class="btn btn-success btn-sm float-right">
+                                    <i class="fa fa-file-excel"></i> {{ __('Excel') }}
+                                </a>
                             </div>
                             <div class="float-right">
                                 <a href="{{ route('sales.create') }}" class="btn btn-primary btn-sm float-right"

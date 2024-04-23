@@ -60,12 +60,12 @@
 
     <div class="container">
     <div class="contenedor">
-    @foreach ($categorias as $categoria)
-        <div class="campo campo1">
-            <h1><a href="#" onclick="redirigir('{{ $categoria->name }}')">{{ $categoria->name }}</a></h1>
-        </div>
-    @endforeach
-</div>
+        @foreach ($categorias->whereIn('name', ['Accesorios', 'Mascotas', 'Decoracion', 'Joditas pal Recuerdo'])->where('type', 'producto')->take(4) as $categoria)
+            <div class="campo campo1">
+                <h1><a href="#" onclick="redirigir('{{ $categoria->name }}')">{{ $categoria->name }}</a></h1>
+            </div>
+        @endforeach
+    </div>
 
 <script>
     function redirigir(nombreCategoria) {

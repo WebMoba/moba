@@ -29,7 +29,6 @@ class Purchase extends Model
         'quantity' => 'required|numeric',
         'price_unit' => 'required|numeric',
         'discount' => 'required|numeric',
-        
     ];
 
     protected $perPage = 20;
@@ -56,5 +55,10 @@ class Purchase extends Model
     public function person()
     {
         return $this->hasOne('App\Models\Person', 'id', 'people_id');
+    }
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'people_id', 'id');
     }
 }
