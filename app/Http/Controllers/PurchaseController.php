@@ -71,11 +71,9 @@ class PurchaseController extends Controller
     {
         $purchase = new Purchase();
         $purchase->date = now()->format('Y-m-d');
-        $people = Person::pluck('id_card', 'id')->map(function ($id_card, $id) {
-            $person = Person::find($id);
-            return "$id_card - $person->addres";
-        })->toArray();
         $usersName = User::pluck('name', 'id');
+
+        $people = Person::pluck('id_card', 'id');
 
         // Obtener el nombre de la compra
         $purchaseName = $purchase->name;
