@@ -17,29 +17,28 @@ use Maatwebsite\Excel\Facades\Excel;
 class MaterialsRawController extends Controller
 {
     public function generatePDF(Request $request)
-{
-    // Obtener el filtro de la solicitud
-    $filter = $request->input('findId');
-    
-    // Obtener los datos de las personas filtradas si se aplicó un filtro
-    if ($filter) {
-        $materials_raws = MaterialsRaw::where('id_card', $filter)->get();
-        
-    } else {
-        // Si no hay filtro, obtener todas las personas
-        $materials_raws = MaterialsRaw::all();
-    }
-    // Pasar los datos a la vista pdf-template
-    $data = [
-        'materials_raws' => $materials_raws
-    ];    
+    {
+        // Obtener el filtro de la solicitud
+        $filter = $request->input('findId');
 
-    // Generar el PDF
-    $pdf = new Dompdf();
-    $pdf->loadHtml(view('materials-raw.pdf-template', $data));
-    $pdf->setPaper('A4', 'portrait');
-    $pdf->render();
-    return $pdf->stream('Registro_Materias_Primas.pdf');
+        // Obtener los datos de las personas filtradas si se aplicó un filtro
+        if ($filter) {
+            $materials_raws = MaterialsRaw::where('id_card', $filter)->get();
+        } else {
+            // Si no hay filtro, obtener todas las personas
+            $materials_raws = MaterialsRaw::all();
+        }
+        // Pasar los datos a la vista pdf-template
+        $data = [
+            'materials_raws' => $materials_raws
+        ];
+
+        // Generar el PDF
+        $pdf = new Dompdf();
+        $pdf->loadHtml(view('materials-raw.pdf-template', $data));
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->render();
+        return $pdf->stream('Registro_Materias_Primas.pdf');
     }
 
     /**
@@ -139,15 +138,23 @@ class MaterialsRawController extends Controller
      * @throws \Exception
      */
     public function destroy($id)
-    {
-        $materialsRaw = MaterialsRaw::find($id)->delete();
-
-        return redirect()->route('materials_raws.index')
-            ->with('success', 'Registro eliminado exitosamente');
+{
+    // Encuentra la materia prima con el ID dado
+    $materialsRaw = MaterialsRaw::find($id);
+    if (!$materialsRaw) {
+        return redirect()->route('materials_raws.index')->with('error', 'La materia prima no existe');
     }
 
-    public function exportToExcel()
-{
-    return Excel::download(new MaterialsRawExport(), 'materials_raw.xlsx');
+    // Cambia el estado de la materia prima
+    $materialsRaw->disable = !$materialsRaw->disable; // Corregir a 'disabled'
+    $materialsRaw->save();
+
+    // Redirige con un mensaje de éxito
+    return redirect()->route('materials_raws.index')->with('success', 'Estado de la materia prima cambiado con éxito');
 }
+
+    public function exportToExcel()
+    {
+        return Excel::download(new MaterialsRawExport(), 'materials_raw.xlsx');
+    }
 }

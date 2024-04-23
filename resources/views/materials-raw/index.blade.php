@@ -16,10 +16,10 @@
                                 {{ __('Materia Prima') }}
                             </span>
 
-                            <form action="{{ route('materials_raws.index') }}" method="GET" class="d-flex align-items-center">
+                            <form action="{{ route('materials_raws.index') }}" method="GET"
+                                class="d-flex align-items-center">
                                 <div class="col-auto mr-2">
-                                    <input type="text" class="form-control" name="search"
-                                        placeholder="Buscar...">
+                                    <input type="text" class="form-control" name="search" placeholder="Buscar...">
                                 </div>
                                 <div class="col-auto">
                                     <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
@@ -73,18 +73,21 @@
                                             <td>
                                                 <form action="{{ route('materials_raws.destroy', $materialsRaw->id) }}"
                                                     method="POST">
-                                                    <a class="btn btn-sm btn-primary "
+                                                    <a class="btn btn-sm btn-primary {{ $materialsRaw->disable ? 'disabled' : '' }}"
                                                         href="{{ route('materials_raws.show', $materialsRaw->id) }}"><i
-                                                            class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success"
+                                                            class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}</a>
+                                                    <a class="btn btn-sm btn-success {{ $materialsRaw->disable ? 'disabled' : '' }}"
                                                         href="{{ route('materials_raws.edit', $materialsRaw->id) }}"><i
-                                                            class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                            class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"
-                                                        onclick="return confirm('¿Está seguro de eliminar esta materia prima? Ten en cuenta que esto eliminará todos los registros asociados');"><i
-                                                            class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                        onclick="return confirm('¿Está seguro de que desea {{ $materialsRaw->disable ? 'Habilitar' : 'Deshabilitar' }} a la  persona?')">
+                                                        <i class="fa fa-fw fa-trash"></i>
+                                                        {{ $materialsRaw->disable ? 'Habilitar' : 'Deshabilitar' }}
+                                                    </button>
                                                 </form>
+
                                             </td>
                                         </tr>
                                     @endforeach
