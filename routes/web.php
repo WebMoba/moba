@@ -147,6 +147,7 @@ Route::view('/mobaMenu/Servicios/servicios', 'mobaMenu.servicios.servicios')->na
 
 //vistas de proyectos
 Route::view('/mobaMenu/proyectos/PARAISO', 'mobaMenu.proyectos.PARAISO')->name('mobaMenu.proyectos.PARAISO');
+Route::view('/mobaMenu/proyectos/PARAISO', 'mobaMenu.proyectos.PARAISO')->name('mobaMenu.proyectos.PARAISO');
 
 
 
