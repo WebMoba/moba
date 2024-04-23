@@ -8629,16 +8629,16 @@
         },
         {
             "name": "laravel/dusk",
-            "version": "v8.1.2",
+            "version": "v8.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/dusk.git",
-                "reference": "6aa3fcf0067e903135e75090ef56059131644904"
+                "reference": "773a12dfbd3f84174b0f26fbc2807a414a379a66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/dusk/zipball/6aa3fcf0067e903135e75090ef56059131644904",
-                "reference": "6aa3fcf0067e903135e75090ef56059131644904",
+                "url": "https://api.github.com/repos/laravel/dusk/zipball/773a12dfbd3f84174b0f26fbc2807a414a379a66",
+                "reference": "773a12dfbd3f84174b0f26fbc2807a414a379a66",
                 "shasum": ""
             },
             "require": {
@@ -8695,9 +8695,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/dusk/issues",
-                "source": "https://github.com/laravel/dusk/tree/v8.1.2"
+                "source": "https://github.com/laravel/dusk/tree/v8.2.0"
             },
-            "time": "2024-04-16T14:19:59+00:00"
+            "time": "2024-04-16T15:51:19+00:00"
         },
         {
             "name": "laravel/pint",
@@ -9636,16 +9636,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "10.5.18",
+            "version": "10.5.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "835df1709ac6c968ba34bf23f3c30e5d5a266de8"
+                "reference": "c726f0de022368f6ed103e452a765d3304a996a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/835df1709ac6c968ba34bf23f3c30e5d5a266de8",
-                "reference": "835df1709ac6c968ba34bf23f3c30e5d5a266de8",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/c726f0de022368f6ed103e452a765d3304a996a4",
+                "reference": "c726f0de022368f6ed103e452a765d3304a996a4",
                 "shasum": ""
             },
             "require": {
@@ -9717,7 +9717,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.18"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.19"
             },
             "funding": [
                 {
@@ -9733,7 +9733,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-04-14T07:05:31+00:00"
+            "time": "2024-04-17T14:06:18+00:00"
         },
         {
             "name": "psr/cache",

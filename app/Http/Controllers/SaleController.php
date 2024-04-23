@@ -9,6 +9,8 @@ use App\Models\Person;
 use App\Models\Sale;
 use App\Models\DetailSale;
 use Illuminate\Http\Request;
+use App\Exports\SalesExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 use Dompdf\Dompdf;
 
@@ -253,4 +255,8 @@ class SaleController extends Controller
         return redirect()->route('sales.index')->with('success', 'Venta eliminada con éxito');
     }
 
+    public function exportToExcel()
+{
+    return Excel::download(new SalesExport(), 'sales.xlsx');
+}
 }

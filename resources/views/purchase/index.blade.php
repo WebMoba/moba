@@ -28,6 +28,10 @@
                                 <a href="{{ route('pdf.purchase') }}" class="btn btn-danger btn-sm float-right">
                                     <i class="fa fa-file-pdf"></i> {{ __('PDF') }}
                                 </a>
+                                <a href="{{ route('excel.purchase') }}" class="btn btn-success btn-sm float-right">
+                                    <i class="fa fa-file-excel"></i> {{ __('Excel') }}
+                                </a>
+                             
                             </div>
                             <div class="float-right">
                                 <a href="{{ route('purchases.create') }}" class="btn btn-primary btn-sm float-right"
@@ -50,7 +54,7 @@
                                     <tr>
                                         <th>No</th>
 
-                                        <th>Nombre de compra</th>
+                                        <th>Nombre del proveedor</th>
                                         <th>Fecha realizacion de la compra</th>
                                         <th>Documento - Dirección del proveedor</th>
 
@@ -67,10 +71,10 @@
                                             <tr>
                                                 <td>{{ ++$i }}</td>
 
-                                                <td>{{ $purchase->name }}</td>
+                                                <td>{{ $purchase->user->name }}</td>
+
                                                 <td>{{ $purchase->date }}</td>
-                                                <td>{{ $purchase->person->id_card }} - {{ $purchase->person->addres }}
-                                                </td>
+                                                <td>{{ $purchase->person->id_card }} - {{ $purchase->person->addres }}</td>
 
                                                 <td>
                                                     <form action="{{ route('purchases.destroy', $purchase->id) }}"
@@ -84,6 +88,9 @@
                                                             onclick="return confirm('¿Está seguro de eliminar esta compra? Ten en cuenta que esto eliminará todos los registro asociados');"><i
                                                                 class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
                                                     </form>
+
+
+
                                                 </td>
                                             </tr>
                                         @endforeach

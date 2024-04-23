@@ -135,13 +135,6 @@
                                 <th>
                                     <button class="btn btn-danger eliminar-detalle">Eliminar detalle</button>
                                 </th>
-                                <!-- <th>
-                                    <div class="form-group">
-                                    {{ Form::label('Cotización') }}
-                                    {{ Form::select('quotes_id[]', $quotes, null, ['class' => 'form-control' . ($errors->has('quotes_id') ? ' is-invalid' : ''), 'required']) }}
-                                    {!! $errors->first('quotes_id', '<div class="invalid-feedback">:message</div>') !!}
-                                    </div>
-                                </th> -->
                             </tr>
                         </tbody>
                     </table>
@@ -174,46 +167,6 @@
                 });
             });
         </script>
-
-
-        <!-- <script>
-            document.getElementById('agregarDetalle').addEventListener('click', function() {
-                var container = document.querySelector('#detalle-table tbody');
-                var nuevoDetalle = container.children[0].cloneNode(true);
-
-                // Limpiar los campos del nuevo detalle clonado
-                nuevoDetalle.querySelectorAll('select').forEach(function(select) {
-                    select.selectedIndex = 0;
-                });
-
-                // Agregar el nuevo detalle a la tabla
-                container.appendChild(nuevoDetalle);
-
-                var botonesEliminar = document.querySelectorAll('.eliminar-detalle');
-
-                // Agrega un evento de clic a cada botón de eliminar detalle
-                botonesEliminar.forEach(function(boton) {
-                    boton.addEventListener('click', function() {
-                        // Obtén la fila a la que pertenece el botón
-                        var fila = this.closest('tr');
-                        
-                        // Elimina la fila
-                        fila.parentNode.removeChild(fila);
-                    });
-
-                // // Agregar botón de eliminación a la nueva fila
-                // var eliminarBtn = document.createElement('button');
-                // eliminarBtn.textContent = 'Eliminar';
-                // eliminarBtn.classList.add('btn', 'btn-danger');
-                // eliminarBtn.addEventListener('click', function() {
-                //     container.removeChild(nuevoDetalle); // Eliminar la fila al hacer clic en el botón
-                // });
-                // nuevoDetalle.appendChild(eliminarBtn);
-
-                // // Agregar el nuevo detalle a la tabla
-                // container.appendChild(nuevoDetalle);
-            });
-        </script> -->
 
     </body>
 </html>

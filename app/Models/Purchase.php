@@ -38,7 +38,7 @@ class Purchase extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'date', 'people_id'];
+    protected $fillable = ['name', 'date', 'people_id', 'disable'];
 
 
     /**
@@ -55,5 +55,10 @@ class Purchase extends Model
     public function person()
     {
         return $this->hasOne('App\Models\Person', 'id', 'people_id');
+    }
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'people_id', 'id');
     }
 }
