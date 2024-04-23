@@ -31,9 +31,9 @@
                         <li><a class="dropdown-item" href="#">POP y álgo más</a></li>
                     </ul>
                 </div>
-                <a href="{{ route('mobaMenu.index') }}" class="btn btn-primary">Nosotros</a>
+                <a href="" class="btn btn-primary">Contáctanos</a>
                 <a href="{{ route('mobaMenu.proyectos.index') }}" class="btn btn-primary">Proyectos</a>
-                <a href="{{ route('mobaMenu.EquipoTrabajo.index') }}" class="btn btn-primary">Equipo de trabajo</a>
+                <a href="#" class="btn btn-primary">Equipo de trabajo</a>
                 <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
             <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte">
@@ -51,167 +51,27 @@
         <div class="title-container">
             <h1 class="big-title">PROYECTOS</h1>
         </div>
-
-
-        <div class="txt3">
-            <h1 class="txts3">La imagen corporativa de nuestros clientes es tan importante para ellos como para
-                nosotros, con la calidad
-                de trabajo de nuestra agencia podemos garantizar cada una de las piezas de comunicación que creamos,
-                y para demostrarte que somos los mejores en lo que hacemos, te invitamos a revisar algunos de los
-                trabajos que hemos desarrollado para empresas y marcas que confían en nosotros.</h1>
-        </div>
-
-        <div class="vertical-line right-line">
-            <hr class="linea2">
-            <a href="https://www.instagram.com/moba_agencia"><i class="bi bi-instagram"></i></a>
-            <a href="https://www.facebook.com/MOBAcomunicacionGrafica/"><i class="bi bi-facebook"></i></a>
-            <hr class="linea2">
-        </div>
-    </div>
-
-    //imagenes de proyectos
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="image-container">
-                    <a href="{{ asset('mobaMenu/proyectos/PARAISO') }}">
-                        <img src="{{ asset('Imagenes/imgproyectos/paraiso1.jpg') }}" alt="PARAISO1">
-                        <div class="overlay">
-                            <div class="text">ALMACENES PARAISO</div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="contenido">
+                        <div class="texto">
+                            <h2>Título de la sección</h2>
+                            <p>Descripción breve del contenido.</p>
                         </div>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="col-md-3">
-                <div class="image-container">
-                    <a href="{{ asset('mobaMenu/proyectos/PARAISO.html') }}">
-                        <img src="{{ asset('Imagenes/imgproyectos/jaatelo1.jpg') }}" alt="JAATELO">
-                        <div class="overlay">
-                            <div class="text">HELADERIA JAATELO</div>
+                        <div class="imagen">
+                            <img src="ruta_de_la_imagen.jpg" alt="Imagen">
                         </div>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="col-md-3">
-                <div class="image-container">
-                    <a href="{{ asset('mobaMenu/proyectos/PARAISO.html') }}">
-                        <img src="{{ asset('Imagenes/imgproyectos/acerias1.jpg') }}" alt="ACERIAS">
-                        <div class="overlay">
-                            <div class="text">ACERIAS PAZ DEL RIO</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="col-md-3">
-                <div class="image-container">
-                    <a href="{{ asset('mobaMenu/proyectos/PARAISO.html') }}">
-                        <img src="{{ asset('Imagenes/imgproyectos/biosalud1.jpg') }}" alt="BIOSALUD">
-                        <div class="overlay">
-                            <div class="text">BIOSALUD</div>
-                        </div>
-                    </a>
+                    </div>
+                    <div class="flecha">
+                        <img src="ruta_de_la_imagen_de_flecha.png" alt="Flecha">
+                        <i class="bi bi-chevron-compact-left"></i>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        <div class="row">
-            <div class="col-md-3">
-                <div class="image-container">
-                    <a href="{{ asset('mobaMenu/proyectos/PARAISO.html') }}">
-                        <img src="{{ asset('Imagenes/imgproyectos/cabubara1.jpg') }}" alt="CABUBARA">
-                        <div class="overlay">
-                            <div class="text">CABUBARA</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="col-md-3">
-                <div class="image-container">
-                    <a href="{{ asset('mobaMenu/proyectos/PARAISO.html') }}">
-                        <img src="{{ asset('Imagenes/imgproyectos/hospital1.jpeg') }}" alt="HOSPITAL">
-                        <div class="overlay">
-                            <div class="text">HOSPITAL REGIONAL</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="col-md-3">
-                <div class="image-container">
-                    <a href="{{ asset('mobaMenu/proyectos/PARAISO.html') }}">
-                        <img src="{{ asset('Imagenes/imgproyectos/jovenpro1.jpg') }}" alt="JOVENPRO">
-                        <div class="overlay">
-                            <div class="text">JOVEN PRO</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="col-md-3">
-                <div class="image-container">
-                    <a href="{{ asset('mobaMenu/proyectos/PARAISO.html') }}">
-                        <img src="{{ asset('Imagenes/imgproyectos/lafrez1.jpg') }}" alt="LAFREZ">
-                        <div class="overlay">
-                            <div class="text"> DULCES LA FREZ</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-3">
-                <div class="image-container">
-                    <a href="{{ asset('mobaMenu/proyectos/PARAISO.html') }}">
-                        <img src="{{ asset('Imagenes/imgproyectos/lizethdorado1.jpg') }}" alt="ODONTOLOGIA-LIZETH">
-                        <div class="overlay">
-                            <div class="text"> ODONTOLOGIA LIZETH DORADO</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="col-md-3">
-                <div class="image-container">
-                    <a href="{{ asset('mobaMenu/proyectos/PARAISO.html') }}">
-                        <img src="{{ asset('Imagenes/imgproyectos/odontologa1.jpg') }}" alt="ODONTOLOGA">
-                        <div class="overlay">
-                            <div class="text"> ODONTOLOGA CAROLINA CAMACHO</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="col-md-3">
-                <div class="image-container">
-                    <a href="{{ asset('mobaMenu/proyectos/PARAISO.html') }}">
-                        <img src="{{ asset('Imagenes/imgproyectos/puntocero1.jpg') }}" alt="PUNTOCERO">
-                        <div class="overlay">
-                            <div class="text">COMIDAS RAPIDAS PUNTO CERO</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="col-md-3">
-                <div class="image-container">
-                    <a href="{{ asset('mobaMenu/proyectos/PARAISO.html') }}">
-                        <img src="{{ asset('Imagenes/imgproyectos/raspadosiglu1.jpg') }}" alt="RASPADOS">
-                        <div class="overlay">
-                            <div class="text">RASPADOS IGLU</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-// seccion de la pestaña 
 
+  
 
     <!-- navbar -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -255,6 +115,37 @@
     </script>
 
     <style>
+
+        /* css de prueba*/
+        .container {
+            margin-top: 20px;
+        }
+        
+        .contenido {
+            display: flex;
+            align-items: center;
+        }
+        
+        .texto {
+            flex: 1;
+            padding-right: 20px;
+        }
+        
+        .imagen {
+            flex: 1;
+        }
+        
+        .imagen img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .flecha {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        /* css de prueba*/ 
         .contenido {
             display: flex;
             align-items: center;
