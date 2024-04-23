@@ -12,11 +12,11 @@
 <div class="box box-small">
     <h2>Compra</h2>
     <div class="box-body">
-        <div class="form-group">
-            {{ Form::label('Nombre del proveedor', null, ['class' => 'required-label']) }}
-            {{ Form::select('name', $usersName, $purchase->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Name']) }}
-            {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
+        <div class="form-group" style="display: none;">
+    {{ Form::label('Nombre del proveedor', null, ['class' => 'required-label']) }}
+    {{ Form::select('name', $usersName, $purchase->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Name']) }}
+    {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
+</div>
 
         <div class="form-group">
             {{ Form::label('Fecha', null, ['class' => 'required-label']) }}
@@ -27,8 +27,8 @@
         </div>
 
         <div class="form-group">
-            {{ Form::label('Documento y dirección del proveedor', null, ['class' => 'required-label']) }}
-            {{ Form::select('people_id', $people, $purchase->people_id, ['class' => 'form-control' . ($errors->has('people_id') ? ' is-invalid' : ''), 'placeholder' => 'Seleccione un proveedor']) }}
+            {{ Form::label('Documento del proveedor', null, ['class' => 'required-label']) }}
+            {{ Form::select('people_id', $people, $purchase->people_id, ['class' => 'form-control' . ($errors->has('people_id') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Seleccione un proveedor']) }}
             {!! $errors->first('people_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
     </div>
@@ -67,7 +67,7 @@
                     </th>
                     <th>
                         <div class="form-group">
-                            {{ Form::text('quantity', $detailPurchase->quantity, ['id' => 'quantity', 'class' => 'form-control' . ($errors->has('quantity') ? ' is-invalid' : ''), 'placeholder' => 'Quantity']) }}
+                            {{ Form::text('quantity', $detailPurchase->quantity, ['id' => 'quantity', 'class' => 'form-control' . ($errors->has('quantity') ? ' is-invalid' : ''),'required', 'placeholder' => 'Quantity']) }}
                             {!! $errors->first('quantity', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
                     </th>
