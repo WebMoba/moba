@@ -198,30 +198,39 @@ body::after {
 
 }
 
-.campo1 {
-    flex-grow: 1; /* Hacer que el campo se expanda automáticamente */
-    height: 100%;
-    /* 100% de altura */
-    position: relative;
+    .campo1 {
+        flex-grow: 1; /* Hacer que el campo se expanda automáticamente */
+        height: 90%;
+        margin-top: 2%;
+        /* 100% de altura */
+        position: relative;
+        border-bottom: 50px solid white;
 }
 
-.campo1:hover {
-    background-color: red;
-    cursor: pointer;
-    color:  #BCCCE0;
+    .campo1:hover {
+        background-color: red;
+        cursor: pointer;
+        color:  #BCCCE0;
 }
 
-.campo1 h1 {
-    position: absolute;
-    bottom: 50%; /* Ajusta la posición vertical */
-    left: 30%; /* Ajusta la posición horizontal */
-    color: white;
-    font-family: Georgia, 'Times New Roman', Times, serif, sans-serif; /* Cambia el tipo de letra según tus preferencias */
-    font-weight: bold; /* Añade negrita al texto */
-    font-size: 80px; /* Tamaño inicial del texto */
-    letter-spacing: -35px; /* Establece el espaciado entre letras a un valor negativo para eliminar los espacios */
-    text-align: center; /* Alinea el texto al centro */
-    writing-mode: vertical-rl;
-    text-orientation: upright;
-    transform: translate(-50%, 50%) scale(0.8); /* Ajusta la posición y escala del texto */
+    .campo1 h1 {
+        position: absolute;
+        bottom: 50%;
+        /*Ajustalaposiciónvertical*/left: 30%;
+        /*Ajustalaposiciónhorizontal*/color: white;
+        font-family: Georgia, 'Times New Roman', Times, serif, sans-serif;
+        /*Cambiaeltipodeletrasegúntuspreferencias*/font-weight: bold;
+        /*Añadenegritaaltexto*/font-size: 80px;
+        /*Tamañoinicialdeltexto*/letter-spacing: -35px;
+        /*Estableceelespaciadoentreletrasaunvalornegativoparaeliminarlosespacios*/text-align: center;
+        /*Alineaeltextoalcentro*/writing-mode: vertical-rl;
+        text-orientation: upright;
+        transform: translate(-50%, 50%) scale(0.8);
+        /*Ajustalaposiciónyescaladeltexto*/:;
+        -webkit-writing-mode: vertical-lr;
+        -ms-writing-mode: vertical-rl;
+        -webkit-transform: translate(-50%, 50%) scale(0.8);
+        -moz-transform: translate(-50%, 50%) scale(0.8);
+        -ms-transform: translate(-50%, 50%) scale(0.8);
+        -o-transform: translate(-50%, 50%) scale(0.8);
 }
