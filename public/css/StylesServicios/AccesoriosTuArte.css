@@ -200,16 +200,28 @@
 }
 
 /*Carrusel*/
+.carousel {
+    max-width: 1000px;
+    /* Establece el ancho máximo del carrusel */
+    margin: 0 auto;
+    /* Centra el carrusel horizontalmente */
+}
+
 .carousel-item {
     display: flex;
-    left: 20.72%;
+    left: 50%;
+    /* Centra el carrusel horizontalmente */
+    transform: translateX(-50%);
+    /* Ajusta el carrusel para que esté centrado */
 }
+
 
 .carousel-item .col {
     flex: 1;
+    margin-top: auto;
     margin-right: 10px;
     /* Ajusta este valor según el espacio deseado */
-    max-width: 180px;
+    max-width: 250px;
     /* Ancho máximo de cada tarjeta */
 }
 
@@ -219,8 +231,7 @@
 }
 
 .carousel-item .card img {
-    height: auto;
-    max-height: 150px;
+    height: 210px;
     /* Altura máxima de la imagen */
     width: 100%;
 }
@@ -243,12 +254,12 @@
     /* Ajusta el relleno según sea necesario */
 }
 
-.carousel-control-prev{
-    margin-left: 15%;
+.carousel-control-prev {
+    margin-left: -10%;
 }
 
-.carousel-control-next{
-    margin-right: 15%;
+.carousel-control-next {
+    margin-right: -10%;
 }
 
 .carousel-control-prev-icon,
@@ -259,9 +270,12 @@
     /* Ajusta la altura del icono según sea necesario */
 }
 
-.card-text, .card-title {
+.card-text,
+.card-title {
     color: rgb(0, 0, 0);
+    font-weight: bold;
 }
+
 /*ESTRELLAS*/
 
 .stars {
