@@ -97,6 +97,7 @@ class PurchaseController extends Controller
 
     public function store(Request $request)
     {
+        
         // Acceder a los datos enviados desde el formulario
         $datos = $request->input('data');
 

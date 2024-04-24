@@ -13,10 +13,10 @@
     <h2>Compra</h2>
     <div class="box-body">
         <div class="form-group" style="display: none;">
-    {{ Form::label('Nombre del proveedor', null, ['class' => 'required-label']) }}
-    {{ Form::select('name', $usersName, $purchase->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Name']) }}
-    {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
-</div>
+            {{ Form::label('Nombre del proveedor', null, ['class' => 'required-label']) }}
+            {{ Form::select('name', $usersName, $purchase->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Name']) }}
+            {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
 
         <div class="form-group">
             {{ Form::label('Fecha', null, ['class' => 'required-label']) }}
@@ -37,9 +37,6 @@
         <a type="submit" class="btn btn-primary" href="{{ route('purchases.index') }}">Volver</a>
     </div>
 </div>
-
-
-
 
 
 
@@ -67,7 +64,7 @@
                     </th>
                     <th>
                         <div class="form-group">
-                            {{ Form::text('quantity', $detailPurchase->quantity, ['id' => 'quantity', 'class' => 'form-control' . ($errors->has('quantity') ? ' is-invalid' : ''),'required', 'placeholder' => 'Quantity']) }}
+                            {{ Form::text('quantity', $detailPurchase->quantity, ['id' => 'quantity', 'class' => 'form-control' . ($errors->has('quantity') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Quantity']) }}
                             {!! $errors->first('quantity', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
                     </th>
