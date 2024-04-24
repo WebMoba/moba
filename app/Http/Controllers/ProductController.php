@@ -43,6 +43,23 @@ class ProductController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * $products->perPage());
     }
 
+    public function indexForAccessories()
+    {
+        $search = request()->input('search');
+
+        // Filtra los productos por la categoría "Accesorios"
+        $products = Product::whereHas('categoriesProductsService', function ($query) {
+            $query->where('name', 'Accesorios');
+        })
+            ->when($search, function ($query, $search) {
+                return $query->where('name', 'like', '%' . $search . '%');
+            })
+            ->with('unit', 'categoriesProductsService')
+            ->paginate();
+
+        return view('tuArteMenu.servicios.Accesorios.index', compact('products'))
+            ->with('i', (request()->input('page', 1) - 1) * $products->perPage());
+    }
     /**
      * Show the form for creating a new resource.
      *
