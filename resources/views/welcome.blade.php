@@ -215,16 +215,18 @@
 
 
 
-    @keyframes spin-horizontal {
-    0%, 50% {
-        transform: rotateY(0deg);
-    }
-    50% {
-        transform: rotateY(90deg);
-    }
+    @keyframes pulse-opacity {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+@keyframes spin-horizontal {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(90deg); }
 }
 
 .logos img {
-    animation: spin-horizontal 10s linear infinite;
+    animation: pulse-opacity 2s ease-in-out infinite, spin-horizontal 8s linear infinite;
 }
 </style>
