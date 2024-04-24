@@ -216,22 +216,15 @@
 
 
     @keyframes spin-horizontal {
-
-        0%,
-        100% {
-            transform: rotateY(0deg);
-        }
-
-        /* La imagen está en su posición original */
-        50% {
-            transform: rotateY(180deg);
-        }
-
-        /* La imagen gira 180 grados */
+    0%, 50% {
+        transform: rotateY(0deg);
     }
-
-    .logos img {
-        animation: spin-horizontal 8s linear infinite;
-        /* La animación dura 4 segundos, es lineal y se repite infinitamente */
+    50% {
+        transform: rotateY(90deg);
     }
+}
+
+.logos img {
+    animation: spin-horizontal 10s linear infinite;
+}
 </style>
