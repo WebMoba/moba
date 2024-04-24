@@ -60,6 +60,24 @@ class ProductController extends Controller
         return view('tuArteMenu.servicios.Accesorios.index', compact('products'))
             ->with('i', (request()->input('page', 1) - 1) * $products->perPage());
     }
+
+    public function indexForDecoration()
+    {
+        $search = request()->input('search');
+
+        // Filtra los productos por la categoría "Decoracion"
+        $products = Product::whereHas('categoriesProductsService', function ($query) {
+            $query->where('name', 'Decoracion');
+        })
+            ->when($search, function ($query, $search) {
+                return $query->where('name', 'like', '%' . $search . '%');
+            })
+            ->with('unit', 'categoriesProductsService')
+            ->paginate();
+
+        return view('tuArteMenu.servicios.Decoracion.index', compact('products'))
+            ->with('i', (request()->input('page', 1) - 1) * $products->perPage());
+    }
     /**
      * Show the form for creating a new resource.
      *

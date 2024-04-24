@@ -94,8 +94,15 @@
                                     <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top"
                                         alt="{{ $product->name }}">
                                     <div class="card-body">
+                                        <div class="stars">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                        </div>
                                         <h5 class="card-title">{{ $product->name }}</h5>
-                                        <p class="card-text">{{ $product->price }}</p>
+                                        <p class="card-text">${{ $product->price }}</p>
                                     </div>
                                 </div>
                             </div>
