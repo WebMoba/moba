@@ -74,15 +74,17 @@ class PurchaseController extends Controller
     $purchase->date = now()->format('Y-m-d');
     $usersName = User::pluck('name', 'id');
 
-    $purchaseName = $purchase->name;
-
-    // Obtener solo las personas con rol de "Proveedor"
-    $providers = Person::whereHas('teamWork')->where('rol', 'Proveedor')->get();
+    // Obtener solo las personas con rol de "Proveedor" y habilitadas
+    $providers = Person::whereHas('teamWork')
+                        ->where('rol', 'Proveedor')
+                        ->where('disable', false) // Agregar esta línea
+                        ->get();
 
     $detailPurchase = new DetailPurchase();
     $purchases = Purchase::pluck('name', 'id');
     $materialsRaws = MaterialsRaw::pluck('name', 'id');
 
+        $purchaseName = $purchase->name;
     $confirm = false;
 
     return view('purchase.create', compact('purchase', 'providers', 'detailPurchase', 'purchases', 'materialsRaws', 'purchaseName', 'confirm', 'usersName'));
