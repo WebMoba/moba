@@ -51,16 +51,17 @@ class PurchaseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
-        $search = trim($request->get('search'));
-        $purchases = Purchase::with('person', 'user')
-            ->where('name', 'LIKE', '%' . $search . '%')
-            ->orwhere('date', 'LIKE', '%' . $search . '%')
-            ->paginate(10);
+{
+    $search = trim($request->get('search'));
+    $purchases = Purchase::with('person', 'user')
+        ->where('name', 'LIKE', '%' . $search . '%')
+        ->orWhere('date', 'LIKE', '%' . $search . '%')
+        ->orderBy('created_at', 'desc') // Ordenar por fecha de creación descendente
+        ->paginate(10);
 
-        return view('purchase.index', compact('purchases', 'search'))
-            ->with('i', (request()->input('page', 1) - 1) * $purchases->perPage());
-    }
+    return view('purchase.index', compact('purchases', 'search'))
+        ->with('i', (request()->input('page', 1) - 1) * $purchases->perPage());
+}
 
     /**
      * Show the form for creating a new resource.
@@ -68,26 +69,26 @@ class PurchaseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        $purchase = new Purchase();
-        $purchase->date = now()->format('Y-m-d');
-        $people = Person::pluck('id_card', 'id')->map(function ($id_card, $id) {
-            $person = Person::find($id);
-            return "$id_card - $person->addres";
-        })->toArray();
-        $usersName = User::pluck('name', 'id');
+{
+    $purchase = new Purchase();
+    $purchase->date = now()->format('Y-m-d');
+    $usersName = User::pluck('name', 'id');
 
-        // Obtener el nombre de la compra
+    // Obtener solo las personas con rol de "Proveedor" y habilitadas
+    $providers = Person::whereHas('teamWork')
+                        ->where('rol', 'Proveedor')
+                        ->where('disable', false) // Agregar esta línea
+                        ->get();
+
+    $detailPurchase = new DetailPurchase();
+    $purchases = Purchase::pluck('name', 'id');
+    $materialsRaws = MaterialsRaw::pluck('name', 'id');
+
         $purchaseName = $purchase->name;
+    $confirm = false;
 
-        $detailPurchase = new DetailPurchase();
-        $purchases = Purchase::pluck('name', 'id');
-        $materialsRaws = MaterialsRaw::pluck('name', 'id');
-
-        $confirm = false;
-
-        return view('purchase.create', compact('purchase', 'people', 'detailPurchase', 'purchases', 'materialsRaws', 'purchaseName', 'confirm','usersName'));
-    }
+    return view('purchase.create', compact('purchase', 'providers', 'detailPurchase', 'purchases', 'materialsRaws', 'purchaseName', 'confirm', 'usersName'));
+}
 
     /**
      * Store a newly created resource in storage.
@@ -99,6 +100,7 @@ class PurchaseController extends Controller
 
     public function store(Request $request)
     {
+        
         // Acceder a los datos enviados desde el formulario
         $datos = $request->input('data');
 
@@ -108,6 +110,7 @@ class PurchaseController extends Controller
         $compra->date = $datos['fecha'];
         $compra->people_id = $datos['proveedor_id'];
         $compra->save();
+
 
         // Recorrer los detalles de la compra y guardarlos en la base de datos
         foreach ($datos['detalles'] as $detalle) {
@@ -204,17 +207,21 @@ class PurchaseController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
-    {
-        $purchase = Purchase::find($id);
-
-        DetailPurchase::where('purchases_id', $id)->delete();
-
-        $purchase->delete();
-
-        return redirect()->route('purchases.index')
-            ->with('success', 'Registro eliminado exitosamente');
+        public function destroy($id)
+{
+    // Encuentra la materia prima con el ID dado
+    $purchase = Purchase::find($id);
+    if (!$purchase) {
+        return redirect()->route('purchases.index')->with('error', 'La compra no existe');
     }
+
+    // Cambia el estado de la materia prima
+    $purchase->disable = !$purchase->disable; // Corregir a 'disabled'
+    $purchase->save();
+
+    // Redirige con un mensaje de éxito
+    return redirect()->route('purchases.index')->with('success', 'Estado de la compra cambiado con éxito');
+}
 
     public function exportToExcel()
     {
