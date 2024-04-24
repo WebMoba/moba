@@ -16,7 +16,8 @@
 
     <nav class="navbar">
         <div class="container-fluid">
-            <img src="{{ asset('Imagenes/Logomoba.png') }}" class="navbar-img-left" alt="Logo Moba">
+            <a href="{{ asset('/') }}">
+                <img src="{{ asset('Imagenes/Logomoba.png') }}" class="navbar-img-left" alt="Logo Moba"></a>
             <div class="navbar-buttons">
                 <div class="dropdown">
                     <a href="{{ route('mobaMenu.Servicios.servicios') }}"><button
@@ -31,12 +32,13 @@
                         <li><a class="dropdown-item" href="#">POP y álgo más</a></li>
                     </ul>
                 </div>
-                <a href="" class="btn btn-primary">Contáctanos</a>
+                <a href="{{ route('mobaMenu.index') }}" class="btn btn-primary">Nosotros</a>
                 <a href="{{ route('mobaMenu.proyectos.index') }}" class="btn btn-primary">Proyectos</a>
-                <a href="#" class="btn btn-primary">Equipo de trabajo</a>
+                <a href="{{ route('mobaMenu.EquipoTrabajo.index') }}" class="btn btn-primary">Equipo de trabajo</a>
                 <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
-            <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte">
+            <a href="{{ asset('/') }}">
+                <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte"></a>
         </div>
     </nav>
     <div class="content">
@@ -49,274 +51,317 @@
         //inicio de proyectos
         //proyectos cuadro
         <div class="title-container">
-            <h1 class="big-title">PROYECTOS</h1>
+            <h1 class="big-title">ALMACENES PARAISO</h1>
         </div>
+     
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="contenido">
-                        <div class="texto">
-                            <h2>Título de la sección</h2>
-                            <p>Descripción breve del contenido.</p>
-                        </div>
-                        <div class="imagen">
-                            <img src="ruta_de_la_imagen.jpg" alt="Imagen">
-                        </div>
-                    </div>
-                    <div class="flecha">
-                        <img src="ruta_de_la_imagen_de_flecha.png" alt="Flecha">
-                        <i class="bi bi-chevron-compact-left"></i>
+                <!-- Columna para el párrafo -->
+                <div class="col-md-6">
+                    <div class="titulo">
+                        <p>Somos una empresa dedicada a satisfacer las necesidades de nuestros clientes, principalmente en frutas, verduras y demás productos de la canasta familiar; vinculando como aliados estratégicos a proveedores; ofreciendo condiciones dignas de trabajo a personal idóneo que vive y aplica principios de integridad, honestidad y constancia, garantizando la retribución a los socios, conformando así un equipo comprometido con el desarrollo y bienestar de la comunidad.</p>
                     </div>
                 </div>
+                <!-- Columna para el carrusel -->
+                <!-- Columna para el carrusel -->
+                <div class="col-md-6">
+                    <div id="carouselExample" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="{{ asset('Imagenes/imgproyectos/paraiso1.jpg') }}" alt="PARAISO1" class="d-block w-100">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{{ asset('Imagenes/imgproyectos/paraiso2.jpeg') }}" alt="JAATELO" class="d-block w-100">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{{ asset('Imagenes/imgproyectos/paraiso3.jpeg') }}" alt="ACERIAS" class="d-block w-100">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{{ asset('Imagenes/imgproyectos/paraiso4.jpg') }}" alt="ACERIAS" class="d-block w-100">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{{ asset('Imagenes/imgproyectos/paraiso5.jpeg') }}" alt="ACERIAS" class="d-block w-100">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+                
             </div>
         </div>
-
-  
-
-    <!-- navbar -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
-    <script>
-        document.querySelector('.dropdown').addEventListener('mouseenter', function() {
-            this.querySelector('.dropdown-menu').classList.add('show');
-        });
-
-        document.querySelector('.dropdown').addEventListener('mouseleave', function() {
-            this.querySelector('.dropdown-menu').classList.remove('show');
-        });
-    </script>
-
-    <!--identidad y demas-->
-    <script>
-        let indiceCuadroActual = 1;
-
-        function mostrarCuadroAnterior() {
-            // Oculta el cuadro actual
-            document.getElementById(`cuadro${indiceCuadroActual}`).style.display = 'none';
-
-            // Actualiza el índice al cuadro anterior
-            indiceCuadroActual = (indiceCuadroActual - 1) > 0 ? (indiceCuadroActual - 1) : 3;
-
-            // Muestra el cuadro anterior
-            document.getElementById(`cuadro${indiceCuadroActual}`).style.display = 'block';
-        }
-
-        function mostrarCuadroSiguiente() {
-            // Oculta el cuadro actual
-            document.getElementById(`cuadro${indiceCuadroActual}`).style.display = 'none';
-
-            // Actualiza el índice al cuadro siguiente
-            indiceCuadroActual = (indiceCuadroActual + 1) > 3 ? 1 : (indiceCuadroActual + 1);
-
-            // Muestra el cuadro siguiente
-            document.getElementById(`cuadro${indiceCuadroActual}`).style.display = 'block';
-        }
-    </script>
-
-    <style>
-
-        /* css de prueba*/
-        .container {
-            margin-top: 20px;
-        }
         
-        .contenido {
-            display: flex;
-            align-items: center;
-        }
+
+
+        <!-- navbar -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        </script>
+        <script>
+            document.querySelector('.dropdown').addEventListener('mouseenter', function() {
+                this.querySelector('.dropdown-menu').classList.add('show');
+            });
+
+            document.querySelector('.dropdown').addEventListener('mouseleave', function() {
+                this.querySelector('.dropdown-menu').classList.remove('show');
+            });
+        </script>
+
+        <!--identidad y demas-->
+        <script>
+            let indiceCuadroActual = 1;
+
+            function mostrarCuadroAnterior() {
+                // Oculta el cuadro actual
+                document.getElementById(`cuadro${indiceCuadroActual}`).style.display = 'none';
+
+                // Actualiza el índice al cuadro anterior
+                indiceCuadroActual = (indiceCuadroActual - 1) > 0 ? (indiceCuadroActual - 1) : 3;
+
+                // Muestra el cuadro anterior
+                document.getElementById(`cuadro${indiceCuadroActual}`).style.display = 'block';
+            }
+
+            function mostrarCuadroSiguiente() {
+                // Oculta el cuadro actual
+                document.getElementById(`cuadro${indiceCuadroActual}`).style.display = 'none';
+
+                // Actualiza el índice al cuadro siguiente
+                indiceCuadroActual = (indiceCuadroActual + 1) > 3 ? 1 : (indiceCuadroActual + 1);
+
+                // Muestra el cuadro siguiente
+                document.getElementById(`cuadro${indiceCuadroActual}`).style.display = 'block';
+            }
+        </script>
+
+        <style>
+            /* css de prueba*/
+            {
+                font-family: Arial, sans-serif;
+            }
+            .container {
+                padding-top: 50px;
+                padding-bottom: 50px;
+                position: relative; /* Establece el contenedor como posición relativa para que los elementos internos puedan ser posicionados relativamente a él */
+            }
+            .titulo {
+                position: absolute; /* Establece la posición absoluta para que el título pueda posicionarse en la esquina superior izquierda del contenedor */
+                top: 20px; /* Espacio desde la parte superior del contenedor */
+                left: 20px; /* Espacio desde el lado izquierdo del contenedor */
+                width: calc(50% - 40px); /* Calcula el ancho del título para ocupar la mitad del contenedor menos los márgenes */
+                padding: 0 20px; /* Espacio interno del título */
+            }
+            .galeria {
+                width: calc(50% - 40px); /* Calcula el ancho de la galería para ocupar la mitad del contenedor menos los márgenes */
+                float: right; /* Coloca la galería a la derecha del contenedor */
+                padding: 0 20px; /* Espacio interno de la galería */
+                overflow: hidden; /* Oculta cualquier desbordamiento horizontal */
+            }
+            .imagen {
+                width: 100%; /* Ocupa el 100% del ancho de la galería */
+                overflow-x: hidden; /* Oculta cualquier desbordamiento horizontal */
+            }
+            .imagen img {
+                width: 100%; /* Ocupa el 100% del ancho de la imagen */
+                height: auto; /* Altura automática para mantener la proporción */
+            }
+            .botones {
+                position: absolute;
+                top: 10px; /* Ajusta la posición vertical de los botones */
+                left: 180px; /* Ajusta la posición horizontal de los botones */
+            }
+            
+            .boton {
+                margin: 5px; /* Espacio entre los botones */
+            }
+            /* css de prueba*/
+            .contenido {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                width: 90%;
+                margin-top: 10%;
+                margin-left: 5%;
+            }
+
+            .active-link {
+                position: relative;
+                color: #2bb9e5;
+            }
+
+            .active-link:after {
+                color: #2bb9e5;
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 2px;
+                /* Grosor de la línea */
+                background-color: blue;
+                /* Color de la línea */
+            }
+
+            .contenido1 {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 70%;
+                flex-direction: column;
+            }
+
+            .titulo {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #2bb9e5;
+
+            }
+
+            .subtitulo {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                color: white;
+                padding: 1%;
+            }
+
+            .subtitulo h4 {
+                font-weight: bold;
+                padding: 1%;
+            }
+
+            .lineatexto {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: row;
+            }
+
+            .linea {}
+
+            .texto {
+
+                color: white;
+            }
+
+            .contenido2 {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: row;
+                width: 100%;
+                padding-top: 5%;
+            }
+
+            .creatividad {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                height: 100%;
+                width: 40%;
+                color: white;
+            }
+
+            .creatividad p {
+                text-align: left;
+            }
+
+            .creatividad h1,
+            h2 {
+                text-align: justify;
+            }
+
+            .creatividad a {
+                text-align: justify;
+            }
+
+            .contenedor {
+                height: 100%;
+                width: 40%;
+                margin-left: 10%;
+            }
+
+            .contenedor h1 {
+                color: #2bb9e5;
+                font-weight: bold;
+            }
+
+            .contenedor h2 {
+                color: white;
+            }
+
+            .contenedor p {
+                color: #6094b0;
+            }
+
+            .cuadro {
+                background-color: transparent;
+                display: none;
+                /* Por defecto, todos ocultos */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+
+            .cuadro:first-child {
+                display: block;
+                /* El primero visible por defecto */
+            }
+
+            .texto-cuadro {
+                border: 2px solid grey;
+                padding: 20px;
+            }
+
+            .cuadro .botones {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .cuadro .botones h1 {
+                color: white;
+            }
+
+            .texto h2 {
+                margin-top: 0;
+                /* Elimina el margen superior del título */
+            }
+
+            .botones {
+                margin-top: 20px;
+            }
+
+            .botones button {
+                margin-right: 10px;
+                border: 1px solid grey;
+                background-color: transparent;
+                padding: 10px 20px;
+                cursor: pointer;
+            }
+        </style>
+        <script>
+            function anteriorImagen() {
+                var galeria = document.querySelector('.galeria');
+                galeria.scrollLeft -= galeria.offsetWidth;
+            }
         
-        .texto {
-            flex: 1;
-            padding-right: 20px;
-        }
-        
-        .imagen {
-            flex: 1;
-        }
-        
-        .imagen img {
-            width: 100%;
-            height: auto;
-        }
-        
-        .flecha {
-            text-align: center;
-            margin-top: 20px;
-        }
-        
-        /* css de prueba*/ 
-        .contenido {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            width: 90%;
-            margin-top: 10%;
-            margin-left: 5%;
-        }
-
-        .active-link {
-            position: relative;
-            color: #2bb9e5;
-        }
-
-        .active-link:after {
-            color: #2bb9e5;
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 2px;
-            /* Grosor de la línea */
-            background-color: blue;
-            /* Color de la línea */
-        }
-
-        .contenido1 {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 70%;
-            flex-direction: column;
-        }
-
-        .titulo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #2bb9e5;
-
-        }
-
-        .subtitulo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            color: white;
-            padding: 1%;
-        }
-
-        .subtitulo h4 {
-            font-weight: bold;
-            padding: 1%;
-        }
-
-        .lineatexto {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: row;
-        }
-
-        .linea {}
-
-        .texto {
-
-            color: white;
-        }
-
-        .contenido2 {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: row;
-            width: 100%;
-            padding-top: 5%;
-        }
-
-        .creatividad {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            height: 100%;
-            width: 40%;
-            color: white;
-        }
-
-        .creatividad p {
-            text-align: left;
-        }
-
-        .creatividad h1,
-        h2 {
-            text-align: justify;
-        }
-
-        .creatividad a {
-            text-align: justify;
-        }
-
-        .contenedor {
-            height: 100%;
-            width: 40%;
-            margin-left: 10%;
-        }
-
-        .contenedor h1 {
-            color: #2bb9e5;
-            font-weight: bold;
-        }
-
-        .contenedor h2 {
-            color: white;
-        }
-
-        .contenedor p {
-            color: #6094b0;
-        }
-
-        .cuadro {
-            background-color: transparent;
-            display: none;
-            /* Por defecto, todos ocultos */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-
-        .cuadro:first-child {
-            display: block;
-            /* El primero visible por defecto */
-        }
-
-        .texto-cuadro {
-            border: 2px solid grey;
-            padding: 20px;
-        }
-
-        .cuadro .botones {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .cuadro .botones h1 {
-            color: white;
-        }
-
-        .texto h2 {
-            margin-top: 0;
-            /* Elimina el margen superior del título */
-        }
-
-        .botones {
-            margin-top: 20px;
-        }
-
-        .botones button {
-            margin-right: 10px;
-            border: 1px solid grey;
-            background-color: transparent;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-    </style>
-
+            function siguienteImagen() {
+                var galeria = document.querySelector('.galeria');
+                galeria.scrollLeft += galeria.offsetWidth;
+            }
+        </script>
 </body>
 
 </html>

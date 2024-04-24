@@ -12,17 +12,15 @@
             {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('Fecha de inicio', null, ['class' => 'required']) }}
-            {{ Form::date('date_start', $service->date_start ?? null, ['class' => 'form-control' . ($errors->has('date_start') ? ' is-invalid' : '')]) }}
+            {{ Form::label('Fecha Inicio' , null, ['class' => 'required']) }}
+            {{ Form::date('date_start', optional($service->date_start)->format('Y-m-d'), ['class' => 'form-control' . ($errors->has('date_start') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Inicio', 'min' => now()->format('Y-m-d')]) }}
             {!! $errors->first('date_start', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-
         <div class="form-group">
-            {{ Form::label('Fecha final', null, ['class' => 'required']) }}
-            {{ Form::date('date_end', $service->date_end ?? null, ['class' => 'form-control' . ($errors->has('date_end') ? ' is-invalid' : '')]) }}
+            {{ Form::label('Fecha Final' , null, ['class' => 'required']) }}
+            {{ Form::date('date_end', optional($service->date_end)->format('Y-m-d'), ['class' => 'form-control' . ($errors->has('date_end') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Final', 'min' => optional($service->date_start)->format('Y-m-d') ?: now()->format('Y-m-d')]) }}
             {!! $errors->first('date_end', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-
 
         <div class="form-group">
             {{ Form::label('Imagen', null, ['class' => 'required']) }}

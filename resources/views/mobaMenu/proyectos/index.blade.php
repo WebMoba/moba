@@ -16,7 +16,8 @@
 
     <nav class="navbar">
         <div class="container-fluid">
-            <img src="{{ asset('Imagenes/Logomoba.png') }}" class="navbar-img-left" alt="Logo Moba">
+            <a href="{{ asset('/') }}">
+                <img src="{{ asset('Imagenes/Logomoba.png') }}" class="navbar-img-left" alt="Logo Moba"></a>
             <div class="navbar-buttons">
                 <div class="dropdown">
                     <a href="{{ route('mobaMenu.Servicios.servicios') }}"><button
@@ -36,7 +37,8 @@
                 <a href="{{ route('mobaMenu.EquipoTrabajo.index') }}" class="btn btn-primary">Equipo de trabajo</a>
                 <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
-            <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte">
+            <a href="{{ asset('/') }}">
+            <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte"></a>
         </div>
     </nav>
     <div class="content">
@@ -72,7 +74,7 @@
     //imagenes de proyectos
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="image-container">
                     <a href="{{ asset('mobaMenu/proyectos/PARAISO') }}">
                         <img src="{{ asset('Imagenes/imgproyectos/paraiso1.jpg') }}" alt="PARAISO1">
@@ -82,10 +84,10 @@
                     </a>
                 </div>
             </div>
-            
-            <div class="col-md-3">
+    
+            <div class="col-md-4">
                 <div class="image-container">
-                    <a href="{{ asset('mobaMenu/proyectos/PARAISO.html') }}">
+                    <a href="{{ asset('mobaMenu/proyectos/JAATELO') }}">
                         <img src="{{ asset('Imagenes/imgproyectos/jaatelo1.jpg') }}" alt="JAATELO">
                         <div class="overlay">
                             <div class="text">HELADERIA JAATELO</div>
@@ -93,10 +95,10 @@
                     </a>
                 </div>
             </div>
-            
-            <div class="col-md-3">
+    
+            <div class="col-md-4">
                 <div class="image-container">
-                    <a href="{{ asset('mobaMenu/proyectos/PARAISO.html') }}">
+                    <a href="{{ asset('mobaMenu/proyectos/ACERIAS') }}">
                         <img src="{{ asset('Imagenes/imgproyectos/acerias1.jpg') }}" alt="ACERIAS">
                         <div class="overlay">
                             <div class="text">ACERIAS PAZ DEL RIO</div>
@@ -104,10 +106,12 @@
                     </a>
                 </div>
             </div>
-            
-            <div class="col-md-3">
+        </div>
+    
+        <div class="row">
+            <div class="col-md-4">
                 <div class="image-container">
-                    <a href="{{ asset('mobaMenu/proyectos/PARAISO.html') }}">
+                    <a href="{{ asset('mobaMenu/proyectos/BIOSALUD') }}">
                         <img src="{{ asset('Imagenes/imgproyectos/biosalud1.jpg') }}" alt="BIOSALUD">
                         <div class="overlay">
                             <div class="text">BIOSALUD</div>
@@ -115,12 +119,10 @@
                     </a>
                 </div>
             </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-3">
+    
+            <div class="col-md-4">
                 <div class="image-container">
-                    <a href="{{ asset('mobaMenu/proyectos/PARAISO.html') }}">
+                    <a href="{{ asset('mobaMenu/proyectos/CABUBARA') }}">
                         <img src="{{ asset('Imagenes/imgproyectos/cabubara1.jpg') }}" alt="CABUBARA">
                         <div class="overlay">
                             <div class="text">CABUBARA</div>
@@ -128,10 +130,10 @@
                     </a>
                 </div>
             </div>
-            
-            <div class="col-md-3">
+    
+            <div class="col-md-4">
                 <div class="image-container">
-                    <a href="{{ asset('mobaMenu/proyectos/PARAISO.html') }}">
+                    <a href="{{ asset('mobaMenu/proyectos/HOSPITAL') }}">
                         <img src="{{ asset('Imagenes/imgproyectos/hospital1.jpeg') }}" alt="HOSPITAL">
                         <div class="overlay">
                             <div class="text">HOSPITAL REGIONAL</div>
@@ -139,10 +141,12 @@
                     </a>
                 </div>
             </div>
-            
-            <div class="col-md-3">
+        </div>
+    
+        <div class="row">
+            <div class="col-md-4">
                 <div class="image-container">
-                    <a href="{{ asset('mobaMenu/proyectos/PARAISO.html') }}">
+                    <a href="{{ asset('mobaMenu/proyectos/JOVEN') }}">
                         <img src="{{ asset('Imagenes/imgproyectos/jovenpro1.jpg') }}" alt="JOVENPRO">
                         <div class="overlay">
                             <div class="text">JOVEN PRO</div>
@@ -150,45 +154,45 @@
                     </a>
                 </div>
             </div>
-            
-            <div class="col-md-3">
+    
+            <div class="col-md-4">
                 <div class="image-container">
-                    <a href="{{ asset('mobaMenu/proyectos/PARAISO.html') }}">
+                    <a href="{{ asset('mobaMenu/proyectos/DULCES') }}">
                         <img src="{{ asset('Imagenes/imgproyectos/lafrez1.jpg') }}" alt="LAFREZ">
                         <div class="overlay">
-                            <div class="text"> DULCES LA FREZ</div>
+                            <div class="text">DULCES LA FREZ</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+    
+            <div class="col-md-4">
+                <div class="image-container">
+                    <a href="{{ asset('mobaMenu/proyectos/ODONTOLOGIA') }}">
+                        <img src="{{ asset('Imagenes/imgproyectos/lizethdorado1.jpg') }}" alt="ODONTOLOGIA-LIZETH">
+                        <div class="overlay">
+                            <div class="text">ODONTOLOGIA LIZETH DORADO</div>
                         </div>
                     </a>
                 </div>
             </div>
         </div>
-        
+    
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="image-container">
-                    <a href="{{ asset('mobaMenu/proyectos/PARAISO.html') }}">
-                        <img src="{{ asset('Imagenes/imgproyectos/lizethdorado1.jpg') }}" alt="ODONTOLOGIA-LIZETH">
-                        <div class="overlay">
-                            <div class="text"> ODONTOLOGIA LIZETH DORADO</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="col-md-3">
-                <div class="image-container">
-                    <a href="{{ asset('mobaMenu/proyectos/PARAISO.html') }}">
+                    <a href="{{ asset('mobaMenu/proyectos/ODONTOLOGA') }}">
                         <img src="{{ asset('Imagenes/imgproyectos/odontologa1.jpg') }}" alt="ODONTOLOGA">
                         <div class="overlay">
-                            <div class="text"> ODONTOLOGA CAROLINA CAMACHO</div>
+                            <div class="text">ODONTOLOGA CAROLINA CAMACHO</div>
                         </div>
                     </a>
                 </div>
             </div>
-            
-            <div class="col-md-3">
+    
+            <div class="col-md-4">
                 <div class="image-container">
-                    <a href="{{ asset('mobaMenu/proyectos/PARAISO.html') }}">
+                    <a href="{{ asset('mobaMenu/proyectos/PUNTOCERO') }}">
                         <img src="{{ asset('Imagenes/imgproyectos/puntocero1.jpg') }}" alt="PUNTOCERO">
                         <div class="overlay">
                             <div class="text">COMIDAS RAPIDAS PUNTO CERO</div>
@@ -196,10 +200,10 @@
                     </a>
                 </div>
             </div>
-            
-            <div class="col-md-3">
+    
+            <div class="col-md-4">
                 <div class="image-container">
-                    <a href="{{ asset('mobaMenu/proyectos/PARAISO.html') }}">
+                    <a href="{{ asset('mobaMenu/proyectos/RASPADOS') }}">
                         <img src="{{ asset('Imagenes/imgproyectos/raspadosiglu1.jpg') }}" alt="RASPADOS">
                         <div class="overlay">
                             <div class="text">RASPADOS IGLU</div>
@@ -210,7 +214,7 @@
         </div>
     </div>
     
-// seccion de la pestaña 
+    // seccion de la pestaña
 
 
     <!-- navbar -->

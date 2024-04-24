@@ -155,7 +155,20 @@ Route::view('/mobaMenu/Servicios/servicios', 'mobaMenu.servicios.servicios')->na
 
 //vistas de proyectos
 Route::view('/mobaMenu/proyectos/PARAISO', 'mobaMenu.proyectos.PARAISO')->name('mobaMenu.proyectos.PARAISO');
-Route::view('/mobaMenu/proyectos/PARAISO', 'mobaMenu.proyectos.PARAISO')->name('mobaMenu.proyectos.PARAISO');
+Route::view('/mobaMenu/proyectos/JAATELO', 'mobaMenu.proyectos.JAATELO')->name('mobaMenu.proyectos.JAATELO');
+Route::view('/mobaMenu/proyectos/ACERIAS', 'mobaMenu.proyectos.ACERIAS')->name('mobaMenu.proyectos.ACERIAS');
+Route::view('/mobaMenu/proyectos/BIOSALUD', 'mobaMenu.proyectos.BIOSALUD')->name('mobaMenu.proyectos.BIOSALUD');
+Route::view('/mobaMenu/proyectos/HOSPITAL', 'mobaMenu.proyectos.HOSPITAL')->name('mobaMenu.proyectos.HOSPITAL');
+Route::view('/mobaMenu/proyectos/DULCES', 'mobaMenu.proyectos.DULCES')->name('mobaMenu.proyectos.DULCES');
+Route::view('/mobaMenu/proyectos/CABUBARA', 'mobaMenu.proyectos.CABUBARA')->name('mobaMenu.proyectos.CABUBARA');
+Route::view('/mobaMenu/proyectos/ODONTOLOGA', 'mobaMenu.proyectos.ODONTOLOGA')->name('mobaMenu.proyectos.ODONTOLOGA');
+Route::view('/mobaMenu/proyectos/ODONTOLOGIA', 'mobaMenu.proyectos.ODONTOLOGIA')->name('mobaMenu.proyectos.ODONTOLOGIA');
+Route::view('/mobaMenu/proyectos/PUNTOCERO', 'mobaMenu.proyectos.PUNTOCERO')->name('mobaMenu.proyectos.PUNTOCERO');
+Route::view('/mobaMenu/proyectos/RASPADOS', 'mobaMenu.proyectos.RASPADOS')->name('mobaMenu.proyectos.RASPADOS');
+Route::view('/mobaMenu/proyectos/JOVEN', 'mobaMenu.proyectos.JOVEN')->name('mobaMenu.proyectos.JOVEN');
+
+
+
 
 
 
