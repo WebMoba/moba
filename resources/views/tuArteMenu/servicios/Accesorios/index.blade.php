@@ -80,24 +80,39 @@
         <h1 class="txts3">En esta línea encuentras aretes largos, aretes topitos, dijes, manillas, pines, anillos.</h1>
     </div>
     <!---Carrusel--->
-    @foreach ($products as $product)
-        <div class="carousel-item">
-            <div class="row">
-                <div class="col">
-                    <div class="red-box">
-                        <img src="{{ asset('storage/uploads/' . $product->image) }}" class="d-block w-100">
-                    </div>
-                    <div class="stars">
-                        <!-- Puedes agregar aquí la lógica para mostrar la calificación del producto si tienes esa información -->
-                    </div>
-                    <div class="rating-text">
-                        <p class="textName">{{ $product->name }}</p>
-                        <p class="textValue">{{ $product->price }}</p>
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            @php
+                $chunks = $products->chunk(4); // Divide la colección en grupos de 4 elementos
+            @endphp
+            @foreach ($chunks as $key => $chunk)
+                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                    <div class="row">
+                        @foreach ($chunk as $product)
+                            <div class="col">
+                                <div class="card">
+                                    <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top"
+                                        alt="{{ $product->name }}">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $product->name }}</h5>
+                                        <p class="card-text">{{ $product->price }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
-    @endforeach
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
