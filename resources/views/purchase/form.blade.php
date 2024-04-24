@@ -26,11 +26,12 @@
             <small class="text-muted">Por cuestiones de seguridad este campo no es editable.</small>
         </div>
 
-        <div class="form-group">
-            {{ Form::label('Documento del proveedor', null, ['class' => 'required-label']) }}
-            {{ Form::select('people_id', $people, $purchase->people_id, ['class' => 'form-control' . ($errors->has('people_id') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Seleccione un proveedor']) }}
-            {!! $errors->first('people_id', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
+        <!-- purchase.form -->
+<div class="form-group">
+    {{ Form::label('Documento del proveedor', null, ['class' => 'required-label']) }}
+    {{ Form::select('people_id', $providers->pluck('id_card', 'id'), $purchase->people_id, ['class' => 'form-control' . ($errors->has('people_id') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Seleccione un proveedor']) }}
+    {!! $errors->first('people_id', '<div class="invalid-feedback">:message</div>') !!}
+</div>
     </div>
     <div class="box-footer" style="margin: 20px;">
         <button type="button" class="btn btn-success" onclick="enviarDetalles()">Enviar</button>

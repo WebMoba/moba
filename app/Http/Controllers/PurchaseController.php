@@ -69,24 +69,24 @@ class PurchaseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        $purchase = new Purchase();
-        $purchase->date = now()->format('Y-m-d');
-        $usersName = User::pluck('name', 'id');
+{
+    $purchase = new Purchase();
+    $purchase->date = now()->format('Y-m-d');
+    $usersName = User::pluck('name', 'id');
 
-        $people = Person::pluck('id_card', 'id');
+    $purchaseName = $purchase->name;
 
-        // Obtener el nombre de la compra
-        $purchaseName = $purchase->name;
+    // Obtener solo las personas con rol de "Proveedor"
+    $providers = Person::whereHas('teamWork')->where('rol', 'Proveedor')->get();
 
-        $detailPurchase = new DetailPurchase();
-        $purchases = Purchase::pluck('name', 'id');
-        $materialsRaws = MaterialsRaw::pluck('name', 'id');
+    $detailPurchase = new DetailPurchase();
+    $purchases = Purchase::pluck('name', 'id');
+    $materialsRaws = MaterialsRaw::pluck('name', 'id');
 
-        $confirm = false;
+    $confirm = false;
 
-        return view('purchase.create', compact('purchase', 'people', 'detailPurchase', 'purchases', 'materialsRaws', 'purchaseName', 'confirm','usersName'));
-    }
+    return view('purchase.create', compact('purchase', 'providers', 'detailPurchase', 'purchases', 'materialsRaws', 'purchaseName', 'confirm', 'usersName'));
+}
 
     /**
      * Store a newly created resource in storage.
