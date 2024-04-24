@@ -31,7 +31,7 @@
                                 <a href="{{ route('excel.purchase') }}" class="btn btn-success btn-sm float-right">
                                     <i class="fa fa-file-excel"></i> {{ __('Excel') }}
                                 </a>
-                             
+
                             </div>
                             <div class="float-right">
                                 <a href="{{ route('purchases.create') }}" class="btn btn-primary btn-sm float-right"
@@ -79,14 +79,16 @@
                                                 <td>
                                                     <form action="{{ route('purchases.destroy', $purchase->id) }}"
                                                         method="POST">
-                                                        <a class="btn btn-sm btn-primary "
-                                                            href="{{ route('purchases.show', $purchase->id) }}"><i
-                                                                class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                        <a class="btn btn-sm btn-primary {{ $purchase->disable ? 'disabled' : '' }}"
+                                                        href="{{ route('purchases.show', $purchase->id) }}"><i
+                                                            class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}</a>
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger btn-sm"
-                                                            onclick="return confirm('¿Está seguro de eliminar esta compra? Ten en cuenta que esto eliminará todos los registro asociados');"><i
-                                                                class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                            onclick="return confirm('¿Está seguro de que desea {{ $purchase->disable ? 'Habilitar' : 'Deshabilitar' }} a la  compra?')">
+                                                            <i class="fa fa-fw fa-trash"></i>
+                                                            {{ $purchase->disable ? 'Habilitar' : 'Deshabilitar' }}
+                                                        </button>
                                                     </form>
 
 

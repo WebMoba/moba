@@ -215,23 +215,18 @@
 
 
 
-    @keyframes spin-horizontal {
+    @keyframes pulse-opacity {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
 
-        0%,
-        100% {
-            transform: rotateY(0deg);
-        }
+@keyframes spin-horizontal {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(90deg); }
+}
 
-        /* La imagen está en su posición original */
-        50% {
-            transform: rotateY(180deg);
-        }
-
-        /* La imagen gira 180 grados */
-    }
-
-    .logos img {
-        animation: spin-horizontal 8s linear infinite;
-        /* La animación dura 4 segundos, es lineal y se repite infinitamente */
-    }
+.logos img {
+    animation: pulse-opacity 2s ease-in-out infinite, spin-horizontal 8s linear infinite;
+}
 </style>

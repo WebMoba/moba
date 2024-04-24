@@ -13,10 +13,10 @@
     <h2>Compra</h2>
     <div class="box-body">
         <div class="form-group" style="display: none;">
-    {{ Form::label('Nombre del proveedor', null, ['class' => 'required-label']) }}
-    {{ Form::select('name', $usersName, $purchase->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Name']) }}
-    {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
-</div>
+            {{ Form::label('Nombre del proveedor', null, ['class' => 'required-label']) }}
+            {{ Form::select('name', $usersName, $purchase->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Name']) }}
+            {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
 
         <div class="form-group">
             {{ Form::label('Fecha', null, ['class' => 'required-label']) }}
@@ -26,20 +26,18 @@
             <small class="text-muted">Por cuestiones de seguridad este campo no es editable.</small>
         </div>
 
-        <div class="form-group">
-            {{ Form::label('Documento del proveedor', null, ['class' => 'required-label']) }}
-            {{ Form::select('people_id', $people, $purchase->people_id, ['class' => 'form-control' . ($errors->has('people_id') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Seleccione un proveedor']) }}
-            {!! $errors->first('people_id', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
+        <!-- purchase.form -->
+<div class="form-group">
+    {{ Form::label('Documento del proveedor', null, ['class' => 'required-label']) }}
+    {{ Form::select('people_id', $providers->pluck('id_card', 'id'), $purchase->people_id, ['class' => 'form-control' . ($errors->has('people_id') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Seleccione un proveedor']) }}
+    {!! $errors->first('people_id', '<div class="invalid-feedback">:message</div>') !!}
+</div>
     </div>
     <div class="box-footer" style="margin: 20px;">
         <button type="button" class="btn btn-success" onclick="enviarDetalles()">Enviar</button>
         <a type="submit" class="btn btn-primary" href="{{ route('purchases.index') }}">Volver</a>
     </div>
 </div>
-
-
-
 
 
 
@@ -67,7 +65,7 @@
                     </th>
                     <th>
                         <div class="form-group">
-                            {{ Form::text('quantity', $detailPurchase->quantity, ['id' => 'quantity', 'class' => 'form-control' . ($errors->has('quantity') ? ' is-invalid' : ''),'required', 'placeholder' => 'Quantity']) }}
+                            {{ Form::text('quantity', $detailPurchase->quantity, ['id' => 'quantity', 'class' => 'form-control' . ($errors->has('quantity') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Quantity']) }}
                             {!! $errors->first('quantity', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
                     </th>

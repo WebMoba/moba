@@ -27,9 +27,9 @@
                         </button>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="{{route('mobaMenu.Servicios.servicios')}}">Identidad Corporativa</a></li>
-                        <li><a class="dropdown-item" href="{{route('mobaMenu.Servicios.servicios')}}">Avisos y Publicidad para interiores</a></li>
-                        <li><a class="dropdown-item" href="{{route('mobaMenu.Servicios.servicios')}}">POP y álgo más</a></li>
+                        <li><a class="dropdown-item" onclick="mostrarCuadroPorNumero(1)">Identidad Corporativa</a></li>
+                        <li><a class="dropdown-item" onclick="mostrarCuadroPorNumero(2)">Avisos y Publicidad para interiores</a></li>
+                        <li><a class="dropdown-item" onclick="mostrarCuadroPorNumero(3)">POP y álgo más</a></li>
                     </ul>
                 </div>
                 <a href="{{ route('mobaMenu.index')}}" class="btn btn-primary">Nosotros</a>
@@ -190,6 +190,8 @@
         });
     </script>
 
+
+    
     <!--identidad y demas-->
     <script>
         let indiceCuadroActual = 1;
@@ -215,6 +217,20 @@
             // Muestra el cuadro siguiente
             document.getElementById(`cuadro${indiceCuadroActual}`).style.display = 'block';
         }
+
+        function mostrarCuadroPorNumero(numero) {
+            // Oculta todos los cuadros
+            document.getElementById('cuadro1').style.display = 'none';
+            document.getElementById('cuadro2').style.display = 'none';
+            document.getElementById('cuadro3').style.display = 'none';
+            
+            // Muestra el cuadro correspondiente al número
+            document.getElementById(`cuadro${numero}`).style.display = 'block';
+            
+            // Actualiza el índice cuadroActual
+            indiceCuadroActual = numero;
+        }
+
     </script>
 
     <style>

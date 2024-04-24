@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use App\Models\Region;
 
 use Illuminate\Database\Eloquent\Model;
@@ -31,13 +32,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Person extends Model
 {
-    
+
     static $rules = [
-		'id_card' => 'required',
-		'team_works_id' => 'required',
-		'number_phones_id' => 'required',
-		'towns_id' => 'required',
-		'users_id' => 'required',
+        'id_card' => 'required',
+        'team_works_id' => 'required',
+        'number_phones_id' => 'required',
+        'towns_id' => 'required',
+        'users_id' => 'required',
     ];
 
     protected $perPage = 20;
@@ -47,7 +48,7 @@ class Person extends Model
      *
      * @var array
      */
-    protected $fillable = ['id_card','addres','team_works_id','number_phones_id','towns_id','users_id'];
+    protected $fillable = ['id_card', 'addres', 'team_works_id', 'number_phones_id', 'towns_id', 'users_id'];
 
 
     /**
@@ -57,17 +58,15 @@ class Person extends Model
     {
         return $this->hasMany('App\Models\EventPerson', 'people_id', 'id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function numberPhone()
     {
         return $this->hasOne('App\Models\NumberPhone', 'id', 'number_phones_id');
-        
-        
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -75,7 +74,7 @@ class Person extends Model
     {
         return $this->hasMany('App\Models\Purchase', 'people_id', 'id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -83,7 +82,7 @@ class Person extends Model
     {
         return $this->hasMany(Quote::class);
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -91,7 +90,7 @@ class Person extends Model
     {
         return $this->hasMany('App\Models\Sale', 'people_id', 'id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
@@ -99,7 +98,7 @@ class Person extends Model
     {
         return $this->hasOne('App\Models\TeamWork', 'id', 'team_works_id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
@@ -107,7 +106,7 @@ class Person extends Model
     {
         return $this->hasOne('App\Models\Town', 'id', 'towns_id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
@@ -120,5 +119,8 @@ class Person extends Model
         return $this->belongsTo(Region::class, 'region_id');
     }
 
-    
+    public function isProvider()
+    {
+        return $this->rol === 'Proveedor';
+    }
 }
