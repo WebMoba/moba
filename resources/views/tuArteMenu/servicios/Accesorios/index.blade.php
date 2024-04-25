@@ -19,14 +19,16 @@
     <nav class="navbar">
         <div class="container-fluid">
             <a href="{{ asset('/') }}">
-                <img src="{{ asset('Imagenes/Logomoba.png') }}" class="navbar-img-left" alt="Logo Moba">
+                <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
             </a>
             <div class="navbar-buttons">
                 <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-                        aria-haspopup="true" aria-expanded="false">
-                        Servicios
-                    </button>
+                    <a href="" class="active-link">
+                        <button class="btn btn-primary active-lonk dropdown-toggle" type="button" id="dropdownMenuButton"
+                            aria-haspopup="true" aria-expanded="false">
+                            Servicios
+                        </button>
+                    </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <li><a class="dropdown-item"
                                 href="{{ route('tuArteMenu.servicios.Accesorios.index') }}">Accesorios</a></li>
