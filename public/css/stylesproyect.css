@@ -235,3 +235,9 @@ body::after {
     font-weight: bold;
     text-align: center;
 }
+
+.container-fluid{
+    padding: 0 !important;
+}
+
+

@@ -495,6 +495,11 @@
             padding: 10px 20px;
             cursor: pointer;
         }
+        .container-fluid{
+    padding: 0 !important;
+}
+
+
     </style>
 
 </body>

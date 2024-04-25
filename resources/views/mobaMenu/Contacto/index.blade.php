@@ -166,4 +166,9 @@ textarea{
     color: black;
     
 }
+.container-fluid{
+    padding: 0 !important;
+}
+
+
 </style>

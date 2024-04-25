@@ -277,4 +277,9 @@
     .img-thumbnail:hover {
         transform: scale(1.2);
     }
+    .container-fluid{
+    padding: 0 !important;
+}
+
+
 </style>

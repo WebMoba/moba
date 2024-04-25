@@ -234,4 +234,9 @@
    # .img-thumbnail:hover {
         transform: scale(0.8);
     }
+    .container-fluid{
+    padding: 0 !important;
+}
+
+
 </style>
