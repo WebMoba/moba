@@ -25,17 +25,17 @@
                                 </div>
                                 
                                 <div class="col-auto">
-                                    <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
+                                    <button type="submit" class="btn btn-primary btn-sm"><i class="bi bi-search"></i></button>
                                 </div>
 
 
                             </form>
                             <div class="float-right">
                                 <a href="{{ route('pdf.sales') }}" class="btn btn-danger btn-sm float-right">
-                                    <i class="fa fa-file-pdf"></i> {{ __('PDF') }}
+                                    <i class="fa fa-file-pdf"></i> <i class="bi bi-file-pdf-fill"></i>
                                 </a>
                                 <a href="{{ route('export.sales') }}" class="btn btn-success btn-sm float-right">
-                                    <i class="fa fa-file-excel"></i> {{ __('Excel') }}
+                                    <i class="fa fa-file-excel"></i> <i class="bi bi-file-earmark-excel-fill"></i>
                                 </a>
                             </div>
                             <div class="float-right">
@@ -79,7 +79,7 @@
                                                 <form action="{{ route('sales.destroy', $sale->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary "
                                                         href="{{ route('sales.show', $sale->id) }}"><i
-                                                            class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}</a>
+                                                            class="fa fa-fw fa-eye"></i> <i class="bi bi-eye-fill"></i></a>
                                                     
                                                     @csrf
                                                     @method('DELETE')
