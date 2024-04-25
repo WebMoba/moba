@@ -19,14 +19,16 @@
     <nav class="navbar">
         <div class="container-fluid">
             <a href="{{ asset('/') }}">
-                <img src="{{ asset('Imagenes/Logomoba.png') }}" class="navbar-img-left" alt="Logo Moba">
+                <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
             </a>
             <div class="navbar-buttons">
                 <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-                        aria-haspopup="true" aria-expanded="false">
-                        Servicios
-                    </button>
+                    <a href="" class="active-link">
+                        <button class="btn btn-primary active-lonk dropdown-toggle" type="button"
+                            id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
+                            Servicios
+                        </button>
+                    </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <li><a class="dropdown-item"
                                 href="{{ route('tuArteMenu.servicios.Accesorios.index') }}">Accesorios</a></li>
@@ -98,11 +100,17 @@
                                         alt="{{ $product->name }}">
                                     <div class="card-body">
                                         <div class="stars">
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
+                                            @php
+                                                // Genera un número aleatorio entre 4 y 5 para las estrellas amarillas
+                                                $randomStars = rand(4, 5);
+                                            @endphp
+                                            @for ($i = 0; $i < 5; $i++)
+                                                @if ($i < $randomStars)
+                                                    <i class="bi bi-star-fill active"></i>
+                                                @else
+                                                    <i class="bi bi-star-fill"></i>
+                                                @endif
+                                            @endfor
                                         </div>
                                         <h5 class="card-title">{{ $product->name }}</h5>
                                         <p class="card-text">${{ $product->price }}</p>

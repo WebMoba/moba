@@ -17,7 +17,7 @@
     <nav class="navbar">
         <div class="container-fluid">
             <a href="{{ asset('/') }}">
-                <img src="{{ asset('Imagenes/Logomoba.png') }}" class="navbar-img-left" alt="Logo Moba">
+                <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
             </a>
             <div class="navbar-buttons">
                 <div class="dropdown">

@@ -16,13 +16,14 @@
 
     <nav class="navbar">
         <div class="container-fluid">
-        <a href="{{ asset('/') }}">
-            <img src="{{ asset('Imagenes/Logomoba.png') }}" class="navbar-img-left" alt="Logo Moba">
+            <a href="{{ asset('/') }}">
+                <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
             </a>
             <div class="navbar-buttons">
                 <div class="dropdown">
-                    <a href="{{route('mobaMenu.Servicios.servicios')}}">
-                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"aria-haspopup="true" aria-expanded="false">
+                    <a href="{{ route('mobaMenu.Servicios.servicios') }}" class="active-link">
+                        <button class="btn btn-primary active-lonk dropdown-toggle" type="button"
+                            id="dropdownMenuButton"aria-haspopup="true" aria-expanded="false">
                             Servicios
                         </button>
                     </a>
@@ -32,13 +33,13 @@
                         <li><a class="dropdown-item" onclick="mostrarCuadroPorNumero(3)">POP y álgo más</a></li>
                     </ul>
                 </div>
-                <a href="{{ route('mobaMenu.index')}}" class="btn btn-primary">Nosotros</a>
-                <a href="#" class="btn btn-primary">Proyectos</a>
+                <a href="{{ route('mobaMenu.index') }}" class="btn btn-primary">Nosotros</a>
+                <a href="{{ route('mobaMenu.proyectos.index') }}" class="btn btn-primary">Proyectos</a>
                 <a href="{{ route('mobaMenu.EquipoTrabajo.index') }}" class="btn btn-primary">Equipo de trabajo</a>
                 <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
             <a href="{{ asset('/') }}">
-            <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-left" alt="Logo Moba">
+                <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Moba">
             </a>
         </div>
     </nav>
@@ -49,7 +50,7 @@
             <a href="https://www.facebook.com/MOBAcomunicacionGrafica/"><i class="bi bi-facebook"></i></a>
             <hr class="linea1">
         </div>
-    
+
         <div class="contenido">
             <div class="contenido1">
                 <div class="titulo">
@@ -69,9 +70,12 @@
                     </div>
                     <div class="texto">
                         <p>
-                            Como expertos en diseño y comunicación, somos el proveedor ideal para ayudarte a crear piezas de 
-                            comunicación interna de alto rendimiento y brindarte la asesoría que necesitas para lograr una comunicación 
-                            interna efectiva. ¡Contáctanos hoy y transforma la forma en que te comunicas con tus clientes!
+                            Como expertos en diseño y comunicación, somos el proveedor ideal para ayudarte a crear
+                            piezas de
+                            comunicación interna de alto rendimiento y brindarte la asesoría que necesitas para lograr
+                            una comunicación
+                            interna efectiva. ¡Contáctanos hoy y transforma la forma en que te comunicas con tus
+                            clientes!
                         </p>
                     </div>
                 </div>
@@ -80,10 +84,10 @@
             <div class="contenido2">
                 <div class="creatividad">
                     <p>
-                        <h1 class="t1">Creatividad y dedicación</h1><br>
-                        <h2 class="t2">son las cosas que nuestra</h2><br>
-                        <h2 class="t3">agencia MOBA</h2> <br>
-                        <h2 class="t4">aporta a tu negocio.</h2><br>
+                    <h1 class="t1">Creatividad y dedicación</h1><br>
+                    <h2 class="t2">son las cosas que nuestra</h2><br>
+                    <h2 class="t3">agencia MOBA</h2> <br>
+                    <h2 class="t4">aporta a tu negocio.</h2><br>
                     </p>
                 </div>
                 <div class="contenedor">
@@ -95,19 +99,25 @@
                             </div>
                             <div class="contenido-cuadro">
                                 <div class="mayme">
-                                    <p><</p>
-                                    <p>></p>
+                                    <p>
+                                        << /p>
+                                            <p>></p>
                                 </div>
                                 <p>
                                     Nuestra Agencia se enfoca en el sentido de cada marca que manejamos, lo que
                                     quieren y deben transmitir con su imagen corporativa, cada detalle cuenta
                                     y lo más importante estamos siempre en movimiento, aportando, creando, mejorando...
-                                </p>    
+                                </p>
                             </div>
                         </div>
                         <div class="botones">
-                            <button onclick="mostrarCuadroAnterior()"><h1><</h1></button>
-                            <button onclick="mostrarCuadroSiguiente()"><h1>></h1></button>
+                            <button onclick="mostrarCuadroAnterior()">
+                                <h1>
+                                    << /h1>
+                            </button>
+                            <button onclick="mostrarCuadroSiguiente()">
+                                <h1>></h1>
+                            </button>
                         </div>
                     </div>
 
@@ -120,20 +130,26 @@
                             </div>
                             <div class="contenido-cuadro">
                                 <div class="mayme">
-                                    <p><</p>
-                                    <p>></p>
+                                    <p>
+                                        << /p>
+                                            <p>></p>
                                 </div>
                                 <p>
                                     La primera impresión que las marcas que manejamos dejan en sus clientes debe
-                                    ser siempre positiva, debe transmitir el ser de cada empresa y generar en el 
+                                    ser siempre positiva, debe transmitir el ser de cada empresa y generar en el
                                     espectador seguridad y seriedad de la marca, por tanto cada detalle que plasmamos...
                                 </p>
                             </div>
-                            
+
                         </div>
                         <div class="botones">
-                            <button onclick="mostrarCuadroAnterior()"><h1><</h1></button>
-                            <button onclick="mostrarCuadroSiguiente()"><h1>></h1></button>
+                            <button onclick="mostrarCuadroAnterior()">
+                                <h1>
+                                    << /h1>
+                            </button>
+                            <button onclick="mostrarCuadroSiguiente()">
+                                <h1>></h1>
+                            </button>
                         </div>
                     </div>
 
@@ -145,22 +161,29 @@
                             </div>
                             <div class="contenido-cuadro">
                                 <div class="mayme">
-                                    <p><</p>
-                                    <p>></p>
+                                    <p>
+                                        << /p>
+                                            <p>></p>
                                 </div>
                                 <div class="textoC">
                                     <p>
-                                        Nuestra empresa cuenta con servicios y productos adicionales que complementan 
-                                        y suman a cada uno de nuestros clientes, los cuales están elaborados con la mayor calidad 
+                                        Nuestra empresa cuenta con servicios y productos adicionales que complementan
+                                        y suman a cada uno de nuestros clientes, los cuales están elaborados con la
+                                        mayor calidad
                                         y detalle posible, entregando en cada trabajo nuestro mejor
                                     </p>
                                 </div>
                             </div>
-                            
+
                         </div>
                         <div class="botones">
-                            <button onclick="mostrarCuadroAnterior()"><h1><</h1></button>
-                            <button onclick="mostrarCuadroSiguiente()"><h1>></h1></button>
+                            <button onclick="mostrarCuadroAnterior()">
+                                <h1>
+                                    << /h1>
+                            </button>
+                            <button onclick="mostrarCuadroSiguiente()">
+                                <h1>></h1>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -191,7 +214,7 @@
     </script>
 
 
-    
+
     <!--identidad y demas-->
     <script>
         let indiceCuadroActual = 1;
@@ -199,10 +222,10 @@
         function mostrarCuadroAnterior() {
             // Oculta el cuadro actual
             document.getElementById(`cuadro${indiceCuadroActual}`).style.display = 'none';
-            
+
             // Actualiza el índice al cuadro anterior
             indiceCuadroActual = (indiceCuadroActual - 1) > 0 ? (indiceCuadroActual - 1) : 3;
-            
+
             // Muestra el cuadro anterior
             document.getElementById(`cuadro${indiceCuadroActual}`).style.display = 'block';
         }
@@ -210,10 +233,10 @@
         function mostrarCuadroSiguiente() {
             // Oculta el cuadro actual
             document.getElementById(`cuadro${indiceCuadroActual}`).style.display = 'none';
-            
+
             // Actualiza el índice al cuadro siguiente
             indiceCuadroActual = (indiceCuadroActual + 1) > 3 ? 1 : (indiceCuadroActual + 1);
-            
+
             // Muestra el cuadro siguiente
             document.getElementById(`cuadro${indiceCuadroActual}`).style.display = 'block';
         }
@@ -223,18 +246,17 @@
             document.getElementById('cuadro1').style.display = 'none';
             document.getElementById('cuadro2').style.display = 'none';
             document.getElementById('cuadro3').style.display = 'none';
-            
+
             // Muestra el cuadro correspondiente al número
             document.getElementById(`cuadro${numero}`).style.display = 'block';
-            
+
             // Actualiza el índice cuadroActual
             indiceCuadroActual = numero;
         }
-
     </script>
 
     <style>
-        .contenido{
+        .contenido {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -243,58 +265,87 @@
             margin-top: 10%;
             margin-left: 5%;
         }
-        .contenido1{
+
+        .active-link {
+            position: relative;
+            color: #2bb9e5;
+        }
+
+        .active-link:after {
+            color: #2bb9e5;
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -9px;
+            width: 100%;
+            height: 2px;
+            /* Grosor de la línea */
+            background-color: blue;
+            /* Color de la línea */
+        }
+
+        .active-lonk {
+            color: #2bb9e5;
+        }
+
+        .contenido1 {
             display: flex;
             align-items: center;
             justify-content: center;
             width: 70%;
             flex-direction: column;
         }
-        .titulo{
+
+        .titulo {
             display: flex;
             align-items: center;
             justify-content: center;
             color: #2bb9e5;
-            
+
         }
-        .subtitulo{
+
+        .subtitulo {
             display: flex;
             align-items: center;
-            justify-content: center;    
+            justify-content: center;
             flex-direction: column;
             color: white;
             padding: 1%;
         }
-        .subtitulo h4{
+
+        .subtitulo h4 {
             font-weight: bold;
             padding: 1%;
         }
-        .lineatexto{
+
+        .lineatexto {
             display: flex;
             align-items: center;
-            justify-content: center;    
+            justify-content: center;
             flex-direction: row;
         }
-        .linea{
 
-        }
-        .texto{
-            
+        .linea {}
+
+        .texto {
+
             color: white;
         }
 
-        a{
+        a {
             text-decoration: none
         }
-        .contenido2{
+
+        .contenido2 {
             display: flex;
             align-items: center;
-            justify-content: center;    
+            justify-content: center;
             flex-direction: row;
             width: 100%;
             padding-top: 5%;
         }
-        .creatividad{
+
+        .creatividad {
             display: flex;
             justify-content: center;
             flex-direction: column;
@@ -303,28 +354,36 @@
             color: white;
             padding-bottom: 10%;
         }
-        .creatividad p{
-            text-align:left;
+
+        .creatividad p {
+            text-align: left;
         }
-        .creatividad h1, h2{
+
+        .creatividad h1,
+        h2 {
             text-align: justify;
         }
-        .creatividad a{
+
+        .creatividad a {
             text-align: justify;
         }
-        .creatividad .t1{
+
+        .creatividad .t1 {
             font-size: 35px;
             font-weight: bold
         }
-        .creatividad .t2{
+
+        .creatividad .t2 {
             font-size: 30px;
         }
-        .creatividad .t3{
+
+        .creatividad .t3 {
             font-size: 30px;
-            color: #2bb9e5; 
+            color: #2bb9e5;
             font-weight: bold;
         }
-        .creatividad .t4{
+
+        .creatividad .t4 {
             font-size: 30px;
             font-weight: bold;
         }
@@ -334,47 +393,54 @@
             width: 40%;
             margin-left: 10%;
         }
-        .contenedor h1{
+
+        .contenedor h1 {
             color: #2bb9e5;
             font-weight: bold;
         }
-        .contenedor h2{
+
+        .contenedor h2 {
             color: white;
-        } 
-        .contenedor p{
+        }
+
+        .contenedor p {
             color: #6094b0;
         }
 
         .cuadro {
             background-color: transparent;
-            display: none; /* Por defecto, todos ocultos */
+            display: none;
+            /* Por defecto, todos ocultos */
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction:column ;
-        }
-        .cuadro:first-child {
-            display: block; /* El primero visible por defecto */
+            flex-direction: column;
         }
 
-        .texto-cuadro{
+        .cuadro:first-child {
+            display: block;
+            /* El primero visible por defecto */
+        }
+
+        .texto-cuadro {
             border: 2px solid grey;
             padding: 20px;
         }
-        
-        .titulos-cuadro{
+
+        .titulos-cuadro {
             height: 60%;
             width: 80%;
         }
 
-        .contenido-cuadro{
+        .contenido-cuadro {
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100%;
             flex-direction: row;
         }
-        .contenido-cuadro .mayme{
+
+        .contenido-cuadro .mayme {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -384,34 +450,38 @@
             padding-left: 10%;
             padding-right: 15%;
         }
-        .contenido-cuadro .mayme p{
+
+        .contenido-cuadro .mayme p {
             font-size: 50px;
         }
 
-        .contenido-cuadro .textoC{
+        .contenido-cuadro .textoC {
             width: 60%;
             height: 100%;
         }
 
-        .cuadro .botones{
+        .cuadro .botones {
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100%;
-            padding-bottom:3%;
+            padding-bottom: 3%;
         }
-        .cuadro .botones button{
+
+        .cuadro .botones button {
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 60px; 
+            height: 60px;
         }
-        .cuadro .botones h1{
+
+        .cuadro .botones h1 {
             color: white;
         }
 
         .texto h2 {
-            margin-top: 0; /* Elimina el margen superior del título */
+            margin-top: 0;
+            /* Elimina el margen superior del título */
         }
 
         .botones {
@@ -425,8 +495,8 @@
             padding: 10px 20px;
             cursor: pointer;
         }
-
     </style>
 
 </body>
+
 </html>
