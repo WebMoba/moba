@@ -80,158 +80,51 @@
         <h1 class="txts3">En esta línea encuentras aretes largos, aretes topitos, dijes, manillas, pines, anillos.</h1>
     </div>
     <!---Carrusel--->
-    <div class="carousel-container">
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            @php
+                $chunks = $products->chunk(4); // Divide la colección en grupos de 4 elementos
+            @endphp
+            @foreach ($chunks as $key => $chunk)
+                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                     <div class="row">
-                        <div class="col">
-                            <div class="red-box">
-                                <img src="{{ asset('Imagenes/imgs-gallery/1.jpg') }}" class="d-block w-100">
+                        @foreach ($chunk as $product)
+                            <div class="col">
+                                <div class="card">
+                                    <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top"
+                                        alt="{{ $product->name }}">
+                                    <div class="card-body">
+                                        <div class="stars">
+                                            @php
+                                                // Genera un número aleatorio entre 4 y 5 para las estrellas amarillas
+                                                $randomStars = rand(4, 5);
+                                            @endphp
+                                            @for ($i = 0; $i < 5; $i++)
+                                                @if ($i < $randomStars)
+                                                    <i class="bi bi-star-fill active"></i>
+                                                @else
+                                                    <i class="bi bi-star-fill"></i>
+                                                @endif
+                                            @endfor
+                                        </div>
+                                        <h5 class="card-title">{{ $product->name }}</h5>
+                                        <p class="card-text">${{ $product->price }}</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <div class="rating-text">
-                                <p class="textName">COLLAR STICH</p>
-                                <p class="textValue">$10.000</p>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="red-box">
-                                <img src="{{ asset('Imagenes/imgs-gallery/2.jpg') }}" class="d-block w-100">
-                            </div>
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <div class="rating-text">
-                                <p class="textName">ARETES PAISAJE</p>
-                                <p class="textValue">$10.000</p>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="red-box">
-                                <img src="{{ asset('Imagenes/imgs-gallery/3.jpg') }}" class="d-block w-100">
-                            </div>
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <div class="rating-text">
-                                <p class="textName">ARETES PERRO</p>
-                                <p class="textValue">$10.000</p>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="red-box">
-                                <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }}" class="d-block w-100">
-                            </div>
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <div class="rating-text">
-                                <p class="textName">ANILLO PAISAJE</p>
-                                <p class="textValue">$10.000</p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
-                <!-- Agrega más imágenes aquí -->
-                <div class="carousel-item">
-                    <div class="row">
-                        <div class="col">
-                            <div class="red-box">
-                                <img src="{{ asset('Imagenes/imgs-gallery/5.jpg') }}" class="d-block w-100">
-                            </div>
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <div class="rating-text">
-                                <p class="textName">COLLAR BOYACA</p>
-                                <p class="textValue">$10.000</p>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="red-box">
-                                <img src="{{ asset('Imagenes/imgs-gallery/6.jpg') }}" class="d-block w-100">
-                            </div>
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <div class="rating-text">
-                                <p class="textName">ARETES LUNA</p>
-                                <p class="textValue">$10.000</p>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="red-box">
-                                <img src="{{ asset('Imagenes/imgs-gallery/7.jpg') }}" class="d-block w-100">
-                            </div>
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <div class="rating-text">
-                                <p class="textName">ARETES CARACOLA</p>
-                                <p class="textValue">$10.000</p>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="red-box">
-                                <img src="{{ asset('Imagenes/imgs-gallery/8.jpg') }}" class="d-block w-100">
-                            </div>
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <div class="rating-text">
-                                <p class="textName">ANILLO GATO</p>
-                                <p class="textValue">$10.000</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+            @endforeach
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">

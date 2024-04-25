@@ -37,6 +37,8 @@
                                 href="{{ route('tuArteMenu.servicios.Mascotas.index') }}">Mascotas</a></li>
                     </ul>
                 </div>
+
+                
                 <a href="{{ route('tuArteMenu.index') }}" class="btn btn-primary ">Nosotros</a>
                 <a href="{{ route('tuArteMenu.categorias.index') }}"class="btn btn-primary active-link ">Categorias</a>
                 <a href="{{ route('tuArteMenu.galeria.index') }}" class="btn btn-primary ">Galeria</a>

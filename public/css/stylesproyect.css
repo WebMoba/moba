@@ -193,3 +193,45 @@ body::after {
     margin-top: 30px;
     /* Ajusta el espacio en la parte superior del último h1 */
 }
+
+/*estilos de imagenes*/
+.image-container {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 75%; /* Proporción para mantener la misma altura */
+    margin: 10px; /* Márgenes iguales en los cuatro lados */
+}
+
+.image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Ajustamos el ancho para cubrir todo el espacio */
+    height: 100%; /* Ajustamos la altura para cubrir todo el espacio */
+    object-fit: cover; /* Ajusta la imagen para cubrir todo el espacio */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Ajustamos el ancho para cubrir todo el espacio */
+    height: 100%; /* Ajustamos la altura para cubrir todo el espacio */
+    background-color: rgba(0, 0, 255, 0.7); /* Azul semitransparente */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay:hover {
+    opacity: 1;
+}
+
+.text {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}

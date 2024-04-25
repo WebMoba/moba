@@ -79,14 +79,24 @@ class MaterialsRawController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        request()->validate(MaterialsRaw::$rules);
+{
+    // Validar los datos de entrada
+    request()->validate(MaterialsRaw::$rules);
+    
+    // Crear la materia prima con todos los datos proporcionados en la solicitud
+    $materialsRaw = MaterialsRaw::create($request->all());
 
-        $materialsRaw = MaterialsRaw::create($request->all());
+    // Establecer el estado de habilitación como verdadero (habilitado)
+    $materialsRaw->disable = false;
 
-        return redirect()->route('materials_raws.index')
-            ->with('success', 'Registro creado exitosamente');
-    }
+    // Guardar la materia prima en la base de datos
+    $materialsRaw->save();
+
+    // Redireccionar con un mensaje de éxito
+    return redirect()->route('materials_raws.index')
+        ->with('success', 'Registro creado exitosamente');
+}
+
 
     /**
      * Display the specified resource.

@@ -31,8 +31,8 @@
                             {{ $purchase->date }}
                         </div>
                         <div class="form-group">
-                            <strong>Documento y Dirección del proveedor:</strong>
-                            {{ $purchase->person->id_card }} - {{ $purchase->person->addres }}
+                            <strong>Documento del proveedor:</strong>
+                            {{ $purchase->person->id_card }} 
                         </div>
 
                         <h2>Detalles de la compra</h2>

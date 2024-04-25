@@ -33,7 +33,7 @@
                     </ul>
                 </div>
                 <a href="{{ route('mobaMenu.index')}}" class="btn btn-primary active-link">Nosotros</a>
-                <a href="#" class="btn btn-primary">Proyectos</a>
+                <a href="{{ route('mobaMenu.proyectos.index') }}" class="btn btn-primary">Proyectos</a>
                 <a href="{{ route('mobaMenu.EquipoTrabajo.index') }}" class="btn btn-primary">Equipo de trabajo</a>
                 <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>

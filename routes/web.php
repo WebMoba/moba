@@ -153,6 +153,23 @@ Route::view('/mobaMenu/Servicios/servicios', 'mobaMenu.servicios.servicios')->na
 //Fin vistas carpeta servicios
 
 
+//vistas de proyectos
+Route::view('/mobaMenu/proyectos/PARAISO', 'mobaMenu.proyectos.PARAISO')->name('mobaMenu.proyectos.PARAISO');
+Route::view('/mobaMenu/proyectos/JAATELO', 'mobaMenu.proyectos.JAATELO')->name('mobaMenu.proyectos.JAATELO');
+Route::view('/mobaMenu/proyectos/ACERIAS', 'mobaMenu.proyectos.ACERIAS')->name('mobaMenu.proyectos.ACERIAS');
+Route::view('/mobaMenu/proyectos/BIOSALUD', 'mobaMenu.proyectos.BIOSALUD')->name('mobaMenu.proyectos.BIOSALUD');
+Route::view('/mobaMenu/proyectos/HOSPITAL', 'mobaMenu.proyectos.HOSPITAL')->name('mobaMenu.proyectos.HOSPITAL');
+Route::view('/mobaMenu/proyectos/DULCES', 'mobaMenu.proyectos.DULCES')->name('mobaMenu.proyectos.DULCES');
+Route::view('/mobaMenu/proyectos/CABUBARA', 'mobaMenu.proyectos.CABUBARA')->name('mobaMenu.proyectos.CABUBARA');
+Route::view('/mobaMenu/proyectos/ODONTOLOGA', 'mobaMenu.proyectos.ODONTOLOGA')->name('mobaMenu.proyectos.ODONTOLOGA');
+Route::view('/mobaMenu/proyectos/ODONTOLOGIA', 'mobaMenu.proyectos.ODONTOLOGIA')->name('mobaMenu.proyectos.ODONTOLOGIA');
+Route::view('/mobaMenu/proyectos/PUNTOCERO', 'mobaMenu.proyectos.PUNTOCERO')->name('mobaMenu.proyectos.PUNTOCERO');
+Route::view('/mobaMenu/proyectos/RASPADOS', 'mobaMenu.proyectos.RASPADOS')->name('mobaMenu.proyectos.RASPADOS');
+Route::view('/mobaMenu/proyectos/JOVEN', 'mobaMenu.proyectos.JOVEN')->name('mobaMenu.proyectos.JOVEN');
+
+
+
+
 
 
 
@@ -164,6 +181,8 @@ Route::view('/mobaMenu/EquipoTrabajo/integranteDos', 'mobaMenu.EquipoTrabajo.int
 Route::view('/mobaMenu/EquipoTrabajo/integranteTres', 'mobaMenu.EquipoTrabajo.integranteTres')->name('mobaMenu.EquipoTrabajo.integranteTres');
 Route::view('/mobaMenu/EquipoTrabajo/integranteCuatro', 'mobaMenu.EquipoTrabajo.integranteCuatro')->name('mobaMenu.EquipoTrabajo.integranteCuatro');
 Route::view('/mobaMenu/Contacto/index', 'mobaMenu.Contacto.index')->name('mobaMenu.Contacto.index');
+Route::view('/mobaMenu/proyectos/index', 'mobaMenu.proyectos.index')->name('mobaMenu.proyectos.index');
+
 
 
 
@@ -172,8 +191,8 @@ Route::view('/tuArteMenu/index', 'tuArteMenu.index')->name('tuArteMenu.index');
 Route::view('/tuArteMenu/galeria/index', 'tuArteMenu.galeria.index')->name('tuArteMenu.galeria.index');
 Route::view('/tuArteMenu/categorias/index', 'tuArteMenu.categorias.index')->name('tuArteMenu.categorias.index');
 Route::view('/tuArteMenu/servicios/index', 'tuArteMenu.servicios.index')->name('tuArteMenu.servicios.index');
-Route::view('/tuArteMenu/servicios/Accesorios/index', 'tuArteMenu.servicios.Accesorios.index')->name('tuArteMenu.servicios.Accesorios.index');
-Route::view('/tuArteMenu/servicios/Decoracion/index', 'tuArteMenu.servicios.Decoracion.index')->name('tuArteMenu.servicios.Decoracion.index');
+Route::get('/tuArteMenu/servicios/Accesorios/index', [ProductController::class, 'indexForAccessories'])->name('tuArteMenu.servicios.Accesorios.index');
+Route::get('/tuArteMenu/servicios/Decoracion/index', [ProductController::class, 'indexForDecoration'])->name('tuArteMenu.servicios.Decoracion.index');
 Route::view('/tuArteMenu/servicios/Mascotas/index', 'tuArteMenu.servicios.Mascotas.index')->name('tuArteMenu.servicios.Mascotas.index');
 Route::view('/tuArteMenu/servicios/JoditasPalRecuerdo/index', 'tuArteMenu.servicios.JoditasPalRecuerdo.index')->name('tuArteMenu.servicios.JoditasPalRecuerdo.index');
 Route::view('/tuArteMenu/Contacto/index', 'tuArteMenu.Contacto.index')->name('tuArteMenu.Contacto.index');
