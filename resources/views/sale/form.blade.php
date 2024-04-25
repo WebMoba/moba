@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
             crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
     </head>
 
@@ -26,14 +27,15 @@
 
                         <div class="form-group">
                             <label for="people_id">Nombre Cliente</label>
-                            <select name="people_id" id="people_id" class="form-control{{ $errors->has('people_id') ? ' is-invalid' : '' }}">
+                            <select name="people_id" id="nameInput_people_id"
+                                class="form-control{{ $errors->has('people_id') ? ' is-invalid' : '' }}">
                                 @foreach ($people as $personId => $personName)
                                     <option value="{{ $personId }}" data-id-card="{{ $idCards[$personId] }}">
                                         {{ $personName }}
                                     </option>
                                 @endforeach
                             </select>
-                            
+
                             @if ($errors->has('people_id'))
                                 <div class="invalid-feedback">{{ $errors->first('people_id') }}</div>
                             @endif
@@ -55,7 +57,7 @@
                         </div>
                         <div class="form-group">
                             <label for="quotes_id">Id Cotización</label>
-                            <input type="text" name="quotes_id"
+                            <input type="text" name="quotes_id" id="quotes_id"
                                 class="form-control{{ $errors->has('quotes_id') ? ' is-invalid' : '' }}"
                                 placeholder="Id Cotización">
                             @if ($errors->has('quotes_id'))
@@ -64,12 +66,13 @@
                         </div>
 
 
-                        <div class="box-footer mt-3">
-                            <button type="button" class="btn btn-success btn-enviar" onclick="enviarDetalles()">
-                                {{ __('Enviar') }}
-                            </button>
-                            <a type="button" class="btn btn-primary" href="{{ route('sales.index') }}">Volver</a>
-                        </div>
+
+
+                        <!-- Agrega este campo oculto dentro del formulario -->
+                        <input type="hidden" name="disable" value="0">
+
+
+
                 </form>
             </div>
 
@@ -168,70 +171,163 @@
                         </div>
 
                     </div>
+
+                    <div class="box-footer mt-3">
+                        <button type="button" id="submitButton" class="btn btn-success btn-enviar"
+                            onclick="enviarDetalles()">
+                            {{ __('Enviar') }}
+                        </button>
+                        <a type="button" class="btn btn-primary" href="{{ route('sales.index') }}">Volver</a>
+                    </div>
+
                 </div>
             </div>
 
             <script>
-                // Definir la función enviarDetalles fuera del evento DOMContentLoaded
+                document.addEventListener('DOMContentLoaded', function() {
+                    /*------------------------------*/
+
+                    // Llamar de forma automática el valor de id del cliente
+                    $(document).ready(function() {
+                        // Cuando cambia la selección del nombre del cliente
+                        $('#nameInput_people_id').change(function() {
+                            var idCard = $(this).find('option:selected').data(
+                                'id-card'); // Obtener el ID Card de la persona seleccionada
+                            $('#id_card').val(idCard); // Asignar el ID Card al campo de ID Cliente
+                        });
+                    });
+                });
+                /*------------------------------*/
+
+                // Llamar de forma automática el valor de id del producto
+                /*------------------------------*/
+
+                // llamar el valor del producto
+                document.getElementById('productSelect').addEventListener('change', function() {
+                    // Obtener el valor seleccionado del producto
+                    var productId = this.value;
+
+
+                    // Por ahora, supongamos que tienes un objeto JavaScript con los precios de los productos
+                    var productPrices = {!! json_encode($productPrices) !!};
+
+                    // Verificar si el producto seleccionado tiene un precio asociado
+                    if (productPrices[productId]) {
+                        // Actualizar el valor del campo de precio_unit con el precio del producto
+                        document.getElementById('priceUnitInput').value = productPrices[productId];
+                    } else {
+                        // Si no hay precio asociado al producto, puedes dejar el campo de precio_unit vacío o mostrar un mensaje
+                        document.getElementById('priceUnitInput').value = '';
+                    }
+                });
+
+                /*------------------------------*/
+
+                // Función para agregar un nuevo detalle vacío
+                function agregarDetalle() {
+                    var container = document.querySelector('#detalle-table tbody');
+                    var nuevoDetalle = container.children[0].cloneNode(true);
+
+                    // Limpiar los campos del nuevo detalle clonado
+                    nuevoDetalle.querySelectorAll('select, input').forEach(function(element) {
+                        element.value = ''; // Limpiar el valor del campo
+                    });
+
+                    // Agregar el nuevo detalle a la tabla
+                    container.appendChild(nuevoDetalle);
+
+                    // Agrega event listeners al nuevo detalle
+                    addEventListeners(nuevoDetalle);
+
+                    // Llamar la función para actualizar el precio del producto en el nuevo detalle
+                    actualizarPrecioProducto(nuevoDetalle);
+                }
+
+                // Agregar evento de clic al botón "Agregar detalle"
+                document.getElementById('agregarDetalle').addEventListener('click', agregarDetalle);
+
+                // Función para agregar event listeners a un detalle
+                function addEventListeners(detalle) {
+                    const quantityField = detalle.querySelector('[name^="quantity"]');
+                    const priceUnitField = detalle.querySelector('[name^="price_unit"]');
+                    const discountField = detalle.querySelector('[name^="discount"]');
+                    const subtotalField = detalle.querySelector('[name^="subtotal"]');
+                    const totalField = detalle.querySelector('[name^="total"]');
+
+                    if (quantityField && priceUnitField && discountField && subtotalField && totalField) {
+                        function calculateSubtotalAndTotal() {
+                            const quantity = parseFloat(quantityField.value) || 0;
+                            const priceUnit = parseFloat(priceUnitField.value) || 0;
+                            const discount = parseFloat(discountField.value) || 0;
+
+                            const subtotal = quantity * priceUnit;
+                            const total = subtotal - (subtotal * (discount / 100));
+
+                            subtotalField.value = subtotal.toFixed(2);
+                            totalField.value = total.toFixed(2);
+                        }
+
+                        // Escucha los cambios en los campos relevantes
+                        quantityField.addEventListener('input', calculateSubtotalAndTotal);
+                        priceUnitField.addEventListener('input', calculateSubtotalAndTotal);
+                        discountField.addEventListener('input', calculateSubtotalAndTotal);
+                    }
+                }
+
+                // Llamar la función para actualizar el precio del producto en un detalle específico
+                function actualizarPrecioProducto(detalle) {
+                    // llamar el valor del producto
+                    detalle.querySelector('[name="product_id"]').addEventListener('change', function() {
+                        // Obtener el valor seleccionado del producto
+                        var productId = this.value;
+
+                        // Realizar una petición AJAX para obtener el precio del producto
+                        // Aquí deberías hacer una solicitud al servidor para obtener el precio del producto
+                        // Esto depende de cómo esté estructurado tu backend y cómo estás almacenando los precios de los productos
+
+                        // Por ahora, supongamos que tienes un objeto JavaScript con los precios de los productos
+                        var productPrices = {!! json_encode($productPrices) !!};
+
+                        // Verificar si el producto seleccionado tiene un precio asociado
+                        if (productPrices && productPrices[productId]) {
+                            // Actualizar el valor del campo de precio_unit con el precio del producto
+                            var price = productPrices[productId];
+                            var priceUnitInput = detalle.querySelector('[name="price_unit"]');
+                            if (priceUnitInput) {
+                                priceUnitInput.value = price;
+                            }
+                        } else {
+                            // Si no hay precio asociado al producto, puedes dejar el campo de precio_unit vacío o mostrar un mensaje
+                            var priceUnitInput = detalle.querySelector('[name="price_unit"]');
+                            if (priceUnitInput) {
+                                priceUnitInput.value = '';
+                            }
+                        }
+                    });
+                }
+
+
+
+                // Agregar eventos de escucha para el detalle inicial
+                document.addEventListener('DOMContentLoaded', function() {
+                    const initialDetail = document.querySelector('#detalle-table tbody tr');
+                    addEventListeners(initialDetail);
+                });
+
+                /*------------------------------*/
+
                 function enviarDetalles() {
-                    // Verificar si el elemento 'people_id' existe antes de intentar acceder a él
-                    var peopleIdSelect = document.querySelector('select[name="people_id"]');
-                    if (!peopleIdSelect) {
-                        console.error("Elemento 'people_id' no encontrado");
-                        return;
-                    }
-                
-                    // Verificar si el elemento 'date' existe antes de intentar acceder a él
-                    var dateInput = document.querySelector('input[name="date"]');
-                    if (!dateInput) {
-                        console.error("Elemento 'date' no encontrado");
-                        return;
-                    }
-                
-                    // Verificar si el elemento 'quotes_id' existe antes de intentar acceder a él
-                    var quotesIdInput = document.querySelector('input[name="quotes_id"]');
-                    if (!quotesIdInput) {
-                        console.error("Elemento 'quotes_id' no encontrado");
-                        return;
-                    }
-                
-                    // Verificar si el elemento 'name' existe antes de intentar acceder a él
-                    var nameInput = document.querySelector('input[name="name"]');
-                    if (!nameInput) {
-                        console.error("Elemento 'name' no encontrado");
-                        return;
-                    }
-                
-                    // Verificar si el elemento 'disable' existe antes de intentar acceder a él
-                    var disableInput = document.querySelector('input[name="disable"]');
-                    if (!disableInput) {
-                        console.error("Elemento 'disable' no encontrado");
-                        return;
-                    }
-                
-                    const formData = {
-                        _token: '{{ csrf_token() }}',
-                        people_id: peopleIdSelect.value,
-                        date: dateInput.value,
-                        quotes_id: quotesIdInput.value,
-                        name: nameInput.value,
-                        disable: disableInput.value,
-                        detalles: []
-                    };
-            
-                    // Agregar un alert con los datos antes de enviarlos
-                    alert('Datos a enviar: ' + JSON.stringify(formData));
-            
+                    const detalles = [];
                     document.querySelectorAll('#detalle-table tbody tr').forEach(function(detalle) {
-                        const product_id = detalle.querySelector('select[name^="product_id"]').value;
-                        const quantity = detalle.querySelector('input[name^="quantity"]').value;
-                        const price_unit = detalle.querySelector('input[name^="price_unit"]').value;
-                        const subtotal = detalle.querySelector('input[name^="subtotal"]').value;
-                        const discount = detalle.querySelector('input[name^="discount"]').value;
-                        const total = detalle.querySelector('input[name^="total"]').value;
+                        const product_id = detalle.querySelector('select[name^="product_id"]').value
+                        const quantity = detalle.querySelector('input[name^="quantity"]').value
+                        const price_unit = detalle.querySelector('input[name^="price_unit"]').value
+                        const subtotal = detalle.querySelector('input[name^="subtotal"]').value
+                        const discount = detalle.querySelector('input[name^="discount"]').value
+                        const total = detalle.querySelector('input[name^="total"]').value
                         const sales_id = detalle.querySelector('input[name^="sales_id"]').value;
-            
-                        formData.detalles.push({
+
+                        detalles.push({
                             product_id: product_id,
                             quantity: quantity,
                             price_unit: price_unit,
@@ -241,155 +337,40 @@
                             sales_id: sales_id
                         });
                     });
-            
+
+                    // Recopilar informacion principal del formulario de venta
+
+                    const nombreCliente = document.getElementById('nameInput_people_id').value;
+                    const fecha = document.querySelector('date').value;
+                    const quotesid = document.getElementById('quotes_id').value;
+
+                    const Data = {
+                        nombre_cliente: nombreCliente,
+                        fecha: fecha,
+                        quotes_id: quotesid,
+                        detalles: detalles
+                    };
+
+                    // Enviar los datos al servidor
+
                     $.ajax({
                         type: "POST",
                         url: "{{ route('sales.store') }}",
-                        data: formData,
+                        data: {
+                            _token: '{{ csrf_token() }}',
+                            data: data
+                        },
                         success: function(response) {
                             console.log(response);
-                            // Aquí puedes manejar la respuesta del servidor, como redirigir o mostrar un mensaje de éxito
+
                         },
-                        error: function(xhr, status, error) {
-                            console.error(xhr.responseText);
-                            // Aquí manejas el error mostrando un alert con el mensaje de error
-                            alert("Ha ocurrido un error al enviar los datos: " + xhr.responseText);
+                        error: function(err) {
+                            console.error(err);
                         }
                     });
+
+                    window.location.href = "{{ route('sales.index') }}";
                 }
-            
-                document.addEventListener('DOMContentLoaded', function() {
-                    /*------------------------------*/
-            
-                    // Llamar de forma automática el valor de id del cliente
-                    $(document).ready(function() {
-                        // Cuando cambia la selección del nombre del cliente
-                        $('#name').change(function() {
-                            var idCard = $(this).find('option:selected').data(
-                                'id-card'); // Obtener el ID Card de la persona seleccionada
-                            $('#id_card').val(idCard); // Asignar el ID Card al campo de ID Cliente
-                        });
-                    });
-            
-                    /*------------------------------*/
-            
-                    // llamar el valor del producto
-                    document.getElementById('productSelect').addEventListener('change', function() {
-                        // Obtener el valor seleccionado del producto
-                        var productId = this.value;
-            
-                        // Realizar una petición AJAX para obtener el precio del producto
-                        // Aquí deberías hacer una solicitud al servidor para obtener el precio del producto
-                        // Esto depende de cómo esté estructurado tu backend y cómo estás almacenando los precios de los productos
-            
-                        // Por ahora, supongamos que tienes un objeto JavaScript con los precios de los productos
-                        var productPrices = {!! json_encode($productPrices) !!};
-            
-                        // Verificar si el producto seleccionado tiene un precio asociado
-                        if (productPrices[productId]) {
-                            // Actualizar el valor del campo de precio_unit con el precio del producto
-                            document.getElementById('priceUnitInput').value = productPrices[productId];
-                        } else {
-                            // Si no hay precio asociado al producto, puedes dejar el campo de precio_unit vacío o mostrar un mensaje
-                            document.getElementById('priceUnitInput').value = '';
-                        }
-                    });
-            
-                    /*------------------------------*/
-            
-                    // Función para agregar un nuevo detalle vacío
-                    function agregarDetalle() {
-                        var container = document.querySelector('#detalle-table tbody');
-                        var nuevoDetalle = container.children[0].cloneNode(true);
-            
-                        // Limpiar los campos del nuevo detalle clonado
-                        nuevoDetalle.querySelectorAll('select, input').forEach(function(element) {
-                            element.value = ''; // Limpiar el valor del campo
-                        });
-            
-                        // Agregar el nuevo detalle a la tabla
-                        container.appendChild(nuevoDetalle);
-            
-                        // Agrega event listeners al nuevo detalle
-                        addEventListeners(nuevoDetalle);
-            
-                        // Llamar la función para actualizar el precio del producto en el nuevo detalle
-                        actualizarPrecioProducto(nuevoDetalle);
-                    }
-            
-                    // Agregar evento de clic al botón "Agregar detalle"
-                    document.getElementById('agregarDetalle').addEventListener('click', agregarDetalle);
-            
-                    // Función para agregar event listeners a un detalle
-                    function addEventListeners(detalle) {
-                        const quantityField = detalle.querySelector('[name="quantity"]');
-                        const priceUnitField = detalle.querySelector('[name="price_unit"]');
-                        const discountField = detalle.querySelector('[name="discount"]');
-                        const subtotalField = detalle.querySelector('[name="subtotal"]');
-                        const totalField = detalle.querySelector('[name="total"]');
-            
-                        function calculateSubtotalAndTotal() {
-                            const quantity = parseFloat(quantityField.value) || 0;
-                            const priceUnit = parseFloat(priceUnitField.value) || 0;
-                            const discount = parseFloat(discountField.value) || 0;
-            
-                            const subtotal = quantity * priceUnit;
-                            const total = subtotal - (subtotal * (discount / 100));
-            
-                            subtotalField.value = subtotal.toFixed(2);
-                            totalField.value = total.toFixed(2);
-                        }
-            
-                        // Escucha los cambios en los campos relevantes
-                        quantityField.addEventListener('input', calculateSubtotalAndTotal);
-                        priceUnitField.addEventListener('input', calculateSubtotalAndTotal);
-                        discountField.addEventListener('input', calculateSubtotalAndTotal);
-                    }
-            
-                    // Llamar la función para actualizar el precio del producto en un detalle específico
-                    function actualizarPrecioProducto(detalle) {
-                        // llamar el valor del producto
-                        detalle.querySelector('[name="product_id"]').addEventListener('change', function() {
-                            // Obtener el valor seleccionado del producto
-                            var productId = this.value;
-            
-                            // Realizar una petición AJAX para obtener el precio del producto
-                            // Aquí deberías hacer una solicitud al servidor para obtener el precio del producto
-                            // Esto depende de cómo esté estructurado tu backend y cómo estás almacenando los precios de los productos
-            
-                            // Por ahora, supongamos que tienes un objeto JavaScript con los precios de los productos
-                            var productPrices = {!! json_encode($productPrices) !!};
-            
-                            // Verificar si el producto seleccionado tiene un precio asociado
-                            if (productPrices && productPrices[productId]) {
-                                // Actualizar el valor del campo de precio_unit con el precio del producto
-                                var price = productPrices[productId];
-                                var priceUnitInput = detalle.querySelector('[name="price_unit"]');
-                                if (priceUnitInput) {
-                                    priceUnitInput.value = price;
-                                }
-                            } else {
-                                // Si no hay precio asociado al producto, puedes dejar el campo de precio_unit vacío o mostrar un mensaje
-                                var priceUnitInput = detalle.querySelector('[name="price_unit"]');
-                                if (priceUnitInput) {
-                                    priceUnitInput.value = '';
-                                }
-                            }
-                        });
-                    }
-            
-                    // Agregar event listeners al detalle inicial
-                    addEventListeners(document.querySelector('#detalle-table tbody tr'));
-            
-                });
             </script>
-            
-
-
-
-
-
-
-    </body>
-
+        </body>
     </html>

@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\SalesExport;
+use App\Models\DetailSale;
+use App\Models\Person;
 use App\Models\Product;
 use App\Models\Quote;
-use App\Models\User;
-use App\Models\Person;
 use App\Models\Sale;
-use App\Models\DetailSale;
-use Illuminate\Http\Request;
-use App\Exports\SalesExport;
-use Maatwebsite\Excel\Facades\Excel;
-
 use Dompdf\Dompdf;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 /**
  * Class SaleController
@@ -35,7 +34,7 @@ class SaleController extends Controller
         }
         // Pasar los datos a la vista a PDF-TEMPLATE
         $data = [
-            'sales' => $sales
+            'sales' => $sales,
         ];
 
         //Generar el PDF
@@ -59,10 +58,8 @@ class SaleController extends Controller
             ->orWhere('date', 'LIKE', '%' . $search . '%')
             ->paginate(10);
 
-
         // Obtener los detalles de las ventas
         $detailSales = DetailSale::all(); // o alguna otra forma de obtener los detalles de las ventas
-
 
         return view('sale.index', compact('sales', 'search'))
             ->with('i', (request()->input('page', 1) - 1) * $sales->perPage());
@@ -89,7 +86,6 @@ class SaleController extends Controller
         // Obtener los ID Cards de las personas para el select
         $idCards = Person::pluck('id_card', 'id');
 
-
         // Obtener una lista de productos para el select
         $products = Product::pluck('name', 'id');
 
@@ -110,27 +106,29 @@ class SaleController extends Controller
         return view('sale.create', compact('sale', 'people', 'quotes', 'confirm', 'products', 'detailSale', 'productPrices', 'saleId', 'idCards'));
     }
 
-
-
-
     public function store(Request $request)
     {
         // Validar los datos recibidos
         $validatedData = $request->validate([
+            'name' => 'required',
             'people_id' => 'required',
             'date' => 'required|date',
-            'cotizaciones' => 'nullable',
-            'detalles' => 'required|array',
+            'quotes_id' => 'nullable',
             'name' => 'required',
-            'disable' => 'required|boolean',
+            'disable' => 'required|boolean', // Asegúrate de agregar la validación para disable
+            'detalles' => 'required|array',
+
             'detalles.*.product_id' => 'required|exists:products,id',
             'detalles.*.quantity' => 'required|numeric|min:1',
             'detalles.*.price_unit' => 'required|numeric|min:0',
             'detalles.*.subtotal' => 'required|numeric|min:0',
             'detalles.*.discount' => 'nullable|numeric|min:0|max:100',
             'detalles.*.total' => 'required|numeric|min:0',
-            'detalles.*.sales_id' => 'nullable',
+
         ]);
+
+        // Establecer el valor de disable aquí
+        $validatedData['disable'] = 0; // O el valor que desees asignar
 
         DB::beginTransaction();
 
@@ -140,25 +138,26 @@ class SaleController extends Controller
             $sale->name = $validatedData['name']; // Aquí asignas el nombre del cliente
             $sale->people_id = $validatedData['people_id'];
             $sale->date = $validatedData['date'];
-            $sale->quotes_id = $validatedData['cotizaciones'];
-            $sale->disable = $validatedData['disable'];
+            $sale->quotes_id = $validatedData['quotes_id'];
+            $sale->disable = $validatedData['disable']; // Aquí se establece el valor de disable
             $sale->save();
 
             // Guardar los detalles de la venta
             foreach ($validatedData['detalles'] as $detalle) {
                 $saleDetail = new DetailSale();
-                $saleDetail->product_id = $detalle['product_id'];
+                $saleDetail->products_id = $detalle['product_id'];
                 $saleDetail->quantity = $detalle['quantity'];
                 $saleDetail->price_unit = $detalle['price_unit'];
                 $saleDetail->subtotal = $detalle['subtotal'];
-                $saleDetail->discount = $detalle['discount'] ?? 0; // Valor por defecto si no se proporciona
+                $saleDetail->discount = $detalle['discount'] ?? 0;
                 $saleDetail->total = $detalle['total'];
-                $saleDetail->sale_id = $sale->id;
+                $saleDetail->sales_id = $sale->id;
                 $saleDetail->save();
             }
 
             DB::commit();
-            return response()->json(['message' => 'Venta guardada correctamente']);
+
+            return response()->json(['success' => true, 'message' => 'Venta registrada correctamente'], 200);
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json(['error' => $e->getMessage()], 500);
@@ -171,7 +170,6 @@ class SaleController extends Controller
 
         // Obtener el nombre de la persona asociada a la venta
         $people = Person::select('id', 'name', 'id_card')->get()->pluck('name', 'id');
-
 
         $products = Product::pluck('name', 'id');
 
@@ -199,7 +197,6 @@ class SaleController extends Controller
 
         return view('sale.edit', compact('sale', 'detailSale', 'people', 'confirm', 'products'));
     }
-
 
     public function update(Request $request, Sale $sale)
     {
@@ -241,7 +238,6 @@ class SaleController extends Controller
         return redirect()->route('sales.index')->with('success', 'Venta actualizada con éxito');
     }
 
-
     public function destroy($id)
     {
         $sale = Sale::findOrFail($id);
@@ -256,7 +252,7 @@ class SaleController extends Controller
     }
 
     public function exportToExcel()
-{
-    return Excel::download(new SalesExport(), 'sales.xlsx');
-}
+    {
+        return Excel::download(new SalesExport(), 'sales.xlsx');
+    }
 }
