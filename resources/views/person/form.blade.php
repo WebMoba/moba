@@ -23,7 +23,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('Nombre' , null, ['class' => 'required']) }}
-            {{ Form::select('user_name', $usersName, $person->user_id, ['class' => 'form-control' . ($errors->has('user_name') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
+            {{ Form::select('user_name', $usersName, $person->users_id, ['class' => 'form-control' . ($errors->has('user_name') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
             {!! $errors->first('user_name', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
@@ -69,7 +69,7 @@
 
     </div>
     <div class="box-footer mt20">
-        <br><button type="submit" class="btn btn-primary" onclick="return confirm('¿Está seguro de que desea crear a la persona?')">{{ __('Crear') }}</button>
+        <br><button type="submit" class="btn btn-primary" >{{ __('Crear') }}</button>
     </div>
 </div>
 <script>
