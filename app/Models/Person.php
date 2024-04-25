@@ -48,7 +48,7 @@ class Person extends Model
      *
      * @var array
      */
-    protected $fillable = ['id_card', 'addres', 'team_works_id', 'number_phones_id', 'towns_id', 'users_id'];
+    protected $fillable = ['id_card', 'name', 'addres', 'team_works_id', 'number_phones_id', 'towns_id', 'users_id', 'user_name'];
 
 
     /**
