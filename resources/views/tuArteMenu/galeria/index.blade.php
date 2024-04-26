@@ -327,4 +327,9 @@
     .dropdown-menu .dropdown-divider {
         border-top: 1px solid #f80008;
     }
+    .container-fluid{
+        padding: 0 !important;
+    }
+    
+    
 </style>
