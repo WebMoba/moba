@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/StyleFooter.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
@@ -77,7 +78,7 @@
 		<label for="telefono">Teléfono:</label>
 		<input type="tel" id="telefono" name="telefono" required><br><br>
 
-		<label for="mensaje">Mensaje:</label>
+		<label for="mensaje">Mensaje:</label><br>
 		<textarea id="mensaje" name="mensaje" rows="5" ></textarea><br><br>
 
 		<input type="submit" value="Enviar" id="submit">
@@ -106,6 +107,10 @@
             this.querySelector('.dropdown-menu').classList.remove('show');
         });
     </script>
+
+
+@include('partials.footerMoba')
+    
 </body>
 
 </html>
