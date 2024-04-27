@@ -1,5 +1,6 @@
 
     
+    
 body {
     position: relative;
     /* Aseguramos que el body tenga una posición relativa para que el ::after funcione correctamente */
@@ -21,6 +22,7 @@ body::after {
     z-index: -1;
     filter: brightness(30%);
     -webkit-filter: brightness(30%);
+
 }
 
 .navbar {
@@ -132,7 +134,7 @@ body::after {
     
     .linea1 {
         border: none;
-        border-right: 3px solid #00c8ff;
+        border-right: 3px solid #BCCCE0;
         /* Agrega una unidad de medida (px) */
     }
     
@@ -143,7 +145,7 @@ body::after {
     }
     
     .vertical-line.left-line i {
-        color: #00c8ff;
+        color: #BCCCE0;
         /* Color para los íconos de la izquierda */
     }
     
@@ -186,7 +188,7 @@ body::after {
 
     }
 
-    p {
+    .textoPresentacion {
         color: #BCCCE0;
         margin-top: 30%;
     }
@@ -206,3 +208,8 @@ body::after {
         width: 55%;
         height: 60%;
     }
+    .container-fluid{
+        padding: 0 !important;
+    }
+    
+    
