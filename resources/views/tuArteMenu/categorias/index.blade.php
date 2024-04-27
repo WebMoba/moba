@@ -125,7 +125,6 @@
   <!-- Footer -->
 
   @include('partials.footerTuArte')
-  
 </body>
 
 </html>

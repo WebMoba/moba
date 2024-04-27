@@ -81,16 +81,6 @@
         });
     </script>
 
-
-
-
-
-
-
-
-
-
-
     <div id="carouselExampleIndicators" class="carousel slide">
         <div class="carousel-indicators ">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active "
@@ -212,14 +202,6 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-
-
-
-
-
-
-
-
 
 
 
