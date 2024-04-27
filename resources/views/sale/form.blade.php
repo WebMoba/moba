@@ -184,10 +184,12 @@
             </div>
 
             <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    /*------------------------------*/
 
-                    // Llamar de forma automática el valor de id del cliente
+                /** <------------------------------------->  */
+
+
+                document.addEventListener('DOMContentLoaded', function() {
+                        // Llamar de forma automática el valor de id del cliente
                     $(document).ready(function() {
                         // Cuando cambia la selección del nombre del cliente
                         $('#nameInput_people_id').change(function() {
@@ -197,6 +199,7 @@
                         });
                     });
                 });
+                
                 /*------------------------------*/
 
                 // Llamar de forma automática el valor de id del producto
@@ -221,7 +224,7 @@
                     }
                 });
 
-                /*------------------------------*/
+                /** <------------------------------------->  */
 
                 // Función para agregar un nuevo detalle vacío
                 function agregarDetalle() {
@@ -274,6 +277,8 @@
                     }
                 }
 
+                /** <------------------------------------->  */
+
                 // Llamar la función para actualizar el precio del producto en un detalle específico
                 function actualizarPrecioProducto(detalle) {
                     // llamar el valor del producto
@@ -305,6 +310,31 @@
                         }
                     });
                 }
+                /** <------------------------------------->  */
+                /** <------------------------------------->  */
+
+                 function eliminarDetalle(button) {
+                    // Obtener la fila actual en la que se encuentra el botón
+                    var fila = button.closest('tr');
+                    // Verificar si hay más de una fila antes de eliminarla
+                    if (fila.parentNode.rows.length > 1) {
+                        // Eliminar la fila actual
+                        fila.remove();
+                    } else {
+                        // Si solo queda una fila, puedes mostrar un mensaje al usuario o simplemente no hacer nada
+                        console.log('No puedes eliminar la última fila.');
+                    }
+                }
+               /** <------------------------------------->  */
+               
+                /** 
+                
+                <------------------------------------->
+                                
+                
+                <-------------------------------------> 
+                
+                */
 
 
 
@@ -341,10 +371,10 @@
                     // Recopilar informacion principal del formulario de venta
 
                     const nombreCliente = document.getElementById('nameInput_people_id').value;
-                    const fecha = document.querySelector('date').value;
+                    const fecha = document.querySelector('input[type="date"]').value;
                     const quotesid = document.getElementById('quotes_id').value;
 
-                    const Data = {
+                    const data = {
                         nombre_cliente: nombreCliente,
                         fecha: fecha,
                         quotes_id: quotesid,
@@ -372,5 +402,8 @@
                     window.location.href = "{{ route('sales.index') }}";
                 }
             </script>
-        </body>
+
+
+    </body>
+
     </html>
