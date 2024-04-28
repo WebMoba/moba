@@ -83,11 +83,15 @@ class PersonController extends Controller
     $request->validate([
         'id_card' => [
             'required',
+            'max:10', // Máximo 10 caracteres
             Rule::unique('people', 'id_card')->ignore($request->id),
         ],
         'user_name' => 'required',
         'team_works_id' => 'required',
-        'phone_number' => 'required', // Asegúrate de que el campo del número de teléfono esté presente en la solicitud
+        'phone_number' => [
+            'required',
+            'max:10', // Máximo 10 caracteres
+        ],
         'region' => 'required',
         'towns_id' => 'required',
         'users_id' => [

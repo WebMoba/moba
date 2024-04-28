@@ -18,7 +18,7 @@
 
         <div class="form-group">
             {{ Form::label('Identificacion' , null, ['class' => 'required']) }}
-            {{ Form::text('id_card', $person->id_card, ['class' => 'form-control' . ($errors->has('id_card') ? ' is-invalid' : ''), 'placeholder' => 'Identificacion']) }}
+            {{ Form::text('id_card', $person->id_card, ['class' => 'form-control' . ($errors->has('id_card') ? ' is-invalid' : ''), 'placeholder' => 'Identificacion', 'maxlength' => '10']) }}
             {!! $errors->first('id_card', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -39,8 +39,8 @@
         </div>
         
         <div class="form-group">
-            {{ Form::label('Número de Celular' , null, ['class' => 'required']) }}
-            {{ Form::text('phone_number', isset($numberPhone) ? $numberPhone->number : '', ['class' => 'form-control', 'placeholder' => 'Número de teléfono']) }}
+            {{ Form::label('phone_number', 'Número de Celular', ['class' => 'required']) }}
+            {{ Form::text('phone_number', isset($numberPhone) ? $numberPhone->number : '', ['class' => 'form-control', 'placeholder' => 'Número de teléfono', 'maxlength' => '10']) }}
         </div>
 
         <div class="form-group">
