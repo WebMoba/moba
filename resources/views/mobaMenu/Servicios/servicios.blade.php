@@ -101,8 +101,11 @@
                             <div class="contenido-cuadro">
                                 <div class="mayme">
                                     <p>
-                                        << /p>
-                                            <p>></p>
+                                        <
+                                    </p>
+                                    <p>
+                                        >
+                                    </p>
                                 </div>
                                 <p>
                                     Nuestra Agencia se enfoca en el sentido de cada marca que manejamos, lo que
@@ -114,10 +117,13 @@
                         <div class="botones">
                             <button onclick="mostrarCuadroAnterior()">
                                 <h1>
-                                    << /h1>
+                                    <
+                                </h1>
                             </button>
                             <button onclick="mostrarCuadroSiguiente()">
-                                <h1>></h1>
+                                <h1>
+                                    >
+                                </h1>
                             </button>
                         </div>
                     </div>
@@ -132,8 +138,11 @@
                             <div class="contenido-cuadro">
                                 <div class="mayme">
                                     <p>
-                                        << /p>
-                                            <p>></p>
+                                        <
+                                    </p>
+                                    <p>
+                                        >
+                                    </p>
                                 </div>
                                 <p>
                                     La primera impresión que las marcas que manejamos dejan en sus clientes debe
@@ -146,7 +155,8 @@
                         <div class="botones">
                             <button onclick="mostrarCuadroAnterior()">
                                 <h1>
-                                    << /h1>
+                                    <
+                                </h1>
                             </button>
                             <button onclick="mostrarCuadroSiguiente()">
                                 <h1>></h1>
@@ -158,13 +168,16 @@
                         <div class="texto-cuadro">
                             <div class="titulos-cuadro">
                                 <h1>POP</h1>
-                                <h2>y algo mas.</h2>
+                                <h2>y algo más</h2>
                             </div>
                             <div class="contenido-cuadro">
                                 <div class="mayme">
                                     <p>
-                                        << /p>
-                                            <p>></p>
+                                        <
+                                    </p>
+                                    <p>
+                                        >    
+                                    </p>
                                 </div>
                                 <div class="textoC">
                                     <p>
@@ -180,10 +193,13 @@
                         <div class="botones">
                             <button onclick="mostrarCuadroAnterior()">
                                 <h1>
-                                    << /h1>
+                                    <
+                                </h1>
                             </button>
                             <button onclick="mostrarCuadroSiguiente()">
-                                <h1>></h1>
+                                <h1>
+                                    >
+                                </h1>
                             </button>
                         </div>
                     </div>
@@ -344,6 +360,7 @@
             flex-direction: row;
             width: 100%;
             padding-top: 5%;
+            overflow-x: hidden; /* Evitar desplazamiento horizontal */
         }
 
         .creatividad {
@@ -407,15 +424,16 @@
         .contenedor p {
             color: #6094b0;
         }
-
+        
         .cuadro {
             background-color: transparent;
-            display: none;
-            /* Por defecto, todos ocultos */
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            width: 100% ;
+            height: 100% ;
+            margin-right: 20px; /* Espacio entre cuadros */
         }
 
         .cuadro:first-child {
@@ -426,19 +444,24 @@
         .texto-cuadro {
             border: 2px solid grey;
             padding: 20px;
+            overflow-y: auto;
+            max-width: 500px; 
+            max-height: 400px; 
+            min-width: 250px;
+            min-height: 200px;
         }
 
         .titulos-cuadro {
-            height: 60%;
-            width: 80%;
+            width: 100%;
         }
 
         .contenido-cuadro {
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100%;
             flex-direction: row;
+            padding-top: 5%;
+            width: 100%;
         }
 
         .contenido-cuadro .mayme {
