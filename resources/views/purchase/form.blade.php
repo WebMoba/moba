@@ -1,4 +1,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
 <style>
@@ -12,16 +15,24 @@
 <div class="box box-small">
     <h2>Compra</h2>
     <div class="box-body">
-        <div class="form-group" style="display: none;">
-            {{ Form::label('Nombre del proveedor', null, ['class' => 'required-label']) }}
-            {{ Form::select('name', $usersName, $purchase->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Name']) }}
-            {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-
         <div class="form-group">
-            {{ Form::label('Documento del proveedor', null, ['class' => 'required-label']) }}
-            {{ Form::select('people_id', $providers->pluck('id_card', 'id'), $purchase->people_id, ['class' => 'form-control' . ($errors->has('people_id') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Seleccione un proveedor']) }}
-            {!! $errors->first('people_id', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::label('Nombre y documento del proveedor', null, ['class' => 'required-label']) }}
+            {{ Form::select(
+                'name',
+                $usersName->mapWithKeys(function ($name, $id) use ($providers) {
+                    $provider = $providers->firstWhere('id', $id);
+                    $document = $provider ? $provider->id_card : ''; // Ajusta la propiedad que contiene el documento del proveedor
+                    return [$id => $name . ' - ' . $document];
+                }),
+                $purchase->name,
+                [
+                    'class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''),
+                    'required',
+                    'placeholder' => 'Name',
+                    'id' => 'name',
+                ],
+            ) }}
+            {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
         <div class="form-group">
@@ -93,12 +104,12 @@
                         <div class="form-group">
                             {{ Form::text('total', $detailPurchase->total, ['id' => 'total', 'class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''), 'placeholder' => 'Total', 'readonly' => true, 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
                             {!! $errors->first('total', '<div class="invalid-feedback">:message</div>') !!}
-                            <small class="text-muted">No
-                                es editable.</small>
+                            <small class="text-muted">No es editable.</small>
                         </div>
                     </th>
                     <th>
-                        <button type="button" class="btn btn-danger" onclick="eliminarDetalle(this)">Eliminar</button>
+                        <button type="button" class="btn btn-danger" onclick="eliminarDetalle(this)"><i
+                                class="fas fa-trash-alt"></i></button>
                     </th>
                 </tr>
             </tbody>
@@ -107,7 +118,6 @@
     <div class="box-footer">
         <button type="button" id="agregarDetalle" class="btn btn-primary">Agregar detalle</button>
     </div>
-</div>
 </div>
 
 <script>
@@ -165,7 +175,27 @@
         addEventListeners(initialDetail);
     });
 
-    // Modificar la función para recopilar tanto los detalles como la información principal del formulario de compra
+
+
+    // Variable global para almacenar la información del proveedor seleccionado
+    var proveedorSeleccionado = {
+        nombre: '',
+        proveedor_id: ''
+    };
+
+    // Evento de cambio para el campo de selección de proveedor
+    document.getElementById('name').addEventListener('change', function() {
+        // Obtener el valor seleccionado
+        var selectedOption = this.options[this.selectedIndex];
+        // Obtener el nombre y la llave foránea del proveedor seleccionado
+        var text = selectedOption.text;
+        var splitText = text.split(' - ');
+        proveedorSeleccionado.nombre = splitText[0];
+        proveedorSeleccionado.proveedor_id = selectedOption.value;
+
+    });
+
+    // Función para enviar detalles
     function enviarDetalles() {
         const detalles = [];
         document.querySelectorAll('#detalle-table tbody tr').forEach(function(detalle) {
@@ -187,14 +217,12 @@
         });
 
         // Recopilar información principal del formulario de compra
-        const nombreProveedor = document.querySelector('select[name="name"]').value;
         const fecha = document.querySelector('input[name="date"]').value;
-        const proveedorId = document.querySelector('select[name="people_id"]').value;
 
         const data = {
-            nombre_proveedor: nombreProveedor,
+            nombre_proveedor: proveedorSeleccionado.nombre,
+            proveedor_id: proveedorSeleccionado.proveedor_id,
             fecha: fecha,
-            proveedor_id: proveedorId,
             detalles: detalles
         };
 

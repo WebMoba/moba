@@ -23,16 +23,16 @@
 
 
                         <div class="form-group">
-                            <strong>Nombre de la compra:</strong>
+                            <strong>Nombre del proveedor:</strong>
                             {{ $purchase->user->name }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Fecha realizacion de la compra:</strong>
-                            {{ $purchase->date }}
                         </div>
                         <div class="form-group">
                             <strong>Documento del proveedor:</strong>
                             {{ $purchase->person->id_card }} 
+                        </div>
+                        <div class="form-group">
+                            <strong>Fecha realizacion de la compra:</strong>
+                            {{ $purchase->date }}
                         </div>
 
                         <h2>Detalles de la compra</h2>

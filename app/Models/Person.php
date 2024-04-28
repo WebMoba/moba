@@ -112,7 +112,7 @@ class Person extends Model
      */
     public function user()
     {
-        return $this->hasOne('App\Models\User', 'id', 'users_id');
+        return $this->belongsTo(User::class, 'users_id', 'id');
     }
     public function region()
     {

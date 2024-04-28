@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Exports\SalesExport;
 use App\Models\DetailSale;
 use App\Models\Person;
@@ -73,18 +74,32 @@ class SaleController extends Controller
 
     public function create()
     {
+
+
         $sale = new Sale();
         $sale->date = now()->format('Y-m-d');
         $detailSale = null;
 
-        // Generar un id provisional para la venta
-        $tempSaleId = uniqid();
 
         // Obtener una lista de personas con el formato adecuado para el select
         $people = Person::select('id', 'name', 'id_card')->get()->pluck('name', 'id');
 
         // Obtener los ID Cards de las personas para el select
         $idCards = Person::pluck('id_card', 'id');
+
+
+        $providers = Person::whereHas('teamWork')
+            ->where('rol', 'Cliente')
+            ->where('disable', false) // Agregar esta línea
+            ->get();
+
+        $usersName = User::with('person')
+            ->whereHas('person', function ($query) {
+                $query->where('rol', 'Cliente')
+                    ->where('users_id', '!=', null)
+                    ->where('disable', false); // Agregar esta línea
+            })
+            ->pluck('name', 'id');
 
         // Obtener una lista de productos para el select
         $products = Product::pluck('name', 'id');
@@ -100,10 +115,9 @@ class SaleController extends Controller
         // Crear una nueva instancia de detalle de venta
         $detailSale = new DetailSale();
 
-        // Definir la variable $saleId
-        $saleId = $tempSaleId;
+        $productPrices = Product::pluck('price', 'id')->toArray();
+        return view('sale.create', compact('sale', 'usersName', 'providers', 'people', 'quotes', 'confirm', 'products', 'detailSale', 'productPrices', 'idCards'));
 
-        return view('sale.create', compact('sale', 'people', 'quotes', 'confirm', 'products', 'detailSale', 'productPrices', 'saleId', 'idCards'));
     }
 
     public function store(Request $request)

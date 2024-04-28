@@ -64,7 +64,7 @@ class PurchaseController extends Controller
             ->orWhere('date', 'LIKE', '%' . $search . '%')
             ->orderBy('created_at', 'desc')
             ->paginate(10);
-    
+
         return view('purchase.index', compact('purchases', 'search'))
             ->with('i', (request()->input('page', 1) - 1) * $purchases->perPage());
     }
@@ -79,13 +79,24 @@ class PurchaseController extends Controller
     {
         $purchase = new Purchase();
         $purchase->date = now()->format('Y-m-d');
-        $usersName = User::pluck('name', 'id');
 
-        // Obtener solo las personas con rol de "Proveedor" y habilitadas
+
         $providers = Person::whereHas('teamWork')
             ->where('rol', 'Proveedor')
             ->where('disable', false) // Agregar esta línea
             ->get();
+
+
+        $usersName = User::with('person')
+            ->whereHas('person', function ($query) {
+                $query->where('rol', 'Proveedor')
+                    ->where('users_id', '!=', null)
+                    ->where('disable', false); // Agregar esta línea
+            })
+            ->pluck('name', 'id');
+
+
+
 
         $detailPurchase = new DetailPurchase();
         $purchases = Purchase::pluck('name', 'id');
@@ -107,6 +118,7 @@ class PurchaseController extends Controller
 
     public function store(Request $request)
     {
+
 
         // Acceder a los datos enviados desde el formulario
         $datos = $request->input('data');
