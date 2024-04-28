@@ -207,6 +207,7 @@ class PersonController extends Controller
 
        $person->rol = $request->input('rol'), // Actualizar el campo 'rol' con el valor de la solicitud
        $person->identification_type = $request->input('identification_type'),
+       $person->region_id = $request->input('region'),
         // Otras asignaciones de datos...
     ]);
    
