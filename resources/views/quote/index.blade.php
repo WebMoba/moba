@@ -77,11 +77,13 @@
                                             <td>
                                                 <form action="{{ route('quotes.destroy', $quote->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary {{ $quote->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('quotes.show', $quote->id) }}"><i
-                                                            class="fa fa-fw fa-eye"></i> <i class="bi bi-eye-fill"></i></a>
-                                                    <a class="btn btn-sm btn-success {{ $quote->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('quotes.edit', $quote->id) }}"><i
-                                                            class="fa fa-fw fa-edit"></i> <i class="bi bi-pencil-square"></i></a>
+                                                        href="{{ route('quotes.show', $quote->id) }}"><i class="fa fa-fw fa-eye"></i>
+                                                        <i class="bi bi-eye-fill"></i>
+                                                    </a>
+                                                    {{--  <a class="btn btn-sm btn-success {{ $quote->disable ? 'disabled' : '' }}"
+                                                        href="{{ route('quotes.edit', $quote->id) }}"><i class="fa fa-fw fa-edit"></i> 
+                                                        <i class="bi bi-pencil-square"></i>
+                                                    </a>  --}}
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"

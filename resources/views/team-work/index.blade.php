@@ -76,10 +76,10 @@
                                                 <form action="{{ route('team-works.destroy', $teamWork->id) }}"
                                                     method="POST">
                                                     <a class="btn btn-sm btn-primary {{ $teamWork->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('quotes.show', $teamWork->id) }}"><i
+                                                        href="{{ route('team-works.show', $teamWork->id) }}"><i
                                                             class="fa fa-fw fa-eye"></i><i class="bi bi-eye-fill"></i></a>
                                                     <a class="btn btn-sm btn-success {{ $teamWork->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('quotes.edit', $teamWork->id) }}"><i
+                                                        href="{{ route('team-works.edit', $teamWork->id) }}"><i
                                                             class="fa fa-fw fa-edit"></i> <i class="bi bi-pencil-square"></i></a>
                                                     @csrf
                                                     @method('DELETE')
