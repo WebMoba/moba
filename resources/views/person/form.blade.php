@@ -50,8 +50,8 @@
         </div>
 
         <div class="form-group">
-            {{ Form::label('Departamento' , null, ['class' => 'required']) }}
-            {{ Form::select('region', $regions, $person->region, ['id' => 'regions_select', 'class' => 'form-control' . ($errors->has('region') ? ' is-invalid' : ''), 'placeholder' => 'Departamento']) }}
+            {{ Form::label('Departamento', null, ['class' => 'required']) }}
+            {{ Form::select('region', $regions, $person->region_id, ['id' => 'regions_select', 'class' => 'form-control' . ($errors->has('region') ? ' is-invalid' : ''), 'placeholder' => 'Departamento']) }}
             {!! $errors->first('region', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         

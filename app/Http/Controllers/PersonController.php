@@ -88,10 +88,7 @@ class PersonController extends Controller
         ],
         'user_name' => 'required',
         'team_works_id' => 'required',
-        'phone_number' => [
-            'required',
-            'max:10', // Máximo 10 caracteres
-        ],
+        'phone_number' => ['required', 'max:10'], // Asegúrate de que el campo del número de teléfono esté presente en la solicitud
         'region' => 'required',
         'towns_id' => 'required',
         'users_id' => [
@@ -158,6 +155,7 @@ class PersonController extends Controller
     $numberPhone = NumberPhone::find($numberPhoneId);
    
     // Obtener listas de selección para otros campos
+    
     $usersName = User::pluck('name', 'id');
     $teamWorks = TeamWork::pluck('assigned_work', 'id');
     $regions = Region::pluck('name', 'id');
@@ -178,44 +176,45 @@ class PersonController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Person $person)
+
+    
 {
     // Validar la solicitud
     $request->validate([
         'rol' => ['required', Rule::in(['Administrador', 'Cliente', 'Proveedor'])], // Asegúrate de que los valores de 'rol' sean válidos
         'id_card' => 'required',
-        'identification_type' => 'required',
-        
-       
+        'identification_type' => ['required', Rule::in(['cedula', 'cedula Extranjeria', 'NIT'])],
         'addres' => 'required',
         'team_works_id' => 'required',
         'phone_number' => 'required',
-        'region' => 'required',
+        'region' => 'required', // Asegúrate de que el campo 'region' esté presente en la solicitud
         'towns_id' => 'required',
         'user_name' => 'required',
     ]);
+    $regionId = $request->input('region');
+
+   
 
     // Actualizar los datos de la persona
     $person->update([
         'name' => $request->input('user_name'),
         'team_works_id' => $request->input('team_works_id'),
         'phone_number' => $request->input('phone_number'),
-        'region' => $request->input('region'),
+        'region_id' => $request->input('region'),
         'towns_id' => $request->input('towns_id'),
         'users_id' =>$request->input('users_id'),
 
 
        $person->rol = $request->input('rol'), // Actualizar el campo 'rol' con el valor de la solicitud
-        'identification_type' => $request->input('identification_type'),
+       $person->identification_type = $request->input('identification_type'),
         // Otras asignaciones de datos...
     ]);
-
- 
-    
    
     // Actualizar el número de teléfono asociado a la persona si se ha cambiado en el formulario
     if ($request->has('phone_number')) {
         $person->numberPhone->update(['number' => $request->input('phone_number')]);
     }
+
 
     return redirect()->route('person.index')
         ->with('success', 'Persona actualizada exitosamente');
