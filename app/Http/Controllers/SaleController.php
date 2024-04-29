@@ -117,66 +117,62 @@ class SaleController extends Controller
 
         $productPrices = Product::pluck('price', 'id')->toArray();
         return view('sale.create', compact('sale', 'usersName', 'providers', 'people', 'quotes', 'confirm', 'products', 'detailSale', 'productPrices', 'idCards'));
-
     }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
 
-    public function store(Request $request)
-    {
-        // Validar los datos recibidos
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'people_id' => 'required',
-            'date' => 'required|date',
-            'quotes_id' => 'nullable',
-            'name' => 'required',
-            'disable' => 'required|boolean', // Asegúrate de agregar la validación para disable
-            'detalles' => 'required|array',
 
-            'detalles.*.product_id' => 'required|exists:products,id',
-            'detalles.*.quantity' => 'required|numeric|min:1',
-            'detalles.*.price_unit' => 'required|numeric|min:0',
-            'detalles.*.subtotal' => 'required|numeric|min:0',
-            'detalles.*.discount' => 'nullable|numeric|min:0|max:100',
-            'detalles.*.total' => 'required|numeric|min:0',
+     public function store(Request $request)
+     {
+         // Validar los datos recibidos del formulario
+         $request->validate([
+             'data.cliente_id' => 'required',
+             'data.fecha' => 'required|date',
+             'data.cotizacion_id' => 'required',
+             'data.detalles' => 'required|array|min:1', // Asegúrate de que al menos haya un detalle
+             'data.detalles.*.productoId' => 'required|integer',
+             'data.detalles.*.cantidad' => 'required|integer|min:1',
+             'data.detalles.*.precioUnitario' => 'required|numeric|min:0',
+             'data.detalles.*.subtotal' => 'required|numeric|min:0',
+             'data.detalles.*.descuento' => 'nullable|numeric|min:0',
+             'data.detalles.*.total' => 'required|numeric|min:0',
+         ]);
+     
+         // Obtener los datos enviados desde el formulario
+         $datos = $request->input('data');
+     
+         // Crear una nueva venta
+         $venta = new Sale();
+         $venta->name = $datos['cliente_id'];
+         $venta->date = $datos['fecha'];
+         $venta->people_id = $datos['cotizacion_id'];
+         $venta->save();
+     
+         // Recorrer y guardar los detalles de la venta en la base de datos
+         foreach ($datos['detalles'] as $detalle) {
+             $detalleVenta = new DetailSale();
+             $detalleVenta->quantity = $detalle['cantidad'];
+             $detalleVenta->price_unit = $detalle['precioUnitario'];
+             $detalleVenta->subtotal = $detalle['subtotal'];
+             $detalleVenta->discount = $detalle['descuento'] ?? 0; // Valor predeterminado de descuento
+             $detalleVenta->total = $detalle['total'];
+             $detalleVenta->products_id = $detalle['productoId'];
+             $detalleVenta->sales_id = $venta->id; // Asociar el detalle con la venta creada
+             $detalleVenta->save();
+         }
+     
+         // Retornar una respuesta de éxito
+         return response()->json(['message' => 'Venta guardada exitosamente'], 200);
+     }
+     
 
-        ]);
+     
 
-        // Establecer el valor de disable aquí
-        $validatedData['disable'] = 0; // O el valor que desees asignar
 
-        DB::beginTransaction();
-
-        try {
-            // Crear una nueva instancia de Sale
-            $sale = new Sale();
-            $sale->name = $validatedData['name']; // Aquí asignas el nombre del cliente
-            $sale->people_id = $validatedData['people_id'];
-            $sale->date = $validatedData['date'];
-            $sale->quotes_id = $validatedData['quotes_id'];
-            $sale->disable = $validatedData['disable']; // Aquí se establece el valor de disable
-            $sale->save();
-
-            // Guardar los detalles de la venta
-            foreach ($validatedData['detalles'] as $detalle) {
-                $saleDetail = new DetailSale();
-                $saleDetail->products_id = $detalle['product_id'];
-                $saleDetail->quantity = $detalle['quantity'];
-                $saleDetail->price_unit = $detalle['price_unit'];
-                $saleDetail->subtotal = $detalle['subtotal'];
-                $saleDetail->discount = $detalle['discount'] ?? 0;
-                $saleDetail->total = $detalle['total'];
-                $saleDetail->sales_id = $sale->id;
-                $saleDetail->save();
-            }
-
-            DB::commit();
-
-            return response()->json(['success' => true, 'message' => 'Venta registrada correctamente'], 200);
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return response()->json(['error' => $e->getMessage()], 500);
-        }
-    }
 
     public function show($id)
     {
