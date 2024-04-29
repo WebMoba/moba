@@ -69,12 +69,11 @@
     <div class="box">
     <form method="POST" action="{{ route('enviar-correo') }}">
     @csrf
-		<label for="nombre">Nombre:</label>
-		<input type="text" id="nombre" name="nombre" required><br><br>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" value="{{ auth()->check() ? auth()->user()->name : '' }}" required><br><br>
 
-		<label for="email">Email:</label>
-		<input type="email" id="email" name="email" required><br><br>
-
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="{{ auth()->check() ? auth()->user()->email : '' }}" required><br><br>
 		<label for="telefono">Teléfono:</label>
 		<input type="tel" id="telefono" name="telefono" required><br><br>
 

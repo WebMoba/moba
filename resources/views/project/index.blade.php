@@ -38,7 +38,7 @@
                             <div class="float-right">
                                 <a href="{{ route('projects.create') }}" class="btn btn-primary btn-sm float-right"
                                     data-placement="left">
-                                    {{ __('Crear nuevo') }}
+                                    <i class="bi bi-plus-lg"></i>
                                 </a>
                             </div>
                         </div>
@@ -75,10 +75,10 @@
                                                 <form action="{{ route('projects.destroy', $project->id) }}"
                                                     method="POST">
                                                     <a class="btn btn-sm btn-primary {{ $project->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('quotes.show', $project->id) }}"><i
+                                                        href="{{ route('projects.show', $project->id) }}"><i
                                                             class="fa fa-fw fa-eye"></i> <i class="bi bi-eye-fill"></i></a>
                                                     <a class="btn btn-sm btn-success {{ $project->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('quotes.edit', $project->id) }}"><i
+                                                        href="{{ route('projects.edit', $project->id) }}"><i
                                                             class="fa fa-fw fa-edit"></i><i class="bi bi-pencil-square"></i></a>
                                                     @csrf
                                                     @method('DELETE')

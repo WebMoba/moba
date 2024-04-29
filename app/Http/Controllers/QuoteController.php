@@ -31,13 +31,14 @@ class QuoteController extends Controller
      */
     public function index(Request $request)
     {
+
         $search = trim($request->get('search'));
         $quotes = Quote::select('id', 'date_issuance', 'description', 'total', 'discount', 'status', 'people_id', 'disable')
-            ->where('id', 'LIKE', '%' . $search . '%')
-            ->orWhere('description', 'LIKE', '%' . $search . '%')
-            ->orderBy('date_issuance', 'asc')
-            ->paginate(6);
-
+                ->where('id', 'LIKE', '%' . $search . '%')
+                ->orWhere('description', 'LIKE', '%' . $search . '%')
+                ->orderBy('date_issuance', 'asc')
+                ->paginate(10);
+        
         return view('quote.index', compact('quotes', 'search'));
         // ->with('i', (request()->input('page', 1) - 1) * $quotes->perPage());
     }
@@ -89,6 +90,7 @@ class QuoteController extends Controller
         $quote = Quote::create($request->all());
     
         $detailQuote = new DetailQuote() ;
+
         $quote->date_issuance = now()->format('Y-m-d');
         $servicesId = $request->input('services_id');
         $productsId = $request->input('products_id');
@@ -102,7 +104,6 @@ class QuoteController extends Controller
                     'services_id' => $serviceId,
                     'products_id' => $request->products_id[$key],
                     'projects_id' => $request->projects_id[$key],
-                    // 'quotes_id' => $request->quotes_id[$key],
                 ]);
                 $quote->detailQuotes()->save($detalle);
             }
@@ -123,6 +124,9 @@ class QuoteController extends Controller
     public function show($id)
     {
         $quote = Quote::find($id);
+        // Convierte la fecha a un formato de cadena 'Y-m-d'
+        // $quote->date_issuance = $quote->date_issuance ? $quote->date_issuance->format('Y-m-d') : null;
+
         $detailQuote = DetailQuote::where('quotes_id', $quote->id)->get();
         $detailQuote = $quote->detailQuotes;
         $quote->load('detailQuotes');
@@ -147,6 +151,8 @@ class QuoteController extends Controller
         $quote->date_issuance = now()->format('Y-m-d');
         return view('quote.create', compact('quote', 'detailQuote', 'persons', 'services', 'products', 'projects', 'quotes'));
     }
+    
+
 
     /**
      * Update the specified resource in storage.
