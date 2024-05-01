@@ -41,7 +41,7 @@
                             <div class="float-right">
                                 <a href="{{ route('team-works.create') }}" class="btn btn-primary btn-sm float-right"
                                     data-placement="left">
-                                    {{ __('Crear equipo de trabajo') }}
+                                    <i class="bi bi-plus-lg"></i>
                                 </a>
                             </div>
                         </div>

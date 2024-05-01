@@ -9,8 +9,20 @@
     <!-- Agrega enlaces a tus estilos CSS y a Bootstrap si los estás utilizando -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         crossorigin="anonymous">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+
+    <style>
+        .required-label::after {
+            content: "*";
+            color: red;
+            margin-left: 5px;
+        }
+    </style>
+
+
 </head>
 
 <body>
@@ -40,13 +52,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="date">Fecha Venta</label>
-                        <input type="date" name="date"
-                            class="form-control{{ $errors->has('date') ? ' is-invalid' : '' }}"
-                            placeholder="Fecha Venta" min="{{ now()->format('Y-m-d') }}">
-                        @if ($errors->has('date'))
-                            <div class="invalid-feedback">{{ $errors->first('date') }}</div>
-                        @endif
+                        {{ Form::label('Fecha', null, ['class' => 'required-label']) }}
+                        {{ Form::text('date', $sale->date, ['class' => 'form-control' . ($errors->has('date') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Date', 'readonly' => true, 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
+                        {!! $errors->first('date', '<div class="invalid-feedback">:message</div>') !!}
+
+                        <small class="text-muted">Por cuestiones de seguridad este campo no es editable.</small>
                     </div>
 
                     <div class="form-group">
@@ -113,7 +123,7 @@
                                 </th>
                                 <th>
                                     <div class="form-group">
-                                        {{ Form::text('subtotal', $detailSale->subtotal, ['id' => 'subtotal', 'class' => 'form-control' . ($errors->has('subtotal') ? ' is-invalid' : ''), 'placeholder' => 'Subtotal', 'id' => 'subtotalInput', 'readonly' => 'readonly']) }}
+                                        {{ Form::text('subtotal', $detailSale->subtotal, ['id' => 'subtotal', 'class' => 'form-control' . ($errors->has('subtotal') ? ' is-invalid' : ''), 'placeholder' => 'Subtotal', 'readonly' => 'readonly', 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
                                         {!! $errors->first('subtotal', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
                                 </th>
@@ -125,7 +135,7 @@
                                 </th>
                                 <th>
                                     <div class="form-group">
-                                        {{ Form::text('total', $detailSale->total, ['id' => 'total', 'class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''), 'placeholder' => 'Total', 'id' => 'TotalInput', 'readonly' => 'readonly']) }}
+                                        {{ Form::text('total', $detailSale->total, ['id' => 'total', 'class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''), 'placeholder' => 'Total', 'readonly' => 'readonly', 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
                                         {!! $errors->first('total', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
                                 </th>
@@ -141,11 +151,9 @@
                             </tr>
                         </tbody>
                     </table>
-
-                    <div class="box-footer">
-                        <button type="button" id="agregarDetalle" class="btn btn-primary">Agregar detalle</button>
-                    </div>
-
+                </div>
+                <div class="box-footer">
+                    <button type="button" id="agregarDetalle" class="btn btn-primary">Agregar detalle</button>
                 </div>
             </div>
         </div>
@@ -160,67 +168,124 @@
         var price = productPrices[productId] || '';
         $('#priceUnitInput').val(price);
     });
-</script>
 
-<script>
+
     $('#name').on('change', function() {
         var selectedValue = $(this).val();
         $('#people_id').val(selectedValue);
     });
+</script>
+
+<script>
+    function enviarDetalles() {
+    const detalles = [];
+
+    // Obtener valores directamente de los elementos del formulario
+    const fechaInput = document.querySelector('input[name="date"]');
+    const nombreClienteSelect = document.querySelector('select[name="name"]');
+    const cotizacionSelect = document.querySelector('select[name="quotes_id"]');
+
+    const fecha = fechaInput.value;
+    const clienteId = nombreClienteSelect.value;
+    const cotizacionId = cotizacionSelect.value;
+
+    document.querySelectorAll('#detalle-table tbody tr').forEach(function(detalle) {
+        const productoSelect = detalle.querySelector('select[name^="product_id"]');
+        const cantidadInput = detalle.querySelector('input[name^="quantity"]');
+        const precioUnitarioInput = detalle.querySelector('input[name^="price_unit"]');
+        const subtotalInput = detalle.querySelector('input[name^="subtotal"]');
+        const descuentoInput = detalle.querySelector('input[name^="discount"]');
+        const totalInput = detalle.querySelector('input[name^="total"]');
+
+        const productoId = productoSelect.value;
+        const cantidad = cantidadInput.value;
+        const precioUnitario = precioUnitarioInput.value;
+        const subtotal = subtotalInput.value;
+        const descuento = descuentoInput.value;
+        const total = totalInput.value;
+
+        detalles.push({
+            productoId: productoId,
+            cantidad: cantidad,
+            precioUnitario: precioUnitario,
+            subtotal: subtotal,
+            descuento: descuento,
+            total: total
+        });
+    });
+
+    const data = {
+        cliente_id: clienteId,
+        fecha: fecha,
+        cotizacion_id: cotizacionId,
+        detalles: detalles
+    };
+
+    // Enviar datos al controlador de Laravel mediante AJAX
+    $.ajax({
+        type: "POST",
+        url: "{{ route('sales.store') }}",
+        data: {
+            _token: '{{ csrf_token() }}',
+            data: data
+        },
+        success: function(response) {
+            // Manejar la respuesta del servidor si es necesario
+            console.log(response);
+        },
+        error: function(err) {
+            // Manejar errores si los hay
+            console.error(err);
+        }
+    });
+}
 
 
 
-
-
-
-
-
-
-
-    function calcularTotalDetalle(row) {
-        var quantity = parseFloat(row.querySelector('[name="quantity"]').value);
-        var priceUnit = parseFloat(row.querySelector('[name="price_unit"]').value);
-        var discount = parseFloat(row.querySelector('[name="discount"]').value);
-
-        // Calcular el subtotal
-        var subtotal = quantity * priceUnit;
-
-        // Calcular el total con descuento
-        var total = subtotal - (subtotal * (discount / 100));
-
-        // Actualizar los campos de subtotal y total en la fila
-        row.querySelector('[name="subtotal"]').value = subtotal.toFixed(2);
-        row.querySelector('[name="total"]').value = total.toFixed(2);
+    function eliminarDetalle(button) {
+        var row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
     }
 
-    // Función para agregar event listeners a los campos de un detalle
-    function addEventListeners(row) {
-        row.querySelector('[name="quantity"]').addEventListener('input', function() {
-            calcularTotalDetalle(row);
-        });
 
-        row.querySelector('[name="price_unit"]').addEventListener('input', function() {
-            calcularTotalDetalle(row);
-        });
-
-        row.querySelector('[name="discount"]').addEventListener('input', function() {
-            calcularTotalDetalle(row);
-        });
-    }
-
-    // Llamar a la función para agregar event listeners al detalle inicial
+    // Agregar eventos de escucha para el detalle inicial
     document.addEventListener('DOMContentLoaded', function() {
         const initialDetail = document.querySelector('#detalle-table tbody tr');
         addEventListeners(initialDetail);
     });
 
+    function addEventListeners(detalle) {
+        const productSelect = detalle.querySelector('#productSelect');
+        const quantityField = detalle.querySelector('input[name^="quantity"]');
+        const priceUnitField = detalle.querySelector('input[name^="price_unit"]');
+        const discountField = detalle.querySelector('input[name^="discount"]');
+        const subtotalField = detalle.querySelector('#subtotal');
+        const totalField = detalle.querySelector('#total');
 
+        function calculateSubtotalAndTotal() {
+            const quantity = parseFloat(quantityField.value) || 0;
+            const priceUnit = parseFloat(priceUnitField.value) || 0;
+            const discount = parseFloat(discountField.value) || 0;
 
+            const subtotal = quantity * priceUnit;
+            const total = subtotal - (subtotal * (discount / 100));
 
+            subtotalField.value = subtotal.toFixed(2);
+            totalField.value = total.toFixed(2);
+        }
 
+        quantityField.addEventListener('input', calculateSubtotalAndTotal);
+        priceUnitField.addEventListener('input', calculateSubtotalAndTotal);
+        discountField.addEventListener('input', calculateSubtotalAndTotal);
 
-
-
+        // Agregar evento change al selector de productos
+        productSelect.addEventListener('change', function() {
+            var productId = $(this).val();
+            var price = productPrices[productId] || '';
+            priceUnitField.value = price;
+            calculateSubtotalAndTotal(); // Actualizar subtotal y total después de cambiar el precio unitario
+        });
+    }
 
 
     document.getElementById('agregarDetalle').addEventListener('click', function() {
@@ -232,58 +297,14 @@
             element.value = '';
             // Agregar un índice único a los nombres de los campos clonados
             element.name = element.name + '_' + container.children.length;
-
-            // Agregar evento change al select de productos para rellenar el precio unitario
-            if (element.id === 'productSelect') {
-                element.addEventListener('change', function() {
-                    var productId = $(this).val();
-                    var price = productPrices[productId] || '';
-                    var priceUnitInput = nuevoDetalle.querySelector('#priceUnitInput');
-                    priceUnitInput.value = price;
-                });
-            }
         });
 
-        // Llamar a la función para agregar event listeners al nuevo detalle
+        // Agregar eventos de escucha para el nuevo detalle
         addEventListeners(nuevoDetalle);
 
         // Agregar el nuevo detalle a la tabla
         container.appendChild(nuevoDetalle);
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    function eliminarDetalle(button) {
-        var row = button.parentNode.parentNode;
-        row.parentNode.removeChild(row);
-    }
 </script>
 
 

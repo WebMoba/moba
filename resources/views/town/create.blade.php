@@ -18,7 +18,6 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('towns.store') }}" role="form" enctype="multipart/form-data">
                             @csrf
-
                             <div class="box box-info padding-1">
                                 <div class="box-body">
 
@@ -35,10 +34,9 @@
 
                                 </div>
                                 <div class="box-footer mt20">
-                                    <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+                                    <button type="submit" class="btn btn-primary">{{ __('Crear') }}</button>
                                 </div>
                             </div>
-
                         </form>
                     </div>
                 </div>

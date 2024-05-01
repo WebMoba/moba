@@ -36,7 +36,7 @@
                             <div class="float-right">
                                 <a href="{{ route('events.create') }}" class="btn btn-primary btn-sm float-right"
                                     data-placement="left">
-                                    {{ __('Crear Nuevo') }}
+                                    <i class="bi bi-plus-lg"></i>
                                 </a>
                             </div>
                         </div>

@@ -21,7 +21,6 @@
                             enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
-
                             <div class="box box-info padding-1">
                                 <div class="box-body">
 
@@ -100,7 +99,6 @@
                                     height: 150px;
                                 }
                             </style>
-
 
                         </form>
                     </div>

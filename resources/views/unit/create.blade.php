@@ -19,7 +19,6 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('unit.store') }}" role="form" enctype="multipart/form-data">
                             @csrf
-
                             <div class="box box-info padding-1">
                                 <div class="box-body">
                                     <div class="form-group">
@@ -29,8 +28,7 @@
                                     </div>
                                 </div>
                                 <div class="box-footer mt20">
-                                    <button type="submit" class="btn btn-primary"
-                                        @if ($mode == 'Editar') onclick="return confirm('¿Está seguro de que desea {{ $mode }} esta unidad?')" @endif>{{ $mode }}</button>
+                                    <button type="submit" class="btn btn-primary">{{ __('Crear') }}</button>
                                 </div>
                             </div>
                             <style>
@@ -40,7 +38,6 @@
                                     margin-left: 4px;
                                 }
                             </style>
-
                         </form>
                     </div>
                 </div>

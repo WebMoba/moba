@@ -44,7 +44,7 @@
                             <div class="float-right">
                                 <a href="{{ route('service.create') }}" class="btn btn-primary btn-sm float-right"
                                     data-placement="left">
-                                    {{ __('Crear Servicio') }}
+                                    <i class="bi bi-plus-lg"></i>
                                 </a>
                             </div>
                         </div>

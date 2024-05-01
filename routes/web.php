@@ -248,5 +248,18 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static');
     Route::get('/{page}', [PageController::class, 'index'])->name('page');
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+    Route::resource('service', ServiceController::class);
+    Route::resource('categories-products-service', CategoriesProductsServiceController::class);
+    Route::resource('product', ProductController::class);
+    Route::resource('unit', UnitController::class);
+    Route::resource('events', EventController::class);
+    Route::resource('number-phone', NumberPhoneController::class);
     Route::resource('person', PersonController::class);
+    Route::resource('materials_raws', App\Http\Controllers\MaterialsRawController::class);
+    Route::resource('units', App\Http\Controllers\UnitController::class);
+    Route::resource('sales', SaleController::class)->middleware('auth');
+    Route::resource('detail-sale', DetailSaleController::class)->middleware('auth');
+    Route::resource('projects', ProjectController::class)->middleware('auth');
+    Route::resource('team-works', TeamWorkController::class)->middleware('auth');
+    Route::resource('quotes', QuoteController::class)->middleware('auth');
 });

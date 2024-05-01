@@ -50,21 +50,13 @@
 
                                 </div>
                                 <div class="box-footer mt20 my-2">
-
-                                    @if ($confirm)
-                                        <button type="submit" class="btn btn-primary"
-                                            onclick="return confirm('¿Está seguro de editar este registro?');">{{ __('Submit') }}</button>
-                                    @else
-                                        <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
-                                    @endif
+                                    <button type="submit" class="btn btn-primary">{{ __('Crear') }}</button>
                                     <a class="btn btn-primary" href="{{ route('materials_raws.index') }}">
-                                        {{ __('Back') }}</a>
+                                        {{ __('Volver') }}</a>
 
                                 </div>
 
                             </div>
-
-
                         </form>
                     </div>
                 </div>

@@ -8,7 +8,6 @@
             <div class="brand-container d-flex justify-content-between align-items-center">
                 <img src="{{ asset('/Imagenes/Logotipo_moba.png') }}" class="navbar-brand-img h-180" alt="main_logo"
                     width="70px" height="80px">
-                <span style="color: #f4645f;; font-weight: normal; font-size: 1.8rem;">/</span>
                 <img src="{{ asset('/Imagenes/LogoTuArte.png') }}" class="navbar-brand-img h-100" alt="main_logo"
                     width="40px" height="45px">
             </div>
@@ -74,14 +73,14 @@
                 <a class="nav-link {{ str_contains(request()->url(), 'person') == true ? 'active' : '' }}"
                     href="{{ route('person.index') }}">
                     <div class="icon icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="bi bi-people-fill text-info text-sm opacity-10"></i>
+                        <i class="bi bi-person-plus text-info text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Personas</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ str_contains(request()->url(), 'billing') == true ? 'active' : '' }}"
-                    href="{{ route('page', ['page' => 'billing']) }}">
+                <a class="nav-link {{ str_contains(request()->url(), 'event') == true ? 'active' : '' }}"
+                    href="{{ route('events.index') }}">
                     <div
                         class="icon icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="bi bi-calendar-event text-warning text-sm opacity-10"></i>
@@ -90,91 +89,91 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ str_contains(request()->url(), 'billing') == true ? 'active' : '' }}"
-                    href="{{ route('page', ['page' => 'billing']) }}">
+                <a class="nav-link {{ str_contains(request()->url(), 'purchase') == true ? 'active' : '' }}"
+                    href="{{ route('purchases.index') }}">
                     <div
                         class="icon icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class=" text-sm opacity-10"></i>
+                        <i class="bi bi-box-seam text-danger text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Compras</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ str_contains(request()->url(), 'billing') == true ? 'active' : '' }}"
-                    href="{{ route('page', ['page' => 'billing']) }}">
+                <a class="nav-link {{ str_contains(request()->url(), 'materials_raw') == true ? 'active' : '' }}"
+                    href="{{ route('materials_raws.index') }}">
                     <div
                         class="icon icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="bi bi-tree text-success text-sm opacity-10"></i>
+                        <i class="bi bi-tree-fill text-success text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Materia prima</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ str_contains(request()->url(), 'billing') == true ? 'active' : '' }}"
-                    href="{{ route('page', ['page' => 'billing']) }}">
+                <a class="nav-link {{ str_contains(request()->url(), 'sale') == true ? 'active' : '' }}"
+                    href="{{ route('sales.index') }}">
                     <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="bi bi-bag-heart text-back text-sm opacity-10"></i>
+                        class="icon icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="bi bi-cart3 text-info text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Ventas</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ str_contains(request()->url(), 'billing') == true ? 'active' : '' }}"
-                    href="{{ route('page', ['page' => 'billing']) }}">
+                <a class="nav-link {{ request()->routeIs('product.index') ? 'active' : '' }}"
+                    href="{{ route('product.index') }}">
                     <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
+                        class="icon icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="bi bi-basket text-back text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Productos</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ str_contains(request()->url(), 'billing') == true ? 'active' : '' }}"
-                    href="{{ route('page', ['page' => 'billing']) }}">
+                <a class="nav-link {{ request()->routeIs('categories-products-service.index') ? 'active' : '' }}"
+                    href="{{ route('categories-products-service.index') }}">
                     <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
+                        class="icon icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="bi bi-diagram-3-fill text-danger text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Categorias</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ str_contains(request()->url(), 'billing') == true ? 'active' : '' }}"
-                    href="{{ route('page', ['page' => 'billing']) }}">
+                <a class="nav-link {{ request()->routeIs('service.index') ? 'active' : '' }}"
+                    href="{{ route('service.index') }}">
                     <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
+                        class="icon icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="bi bi-clipboard-check text-success text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Servicios</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ str_contains(request()->url(), 'billing') == true ? 'active' : '' }}"
-                    href="{{ route('page', ['page' => 'billing']) }}">
+                <a class="nav-link {{ str_contains(request()->url(), 'projects') == true ? 'active' : '' }}"
+                    href="{{ route('projects.index') }}">
                     <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
+                        class="icon icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="bi bi-calendar2-plus text-warning text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Proyectos</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ str_contains(request()->url(), 'billing') == true ? 'active' : '' }}"
-                    href="{{ route('page', ['page' => 'billing']) }}">
+                <a class="nav-link {{ str_contains(request()->url(), 'team-work') == true ? 'active' : '' }}"
+                    href="{{ route('team-works.index') }}">
                     <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
+                        class="icon icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="bi bi-people-fill text-info text-back opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Equipo de trabajo</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ str_contains(request()->url(), 'billing') == true ? 'active' : '' }}"
-                    href="{{ route('page', ['page' => 'billing']) }}">
+                <a class="nav-link {{ str_contains(request()->url(), 'quote') == true ? 'active' : '' }}"
+                    href="{{ route('quotes.index') }}">
                     <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
+                        class="icon icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="bi bi-bell text-success text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Cotizaciones</span>
                 </a>

@@ -5,8 +5,8 @@
     <div class="card shadow-lg">
         <div class="card-header pb-0 pt-3 ">
             <div class="float-start">
-                <h5 class="mt-3 mb-0">Argon Configurator</h5>
-                <p>See our dashboard options.</p>
+                <h5 class="mt-3 mb-0">Accesibilidad</h5>
+                <p>Explora otras opciones.</p>
             </div>
             <div class="float-end mt-4">
                 <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
@@ -19,7 +19,7 @@
         <div class="card-body pt-sm-3 pt-0 overflow-auto">
             <!-- Sidebar Backgrounds -->
             <div>
-                <h6 class="mb-0">Sidebar Colors</h6>
+                <h6 class="mb-0">Colores de la barra lateral</h6>
             </div>
             <a href="javascript:void(0)" class="switch-trigger background-color">
                 <div class="badge-colors my-2 text-start">
@@ -37,33 +37,33 @@
             </a>
             <!-- Sidenav Type -->
             <div class="mt-3">
-                <h6 class="mb-0">Sidenav Type</h6>
-                <p class="text-sm">Choose between 2 different sidenav types.</p>
+                <h6 class="mb-0">Temas del desplazable izquierdo</h6>
+                <p class="text-sm">Elija entre 2 tipos diferentes.</p>
             </div>
             <div class="d-flex">
                 <button class="btn bg-gradient-primary w-100 px-3 mb-2 active me-2" data-class="bg-white"
-                    onclick="sidebarType(this)">White</button>
+                    onclick="sidebarType(this)">Claro</button>
                 <button class="btn bg-gradient-primary w-100 px-3 mb-2" data-class="bg-default"
-                    onclick="sidebarType(this)">Dark</button>
+                    onclick="sidebarType(this)">Oscuro</button>
             </div>
             <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
             <!-- Navbar Fixed -->
-            <div class="d-flex my-3">
+            {{--  <div class="d-flex my-3">
                 <h6 class="mb-0">Navbar Fixed</h6>
                 <div class="form-check form-switch ps-0 ms-auto my-auto">
                     <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed"
                         onclick="navbarFixed(this)">
                 </div>
-            </div>
+            </div>  --}}
             <hr class="horizontal dark my-sm-4">
             <div class="mt-2 mb-5 d-flex">
-                <h6 class="mb-0">Light / Dark</h6>
+                <h6 class="mb-0">Claro / Oscuro</h6>
                 <div class="form-check form-switch ps-0 ms-auto my-auto">
                     <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version"
                         onclick="darkMode(this)">
                 </div>
             </div>
-            <a class="btn bg-gradient-dark w-100" href="https://www.creative-tim.com/product/argon-dashboard-laravel" target="_blank">Free Download</a>
+            {{--  <a class="btn bg-gradient-dark w-100" href="https://www.creative-tim.com/product/argon-dashboard-laravel" target="_blank">Free Download</a>
             <a class="btn btn-outline-dark w-100"
                 href="/docs/bootstrap/overview/argon-dashboard/index.html" target="_blank">View documentation</a>
             <div class="w-100 text-center">
@@ -73,13 +73,13 @@
                 <h6 class="mt-3">Thank you for sharing!</h6>
                 <a href="https://twitter.com/intent/tweet?text=Check%20Argon%20Dashboard%20made%20by%20%40CreativeTim%20and%20%40UPDIVISION%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fargon-dashboard-laravel"
                     class="btn btn-dark mb-0 me-2" target="_blank">
-                    {{-- &amp;url2=https%3A%2F%2Fwww.updivision.com --}}
+                    {{-- &amp;url2=https%3A%2F%2Fwww.updivision.com
                     <i class="fab fa-twitter me-1" aria-hidden="true"></i> Tweet
                 </a>
                 <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/argon-dashboard-laravel"
                     class="btn btn-dark mb-0 me-2" target="_blank">
                     <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
-                </a>
+                </a>  --}}
             </div>
         </div>
     </div>

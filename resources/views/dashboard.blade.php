@@ -21,7 +21,7 @@
 
 <!-- Contenido -->
 <div class="logo">
-   
+
     <!-- Insersion de imagenes  -->
     <a href="{{ route('mobaMenu.index') }}" class="logos">
         <div class="logos"><img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" alt="Imagen"></div>
@@ -33,7 +33,7 @@
     </a>
 
 
-    
+
 </div>
 </div>
 <!-- Contenido -->
@@ -47,7 +47,7 @@
         padding: 0;
         height: 100vh;
         /* 100% del viewport height */
-        
+
     }
 
     .container {
@@ -155,15 +155,18 @@
 
 
     @keyframes spin-horizontal {
-    0%, 50% {
-        transform: rotateY(0deg);
-    }
-    50% {
-        transform: rotateY(90deg);
-    }
-}
 
-.logos img {
-    animation: spin-horizontal 10s linear infinite;
-}
+        0%,
+        50% {
+            transform: rotateY(0deg);
+        }
+
+        50% {
+            transform: rotateY(90deg);
+        }
+    }
+
+    .logos img {
+        animation: spin-horizontal 10s linear infinite;
+    }
 </style>

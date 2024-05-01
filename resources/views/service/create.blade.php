@@ -20,7 +20,6 @@
                         <form method="POST" action="{{ route('service.store') }}" role="form"
                             enctype="multipart/form-data">
                             @csrf
-
                             <div class="box box-info padding-1">
                                 <div class="box-body">
 
@@ -60,9 +59,7 @@
 
                                 </div>
                                 <div class="box-footer mt20">
-                                    <button type="submit" class="btn btn-primary"
-                                        @if ($mode == 'Editar') onclick="return confirm('¿Está seguro de que desea {{ $mode }} este servicio ?')" @endif>
-                                        {{ $mode }}</button>
+                                    <button type="submit" class="btn btn-primary">{{ __('Crear') }}</button>
                                 </div>
                             </div>
                             <style>
@@ -99,7 +96,6 @@
                                     height: 150px;
                                 }
                             </style>
-
 
                         </form>
                     </div>

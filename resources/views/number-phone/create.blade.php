@@ -32,8 +32,7 @@
 
                                 </div>
                                 <div class="box-footer mt20">
-                                    <button type="submit" class="btn btn-primary"
-                                        onclick="return confirm('¿Está seguro de que desea crear numero telefonico?')">{{ __('Enviar') }}</button>
+                                    <button type="submit" class="btn btn-primary">{{ __('Crear') }}</button>
                                 </div>
                             </div>
 

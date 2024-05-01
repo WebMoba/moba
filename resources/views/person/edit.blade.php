@@ -94,7 +94,7 @@
 
                                 </div>
                                 <div class="box-footer mt20">
-                                    <br><button type="submit" class="btn btn-primary">{{ __('Crear') }}</button>
+                                    <br><button type="submit" class="btn btn-primary">{{ __('Editar') }}</button>
                                 </div>
                             </div>
                             <script>

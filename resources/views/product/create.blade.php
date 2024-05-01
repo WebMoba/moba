@@ -60,8 +60,7 @@
 
                                 </div>
                                 <div class="box-footer mt20">
-                                    <button type="submit" class="btn btn-primary"
-                                        @if ($mode == 'Editar') onclick="return confirm('¿Está seguro de que desea {{ $mode }} el producto?')" @endif>{{ $mode }}</button>
+                                    <button type="submit" class="btn btn-primary">{{__('Crear') }}</button>
                                 </div>
                             </div>
                             <script>
@@ -98,7 +97,6 @@
                                     height: 150px;
                                 }
                             </style>
-
 
 
                         </form>

@@ -66,7 +66,7 @@
             <h1>Contacto</h1><br><br>
             <h3>¡Somos el estudio de diseño y comunicación que buscabas!</h3>
             <h3>Nuestro deseo más grande es que te hallas enamorado de
-                cada pieza tanto como nosotros, si deseas una pieza personalizada, o adquirir alguna de las piezas que
+                cada pieza tanto como nosotros, si deseas una pieza personalizada, o adquirir alguna de las piezas que
                 se encuentran
                 en nuestro portafolio, solo debes contactarnos, estaremos
                 muy felices de hablar contigo.
@@ -80,11 +80,10 @@
             <form method="POST" action="{{ route('enviar-correo') }}">
                 @csrf
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required><br><br>
+                <input type="text" id="nombre" name="nombre" value="{{ auth()->check() ? auth()->user()->name : '' }}" required><br><br>
 
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required><br><br>
-
+                <input type="email" id="email" name="email" value="{{ auth()->check() ? auth()->user()->email : '' }}" required><br><br>
                 <label for="telefono">Teléfono:</label>
                 <input type="tel" id="telefono" name="telefono" required><br><br>
 

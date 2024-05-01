@@ -18,7 +18,6 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('quotes.store') }}" role="form" enctype="multipart/form-data">
                             @csrf
-
                             <!DOCTYPE html>
                             <html lang="en">
 
@@ -58,13 +57,13 @@
                                     }
 
                                     /* .box-footer {
-                    margin-top: 20px;
-                    text-align: center; /* Para centrar el botón "Enviar"
-                }
-
-                .btn-enviar {
-                    margin-top: 20px;
-                }*/
+                                                margin-top: 20px;
+                                                text-align: center; /* Para centrar el botón "Enviar"
+                                            }
+                                
+                                            .btn-enviar {
+                                                margin-top: 20px;
+                                            }*/
                                 </style>
                             </head>
 
@@ -132,16 +131,16 @@
 
                                                     </tr>
                                                     <!-- <tr>
-                                    <th>
-                                        <a type="submit" class="btn btn-primary" href="{{ route('service.index') }}"> Crear Servicio </a>
-                                    </th>
-                                    <th>
-                                        <a type="submit" class="btn btn-primary " href="{{ route('product.index') }}"> Crear Producto </a>
-                                    </th>
-                                    <th>
-                                        <a type="submit" class="btn btn-primary " href="{{ route('projects.index') }}"> Crear Proyecto </a>
-                                    </th>
-                                </tr> -->
+                                                                <th>
+                                                                    <a type="submit" class="btn btn-primary" href="{{ route('service.index') }}"> Crear Servicio </a>
+                                                                </th>
+                                                                <th>
+                                                                    <a type="submit" class="btn btn-primary " href="{{ route('product.index') }}"> Crear Producto </a>
+                                                                </th>
+                                                                <th>
+                                                                    <a type="submit" class="btn btn-primary " href="{{ route('projects.index') }}"> Crear Proyecto </a>
+                                                                </th>
+                                                            </tr> -->
                                                 </thead>
                                                 <tbody>
                                                     <tr>
@@ -207,7 +206,6 @@
                             </body>
 
                             </html>
-
                         </form>
                     </div>
                 </div>

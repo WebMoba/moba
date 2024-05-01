@@ -19,7 +19,6 @@
                         <form method="POST" action="{{ route('team-works.store') }}" role="form"
                             enctype="multipart/form-data">
                             @csrf
-
                             <div class="box box-info padding-1">
                                 <div class="box-body">
                                     <div class="form-group">
@@ -51,7 +50,7 @@
                                     <br>
                                 </div>
                                 <div class="box-footer mt20">
-                                    <button type="submit" class="btn btn-success">{{ __('Enviar') }}</button>
+                                    <button type="submit" class="btn btn-success">{{ __('Crear') }}</button>
                                     <a type="submit" class="btn btn-primary"
                                         href="{{ route('team-works.index') }}">Volver</a>
                                 </div>
@@ -63,7 +62,6 @@
                                     margin-left: 4px;
                                 }
                             </style>
-
                         </form>
                     </div>
                 </div>

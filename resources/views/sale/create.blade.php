@@ -21,7 +21,6 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('sales.store') }}" role="form" enctype="multipart/form-data">
                             @csrf
-
                             <!DOCTYPE html>
                             <html lang="en">
 
@@ -318,7 +317,6 @@
 
 
                             </html>
-
 
                         </form>
 

@@ -70,7 +70,6 @@
                                     margin-left: 4px;
                                 }
                             </style>
-
                         </form>
                     </div>
                 </div>

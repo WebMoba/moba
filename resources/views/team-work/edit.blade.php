@@ -20,7 +20,6 @@
                             enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
-
                             <div class="box box-info padding-1">
                                 <div class="box-body">
                                     <div class="form-group">
@@ -64,7 +63,6 @@
                                     margin-left: 4px;
                                 }
                             </style>
-
                         </form>
                     </div>
                 </div>

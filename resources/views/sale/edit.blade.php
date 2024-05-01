@@ -20,8 +20,6 @@
                             enctype="multipart/form-data">
                             @method('PATCH')
                             @csrf
-
-
                             <!DOCTYPE html>
                             <html lang="en">
 
@@ -318,7 +316,6 @@
 
 
                             </html>
-
 
                         </form>
                     </div>

@@ -36,7 +36,7 @@
                             <div class="float-right">
                                 <a href="{{ route('materials_raws.create') }}" class="btn btn-primary btn-sm float-right"
                                     data-placement="left">
-                                    {{ __('Crear nuevo') }}
+                                    <i class="bi bi-plus-lg"></i>
                                 </a>
                             </div>
                         </div>
