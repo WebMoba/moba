@@ -299,7 +299,7 @@
 </button>
 </div>
 
-    // seccion de la pestaña
+    
 
 
     <!-- navbar -->
