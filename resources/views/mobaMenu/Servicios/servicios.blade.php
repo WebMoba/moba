@@ -521,6 +521,13 @@
             padding: 0 !important;
         }
 
+        @media screen and (max-width: 400px) {
+            .contenido2{
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+        }
 
     </style>
 
