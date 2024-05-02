@@ -1,85 +1,28 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-
-<style>
-    .required-label::after {
-        content: "*";
-        color: red;
-        margin-left: 5px;
-    }
-</style>
-
-<div class="box box-small">
-    <h2>Compra</h2>
-    <div class="box-body">
-    <div class="form-group">
-            {{ Form::label('Nombre y documento del proveedor', null, ['class' => 'required-label']) }}
-            {{ Form::select(
-                'name',
-                $usersName->mapWithKeys(function ($name, $id) use ($providers) {
-                    $provider = $providers->firstWhere('id', $id);
-                    $document = $provider ? $provider->id_card : ''; // Ajusta la propiedad que contiene el documento del proveedor
-
-                    
-                    return [$id => $name . ' - ' . $document];
-                }),
-                $purchase->name,
-                [
-                    'class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''),
-                    'required',
-                    'placeholder' => 'Name',
-                    'id' => 'name',
-                ],
-            ) }}
-            {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-
-        <div class="form-group">
-            {{ Form::label('Fecha', null, ['class' => 'required-label']) }}
-            {{ Form::text('date', $purchase->date, ['class' => 'form-control' . ($errors->has('date') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Date', 'readonly' => true, 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
-            {!! $errors->first('date', '<div class="invalid-feedback">:message</div>') !!}
-
-            <small class="text-muted">Por cuestiones de seguridad este campo no es editable.</small>
-        </div>
-
-
-    </div>
-    <div class="box-footer" style="margin: 20px;">
-        <button type="button" class="btn btn-success" onclick="enviarDetalles()">Enviar</button>
-        <a type="submit" class="btn btn-primary" href="{{ route('purchases.index') }}">Volver</a>
-    </div>
-</div>
-
-
-
 <div class="box box-large">
     <h2>Detalle Compra</h2>
     <div class="box-body">
         <table id="detalle-table" class="table">
             <thead>
                 <tr>
-                    <th class="required-label">Materia prima</th>
-                    <th class="required-label">Cantidad</th>
-                    <th class="required-label">Precio unitario</th>
-                    <th class="required-label">Subtotal</th>
-                    <th class="required-label">% Descuento</th>
-                    <th class="required-label">Total</th>
+                    <th>Materia prima</th>
+                    <th>Cantidad</th>
+                    <th>Precio unitario</th>
+                    <th>Subtotal</th>
+                    <th>Descuento</th>
+                    <th>Total</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <th>
                         <div class="form-group">
-                            {{ Form::select('materials_raws_id', $materialsRaws, $detailPurchase->materials_raws_id, ['class' => 'form-control' . ($errors->has('materials_raws_id') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Seleccione una materia prima']) }}
+                            {{ Form::select('materials_raws_id', $materialsRaws, $detailPurchase->materials_raws_id, ['class' => 'form-control' . ($errors->has('materials_raws_id') ? ' is-invalid' : ''), 'placeholder' => 'Seleccione una materia prima']) }}
                             {!! $errors->first('materials_raws_id', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
                     </th>
                     <th>
                         <div class="form-group">
-                            {{ Form::text('quantity', $detailPurchase->quantity, ['id' => 'quantity', 'class' => 'form-control' . ($errors->has('quantity') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Quantity']) }}
+                            {{ Form::text('quantity', $detailPurchase->quantity, ['id' => 'quantity', 'class' => 'form-control' . ($errors->has('quantity') ? ' is-invalid' : ''), 'placeholder' => 'Quantity']) }}
                             {!! $errors->first('quantity', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
                     </th>
@@ -106,12 +49,9 @@
                         <div class="form-group">
                             {{ Form::text('total', $detailPurchase->total, ['id' => 'total', 'class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''), 'placeholder' => 'Total', 'readonly' => true, 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
                             {!! $errors->first('total', '<div class="invalid-feedback">:message</div>') !!}
-                            <small class="text-muted">No es editable.</small>
+                            <small class="text-muted">No
+                                es editable.</small>
                         </div>
-                    </th>
-                    <th>
-                        <button type="button" class="btn btn-danger" onclick="eliminarDetalle(this)"><i
-                                class="fas fa-trash-alt"></i></button>
                     </th>
                 </tr>
             </tbody>
@@ -120,6 +60,7 @@
     <div class="box-footer">
         <button type="button" id="agregarDetalle" class="btn btn-primary">Agregar detalle</button>
     </div>
+</div>
 </div>
 
 <script>
@@ -166,11 +107,6 @@
         discountField.addEventListener('input', calculateSubtotalAndTotal);
     }
 
-    function eliminarDetalle(button) {
-        var row = button.parentNode.parentNode;
-        row.parentNode.removeChild(row);
-    }
-
     // Agregar eventos de escucha para el detalle inicial
     document.addEventListener('DOMContentLoaded', function() {
         const initialDetail = document.querySelector('#detalle-table tbody tr');
@@ -178,26 +114,7 @@
     });
 
 
-
-    // Variable global para almacenar la información del proveedor seleccionado
-    var proveedorSeleccionado = {
-        nombre: '',
-        proveedor_id: ''
-    };
-
-    // Evento de cambio para el campo de selección de proveedor
-    document.getElementById('name').addEventListener('change', function() {
-        // Obtener el valor seleccionado
-        var selectedOption = this.options[this.selectedIndex];
-        // Obtener el nombre y la llave foránea del proveedor seleccionado
-        var text = selectedOption.text;
-        var splitText = text.split(' - ');
-        proveedorSeleccionado.nombre = splitText[0];
-        proveedorSeleccionado.proveedor_id = selectedOption.value;
-
-    });
-
-    // Función para enviar detalles
+    // Modificar la función para recopilar tanto los detalles como la información principal del formulario de compra
     function enviarDetalles() {
         const detalles = [];
         document.querySelectorAll('#detalle-table tbody tr').forEach(function(detalle) {
@@ -219,22 +136,26 @@
         });
 
         // Recopilar información principal del formulario de compra
+        const nombreProveedor = document.querySelector('input[name="name"]').value;
         const fecha = document.querySelector('input[name="date"]').value;
+        const proveedorId = document.querySelector('select[name="people_id"]').value;
 
         const data = {
-            nombre_proveedor: proveedorSeleccionado.nombre,
-            proveedor_id: proveedorSeleccionado.proveedor_id,
+            nombre_proveedor: nombreProveedor,
             fecha: fecha,
+            proveedor_id: proveedorId,
             detalles: detalles
         };
 
-        // Enviar datos al controlador de Laravel mediante AJAX
+        // Ahora puedes enviar data que contiene tanto la información principal como los detalles de la compra
+        //console.log(data);
+        // Aquí puedes enviar data a través de AJAX u otro método según tus necesidades
+
         $.ajax({
             type: "POST",
             url: "{{ route('purchases.store') }}",
             data: {
-                _token: '{{ csrf_token() }}',
-                data: data
+                datos: data
             },
             success: function(response) {
                 // Manejar la respuesta del servidor si es necesario
@@ -246,6 +167,6 @@
             }
         });
 
-        window.location.href = "{{ route('purchases.index') }}";
+
     }
 </script>

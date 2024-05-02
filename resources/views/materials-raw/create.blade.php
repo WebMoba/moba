@@ -15,48 +15,13 @@
                     <div class="card-header">
                         <span class="card-title">{{ __('Create') }} Maateria Prima</span>
                     </div>
-
+                    
                     <div class="card-body">
-                        <form method="POST" action="{{ route('materials_raws.store') }}" role="form"
-                            enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('materials_raws.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
-                            <style>
-                                .required-label::after {
-                                    content: "*";
-                                    color: red;
-                                    margin-left: 5px;
-                                }
-                            </style>
+                            @include('materials-raw.form')
 
-                            <div class="box box-info padding-1">
-                                <div class="box-body">
-
-                                    <div class="form-group">
-                                        {{ Form::label('Nombre', null, ['class' => 'required-label']) }}
-                                        {{ Form::text('name', $materialsRaw->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Name']) }}
-                                        {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
-                                    </div>
-                                    <div class="form-group">
-                                        {{ Form::label('Cantidad existente', null, ['class' => 'required-label']) }}
-                                        {{ Form::text('existing_quantity', $materialsRaw->existing_quantity, ['class' => 'form-control' . ($errors->has('existing_quantity') ? ' is-invalid' : ''), 'placeholder' => 'Existing Quantity']) }}
-                                        {!! $errors->first('existing_quantity', '<div class="invalid-feedback">:message</div>') !!}
-                                    </div>
-                                    <div class="form-group">
-                                        {{ Form::label('Tipo de unidad', null, ['class' => 'required-label']) }}
-                                        {{ Form::select('units_id', $units, $materialsRaw->units_id ?? 'Sin tipo de unidad', ['class' => 'form-control' . ($errors->has('units_id') ? ' is-invalid' : ''), 'placeholder' => 'Seleccione el tipo de unidades']) }}
-                                        {!! $errors->first('units_id', '<div class="invalid-feedback">:message</div>') !!}
-                                    </div>
-
-                                </div>
-                                <div class="box-footer mt20 my-2">
-                                    <button type="submit" class="btn btn-primary">{{ __('Crear') }}</button>
-                                    <a class="btn btn-primary" href="{{ route('materials_raws.index') }}">
-                                        {{ __('Volver') }}</a>
-
-                                </div>
-
-                            </div>
                         </form>
                     </div>
                 </div>

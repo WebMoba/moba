@@ -6,7 +6,7 @@
 
 @section('content')
     <section class="content container-fluid">
-        <a class="btn btn-primary" href="{{ route('number-phone.index') }}"> {{ __('Volver') }}</a><br><br>
+    <a class="btn btn-primary" href="{{ route('number-phone.index') }}"> {{ __('Volver') }}</a><br><br>
         <div class="">
             <div class="col-md-12">
 
@@ -17,26 +17,11 @@
                         <span class="card-title">{{ __('Editar') }} Number de Telefono</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('number-phone.update', $numberPhone->id) }}" role="form"
-                            enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('number-phone.update', $numberPhone->id) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
 
-                            <div class="box box-info padding-1">
-                                <div class="box-body">
-
-                                    <div class="form-group">
-                                        {{ Form::label('Numero Telefono') }}
-                                        {{ Form::text('number', $numberPhone->number, ['class' => 'form-control' . ($errors->has('number') ? ' is-invalid' : ''), 'placeholder' => 'Numero Telefono']) }}
-                                        {!! $errors->first('number', '<div class="invalid-feedback">:message</div>') !!}
-                                    </div>
-
-                                </div>
-                                <div class="box-footer mt20">
-                                    <button type="submit" class="btn btn-primary"
-                                        onclick="return confirm('¿Está seguro de que desea crear numero telefonico?')">{{ __('Enviar') }}</button>
-                                </div>
-                            </div>
+                            @include('number-phone.form')
 
                         </form>
                     </div>
