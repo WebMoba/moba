@@ -11,7 +11,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-10 mx-auto">
                 <div class="card">
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -26,22 +26,22 @@
                                         placeholder="Buscar...">
                                 </div>
                                 <div class="col-auto">
-                                    <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
+                                    <button type="submit" class="btn btn-primary btn-sm"><i class="bi bi-search"></i></button>
                                 </div>
                             </form>
                             <div class="float-right">
                                 <a href="{{ route('pdf.teamwork') }}" class="btn btn-danger btn-sm float-right">
-                                    <i class="fa fa-file-pdf"></i> {{ __('PDF') }}
+                                    <i class="fa fa-file-pdf"></i>  <i class="bi bi-file-pdf-fill"></i>
                                 </a>
 
                                 <a href="{{ route('excel.teamwork') }}" class="btn btn-success btn-sm float-right">
-                                    <i class="fa fa-file-excel"></i> {{ __('Excel') }}
+                                    <i class="fa fa-file-excel"></i> <i class="bi bi-file-earmark-excel-fill"></i>
                                 </a>
                             </div>
                             <div class="float-right">
                                 <a href="{{ route('team-works.create') }}" class="btn btn-primary btn-sm float-right"
                                     data-placement="left">
-                                    {{ __('Crear equipo de trabajo') }}
+                                    <i class="bi bi-plus-lg"></i>
                                 </a>
                             </div>
                         </div>
@@ -76,17 +76,18 @@
                                                 <form action="{{ route('team-works.destroy', $teamWork->id) }}"
                                                     method="POST">
                                                     <a class="btn btn-sm btn-primary {{ $teamWork->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('quotes.show', $teamWork->id) }}"><i
-                                                            class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
+                                                        href="{{ route('team-works.show', $teamWork->id) }}"><i
+                                                            class="fa fa-fw fa-eye"></i><i class="bi bi-eye-fill"></i></a>
                                                     <a class="btn btn-sm btn-success {{ $teamWork->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('quotes.edit', $teamWork->id) }}"><i
-                                                            class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
+                                                        href="{{ route('team-works.edit', $teamWork->id) }}"><i
+                                                            class="fa fa-fw fa-edit"></i> <i class="bi bi-pencil-square"></i></a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit"
                                                         onclick="return confirm('¿Está seguro de que desea {{ $teamWork->disable ? 'Habilitar' : 'Deshabilitar' }} este equipo de trabajo?')"
                                                         class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i>
-                                                        {{ $teamWork->disable ? 'Habilitar' : 'Deshabilitar' }}</button>
+                                                        {!! $teamWork->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>'!!}
+                                                    </button>
                                                 </form>
                                             </td>
                                         </tr>

@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/stylesproyect.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/StyleFooter.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
@@ -17,7 +18,7 @@
     <nav class="navbar">
         <div class="container-fluid">
             <a href="{{ asset('/') }}">
-                <img src="{{ asset('Imagenes/Logomoba.png') }}" class="navbar-img-left" alt="Logo Moba"></a>
+                <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba"></a>
             <div class="navbar-buttons">
                 <div class="dropdown">
                     <a href="{{ route('mobaMenu.Servicios.servicios') }}"><button
@@ -33,7 +34,7 @@
                     </ul>
                 </div>
                 <a href="{{ route('mobaMenu.index') }}" class="btn btn-primary">Nosotros</a>
-                <a href="{{ route('mobaMenu.proyectos.index') }}" class="btn btn-primary">Proyectos</a>
+                <a href="{{ route('mobaMenu.proyectos.index') }}" class="btn btn-primary active-link">Proyectos</a>
                 <a href="{{ route('mobaMenu.EquipoTrabajo.index') }}" class="btn btn-primary">Equipo de trabajo</a>
                 <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
@@ -513,6 +514,8 @@
             cursor: pointer;
         }
     </style>
+
+@include('partials.footerMoba')
 
 </body>
 

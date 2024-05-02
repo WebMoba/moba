@@ -9,6 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ asset('css/StyleCategorias/categorias.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/StyleFooter.css') }}">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
@@ -17,7 +19,7 @@
     <nav class="navbar">
         <div class="container-fluid">
             <a href="{{ asset('/') }}">
-                <img src="{{ asset('Imagenes/Logomoba.png') }}" class="navbar-img-left" alt="Logo Moba">
+                <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
             </a>
             <div class="navbar-buttons">
                 <div class="dropdown">
@@ -37,6 +39,8 @@
                                 href="{{ route('tuArteMenu.servicios.Mascotas.index') }}">Mascotas</a></li>
                     </ul>
                 </div>
+
+                
                 <a href="{{ route('tuArteMenu.index') }}" class="btn btn-primary ">Nosotros</a>
                 <a href="{{ route('tuArteMenu.categorias.index') }}"class="btn btn-primary active-link ">Categorias</a>
                 <a href="{{ route('tuArteMenu.galeria.index') }}" class="btn btn-primary ">Galeria</a>
@@ -67,6 +71,9 @@
         @endforeach
     </div>
 
+
+    
+
 <script>
     function redirigir(nombreCategoria) {
         switch (nombreCategoria) {
@@ -90,6 +97,7 @@
     </div>
 
 
+    
 
     <div class="vertical-line right-line">
         <hr class="linea2">
@@ -112,7 +120,16 @@
             this.querySelector('.dropdown-menu').classList.remove('show');
         });
     </script>
+
+
+  <!-- Footer -->
+
+  @include('partials.footerTuArte')
 </body>
 
 </html>
+
+
+
+
 

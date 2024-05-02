@@ -10,6 +10,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Styles -->
     <style>
@@ -88,7 +89,7 @@
                                     alt="Logo de Instagram"></a>
                         </div>
                     </div>
-                    <div class="linea"></div> <!-- Línea vertical después de los logos -->
+                    <div class="linea"> </div> <!-- Línea vertical después de los logos -->
                 </div>
             </div>
         </div>
@@ -154,6 +155,7 @@
         justify-content: center;
         width: 45%;
         height: 95%;
+        perspective: 1000px; /* Ajusta la perspectiva para el efecto 3D */
 
     }
 
@@ -214,19 +216,23 @@
 
 
 
-
     @keyframes pulse-opacity {
-    0% { opacity: 1; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1; }
-}
+        0% { opacity: 1; }
+        50% { opacity: 0.5; }
+        100% { opacity: 1; }
+    }
 
-@keyframes spin-horizontal {
-    0% { transform: rotateY(0deg); }
-    100% { transform: rotateY(90deg); }
-}
+    @keyframes spin-horizontal {
+        0% { transform: rotateY(0deg); }
+        50% { transform: rotateY(85deg); }
+        100% { transform: rotateY(-85deg); }
+    }
 
 .logos img {
-    animation: pulse-opacity 2s ease-in-out infinite, spin-horizontal 8s linear infinite;
+    animation: pulse-opacity 3s ease-in-out infinite, spin-horizontal 15s linear infinite;
+    transform-style: preserve-3d; /* Importante para la perspectiva 3D */
 }
+.logos div {
+        transform-style: preserve-3d;
+    }
 </style>

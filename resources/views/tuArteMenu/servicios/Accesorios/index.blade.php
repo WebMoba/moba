@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/StylesServicios/AccesoriosTuArte.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/StyleFooter.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
@@ -19,14 +20,16 @@
     <nav class="navbar">
         <div class="container-fluid">
             <a href="{{ asset('/') }}">
-                <img src="{{ asset('Imagenes/Logomoba.png') }}" class="navbar-img-left" alt="Logo Moba">
+                <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
             </a>
             <div class="navbar-buttons">
                 <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-                        aria-haspopup="true" aria-expanded="false">
-                        Servicios
-                    </button>
+                    <a href="" class="active-link">
+                        <button class="btn btn-primary active-lonk dropdown-toggle" type="button" id="dropdownMenuButton"
+                            aria-haspopup="true" aria-expanded="false">
+                            Servicios
+                        </button>
+                    </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <li><a class="dropdown-item"
                                 href="{{ route('tuArteMenu.servicios.Accesorios.index') }}">Accesorios</a></li>
@@ -94,8 +97,21 @@
                                     <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top"
                                         alt="{{ $product->name }}">
                                     <div class="card-body">
+                                        <div class="stars">
+                                            @php
+                                                // Genera un número aleatorio entre 4 y 5 para las estrellas amarillas
+                                                $randomStars = rand(4, 5);
+                                            @endphp
+                                            @for ($i = 0; $i < 5; $i++)
+                                                @if ($i < $randomStars)
+                                                    <i class="bi bi-star-fill active"></i>
+                                                @else
+                                                    <i class="bi bi-star-fill"></i>
+                                                @endif
+                                            @endfor
+                                        </div>
                                         <h5 class="card-title">{{ $product->name }}</h5>
-                                        <p class="card-text">{{ $product->price }}</p>
+                                        <p class="card-text">${{ $product->price }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -149,6 +165,8 @@
             });
         });
     </script>
+
+    @include('partials.footerTuArte')
 </body>
 
 </html>

@@ -42,7 +42,7 @@ body::after {
 }
 
 .navbar-img-left {
-    width: 69px;
+    width: 100px;
     height: auto;
 }
 
@@ -133,7 +133,7 @@ body::after {
     
     .linea1 {
         border: none;
-        border-right: 3px solid #00c8ff;
+        border-right: 3px solid #BCCCE0;
         /* Agrega una unidad de medida (px) */
     }
     
@@ -144,7 +144,7 @@ body::after {
     }
     
     .vertical-line.left-line i {
-        color: #00c8ff;
+        color: #BCCCE0;
         /* Color para los íconos de la izquierda */
     }
     
@@ -160,7 +160,7 @@ body::after {
         text-align: center;
         align-items: center;
         width: 90%;
-        height: 100vh;
+        height: 90vh;
     }
     
     .active-link {
@@ -181,14 +181,15 @@ body::after {
 
     .contenedor {
      display: flex;
-    height: 80%;
+     
+    height: 50vw;
     /* 100% de la altura de la ventana */
     width: 90%;
-    margin-top: 8%;
+    margin-top: 5%;
 }
 
     .campo {
-        border: 20px solid white;
+        border: 2vh solid white;
       
         
 }
@@ -200,11 +201,11 @@ body::after {
 
     .campo1 {
         flex-grow: 1; /* Hacer que el campo se expanda automáticamente */
-        height: 90%;
-        margin-top: 2%;
+        height: 40vw;
+        margin-top: 8%;
         /* 100% de altura */
         position: relative;
-        border-bottom: 50px solid white;
+        border-bottom: 4vw solid white;
 }
 
     .campo1:hover {
@@ -213,24 +214,24 @@ body::after {
         color:  #BCCCE0;
 }
 
-    .campo1 h1 {
-        position: absolute;
-        bottom: 50%;
-        /*Ajustalaposiciónvertical*/left: 30%;
-        /*Ajustalaposiciónhorizontal*/color: white;
-        font-family: Georgia, 'Times New Roman', Times, serif, sans-serif;
-        /*Cambiaeltipodeletrasegúntuspreferencias*/font-weight: bold;
-        /*Añadenegritaaltexto*/font-size: 80px;
-        /*Tamañoinicialdeltexto*/letter-spacing: -35px;
-        /*Estableceelespaciadoentreletrasaunvalornegativoparaeliminarlosespacios*/text-align: center;
-        /*Alineaeltextoalcentro*/writing-mode: vertical-rl;
-        text-orientation: upright;
-        transform: translate(-50%, 50%) scale(0.8);
-        /*Ajustalaposiciónyescaladeltexto*/:;
-        -webkit-writing-mode: vertical-lr;
-        -ms-writing-mode: vertical-rl;
-        -webkit-transform: translate(-50%, 50%) scale(0.8);
-        -moz-transform: translate(-50%, 50%) scale(0.8);
-        -ms-transform: translate(-50%, 50%) scale(0.8);
-        -o-transform: translate(-50%, 50%) scale(0.8);
+   
+
+.campo1 h1 {
+    position: absolute;
+    bottom: 50%;
+    left: 30%;
+    transform: translate(-50%, 50%) scale(0.8);
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif, sans-serif;
+    font-weight: bold;
+    font-size: 4vw; /* Tamaño del texto en em (ajústalo según sea necesario) */
+    letter-spacing: -0.3em; /* Espaciado entre letras en em (ajústalo según sea necesario) */
+    text-align: center;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
 }
+
+.container-fluid{
+    padding: 0 !important;
+}
+

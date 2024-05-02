@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Contacto</title>
+    <title>Equipo de trabajo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/StyleFooter.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
@@ -17,7 +18,7 @@
     <nav class="navbar">
         <div class="container-fluid">
             <a href="{{ asset('/') }}">
-                <img src="{{ asset('Imagenes/Logomoba.png') }}" class="navbar-img-left" alt="Logo Moba">
+                <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
             </a>
             <div class="navbar-buttons">
                 <div class="dropdown">
@@ -37,7 +38,7 @@
                     </ul>
                 </div>
                 <a href="{{ route('mobaMenu.index') }}" class="btn btn-primary ">Nosotros</a>
-                <a href="#" class="btn btn-primary">Proyectos</a>
+                <a href="{{ route('mobaMenu.proyectos.index') }}" class="btn btn-primary">Proyectos</a>
                 <a href="{{ route('mobaMenu.EquipoTrabajo.index') }}" class="btn btn-primary active-link">Equipo de trabajo</a>
                 <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
@@ -109,8 +110,7 @@
             
         </div>
 
-    </div>
-
+        
 
     <div class="vertical-line right-line">
         <hr class="linea2">
@@ -125,27 +125,30 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
     <script>
-        document.querySelector('.dropdown').addEventListener('mouseenter', function() {
-            this.querySelector('.dropdown-menu').classList.add('show');
-        });
+    document.querySelector('.dropdown').addEventListener('mouseenter', function() {
+        this.querySelector('.dropdown-menu').classList.add('show');
+    });
 
-        document.querySelector('.dropdown').addEventListener('mouseleave', function() {
-            this.querySelector('.dropdown-menu').classList.remove('show');
-        });
-        
-        
-        // acción para realizar ampliación de la imagen
+    document.querySelector('.dropdown').addEventListener('mouseleave', function() {
+        this.querySelector('.dropdown-menu').classList.remove('show');
+    });
+    
+    // acción para realizar ampliación de la imagen
+    const contenedorImagenes = document.querySelector('.imagenes');
 
-        const imagen = document.getElementById('imaimg-thumbnail');
+contenedorImagenes.querySelectorAll('img').forEach(imagen => {
+    imagen.addEventListener('mouseover', () => {
+        imagen.classList.add('imagen-ampliada');
+    });
 
-        img-thumbnail.addEventListener('mouseover', () => {
-            img-thumbnail.classList.add('imagen-ampliada');
-        });
+    imagen.addEventListener('mouseout', () => {
+        imagen.classList.remove('imagen-ampliada');
+    });
+});
+</script>
 
-        img-thumbnail.addEventListener('mouseout', () => {
-            img-thumbnail.classList.remove('imagen-ampliada');
-        });
-    </script>
+  
+@include('partials.footerMoba')
 </body>
 
 </html>
@@ -154,7 +157,7 @@
     .container {
         height: 100vh;
         width: 95%;
-        # border: solid 3px yellow;
+       
         margin-top: 5%;
         display: flex;
         flex-direction: column;
@@ -178,9 +181,9 @@
 
     .box-1,
     .box-2 {
-        # border: solid 3px blue;
+       
         height: 100%;
-        width: 95% display: inline-block;
+        width: 95% display inline-block;
 
 
     }
@@ -195,7 +198,7 @@
     }
 
     .texto {
-        # border: solid 3px red;
+     
         height: 90%;
         width: 90%;
         text-align: center;
@@ -243,7 +246,7 @@
 
     .contenido,
     .imagenes {
-        #border: solid 3px red;
+        
         height: 90%;
         width: 48%;
         font-size: 350%
@@ -277,4 +280,9 @@
     .img-thumbnail:hover {
         transform: scale(1.2);
     }
+    .container-fluid{
+    padding: 0 !important;
+}
+
+
 </style>

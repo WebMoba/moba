@@ -21,22 +21,23 @@
                                     <input type="text" class="form-control" name="search" placeholder="Buscar...">
                                 </div>
                                 <div class="col-auto">
-                                    <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
+                                    <button type="submit" class="btn btn-primary btn-sm"><i
+                                            class="bi bi-search"></i></button>
                                 </div>
                             </form>
                             <div class="float-right">
                                 <a href="{{ route('pdf.purchase') }}" class="btn btn-danger btn-sm float-right">
-                                    <i class="fa fa-file-pdf"></i> {{ __('PDF') }}
+                                    <i class="fa fa-file-pdf"></i></i><i class="bi bi-file-pdf-fill"></i>
                                 </a>
                                 <a href="{{ route('excel.purchase') }}" class="btn btn-success btn-sm float-right">
-                                    <i class="fa fa-file-excel"></i> {{ __('Excel') }}
+                                    <i class="fa fa-file-excel"></i><i class="bi bi-file-earmark-excel-fill"></i>
                                 </a>
 
                             </div>
                             <div class="float-right">
                                 <a href="{{ route('purchases.create') }}" class="btn btn-primary btn-sm float-right"
                                     data-placement="left">
-                                    {{ __('Crear nuevo') }}
+                                    <i class="bi bi-plus-lg"></i>
                                 </a>
                             </div>
                         </div>
@@ -54,9 +55,12 @@
                                     <tr>
                                         <th>No</th>
 
+
+
+
                                         <th>Nombre del proveedor</th>
-                                        <th>Fecha realizacion de la compra</th>
                                         <th>Documento del proveedor</th>
+                                        <th>Fecha realizacion de la compra</th>
 
                                         <th></th>
                                     </tr>
@@ -72,22 +76,23 @@
                                                 <td>{{ ++$i }}</td>
 
                                                 <td>{{ $purchase->user->name }}</td>
+                                                <td>{{ $purchase->person->id_card }}</td>
+
 
                                                 <td>{{ $purchase->date }}</td>
-                                                <td>{{ $purchase->person->id_card }}</td>
 
                                                 <td>
                                                     <form action="{{ route('purchases.destroy', $purchase->id) }}"
                                                         method="POST">
                                                         <a class="btn btn-sm btn-primary {{ $purchase->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('purchases.show', $purchase->id) }}"><i
-                                                            class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}</a>
+                                                            href="{{ route('purchases.show', $purchase->id) }}"><i
+                                                                class="bi bi-eye-fill"></i></a>
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger btn-sm"
                                                             onclick="return confirm('¿Está seguro de que desea {{ $purchase->disable ? 'Habilitar' : 'Deshabilitar' }} a la  compra?')">
                                                             <i class="fa fa-fw fa-trash"></i>
-                                                            {{ $purchase->disable ? 'Habilitar' : 'Deshabilitar' }}
+                                                            {!! $purchase->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>' !!}
                                                         </button>
                                                     </form>
 

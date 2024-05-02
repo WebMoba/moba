@@ -18,12 +18,12 @@
 
         <div class="form-group">
             {{ Form::label('Identificacion' , null, ['class' => 'required']) }}
-            {{ Form::text('id_card', $person->id_card, ['class' => 'form-control' . ($errors->has('id_card') ? ' is-invalid' : ''), 'placeholder' => 'Identificacion']) }}
+            {{ Form::text('id_card', $person->id_card, ['class' => 'form-control' . ($errors->has('id_card') ? ' is-invalid' : ''), 'placeholder' => 'Identificacion', 'maxlength' => '10']) }}
             {!! $errors->first('id_card', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('Nombre' , null, ['class' => 'required']) }}
-            {{ Form::select('user_name', $usersName, $person->user_id, ['class' => 'form-control' . ($errors->has('user_name') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
+            {{ Form::select('user_name', $usersName, $person->users_id, ['class' => 'form-control' . ($errors->has('user_name') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
             {!! $errors->first('user_name', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
@@ -39,8 +39,8 @@
         </div>
         
         <div class="form-group">
-            {{ Form::label('Número de Celular' , null, ['class' => 'required']) }}
-            {{ Form::text('phone_number', isset($numberPhone) ? $numberPhone->number : '', ['class' => 'form-control', 'placeholder' => 'Número de teléfono']) }}
+            {{ Form::label('phone_number', 'Número de Celular', ['class' => 'required']) }}
+            {{ Form::text('phone_number', isset($numberPhone) ? $numberPhone->number : '', ['class' => 'form-control', 'placeholder' => 'Número de teléfono', 'maxlength' => '10']) }}
         </div>
 
         <div class="form-group">
@@ -50,8 +50,8 @@
         </div>
 
         <div class="form-group">
-            {{ Form::label('Departamento' , null, ['class' => 'required']) }}
-            {{ Form::select('region', $regions, $person->region, ['id' => 'regions_select', 'class' => 'form-control' . ($errors->has('region') ? ' is-invalid' : ''), 'placeholder' => 'Departamento']) }}
+            {{ Form::label('Departamento', null, ['class' => 'required']) }}
+            {{ Form::select('region', $regions, $person->region_id, ['id' => 'regions_select', 'class' => 'form-control' . ($errors->has('region') ? ' is-invalid' : ''), 'placeholder' => 'Departamento']) }}
             {!! $errors->first('region', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         
@@ -69,7 +69,7 @@
 
     </div>
     <div class="box-footer mt20">
-        <br><button type="submit" class="btn btn-primary" onclick="return confirm('¿Está seguro de que desea crear a la persona?')">{{ __('Crear') }}</button>
+        <br><button type="submit" class="btn btn-primary" >{{ __('Crear') }}</button>
     </div>
 </div>
 <script>

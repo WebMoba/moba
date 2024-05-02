@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ asset('css/StyleContactoTuArte/ContactoTuArte.css') }}">
+          <link rel="stylesheet" href="{{ asset('css/StyleFooter.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
@@ -17,7 +18,7 @@
     <nav class="navbar">
         <div class="container-fluid">
             <a href="{{ asset('/') }}">
-                <img src="{{ asset('Imagenes/Logomoba.png') }}" class="navbar-img-left" alt="Logo Moba">
+                <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
             </a>
             <div class="navbar-buttons">
                 <div class="dropdown">
@@ -65,7 +66,7 @@
             <h1>Contacto</h1><br><br>
             <h3>¡Somos el estudio de diseño y comunicación que buscabas!</h3>
             <h3>Nuestro deseo más grande es que te hallas enamorado de
-                cada pieza tanto como nosotros, si deseas una pieza personalizada, o adquirir alguna de las piezas que
+                cada pieza tanto como nosotros, si deseas una pieza personalizada, o adquirir alguna de las piezas que
                 se encuentran
                 en nuestro portafolio, solo debes contactarnos, estaremos
                 muy felices de hablar contigo.
@@ -79,11 +80,10 @@
             <form method="POST" action="{{ route('enviar-correo') }}">
                 @csrf
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required><br><br>
+                <input type="text" id="nombre" name="nombre" value="{{ auth()->check() ? auth()->user()->name : '' }}" required><br><br>
 
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required><br><br>
-
+                <input type="email" id="email" name="email" value="{{ auth()->check() ? auth()->user()->email : '' }}" required><br><br>
                 <label for="telefono">Teléfono:</label>
                 <input type="tel" id="telefono" name="telefono" required><br><br>
 
@@ -116,6 +116,8 @@
             this.querySelector('.dropdown-menu').classList.remove('show');
         });
     </script>
+
+@include('partials.footerTuArte')
 </body>
 
 </html>

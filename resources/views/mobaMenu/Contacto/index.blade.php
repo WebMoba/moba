@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/StyleFooter.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
@@ -17,7 +18,7 @@
     <nav class="navbar">
         <div class="container-fluid">
         <a href="{{ asset('/') }}">
-                <img src="{{ asset('Imagenes/Logomoba.png') }}" class="navbar-img-left" alt="Logo Moba">
+                <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
             </a>
             <div class="navbar-buttons">
                 <div class="dropdown">
@@ -33,7 +34,7 @@
                     </ul>
                 </div>
                 <a href="{{ route('mobaMenu.index')}}" class="btn btn-primary">Nosotros</a>
-                <a href="#" class="btn btn-primary">Proyectos</a>
+                <a href="{{ route('mobaMenu.proyectos.index') }}" class="btn btn-primary">Proyectos</a>
                 <a href="{{ route('mobaMenu.EquipoTrabajo.index') }}" class="btn btn-primary">Equipo de trabajo</a>
                 <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary active-link">Contáctanos</a>
             </div>
@@ -68,16 +69,15 @@
     <div class="box">
     <form method="POST" action="{{ route('enviar-correo') }}">
     @csrf
-		<label for="nombre">Nombre:</label>
-		<input type="text" id="nombre" name="nombre" required><br><br>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" value="{{ auth()->check() ? auth()->user()->name : '' }}" required><br><br>
 
-		<label for="email">Email:</label>
-		<input type="email" id="email" name="email" required><br><br>
-
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="{{ auth()->check() ? auth()->user()->email : '' }}" required><br><br>
 		<label for="telefono">Teléfono:</label>
 		<input type="tel" id="telefono" name="telefono" required><br><br>
 
-		<label for="mensaje">Mensaje:</label>
+		<label for="mensaje">Mensaje:</label><br>
 		<textarea id="mensaje" name="mensaje" rows="5" ></textarea><br><br>
 
 		<input type="submit" value="Enviar" id="submit">
@@ -106,6 +106,10 @@
             this.querySelector('.dropdown-menu').classList.remove('show');
         });
     </script>
+
+
+@include('partials.footerMoba')
+    
 </body>
 
 </html>
@@ -166,4 +170,9 @@ textarea{
     color: black;
     
 }
+.container-fluid{
+    padding: 0 !important;
+}
+
+
 </style>

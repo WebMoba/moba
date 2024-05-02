@@ -31,20 +31,20 @@
                                     <input type="text" class="form-control " id="search" name="search">
 
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
+                                <button type="submit" class="btn btn-primary btn-sm"><i class="bi bi-search"></i></button>
                             </form>
                             <div class="float-right">
                                 <a href="{{ route('pdf.service') }}" class="btn btn-danger btn-sm float-right">
-                                    <i class="fa fa-file-pdf"></i> {{ __('PDF') }}
+                                    <i class="fa fa-file-pdf"></i> <i class="bi bi-file-pdf-fill"></i>
                                 </a>
                                 <a href="{{ route('excel.service') }}" class="btn btn-success btn-sm float-right">
-                                    <i class="fa fa-file-excel"></i> {{ __('Excel') }}
+                                    <i class="fa fa-file-excel"></i> <i class="bi bi-file-earmark-excel-fill"></i>
                                 </a>
                             </div>
                             <div class="float-right">
                                 <a href="{{ route('service.create') }}" class="btn btn-primary btn-sm float-right"
                                     data-placement="left">
-                                    {{ __('Crear Servicio') }}
+                                    <i class="bi bi-plus-lg"></i>
                                 </a>
                             </div>
                         </div>
@@ -80,16 +80,16 @@
                                                     method="POST">
                                                     <a class="btn btn-sm btn-primary {{ $service->disable ? 'disabled' : '' }}"
                                                         href="{{ route('service.show', $service->id) }}"><i
-                                                            class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}</a>
+                                                            class="fa fa-fw fa-eye"></i> <i class="bi bi-eye-fill"></i></a>
                                                     <a class="btn btn-sm btn-success {{ $service->disable ? 'disabled' : '' }}"
                                                         href="{{ route('service.edit', $service->id) }}"><i
-                                                            class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
+                                                            class="fa fa-fw fa-edit"></i> <i class="bi bi-pencil-square"></i></a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"
                                                         onclick="return confirm('¿Está seguro de que desea {{ $service->disable ? 'Habilitar' : 'Deshabilitar' }}el servicio?')">
                                                         <i class="fa fa-fw fa-trash"></i>
-                                                        {{ $service->disable ? 'Habilitar' : 'Deshabilitar' }}
+                                                        {!!$service->disable ?  '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>'!!}
                                                     </button>
                                                 </form>
                                             </td>

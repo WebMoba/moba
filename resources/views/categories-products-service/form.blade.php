@@ -32,10 +32,10 @@
             {!! $errors->first('type', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
-    </div>
+    </div><br>
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-primary"
-            @if ($mode == 'Editar') onclick="return confirm('¿Está seguro de que desea {{ $mode }} esta categoria?')" @endif>{{ $mode }}</button>
+            @if ($mode == 'Editar') onclick="return confirm('¿Está seguro de que desea {{ $mode }} esta categoria?')" @endif><i class="bi bi-plus-lg"></i></button>
     </div>
 </div>
 <style>

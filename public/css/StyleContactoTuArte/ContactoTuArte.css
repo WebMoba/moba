@@ -42,7 +42,7 @@ body::after {
 }
 
 .navbar-img-left {
-    width: 69px;
+    width: 100px;
     height: auto;
 }
 
@@ -133,7 +133,7 @@ body::after {
     
     .linea1 {
         border: none;
-        border-right: 3px solid #00c8ff;
+        border-right: 3px solid #BCCCE0;
         /* Agrega una unidad de medida (px) */
     }
     
@@ -144,7 +144,7 @@ body::after {
     }
     
     .vertical-line.left-line i {
-        color: #00c8ff;
+        color: #BCCCE0;
         /* Color para los íconos de la izquierda */
     }
     
@@ -220,3 +220,8 @@ body::after {
         color: black;
 
     }
+    .container-fluid{
+        padding: 0 !important;
+    }
+    
+    

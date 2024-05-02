@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ asset('css/StyleNosotrosTuArte/NosotrosTuArte.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/StyleFooter.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
@@ -17,7 +18,7 @@
     <nav class="navbar">
         <div class="container-fluid">
             <a href="{{ asset('/') }}">
-                <img src="{{ asset('Imagenes/Logomoba.png') }}" class="navbar-img-left" alt="Logo Moba">
+                <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
             </a>
             <div class="navbar-buttons">
                 <div class="dropdown">
@@ -60,7 +61,7 @@
     <!-- Contenido de la página aquí -->
     <div class="container">
         <div class="box">
-            <p>Nuestro deseo más grande es que te hallas enamorado de
+            <p class="textoPresentacion">Nuestro deseo más grande es que te hallas enamorado de
                 cada pieza tanto como nosotros, si deseas una pieza personalizada,
                 o adquirir alguna de las piezas que se encuentran
                 en nuestro portafolio, solo debes contactarnos, estaremos
@@ -95,6 +96,8 @@
             this.querySelector('.dropdown-menu').classList.remove('show');
         });
     </script>
+
+    @include('partials.footerTuArte')
 </body>
 
 </html>

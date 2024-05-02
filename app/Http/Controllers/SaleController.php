@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Exports\SalesExport;
+use App\Models\DetailSale;
+use App\Models\Person;
 use App\Models\Product;
 use App\Models\Quote;
-use App\Models\User;
-use App\Models\Person;
 use App\Models\Sale;
-use App\Models\DetailSale;
-use Illuminate\Http\Request;
-use App\Exports\SalesExport;
-use Maatwebsite\Excel\Facades\Excel;
-
 use Dompdf\Dompdf;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 /**
  * Class SaleController
@@ -35,7 +35,7 @@ class SaleController extends Controller
         }
         // Pasar los datos a la vista a PDF-TEMPLATE
         $data = [
-            'sales' => $sales
+            'sales' => $sales,
         ];
 
         //Generar el PDF
@@ -56,13 +56,15 @@ class SaleController extends Controller
         $search = trim($request->get('search'));
         $sales = Sale::with('person', 'quote', 'detailSales.product')
             ->where('name', 'LIKE', '%' . $search . '%')
+            ->orWhereHas('person', function ($query) use ($search) {
+                $query->where('id_card', 'LIKE', '%' . $search . '%');
+            })
             ->orWhere('date', 'LIKE', '%' . $search . '%')
+            ->orderBy('created_at', 'desc')
             ->paginate(10);
-
 
         // Obtener los detalles de las ventas
         $detailSales = DetailSale::all(); // o alguna otra forma de obtener los detalles de las ventas
-
 
         return view('sale.index', compact('sales', 'search'))
             ->with('i', (request()->input('page', 1) - 1) * $sales->perPage());
@@ -76,12 +78,12 @@ class SaleController extends Controller
 
     public function create()
     {
+
+
         $sale = new Sale();
         $sale->date = now()->format('Y-m-d');
         $detailSale = null;
 
-        // Generar un id provisional para la venta
-        $tempSaleId = uniqid();
 
         // Obtener una lista de personas con el formato adecuado para el select
         $people = Person::select('id', 'name', 'id_card')->get()->pluck('name', 'id');
@@ -89,6 +91,19 @@ class SaleController extends Controller
         // Obtener los ID Cards de las personas para el select
         $idCards = Person::pluck('id_card', 'id');
 
+
+        $providers = Person::whereHas('teamWork')
+            ->where('rol', 'Cliente')
+            ->where('disable', false) // Agregar esta línea
+            ->get();
+
+        $usersName = User::with('person')
+            ->whereHas('person', function ($query) {
+                $query->where('rol', 'Cliente')
+                    ->where('users_id', '!=', null)
+                    ->where('disable', false); // Agregar esta línea
+            })
+            ->pluck('name', 'id');
 
         // Obtener una lista de productos para el select
         $products = Product::pluck('name', 'id');
@@ -104,89 +119,66 @@ class SaleController extends Controller
         // Crear una nueva instancia de detalle de venta
         $detailSale = new DetailSale();
 
-        // Definir la variable $saleId
-        $saleId = $tempSaleId;
-
-        return view('sale.create', compact('sale', 'people', 'quotes', 'confirm', 'products', 'detailSale', 'productPrices', 'saleId', 'idCards'));
+        $productPrices = Product::pluck('price', 'id')->toArray();
+        return view('sale.create', compact('sale', 'usersName', 'providers', 'people', 'quotes', 'confirm', 'products', 'detailSale', 'productPrices', 'idCards'));
     }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+
+
+     public function store(Request $request)
+     {
+         try {
+             // Obtener los datos enviados desde el formulario
+             $data = $request->input('data');
+     
+             // Crear una nueva venta
+             $venta = new Sale();
+             $venta->name = $data['nombre_cliente'];
+             $venta->date = $data['fecha'];
+             $venta->quotes_id = $data['cotizacion_id'];
+             $venta->people_id = $data['cliente_id'];
+             $venta->save();
+     
+             // Recorrer y guardar los detalles de la venta en la base de datos
+             foreach ($data['detalles'] as $detalle) {
+                 $detalleVenta = new DetailSale();
+                 $detalleVenta->quantity = $detalle['cantidad'];
+                 $detalleVenta->price_unit = $detalle['precio_unitario'];
+                 $detalleVenta->subtotal = $detalle['subtotal'];
+                 $detalleVenta->discount = $detalle['descuento'] ?? 0; // Valor predeterminado de descuento
+                 $detalleVenta->total = $detalle['total'];
+                 $detalleVenta->products_id = $detalle['producto_id'];
+                 $detalleVenta->sales_id = $venta->id; // Asociar el detalle con la venta creada
+                 $detalleVenta->save();
+             }
+     
+             // Retornar una respuesta de éxito
+             return response()->json(['success' => true, 'message' => 'Registro creado exitosamente']);
+     
+         } catch (\Exception $e) {
+             // Manejar cualquier excepción que ocurra durante el proceso
+             return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
+         }
+     }
+     
 
 
 
 
-    public function store(Request $request)
-    {
-        // Validar los datos recibidos
-        $validatedData = $request->validate([
-            'people_id' => 'required',
-            'date' => 'required|date',
-            'cotizaciones' => 'nullable',
-            'detalles' => 'required|array',
-            'name' => 'required',
-            'disable' => 'required|boolean',
-            'detalles.*.product_id' => 'required|exists:products,id',
-            'detalles.*.quantity' => 'required|numeric|min:1',
-            'detalles.*.price_unit' => 'required|numeric|min:0',
-            'detalles.*.subtotal' => 'required|numeric|min:0',
-            'detalles.*.discount' => 'nullable|numeric|min:0|max:100',
-            'detalles.*.total' => 'required|numeric|min:0',
-            'detalles.*.sales_id' => 'nullable',
-        ]);
-
-        DB::beginTransaction();
-
-        try {
-            // Crear una nueva instancia de Sale
-            $sale = new Sale();
-            $sale->name = $validatedData['name']; // Aquí asignas el nombre del cliente
-            $sale->people_id = $validatedData['people_id'];
-            $sale->date = $validatedData['date'];
-            $sale->quotes_id = $validatedData['cotizaciones'];
-            $sale->disable = $validatedData['disable'];
-            $sale->save();
-
-            // Guardar los detalles de la venta
-            foreach ($validatedData['detalles'] as $detalle) {
-                $saleDetail = new DetailSale();
-                $saleDetail->product_id = $detalle['product_id'];
-                $saleDetail->quantity = $detalle['quantity'];
-                $saleDetail->price_unit = $detalle['price_unit'];
-                $saleDetail->subtotal = $detalle['subtotal'];
-                $saleDetail->discount = $detalle['discount'] ?? 0; // Valor por defecto si no se proporciona
-                $saleDetail->total = $detalle['total'];
-                $saleDetail->sale_id = $sale->id;
-                $saleDetail->save();
-            }
-
-            DB::commit();
-            return response()->json(['message' => 'Venta guardada correctamente']);
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return response()->json(['error' => $e->getMessage()], 500);
-        }
-    }
-
-    public function show($id)
-    {
-        $sale = Sale::findOrFail($id);
-
-        // Obtener el nombre de la persona asociada a la venta
-        $people = Person::select('id', 'name', 'id_card')->get()->pluck('name', 'id');
 
 
-        $products = Product::pluck('name', 'id');
-
-        // Obtener los detalles de la venta
-        $detailSale = $sale->detailSales->first();
-
-        // Verificar si $detailSale no es null antes de continuar
-        if ($detailSale) {
-            // Obtener los productos asociados a los detalles de la venta
-            return view('sale.show', compact('sale', 'detailSale', 'people', 'products'));
-        } else {
-            // Si no hay detalles de venta, enviar null a la vista
-            return view('sale.show', compact('sale', 'detailSale', 'people', 'products'));
-        }
-    }
+     public function show($id)
+     {
+         $sale = Sale::with('person', 'user')->findOrFail($id);
+         $details = DetailSale::where('sales_id', $id)->get();
+ 
+         return view('sale.show', compact('sale', 'details'));
+     }
 
     public function edit($id)
     {
@@ -199,7 +191,6 @@ class SaleController extends Controller
 
         return view('sale.edit', compact('sale', 'detailSale', 'people', 'confirm', 'products'));
     }
-
 
     public function update(Request $request, Sale $sale)
     {
@@ -241,22 +232,24 @@ class SaleController extends Controller
         return redirect()->route('sales.index')->with('success', 'Venta actualizada con éxito');
     }
 
-
     public function destroy($id)
     {
-        $sale = Sale::findOrFail($id);
+       // Encuentra la materia prima con el ID dado
+       $sale = Sale::find($id);
+       if (!$sale) {
+           return redirect()->route('sales.index')->with('error', 'La venta no existe');
+       }
 
-        // Eliminar los detalles de la venta asociados
-        $sale->detailSales()->delete();
+       // Cambia el estado de la materia prima
+       $sale->disable = !$sale->disable; // Corregir a 'disabled'
+       $sale->save();
 
-        // Eliminar la venta
-        $sale->delete();
-
-        return redirect()->route('sales.index')->with('success', 'Venta eliminada con éxito');
+       // Redirige con un mensaje de éxito
+       return redirect()->route('sales.index')->with('success', 'Estado de la venta cambiado con éxito');
     }
 
     public function exportToExcel()
-{
-    return Excel::download(new SalesExport(), 'sales.xlsx');
-}
+    {
+        return Excel::download(new SalesExport(), 'sales.xlsx');
+    }
 }
