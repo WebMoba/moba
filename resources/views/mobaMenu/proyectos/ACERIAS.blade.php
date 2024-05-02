@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/stylesproyect.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styleFooter.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
@@ -67,12 +68,11 @@
                             S.A.S. Banca de Inversión son los accionistas mayoritarios de la sociedad con una
                             participación del 55.27% y el 27.27% de las acciones ordinarias, respectivamente, y del 77%
                             y 33% de las acciones con dividendo preferencial y sin derecho a voto, seguidas por el
-                            Instituto de Fomento y Desarrollo de Boyacá  IDEBOY, que posee el 13,27% de acciones
+                            Instituto de Fomento y Desarrollo de Boyacá IDEBOY, que posee el 13,27% de acciones
                             ordinarias de la Compañía, el restante 4.24% de las acciones ordinarias corresponde a la
                             participación de nuestros accionistas minoritarios.</p>
                     </div>
                 </div>
-                <!-- Columna para el carrusel -->
                 <!-- Columna para el carrusel -->
                 <div class="col-md-6">
                     <div id="carouselExample" class="carousel slide">
@@ -182,9 +182,11 @@
                 padding: 0 20px;
                 /* Espacio interno del título */
             }
+
             .custom-title {
                 position: relative;
-                top: -10px; /* Ajusta este valor según sea necesario */
+                top: -10px;
+                /* Ajusta este valor según sea necesario */
             }
 
             .galeria {
@@ -211,13 +213,20 @@
                 height: auto;
                 /* Altura automática para mantener la proporción */
             }
+
             .carousel-img {
-                width: 100%; /* Ancho máximo del div del carrusel */
-                height: auto; /* Para mantener la proporción de aspecto de la imagen */
-                max-height: 400px; /* Altura máxima de las imágenes */
-                min-height: 400px; /* Altura mínima de las imágenes */
-                object-fit: cover; /* Para recortar y ajustar la imagen dentro del contenedor */
+                width: 100%;
+                /* Ancho máximo del div del carrusel */
+                height: auto;
+                /* Para mantener la proporción de aspecto de la imagen */
+                max-height: 400px;
+                /* Altura máxima de las imágenes */
+                min-height: 400px;
+                /* Altura mínima de las imágenes */
+                object-fit: cover;
+                /* Para recortar y ajustar la imagen dentro del contenedor */
             }
+
             .botones {
                 position: absolute;
                 top: 10px;
@@ -413,6 +422,7 @@
                 galeria.scrollLeft += galeria.offsetWidth;
             }
         </script>
+        @include('partials.footerMoba')
 </body>
 
 </html>
