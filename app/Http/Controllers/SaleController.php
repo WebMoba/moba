@@ -128,73 +128,53 @@ class SaleController extends Controller
 
      public function store(Request $request)
      {
-         // Validar los datos recibidos del formulario
-         $request->validate([
-             'data.cliente_id' => 'required',
-             'data.fecha' => 'required|date',
-             'data.cotizacion_id' => 'required',
-             'data.detalles' => 'required|array|min:1', // Asegúrate de que al menos haya un detalle
-             'data.detalles.*.productoId' => 'required|integer',
-             'data.detalles.*.cantidad' => 'required|integer|min:1',
-             'data.detalles.*.precioUnitario' => 'required|numeric|min:0',
-             'data.detalles.*.subtotal' => 'required|numeric|min:0',
-             'data.detalles.*.descuento' => 'nullable|numeric|min:0',
-             'data.detalles.*.total' => 'required|numeric|min:0',
-         ]);
+         try {
+             // Obtener los datos enviados desde el formulario
+             $data = $request->input('data');
      
-         // Obtener los datos enviados desde el formulario
-         $datos = $request->input('data');
+             // Crear una nueva venta
+             $venta = new Sale();
+             $venta->name = $data['nombre_cliente'];
+             $venta->date = $data['fecha'];
+             $venta->quotes_id = $data['cotizacion_id'];
+             $venta->people_id = $data['cliente_id'];
+             $venta->save();
      
-         // Crear una nueva venta
-         $venta = new Sale();
-         $venta->name = $datos['cliente_id'];
-         $venta->date = $datos['fecha'];
-         $venta->people_id = $datos['cotizacion_id'];
-         $venta->save();
+             // Recorrer y guardar los detalles de la venta en la base de datos
+             foreach ($data['detalles'] as $detalle) {
+                 $detalleVenta = new DetailSale();
+                 $detalleVenta->quantity = $detalle['cantidad'];
+                 $detalleVenta->price_unit = $detalle['precio_unitario'];
+                 $detalleVenta->subtotal = $detalle['subtotal'];
+                 $detalleVenta->discount = $detalle['descuento'] ?? 0; // Valor predeterminado de descuento
+                 $detalleVenta->total = $detalle['total'];
+                 $detalleVenta->products_id = $detalle['producto_id'];
+                 $detalleVenta->sales_id = $venta->id; // Asociar el detalle con la venta creada
+                 $detalleVenta->save();
+             }
      
-         // Recorrer y guardar los detalles de la venta en la base de datos
-         foreach ($datos['detalles'] as $detalle) {
-             $detalleVenta = new DetailSale();
-             $detalleVenta->quantity = $detalle['cantidad'];
-             $detalleVenta->price_unit = $detalle['precioUnitario'];
-             $detalleVenta->subtotal = $detalle['subtotal'];
-             $detalleVenta->discount = $detalle['descuento'] ?? 0; // Valor predeterminado de descuento
-             $detalleVenta->total = $detalle['total'];
-             $detalleVenta->products_id = $detalle['productoId'];
-             $detalleVenta->sales_id = $venta->id; // Asociar el detalle con la venta creada
-             $detalleVenta->save();
+             // Retornar una respuesta de éxito
+             return response()->json(['success' => true, 'message' => 'Registro creado exitosamente']);
+     
+         } catch (\Exception $e) {
+             // Manejar cualquier excepción que ocurra durante el proceso
+             return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
          }
-     
-         // Retornar una respuesta de éxito
-         return response()->json(['message' => 'Venta guardada exitosamente'], 200);
      }
      
 
-     
 
 
 
-    public function show($id)
-    {
-        $sale = Sale::findOrFail($id);
 
-        // Obtener el nombre de la persona asociada a la venta
-        $people = Person::select('id', 'name', 'id_card')->get()->pluck('name', 'id');
 
-        $products = Product::pluck('name', 'id');
-
-        // Obtener los detalles de la venta
-        $detailSale = $sale->detailSales->first();
-
-        // Verificar si $detailSale no es null antes de continuar
-        if ($detailSale) {
-            // Obtener los productos asociados a los detalles de la venta
-            return view('sale.show', compact('sale', 'detailSale', 'people', 'products'));
-        } else {
-            // Si no hay detalles de venta, enviar null a la vista
-            return view('sale.show', compact('sale', 'detailSale', 'people', 'products'));
-        }
-    }
+     public function show($id)
+     {
+         $sale = Sale::with('person', 'user')->findOrFail($id);
+         $details = DetailSale::where('sales_id', $id)->get();
+ 
+         return view('sale.show', compact('sale', 'details'));
+     }
 
     public function edit($id)
     {

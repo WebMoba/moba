@@ -35,6 +35,7 @@ use App\Exports\QuoteExport;
 use App\Exports\TeamWorkExport;
 //fin fabian
 
+//controladores purchases, detailpurchases y materials raw
 
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\MaterialsRawController;

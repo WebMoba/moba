@@ -58,11 +58,10 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>N°</th>
-                                        <th>N° venta</th>
                                         <th>Nombre Cliente</th>
                                         <th>Id Persona</th>
                                         <th>Fecha venta</th>
-                                        <th>Fecha de Cotización</th>
+                                        <th>N° Cotización</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -70,11 +69,10 @@
                                     @foreach ($sales as $sale)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            <td>{{ $sale->id }}</td>
-                                            <td>{{ $sale->person->name }}</td>
+                                            <td>{{ $sale->name }}</td>
                                             <td>{{ $sale->person->id_card }}</td>
                                             <td>{{ $sale->date }}</td>
-                                            <td>{{ $sale->quote->date_issuance }}</td>
+                                            <td>{{ $sale->quote->id }}</td>
                                             <td>
                                                 <form action="{{ route('sales.destroy', $sale->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary "

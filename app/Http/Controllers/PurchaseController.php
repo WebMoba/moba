@@ -129,6 +129,7 @@ class PurchaseController extends Controller
         $compra->date = $datos['fecha'];
         $compra->people_id = $datos['proveedor_id'];
         $compra->save();
+        
 
 
         // Recorrer los detalles de la compra y guardarlos en la base de datos
@@ -137,7 +138,7 @@ class PurchaseController extends Controller
             $detalleCompra->quantity = $detalle['cantidad'];
             $detalleCompra->price_unit = $detalle['precio_unitario'];
             $detalleCompra->subtotal = $detalle['subtotal'];
-            $detalleCompra->discount = $detalle['descuento'];
+            $detalleCompra->discount = $detalle['descuento'] ?? 0;
             $detalleCompra->total = $detalle['total'];
             $detalleCompra->materials_raws_id = $detalle['materia_prima'];
             $detalleCompra->purchases_id = $compra->id; // Asociar el detalle con la compra creada
