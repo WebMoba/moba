@@ -15,13 +15,15 @@
 <div class="box box-small">
     <h2>Compra</h2>
     <div class="box-body">
-        <div class="form-group">
+    <div class="form-group">
             {{ Form::label('Nombre y documento del proveedor', null, ['class' => 'required-label']) }}
             {{ Form::select(
                 'name',
                 $usersName->mapWithKeys(function ($name, $id) use ($providers) {
                     $provider = $providers->firstWhere('id', $id);
                     $document = $provider ? $provider->id_card : ''; // Ajusta la propiedad que contiene el documento del proveedor
+
+                    
                     return [$id => $name . ' - ' . $document];
                 }),
                 $purchase->name,
