@@ -77,7 +77,7 @@
                                     class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('Imagenes/imgproyectos/ENPOWER2.jpeg') }}" alt="JAATELO"
+                                <img src="{{ asset('Imagenes/imgproyectos/ENPOWER2.jpg') }}" alt="JAATELO"
                                     class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">

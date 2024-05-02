@@ -73,19 +73,19 @@
                     <div id="carouselExample" class="carousel slide">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="{{ asset('Imagenes/imgproyectos/PALMAS1.jpg') }}" alt="PARAISO1"
+                                <img src="{{ asset('Imagenes/imgproyectos/PALMAS1.jpg') }}" alt="PALMAS1"
                                     class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('Imagenes/imgproyectos/PALMAS2.jpeg') }}" alt="JAATELO"
+                                <img src="{{ asset('Imagenes/imgproyectos/PALMAS2.jpg') }}" alt="PALMAS2"
                                     class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('Imagenes/imgproyectos/PALMAS3.jpeg') }}" alt="ACERIAS"
+                                <img src="{{ asset('Imagenes/imgproyectos/PALMAS3.jpg') }}" alt="PALMAS3"
                                     class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('Imagenes/imgproyectos/PALMAS4.jpg') }}" alt="ACERIAS"
+                                <img src="{{ asset('Imagenes/imgproyectos/PALMAS4.jpg') }}" alt="PALMAS4"
                                     class="d-block w-100 carousel-img">
                             </div>
                         </div>
@@ -173,10 +173,13 @@
                 padding: 0 20px;
                 /* Espacio interno del título */
             }
+
             .custom-title {
                 position: relative;
-                top: -10px; /* Ajusta este valor según sea necesario */
+                top: -10px;
+                /* Ajusta este valor según sea necesario */
             }
+
             .galeria {
                 width: calc(50% - 40px);
                 /* Calcula el ancho de la galería para ocupar la mitad del contenedor menos los márgenes */
@@ -410,6 +413,7 @@
                 galeria.scrollLeft += galeria.offsetWidth;
             }
         </script>
+        @include('partials.footerMoba')
 </body>
 
 </html>

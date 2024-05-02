@@ -77,11 +77,11 @@
                                     class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('Imagenes/imgproyectos/CAFELATINO2.jpeg') }}" alt="JAATELO"
+                                <img src="{{ asset('Imagenes/imgproyectos/CAFELATINO2.jpg') }}" alt="JAATELO"
                                     class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('Imagenes/imgproyectos/CAFELATINO3.jpeg') }}" alt="ACERIAS"
+                                <img src="{{ asset('Imagenes/imgproyectos/CAFELATINO3.jpg') }}" alt="ACERIAS"
                                     class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">

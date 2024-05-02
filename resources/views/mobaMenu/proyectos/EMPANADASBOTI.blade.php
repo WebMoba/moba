@@ -73,15 +73,15 @@
                     <div id="carouselExample" class="carousel slide">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="{{ asset('Imagenes/imgproyectos/EMPANADASBOTI1.jpg') }}" alt="PARAISO1"
+                                <img src="{{ asset('Imagenes/imgproyectos/EMPANADASBOT1.jpg') }}" alt="PARAISO1"
                                     class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('Imagenes/imgproyectos/EMPANADASBOTI2.jpeg') }}" alt="JAATELO"
+                                <img src="{{ asset('Imagenes/imgproyectos/EMPANADASBOT2.jpeg') }}" alt="JAATELO"
                                     class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('Imagenes/imgproyectos/EMPANADASBOTI3.jpeg') }}" alt="ACERIAS"
+                                <img src="{{ asset('Imagenes/imgproyectos/EMPANADASBOT3.jpg') }}" alt="ACERIAS"
                                     class="d-block w-100 carousel-img">
                             </div>
                         </div>
