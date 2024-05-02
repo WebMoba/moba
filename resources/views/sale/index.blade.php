@@ -23,9 +23,10 @@
                                 <div class="col-auto mr-2">
                                     <input type="text" class="form-control" name="search" placeholder="Buscar...">
                                 </div>
-                                
+
                                 <div class="col-auto">
-                                    <button type="submit" class="btn btn-primary btn-sm"><i class="bi bi-search"></i></button>
+                                    <button type="submit" class="btn btn-primary btn-sm"><i
+                                            class="bi bi-search"></i></button>
                                 </div>
 
 
@@ -37,7 +38,8 @@
                                 <a href="{{ route('export.sales') }}" class="btn btn-success btn-sm float-right">
                                     <i class="fa fa-file-excel"></i> <i class="bi bi-file-earmark-excel-fill"></i>
                                 </a>
-                            </div>
+                                
+                            </div>
                             <div class="float-right">
                                 <a href="{{ route('sales.create') }}" class="btn btn-primary btn-sm float-right"
                                     data-placement="left">
@@ -65,17 +67,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
-                                    @foreach ($sales as $sale)
+                                    @if ($sales === null || count($sales) <= 0)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
-                                            <td>{{ $sale->name }}</td>
-                                            <td>{{ $sale->person->id_card }}</td>
-                                            <td>{{ $sale->date }}</td>
-                                            <td>{{ $sale->quote->id }}</td>
-                                            <td>
-                                                <form action="{{ route('sales.destroy', $sale->id) }}"
-                                                        method="POST">
+                                            <td colspan="4">No se encontraron resultados en su busqueda.</td>
+                                        </tr>
+                                    @else
+                                        @foreach ($sales as $sale)
+                                            <tr>
+                                                <td>{{ ++$i }}</td>
+                                                <td>{{ $sale->name }}</td>
+                                                <td>{{ $sale->person->id_card }}</td>
+                                                <td>{{ $sale->date }}</td>
+                                                <td>{{ $sale->quote->id }}</td>
+                                                <td>
+                                                    <form action="{{ route('sales.destroy', $sale->id) }}" method="POST">
                                                         <a class="btn btn-sm btn-primary {{ $sale->disable ? 'disabled' : '' }}"
                                                             href="{{ route('sales.show', $sale->id) }}"><i
                                                                 class="bi bi-eye-fill"></i></a>
@@ -87,11 +92,10 @@
                                                             {!! $sale->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>' !!}
                                                         </button>
                                                     </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-
-
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
 
                                 </tbody>
                             </table>

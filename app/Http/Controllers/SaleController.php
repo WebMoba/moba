@@ -56,6 +56,9 @@ class SaleController extends Controller
         $search = trim($request->get('search'));
         $sales = Sale::with('person', 'quote', 'detailSales.product')
             ->where('name', 'LIKE', '%' . $search . '%')
+            ->orWhereHas('person', function ($query) use ($search) {
+                $query->where('id_card', 'LIKE', '%' . $search . '%');
+            })
             ->orWhere('date', 'LIKE', '%' . $search . '%')
             ->orderBy('created_at', 'desc')
             ->paginate(10);
