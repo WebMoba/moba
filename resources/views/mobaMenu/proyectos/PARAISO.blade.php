@@ -60,7 +60,7 @@
                 <!-- Columna para el párrafo -->
                 <div class="col-md-6">
                     <div class="titulo mt-4 mb-4">
-                        <p>Somos una empresa dedicada a satisfacer las necesidades de nuestros clientes, principalmente
+                        <p class="parrafo1">Somos una empresa dedicada a satisfacer las necesidades de nuestros clientes, principalmente
                             en frutas, verduras y demás productos de la canasta familiar; vinculando como aliados
                             estratégicos a proveedores; ofreciendo condiciones dignas de trabajo a personal idóneo que
                             vive y aplica principios de integridad, honestidad y constancia, garantizando la retribución
@@ -169,7 +169,7 @@
             .titulo {
                 position: absolute;
                 /* Establece la posición absoluta para que el título pueda posicionarse en la esquina superior izquierda del contenedor */
-                top: 20px;
+                top: 100px;
                 /* Espacio desde la parte superior del contenedor */
                 left: 20px;
                 /* Espacio desde el lado izquierdo del contenedor */

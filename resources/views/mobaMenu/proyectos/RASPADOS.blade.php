@@ -388,7 +388,7 @@
             .titulo {
                 position: absolute;
                 /* Establece la posición absoluta para que el título pueda posicionarse en la esquina superior izquierda del contenedor */
-                top: 20px;
+                top: 100px;
                 /* Espacio desde la parte superior del contenedor */
                 left: 20px;
                 /* Espacio desde el lado izquierdo del contenedor */
