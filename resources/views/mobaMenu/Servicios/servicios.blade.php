@@ -445,10 +445,8 @@
             border: 2px solid grey;
             padding: 20px;
             overflow-y: auto;
-            max-width: 500px; 
-            max-height: 400px; 
-            min-width: 250px;
-            min-height: 200px;
+            width: 500px; 
+            height: 400px; 
         }
 
         .titulos-cuadro {
@@ -520,8 +518,8 @@
             cursor: pointer;
         }
         .container-fluid{
-    padding: 0 !important;
-}
+            padding: 0 !important;
+        }
 
 
     </style>
