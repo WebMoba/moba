@@ -17,7 +17,7 @@
     <nav class="navbar">
         <div class="container-fluid">
             <a href="{{ asset('/') }}">
-                <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba"></a>
+                <img src="{{ asset('Imagenes/Logomoba.png') }}" class="navbar-img-left" alt="Logo Moba"></a>
             <div class="navbar-buttons">
                 <div class="dropdown">
                     <a href="{{ route('mobaMenu.Servicios.servicios') }}"><button
@@ -50,16 +50,15 @@
         </div>
         //inicio de proyectos
         //proyectos cuadro
-        <div class="title-container ">
-            <h1 class="big-title custom-title">ODONTOLOGA CAROLINA CAMACHO</h1>
+        <div class="title-container">
+            <h1 class="big-title">EMPOWER</h1>
         </div>
 
         <div class="container">
             <div class="row">
                 <!-- Columna para el párrafo -->
-                <div class="col-md-6 ">
-                    <div class="titulo  mt-4 mb-4">
-                        <br>
+                <div class="col-md-6">
+                    <div class="titulo mt-4 mb-4">
                         <p>Somos una empresa dedicada a satisfacer las necesidades de nuestros clientes, principalmente
                             en frutas, verduras y demás productos de la canasta familiar; vinculando como aliados
                             estratégicos a proveedores; ofreciendo condiciones dignas de trabajo a personal idóneo que
@@ -74,19 +73,19 @@
                     <div id="carouselExample" class="carousel slide">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="{{ asset('Imagenes/imgproyectos/odontologa1.jpg') }}" alt="PARAISO1"
+                                <img src="{{ asset('Imagenes/imgproyectos/ENPOWER1.jpg') }}" alt="PARAISO1"
                                     class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('Imagenes/imgproyectos/odontologa2.jpg') }}" alt="JAATELO"
+                                <img src="{{ asset('Imagenes/imgproyectos/ENPOWER2.jpeg') }}" alt="JAATELO"
                                     class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('Imagenes/imgproyectos/odontologa3.jpg') }}" alt="ACERIAS"
+                                <img src="{{ asset('Imagenes/imgproyectos/ENPOWER3.jpg') }}" alt="ACERIAS"
                                     class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('Imagenes/imgproyectos/odontologa4.jpg') }}" alt="ACERIAS"
+                                <img src="{{ asset('Imagenes/imgproyectos/ENPOWER4.jpg') }}" alt="ACERIAS"
                                     class="d-block w-100 carousel-img">
                             </div>
                         </div>
@@ -162,11 +161,6 @@
                 /* Establece el contenedor como posición relativa para que los elementos internos puedan ser posicionados relativamente a él */
             }
 
-            .custom-title {
-                position: relative;
-                top: -10px; /* Ajusta este valor según sea necesario */
-            }
-
             .titulo {
                 position: absolute;
                 /* Establece la posición absoluta para que el título pueda posicionarse en la esquina superior izquierda del contenedor */
@@ -179,7 +173,10 @@
                 padding: 0 20px;
                 /* Espacio interno del título */
             }
-
+            .custom-title {
+                position: relative;
+                top: -10px; /* Ajusta este valor según sea necesario */
+            }
             .galeria {
                 width: calc(50% - 40px);
                 /* Calcula el ancho de la galería para ocupar la mitad del contenedor menos los márgenes */
