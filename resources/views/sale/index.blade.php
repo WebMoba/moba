@@ -74,17 +74,19 @@
                                             <td>{{ $sale->date }}</td>
                                             <td>{{ $sale->quote->id }}</td>
                                             <td>
-                                                <form action="{{ route('sales.destroy', $sale->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary "
-                                                        href="{{ route('sales.show', $sale->id) }}"><i
-                                                            class="fa fa-fw fa-eye"></i> <i class="bi bi-eye-fill"></i></a>
-                                                    
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i
-                                                            class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
-                                                </form>
-
+                                                <form action="{{ route('sales.destroy', $sale->id) }}"
+                                                        method="POST">
+                                                        <a class="btn btn-sm btn-primary {{ $sale->disable ? 'disabled' : '' }}"
+                                                            href="{{ route('sales.show', $sale->id) }}"><i
+                                                                class="bi bi-eye-fill"></i></a>
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm"
+                                                            onclick="return confirm('¿Está seguro de que desea {{ $sale->disable ? 'Habilitar' : 'Deshabilitar' }} a la  venta?')">
+                                                            <i class="fa fa-fw fa-trash"></i>
+                                                            {!! $sale->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>' !!}
+                                                        </button>
+                                                    </form>
                                             </td>
                                         </tr>
                                     @endforeach

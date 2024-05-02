@@ -19,79 +19,63 @@
                     </div>
 
                     <div class="card-body">
-                        <table class="table">
-                            <tbody>
-                                <tr>
-                                    <div class="form-group">
-                                    <strong>N° venta:</strong>
-                                    {{ $sale->id }}
-                                    </div>
-                                </tr>
-                                <tr>
-                                    <div class="form-group">
-                                    <strong>Nombre:</strong>
-                                    {{ $sale->person->name }}
-                                    </div>
-                                </tr>
-                                <tr>
-                                    <div class="form-group">
-                                    <strong>Id Cliente:</strong>
-                                    {{ $sale->person->id_card }}
-                                    </div>
-                                </tr>
-                                <tr>
-                                    <div class="form-group">
-                                    <strong>Fecha:</strong>
-                                    {{ $sale->date }}
-                                </div>
-                                </tr>
-                                
-                                <tr>
-                                    <div class="form-group">
-                                    <strong>Fecha de Cotización:</strong>
-                                    {{ $sale->quote->date_issuance }}
-                                    </div>
-                                </tr>
-                        
+                        <h2>Compra</h2>
 
-                                <tr>
-                                    
-                                    <div class="container ms-1">
-                                        <h2><strong>Detalle de la Venta</strong></h2>
-                                        @if($detailSale)
-                                            <div class="form-group">
-                                                <strong>Nombre Producto:</strong>
-                                                {{ $detailSale->product->name }}
-                                            </div>
-                                            <div class="form-group">
-                                                <strong>Cantidad:</strong>
-                                                {{ $detailSale->quantity }}
-                                            </div>
-                                            <div class="form-group">
-                                                <strong>Precio unitario:</strong>
-                                                {{ $detailSale->price_unit }}
-                                            </div>
-                                            <div class="form-group">
-                                                <strong>Subtotal:</strong>
-                                                {{ $detailSale->subtotal }}
-                                            </div>
-                                            <div class="form-group">
-                                                <strong>Porcentaje de descuento:</strong>
-                                                {{ $detailSale->discount }}
-                                            </div>
-                                            <div class="form-group">
-                                                <strong>Total:</strong>
-                                                {{ $detailSale->total }}
-                                            </div>
-                                        @else
-                                            <div class="alert alert-info" role="alert">
-                                                No hay detalles asociados a esta venta.
-                                            </div>
-                                        @endif
-                                    </div>
-                                </tr>
-                            </tbody>
-                        </table>
+
+                        <div class="form-group">
+                            <strong>Nombre del proveedor:</strong>
+                            {{ $sale->name }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Documento del Cliente:</strong>
+                            {{ $sale->person->id_card }} 
+                        </div>
+                        <div class="form-group">
+                            <strong>Fecha realizacion de la venta:</strong>
+                            {{ $sale->date }}
+                        </div>
+                        <div class="form-group">
+                            <strong>N° de Cotización:</strong>
+                            {{ $sale->quote->id  }}
+                        </div>
+
+                        <h2>Detalles de la venta</h2>
+
+                        @if ($details->count())
+                            <div class="form-group">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Cantidad</th>
+                                            <th>Precio unitario</th>
+                                            <th>Subtotal</th>
+                                            <th>Descuento</th>
+                                            <th>Total</th>
+                                            <th>Nombre del producto</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($details as $index => $detail)
+                                            <tr>
+                                                <td>{{ $index + 1 }}</td>
+                                                <td>{{ $detail->quantity }}</td>
+                                                <td>{{ $detail->price_unit }}</td>
+                                                <td>{{ $detail->subtotal }}</td>
+                                                <td>{{ $detail->discount }}</td>
+                                                <td>{{ $detail->total }}</td>
+                                                <td>{{ $detail->product->name }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        @else
+                            <p>No se encontraron detalles asociados a esta compra.</p>
+                        @endif
+
+
+
                     </div>
                 </div>
             </div>

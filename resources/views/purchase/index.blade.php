@@ -94,10 +94,6 @@
                                                             <i class="fa fa-fw fa-trash"></i>
                                                             {!! $purchase->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>' !!}
                                                         </button>
-
-
-
-
                                                     </form>
 
 

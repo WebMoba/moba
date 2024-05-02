@@ -57,6 +57,7 @@ class SaleController extends Controller
         $sales = Sale::with('person', 'quote', 'detailSales.product')
             ->where('name', 'LIKE', '%' . $search . '%')
             ->orWhere('date', 'LIKE', '%' . $search . '%')
+            ->orderBy('created_at', 'desc')
             ->paginate(10);
 
         // Obtener los detalles de las ventas
@@ -230,15 +231,18 @@ class SaleController extends Controller
 
     public function destroy($id)
     {
-        $sale = Sale::findOrFail($id);
+       // Encuentra la materia prima con el ID dado
+       $sale = Sale::find($id);
+       if (!$sale) {
+           return redirect()->route('sales.index')->with('error', 'La venta no existe');
+       }
 
-        // Eliminar los detalles de la venta asociados
-        $sale->detailSales()->delete();
+       // Cambia el estado de la materia prima
+       $sale->disable = !$sale->disable; // Corregir a 'disabled'
+       $sale->save();
 
-        // Eliminar la venta
-        $sale->delete();
-
-        return redirect()->route('sales.index')->with('success', 'Venta eliminada con éxito');
+       // Redirige con un mensaje de éxito
+       return redirect()->route('sales.index')->with('success', 'Estado de la venta cambiado con éxito');
     }
 
     public function exportToExcel()
