@@ -58,7 +58,7 @@
             <div class="row">
                 <!-- Columna para el párrafo -->
                 <div class="col-md-6">
-                    <div class="titulo">
+                    <div class="titulo mt-4 mb-4">
                         <p>Acerías Paz del Río S. A. es una sociedad de naturaleza anónima, de carácter comercial y su
                             nacionalidad es colombiana. Por ser emisor de valores está sometida al control exclusivo de
                             la Superintendencia Financiera de Colombia.
@@ -78,23 +78,23 @@
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <img src="{{ asset('Imagenes/imgproyectos/cabubara1.jpg') }}" alt="PARAISO1"
-                                    class="d-block w-100">
+                                    class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">
                                 <img src="{{ asset('Imagenes/imgproyectos/cabubara2.jpg') }}" alt="JAATELO"
-                                    class="d-block w-100">
+                                    class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">
                                 <img src="{{ asset('Imagenes/imgproyectos/cabubara3.jpg') }}" alt="ACERIAS"
-                                    class="d-block w-100">
+                                    class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">
                                 <img src="{{ asset('Imagenes/imgproyectos/cabubara4.jpg') }}" alt="ACERIAS"
-                                    class="d-block w-100">
+                                    class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">
                                 <img src="{{ asset('Imagenes/imgproyectos/cabubara5.jpg') }}" alt="ACERIAS"
-                                    class="d-block w-100">
+                                    class="d-block w-100 carousel-img">
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
@@ -181,6 +181,10 @@
                 padding: 0 20px;
                 /* Espacio interno del título */
             }
+            .custom-title {
+                position: relative;
+                top: -10px; /* Ajusta este valor según sea necesario */
+            }
 
             .galeria {
                 width: calc(50% - 40px);
@@ -206,7 +210,13 @@
                 height: auto;
                 /* Altura automática para mantener la proporción */
             }
-
+            .carousel-img {
+                width: 100%; /* Ancho máximo del div del carrusel */
+                height: auto; /* Para mantener la proporción de aspecto de la imagen */
+                max-height: 400px; /* Altura máxima de las imágenes */
+                min-height: 400px; /* Altura mínima de las imágenes */
+                object-fit: cover; /* Para recortar y ajustar la imagen dentro del contenedor */
+            }
             .botones {
                 position: absolute;
                 top: 10px;

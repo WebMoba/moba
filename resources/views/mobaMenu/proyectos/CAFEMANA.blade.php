@@ -51,7 +51,7 @@
         //inicio de proyectos
         //proyectos cuadro
         <div class="title-container">
-            <h1 class="big-title">ALMACENES PARAISO</h1>
+            <h1 class="big-title">CAFE MANA</h1>
         </div>
 
         <div class="container">
@@ -73,23 +73,15 @@
                     <div id="carouselExample" class="carousel slide">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="{{ asset('Imagenes/imgproyectos/paraiso1.jpg') }}" alt="PARAISO1"
+                                <img src="{{ asset('Imagenes/imgproyectos/CAFEMANA.jpeg') }}" alt="PARAISO1"
                                     class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('Imagenes/imgproyectos/paraiso2.jpeg') }}" alt="JAATELO"
+                                <img src="{{ asset('Imagenes/imgproyectos/CAFEMANA2.jpeg') }}" alt="JAATELO"
                                     class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('Imagenes/imgproyectos/paraiso3.jpeg') }}" alt="ACERIAS"
-                                    class="d-block w-100 carousel-img">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ asset('Imagenes/imgproyectos/paraiso4.jpg') }}" alt="ACERIAS"
-                                    class="d-block w-100 carousel-img">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ asset('Imagenes/imgproyectos/paraiso5.jpeg') }}" alt="ACERIAS"
+                                <img src="{{ asset('Imagenes/imgproyectos/CAFEMANA3.jpeg') }}" alt="ACERIAS"
                                     class="d-block w-100 carousel-img">
                             </div>
                         </div>
