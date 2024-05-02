@@ -15,16 +15,14 @@
 <div class="box box-small">
     <h2>Compra</h2>
     <div class="box-body">
-    <div class="form-group">
+        <div class="form-group">
             {{ Form::label('Nombre y documento del proveedor', null, ['class' => 'required-label']) }}
             {{ Form::select(
                 'name',
-                $usersName->mapWithKeys(function ($name, $id) use ($providers) {
-                    $provider = $providers->firstWhere('id', $id);
-                    $document = $provider ? $provider->id_card : ''; // Ajusta la propiedad que contiene el documento del proveedor
-
-                    
-                    return [$id => $name . ' - ' . $document];
+                $usersName->mapWithKeys(function ($name, $id) use ($usersName, $providers) {
+                    $providerName = $usersName[$id];
+                    $providerDocument = isset($providers[$id]) ? $providers[$id]->id_card : ''; // Ajusta la propiedad que contiene el documento del proveedor
+                    return [$id => $providerName . ' - ' . $providerDocument];
                 }),
                 $purchase->name,
                 [
@@ -32,7 +30,7 @@
                     'required',
                     'placeholder' => 'Name',
                     'id' => 'name',
-                ],
+                ]
             ) }}
             {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
         </div>
@@ -41,10 +39,10 @@
             {{ Form::label('Fecha', null, ['class' => 'required-label']) }}
             {{ Form::text('date', $purchase->date, ['class' => 'form-control' . ($errors->has('date') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Date', 'readonly' => true, 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
             {!! $errors->first('date', '<div class="invalid-feedback">:message</div>') !!}
-
             <small class="text-muted">Por cuestiones de seguridad este campo no es editable.</small>
         </div>
-
+    </div>
+</div>
 
     </div>
     <div class="box-footer" style="margin: 20px;">
