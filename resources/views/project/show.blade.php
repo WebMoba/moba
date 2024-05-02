@@ -7,40 +7,45 @@
 @section('content')
     <section class="content container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8 mx-auto">
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
                             <span class="card-title">{{ __('Ver') }} Projecto</span>
                         </div>
-                        <div class="float-right">
+                        <div class="float-left">
                             <a class="btn btn-primary" href="{{ route('projects.index') }}"> {{ __('Volver') }}</a>
                         </div>
                     </div>
 
                     <div class="card-body">
-                        
-                        <div class="form-group">
-                            <strong>Nombre:</strong>
-                            {{ $project->name }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Descripción:</strong>
-                            {{ $project->description }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Fecha de inicio:</strong>
-                            {{ $project->date_start }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Fecha de finalización:</strong>
-                            {{ $project->date_end }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Estado:</strong>
-                            {{ $project->status }}
-                        </div>
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th>Nombre:</th>
+                                    <td>{{ $project->name }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Descripción:</th>
+                                    <td>{{ $project->description }}</td>
+                                </tr>
 
+                                <tr>
+                                    <th>Fecha de inicio:</th>
+                                    <td>{{ $project->date_start }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Fecha de finalización:</th>
+                                    <td>{{ $project->date_end }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Estado:</th>
+                                    <td>{{ $project->status }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/stylesproyect.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styleFooter.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
@@ -50,16 +51,22 @@
         </div>
         //inicio de proyectos
         //proyectos cuadro
-        <div class="title-container">
-            <h1 class="big-title">ODONTOLOGA CAROLINA CAMACHO</h1>
+        <div class="title-container ">
+            <h1 class="big-title custom-title">ODONTOLOGA CAROLINA CAMACHO</h1>
         </div>
-     
+
         <div class="container">
             <div class="row">
                 <!-- Columna para el párrafo -->
-                <div class="col-md-6">
-                    <div class="titulo">
-                        <p>Somos una empresa dedicada a satisfacer las necesidades de nuestros clientes, principalmente en frutas, verduras y demás productos de la canasta familiar; vinculando como aliados estratégicos a proveedores; ofreciendo condiciones dignas de trabajo a personal idóneo que vive y aplica principios de integridad, honestidad y constancia, garantizando la retribución a los socios, conformando así un equipo comprometido con el desarrollo y bienestar de la comunidad.</p>
+                <div class="col-md-6 ">
+                    <div class="titulo  mt-4 mb-4">
+                        <br>
+                        <p>Somos una empresa dedicada a satisfacer las necesidades de nuestros clientes, principalmente
+                            en frutas, verduras y demás productos de la canasta familiar; vinculando como aliados
+                            estratégicos a proveedores; ofreciendo condiciones dignas de trabajo a personal idóneo que
+                            vive y aplica principios de integridad, honestidad y constancia, garantizando la retribución
+                            a los socios, conformando así un equipo comprometido con el desarrollo y bienestar de la
+                            comunidad.</p>
                     </div>
                 </div>
                 <!-- Columna para el carrusel -->
@@ -68,32 +75,38 @@
                     <div id="carouselExample" class="carousel slide">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="{{ asset('Imagenes/imgproyectos/odontologa1.jpg') }}" alt="PARAISO1" class="d-block w-100">
+                                <img src="{{ asset('Imagenes/imgproyectos/odontologa1.jpg') }}" alt="PARAISO1"
+                                    class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('Imagenes/imgproyectos/odontologa2.jpg') }}" alt="JAATELO" class="d-block w-100">
+                                <img src="{{ asset('Imagenes/imgproyectos/odontologa2.jpg') }}" alt="JAATELO"
+                                    class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('Imagenes/imgproyectos/odontologa3.jpg') }}" alt="ACERIAS" class="d-block w-100">
+                                <img src="{{ asset('Imagenes/imgproyectos/odontologa3.jpg') }}" alt="ACERIAS"
+                                    class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('Imagenes/imgproyectos/odontologa4.jpg') }}" alt="ACERIAS" class="d-block w-100">
+                                <img src="{{ asset('Imagenes/imgproyectos/odontologa4.jpg') }}" alt="ACERIAS"
+                                    class="d-block w-100 carousel-img">
                             </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                            data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                            data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
                 </div>
-                
+
             </div>
         </div>
-        
+
 
 
         <!-- navbar -->
@@ -139,44 +152,86 @@
 
         <style>
             /* css de prueba*/
-            {
+                {
                 font-family: Arial, sans-serif;
             }
+
             .container {
                 padding-top: 50px;
                 padding-bottom: 50px;
-                position: relative; /* Establece el contenedor como posición relativa para que los elementos internos puedan ser posicionados relativamente a él */
+                position: relative;
+                /* Establece el contenedor como posición relativa para que los elementos internos puedan ser posicionados relativamente a él */
             }
+
+            .custom-title {
+                position: relative;
+                top: -10px; /* Ajusta este valor según sea necesario */
+            }
+
             .titulo {
-                position: absolute; /* Establece la posición absoluta para que el título pueda posicionarse en la esquina superior izquierda del contenedor */
-                top: 20px; /* Espacio desde la parte superior del contenedor */
-                left: 20px; /* Espacio desde el lado izquierdo del contenedor */
-                width: calc(50% - 40px); /* Calcula el ancho del título para ocupar la mitad del contenedor menos los márgenes */
-                padding: 0 20px; /* Espacio interno del título */
+                position: absolute;
+                /* Establece la posición absoluta para que el título pueda posicionarse en la esquina superior izquierda del contenedor */
+                top: 20px;
+                /* Espacio desde la parte superior del contenedor */
+                left: 20px;
+                /* Espacio desde el lado izquierdo del contenedor */
+                width: calc(50% - 40px);
+                /* Calcula el ancho del título para ocupar la mitad del contenedor menos los márgenes */
+                padding: 0 20px;
+                /* Espacio interno del título */
             }
+
             .galeria {
-                width: calc(50% - 40px); /* Calcula el ancho de la galería para ocupar la mitad del contenedor menos los márgenes */
-                float: right; /* Coloca la galería a la derecha del contenedor */
-                padding: 0 20px; /* Espacio interno de la galería */
-                overflow: hidden; /* Oculta cualquier desbordamiento horizontal */
+                width: calc(50% - 40px);
+                /* Calcula el ancho de la galería para ocupar la mitad del contenedor menos los márgenes */
+                float: right;
+                /* Coloca la galería a la derecha del contenedor */
+                padding: 0 20px;
+                /* Espacio interno de la galería */
+                overflow: hidden;
+                /* Oculta cualquier desbordamiento horizontal */
             }
+
             .imagen {
-                width: 100%; /* Ocupa el 100% del ancho de la galería */
-                overflow-x: hidden; /* Oculta cualquier desbordamiento horizontal */
+                width: 100%;
+                /* Ocupa el 100% del ancho de la galería */
+                overflow-x: hidden;
+                /* Oculta cualquier desbordamiento horizontal */
             }
+
             .imagen img {
-                width: 100%; /* Ocupa el 100% del ancho de la imagen */
-                height: auto; /* Altura automática para mantener la proporción */
+                width: 100%;
+                /* Ocupa el 100% del ancho de la imagen */
+                height: auto;
+                /* Altura automática para mantener la proporción */
             }
+
+            .carousel-img {
+                width: 100%;
+                /* Ancho máximo del div del carrusel */
+                height: auto;
+                /* Para mantener la proporción de aspecto de la imagen */
+                max-height: 400px;
+                /* Altura máxima de las imágenes */
+                min-height: 400px;
+                /* Altura mínima de las imágenes */
+                object-fit: cover;
+                /* Para recortar y ajustar la imagen dentro del contenedor */
+            }
+
             .botones {
                 position: absolute;
-                top: 10px; /* Ajusta la posición vertical de los botones */
-                left: 180px; /* Ajusta la posición horizontal de los botones */
+                top: 10px;
+                /* Ajusta la posición vertical de los botones */
+                left: 180px;
+                /* Ajusta la posición horizontal de los botones */
             }
-            
+
             .boton {
-                margin: 5px; /* Espacio entre los botones */
+                margin: 5px;
+                /* Espacio entre los botones */
             }
+
             /* css de prueba*/
             .contenido {
                 display: flex;
@@ -353,12 +408,13 @@
                 var galeria = document.querySelector('.galeria');
                 galeria.scrollLeft -= galeria.offsetWidth;
             }
-        
+
             function siguienteImagen() {
                 var galeria = document.querySelector('.galeria');
                 galeria.scrollLeft += galeria.offsetWidth;
             }
         </script>
+        @include('partials.footerMoba')
 </body>
 
 </html>

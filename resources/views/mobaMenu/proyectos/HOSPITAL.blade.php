@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/stylesproyect.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styleFooter.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
@@ -51,14 +52,14 @@
         //inicio de proyectos
         //proyectos cuadro
         <div class="title-container">
-            <h1 class="big-title">HOSPITAL DE SOGAMOSO</h1>
+            <h1 class="big-title ">HOSPITAL DE SOGAMOSO</h1>
         </div>
 
         <div class="container">
             <div class="row">
                 <!-- Columna para el párrafo -->
                 <div class="col-md-6">
-                    <div class="titulo">
+                    <div class="titulo mt-4 mb-4">
                         <p>Acerías Paz del Río S. A. es una sociedad de naturaleza anónima, de carácter comercial y su
                             nacionalidad es colombiana. Por ser emisor de valores está sometida al control exclusivo de
                             la Superintendencia Financiera de Colombia.
@@ -67,7 +68,7 @@
                             S.A.S. Banca de Inversión son los accionistas mayoritarios de la sociedad con una
                             participación del 55.27% y el 27.27% de las acciones ordinarias, respectivamente, y del 77%
                             y 33% de las acciones con dividendo preferencial y sin derecho a voto, seguidas por el
-                            Instituto de Fomento y Desarrollo de Boyacá  IDEBOY, que posee el 13,27% de acciones
+                            Instituto de Fomento y Desarrollo de Boyacá IDEBOY, que posee el 13,27% de acciones
                             ordinarias de la Compañía, el restante 4.24% de las acciones ordinarias corresponde a la
                             participación de nuestros accionistas minoritarios.</p>
                     </div>
@@ -78,19 +79,19 @@
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <img src="{{ asset('Imagenes/imgproyectos/hospital1.jpeg') }}" alt="PARAISO1"
-                                    class="d-block w-100">
+                                    class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">
                                 <img src="{{ asset('Imagenes/imgproyectos/hospital2.jpeg') }}" alt="JAATELO"
-                                    class="d-block w-100">
+                                    class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">
                                 <img src="{{ asset('Imagenes/imgproyectos/hospital3.jpeg') }}" alt="ACERIAS"
-                                    class="d-block w-100">
+                                    class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">
                                 <img src="{{ asset('Imagenes/imgproyectos/hospital4.jpeg') }}" alt="ACERIAS"
-                                    class="d-block w-100">
+                                    class="d-block w-100 carousel-img">
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
@@ -105,6 +106,7 @@
                         </button>
                     </div>
                 </div>
+
 
             </div>
         </div>
@@ -177,7 +179,10 @@
                 padding: 0 20px;
                 /* Espacio interno del título */
             }
-
+            .custom-title {
+                position: relative;
+                top: -10px; /* Ajusta este valor según sea necesario */
+            }
             .galeria {
                 width: calc(50% - 40px);
                 /* Calcula el ancho de la galería para ocupar la mitad del contenedor menos los márgenes */
@@ -190,17 +195,34 @@
             }
 
             .imagen {
-                width: 100%;
-                /* Ocupa el 100% del ancho de la galería */
-                overflow-x: hidden;
-                /* Oculta cualquier desbordamiento horizontal */
+                width: 200px;
+                /* Ancho fijo para el contenedor de la imagen */
+                height: 200px;
+                /* Altura fija para el contenedor de la imagen */
+                overflow: hidden;
+                /* Oculta cualquier desbordamiento */
             }
 
             .imagen img {
                 width: 100%;
-                /* Ocupa el 100% del ancho de la imagen */
-                height: auto;
+                /* Ocupa el 100% del ancho del contenedor */
+                height: 100%;
                 /* Altura automática para mantener la proporción */
+                display: block;
+                /* Asegura que la imagen se muestre como un bloque */
+            }
+
+            .carousel-img {
+                width: 100%;
+                /* Ancho máximo del div del carrusel */
+                height: auto;
+                /* Para mantener la proporción de aspecto de la imagen */
+                max-height: 400px;
+                /* Altura máxima de las imágenes */
+                min-height: 400px;
+                /* Altura mínima de las imágenes */
+                object-fit: cover;
+                /* Para recortar y ajustar la imagen dentro del contenedor */
             }
 
             .botones {
@@ -398,6 +420,7 @@
                 galeria.scrollLeft += galeria.offsetWidth;
             }
         </script>
+        @include('partials.footerMoba')
 </body>
 
 </html>

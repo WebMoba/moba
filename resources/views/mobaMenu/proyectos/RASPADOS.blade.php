@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/stylesproyect.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styleFooter.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
@@ -53,13 +54,18 @@
         <div class="title-container">
             <h1 class="big-title">RASPADOS IGLU</h1>
         </div>
-     
+
         <div class="container">
-            <div class="row">
+            <pindiv class="row">
                 <!-- Columna para el párrafo -->
                 <div class="col-md-6">
-                    <div class="titulo">
-                        <p>Somos una empresa dedicada a satisfacer las necesidades de nuestros clientes, principalmente en frutas, verduras y demás productos de la canasta familiar; vinculando como aliados estratégicos a proveedores; ofreciendo condiciones dignas de trabajo a personal idóneo que vive y aplica principios de integridad, honestidad y constancia, garantizando la retribución a los socios, conformando así un equipo comprometido con el desarrollo y bienestar de la comunidad.</p>
+                    <div class="titulo mt-4 mb-4">
+                        <p>Somos una empresa dedicada a satisfacer las necesidades de nuestros clientes, principalmente
+                            en frutas, verduras y demás productos de la canasta familiar; vinculando como aliados
+                            estratégicos a proveedores; ofreciendo condiciones dignas de trabajo a personal idóneo que
+                            vive y aplica principios de integridad, honestidad y constancia, garantizando la retribución
+                            a los socios, conformando así un equipo comprometido con el desarrollo y bienestar de la
+                            comunidad.</p>
                     </div>
                 </div>
                 <!-- Columna para el carrusel -->
@@ -68,33 +74,262 @@
                     <div id="carouselExample" class="carousel slide">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="{{ asset('Imagenes/imgproyectos/raspadosiglu1.jpg') }}" alt="PARAISO1" class="d-block w-100">
+                                <img src="{{ asset('Imagenes/imgproyectos/raspadosiglu1.jpg') }}" alt="PARAISO1"
+                                    class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('Imagenes/imgproyectos/raspadosiglu2.jpeg') }}" alt="JAATELO" class="d-block w-100">
+                                <img src="{{ asset('Imagenes/imgproyectos/raspadosiglu2.jpeg') }}" alt="JAATELO"
+                                    class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('Imagenes/imgproyectos/raspadosiglu3.jpg') }}" alt="ACERIAS" class="d-block w-100">
+                                <img src="{{ asset('Imagenes/imgproyectos/raspadosiglu3.jpg') }}" alt="ACERIAS"
+                                    class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('Imagenes/imgproyectos/raspadosiglu4.jpg') }}" alt="ACERIAS" class="d-block w-100">
+                                <img src="{{ asset('Imagenes/imgproyectos/raspadosiglu4.jpg') }}" alt="ACERIAS"
+                                    class="d-block w-100 carousel-img">
                             </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                            data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                            data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
                 </div>
-                
+
+            </pindiv>
+        </div>
+        <!-- prueba de carrusel -->
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
             </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="container">
+                        <div class="row">
+                            <!-- Primera fila del carrusel 1 -->
+                            <div class="col-md-4">
+                                <div class="image-container">
+                                    <a href="{{ asset('mobaMenu/proyectos/PARAISO') }}">
+                                        <img src="{{ asset('Imagenes/imgproyectos/paraiso1.jpg') }}" alt="PARAISO1">
+                                        <div class="overlay">
+                                            <div class="text">ALMACENES PARAISO</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="image-container">
+                                    <a href="{{ asset('mobaMenu/proyectos/JAATELO') }}">
+                                        <img src="{{ asset('Imagenes/imgproyectos/jaatelo1.jpg') }}" alt="JAATELO">
+                                        <div class="overlay">
+                                            <div class="text">HELADERIA JAATELO</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="image-container">
+                                    <a href="{{ asset('mobaMenu/proyectos/ACERIAS') }}">
+                                        <img src="{{ asset('Imagenes/imgproyectos/acerias1.jpg') }}" alt="ACERIAS">
+                                        <div class="overlay">
+                                            <div class="text">ACERIAS PAZ DEL RIO</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- Segunda fila del carrusel 1 -->
+                            <div class="col-md-4">
+                                <div class="image-container">
+                                    <a href="{{ asset('mobaMenu/proyectos/BIOSALUD') }}">
+                                        <img src="{{ asset('Imagenes/imgproyectos/biosalud1.jpg') }}" alt="BIOSALUD">
+                                        <div class="overlay">
+                                            <div class="text">BIOSALUD</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="image-container">
+                                    <a href="{{ asset('mobaMenu/proyectos/CABUBARA') }}">
+                                        <img src="{{ asset('Imagenes/imgproyectos/cabubara1.jpg') }}" alt="CABUBARA">
+                                        <div class="overlay">
+                                            <div class="text">CABUBARA</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="image-container">
+                                    <a href="{{ asset('mobaMenu/proyectos/HOSPITAL') }}">
+                                        <img src="{{ asset('Imagenes/imgproyectos/hospital1.jpeg') }}" alt="HOSPITAL">
+                                        <div class="overlay">
+                                            <div class="text">HOSPITAL REGIONAL</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- Tercera fila del carrusel 1 -->
+                            <div class="col-md-4">
+                                <div class="image-container">
+                                    <a href="{{ asset('mobaMenu/proyectos/JOVEN') }}">
+                                        <img src="{{ asset('Imagenes/imgproyectos/jovenpro1.jpg') }}" alt="JOVENPRO">
+                                        <div class="overlay">
+                                            <div class="text">JOVEN PRO</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="image-container">
+                                    <a href="{{ asset('mobaMenu/proyectos/DULCES') }}">
+                                        <img src="{{ asset('Imagenes/imgproyectos/lafrez1.jpg') }}" alt="LAFREZ">
+                                        <div class="overlay">
+                                            <div class="text">DULCES LA FREZ</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="image-container">
+                                    <a href="{{ asset('mobaMenu/proyectos/ODONTOLOGIA') }}">
+                                        <img src="{{ asset('Imagenes/imgproyectos/lizethdorado1.jpg') }}" alt="ODONTOLOGIA-LIZETH">
+                                        <div class="overlay">
+                                            <div class="text">ODONTOLOGIA LIZETH DORADO</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="container">
+                        <div class="row">
+                            <!-- Primera fila del carrusel 2 -->
+                            <div class="col-md-4">
+                                <div class="image-container">
+                                    <a href="{{ asset('mobaMenu/proyectos/ODONTOLOGA') }}">
+                                        <img src="{{ asset('Imagenes/imgproyectos/odontologa1.jpg') }}" alt="ODONTOLOGA">
+                                        <div class="overlay">
+                                            <div class="text">ODONTOLOGA CAROLINA CAMACHO</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="image-container">
+                                    <a href="{{ asset('mobaMenu/proyectos/PUNTOCERO') }}">
+                                        <img src="{{ asset('Imagenes/imgproyectos/puntocero1.jpg') }}" alt="PUNTOCERO">
+                                        <div class="overlay">
+                                            <div class="text" >COMIDAS RAPIDAS PUNTO CERO</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="image-container">
+                                    <a href="{{ asset('mobaMenu/proyectos/RASPADOS') }}">
+                                        <img src="{{ asset('Imagenes/imgproyectos/raspadosiglu1.jpg') }}" alt="RASPADOS">
+                                        <div class="overlay">
+                                            <div class="text">RASPADOS IGLU</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- Segunda fila del carrusel 2 -->
+                            <div class="col-md-4">
+                                <div class="image-container">
+                                    <a href="{{ asset('mobaMenu/proyectos/CAFELATINO') }}">
+                                        <img src="{{ asset('Imagenes/imgproyectos/CAFELATINO1.jpg') }}" alt="RASPADOS">
+                                        <div class="overlay">
+                                            <div class="text">CAFE LATINO</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="image-container">
+                                    <a href="{{ asset('mobaMenu/proyectos/CAFEMANA') }}">
+                                        <img src="{{ asset('Imagenes/imgproyectos/CAFEMANA.jpeg') }}" alt="RASPADOS">
+                                        <div class="overlay">
+                                            <div class="text">CAFE MANA</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="image-container">
+                                    <a href="{{ asset('mobaMenu/proyectos/EMPANADASBOTI') }}">
+                                        <img src="{{ asset('Imagenes/imgproyectos/EMPANADASBOTI1.jpg') }}" alt="RASPADOS">
+                                        <div class="overlay">
+                                            <div class="text">EMPANADAS BOTI</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- Tercera fila del carrusel 2 -->
+                            <div class="col-md-4">
+                                <div class="image-container">
+                                    <a href="{{ asset('mobaMenu/proyectos/EMPANADASRANCHO') }}">
+                                        <img src="{{ asset('Imagenes/imgproyectos/EMPANADASRANCHO1.jpg') }}" alt="RASPADOS">
+                                        <div class="overlay">
+                                            <div class="text">EMPANADAS RANCHO</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="image-container">
+                                    <a href="{{ asset('mobaMenu/proyectos/EMPOWER') }}">
+                                        <img src="{{ asset('Imagenes/imgproyectos/ENPOWER1.jpg') }}" alt="RASPADOS">
+                                        <div class="overlay">
+                                            <div class="text">EMPOWER</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="image-container">
+                                    <a href="{{ asset('mobaMenu/proyectos/PALMAS') }}">
+                                        <img src="{{ asset('Imagenes/imgproyectos/PALMAS1.jpg') }}" alt="RASPADOS">
+                                        <div class="overlay">
+                                            <div class="text">PALMAS</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
         
-
+        <!-- prueba de carrusel end -->
 
         <!-- navbar -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -139,44 +374,81 @@
 
         <style>
             /* css de prueba*/
-            {
+                {
                 font-family: Arial, sans-serif;
             }
+
             .container {
                 padding-top: 50px;
                 padding-bottom: 50px;
-                position: relative; /* Establece el contenedor como posición relativa para que los elementos internos puedan ser posicionados relativamente a él */
+                position: relative;
+                /* Establece el contenedor como posición relativa para que los elementos internos puedan ser posicionados relativamente a él */
             }
+
             .titulo {
-                position: absolute; /* Establece la posición absoluta para que el título pueda posicionarse en la esquina superior izquierda del contenedor */
-                top: 20px; /* Espacio desde la parte superior del contenedor */
-                left: 20px; /* Espacio desde el lado izquierdo del contenedor */
-                width: calc(50% - 40px); /* Calcula el ancho del título para ocupar la mitad del contenedor menos los márgenes */
-                padding: 0 20px; /* Espacio interno del título */
+                position: absolute;
+                /* Establece la posición absoluta para que el título pueda posicionarse en la esquina superior izquierda del contenedor */
+                top: 20px;
+                /* Espacio desde la parte superior del contenedor */
+                left: 20px;
+                /* Espacio desde el lado izquierdo del contenedor */
+                width: calc(50% - 40px);
+                /* Calcula el ancho del título para ocupar la mitad del contenedor menos los márgenes */
+                padding: 0 20px;
+                /* Espacio interno del título */
             }
+
             .galeria {
-                width: calc(50% - 40px); /* Calcula el ancho de la galería para ocupar la mitad del contenedor menos los márgenes */
-                float: right; /* Coloca la galería a la derecha del contenedor */
-                padding: 0 20px; /* Espacio interno de la galería */
-                overflow: hidden; /* Oculta cualquier desbordamiento horizontal */
+                width: calc(50% - 40px);
+                /* Calcula el ancho de la galería para ocupar la mitad del contenedor menos los márgenes */
+                float: right;
+                /* Coloca la galería a la derecha del contenedor */
+                padding: 0 20px;
+                /* Espacio interno de la galería */
+                overflow: hidden;
+                /* Oculta cualquier desbordamiento horizontal */
             }
+
             .imagen {
-                width: 100%; /* Ocupa el 100% del ancho de la galería */
-                overflow-x: hidden; /* Oculta cualquier desbordamiento horizontal */
+                width: 100%;
+                /* Ocupa el 100% del ancho de la galería */
+                overflow-x: hidden;
+                /* Oculta cualquier desbordamiento horizontal */
             }
+
             .imagen img {
-                width: 100%; /* Ocupa el 100% del ancho de la imagen */
-                height: auto; /* Altura automática para mantener la proporción */
+                width: 100%;
+                /* Ocupa el 100% del ancho de la imagen */
+                height: auto;
+                /* Altura automática para mantener la proporción */
             }
+
+            .carousel-img {
+                width: 100%;
+                /* Ancho máximo del div del carrusel */
+                height: auto;
+                /* Para mantener la proporción de aspecto de la imagen */
+                max-height: 400px;
+                /* Altura máxima de las imágenes */
+                min-height: 400px;
+                /* Altura mínima de las imágenes */
+                object-fit: cover;
+                /* Para recortar y ajustar la imagen dentro del contenedor */
+            }
+
             .botones {
                 position: absolute;
-                top: 10px; /* Ajusta la posición vertical de los botones */
-                left: 180px; /* Ajusta la posición horizontal de los botones */
+                top: 10px;
+                /* Ajusta la posición vertical de los botones */
+                left: 180px;
+                /* Ajusta la posición horizontal de los botones */
             }
-            
+
             .boton {
-                margin: 5px; /* Espacio entre los botones */
+                margin: 5px;
+                /* Espacio entre los botones */
             }
+
             /* css de prueba*/
             .contenido {
                 display: flex;
@@ -353,12 +625,13 @@
                 var galeria = document.querySelector('.galeria');
                 galeria.scrollLeft -= galeria.offsetWidth;
             }
-        
+
             function siguienteImagen() {
                 var galeria = document.querySelector('.galeria');
                 galeria.scrollLeft += galeria.offsetWidth;
             }
         </script>
+        @include('partials.footerMoba')
 </body>
 
 </html>

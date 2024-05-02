@@ -167,6 +167,12 @@ Route::view('/mobaMenu/proyectos/ODONTOLOGIA', 'mobaMenu.proyectos.ODONTOLOGIA')
 Route::view('/mobaMenu/proyectos/PUNTOCERO', 'mobaMenu.proyectos.PUNTOCERO')->name('mobaMenu.proyectos.PUNTOCERO');
 Route::view('/mobaMenu/proyectos/RASPADOS', 'mobaMenu.proyectos.RASPADOS')->name('mobaMenu.proyectos.RASPADOS');
 Route::view('/mobaMenu/proyectos/JOVEN', 'mobaMenu.proyectos.JOVEN')->name('mobaMenu.proyectos.JOVEN');
+Route::view('/mobaMenu/proyectos/CAFELATINO', 'mobaMenu.proyectos.CAFELATINO')->name('mobaMenu.proyectos.CAFELATINO');
+Route::view('/mobaMenu/proyectos/CAFEMANA', 'mobaMenu.proyectos.CAFEMANA')->name('mobaMenu.proyectos.CAFEMANA');
+Route::view('/mobaMenu/proyectos/EMPANADASBOTI', 'mobaMenu.proyectos.EMPANADASBOTI')->name('mobaMenu.proyectos.EMPANADASBOTI');
+Route::view('/mobaMenu/proyectos/EMPANADASRANCHO', 'mobaMenu.proyectos.EMPANADASRANCHO')->name('mobaMenu.proyectos.EMPANADASRANCHO');
+Route::view('/mobaMenu/proyectos/EMPOWER', 'mobaMenu.proyectos.EMPOWER')->name('mobaMenu.proyectos.EMPOWER');
+Route::view('/mobaMenu/proyectos/PALMAS', 'mobaMenu.proyectos.PALMAS')->name('mobaMenu.proyectos.PALMAS');
 
 
 
