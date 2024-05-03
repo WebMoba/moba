@@ -28,17 +28,17 @@
                             </form>
                             <div class="float-right">
                                 <a href="{{ route('pdf.project') }}" class="btn btn-danger btn-sm float-right">
-                                    <i class="fa fa-file-pdf"></i>  <i class="bi bi-file-pdf-fill"></i>
+                                    <i class="bi bi-file-pdf-fill"></i>
                                 </a>
 
                                 <a href="{{ route('excel.project') }}" class="btn btn-success btn-sm float-right">
-                                    <i class="fa fa-file-excel"></i> <i class="bi bi-file-earmark-excel-fill"></i>
+                                     <i class="bi bi-file-earmark-excel-fill"></i>
                                 </a>
                             </div>
                             <div class="float-right">
-                                <a href="{{ route('projects.create') }}" class="btn btn-primary btn-sm float-right"
+                                <a href="{{ route('projects.create') }}" class="btn btn-success"
                                     data-placement="left">
-                                    <i class="bi bi-plus-lg"></i>
+                                    Crear
                                 </a>
                             </div>
                         </div>
@@ -75,16 +75,14 @@
                                                 <form action="{{ route('projects.destroy', $project->id) }}"
                                                     method="POST">
                                                     <a class="btn btn-sm btn-primary {{ $project->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('projects.show', $project->id) }}"><i
-                                                            class="fa fa-fw fa-eye"></i> <i class="bi bi-eye-fill"></i></a>
+                                                        href="{{ route('projects.show', $project->id) }}"> <i class="bi bi-eye-fill"></i></a>
                                                     <a class="btn btn-sm btn-success {{ $project->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('projects.edit', $project->id) }}"><i
-                                                            class="fa fa-fw fa-edit"></i><i class="bi bi-pencil-square"></i></a>
+                                                        href="{{ route('projects.edit', $project->id) }}"><i class="bi bi-pencil-square"></i></a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit"
                                                         onclick="return confirm('¿Está seguro de que desea {{ $project->disable ? 'Habilitar' : 'Deshabilitar' }} el proyecto?')"
-                                                        class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i>
+                                                        class="btn btn-danger btn-sm">
                                                         {!! $project->disable ?  '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>'!!}
                                                     </button>
                                                 </form>

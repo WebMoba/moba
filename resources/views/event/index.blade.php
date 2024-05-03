@@ -27,16 +27,16 @@
                             <div class="float-right">
                                 <a href="{{ route('pdf.event', ['findId' => request()->get('findId')]) }}"
                                     class="btn btn-danger btn-sm float-right">
-                                    <i class="fa fa-file-pdf"></i>   <i class="bi bi-file-pdf-fill"></i>
+                                  <i class="bi bi-file-pdf-fill"></i>
                                 </a>
                                 <a href="{{ route('excel.events') }}" class="btn btn-success btn-sm float-right">
-                                    <i class="fa fa-file-excel"></i> <i class="bi bi-file-earmark-excel-fill"></i>
+                                     <i class="bi bi-file-earmark-excel-fill"></i>
                                 </a>
                             </div>
                             <div class="float-right">
-                                <a href="{{ route('events.create') }}" class="btn btn-primary btn-sm float-right"
+                                <a href="{{ route('events.create') }}" class="btn btn-success" 
                                     data-placement="left">
-                                    <i class="bi bi-plus-lg"></i>
+                                    Create
                                 </a>
                             </div>
                         </div>
@@ -80,17 +80,17 @@
                                                 <form action="{{ route('events.destroy', $event->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary {{ $event->disable ? 'disabled' : '' }}"
                                                         href="{{ route('events.show', $event->id) }}">
-                                                        <i class="fa fa-fw fa-eye"></i> <i class="bi bi-eye-fill"></i>
+                                                       </i> <i class="bi bi-eye-fill"></i>
                                                     </a>
                                                     <a class="btn btn-sm btn-success {{ $event->disable ? 'disabled' : '' }}"
                                                         href="{{ route('events.edit', $event->id) }}">
-                                                        <i class="fa fa-fw fa-edit"></i> <i class="bi bi-pencil-square"></i>
+                                                         <i class="bi bi-pencil-square"></i>
                                                     </a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"
                                                         onclick="return confirm('¿Está seguro de que desea {{ $event->disable ? 'Habilitar' : 'Deshabilitar' }} el evento?')">
-                                                        <i class="fa fa-fw fa-trash"></i>
+                                                        
                                                         {!! $event->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>'!!}
                                                     </button>
                                                 </form>

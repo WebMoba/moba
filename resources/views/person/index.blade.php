@@ -36,9 +36,9 @@
 
                             </div>
                             <div class="float-right">
-                                <a href="{{ route('person.create') }}" class="btn btn-primary btn-sm float-right"
+                                <a href="{{ route('person.create') }}" class="btn btn-success" 
                                     data-placement="left">
-                                    <i class="bi bi-plus-lg"></i>
+                                    Crear
                                 </a>
                             </div>
                         </div>
@@ -99,7 +99,7 @@
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"
                                                         onclick="return confirm('¿Está seguro de que desea {{ $person->disable ? 'Habilitar' : 'Deshabilitar' }} a la  persona?')">
-                                                        <i class="fa fa-fw fa-trash"></i>
+                                                        
                                                         {!! $person->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>' !!}
                                                     </button>
                                                 </form>

@@ -32,16 +32,16 @@
                             </form>
                             <div class="float-right">
                                 <a href="{{ route('pdf.sales') }}" class="btn btn-danger btn-sm float-right">
-                                    <i class="fa fa-file-pdf"></i> <i class="bi bi-file-pdf-fill"></i>
+                                  <i class="bi bi-file-pdf-fill"></i>
                                 </a>
                                 <a href="{{ route('export.sales') }}" class="btn btn-success btn-sm float-right">
-                                    <i class="fa fa-file-excel"></i> <i class="bi bi-file-earmark-excel-fill"></i>
+                                    <i class="bi bi-file-earmark-excel-fill"></i>
                                 </a>
                             </div>
                             <div class="float-right">
-                                <a href="{{ route('sales.create') }}" class="btn btn-primary btn-sm float-right"
+                                <a href="{{ route('sales.create') }}" class="btn btn-succes"
                                     data-placement="left">
-                                    <i class="bi bi-plus-lg"></i>
+                                    Crear
                                 </a>
                             </div>
                         </div>
@@ -78,13 +78,12 @@
                                             <td>
                                                 <form action="{{ route('sales.destroy', $sale->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary "
-                                                        href="{{ route('sales.show', $sale->id) }}"><i
-                                                            class="fa fa-fw fa-eye"></i> <i class="bi bi-eye-fill"></i></a>
+                                                        href="{{ route('sales.show', $sale->id) }}">
+                                                            <i class="bi bi-eye-fill"></i></a>
                                                     
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i
-                                                            class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm">{{ __('Eliminar') }}</button>
                                                 </form>
 
                                             </td>
