@@ -71,11 +71,29 @@
                                 {{ Form::select('status', ['aprobado' => 'Aprobado', 'rechazado' => 'Rechazado', 'pendiente' => 'Pendiente'], isset($quote->status) ? $quote->status : old('status'), ['id' => 'Estado', 'class' => 'form-control' . ($errors->has('status') ? ' is-invalid' : ''), 'required' => 'required']) }}
                                 {!! $errors->first('status', '<div class="invalid-feedback">:message</div>') !!}
                             </div>
+
                             <div class="form-group">
+                                {{ Form::label('Nombre del cliente', null, ['class' => 'required-label']) }}
+                                {{ Form::select(
+                                    'name',
+                                    $usersName,
+                                    $quote->client_name,
+                                    [
+                                        'class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''),
+                                        'required',
+                                        'placeholder' => 'Nombre del cliente',
+                                        'id' => 'name',
+                                    ]
+                                ) }}
+                                {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+                            
+
+                            {{--  <div class="form-group">
                                 {{ Form::label('Persona', null, ['class' => 'required']) }}
                                 {{ Form::select('people_id',$persons, $quote->people_id, ['id' => 'Persona','class' => 'form-control' . ($errors->has('people_id') ? ' is-invalid' : ''),'required']) }}
                                 {!! $errors->first('people_id', '<div class="invalid-feedback">:message</div>') !!}
-                            </div>
+                            </div>  --}}
                 </div>
                 <div class="container">
                     <div class="box-footer">
