@@ -32,7 +32,7 @@
             <button type="submit" class="btn btn-primary"
                 onclick="return confirm('¿Está seguro de editar este registro?');">{{ __('Submit') }}</button>
         @else
-            <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+            <button type="submit" class="btn btn-success">{{ __('Crear') }}</button>
         @endif
         <a class="btn btn-primary" href="{{ route('materials_raws.index') }}"> {{ __('Back') }}</a>
 

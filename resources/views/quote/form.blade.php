@@ -89,7 +89,7 @@
             </div>
             <div class="container">
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-success btn-enviar">{{ __('Enviar') }}</button>
+                    <button type="submit" class="btn btn-success btn-crear">{{ __('Crear') }}</button>
                     <a type="submit" class="btn btn-primary" href="{{ route('quotes.index') }}">Volver</a>
                 </div>
             </div>

@@ -59,7 +59,7 @@
                 <div class="box-footer mt-3">
                     <button type="button" id="submitButton" class="btn btn-success btn-enviar"
                         onclick="enviarDetalles()">
-                        {{ __('Enviar') }}
+                        {{ __('Crear') }}
                     </button>
                     <a type="button" class="btn btn-primary" href="{{ route('sales.index') }}">Volver</a>
                 </div>
