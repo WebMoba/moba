@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends( 'layouts.app' )
 @if (Session::has('msj'))
     {{ Session::get('msj') }}
 @endif

@@ -121,7 +121,7 @@
         <p class="p1">
             Su paso por Moba nos demuestra que a veces las segundas partes sí son buenas, y es que Dayana ya trabajó con
             nosotros más de 4 años y se fue a aventurarse por otros lados.
-      
+
             Allí se dió cuenta que las pintas están bien, pero como una cervecita frente al mar no hay nada y tras unos
             meses regresó.
 
@@ -162,6 +162,14 @@
     <!---------------------------------------------------------------------------------------------------------------->
 
     <div class="container mt-5">
+
+        <div class="container ms-5">
+            <a target="_blank" class=" equipo ">
+                <img src="{{ asset('Imagenes/imgs-gallery/equipoTrabajo1.jpg') }}" alt="Equipo" id="equipo" class="img-equipo">
+                    <a class="text border border-white p-1 mb-5 border-opacity-30 rounded-2"> EQUIPO MOBA </a>
+    
+            </a>
+        </div>
 
         <div class="box-1">
             <div class="texto">
@@ -206,34 +214,52 @@
 
         <div class="imagenes">
 
-            <a target="_blank" class="imagen-contenedor">
-
-                <img src="{{ asset('Imagenes/imgs-gallery/javier.jpg') }}" alt="JAVIER" id="JAVIER"
-                    class="img-thumbnail">
+            <a target="_blank" class="imagen-contenedor javier-imagen">
+                <img src="{{ asset('Imagenes/imgs-gallery/javier.jpg') }}" alt="JAVIER" id="JAVIER" class="img-thumbnail">
             </a>
 
             <a target="_blank" class="imagen-contenedor">
+                <img src="{{ asset('Imagenes\imgs-gallery\Canela.jpg') }}" alt="Canela" class="img-thumbnail">
+            </a>
+
+            <a target="_blank" class="imagen-contenedor">
+                <img src="{{ asset('Imagenes\imgs-gallery\Haku.jpg') }}" alt="Haku" class="img-thumbnail">
+            </a>
+
+            <a target="_blank" class="imagen-contenedor sofia-imagen">
 
                 <img src="{{ asset('Imagenes\imgs-gallery\SOFIA_PEREZ12.jpg') }}" alt="SOFIA_PEREZ1"
                     id="SOFIA_PEREZ1" class="img-thumbnail">
             </a>
 
             <a target="_blank" class="imagen-contenedor">
+                <img src="{{ asset('Imagenes\imgs-gallery\Gamin.jpg') }}" alt="Gamin" class="img-thumbnail">
+            </a>
+
+            <a target="_blank" class="imagen-contenedor">
+                <img src="{{ asset('Imagenes\imgs-gallery\Mischa.jpg') }}" alt="Mischa" class="img-thumbnail">
+            </a>
+
+            <a target="_blank" class="imagen-contenedor dayana.imagen">
                 <img src="{{ asset('Imagenes\imgs-gallery\DAYANA_FONSECA1.jpg') }}" alt="DAYANA_FONSECA1"
                     id="DAYANA_FONSECA1" class="img-thumbnail">
             </a>
 
             <a target="_blank" class="imagen-contenedor">
-                <img src="{{ asset('Imagenes\imgs-gallery\AMIGO_1.jpg') }}" alt="Imagen 4" class="img-thumbnail">
+                <img src="{{ asset('Imagenes\imgs-gallery\Billu.jpg') }}" alt="Billu" class="img-thumbnail">
             </a>
 
             <a target="_blank" class="imagen-contenedor">
+                <img src="{{ asset('Imagenes\imgs-gallery\Samy.jpg') }}" alt="Samy" class="img-thumbnail">
+            </a>
+
+            <a target="_blank" class="imagen-contenedor linda-imagen">
                 <img src="{{ asset('Imagenes\imgs-gallery\LINDA_PEREZ_1l.JPG') }}" alt="LINDA_PEREZ"
                     id="LINDA_PEREZ" class="img-thumbnail">
             </a>
 
             <a target="_blank" class="imagen-contenedor">
-                <img src="{{ asset('Imagenes\imgs-gallery\AMIGO_1.jpg') }}" alt="Imagen 6" class="img-thumbnail">
+                <img src="{{ asset('Imagenes\imgs-gallery\Tokio.jpg') }}" alt="Tokio" class="img-thumbnail">
             </a>
         </div>
 
@@ -243,7 +269,9 @@
 
     </div>
 
-
+    <footer class="">
+        @include('partials.footerMoba')
+    </footer>
 
 
 
@@ -304,16 +332,40 @@
             botonCerrarLinda.addEventListener('click', function() {
                 asideLinda.style.display = 'none';
             });
+
+
+            // Agregar eventos de clic a los botones de cierre
+            botonCerrarJavier.addEventListener('click', function() {
+                asideJavier.style.display = 'none';
+            });
+
+            botonCerrarSofia.addEventListener('click', function() {
+                asideSofia.style.display = 'none';
+            });
+
+            botonCerrarDayana.addEventListener('click', function() {
+                asideDayana.style.display = 'none';
+            });
+
+            botonCerrarLinda.addEventListener('click', function() {
+                asideLinda.style.display = 'none';
+            });
         });
     </script>
 
+   
 
-    @include('partials.footerMoba')
 </body>
 
 </html>
 
 <style>
+    .img-equipo{
+        width: 1030px;
+        height: 600px;
+        z-index: auto; 
+        display: flex;
+    }
     .aside-container {
         right: 0;
         /* Alinear desde la derecha */
@@ -323,7 +375,6 @@
         width: 50%;
         /* Ocupar la mitad del ancho de la pantalla */
         background-color: black;
-
         border-radius: 10px;
         font-size: 100%;
         position: fixed;
@@ -359,14 +410,14 @@
 
     .p1 {
 
-        border-left: 10px solid  #2bb9e5;
+        border-left: 10px solid #2bb9e5;
         padding-left: 20px;
         margin-right: 8%;
         margin-left: 8%;
         margin-top: 10%;
         margin-bottom: 10%;
 
-        
+
         text-align: justify;
         line-height: 2;
         margin-bottom: 0;
@@ -518,4 +569,39 @@
     .container-fluid {
         padding: 0 !important;
     }
+
+    .imagen-contenedor {
+        position: relative;
+        display: inline-block;
+    }
+
+    .imagen-contenedor::after {
+        content: attr(alt);
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .imagen-contenedor:hover::after {
+        opacity: 1;
+    }
+
+    .javier-imagen:hover, 
+    .sofia-imagen:hover, 
+    .dayana-imagen:hover, 
+    .linda-imagen:hover {
+        
+        cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="white" stroke="black" stroke-width="2"/><path d="M12 6v12m-6-6h12" fill="none" stroke="black" stroke-width="2"/></svg>'), auto;
+    }
+
+    
+    
 </style>
