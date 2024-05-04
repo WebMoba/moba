@@ -37,7 +37,7 @@
                             <div class="float-right">
                                 <a href="{{ route('purchases.create') }}" class="btn btn-success" 
                                     data-placement="left">
-                                    Crear</i>
+                                    <i class="bi bi-plus-circle-fill"></i>
                                 </a>
                             </div>
                         </div>
