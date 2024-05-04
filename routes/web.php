@@ -67,6 +67,8 @@ Route::resource('unit', UnitController::class);
 Route::get('/pdf/product', [ProductController::class, 'generatePDF'])->name('pdf.product');
 Route::get('/pdf/unit', [UnitController::class, 'generatePDF'])->name('pdf.unit');
 
+//dashboard
+Route::get('/pages/dashboard', [QuoteController::class, 'dashboard'])->name('pages.dashboard');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -195,6 +197,7 @@ Route::get('/tuArteMenu/servicios/Decoracion/index', [ProductController::class, 
 Route::get('/tuArteMenu/servicios/JoditasPalRecuerdo/index', [ProductController::class, 'indexForJoditas'])->name('tuArteMenu.servicios.JoditasPalRecuerdo.index');
 Route::get('/tuArteMenu/servicios/Mascotas/index', [ProductController::class, 'indexForPets'])->name('tuArteMenu.servicios.Mascotas.index');
 Route::view('/tuArteMenu/Contacto/index', 'tuArteMenu.Contacto.index')->name('tuArteMenu.Contacto.index');
+
 
 
 

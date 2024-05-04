@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Quote;
-
+use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Models\Person;
@@ -34,13 +34,32 @@ class QuoteController extends Controller
 
         $search = trim($request->get('search'));
         $quotes = Quote::select('id', 'date_issuance', 'description', 'total', 'discount', 'status', 'people_id', 'disable')
-                ->where('id', 'LIKE', '%' . $search . '%')
-                ->orWhere('description', 'LIKE', '%' . $search . '%')
-                ->orderBy('date_issuance', 'asc')
-                ->paginate(10);
-        
+            ->where('id', 'LIKE', '%' . $search . '%')
+            ->orWhere('description', 'LIKE', '%' . $search . '%')
+            ->orderBy('date_issuance', 'asc')
+            ->paginate(10);
+
         return view('quote.index', compact('quotes', 'search'));
         // ->with('i', (request()->input('page', 1) - 1) * $quotes->perPage());
+    }
+
+    public function dashboard()
+    {
+        // Cotizaciones actuales (sumar total de cotizaciones)
+        $currentQuotesTotal = DB::table('quotes')->whereDate('created_at', Carbon::today())->sum('total');
+
+        // Cotizaciones del día anterior (sumar total de cotizaciones)
+        $yesterdayQuotesTotal = DB::table('quotes')->whereDate('created_at', Carbon::yesterday())->sum('total');
+
+        // Calcular el porcentaje de cambio
+        if ($yesterdayQuotesTotal > 0) {
+            $percentageChange = (($currentQuotesTotal - $yesterdayQuotesTotal) / $yesterdayQuotesTotal) * 100;
+        } else {
+            $percentageChange = 0; // Evitar división por cero
+        }
+
+        // Pasar variables a la vista
+        return view('pages.dashboard', compact('currentQuotesTotal', 'percentageChange'));
     }
 
     /**
@@ -70,33 +89,33 @@ class QuoteController extends Controller
     public function store(Request $request)
     {
         request()->validate(Quote::$rules);
-    
-        $msj=[
-            'required'=>'El atributo es requerido',
-            'max'=>'No puede ingresar mas caracteres en este campo',
+
+        $msj = [
+            'required' => 'El atributo es requerido',
+            'max' => 'No puede ingresar mas caracteres en este campo',
             'string' => 'El campo debe ser una cadena de texto.',
             'date' => 'El campo no debe ser una fecha anterior al dia de Hoy.',
         ];
-    
+
         $request->validate([
-            'date_issuance'=>'required|date',
-            'description'=>'required|string|max:300',
-            'total'=>'required|numeric',
-            'discount'=>'required|numeric',
+            'date_issuance' => 'required|date',
+            'description' => 'required|string|max:300',
+            'total' => 'required|numeric',
+            'discount' => 'required|numeric',
             'status' => 'required|in:aprobado,rechazado,pendiente',
-            'people_id'=>'required',
+            'people_id' => 'required',
         ], $msj);
-    
+
         $quote = Quote::create($request->all());
-    
-        $detailQuote = new DetailQuote() ;
+
+        $detailQuote = new DetailQuote();
 
         $quote->date_issuance = now()->format('Y-m-d');
         $servicesId = $request->input('services_id');
         $productsId = $request->input('products_id');
         $projectsId = $request->input('projects_id');
         $quotesId = $request->input('quotes_id');
-       
+
         // Crear los detalles de la cotización
         if ($request->has('services_id')) {
             foreach ($request->services_id as $key => $serviceId) {
@@ -108,12 +127,11 @@ class QuoteController extends Controller
                 $quote->detailQuotes()->save($detalle);
             }
         }
-    
+
         return redirect()->route('quotes.index')->with('success', 'Cotización creada correctamente.');
-        
     }
 
-    
+
 
     /**
      * Display the specified resource.
@@ -151,7 +169,7 @@ class QuoteController extends Controller
         $quote->date_issuance = now()->format('Y-m-d');
         return view('quote.create', compact('quote', 'detailQuote', 'persons', 'services', 'products', 'projects', 'quotes'));
     }
-    
+
 
 
     /**

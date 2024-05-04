@@ -1,4 +1,3 @@
-
 <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4"
     id="sidenav-main">
     <div class="sidenav-header">
@@ -18,7 +17,7 @@
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteName() == 'home' ? 'active' : '' }}"
-                    href="{{ route('home') }}">
+                    href="{{ route('page', ['page' => 'dashboard']) }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
@@ -26,7 +25,7 @@
                     <span class="nav-link-text ms-1">Menu</span>
                 </a>
             </li>
-            <li class="nav-item">
+            {{--  <li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteName() == 'profile' ? 'active' : '' }}"
                     href="{{ route('profile') }}">
                     <div
@@ -35,8 +34,8 @@
                     </div>
                     <span class="nav-link-text ms-1">Perfil</span>
                 </a>
-            </li>
-            <li class="nav-item">
+            </li>  --}}
+            {{--  <li class="nav-item">
                 <a class="nav-link {{ str_contains(request()->url(), 'user-management') == true ? 'active' : '' }}"
                     href="{{ route('page', ['page' => 'user-management']) }}">
                     <div
@@ -45,11 +44,11 @@
                     </div>
                     <span class="nav-link-text ms-1">Gestión de usuarios</span>
                 </a>
-            </li>
+            </li>  --}}
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Registros</h6>
             </li>
-            <li class="nav-item">
+            {{--  <li class="nav-item">
                 <a class="nav-link {{ str_contains(request()->url(), 'tables') == true ? 'active' : '' }}"
                     href="{{ route('page', ['page' => 'tables']) }}">
                     <div
@@ -68,11 +67,12 @@
                     </div>
                     <span class="nav-link-text ms-1">Billing</span>
                 </a>
-            </li>
+            </li>  --}}
             <li class="nav-item">
                 <a class="nav-link {{ str_contains(request()->url(), 'person') == true ? 'active' : '' }}"
                     href="{{ route('person.index') }}">
-                    <div class="icon icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                    <div
+                        class="icon icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="bi bi-person-plus text-info text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Personas</span>
