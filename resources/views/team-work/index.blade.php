@@ -31,17 +31,17 @@
                             </form>
                             <div class="float-right">
                                 <a href="{{ route('pdf.teamwork') }}" class="btn btn-danger btn-sm float-right">
-                                    <i class="fa fa-file-pdf"></i>  <i class="bi bi-file-pdf-fill"></i>
+                                    <i class="bi bi-file-pdf-fill"></i>
                                 </a>
 
                                 <a href="{{ route('excel.teamwork') }}" class="btn btn-success btn-sm float-right">
-                                    <i class="fa fa-file-excel"></i> <i class="bi bi-file-earmark-excel-fill"></i>
+                                    <i class="bi bi-file-earmark-excel-fill"></i>
                                 </a>
                             </div>
                             <div class="float-right">
-                                <a href="{{ route('team-works.create') }}" class="btn btn-primary btn-sm float-right"
+                                <a href="{{ route('team-works.create') }}" class="btn btn-success"
                                     data-placement="left">
-                                    <i class="bi bi-plus-lg"></i>
+                                    Crear
                                 </a>
                             </div>
                         </div>
@@ -76,16 +76,14 @@
                                                 <form action="{{ route('team-works.destroy', $teamWork->id) }}"
                                                     method="POST">
                                                     <a class="btn btn-sm btn-primary {{ $teamWork->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('team-works.show', $teamWork->id) }}"><i
-                                                            class="fa fa-fw fa-eye"></i><i class="bi bi-eye-fill"></i></a>
+                                                        href="{{ route('team-works.show', $teamWork->id) }}"><i class="bi bi-eye-fill"></i></a>
                                                     <a class="btn btn-sm btn-success {{ $teamWork->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('team-works.edit', $teamWork->id) }}"><i
-                                                            class="fa fa-fw fa-edit"></i> <i class="bi bi-pencil-square"></i></a>
+                                                        href="{{ route('team-works.edit', $teamWork->id) }}"> <i class="bi bi-pencil-square"></i></a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit"
                                                         onclick="return confirm('¿Está seguro de que desea {{ $teamWork->disable ? 'Habilitar' : 'Deshabilitar' }} este equipo de trabajo?')"
-                                                        class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i>
+                                                        class="btn btn-danger btn-sm">
                                                         {!! $teamWork->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>'!!}
                                                     </button>
                                                 </form>

@@ -27,16 +27,16 @@
                             </form>
                             <div class="">
                                 <a href="{{ route('pdf.materials_raw') }}" class="btn btn-danger btn-sm float-right">
-                                    <i class="fa fa-file-pdf"></i><i class="bi bi-file-pdf-fill"></i>
+                                    <i class="bi bi-file-pdf-fill"></i>
                                 </a>
                                 <a href="{{ route('export.materials.raw') }}" class="btn btn-success btn-sm float-right">
-                                    <i class="fa fa-file-excel"></i> <i class="bi bi-file-earmark-excel-fill"></i>
+                                     <i class="bi bi-file-earmark-excel-fill"></i>
                                 </a>
                             </div>
                             <div class="float-right">
-                                <a href="{{ route('materials_raws.create') }}" class="btn btn-primary btn-sm float-right"
+                                <a href="{{ route('materials_raws.create') }}" class="btn btn-success" 
                                     data-placement="left">
-                                    <i class="bi bi-plus-lg"></i>
+                                    Create
                                 </a>
                             </div>
                         </div>
@@ -74,16 +74,14 @@
                                                 <form action="{{ route('materials_raws.destroy', $materialsRaw->id) }}"
                                                     method="POST">
                                                     <a class="btn btn-sm btn-primary {{ $materialsRaw->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('materials_raws.show', $materialsRaw->id) }}"><i
-                                                            class="fa fa-fw fa-eye"></i> <i class="bi bi-eye-fill"></i></a>
+                                                        href="{{ route('materials_raws.show', $materialsRaw->id) }}"></i> <i class="bi bi-eye-fill"></i></a>
                                                     <a class="btn btn-sm btn-success {{ $materialsRaw->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('materials_raws.edit', $materialsRaw->id) }}"><i
-                                                            class="fa fa-fw fa-edit"></i><i class="bi bi-pencil-square"></i></a>
+                                                        href="{{ route('materials_raws.edit', $materialsRaw->id) }}"><i class="bi bi-pencil-square"></i></a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"
                                                         onclick="return confirm('¿Está seguro de que desea {{ $materialsRaw->disable ? 'Habilitar' : 'Deshabilitar' }} a la  persona?')">
-                                                        <i class="fa fa-fw fa-trash"></i>
+                                                   
                                                         {!! $materialsRaw->disable ?  '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>'!!}
                                                     </button>
                                                 </form>

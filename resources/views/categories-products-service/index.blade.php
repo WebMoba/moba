@@ -38,16 +38,16 @@
                             <div class="float-right">
                                 <a href="{{ route('pdf.categories-products-service') }}"
                                     class="btn btn-danger btn-sm float-right">
-                                    <i class="fa fa-file-pdf"></i>  <i class="bi bi-file-pdf-fill"></i>
+                                    <i class="bi bi-file-pdf-fill"></i>
                                 </a>
                                 <a href="{{ route('excel.categories-products-service') }}" class="btn btn-success btn-sm float-right">
-                                    <i class="fa fa-file-excel"></i> <i class="bi bi-file-earmark-excel-fill"></i>
+                                    <i class="bi bi-file-earmark-excel-fill"></i>
                                 </a>
                             </div>
                             <div class="float-right">
                                 <a href="{{ route('categories-products-service.create') }}"
-                                    class="btn btn-primary btn-sm float-right" data-placement="left">
-                                    <i class="bi bi-plus-lg"></i>
+                                    class="btn btn-success" data-placement="left">
+                                    Crear
                                 </a>
                             </div>
                         </div>
@@ -89,16 +89,15 @@
                                                         action="{{ route('categories-products-service.destroy', $categoriesProductsService->id) }}"
                                                         method="POST">
                                                         <a class="btn btn-sm btn-primary {{ $categoriesProductsService->disable ? 'disabled' : '' }}"
-                                                            href="{{ route('categories-products-service.show', $categoriesProductsService->id) }}"><i
-                                                                class="fa fa-fw fa-eye"></i> <i class="bi bi-eye-fill"></i></a>
+                                                            href="{{ route('categories-products-service.show', $categoriesProductsService->id) }}">
+                                                                 <i class="bi bi-eye-fill"></i></a>
                                                         <a class="btn btn-sm btn-success {{ $categoriesProductsService->disable ? 'disabled' : '' }}"
-                                                            href="{{ route('categories-products-service.edit', $categoriesProductsService->id) }}"><i
-                                                                class="fa fa-fw fa-edit"></i> <i class="bi bi-pencil-square"></i></a>
+                                                            href="{{ route('categories-products-service.edit', $categoriesProductsService->id) }}">
+                                                             <i class="bi bi-pencil-square"></i></a>
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger btn-sm"
                                                             onclick="return confirm('¿Está seguro de que desea {{ $categoriesProductsService->disable ? 'Habilitar' : 'Deshabilitar' }} la categoria?')">
-                                                            <i class="fa fa-fw fa-trash"></i>
                                                             {!!$categoriesProductsService->disable ?  '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>'!!}
                                                         </button>
                                                     </form>

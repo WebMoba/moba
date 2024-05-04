@@ -29,17 +29,17 @@
                             </form>
                             <div class="float-right">
                                 <a href="{{ route('pdf.quote') }}" class="btn btn-danger btn-sm float-right">
-                                    <i class="fa fa-file-pdf"></i><i class="bi bi-file-pdf-fill"></i>
+                                   <i class="bi bi-file-pdf-fill"></i>
                                 </a>
 
                                 <a href="{{ route('excel.quote') }}" class="btn btn-success btn-sm float-right">
-                                    <i class="fa fa-file-excel"></i><i class="bi bi-file-earmark-excel-fill"></i>
+                                    <i class="bi bi-file-earmark-excel-fill"></i>
                                 </a>
                             </div>
                             <div class="float-right">
-                                <a href="{{ route('quotes.create') }}" class="btn btn-primary btn-sm float-right"
+                                <a href="{{ route('quotes.create') }}" class="btn btn-success"
                                     data-placement="left">
-                                    <i class="bi bi-plus-lg"></i>
+                                    Crear
                                 </a>
                             </div>
                         </div>
@@ -77,7 +77,7 @@
                                             <td>
                                                 <form action="{{ route('quotes.destroy', $quote->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary {{ $quote->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('quotes.show', $quote->id) }}"><i class="fa fa-fw fa-eye"></i>
+                                                        href="{{ route('quotes.show', $quote->id) }}">
                                                         <i class="bi bi-eye-fill"></i>
                                                     </a>
                                                     {{--  <a class="btn btn-sm btn-success {{ $quote->disable ? 'disabled' : '' }}"
@@ -88,7 +88,6 @@
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"
                                                         onclick="return confirm('¿Está seguro de que desea {{ $quote->disable ? 'Habilitar' : 'Deshabilitar' }} la cotización?')">
-                                                        <i class="fa fa-fw fa-trash"></i>
                                                         {!! $quote->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>'!!}
                                                     </button>
                                                 </form>

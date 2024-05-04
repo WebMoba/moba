@@ -37,9 +37,10 @@
 
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary"
+        <button type="submit" class="btn btn-success btn-Crear"
             @if ($mode == 'Editar') onclick="return confirm('¿Está seguro de que desea {{ $mode }} este servicio ?')" @endif>
             {{ $mode }}</button>
+            <a type="submit" class="btn btn-primary" href="{{ route('service.index') }}">Volver</a>
     </div>
 </div>
 <style>
