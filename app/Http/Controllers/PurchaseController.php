@@ -87,11 +87,11 @@ class PurchaseController extends Controller
             ->get();
 
 
-        $usersName = User::with('person')
+            $usersName = User::with('person')
             ->whereHas('person', function ($query) {
                 $query->where('rol', 'Proveedor')
                     ->where('users_id', '!=', null)
-                    ->where('disable', false); // Agregar esta línea
+                    ->where('disable', false);
             })
             ->pluck('name', 'id');
 
@@ -104,6 +104,8 @@ class PurchaseController extends Controller
 
         $purchaseName = $purchase->name;
         $confirm = false;
+
+        $providers = $providers ?? collect(); // Si $providers no está definido o es null, se asigna una colección vacía
 
         return view('purchase.create', compact('purchase', 'providers', 'detailPurchase', 'purchases', 'materialsRaws', 'purchaseName', 'confirm', 'usersName'));
     }

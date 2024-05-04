@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends( 'layouts.app' )
 @if (Session::has('msj'))
     {{ Session::get('msj') }}
 @endif
@@ -23,9 +23,10 @@
                                 <div class="col-auto mr-2">
                                     <input type="text" class="form-control" name="search" placeholder="Buscar...">
                                 </div>
-                                
+
                                 <div class="col-auto">
-                                    <button type="submit" class="btn btn-primary btn-sm"><i class="bi bi-search"></i></button>
+                                    <button type="submit" class="btn btn-primary btn-sm"><i
+                                            class="bi bi-search"></i></button>
                                 </div>
 
 
@@ -37,7 +38,8 @@
                                 <a href="{{ route('export.sales') }}" class="btn btn-success btn-sm float-right">
                                     <i class="bi bi-file-earmark-excel-fill"></i>
                                 </a>
-                            </div>
+                                
+                            </div>
                             <div class="float-right">
                                 <a href="{{ route('sales.create') }}" class="btn btn-success"
                                     data-placement="left">
@@ -58,14 +60,42 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>N°</th>
-                                        <th>N° venta</th>
                                         <th>Nombre Cliente</th>
                                         <th>Id Persona</th>
                                         <th>Fecha venta</th>
-                                        <th>Fecha de Cotización</th>
+                                        <th>N° Cotización</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @if ($sales === null || count($sales) <= 0)
+                                        <tr>
+                                            <td colspan="4">No se encontraron resultados en su busqueda.</td>
+                                        </tr>
+                                    @else
+                                        @foreach ($sales as $sale)
+                                            <tr>
+                                                <td>{{ ++$i }}</td>
+                                                <td>{{ $sale->name }}</td>
+                                                <td>{{ $sale->person->id_card }}</td>
+                                                <td>{{ $sale->date }}</td>
+                                                <td>{{ $sale->quote->id }}</td>
+                                                <td>
+                                                    <form action="{{ route('sales.destroy', $sale->id) }}" method="POST">
+                                                        <a class="btn btn-sm btn-primary {{ $sale->disable ? 'disabled' : '' }}"
+                                                            href="{{ route('sales.show', $sale->id) }}"><i
+                                                                class="bi bi-eye-fill"></i></a>
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm"
+                                                            onclick="return confirm('¿Está seguro de que desea {{ $sale->disable ? 'Habilitar' : 'Deshabilitar' }} a la  venta?')">
+                                                            <i class="fa fa-fw fa-trash"></i>
+                                                            {!! $sale->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>' !!}
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
 
                                     @foreach ($sales as $sale)
                                         <tr>

@@ -7,7 +7,7 @@
 @section('content')
     <section class="content container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-10 mx-auto">
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">

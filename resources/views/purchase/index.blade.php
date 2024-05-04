@@ -94,10 +94,6 @@
                                                            
                                                             {!! $purchase->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>' !!}
                                                         </button>
-
-
-
-
                                                     </form>
 
 

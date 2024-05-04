@@ -10,12 +10,15 @@ use Illuminate\Database\Eloquent\Model;
  * Class Person
  *
  * @property $id
+ * @property $rol
  * @property $id_card
+ * @property $name
  * @property $addres
  * @property $created_at
  * @property $updated_at
  * @property $team_works_id
  * @property $number_phones_id
+ * @property $regions_id
  * @property $towns_id
  * @property $users_id
  *
@@ -122,5 +125,10 @@ class Person extends Model
     public function isProvider()
     {
         return $this->rol === 'Proveedor';
+    }
+
+    public function scopeClients($query)
+    {
+        return $query->where('rol', 'Cliente');
     }
 }

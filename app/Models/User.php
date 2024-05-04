@@ -60,4 +60,6 @@ class User extends Authenticatable
     {
         return $this->hasOne(Person::class, 'users_id', 'id');
     }
+
+    
 }

@@ -108,6 +108,73 @@
 
                         </tr>
                         <!-- <tr>
+                                <small class="text-muted">Por cuestiones de seguridad este campo no es editable.</small>
+                            </div>    
+                            <div class="form-group">
+                                {{ Form::label('Descripción', null, ['class' => 'required']) }}
+                                {{ Form::text('description', $quote->description, ['id' => 'Descripción','class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''),'required']) }}
+                                {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+                            <div class="form-group">
+                                {{ Form::label('Total', null, ['class' => 'required']) }}
+                                {{ Form::number('total', $quote->total, ['id' => 'Total','class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''),'required']) }}
+                                {!! $errors->first('total', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+                            <div class="form-group">
+                                {{ Form::label('Descuento', null, ['class' => 'required']) }}
+                                {{ Form::text('discount', $quote->discount, ['id' => 'Descuento','class' => 'form-control' . ($errors->has('discount') ? ' is-invalid' : ''),'required']) }}
+                                {!! $errors->first('discount', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+                            <div class="form-group">
+                                {{ Form::label('Estado', null, ['class' => 'required']) }}
+                                {{ Form::select('status', ['aprobado' => 'Aprobado', 'rechazado' => 'Rechazado', 'pendiente' => 'Pendiente'], isset($quote->status) ? $quote->status : old('status'), ['id' => 'Estado', 'class' => 'form-control' . ($errors->has('status') ? ' is-invalid' : ''), 'required' => 'required']) }}
+                                {!! $errors->first('status', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+
+                            <div class="form-group">
+                                {{ Form::label('Nombre del cliente', null, ['class' => 'required-label']) }}
+                                {{ Form::select(
+                                    'name',
+                                    $usersName,
+                                    $quote->client_name,
+                                    [
+                                        'class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''),
+                                        'required',
+                                        'placeholder' => 'Nombre del cliente',
+                                        'id' => 'name',
+                                    ]
+                                ) }}
+                                {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+                            
+
+                            {{--  <div class="form-group">
+                                {{ Form::label('Persona', null, ['class' => 'required']) }}
+                                {{ Form::select('people_id',$persons, $quote->people_id, ['id' => 'Persona','class' => 'form-control' . ($errors->has('people_id') ? ' is-invalid' : ''),'required']) }}
+                                {!! $errors->first('people_id', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>  --}}
+                </div>
+                <div class="container">
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-success btn-enviar">{{ __('Enviar') }}</button>
+                        <a type="submit" class="btn btn-primary" href="{{ route('quotes.index') }}">Volver</a>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <h2>Detalle Cotización</h2>
+                <!-- Contenido de la segunda tabla -->
+                <div class="box-body">
+                    <table id="detalle-table" class="table">
+                        <thead>
+                            <tr>
+                                <th>Servicio</th>
+                                <th>Producto</th>
+                                <th>Proyecto</th>
+                                <th>Eliminar</th>
+                                
+                            </tr>
+                            <!-- <tr>
                                 <th>
                                     <a type="submit" class="btn btn-primary" href="{{ route('service.index') }}"> Crear Servicio </a>
                                 </th>

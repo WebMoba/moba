@@ -35,6 +35,7 @@ use App\Exports\QuoteExport;
 use App\Exports\TeamWorkExport;
 //fin fabian
 
+//controladores purchases, detailpurchases y materials raw
 
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\MaterialsRawController;
@@ -67,6 +68,8 @@ Route::resource('unit', UnitController::class);
 Route::get('/pdf/product', [ProductController::class, 'generatePDF'])->name('pdf.product');
 Route::get('/pdf/unit', [UnitController::class, 'generatePDF'])->name('pdf.unit');
 
+//dashboard
+Route::get('/pages/dashboard', [QuoteController::class, 'dashboard'])->name('pages.dashboard');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -165,6 +168,12 @@ Route::view('/mobaMenu/proyectos/ODONTOLOGIA', 'mobaMenu.proyectos.ODONTOLOGIA')
 Route::view('/mobaMenu/proyectos/PUNTOCERO', 'mobaMenu.proyectos.PUNTOCERO')->name('mobaMenu.proyectos.PUNTOCERO');
 Route::view('/mobaMenu/proyectos/RASPADOS', 'mobaMenu.proyectos.RASPADOS')->name('mobaMenu.proyectos.RASPADOS');
 Route::view('/mobaMenu/proyectos/JOVEN', 'mobaMenu.proyectos.JOVEN')->name('mobaMenu.proyectos.JOVEN');
+Route::view('/mobaMenu/proyectos/CAFELATINO', 'mobaMenu.proyectos.CAFELATINO')->name('mobaMenu.proyectos.CAFELATINO');
+Route::view('/mobaMenu/proyectos/CAFEMANA', 'mobaMenu.proyectos.CAFEMANA')->name('mobaMenu.proyectos.CAFEMANA');
+Route::view('/mobaMenu/proyectos/EMPANADASBOTI', 'mobaMenu.proyectos.EMPANADASBOTI')->name('mobaMenu.proyectos.EMPANADASBOTI');
+Route::view('/mobaMenu/proyectos/EMPANADASRANCHO', 'mobaMenu.proyectos.EMPANADASRANCHO')->name('mobaMenu.proyectos.EMPANADASRANCHO');
+Route::view('/mobaMenu/proyectos/EMPOWER', 'mobaMenu.proyectos.EMPOWER')->name('mobaMenu.proyectos.EMPOWER');
+Route::view('/mobaMenu/proyectos/PALMAS', 'mobaMenu.proyectos.PALMAS')->name('mobaMenu.proyectos.PALMAS');
 
 
 
@@ -195,6 +204,7 @@ Route::get('/tuArteMenu/servicios/Decoracion/index', [ProductController::class, 
 Route::get('/tuArteMenu/servicios/JoditasPalRecuerdo/index', [ProductController::class, 'indexForJoditas'])->name('tuArteMenu.servicios.JoditasPalRecuerdo.index');
 Route::get('/tuArteMenu/servicios/Mascotas/index', [ProductController::class, 'indexForPets'])->name('tuArteMenu.servicios.Mascotas.index');
 Route::view('/tuArteMenu/Contacto/index', 'tuArteMenu.Contacto.index')->name('tuArteMenu.Contacto.index');
+
 
 
 

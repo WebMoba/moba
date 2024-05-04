@@ -65,11 +65,7 @@
                         ¡Has llegado al lugar indicado!
                     </h4>
                 </div>
-                <div class="lineatexto">
-                    <div class="linea">
-                        linea
-                    </div>
-                    <div class="texto">
+                <div class="texto">
                         <p>
                             Como expertos en diseño y comunicación, somos el proveedor ideal para ayudarte a crear
                             piezas de
@@ -78,7 +74,6 @@
                             interna efectiva. ¡Contáctanos hoy y transforma la forma en que te comunicas con tus
                             clientes!
                         </p>
-                    </div>
                 </div>
             </div>
 
@@ -335,18 +330,30 @@
             padding: 1%;
         }
 
-        .lineatexto {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: row;
+        .texto:not(:last-child)::after {
+            content: '';
+            /* Contenido generado */
+            position: absolute;
+            /* Posicionamiento absoluto */
+            top: 1px;
+            /* Arriba */
+            left: -28px;
+            /* Alineado a la izquierda del texto */
+            width: 5px;
+            /* Ancho del HR vertical */
+            height: 160%;
+            /* Altura del HR vertical */
+            background-color: cornflowerblue;
+            /* Color del HR vertical */
         }
 
-        .linea {}
-
         .texto {
-
-            color: white;
+            color: #BCCCE0;
+            font-size: 24px;
+            /* Tamaño de la fuente */
+            position: relative;
+            /* Establece la posición relativa para que sea la referencia para el HR */
+            font-weight: normal;
         }
 
         a {
@@ -521,6 +528,13 @@
             padding: 0 !important;
         }
 
+        @media screen and (max-width: 400px) {
+            .contenido2{
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+        }
 
     </style>
 

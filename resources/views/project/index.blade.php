@@ -9,7 +9,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-10 mx-auto">
                 <div class="card">
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -49,7 +49,7 @@
                         </div>
                     @endif
                     <div class="card-body">
-                        <div class="table-responsive">
+                        <div class="table-responsive text-center">
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
