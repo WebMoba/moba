@@ -177,58 +177,58 @@
 
 <script>
     function enviarDetalles() {
-    const detalles = [];
-    const fechaInput = document.querySelector('input[name="date"]');
-    const nombreClienteSelect = document.querySelector('select[name="name"]');
-    const cotizacionSelect = document.querySelector('select[name="quotes_id"]');
+        const detalles = [];
+        const fechaInput = document.querySelector('input[name="date"]');
+        const nombreClienteSelect = document.querySelector('select[name="name"]');
+        const cotizacionSelect = document.querySelector('select[name="quotes_id"]');
 
-    const fecha = fechaInput.value;
-    const clienteId = nombreClienteSelect.value;
-    const cotizacionId = cotizacionSelect.value;
+        const fecha = fechaInput.value;
+        const clienteId = nombreClienteSelect.value;
+        const cotizacionId = cotizacionSelect.value;
 
-    const nombreCliente = nombreClienteSelect.options[nombreClienteSelect.selectedIndex].text.split(' - ')[0];
+        const nombreCliente = nombreClienteSelect.options[nombreClienteSelect.selectedIndex].text.split(' - ')[0];
 
-    document.querySelectorAll('#detalle-table tbody tr').forEach(function(detalle) {
-        const productoSelect = detalle.querySelector('select[name^="product_id"]');
-        const cantidadInput = detalle.querySelector('input[name^="quantity"]');
-        const precioUnitarioInput = detalle.querySelector('input[name^="price_unit"]');
-        const subtotalInput = detalle.querySelector('input[name^="subtotal"]');
-        const descuentoInput = detalle.querySelector('input[name^="discount"]');
-        const totalInput = detalle.querySelector('input[name^="total"]');
+        document.querySelectorAll('#detalle-table tbody tr').forEach(function(detalle) {
+            const productoSelect = detalle.querySelector('select[name^="product_id"]');
+            const cantidadInput = detalle.querySelector('input[name^="quantity"]');
+            const precioUnitarioInput = detalle.querySelector('input[name^="price_unit"]');
+            const subtotalInput = detalle.querySelector('input[name^="subtotal"]');
+            const descuentoInput = detalle.querySelector('input[name^="discount"]');
+            const totalInput = detalle.querySelector('input[name^="total"]');
 
-        const productoId = productoSelect.value;
-        const cantidad = cantidadInput.value;
-        const precioUnitario = precioUnitarioInput.value;
-        const subtotal = subtotalInput.value;
-        const descuento = descuentoInput.value;
-        const total = totalInput.value;
+            const productoId = productoSelect.value;
+            const cantidad = cantidadInput.value;
+            const precioUnitario = precioUnitarioInput.value;
+            const subtotal = subtotalInput.value;
+            const descuento = descuentoInput.value;
+            const total = totalInput.value;
 
-        detalles.push({
-            producto_id: productoId,
-            cantidad: cantidad,
-            precio_unitario: precioUnitario,
-            subtotal: subtotal,
-            descuento: descuento,
-            total: total
+            detalles.push({
+                producto_id: productoId,
+                cantidad: cantidad,
+                precio_unitario: precioUnitario,
+                subtotal: subtotal,
+                descuento: descuento,
+                total: total
+            });
         });
-    });
 
-    const data = {
-        cliente_id: clienteId,
-        nombre_cliente: nombreCliente,
-        fecha: fecha,
-        cotizacion_id: cotizacionId,
-        detalles: detalles
-    };
+        const data = {
+            cliente_id: clienteId,
+            nombre_cliente: nombreCliente,
+            fecha: fecha,
+            cotizacion_id: cotizacionId,
+            detalles: detalles
+        };
 
-    $.ajax({
-        type: "POST",
-        url: "{{ route('sales.store') }}",
-        data: {
-            _token: '{{ csrf_token() }}',
-            data: data
-        },
-        success: function(response) {
+        $.ajax({
+            type: "POST",
+            url: "{{ route('sales.store') }}",
+            data: {
+                _token: '{{ csrf_token() }}',
+                data: data
+            },
+            success: function(response) {
                 // Manejar la respuesta del servidor si es necesario
                 console.log(response);
             },
@@ -236,9 +236,9 @@
                 // Manejar errores si los hay
                 console.error(err);
             }
-    });
-    window.location.href = "{{ route('sales.index') }}";
-}
+        });
+        window.location.href = "{{ route('sales.index') }}";
+    }
 
 
 
@@ -299,6 +299,11 @@
         // Agregar el nuevo detalle a la tabla
         container.appendChild(nuevoDetalle);
     });
+
+    function eliminarDetalle(button) {
+        var row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+    }
 </script>
 
 
