@@ -3,7 +3,7 @@
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand m-0" href="{{ route('home') }}">
+            <a class="navbar-brand m-0" href="/">
             <div class="brand-container d-flex justify-content-between align-items-center">
                 <img src="{{ asset('/Imagenes/Logotipo_moba.png') }}" class="navbar-brand-img h-180" alt="main_logo"
                     width="70px" height="80px">
