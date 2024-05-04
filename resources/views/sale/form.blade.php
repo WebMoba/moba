@@ -169,39 +169,76 @@
         var selectedValue = $(this).val();
         $('#people_id').val(selectedValue);
     });
+</script>
 
-    function calcularTotalDetalle(row) {
-        var quantity = parseFloat(row.querySelector('[name="quantity"]').value);
-        var priceUnit = parseFloat(row.querySelector('[name="price_unit"]').value);
-        var discount = parseFloat(row.querySelector('[name="discount"]').value);
+<script>
+    function enviarDetalles() {
+        const detalles = [];
+        const fechaInput = document.querySelector('input[name="date"]');
+        const nombreClienteSelect = document.querySelector('select[name="name"]');
+        const cotizacionSelect = document.querySelector('select[name="quotes_id"]');
 
-        // Calcular el subtotal
-        var subtotal = quantity * priceUnit;
+        const fecha = fechaInput.value;
+        const clienteId = nombreClienteSelect.value;
+        const cotizacionId = cotizacionSelect.value;
 
-        // Calcular el total con descuento
-        var total = subtotal - (subtotal * (discount / 100));
+        const nombreCliente = nombreClienteSelect.options[nombreClienteSelect.selectedIndex].text.split(' - ')[0];
 
-        // Actualizar los campos de subtotal y total en la fila
-        row.querySelector('[name="subtotal"]').value = subtotal.toFixed(2);
-        row.querySelector('[name="total"]').value = total.toFixed(2);
+        document.querySelectorAll('#detalle-table tbody tr').forEach(function(detalle) {
+            const productoSelect = detalle.querySelector('select[name^="product_id"]');
+            const cantidadInput = detalle.querySelector('input[name^="quantity"]');
+            const precioUnitarioInput = detalle.querySelector('input[name^="price_unit"]');
+            const subtotalInput = detalle.querySelector('input[name^="subtotal"]');
+            const descuentoInput = detalle.querySelector('input[name^="discount"]');
+            const totalInput = detalle.querySelector('input[name^="total"]');
+
+            const productoId = productoSelect.value;
+            const cantidad = cantidadInput.value;
+            const precioUnitario = precioUnitarioInput.value;
+            const subtotal = subtotalInput.value;
+            const descuento = descuentoInput.value;
+            const total = totalInput.value;
+
+            detalles.push({
+                producto_id: productoId,
+                cantidad: cantidad,
+                precio_unitario: precioUnitario,
+                subtotal: subtotal,
+                descuento: descuento,
+                total: total
+            });
+        });
+
+        const data = {
+            cliente_id: clienteId,
+            nombre_cliente: nombreCliente,
+            fecha: fecha,
+            cotizacion_id: cotizacionId,
+            detalles: detalles
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "{{ route('sales.store') }}",
+            data: {
+                _token: '{{ csrf_token() }}',
+                data: data
+            },
+            success: function(response) {
+                // Manejar la respuesta del servidor si es necesario
+                console.log(response);
+            },
+            error: function(err) {
+                // Manejar errores si los hay
+                console.error(err);
+            }
+        });
+        window.location.href = "{{ route('sales.index') }}";
     }
 
-    // Función para agregar event listeners a los campos de un detalle
-    function addEventListeners(row) {
-        row.querySelector('[name="quantity"]').addEventListener('input', function() {
-            calcularTotalDetalle(row);
-        });
 
-        row.querySelector('[name="price_unit"]').addEventListener('input', function() {
-            calcularTotalDetalle(row);
-        });
 
-        row.querySelector('[name="discount"]').addEventListener('input', function() {
-            calcularTotalDetalle(row);
-        });
-    }
-
-    // Llamar a la función para agregar event listeners al detalle inicial
+    // Agregar eventos de escucha para el detalle inicial
     document.addEventListener('DOMContentLoaded', function() {
         const initialDetail = document.querySelector('#detalle-table tbody tr');
         addEventListeners(initialDetail);

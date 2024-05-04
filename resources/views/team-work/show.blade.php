@@ -7,7 +7,7 @@
 @section('content')
     <section class="content container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-10 mx-auto">
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
@@ -19,25 +19,29 @@
                     </div>
 
                     <div class="card-body">
-                        
-                        <div class="form-group">
-                            <strong>Especialidad:</strong>
-                            {{ $teamWork->specialty }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Trabajo asignado:</strong>
-                            {{ $teamWork->assigned_work }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Fecha asignada:</strong>
-                            {{ $teamWork->assigned_date }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Proyecto:</strong>
-                            
-                            {{ $teamWork->projects_id }}
-                        </div>
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                        <th>Especialidad:</th>
+                                        <td>{{ $teamWork->specialty }}</td>
+                                </tr>
 
+                                <tr>
+                                        <th>Trabajo asignado:</th>
+                                        <td>{{ $teamWork->assigned_work }}</td>
+                                </tr>
+
+                                <tr>
+                                        <th>Fecha asignada:</th>
+                                        <td>{{ $teamWork->assigned_date }}</td>
+                                </tr>
+
+                                <tr>
+                                        <th>Proyecto:</th>
+                                        <td>{{ $teamWork->projects_id }}</td>
+                                </tr>
+                            </tbody>
+                        </table>        
                     </div>
                 </div>
             </div>

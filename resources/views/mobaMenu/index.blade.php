@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('css/StyleFooter.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
 </head>
 
 <body class="background-image">
@@ -63,7 +66,7 @@
                 <p>Los pilares y bases de nuestro trabajo, estan regidos por la honestidad, la disiplina y la...</p>
             </div>
             <div class="logomoba">
-                <img src="{{ asset('Imagenes/Logomoba.png') }}" class="navbar-img-left" alt="Logo Moba">
+                <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
             </div>
         </div>
     
@@ -82,16 +85,58 @@
     
     <!-- galeria de imagenes -->
 
-    <div class="img-gallery">
-        <img src="{{ asset('Imagenes/imgs-gallery/1.jpg') }} " onclick="openFulImg(this.src)" alt="">
-        <img src="{{ asset('Imagenes/imgs-gallery/2.jpg') }} " onclick="openFulImg(this.src)" alt="">
-        <img src="{{ asset('Imagenes/imgs-gallery/3.jpg') }} " onclick="openFulImg(this.src)" alt="">
-        <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }} " onclick="openFulImg(this.src)" alt="">
-        <img src="{{ asset('Imagenes/imgs-gallery/5.jpg') }} " onclick="openFulImg(this.src)" alt="">
-        <img src="{{ asset('Imagenes/imgs-gallery/6.jpg') }} " onclick="openFulImg(this.src)" alt="">
-        <img src="{{ asset('Imagenes/imgs-gallery/7.jpg') }} " onclick="openFulImg(this.src)" alt="">
-        <img src="{{ asset('Imagenes/imgs-gallery/8.jpg') }} " onclick="openFulImg(this.src)" alt="">
+        <!-- galeria de imagenes -->
+    <div class="contenedor__carrusel">   
+        <div class="carousel">
+            <div class="carousel__contenedor">
+                <button aria-label="Anterior" class="carousel__anterior">
+                    <i class="fa-solid fa-angle-left"></i>
+                </button>
+
+                <div class="carousel__lista">
+                    <div class="carousel__elemento">
+                        <img src="{{ asset('Imagenes/imgs-gallery/1.jpg') }} " alt="Rock and Roll Hall of Fame">
+                        
+                    </div>
+                    <div class="carousel__elemento">
+                        <img src="{{ asset('Imagenes/imgs-gallery/2.jpg') }} " alt="Constitution Square - Tower I">
+                        
+                    </div>
+                    <div class="carousel__elemento">
+                        <img src="{{ asset('Imagenes/imgs-gallery/3.jpg') }} " alt="Empire State Building">
+                    
+                    </div>
+                    <div class="carousel__elemento">
+                        <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }} " alt="Harmony Tower">
+
+                    </div>
+
+                    <div class="carousel__elemento">
+                        <img src="{{ asset('Imagenes/imgs-gallery/5.jpg') }} " alt="Empire State Building">
+                    
+                    </div>
+                    <div class="carousel__elemento">
+                        <img src="{{ asset('Imagenes/imgs-gallery/7.jpg') }} " alt="Harmony Tower">
+
+                    </div>
+                    <div class="carousel__elemento">
+                        <img src="{{ asset('Imagenes/imgs-gallery/8.jpg') }} " alt="Empire State Building">
+                        
+                    </div>
+                    <div class="carousel__elemento">
+                        <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }} " alt="Harmony Tower">
+
+                    </div>
+                </div>
+
+                <button aria-label="Siguiente" class="carousel__siguiente">
+                    <i class="fa-solid fa-angle-right"></i>
+                </button>
+            </div>
+            <div role="tablist" class="carousel__indicadores"></div>
+        </div>
     </div>
+
     
 
 
@@ -109,7 +154,40 @@
             fulImgBox.style.display = "none";
         }
     </script>
-
+    <!-- script carrusel -->
+    <script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+    <script>
+        window.addEventListener('load', function(){
+            new Glider(document.querySelector('.carousel__lista'), {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: '.carousel__indicadores',
+                arrows: {
+                    prev: '.carousel__anterior',
+                    next: '.carousel__siguiente'
+                },
+                responsive: [
+                    {
+                    // screens greater than >= 775px
+                    breakpoint: 450,
+                    settings: {
+                        // Set to `auto` and provide item width to adjust to viewport
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                    },{
+                    // screens greater than >= 1024px
+                    breakpoint: 800,
+                    settings: {
+                        slidesToShow: 4,
+                        slidesToScroll: 4
+                    }
+                    }
+                ]
+            });
+        });
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
@@ -240,20 +318,92 @@
             width: 90%;
             max-width: 600px;
         }
+
+        /* --- --- CAROUSEL --- --- */
+        .contenedor__carrusel{
+            background-color: white;
+            width: 80%;
+            margin: 50px auto 50px;
+                        
+        }
+        .carousel__contenedor {
+            position: relative;
+        }
+
+        .carousel__anterior,
+        .carousel__siguiente {
+            position: absolute;
+            display: block;
+            width: 30px;
+            height: 30px;
+            border: none;
+            top: calc(50% - 40px);
+            cursor: pointer;
+            line-height: 30px;
+            text-align: center;
+            background: none;
+            opacity: 20%;
+        }
+
+        .carousel__anterior:hover,
+        .carousel__siguiente:hover {
+            opacity: 100%;
+        }
+
+        .carousel__lista {
+            overflow: hidden;
+        }
+
+        .carousel__elemento {
+            text-align: center;
+            padding: 1%;
+        }
+
+        .carousel__indicadores .glider-dot {
+            display: block;
+            width: 30px;
+            height: 4px;
+            background: black;
+            opacity: .2;
+            border-radius: 0;
+        }
+
+        .carousel__indicadores .glider-dot:hover {
+            opacity: .5;
+        }
+
+        .carousel__indicadores .glider-dot.active {
+            opacity: 1;
+        }
+
+        @media screen and (max-width: 800px) {
+            body {
+                padding: 40px 0;
+            }
+
+            .contenido-principal {
+                flex-direction: column;
+            }
+
+            .contenido-principal > * {
+                width: 100%;
+            }
+        }   
+
         @media screen and (max-width:400px){
             h1{
                 text-decoration: underline;
             }
             h1::before{
-                display: none;
+                display: none;  
             }
             h1 span{
                 padding: 0;
             }
         }
         .container-fluid{
-    padding: 0 !important;
-}
+            padding: 0 !important;
+        }
 
     </style>
 
