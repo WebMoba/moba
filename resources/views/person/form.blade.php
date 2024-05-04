@@ -45,7 +45,7 @@
 
         <div class="form-group">
             {{ Form::label('Grupo de Trabajo', null, ['class' => 'required']) }}
-            {{ Form::select('team_works_id', $teamWorks, $person->team_works_id, ['class' => 'form-control' . ($errors->has('team_works_id') ? ' is-invalid' : ''), 'placeholder' => 'Grupo de trabajo']) }}
+            {{ Form::select('team_works_id', $teamWorks, $person->team_works_id, ['class' => 'form-control' . ($errors->has('team_works_id') ? ' is-invalid' : ''), 'placeholder' => '']) }}
             {!! $errors->first('team_works_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 

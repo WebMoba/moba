@@ -88,7 +88,7 @@ class PersonController extends Controller
             Rule::unique('people', 'id_card')->ignore($request->id),
         ],
         'user_name' => 'required',
-        'team_works_id' => 'required',
+        
         'phone_number' => ['required', 'max:10'], // Asegúrate de que el campo del número de teléfono esté presente en la solicitud
         'region' => 'required',
         'towns_id' => 'required',
@@ -186,7 +186,7 @@ class PersonController extends Controller
         'id_card' => 'required',
         'identification_type' => ['required', Rule::in(['cedula', 'cedula Extranjeria', 'NIT'])],
         'addres' => 'required',
-        'team_works_id' => 'required',
+        
         'phone_number' => 'required',
         'region' => 'required', // Asegúrate de que el campo 'region' esté presente en la solicitud
         'towns_id' => 'required',

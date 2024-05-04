@@ -21,5 +21,4 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('Moba100%2024*')
         ]);
     }
-    
 }

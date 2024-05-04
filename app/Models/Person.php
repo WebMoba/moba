@@ -38,7 +38,6 @@ class Person extends Model
 
     static $rules = [
         'id_card' => 'required',
-        'team_works_id' => 'required',
         'number_phones_id' => 'required',
         'towns_id' => 'required',
         'users_id' => 'required',
