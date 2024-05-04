@@ -63,7 +63,7 @@
                 <p>Los pilares y bases de nuestro trabajo, estan regidos por la honestidad, la disiplina y la...</p>
             </div>
             <div class="logomoba">
-                <img src="{{ asset('Imagenes/Logomoba.png') }}" class="navbar-img-left" alt="Logo Moba">
+                <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
             </div>
         </div>
     

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Quote;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Models\Person;
@@ -52,13 +53,29 @@ class QuoteController extends Controller
     {
         $quote = new Quote();
         $detailQuote = new DetailQuote();
+
         $persons = Person::pluck('id_card', 'id');
         $services = Service::pluck('name', 'id');
         $products = Product::pluck('name', 'id');
         $projects = Project::pluck('name', 'id');
         $quotes = Quote::pluck('description', 'id');
         $quote->date_issuance = now()->format('Y-m-d');
-        return view('quote.create', compact('quote', 'detailQuote', 'persons', 'services', 'products', 'projects', 'quotes'));
+
+        $clients = Person::where('rol', 'Cliente')
+            ->where('disable', false) // Agregar esta línea si es necesario
+            ->get();
+        
+        $usersName = User::with('person')
+            ->whereHas('person', function ($query) {
+                $query->where('rol', 'Cliente')
+                    ->where('users_id', '!=', null)
+                    ->where('disable', false);
+            })
+            ->pluck('name', 'id');
+
+        $clients = Person::clients()->get();
+
+        return view('quote.create', compact('quote','clients','usersName', 'detailQuote', 'persons', 'services', 'products', 'projects', 'quotes'));
     }
 
     /**
