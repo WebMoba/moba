@@ -22,7 +22,7 @@
         "fakerphp/faker": "^1.9.1",
         "ibex/crud-generator": "^1.4",
         "kitloong/laravel-migrations-generator": "^6.11",
-        "laravel-lang/common": "^6.1",
+        "laravel-lang/common": "^6.2",
         "laravel/dusk": "^8.0",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.18",
