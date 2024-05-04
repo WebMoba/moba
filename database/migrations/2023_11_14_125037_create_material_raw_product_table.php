@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('material_raw_product', function (Blueprint $table) {
-            $table->boolean('disable')->default(true);
+            $table->boolean('disable')->default(false);
             $table->integer('materials_raws_id')->index('fk_material_raw_product_materials_raws1_idx');
             $table->integer('products_id')->index('fk_material_raw_product_products1_idx');
         });

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('detail_quotes', function (Blueprint $table) {
             $table->integer('id', true);
-            $table->boolean('disable')->default(true);
+            $table->boolean('disable')->default(false);
             $table->timestamps();
             $table->integer('services_id')->index('fk_detail_quotes_services1_idx');
             $table->integer('products_id')->index('fk_detail_quotes_products1_idx');

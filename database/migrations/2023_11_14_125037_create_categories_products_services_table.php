@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('quantity')->nullable();
             $table->enum('popular', ['Alta', 'Media', 'Baja'])->nullable();
             $table->enum('type', ['servicio', 'producto'])->nullable();
-            $table->boolean('disable')->default(true);
+            $table->boolean('disable')->default(false);
             $table->timestamps();
         });
     }
