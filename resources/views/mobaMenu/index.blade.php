@@ -85,187 +85,106 @@
     </div>
     <!-- Líneas verticales con iconos -->
     
-    <!-- galeria de imagenes -->
-    <div class="contenedor__carrusel">   
-        <div class="carousel">
-            <div class="carousel__contenedor">
-                <button aria-label="Anterior" class="carousel__anterior">
-                    <i class="fa-solid fa-angle-left"></i>
-                </button>
+    
+    <div class="container-slider">
+        <div class="slider-background">  
+            <div class="slider">
+                <div class="slide-track">
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/2.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/1.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/2.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/1.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/6.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }}" alt="">
+                    </div>
 
-                <div class="carousel__lista">
-                    <div class="carousel__elemento">
-                        <img src="{{ asset('Imagenes/imgs-gallery/1.jpg') }} " alt="Rock and Roll Hall of Fame">
-                        
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/3.jpg') }}" alt="">
                     </div>
-                    <div class="carousel__elemento">
-                        <img src="{{ asset('Imagenes/imgs-gallery/2.jpg') }} " alt="Constitution Square - Tower I">
-                        
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }}" alt="">
                     </div>
-                    <div class="carousel__elemento">
-                        <img src="{{ asset('Imagenes/imgs-gallery/3.jpg') }} " alt="Empire State Building">
-                    
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/6.jpg') }}" alt="">
                     </div>
-                    <div class="carousel__elemento">
-                        <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }} " alt="Harmony Tower">
-
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/3.jpg') }}" alt="">
                     </div>
-
-                    <div class="carousel__elemento">
-                        <img src="{{ asset('Imagenes/imgs-gallery/5.jpg') }} " alt="Empire State Building">
-                    
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/5.jpg') }}" alt="">
                     </div>
-                    <div class="carousel__elemento">
-                        <img src="{{ asset('Imagenes/imgs-gallery/7.jpg') }} " alt="Harmony Tower">
-
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/2.jpg') }}" alt="">
                     </div>
-                    <div class="carousel__elemento">
-                        <img src="{{ asset('Imagenes/imgs-gallery/8.jpg') }} " alt="Empire State Building">
-                        
-                    </div>
-                    <div class="carousel__elemento">
-                        <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }} " alt="Harmony Tower">
-
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/6.jpg') }}" alt="">
                     </div>
                 </div>
-
-                <button aria-label="Siguiente" class="carousel__siguiente">
-                    <i class="fa-solid fa-angle-right"></i>
-                </button>
             </div>
-            <div role="tablist" class="carousel__indicadores"></div>
-        </div>  
-        <div class="carousel2">
-            <div class="carousel__contenedor2">
-                <button aria-label="Anterior" class="carousel__anterior2">
-                    <i class="fa-solid fa-angle-left"></i>
-                </button>
-
-                <div class="carousel__lista2">
-                    <div class="carousel__elemento2">
-                        <img src="{{ asset('Imagenes/imgs-gallery/1.jpg') }} " alt="Rock and Roll Hall of Fame">
-                        
+            <div class="slider">
+                <div class="slide-track">
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/7.jpg') }}" alt="">
                     </div>
-                    <div class="carousel__elemento2">
-                        <img src="{{ asset('Imagenes/imgs-gallery/2.jpg') }} " alt="Constitution Square - Tower I">
-                        
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/5.jpg') }}" alt="">
                     </div>
-                    <div class="2">
-                        <img src="{{ asset('Imagenes/imgs-gallery/3.jpg') }} " alt="Empire State Building">
-                    
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }}" alt="">
                     </div>
-                    <div class="carousel__elemento2">
-                        <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }} " alt="Harmony Tower">
-
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/2.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/1.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/6.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/3.jpg') }}" alt="">
                     </div>
 
-                    <div class="carousel__elemento2">
-                        <img src="{{ asset('Imagenes/imgs-gallery/5.jpg') }} " alt="Empire State Building">
-                    
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/3.jpg') }}" alt="">
                     </div>
-                    <div class="carousel__elemento2">
-                        <img src="{{ asset('Imagenes/imgs-gallery/7.jpg') }} " alt="Harmony Tower">
-
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }}" alt="">
                     </div>
-                    <div class="carousel__elemento2">
-                        <img src="{{ asset('Imagenes/imgs-gallery/8.jpg') }} " alt="Empire State Building">
-                        
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/6.jpg') }}" alt="">
                     </div>
-                    <div class="carousel__elemento2">
-                        <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }} " alt="Harmony Tower">
-
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/3.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/5.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/2.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/6.jpg') }}" alt="">
                     </div>
                 </div>
-
-                <button aria-label="Siguiente" class="carousel__siguiente2">
-                    <i class="fa-solid fa-angle-right"></i>
-                </button>
             </div>
-            <div role="tablist" class="carousel__indicadores2"></div>
         </div>
     </div>
-    
 
-    
-
-
-    <!-- Contenido de la página aquí -->
-    <!-- script galeria -->
-    <script>
-        const fulImgBox = document.getElementById("fulImgBox"),
-        fulImg = document.getElementById("fulImg");
-
-        function openFulImg(reference){
-            fulImgBox.style.display = "flex";
-            fulImg.src = reference
-        }
-        function closeImg(){
-            fulImgBox.style.display = "none";
-        }
-    </script>
-    <!-- script carrusel -->
-    <script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
-    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
-    <script>
-        window.addEventListener('load', function(){
-            new Glider(document.querySelector('.carousel__lista'), {
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                dots: '.carousel__indicadores',
-                arrows: {
-                    prev: '.carousel__anterior',
-                    next: '.carousel__siguiente'
-                },
-                responsive: [
-                    {
-                    // screens greater than >= 775px
-                    breakpoint: 450,
-                    settings: {
-                        // Set to `auto` and provide item width to adjust to viewport
-                        slidesToShow: 2,
-                        slidesToScroll: 2
-                    }
-                    },{
-                    // screens greater than >= 1024px
-                    breakpoint: 800,
-                    settings: {
-                        slidesToShow: 4,
-                        slidesToScroll: 4
-                    }
-                    }
-                ]
-            });
-        });
-        window.addEventListener('load', function(){
-            new Glider(document.querySelector('.carousel__lista2'), {
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                dots: '.carousel__indicadores2',
-                arrows: {
-                    prev: '.carousel__anterior2',
-                    next: '.carousel__siguiente2'
-                },
-                responsive: [
-                    {
-                    // screens greater than >= 775px
-                    breakpoint: 450,
-                    settings: {
-                        // Set to `auto` and provide item width to adjust to viewport
-                        slidesToShow: 2,
-                        slidesToScroll: 2
-                    }
-                    },{
-                    // screens greater than >= 1024px
-                    breakpoint: 800,
-                    settings: {
-                        slidesToShow: 4,
-                        slidesToScroll: 4
-                    }
-                    }
-                ]
-            });
-        });
-    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
@@ -363,118 +282,47 @@
             text-decoration: none;
         }
 
-        /* --- --- CAROUSEL --- --- */
-        .contenedor__carrusel{
-            background-color: white;
+        .container-fluid{
+            padding: 0 !important;
+        }
+
+        /*carrousel infinito*/
+        .container-slider{
+            width:100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .slider-background{
             width: 80%;
-            margin: 50px auto 50px;
-                        
-        }
-        .carousel__contenedor {
-            position: relative;
-        }
-
-        .carousel__anterior,
-        .carousel__siguiente {
-            position: absolute;
-            display: block;
-            width: 30px;
-            height: 30px;
-            border: none;
-            top: calc(50% - 40px);
-            cursor: pointer;
-            line-height: 30px;
-            text-align: center;
-            background: none;
-            opacity: 20%;
-        }
-
-        .carousel__anterior:hover,
-        .carousel__siguiente:hover {
-            opacity: 100%;
-        }
-
-        .carousel__lista {
-            overflow: hidden;
-        }
-
-        .carousel__elemento {
-            text-align: center;
-            padding: 1%;
-        }
-
-        .carousel__indicadores .glider-dot {
-            display: block;
-            width: 30px;
-            height: 4px;
-            background: black;
-            opacity: .2;
-            border-radius: 0;
-        }
-
-        .carousel__indicadores .glider-dot:hover {
-            opacity: .5;
-        }
-
-        .carousel__indicadores .glider-dot.active {
-            opacity: 1;
-        }
-
-        /*Carrousel2*/
-        .contenedor__carrusel2{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
             background-color: white;
-            width: 80%;
-            margin: 50px auto 50px;
-                        
         }
-        .carousel__contenedor2 {
-            position: relative;
-        }
-
-        .carousel__anterior2,
-        .carousel__siguiente2 {
-            position: absolute;
-            display: block;
-            width: 30px;
-            height: 30px;
-            border: none;
-            top: calc(50% - 40px);
-            cursor: pointer;
-            line-height: 30px;
-            text-align: center;
-            background: none;
-            opacity: 20%;
-        }
-
-        .carousel__anterior2:hover,
-        .carousel__siguiente2:hover {
-            opacity: 100%;
-        }
-
-        .carousel__lista2 {
+        .slider {
+            width: 90%;
+            height: auto;
             overflow: hidden;
+            margin-bottom: 5%;
+            margin-top: 5%;
         }
-
-        .carousel__elemento2 {
-            text-align: center;
-            padding: 1%;
+        
+        .slider .slide-track {
+            display: flex;
+            animation: scroll 40s linear infinite;
+            -webkit-animation: scroll 40s linear infinite;
+            width: calc(200px * 14);
         }
-
-        .carousel__indicadores2 .glider-dot {
-            display: block;
-            width: 30px;
-            height: 4px;
-            background: black;
-            opacity: .2;
-            border-radius: 0;
+        
+        .slider .slide {
+            width: 200px;
         }
-
-        .carousel__indicadores2 .glider-dot:hover {
-            opacity: .5;
-        }
-
-        .carousel__indicadores2 .glider-dot.active {
-            opacity: 1;
+        
+        .slider .slide img {
+            width: 100%;
+            padding-right: 5%;
         }
 
         @media screen and (max-width:1200px){
@@ -503,21 +351,7 @@
         }
 
         @media screen and (max-width: 900px) {
-
-            .contenido-principal {
-                flex-direction: column;
-            }
-
-            .contenido-principal > * {
-                width: 100%;
-            }
-            .contenido-principal2 {
-                flex-direction: column;
-            }
-
-            .contenido-principal2 > * {
-                width: 100%;
-            }
+            
             .logotexto{
                 flex-direction: row;
             }
@@ -528,9 +362,6 @@
         }
         
         @media screen and (max-width: 700px){
-            .contenido-principal {
-                flex-direction: column;
-            }
             .logotexto{
                 flex-direction: row;
             }
@@ -548,6 +379,7 @@
                 color: white;
                 text-align: justify;
                 width: 80%;
+                padding-top: 10%;
             }
         } 
 
@@ -566,6 +398,7 @@
                 color: white;
                 text-align: justify;
                 width: 80%;
+                padding-top: 10%;
             }
             .logotexto{
                 flex-direction: column;
@@ -580,8 +413,16 @@
                 color: white;
             }
         }
-        .container-fluid{
-            padding: 0 !important;
+        
+        @keyframes scroll {
+            0% {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+            100% {
+                -webkit-transform: translateX(calc(-200px * 7));
+                transform: translateX(calc(-200px * 7));
+            }
         }
 
     </style>
