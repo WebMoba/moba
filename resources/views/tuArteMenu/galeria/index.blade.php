@@ -297,7 +297,7 @@
 
     .dropdown-menu {
         background-color: transparent !important;
-        border-color: #73a3b6 !important;
+        border-color: #f80008 !important;
     }
 
     .dropdown-menu .dropdown-item {
@@ -309,6 +309,7 @@
     .dropdown-menu .dropdown-divider {
         border-top: 1px solid #f80008;
     }
+
     .container-fluid{
         padding: 0 !important;
     }
