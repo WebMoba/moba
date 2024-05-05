@@ -186,7 +186,6 @@ class PersonController extends Controller
         'id_card' => 'required',
         'identification_type' => ['required', Rule::in(['cedula', 'cedula Extranjeria', 'NIT'])],
         'addres' => 'required',
-        
         'phone_number' => 'required',
         'region' => 'required', // Asegúrate de que el campo 'region' esté presente en la solicitud
         'towns_id' => 'required',
@@ -199,6 +198,7 @@ class PersonController extends Controller
     // Actualizar los datos de la persona
     $person->update([
         'name' => $request->input('user_name'),
+        'addres'=> $request->input('addres'),
         'team_works_id' => $request->input('team_works_id'),
         'phone_number' => $request->input('phone_number'),
         'region_id' => $request->input('region'),
