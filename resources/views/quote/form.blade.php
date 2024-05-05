@@ -102,21 +102,21 @@
                                 <th>
                                     <div class="form-group">
                                     {{ Form::label('') }}
-                                    {{ Form::select('services_id[]', $services, null, ['class' => 'form-control' . ($errors->has('services_id') ? ' is-invalid' : ''), 'required']) }}
+                                    {{ Form::select('services_id[]', $services, null, ['class' => 'form-control' . ($errors->has('services_id') ? ' is-invalid' : '')]) }}
                                     {!! $errors->first('services_id', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
                                 </th>
                                 <th>
                                     <div class="form-group">
                                     {{ Form::label('') }}
-                                    {{ Form::select('products_id[]', $products, null, ['class' => 'form-control' . ($errors->has('products_id') ? ' is-invalid' : ''), 'required']) }}
+                                    {{ Form::select('products_id[]', $products, null, ['class' => 'form-control' . ($errors->has('products_id') ? ' is-invalid' : '')]) }}
                                     {!! $errors->first('products_id', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
                                 </th>
                                 <th>
                                     <div class="form-group">
                                     {{ Form::label('') }}
-                                    {{ Form::select('projects_id[]', $projects, null, ['class' => 'form-control' . ($errors->has('projects_id') ? ' is-invalid' : ''), 'required']) }}
+                                    {{ Form::select('projects_id[]', $projects, null, ['class' => 'form-control' . ($errors->has('projects_id') ? ' is-invalid' : '')]) }}
                                     {!! $errors->first('projects_id', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
                                 </th>
