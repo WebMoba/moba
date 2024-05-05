@@ -55,15 +55,21 @@
         </div>
 
         <div class="logotexto">
-            <div class="texto">
-                <p>MOBA surge como una propuesta novedosa apostándole a la creatividad y a la imaginación, 
-                    para satisfacer las necesidades de las marcas y los clientes.</p>
-                <br>
-                <p>Con 8 años de experiencia, somos un referente en diseño, comunicación y publicidad; 
-                    contamos con talento humano capaz de crear estructuras, desarrollar e implementar campañas 
-                    eficaces en medios impresos y digitales.</p>
-                <br>
-                <p>Los pilares y bases de nuestro trabajo, estan regidos por la honestidad, la disiplina y la...</p>
+            <div class="textonda">
+                <div class="texto">
+                    <p>MOBA surge como una propuesta novedosa apostándole a la creatividad y a la imaginación, 
+                        para satisfacer las necesidades de las marcas y los clientes.</p>
+                    <br>
+                    <p>Con 8 años de experiencia, somos un referente en diseño, comunicación y publicidad; 
+                        contamos con talento humano capaz de crear estructuras, desarrollar e implementar campañas 
+                        eficaces en medios impresos y digitales.</p>
+                    <br>
+                    <p>Los pilares y bases de nuestro trabajo, estan regidos por la honestidad, la disiplina y la...</p>
+                </div>
+                <!-- buena onda-->
+                <div class="onda">
+                        <h1>"Buena Onda"</h1>
+                </div>
             </div>
             <div class="logomoba">
                 <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
@@ -78,10 +84,6 @@
         </div>
     </div>
     <!-- Líneas verticales con iconos -->
-    <!-- buena onda-->
-    <div class="onda">
-            <h1>"Buena Onda"</h1>
-    </div>
     
     <!-- galeria de imagenes -->
     <div class="contenedor__carrusel">   
@@ -312,7 +314,7 @@
             margin-top:9%;
         }
         .logotexto .texto{
-            width: 65%;
+            width: 100%;
             height: 80%;
         }
 
@@ -320,8 +322,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 45%;
+            width: 35%;
             height: 80%;
+            padding-bottom: 10%;
+            padding-right: 15%;
         }
 
 
@@ -334,66 +338,30 @@
 
 
         .logotexto .logomoba img{
-            width: 300px;
-            height: 100px;
+            width: 410px;
+            height: 150px;
         }
         
+        .textonda{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 65%;
+            height: 90%;
+            flex-direction: column
+        }
         /* buena onda */
         .onda{
             display: flex;
             align-items: center;
             justify-content: center;
-            padding-right: 20%;
         }
         .onda h1{
-            font-size: 50px;
+            font-size: 60px;
             font-weight: bold;
             color: white;
+            text-decoration: none;
         }
-
-
-        /* galeria imagenes */
-        /*.img-gallery{
-            background-color: white;
-            width: 80%;
-            margin: 50px auto 50px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
-            gap: 30px;
-        }
-        .img-gallery img{
-            width: 100%;
-            cursor: pointer;
-            transition: 1s;
-            padding: 1rem;
-        }
-        .img-gallery img:hover{
-            transform: scale(1.1);
-        }
-        .ful-img{
-            width: 100%;
-            height: 100vh;
-            background-color: rgba(0, 0,0, 0.9);
-            position: fixed;
-            top: 0;
-            left: 0;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 99;
-        }
-        .ful-img span{
-            position: absolute;
-            top: 5%;
-            right: 5%;
-            font-size: 30px;
-            color: #fff;
-            cursor: pointer;
-        }
-        .ful-img img{
-            width: 90%;
-            max-width: 600px;
-        }*/
 
         /* --- --- CAROUSEL --- --- */
         .contenedor__carrusel{
@@ -509,8 +477,32 @@
             opacity: 1;
         }
 
+        @media screen and (max-width:1200px){
+            .logotexto .logomoba img{
+                width: 350px;
+                height: 150px;
+            }
+            .logotexto .logomoba{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 35%;
+                height: 80%;
+                padding-bottom: 10%;
+            }
+        }
 
-        @media screen and (max-width: 800px) {
+        @media screen and (max-width: 1000px) {
+            .logotexto{
+                flex-direction: row;
+            }
+            .logotexto .logomoba img{
+                width: 300px;
+                height: 100px;
+            }
+        }
+
+        @media screen and (max-width: 900px) {
 
             .contenido-principal {
                 flex-direction: column;
@@ -526,9 +518,40 @@
             .contenido-principal2 > * {
                 width: 100%;
             }
-        }   
+            .logotexto{
+                flex-direction: row;
+            }
+            .logotexto .logomoba img{
+                width: 250px;
+                height: 80px;
+            }
+        }
+        
+        @media screen and (max-width: 700px){
+            .contenido-principal {
+                flex-direction: column;
+            }
+            .logotexto{
+                flex-direction: row;
+            }
+            .logotexto .logomoba img{
+                width: 180px;
+                height: 80px;
+            }
+            .onda h1{
+                font-size: 40px;
+                font-weight: bold;
+                color: white;
+            }
+            .logotexto .texto p{
+                font-size:10px;
+                color: white;
+                text-align: justify;
+                width: 80%;
+            }
+        } 
 
-        @media screen and (max-width:400px){
+        @media screen and (max-width:520px){
             h1{
                 text-decoration: underline;
             }
@@ -537,6 +560,24 @@
             }
             h1 span{
                 padding: 0;
+            }
+            .logotexto .texto p{
+                font-size:10px;
+                color: white;
+                text-align: justify;
+                width: 80%;
+            }
+            .logotexto{
+                flex-direction: column;
+            }
+            .logotexto .logomoba img{
+                width: 150px;
+                height: 60px;
+            }
+            .onda h1{
+                font-size: 30px;
+                font-weight: bold;
+                color: white;
             }
         }
         .container-fluid{
