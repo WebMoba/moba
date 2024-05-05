@@ -5,6 +5,8 @@
 @endsection
 
 @section('content')
+@include('layouts.navbars.auth.topnav', ['title' => 'Menu'])
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">

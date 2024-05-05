@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+@include('layouts.navbars.auth.topnav', ['title' => 'Menu'])
     <section class="content container-fluid">
         <a class="btn btn-primary" href="{{ route('person.index') }}"> {{ __('Volver') }}</a><br><br>
         <div class="row">
