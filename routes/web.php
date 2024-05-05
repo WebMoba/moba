@@ -4,7 +4,6 @@
 
 use App\Exports\CategoriesExport;
 use App\Http\Controllers\ContactoController;
-
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\BusquedaController;
@@ -62,6 +61,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::resource('product', ProductController::class);
 Route::resource('unit', UnitController::class);
 
@@ -69,10 +69,11 @@ Route::get('/pdf/product', [ProductController::class, 'generatePDF'])->name('pdf
 Route::get('/pdf/unit', [UnitController::class, 'generatePDF'])->name('pdf.unit');
 
 //dashboard
-Route::get('/pages/dashboard', [QuoteController::class, 'dashboard'])->name('pages.dashboard');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/pages/dashboard', [QuoteController::class, 'QuotesData'])->name('pages.dashboard');
 
 
 Route::middleware('auth')->group(function () {
@@ -236,6 +237,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;
+use App\Http\Controllers\DashboardController;
 
 
 Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
@@ -246,7 +248,8 @@ Route::get('/reset-password', [ResetPassword::class, 'show'])->middleware('guest
 Route::post('/reset-password', [ResetPassword::class, 'send'])->middleware('guest')->name('reset.perform');
 Route::get('/change-password', [ChangePassword::class, 'show'])->middleware('guest')->name('change-password');
 Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
-Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard')->middleware('auth');
+/* Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middleware('auth');*/
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
     Route::post('/profile', [UserProfileController::class, 'update'])->name('profile.update');

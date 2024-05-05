@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 // use App\Http\Requests\RegisterRequest;
 use App\Models\User;
+use Carbon\Carbon;
 
 class RegisterController extends Controller
 {
+
     public function create()
     {
         return view('auth.register');
@@ -25,4 +27,5 @@ class RegisterController extends Controller
 
         return redirect('/dashboard');
     }
+
 }

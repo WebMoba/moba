@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Quote;
 
 use App\Models\User;
-use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Models\Person;
@@ -45,25 +44,6 @@ class QuoteController extends Controller
         // ->with('i', (request()->input('page', 1) - 1) * $quotes->perPage());
     }
 
-    public function dashboard()
-    {
-        // Cotizaciones actuales (sumar total de cotizaciones)
-        $currentQuotesTotal = DB::table('quotes')->whereDate('created_at', Carbon::today())->sum('total');
-
-        // Cotizaciones del día anterior (sumar total de cotizaciones)
-        $yesterdayQuotesTotal = DB::table('quotes')->whereDate('created_at', Carbon::yesterday())->sum('total');
-
-        // Calcular el porcentaje de cambio
-        if ($yesterdayQuotesTotal > 0) {
-            $percentageChange = (($currentQuotesTotal - $yesterdayQuotesTotal) / $yesterdayQuotesTotal) * 100;
-        } else {
-            $percentageChange = 0; // Evitar división por cero
-        }
-
-        // Pasar variables a la vista
-        return view('pages.dashboard', compact('currentQuotesTotal', 'percentageChange'));
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -84,7 +64,7 @@ class QuoteController extends Controller
         $clients = Person::where('rol', 'Cliente')
             ->where('disable', false) // Agregar esta línea si es necesario
             ->get();
-        
+
         $usersName = User::with('person')
             ->whereHas('person', function ($query) {
                 $query->where('rol', 'Cliente')
@@ -95,7 +75,7 @@ class QuoteController extends Controller
 
         $clients = Person::clients()->get();
 
-        return view('quote.create', compact('quote','clients','usersName', 'detailQuote', 'persons', 'services', 'products', 'projects', 'quotes'));
+        return view('quote.create', compact('quote', 'clients', 'usersName', 'detailQuote', 'persons', 'services', 'products', 'projects', 'quotes'));
     }
 
     /**

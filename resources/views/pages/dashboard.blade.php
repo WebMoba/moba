@@ -10,23 +10,12 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">COTIZACIONES ACTUALES</p>
-                                    @isset($currentQuotesTotal)
-                                        <h5 class="font-weight-bolder">
-                                            {{ number_format($currentQuotesTotal, 2) }}
-                                        </h5>
-                                    @endisset
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">COTIZACIONES</p>
+                                    <h5 class="font-weight-bolder">{{ $currentQuotesCount }}</h5>
                                     <p class="mb-0">
-                                        @isset($percentageChange)
-                                            <span class="text-success text-sm font-weight-bolder">
-                                                @if ($percentageChange > 0)
-                                                    +{{ number_format($percentageChange, 2) }}%
-                                                @else
-                                                    {{ number_format($percentageChange, 2) }}%
-                                                @endif
-                                            </span>
-                                            since yesterday
-                                        @endisset
+                                        <span
+                                            class="text-success text-sm font-weight-bolder">+{{ number_format($percentageChangeQuotes) }}%</span>
+                                        desde ayer
                                     </p>
                                 </div>
                             </div>
@@ -45,13 +34,12 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">USUARIOS ACTUALES</p>
-                                    <h5 class="font-weight-bolder">
-                                        2,300
-                                    </h5>
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">USUARIOS</p>
+                                    <h5 class="font-weight-bolder">{{ $totalUsersCount }}</h5>
                                     <p class="mb-0">
-                                        <span class="text-success text-sm font-weight-bolder">+3%</span>
-                                        since last week
+                                        <span
+                                            class="text-success text-sm font-weight-bolder">+{{ number_format($percentageChangeUsers) }}%</span>
+                                        desde ayer
                                     </p>
                                 </div>
                             </div>
@@ -70,13 +58,14 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">NUEVOS CLIENTES</p>
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">COMPRAS</p>
                                     <h5 class="font-weight-bolder">
-                                        +3,462
+                                        {{ $totalPurchasesCount }}
                                     </h5>
                                     <p class="mb-0">
-                                        <span class="text-danger text-sm font-weight-bolder">-2%</span>
-                                        since last quarter
+                                        <span
+                                            class="text-success text-sm font-weight-bolder">+{{ number_format($percentageChangePurchases) }}%</span>
+                                        desde ayer
                                     </p>
                                 </div>
                             </div>
@@ -97,10 +86,10 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold">VENTAS</p>
                                     <h5 class="font-weight-bolder">
-                                        $103,430
+                                        {{ $totalSaleCount }}
                                     </h5>
                                     <p class="mb-0">
-                                        <span class="text-success text-sm font-weight-bolder">+5%</span> than last month
+                                        <span class="text-success text-sm font-weight-bolder">+{{ number_format($percentageChangeSale) }}%</span> desde ayer
                                     </p>
                                 </div>
                             </div>
