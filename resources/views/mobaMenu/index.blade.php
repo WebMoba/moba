@@ -84,8 +84,6 @@
     </div>
     
     <!-- galeria de imagenes -->
-
-        <!-- galeria de imagenes -->
     <div class="contenedor__carrusel">   
         <div class="carousel">
             <div class="carousel__contenedor">
@@ -134,8 +132,57 @@
                 </button>
             </div>
             <div role="tablist" class="carousel__indicadores"></div>
+        </div>  
+        <div class="carousel2">
+            <div class="carousel__contenedor2">
+                <button aria-label="Anterior" class="carousel__anterior2">
+                    <i class="fa-solid fa-angle-left"></i>
+                </button>
+
+                <div class="carousel__lista2">
+                    <div class="carousel__elemento2">
+                        <img src="{{ asset('Imagenes/imgs-gallery/1.jpg') }} " alt="Rock and Roll Hall of Fame">
+                        
+                    </div>
+                    <div class="carousel__elemento2">
+                        <img src="{{ asset('Imagenes/imgs-gallery/2.jpg') }} " alt="Constitution Square - Tower I">
+                        
+                    </div>
+                    <div class="2">
+                        <img src="{{ asset('Imagenes/imgs-gallery/3.jpg') }} " alt="Empire State Building">
+                    
+                    </div>
+                    <div class="carousel__elemento2">
+                        <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }} " alt="Harmony Tower">
+
+                    </div>
+
+                    <div class="carousel__elemento2">
+                        <img src="{{ asset('Imagenes/imgs-gallery/5.jpg') }} " alt="Empire State Building">
+                    
+                    </div>
+                    <div class="carousel__elemento2">
+                        <img src="{{ asset('Imagenes/imgs-gallery/7.jpg') }} " alt="Harmony Tower">
+
+                    </div>
+                    <div class="carousel__elemento2">
+                        <img src="{{ asset('Imagenes/imgs-gallery/8.jpg') }} " alt="Empire State Building">
+                        
+                    </div>
+                    <div class="carousel__elemento2">
+                        <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }} " alt="Harmony Tower">
+
+                    </div>
+                </div>
+
+                <button aria-label="Siguiente" class="carousel__siguiente2">
+                    <i class="fa-solid fa-angle-right"></i>
+                </button>
+            </div>
+            <div role="tablist" class="carousel__indicadores2"></div>
         </div>
     </div>
+    
 
     
 
@@ -166,6 +213,35 @@
                 arrows: {
                     prev: '.carousel__anterior',
                     next: '.carousel__siguiente'
+                },
+                responsive: [
+                    {
+                    // screens greater than >= 775px
+                    breakpoint: 450,
+                    settings: {
+                        // Set to `auto` and provide item width to adjust to viewport
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                    },{
+                    // screens greater than >= 1024px
+                    breakpoint: 800,
+                    settings: {
+                        slidesToShow: 4,
+                        slidesToScroll: 4
+                    }
+                    }
+                ]
+            });
+        });
+        window.addEventListener('load', function(){
+            new Glider(document.querySelector('.carousel__lista2'), {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: '.carousel__indicadores2',
+                arrows: {
+                    prev: '.carousel__anterior2',
+                    next: '.carousel__siguiente2'
                 },
                 responsive: [
                     {
@@ -277,7 +353,7 @@
 
 
         /* galeria imagenes */
-        .img-gallery{
+        /*.img-gallery{
             background-color: white;
             width: 80%;
             margin: 50px auto 50px;
@@ -317,7 +393,7 @@
         .ful-img img{
             width: 90%;
             max-width: 600px;
-        }
+        }*/
 
         /* --- --- CAROUSEL --- --- */
         .contenedor__carrusel{
@@ -376,16 +452,78 @@
             opacity: 1;
         }
 
+        /*Carrousel2*/
+        .contenedor__carrusel2{
+            background-color: white;
+            width: 80%;
+            margin: 50px auto 50px;
+                        
+        }
+        .carousel__contenedor2 {
+            position: relative;
+        }
+
+        .carousel__anterior2,
+        .carousel__siguiente2 {
+            position: absolute;
+            display: block;
+            width: 30px;
+            height: 30px;
+            border: none;
+            top: calc(50% - 40px);
+            cursor: pointer;
+            line-height: 30px;
+            text-align: center;
+            background: none;
+            opacity: 20%;
+        }
+
+        .carousel__anterior2:hover,
+        .carousel__siguiente2:hover {
+            opacity: 100%;
+        }
+
+        .carousel__lista2 {
+            overflow: hidden;
+        }
+
+        .carousel__elemento2 {
+            text-align: center;
+            padding: 1%;
+        }
+
+        .carousel__indicadores2 .glider-dot {
+            display: block;
+            width: 30px;
+            height: 4px;
+            background: black;
+            opacity: .2;
+            border-radius: 0;
+        }
+
+        .carousel__indicadores2 .glider-dot:hover {
+            opacity: .5;
+        }
+
+        .carousel__indicadores2 .glider-dot.active {
+            opacity: 1;
+        }
+
+
         @media screen and (max-width: 800px) {
-            body {
-                padding: 40px 0;
-            }
 
             .contenido-principal {
                 flex-direction: column;
             }
 
             .contenido-principal > * {
+                width: 100%;
+            }
+            .contenido-principal2 {
+                flex-direction: column;
+            }
+
+            .contenido-principal2 > * {
                 width: 100%;
             }
         }   
