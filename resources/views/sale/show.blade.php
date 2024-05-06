@@ -20,7 +20,7 @@
                     </div>
 
                     <div class="card-body">
-                        <h2>Compra</h2>
+                        <h2>Venta</h2>
 
 
                         <div class="form-group">
@@ -34,6 +34,10 @@
                         <div class="form-group">
                             <strong>Fecha realizacion de la venta:</strong>
                             {{ $sale->date }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Total de la venta:</strong>
+                            {{ $sale->total }}
                         </div>
                         <div class="form-group">
                             <strong>N° de Cotización:</strong>

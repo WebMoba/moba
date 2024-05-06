@@ -97,7 +97,7 @@ class SaleController extends Controller
             ->where('disable', false) // Agregar esta línea
             ->get();
 
-        
+
 
 
         $usersName = User::with('person')
@@ -148,6 +148,7 @@ class SaleController extends Controller
             $venta->name = $data['nombre_cliente'];
             $venta->date = $data['fecha'];
             $venta->quotes_id = $data['cotizacion_id'];
+            $venta->total = $data['totalP'];
             $venta->people_id = $data['cliente_id'];
             $venta->save();
 

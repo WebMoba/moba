@@ -188,6 +188,7 @@
         const fechaInput = document.querySelector('input[name="date"]');
         const nombreClienteSelect = document.querySelector('select[name="name"]');
         const cotizacionSelect = document.querySelector('select[name="quotes_id"]');
+        const totalP = document.querySelector('input[name="total"]').value;
 
         const fecha = fechaInput.value;
         const clienteId = nombreClienteSelect.value;
@@ -225,6 +226,7 @@
             nombre_cliente: nombreCliente,
             fecha: fecha,
             cotizacion_id: cotizacionId,
+            totalP: totalP,
             detalles: detalles
         };
 

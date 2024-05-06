@@ -64,6 +64,7 @@
                                         <th>Nombre Cliente</th>
                                         <th>Id Persona</th>
                                         <th>Fecha venta</th>
+                                        <th>Total venta</th>
                                         <th>N° Cotización</th>
                                     </tr>
                                 </thead>
@@ -79,6 +80,7 @@
                                                 <td>{{ $sale->name }}</td>
                                                 <td>{{ $sale->person->id_card }}</td>
                                                 <td>{{ $sale->date }}</td>
+                                                <td>{{ $sale->total }}</td>
                                                 <td>{{ $sale->quote->id }}</td>
                                                 <td>
                                                     <form action="{{ route('sales.destroy', $sale->id) }}" method="POST">
