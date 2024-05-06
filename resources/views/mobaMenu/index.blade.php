@@ -302,11 +302,11 @@
             background-color: white;
         }
         .slider {
-            width: 90%;
+            width: 95%;
             height: auto;
             overflow: hidden;
-            margin-bottom: 5%;
-            margin-top: 5%;
+            margin-bottom: 2%;
+            margin-top: 2%;
         }
         
         .slider .slide-track {

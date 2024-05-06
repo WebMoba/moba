@@ -667,6 +667,12 @@
                 align-items: center;
                 justify-content: center;
             }
+            .contenido2 .creatividad{
+
+            }
+            .contenido2 .contenedor{
+                padding-right: 10%;
+            }
         }
 
     </style>
