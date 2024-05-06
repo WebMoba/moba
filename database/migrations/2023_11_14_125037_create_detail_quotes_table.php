@@ -17,9 +17,9 @@ return new class extends Migration
             $table->integer('id', true);
             $table->boolean('disable')->default(false);
             $table->timestamps();
-            $table->integer('services_id')->index('fk_detail_quotes_services1_idx');
-            $table->integer('products_id')->index('fk_detail_quotes_products1_idx');
-            $table->integer('projects_id')->index('fk_detail_quotes_projects1_idx');
+            $table->integer('services_id')->index('fk_detail_quotes_services1_idx')->nullable();
+            $table->integer('products_id')->index('fk_detail_quotes_products1_idx')->nullable();
+            $table->integer('projects_id')->index('fk_detail_quotes_projects1_idx')->nullable();
             $table->integer('quotes_id')->index('fk_detail_quotes_quotes1_idx');
         });
     }
