@@ -22,17 +22,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        DB::table('people')->insert([
-            'id_card' => '1234567890',
-            'addres' => 'Calle 15 # 7A - 30',
-            'identification_type' => 'NIT',
-            'name' => 'Agencia Moba',
-            'rol' => 'Administrador',
-            'region_id' => 15,
-            'disable' => false,
-            'number_phones_id' => 4,
-            'towns_id' => 923,
-            'users_id' => 6,
-        ]);
+        
     }
 }
