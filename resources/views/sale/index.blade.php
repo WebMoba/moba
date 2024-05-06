@@ -89,7 +89,7 @@
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger btn-sm"
                                                             onclick="return confirm('¿Está seguro de que desea {{ $sale->disable ? 'Habilitar' : 'Deshabilitar' }} a la  venta?')">
-                                                            <i class="fa fa-fw fa-trash"></i>
+                                                            
                                                             {!! $sale->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>' !!}
                                                         </button>
                                                     </form>
