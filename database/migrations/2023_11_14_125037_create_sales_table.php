@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('total')->nullable();
             $table->timestamps();
             $table->integer('people_id')->index('fk_sales_people1_idx');
-            $table->integer('quotes_id')->index('fk_sales_quotes1_idx');
+            $table->integer('quotes_id')->index('fk_sales_quotes1_idx')->nullable();
         });
     }
 
