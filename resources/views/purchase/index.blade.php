@@ -54,12 +54,9 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-
-
-
-
                                         <th>Nombre del proveedor</th>
                                         <th>Documento del proveedor</th>
+                                        <th>Valor de la compra</th>
                                         <th>Fecha realizacion de la compra</th>
 
                                         <th></th>
@@ -77,8 +74,7 @@
 
                                                 <td>{{ $purchase->user->name }}</td>
                                                 <td>{{ $purchase->person->id_card }}</td>
-
-
+                                                <td>{{ $purchase->total }}</td>
                                                 <td>{{ $purchase->date }}</td>
 
                                                 <td>

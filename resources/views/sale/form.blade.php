@@ -11,6 +11,17 @@
         crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+
+    <style>
+        .required-label::after {
+            content: "*";
+            color: red;
+            margin-left: 5px;
+        }
+    </style>
+
+
 </head>
 
 <body>
@@ -40,13 +51,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="date">Fecha Venta</label>
-                        <input type="date" name="date"
-                            class="form-control{{ $errors->has('date') ? ' is-invalid' : '' }}"
-                            placeholder="Fecha Venta" min="{{ now()->format('Y-m-d') }}">
-                        @if ($errors->has('date'))
-                            <div class="invalid-feedback">{{ $errors->first('date') }}</div>
-                        @endif
+                        {{ Form::label('Fecha', null, ['class' => 'required-label']) }}
+                        {{ Form::text('date', $sale->date, ['class' => 'form-control' . ($errors->has('date') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Date', 'readonly' => true, 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
+                        {!! $errors->first('date', '<div class="invalid-feedback">:message</div>') !!}
+
+                        <small class="text-muted">Por cuestiones de seguridad este campo no es editable.</small>
                     </div>
 
                     <div class="form-group">
@@ -59,7 +68,7 @@
                 <div class="box-footer mt-3">
                     <button type="button" id="submitButton" class="btn btn-success btn-enviar"
                         onclick="enviarDetalles()">
-                        {{ __('Crear') }}
+                        {{ __('Enviar') }}
                     </button>
                     <a type="button" class="btn btn-primary" href="{{ route('sales.index') }}">Volver</a>
                 </div>
@@ -107,14 +116,13 @@
                                     <div class="form-group">
                                         {{ Form::text('price_unit', $detailSale->product ? $detailSale->product->price : '', ['id' => 'price_unit', 'class' => 'form-control' . ($errors->has('price_unit') ? ' is-invalid' : ''), 'placeholder' => 'Precio Unidad', 'id' => 'priceUnitInput', 'readonly' => 'readonly', 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
                                         {!! $errors->first('price_unit', '<div class="invalid-feedback">:message</div>') !!}
-                                        <small class="text-muted">Este campo no es
-                                            editable.</small>
+                                        <small class="text-muted">Este campo no es editable.</small>
                                     </div>
 
                                 </th>
                                 <th>
                                     <div class="form-group">
-                                        {{ Form::text('subtotal', $detailSale->subtotal, ['id' => 'subtotal', 'class' => 'form-control' . ($errors->has('subtotal') ? ' is-invalid' : ''), 'placeholder' => 'Subtotal', 'id' => 'subtotalInput', 'readonly' => 'readonly']) }}
+                                        {{ Form::text('subtotal', $detailSale->subtotal, ['id' => 'subtotal', 'class' => 'form-control' . ($errors->has('subtotal') ? ' is-invalid' : ''), 'placeholder' => 'Subtotal', 'readonly' => 'readonly', 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
                                         {!! $errors->first('subtotal', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
                                 </th>
@@ -126,7 +134,7 @@
                                 </th>
                                 <th>
                                     <div class="form-group">
-                                        {{ Form::text('total', $detailSale->total, ['id' => 'total', 'class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''), 'placeholder' => 'Total', 'id' => 'TotalInput', 'readonly' => 'readonly']) }}
+                                        {{ Form::text('total', $detailSale->total, ['id' => 'total', 'class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''), 'placeholder' => 'Total', 'readonly' => 'readonly', 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
                                         {!! $errors->first('total', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
                                 </th>
@@ -135,19 +143,16 @@
                                 <th>
 
                                     <button type="button" class="btn btn-danger mt-3" onclick="eliminarDetalle(this)">
-                                        <i class="fas fa-trash-alt"></i>
-                                        <!-- Icono de papelera de Font Awesome -->
+                                        <i class="fas fa-trash-alt"></i> <!-- Icono de papelera de Font Awesome -->
                                     </button>
 
                                 </th>
                             </tr>
                         </tbody>
                     </table>
-
-                    <div class="box-footer">
-                        <button type="button" id="agregarDetalle" class="btn btn-primary">Agregar detalle</button>
-                    </div>
-
+                </div>
+                <div class="box-footer">
+                    <button type="button" id="agregarDetalle" class="btn btn-primary">Agregar detalle</button>
                 </div>
             </div>
         </div>
@@ -162,9 +167,8 @@
         var price = productPrices[productId] || '';
         $('#priceUnitInput').val(price);
     });
-</script>
 
-<script>
+
     $('#name').on('change', function() {
         var selectedValue = $(this).val();
         $('#people_id').val(selectedValue);
@@ -173,58 +177,58 @@
 
 <script>
     function enviarDetalles() {
-        const detalles = [];
-        const fechaInput = document.querySelector('input[name="date"]');
-        const nombreClienteSelect = document.querySelector('select[name="name"]');
-        const cotizacionSelect = document.querySelector('select[name="quotes_id"]');
+    const detalles = [];
+    const fechaInput = document.querySelector('input[name="date"]');
+    const nombreClienteSelect = document.querySelector('select[name="name"]');
+    const cotizacionSelect = document.querySelector('select[name="quotes_id"]');
 
-        const fecha = fechaInput.value;
-        const clienteId = nombreClienteSelect.value;
-        const cotizacionId = cotizacionSelect.value;
+    const fecha = fechaInput.value;
+    const clienteId = nombreClienteSelect.value;
+    const cotizacionId = cotizacionSelect.value;
 
-        const nombreCliente = nombreClienteSelect.options[nombreClienteSelect.selectedIndex].text.split(' - ')[0];
+    const nombreCliente = nombreClienteSelect.options[nombreClienteSelect.selectedIndex].text.split(' - ')[0];
 
-        document.querySelectorAll('#detalle-table tbody tr').forEach(function(detalle) {
-            const productoSelect = detalle.querySelector('select[name^="product_id"]');
-            const cantidadInput = detalle.querySelector('input[name^="quantity"]');
-            const precioUnitarioInput = detalle.querySelector('input[name^="price_unit"]');
-            const subtotalInput = detalle.querySelector('input[name^="subtotal"]');
-            const descuentoInput = detalle.querySelector('input[name^="discount"]');
-            const totalInput = detalle.querySelector('input[name^="total"]');
+    document.querySelectorAll('#detalle-table tbody tr').forEach(function(detalle) {
+        const productoSelect = detalle.querySelector('select[name^="product_id"]');
+        const cantidadInput = detalle.querySelector('input[name^="quantity"]');
+        const precioUnitarioInput = detalle.querySelector('input[name^="price_unit"]');
+        const subtotalInput = detalle.querySelector('input[name^="subtotal"]');
+        const descuentoInput = detalle.querySelector('input[name^="discount"]');
+        const totalInput = detalle.querySelector('input[name^="total"]');
 
-            const productoId = productoSelect.value;
-            const cantidad = cantidadInput.value;
-            const precioUnitario = precioUnitarioInput.value;
-            const subtotal = subtotalInput.value;
-            const descuento = descuentoInput.value;
-            const total = totalInput.value;
+        const productoId = productoSelect.value;
+        const cantidad = cantidadInput.value;
+        const precioUnitario = precioUnitarioInput.value;
+        const subtotal = subtotalInput.value;
+        const descuento = descuentoInput.value;
+        const total = totalInput.value;
 
-            detalles.push({
-                producto_id: productoId,
-                cantidad: cantidad,
-                precio_unitario: precioUnitario,
-                subtotal: subtotal,
-                descuento: descuento,
-                total: total
-            });
+        detalles.push({
+            producto_id: productoId,
+            cantidad: cantidad,
+            precio_unitario: precioUnitario,
+            subtotal: subtotal,
+            descuento: descuento,
+            total: total
         });
+    });
 
-        const data = {
-            cliente_id: clienteId,
-            nombre_cliente: nombreCliente,
-            fecha: fecha,
-            cotizacion_id: cotizacionId,
-            detalles: detalles
-        };
+    const data = {
+        cliente_id: clienteId,
+        nombre_cliente: nombreCliente,
+        fecha: fecha,
+        cotizacion_id: cotizacionId,
+        detalles: detalles
+    };
 
-        $.ajax({
-            type: "POST",
-            url: "{{ route('sales.store') }}",
-            data: {
-                _token: '{{ csrf_token() }}',
-                data: data
-            },
-            success: function(response) {
+    $.ajax({
+        type: "POST",
+        url: "{{ route('sales.store') }}",
+        data: {
+            _token: '{{ csrf_token() }}',
+            data: data
+        },
+        success: function(response) {
                 // Manejar la respuesta del servidor si es necesario
                 console.log(response);
             },
@@ -232,9 +236,9 @@
                 // Manejar errores si los hay
                 console.error(err);
             }
-        });
-        window.location.href = "{{ route('sales.index') }}";
-    }
+    });
+    window.location.href = "{{ route('sales.index') }}";
+}
 
 
 
@@ -243,6 +247,40 @@
         const initialDetail = document.querySelector('#detalle-table tbody tr');
         addEventListeners(initialDetail);
     });
+
+    function addEventListeners(detalle) {
+        const productSelect = detalle.querySelector('#productSelect');
+        const quantityField = detalle.querySelector('input[name^="quantity"]');
+        const priceUnitField = detalle.querySelector('input[name^="price_unit"]');
+        const discountField = detalle.querySelector('input[name^="discount"]');
+        const subtotalField = detalle.querySelector('#subtotal');
+        const totalField = detalle.querySelector('#total');
+
+        function calculateSubtotalAndTotal() {
+            const quantity = parseFloat(quantityField.value) || 0;
+            const priceUnit = parseFloat(priceUnitField.value) || 0;
+            const discount = parseFloat(discountField.value) || 0;
+
+            const subtotal = quantity * priceUnit;
+            const total = subtotal - (subtotal * (discount / 100));
+
+            subtotalField.value = subtotal.toFixed(2);
+            totalField.value = total.toFixed(2);
+        }
+
+        quantityField.addEventListener('input', calculateSubtotalAndTotal);
+        priceUnitField.addEventListener('input', calculateSubtotalAndTotal);
+        discountField.addEventListener('input', calculateSubtotalAndTotal);
+
+        // Agregar evento change al selector de productos
+        productSelect.addEventListener('change', function() {
+            var productId = $(this).val();
+            var price = productPrices[productId] || '';
+            priceUnitField.value = price;
+            calculateSubtotalAndTotal(); // Actualizar subtotal y total después de cambiar el precio unitario
+        });
+    }
+
 
     document.getElementById('agregarDetalle').addEventListener('click', function() {
         var container = document.querySelector('#detalle-table tbody');
@@ -253,29 +291,14 @@
             element.value = '';
             // Agregar un índice único a los nombres de los campos clonados
             element.name = element.name + '_' + container.children.length;
-
-            // Agregar evento change al select de productos para rellenar el precio unitario
-            if (element.id === 'productSelect') {
-                element.addEventListener('change', function() {
-                    var productId = $(this).val();
-                    var price = productPrices[productId] || '';
-                    var priceUnitInput = nuevoDetalle.querySelector('#priceUnitInput');
-                    priceUnitInput.value = price;
-                });
-            }
         });
 
-        // Llamar a la función para agregar event listeners al nuevo detalle
+        // Agregar eventos de escucha para el nuevo detalle
         addEventListeners(nuevoDetalle);
 
         // Agregar el nuevo detalle a la tabla
         container.appendChild(nuevoDetalle);
     });
-
-    function eliminarDetalle(button) {
-        var row = button.parentNode.parentNode;
-        row.parentNode.removeChild(row);
-    }
 </script>
 
 

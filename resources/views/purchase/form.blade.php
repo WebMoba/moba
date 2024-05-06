@@ -16,13 +16,11 @@
     <h2>Compra</h2>
     <div class="box-body">
         <div class="form-group">
-            {{ Form::label('Nombre y documento del proveedor', null, ['class' => 'required-label']) }}
             {{ Form::select(
                 'name',
                 $usersName->mapWithKeys(function ($name, $id) use ($providers) {
                     $provider = $providers->firstWhere('id', $id);
                     $document = $provider ? $provider->id_card : ''; // Ajusta la propiedad que contiene el documento del proveedor
-            
                     return [$id => $name . ' - ' . $document];
                 }),
                 $purchase->name,
@@ -33,6 +31,7 @@
                     'id' => 'name',
                 ],
             ) }}
+
             {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
@@ -44,10 +43,18 @@
             <small class="text-muted">Por cuestiones de seguridad este campo no es editable.</small>
         </div>
 
+        <div class="form-group">
+            {{ Form::label('Total', null, ['class' => 'required-label']) }}
+            {{ Form::text('total', $purchase->total, ['class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Total']) }}
+            {!! $errors->first('total', '<div class="invalid-feedback">:message</div>') !!}
+
+            <small class="text-muted">Este campo no es editable.</small>
+        </div>
+
 
     </div>
     <div class="box-footer" style="margin: 20px;">
-        <button type="button" class="btn btn-success" onclick="enviarDetalles()">Crear</button>
+        <button type="button" class="btn btn-success" onclick="enviarDetalles()">Enviar</button>
         <a type="submit" class="btn btn-primary" href="{{ route('purchases.index') }}">Volver</a>
     </div>
 </div>
@@ -140,6 +147,22 @@
         container.appendChild(nuevoDetalle);
     });
 
+    function calcularTotalCompra() {
+    const detalles = document.querySelectorAll('#detalle-table tbody tr');
+    let totalCompra = 0;
+
+    detalles.forEach(function(detalle) {
+        const totalDetalle = parseFloat(detalle.querySelector('input[name^="total"]').value);
+        if (!isNaN(totalDetalle)) {
+            totalCompra += totalDetalle;
+        }
+    });
+
+    // Actualizar el campo "Total" del formulario de compra
+    const totalField = document.querySelector('input[name="total"]');
+    totalField.value = totalCompra.toFixed(2);
+}
+
 
     function addEventListeners(detalle) {
         const quantityField = detalle.querySelector('#quantity');
@@ -158,12 +181,19 @@
 
             subtotalField.value = subtotal.toFixed(2);
             totalField.value = total.toFixed(2);
+
+            // Llamar a la función para sumar los totales de los detalles de compra
+            calcularTotalCompra();
         }
 
         quantityField.addEventListener('input', calculateSubtotalAndTotal);
         priceUnitField.addEventListener('input', calculateSubtotalAndTotal);
         discountField.addEventListener('input', calculateSubtotalAndTotal);
     }
+
+document.querySelectorAll('#detalle-table input').forEach(function(input) {
+    input.addEventListener('input', calcularTotalCompra);
+});
 
     function eliminarDetalle(button) {
         var row = button.parentNode.parentNode;
@@ -219,11 +249,13 @@
 
         // Recopilar información principal del formulario de compra
         const fecha = document.querySelector('input[name="date"]').value;
+        const totalP = document.querySelector('input[name="total"]').value;
 
         const data = {
             nombre_proveedor: proveedorSeleccionado.nombre,
             proveedor_id: proveedorSeleccionado.proveedor_id,
             fecha: fecha,
+            totalP: totalP,
             detalles: detalles
         };
 

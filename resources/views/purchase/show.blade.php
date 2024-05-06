@@ -31,6 +31,10 @@
                             {{ $purchase->person->id_card }} 
                         </div>
                         <div class="form-group">
+                            <strong>Total de la compra:</strong>
+                            {{ $purchase->total }} 
+                        </div>
+                        <div class="form-group">
                             <strong>Fecha realizacion de la compra:</strong>
                             {{ $purchase->date }}
                         </div>
