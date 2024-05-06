@@ -39,10 +39,6 @@
                             <strong>Total de la venta:</strong>
                             {{ $sale->total }}
                         </div>
-                        <div class="form-group">
-                            <strong>N° de Cotización:</strong>
-                            {{ $sale->quote->id  }}
-                        </div>
 
                         <h2>Detalles de la venta</h2>
 

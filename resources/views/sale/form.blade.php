@@ -65,12 +65,6 @@
                         <small class="text-muted">Este campo no es editable.</small>
                     </div>
 
-                    <div class="form-group">
-                        {{ Form::label('Numero de cotizacion', null, ['class' => 'required-label']) }}
-                        {{ Form::select('quotes_id', $quotes, $sale->sales_id, ['class' => 'form-control' . ($errors->has('quotes_id') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Seleccione ']) }}
-                        {!! $errors->first('quotes_id', '<div class="invalid-feedback">:message</div>') !!}
-                    </div>
-
                 </div>
                 <div class="box-footer mt-3">
                     <button type="button" id="submitButton" class="btn btn-success btn-enviar"
@@ -187,13 +181,10 @@
         const detalles = [];
         const fechaInput = document.querySelector('input[name="date"]');
         const nombreClienteSelect = document.querySelector('select[name="name"]');
-        const cotizacionSelect = document.querySelector('select[name="quotes_id"]');
         const totalP = document.querySelector('input[name="total"]').value;
 
         const fecha = fechaInput.value;
         const clienteId = nombreClienteSelect.value;
-        const cotizacionId = cotizacionSelect.value;
-
         const nombreCliente = nombreClienteSelect.options[nombreClienteSelect.selectedIndex].text.split(' - ')[0];
 
         document.querySelectorAll('#detalle-table tbody tr').forEach(function(detalle) {
@@ -225,7 +216,6 @@
             cliente_id: clienteId,
             nombre_cliente: nombreCliente,
             fecha: fecha,
-            cotizacion_id: cotizacionId,
             totalP: totalP,
             detalles: detalles
         };

@@ -147,7 +147,6 @@ class SaleController extends Controller
             $venta = new Sale();
             $venta->name = $data['nombre_cliente'];
             $venta->date = $data['fecha'];
-            $venta->quotes_id = $data['cotizacion_id'];
             $venta->total = $data['totalP'];
             $venta->people_id = $data['cliente_id'];
             $venta->save();

@@ -65,7 +65,6 @@
                                         <th>Id Persona</th>
                                         <th>Fecha venta</th>
                                         <th>Total venta</th>
-                                        <th>N° Cotización</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -81,7 +80,6 @@
                                                 <td>{{ $sale->person->id_card }}</td>
                                                 <td>{{ $sale->date }}</td>
                                                 <td>{{ $sale->total }}</td>
-                                                <td>{{ $sale->quote->id }}</td>
                                                 <td>
                                                     <form action="{{ route('sales.destroy', $sale->id) }}" method="POST">
                                                         <a class="btn btn-sm btn-primary {{ $sale->disable ? 'disabled' : '' }}"
