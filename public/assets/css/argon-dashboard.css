@@ -2644,7 +2644,7 @@ progress {
 .form-control:focus {
   color: #495057;
   background-color: #fff;
-  border-color: #ff0008;
+  border-color: #fb6340;
   outline: 0;
   box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px rgba(94, 114, 228, 0.1);
 }
@@ -3488,7 +3488,7 @@ textarea.form-control-lg {
 }
 .btn-primary:disabled, .btn-primary.disabled {
   color: #000;
-  background-color: #f80008;
+  background-color: #cdf1e2;
   border-color: #f80008;
 }
 
@@ -3548,8 +3548,8 @@ textarea.form-control-lg {
 }
 .btn-success:disabled, .btn-success.disabled {
   color: #000;
-  background-color: #2dce89;
-  border-color: #2dce89;
+  background-color: #cdf1e2;
+  border-color: #336b53;
 }
 
 .btn-info {
