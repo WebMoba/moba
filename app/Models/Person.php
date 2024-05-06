@@ -125,6 +125,10 @@ class Person extends Model
     {
         return $this->rol === 'Proveedor';
     }
+    public function isClient()
+    {
+        return $this->rol === 'Cliente';
+    }
 
     public function scopeClients($query)
     {

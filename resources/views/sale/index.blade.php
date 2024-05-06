@@ -98,30 +98,6 @@
                                         @endforeach
                                     @endif
 
-                                    @foreach ($sales as $sale)
-                                        <tr>
-                                            <td>{{ ++$i }}</td>
-                                            <td>{{ $sale->id }}</td>
-                                            <td>{{ $sale->person->name }}</td>
-                                            <td>{{ $sale->person->id_card }}</td>
-                                            <td>{{ $sale->date }}</td>
-                                            <td>{{ $sale->quote->date_issuance }}</td>
-                                            <td>
-                                                <form action="{{ route('sales.destroy', $sale->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary "
-                                                        href="{{ route('sales.show', $sale->id) }}">
-                                                            <i class="bi bi-eye-fill"></i></a>
-                                                    
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm">{{ __('Eliminar') }}</button>
-                                                </form>
-
-                                            </td>
-                                        </tr>
-                                    @endforeach
-
-
 
                                 </tbody>
                             </table>

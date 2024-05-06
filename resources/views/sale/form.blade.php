@@ -42,7 +42,7 @@
                             $usersName->mapWithKeys(function ($name, $id) use ($providers) {
                                 $provider = $providers->firstWhere('id', $id);
                                 $document = $provider ? $provider->id_card : '';
-                                return [$id => $name . ' - ' . $document];
+                                return [$id => $name . '  ' . $document];
                             }),
                             $sale->name,
                             ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Name'],
@@ -56,6 +56,13 @@
                         {!! $errors->first('date', '<div class="invalid-feedback">:message</div>') !!}
 
                         <small class="text-muted">Por cuestiones de seguridad este campo no es editable.</small>
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('Total', null, ['class' => 'required-label']) }}
+                        {{ Form::text('total', $sale->total, ['class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Total', 'readonly' => true, 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
+                        {!! $errors->first('total', '<div class="invalid-feedback">:message</div>') !!}
+                        <small class="text-muted">Este campo no es editable.</small>
                     </div>
 
                     <div class="form-group">
@@ -177,58 +184,58 @@
 
 <script>
     function enviarDetalles() {
-    const detalles = [];
-    const fechaInput = document.querySelector('input[name="date"]');
-    const nombreClienteSelect = document.querySelector('select[name="name"]');
-    const cotizacionSelect = document.querySelector('select[name="quotes_id"]');
+        const detalles = [];
+        const fechaInput = document.querySelector('input[name="date"]');
+        const nombreClienteSelect = document.querySelector('select[name="name"]');
+        const cotizacionSelect = document.querySelector('select[name="quotes_id"]');
 
-    const fecha = fechaInput.value;
-    const clienteId = nombreClienteSelect.value;
-    const cotizacionId = cotizacionSelect.value;
+        const fecha = fechaInput.value;
+        const clienteId = nombreClienteSelect.value;
+        const cotizacionId = cotizacionSelect.value;
 
-    const nombreCliente = nombreClienteSelect.options[nombreClienteSelect.selectedIndex].text.split(' - ')[0];
+        const nombreCliente = nombreClienteSelect.options[nombreClienteSelect.selectedIndex].text.split(' - ')[0];
 
-    document.querySelectorAll('#detalle-table tbody tr').forEach(function(detalle) {
-        const productoSelect = detalle.querySelector('select[name^="product_id"]');
-        const cantidadInput = detalle.querySelector('input[name^="quantity"]');
-        const precioUnitarioInput = detalle.querySelector('input[name^="price_unit"]');
-        const subtotalInput = detalle.querySelector('input[name^="subtotal"]');
-        const descuentoInput = detalle.querySelector('input[name^="discount"]');
-        const totalInput = detalle.querySelector('input[name^="total"]');
+        document.querySelectorAll('#detalle-table tbody tr').forEach(function(detalle) {
+            const productoSelect = detalle.querySelector('select[name^="product_id"]');
+            const cantidadInput = detalle.querySelector('input[name^="quantity"]');
+            const precioUnitarioInput = detalle.querySelector('input[name^="price_unit"]');
+            const subtotalInput = detalle.querySelector('input[name^="subtotal"]');
+            const descuentoInput = detalle.querySelector('input[name^="discount"]');
+            const totalInput = detalle.querySelector('input[name^="total"]');
 
-        const productoId = productoSelect.value;
-        const cantidad = cantidadInput.value;
-        const precioUnitario = precioUnitarioInput.value;
-        const subtotal = subtotalInput.value;
-        const descuento = descuentoInput.value;
-        const total = totalInput.value;
+            const productoId = productoSelect.value;
+            const cantidad = cantidadInput.value;
+            const precioUnitario = precioUnitarioInput.value;
+            const subtotal = subtotalInput.value;
+            const descuento = descuentoInput.value;
+            const total = totalInput.value;
 
-        detalles.push({
-            producto_id: productoId,
-            cantidad: cantidad,
-            precio_unitario: precioUnitario,
-            subtotal: subtotal,
-            descuento: descuento,
-            total: total
+            detalles.push({
+                producto_id: productoId,
+                cantidad: cantidad,
+                precio_unitario: precioUnitario,
+                subtotal: subtotal,
+                descuento: descuento,
+                total: total
+            });
         });
-    });
 
-    const data = {
-        cliente_id: clienteId,
-        nombre_cliente: nombreCliente,
-        fecha: fecha,
-        cotizacion_id: cotizacionId,
-        detalles: detalles
-    };
+        const data = {
+            cliente_id: clienteId,
+            nombre_cliente: nombreCliente,
+            fecha: fecha,
+            cotizacion_id: cotizacionId,
+            detalles: detalles
+        };
 
-    $.ajax({
-        type: "POST",
-        url: "{{ route('sales.store') }}",
-        data: {
-            _token: '{{ csrf_token() }}',
-            data: data
-        },
-        success: function(response) {
+        $.ajax({
+            type: "POST",
+            url: "{{ route('sales.store') }}",
+            data: {
+                _token: '{{ csrf_token() }}',
+                data: data
+            },
+            success: function(response) {
                 // Manejar la respuesta del servidor si es necesario
                 console.log(response);
             },
@@ -236,9 +243,9 @@
                 // Manejar errores si los hay
                 console.error(err);
             }
-    });
-    window.location.href = "{{ route('sales.index') }}";
-}
+        });
+        window.location.href = "{{ route('sales.index') }}";
+    }
 
 
 
@@ -247,6 +254,23 @@
         const initialDetail = document.querySelector('#detalle-table tbody tr');
         addEventListeners(initialDetail);
     });
+
+    function calcularTotalCompra() {
+        const detalles = document.querySelectorAll('#detalle-table tbody tr');
+        let totalCompra = 0;
+
+        detalles.forEach(function(detalle) {
+            const totalDetalle = parseFloat(detalle.querySelector('input[name^="total"]').value);
+            if (!isNaN(totalDetalle)) {
+                totalCompra += totalDetalle;
+            }
+        });
+
+        // Actualizar el campo "Total" del formulario de compra
+        const totalField = document.querySelector('input[name="total"]');
+        totalField.value = totalCompra.toFixed(2);
+    }
+
 
     function addEventListeners(detalle) {
         const productSelect = detalle.querySelector('#productSelect');
@@ -266,6 +290,8 @@
 
             subtotalField.value = subtotal.toFixed(2);
             totalField.value = total.toFixed(2);
+            // Llamar a la función para sumar los totales de los detalles de compra
+            calcularTotalCompra();
         }
 
         quantityField.addEventListener('input', calculateSubtotalAndTotal);
@@ -280,6 +306,23 @@
             calculateSubtotalAndTotal(); // Actualizar subtotal y total después de cambiar el precio unitario
         });
     }
+
+    document.querySelectorAll('#detalle-table input').forEach(function(input) {
+        input.addEventListener('input', calcularTotalCompra);
+    });
+    // Calcular el total de la compra al cargar la página
+    document.addEventListener('DOMContentLoaded', function() {
+        calcularTotalCompra();
+    });
+
+    function eliminarDetalle(button) {
+        var row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+
+        // Recalcular el total de la compra después de eliminar el detalle
+        calcularTotalCompra();
+    }
+
 
 
     document.getElementById('agregarDetalle').addEventListener('click', function() {

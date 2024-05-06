@@ -89,10 +89,14 @@ class PurchaseController extends Controller
         $usersName = User::with('person')
             ->whereHas('person', function ($query) {
                 $query->where('rol', 'Proveedor')
-                    ->where('users_id', '!=', null)
                     ->where('disable', false);
             })
-            ->pluck('name', 'id');
+            ->get()
+            ->mapWithKeys(function ($user) {
+                $providerName = $user->name;
+                $providerDocument = $user->person ? $user->person->id_card : '';
+                return [$user->id => $providerName . ' - ' . $providerDocument];
+            });
 
 
 

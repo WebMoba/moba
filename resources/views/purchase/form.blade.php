@@ -21,7 +21,7 @@
                 $usersName->mapWithKeys(function ($name, $id) use ($providers) {
                     $provider = $providers->firstWhere('id', $id);
                     $document = $provider ? $provider->id_card : ''; // Ajusta la propiedad que contiene el documento del proveedor
-                    return [$id => $name . ' - ' . $document];
+                    return [$id => $name . '  ' . $document];
                 }),
                 $purchase->name,
                 [
@@ -45,9 +45,8 @@
 
         <div class="form-group">
             {{ Form::label('Total', null, ['class' => 'required-label']) }}
-            {{ Form::text('total', $purchase->total, ['class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Total']) }}
+            {{ Form::text('total', $purchase->total, ['class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Total', 'readonly' => true, 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
             {!! $errors->first('total', '<div class="invalid-feedback">:message</div>') !!}
-
             <small class="text-muted">Este campo no es editable.</small>
         </div>
 
@@ -148,20 +147,20 @@
     });
 
     function calcularTotalCompra() {
-    const detalles = document.querySelectorAll('#detalle-table tbody tr');
-    let totalCompra = 0;
+        const detalles = document.querySelectorAll('#detalle-table tbody tr');
+        let totalCompra = 0;
 
-    detalles.forEach(function(detalle) {
-        const totalDetalle = parseFloat(detalle.querySelector('input[name^="total"]').value);
-        if (!isNaN(totalDetalle)) {
-            totalCompra += totalDetalle;
-        }
-    });
+        detalles.forEach(function(detalle) {
+            const totalDetalle = parseFloat(detalle.querySelector('input[name^="total"]').value);
+            if (!isNaN(totalDetalle)) {
+                totalCompra += totalDetalle;
+            }
+        });
 
-    // Actualizar el campo "Total" del formulario de compra
-    const totalField = document.querySelector('input[name="total"]');
-    totalField.value = totalCompra.toFixed(2);
-}
+        // Actualizar el campo "Total" del formulario de compra
+        const totalField = document.querySelector('input[name="total"]');
+        totalField.value = totalCompra.toFixed(2);
+    }
 
 
     function addEventListeners(detalle) {
@@ -191,13 +190,20 @@
         discountField.addEventListener('input', calculateSubtotalAndTotal);
     }
 
-document.querySelectorAll('#detalle-table input').forEach(function(input) {
-    input.addEventListener('input', calcularTotalCompra);
-});
+    document.querySelectorAll('#detalle-table input').forEach(function(input) {
+        input.addEventListener('input', calcularTotalCompra);
+    });
+    // Calcular el total de la compra al cargar la página
+    document.addEventListener('DOMContentLoaded', function() {
+        calcularTotalCompra();
+    });
 
     function eliminarDetalle(button) {
         var row = button.parentNode.parentNode;
         row.parentNode.removeChild(row);
+
+        // Recalcular el total de la compra después de eliminar el detalle
+        calcularTotalCompra();
     }
 
     // Agregar eventos de escucha para el detalle inicial
