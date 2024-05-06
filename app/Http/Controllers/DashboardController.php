@@ -13,6 +13,7 @@ class DashboardController extends Controller
 {
     public function show(Request $request)
     {
+        //QUOTES
         $totalQuotesCount = Quote::where('disable', false)->count();
         $currentQuotesCount = Quote::where('disable', false)
             ->whereDate('created_at', Carbon::today())
@@ -28,7 +29,9 @@ class DashboardController extends Controller
         } else {
             $percentageChangeQuotes = 0; // Evitar división por cero
         }
+        //FIN QUOTES
 
+        //USERS
         $totalUsersCount = User::count();
         $currentUsersCount = User::whereDate('created_at', Carbon::today())->count();
         // Calcular el porcentaje de cambio de usuarios registrados
@@ -39,7 +42,9 @@ class DashboardController extends Controller
         } else {
             $percentageChangeUsers = 0; // Evitar división por cero
         }
+        //FIN USERS
 
+        //PURCHASES
         $totalPurchasesCount = Purchase::count();
         $currentPurchasesCount = Purchase::whereDate('created_at', Carbon::today())->count();
         // Calcular el porcentaje de cambio de usuarios registrados
@@ -50,7 +55,9 @@ class DashboardController extends Controller
         } else {
             $percentageChangePurchases = 0; // Evitar división por cero
         }
+        //FIN PURCHASES
 
+        //SALES
         $totalSaleCount = Sale::count();
         $currentSaleCount = Sale::whereDate('created_at', Carbon::today())->count();
         // Calcular el porcentaje de cambio de usuarios registrados
@@ -61,6 +68,8 @@ class DashboardController extends Controller
         } else {
             $percentageChangeSale = 0; // Evitar división por cero
         }
+        //FIN SALES
+        
 
         return view('pages.dashboard', [
             'totalQuotesCount' => $totalQuotesCount,

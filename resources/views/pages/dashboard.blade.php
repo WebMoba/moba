@@ -13,8 +13,13 @@
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold">COTIZACIONES</p>
                                     <h5 class="font-weight-bolder">{{ $currentQuotesCount }}</h5>
                                     <p class="mb-0">
+                                        @php
+                                            $percentageFormatted = number_format($percentageChangeQuotes);
+                                            $percentageClass =
+                                                $percentageChangeQuotes >= 0 ? 'text-success' : 'text-danger';
+                                        @endphp
                                         <span
-                                            class="text-success text-sm font-weight-bolder">+{{ number_format($percentageChangeQuotes) }}%</span>
+                                            class="{{ $percentageClass }} text-sm font-weight-bolder">{{ number_format($percentageChangeQuotes) }}%</span>
                                         desde ayer
                                     </p>
                                 </div>
@@ -37,8 +42,13 @@
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold">USUARIOS</p>
                                     <h5 class="font-weight-bolder">{{ $totalUsersCount }}</h5>
                                     <p class="mb-0">
+                                        @php
+                                            $percentageFormattedUsers = number_format($percentageChangeUsers);
+                                            $percentageClassUsers =
+                                                $percentageChangeUsers >= 0 ? 'text-success' : 'text-danger';
+                                        @endphp
                                         <span
-                                            class="text-success text-sm font-weight-bolder">+{{ number_format($percentageChangeUsers) }}%</span>
+                                            class="{{ $percentageClassUsers }} text-sm font-weight-bolder">{{ number_format($percentageChangeUsers) }}%</span>
                                         desde ayer
                                     </p>
                                 </div>
@@ -63,8 +73,13 @@
                                         {{ $totalPurchasesCount }}
                                     </h5>
                                     <p class="mb-0">
+                                        @php
+                                            $percentageFormattedPurchases = number_format($percentageChangePurchases);
+                                            $percentageClassPurchases =
+                                                $percentageChangePurchases >= 0 ? 'text-success' : 'text-danger';
+                                        @endphp
                                         <span
-                                            class="text-success text-sm font-weight-bolder">+{{ number_format($percentageChangePurchases) }}%</span>
+                                            class="{{ $percentageClassPurchases }} text-sm font-weight-bolder">{{ number_format($percentageChangePurchases) }}%</span>
                                         desde ayer
                                     </p>
                                 </div>
@@ -89,8 +104,14 @@
                                         {{ $totalSaleCount }}
                                     </h5>
                                     <p class="mb-0">
+                                        @php
+                                            $percentageFormattedSale = number_format($percentageChangeSale);
+                                            $percentageClassSale =
+                                                $percentageChangeSale >= 0 ? 'text-success' : 'text-danger';
+                                        @endphp
+
                                         <span
-                                            class="text-success text-sm font-weight-bolder">+{{ number_format($percentageChangeSale) }}%</span>
+                                            class="{{ $percentageClassSale }} text-sm font-weight-bolder">{{ number_format($percentageChangeSale) }}%</span>
                                         desde ayer
                                     </p>
                                 </div>
@@ -109,10 +130,10 @@
             <div class="col-lg-7 mb-lg-0 mb-4">
                 <div class="card z-index-2 h-100">
                     <div class="card-header pb-0 pt-3 bg-transparent">
-                        <h6 class="text-capitalize">Sales overview</h6>
+                        <h6 class="text-capitalize">Resumen de ventas</h6>
                         <p class="text-sm mb-0">
                             <i class="fa fa-arrow-up text-success"></i>
-                            <span class="font-weight-bold">4% more</span> in 2021
+                            <span class="font-weight-bold">4% more</span> en {{ date('Y') }}
                         </p>
                     </div>
                     <div class="card-body p-3">
