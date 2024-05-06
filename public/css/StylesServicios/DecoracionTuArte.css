@@ -53,25 +53,25 @@
     background-color: rgba(255, 0, 0, 0.274) !important;
     /* Cambia el color de fondo al pasar el cursor sobre las opciones del menú */
 }
-
 .dropdown-item:hover {
-    color: #ff0000 !important;
+    color: #f80008 !important;
 }
 
 .dropdown-menu {
     background-color: transparent !important;
-    border-color: #73a3b6 !important;
+    border-color: #f80008 !important;
 }
 
 .dropdown-menu .dropdown-item {
-    color: #ff0000 !important;
+    color: #f80008 !important;
     background-color: transparent !important;
-    border-color: #9BBFCD !important;
+    border-color: #f80008 !important;
 }
 
 .dropdown-menu .dropdown-divider {
-    border-top: 1px solid #9BBFCD;
+    border-top: 1px solid #f80008;
 }
+
 
 .active-link {
     position: relative;

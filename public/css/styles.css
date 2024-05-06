@@ -78,12 +78,12 @@ body::after {
     }
 
     .dropdown-menu .dropdown-item:hover {
-        background-color: rgba(255, 0, 0, 0.274) !important;
+        background-color: rgba(161, 174, 250, 0.274) !important;
         /* Cambia el color de fondo al pasar el cursor sobre las opciones del menú */
     }
 
     .dropdown-item:hover {
-        color: #f80008 !important;
+        color: #2bb9e5 !important;
     }
 
     .dropdown-menu {
@@ -92,13 +92,13 @@ body::after {
     }
 
     .dropdown-menu .dropdown-item {
-        color: #f80008 !important;
+        color: #2bb9e5 !important;
         background-color: transparent !important;
-        border-color: #f80008 !important;
+        border-color: #2bb9e5 !important;
     }
 
     .dropdown-menu .dropdown-divider {
-        border-top: 1px solid #f80008;
+        border-top: 1px solid #2bb9e5;
     }
 
     .vertical-line {
@@ -135,7 +135,7 @@ body::after {
     
     .linea1 {
         border: none;
-        border-right: 3px solid #BCCCE0;
+        border-right: 3px solid #a2bee0;
         /* Agrega una unidad de medida (px) */
     }
     

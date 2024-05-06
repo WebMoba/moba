@@ -33,8 +33,7 @@
                         <li><a class="dropdown-item"
                                 href="{{ route('tuArteMenu.servicios.Decoracion.index') }}">Decoracion</a></li>
                         <li><a class="dropdown-item"
-                                href="{{ route('tuArteMenu.servicios.JoditasPalRecuerdo.index') }}">Joditas pa'l
-                                Recuerdo</a></li>
+                                href="{{ route('tuArteMenu.servicios.JoditasPalRecuerdo.index') }}">Joditas pa'l Recuerdo</a></li>
                         <li><a class="dropdown-item"
                                 href="{{ route('tuArteMenu.servicios.Mascotas.index') }}">Mascotas</a></li>
                     </ul>

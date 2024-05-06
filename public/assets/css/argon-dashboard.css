@@ -2621,10 +2621,14 @@ progress {
   background-clip: padding-box;
   border: 1px solid #d2d6da;
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   border-radius: 0.5rem;
   transition: box-shadow 0.15s ease, border-color 0.15s ease;
+  -webkit-transition: box-shadow 0.15s ease, border-color 0.15s ease;
+  -moz-transition: box-shadow 0.15s ease, border-color 0.15s ease;
+  -ms-transition: box-shadow 0.15s ease, border-color 0.15s ease;
+  -o-transition: box-shadow 0.15s ease, border-color 0.15s ease;
 }
 @media (prefers-reduced-motion: reduce) {
   .form-control {
@@ -2640,7 +2644,7 @@ progress {
 .form-control:focus {
   color: #495057;
   background-color: #fff;
-  border-color: #fb6340;
+  border-color: #ff0008;
   outline: 0;
   box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px rgba(94, 114, 228, 0.1);
 }
@@ -2855,7 +2859,7 @@ textarea.form-control-lg {
   }
 }
 .form-select:focus {
-  border-color: #fb6340;
+  border-color: #a2bee0;
   outline: 0;
   box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px rgba(94, 114, 228, 0.1);
 }
@@ -2940,14 +2944,14 @@ textarea.form-control-lg {
   border-color: transparent;
 }
 .form-check-input:checked[type=checkbox] {
-  background-image: linear-gradient(310deg, #fb6340 0%, #f56036 100%);
+  background-image: linear-gradient(310deg, #a2bee0 0%, #5799eb 100%);
 }
 .form-check-input:checked[type=radio] {
-  background-image: linear-gradient(310deg, #fb6340 0%, #f56036 100%);
+  background-image: linear-gradient(310deg, #a2bee0 0%, #5799eb 100%);
 }
 .form-check-input[type=checkbox]:indeterminate {
-  background-color: #fb6340;
-  border-color: #fb6340;
+  background-color: #a2bee0;
+  border-color: #a2bee0;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e");
 }
 .form-check-input:disabled {
@@ -3460,32 +3464,32 @@ textarea.form-control-lg {
 
 .btn-primary {
   color: #000;
-  background-color: #fb6340;
-  border-color: #fb6340;
+  background-color: #26BDEF;
+  border-color: #26BDEF;
 }
 .btn-primary:hover {
   color: #000;
-  background-color: #fc7a5d;
-  border-color: #fb7353;
+  background-color: #f80008;
+  border-color: #f80008;
 }
 .btn-check:focus + .btn-primary, .btn-primary:focus {
   color: #000;
-  background-color: #fc7a5d;
-  border-color: #fb7353;
+  background-color: #f80008;
+  border-color: #f80008;
   box-shadow: 0 0 0 0.2rem rgba(213, 84, 54, 0.5);
 }
 .btn-check:checked + .btn-primary, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
   color: #000;
-  background-color: #fc8266;
-  border-color: #fb7353;
+  background-color: #f80008;
+  border-color: #f80008;
 }
 .btn-check:checked + .btn-primary:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(213, 84, 54, 0.5);
 }
 .btn-primary:disabled, .btn-primary.disabled {
   color: #000;
-  background-color: #fb6340;
-  border-color: #fb6340;
+  background-color: #f80008;
+  border-color: #f80008;
 }
 
 .btn-secondary {
@@ -9455,7 +9459,7 @@ textarea.form-control-lg {
 }
 
 .bg-primary {
-  background-color: #fb6340 !important;
+  background-color: #26BDEF !important;
 }
 
 .bg-secondary {
@@ -19224,8 +19228,8 @@ textarea.form-control-lg {
 
 .btn-primary:hover,
 .btn.bg-gradient-primary:hover {
-  background-color: #fb6340;
-  border-color: #fb6340;
+  background-color: #ff0008;
+  border-color: #ff0008;
 }
 .btn-primary .btn.bg-outline-primary,
 .btn.bg-gradient-primary .btn.bg-outline-primary {
@@ -20306,7 +20310,7 @@ textarea.form-control-lg {
 }
 .form-switch .form-check-input:checked {
   border-color: rgba(251, 99, 64, 0.95);
-  background-color: rgba(251, 99, 64, 0.95);
+  background-color: #ff0008;
 }
 .form-switch .form-check-label {
   margin-bottom: 0;
@@ -20346,7 +20350,7 @@ label,
 }
 
 .bg-gradient-primary {
-  background-image: linear-gradient(310deg, #fb6340 0%, #f56036 100%);
+  background-image: linear-gradient(310deg, #BCCCE0 0%, #6aa2e6 100%);
 }
 
 .bg-gradient-secondary {
@@ -23107,7 +23111,7 @@ p {
   z-index: 1;
 }
 .text-gradient.text-primary {
-  background-image: linear-gradient(310deg, #fb6340, #f56036);
+  background-image: linear-gradient(310deg, #26BDEF, #a2bee0);
 }
 .text-gradient.text-info {
   background-image: linear-gradient(310deg, #1171ef, #11cdef);

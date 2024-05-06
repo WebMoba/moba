@@ -87,7 +87,7 @@ body::after {
 
     .dropdown-menu {
         background-color: transparent !important;
-        border-color: #73a3b6 !important;
+        border-color: #f80008 !important;
     }
 
     .dropdown-menu .dropdown-item {

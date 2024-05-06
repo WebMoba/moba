@@ -13,8 +13,13 @@
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold">COTIZACIONES</p>
                                     <h5 class="font-weight-bolder">{{ $currentQuotesCount }}</h5>
                                     <p class="mb-0">
+                                        @php
+                                            $percentageFormatted = number_format($percentageChangeQuotes);
+                                            $percentageClass =
+                                                $percentageChangeQuotes >= 0 ? 'text-success' : 'text-danger';
+                                        @endphp
                                         <span
-                                            class="text-success text-sm font-weight-bolder">+{{ number_format($percentageChangeQuotes) }}%</span>
+                                            class="{{ $percentageClass }} text-sm font-weight-bolder">{{ number_format($percentageChangeQuotes) }}%</span>
                                         desde ayer
                                     </p>
                                 </div>
@@ -37,8 +42,13 @@
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold">USUARIOS</p>
                                     <h5 class="font-weight-bolder">{{ $totalUsersCount }}</h5>
                                     <p class="mb-0">
+                                        @php
+                                            $percentageFormattedUsers = number_format($percentageChangeUsers);
+                                            $percentageClassUsers =
+                                                $percentageChangeUsers >= 0 ? 'text-success' : 'text-danger';
+                                        @endphp
                                         <span
-                                            class="text-success text-sm font-weight-bolder">+{{ number_format($percentageChangeUsers) }}%</span>
+                                            class="{{ $percentageClassUsers }} text-sm font-weight-bolder">{{ number_format($percentageChangeUsers) }}%</span>
                                         desde ayer
                                     </p>
                                 </div>
@@ -63,8 +73,13 @@
                                         {{ $totalPurchasesCount }}
                                     </h5>
                                     <p class="mb-0">
+                                        @php
+                                            $percentageFormattedPurchases = number_format($percentageChangePurchases);
+                                            $percentageClassPurchases =
+                                                $percentageChangePurchases >= 0 ? 'text-success' : 'text-danger';
+                                        @endphp
                                         <span
-                                            class="text-success text-sm font-weight-bolder">+{{ number_format($percentageChangePurchases) }}%</span>
+                                            class="{{ $percentageClassPurchases }} text-sm font-weight-bolder">{{ number_format($percentageChangePurchases) }}%</span>
                                         desde ayer
                                     </p>
                                 </div>
@@ -89,7 +104,15 @@
                                         {{ $totalSaleCount }}
                                     </h5>
                                     <p class="mb-0">
-                                        <span class="text-success text-sm font-weight-bolder">+{{ number_format($percentageChangeSale) }}%</span> desde ayer
+                                        @php
+                                            $percentageFormattedSale = number_format($percentageChangeSale);
+                                            $percentageClassSale =
+                                                $percentageChangeSale >= 0 ? 'text-success' : 'text-danger';
+                                        @endphp
+
+                                        <span
+                                            class="{{ $percentageClassSale }} text-sm font-weight-bolder">{{ number_format($percentageChangeSale) }}%</span>
+                                        desde ayer
                                     </p>
                                 </div>
                             </div>
@@ -107,10 +130,10 @@
             <div class="col-lg-7 mb-lg-0 mb-4">
                 <div class="card z-index-2 h-100">
                     <div class="card-header pb-0 pt-3 bg-transparent">
-                        <h6 class="text-capitalize">Sales overview</h6>
+                        <h6 class="text-capitalize">Resumen de ventas</h6>
                         <p class="text-sm mb-0">
                             <i class="fa fa-arrow-up text-success"></i>
-                            <span class="font-weight-bold">4% more</span> in 2021
+                            <span class="font-weight-bold">4% more</span> en {{ date('Y') }}
                         </p>
                     </div>
                     <div class="card-body p-3">
@@ -125,37 +148,36 @@
                     <div id="carouselExampleCaptions" class="carousel slide h-100" data-bs-ride="carousel">
                         <div class="carousel-inner border-radius-lg h-100">
                             <div class="carousel-item h-100 active"
-                                style="background-image: url('./img/carousel-1.jpg');
-            background-size: cover;">
+                                style="background-color: #BCCCE0; background-image: url('{{ asset('Imagenes/imgs-gallery/EquipoDeTrabajo.jpg') }}');
+            background-size: contain; background-position: center; background-repeat: no-repeat;">
                                 <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
                                     <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                                        <i class="ni ni-camera-compact text-dark opacity-10"></i>
+                                        <i class="ni ni-camera-compact text-danger opacity-10"></i>
                                     </div>
-                                    <h5 class="text-white mb-1">Get started with Argon</h5>
-                                    <p>There’s nothing I really wanted to do in life that I wasn’t able to get good at.</p>
+                                    <h5 class="mb-1"></h5>
+                                    <p></p>
                                 </div>
                             </div>
                             <div class="carousel-item h-100"
-                                style="background-image: url('./img/carousel-2.jpg');
-            background-size: cover;">
+                                style="background-color: #BCCCE0; background-image: url('{{ asset('Imagenes/imgs-gallery/equipoTrabajo.jpg') }}');
+            background-size: contain; background-position: center; background-repeat: no-repeat; height: auto">
                                 <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
                                     <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                                        <i class="ni ni-bulb-61 text-dark opacity-10"></i>
+                                        <i class="ni ni-bulb-61 text-danger opacity-10"></i>
                                     </div>
-                                    <h5 class="text-white mb-1">Faster way to create web pages</h5>
-                                    <p>That’s my skill. I’m not really specifically talented at anything except for the
-                                        ability to learn.</p>
+                                    <h5 class="text-white mb-1"></h5>
+                                    <p></p>
                                 </div>
                             </div>
                             <div class="carousel-item h-100"
-                                style="background-image: url('./img/carousel-3.jpg');
-            background-size: cover;">
+                                style="background-color: #BCCCE0; background-image: url('{{ asset('Imagenes/imgs-gallery/Mischa_.jpg') }}');
+            background-size: contain; background-position: center; background-repeat: no-repeat;">
                                 <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
                                     <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                                        <i class="ni ni-trophy text-dark opacity-10"></i>
+                                        <i class="ni ni-trophy text-danger opacity-10"></i>
                                     </div>
-                                    <h5 class="text-white mb-1">Share with us your design tips!</h5>
-                                    <p>Don’t be afraid to be wrong because you can’t learn anything from a compliment.</p>
+                                    <h5 class="text-white mb-1"></h5>
+                                    <p></p>
                                 </div>
                             </div>
                         </div>

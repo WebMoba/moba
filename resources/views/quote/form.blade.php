@@ -22,11 +22,17 @@
                 <div class="box-body col-mt-10">
                             <div class="form-group">
                                 {{ Form::label('Fecha de expedición', null, ['class' => 'required']) }}
-                                {{ Form::date('date_issuance', optional($quote->date_issuance)->format('y-m-d'), ['id' => 'Fecha de expedición','class' => 'form-control' . ($errors->has('date_issuance') ? ' is-invalid' : ''), 'required', 'id' => 'date_issuance','min' => now()->format('Y-m-d')]) }}
+                                {{ Form::date('date_issuance', \Carbon\Carbon::now()->format('Y-m-d'), [
+                                    'class' => 'form-control' . ($errors->has('date_issuance') ? ' is-invalid' : ''),
+                                    'required',
+                                    'min' => now()->format('Y-m-d'),
+                                    'readonly' => 'readonly',
+                                ]) }}
                                 {!! $errors->first('date_issuance', '<div class="invalid-feedback">:message</div>') !!}
-
+                            
                                 <small class="text-muted">Por cuestiones de seguridad este campo no es editable.</small>
-                            </div>    
+                            </div>
+                            
                             <div class="form-group">
                                 {{ Form::label('Descripción', null, ['class' => 'required']) }}
                                 {{ Form::text('description', $quote->description, ['id' => 'Descripción','class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''),'required']) }}
@@ -63,6 +69,21 @@
                                 ) }}
                                 {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
                             </div>
+                            <div class="form-group">
+                                {{ Form::label('client_id', 'Nombre del cliente', ['class' => 'required-label']) }}
+                                {{ Form::select(
+                                    'client_id',
+                                    $clients,
+                                    $quote->people_id,
+                                    [
+                                        'class' => 'form-control' . ($errors->has('client_id') ? ' is-invalid' : ''),
+                                        'required',
+                                        'placeholder' => 'Nombre del cliente',
+                                    ]
+                                ) }}
+                                {!! $errors->first('client_id', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+                            
                 </div>
                 
                 <div class="container">
