@@ -53,7 +53,7 @@
         //inicio de proyectos
         //proyectos cuadro
         <div class="title-container">
-            <h1 class="big-title">PALMAS</h1>
+            <h1 class="big-title">PALMAS CLUB</h1>
         </div>
 
         <div class="container">

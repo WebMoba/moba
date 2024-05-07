@@ -167,7 +167,7 @@
                         <a href="{{ asset('mobaMenu/proyectos/DULCES') }}">
                             <img src="{{ asset('Imagenes/imgproyectos/lafrez1.jpg') }}" alt="LAFREZ">
                             <div class="overlay">
-                                <div class="text">DULCES LA FREZ</div>
+                                <div class="text">LA FREZ</div>
                             </div>
                         </a>
                     </div>
@@ -237,7 +237,7 @@
                         <a href="{{ asset('mobaMenu/proyectos/CAFEMANA') }}">
                             <img src="{{ asset('Imagenes/imgproyectos/CAFEMANA.jpeg') }}" alt="RASPADOS">
                             <div class="overlay">
-                                <div class="text">CAFE MANA</div>
+                                <div class="text">CAFE MANA BARUCH</div>
                             </div>
                         </a>
                     </div>
@@ -245,9 +245,9 @@
                 <div class="col-md-4">
                     <div class="image-container">
                         <a href="{{ asset('mobaMenu/proyectos/EMPANADASBOTI') }}">
-                            <img src="{{ asset('Imagenes/imgproyectos/EMPANADASBOTI1.jpg') }}" alt="RASPADOS">
+                            <img src="{{ asset('Imagenes/imgproyectos/EMPANADASBOT1.jpg') }}" alt="RASPADOS">
                             <div class="overlay">
-                                <div class="text">EMPANADAS BOTI</div>
+                                <div class="text">EMPANADAS DONDE BOTI</div>
                             </div>
                         </a>
                     </div>
@@ -280,7 +280,7 @@
                         <a href="{{ asset('mobaMenu/proyectos/PALMAS') }}">
                             <img src="{{ asset('Imagenes/imgproyectos/PALMAS1.jpg') }}" alt="RASPADOS">
                             <div class="overlay">
-                                <div class="text">PALMAS</div>
+                                <div class="text">PALMAS CLUB</div>
                             </div>
                         </a>
                     </div>

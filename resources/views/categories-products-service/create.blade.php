@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-@include('layouts.navbars.auth.topnav', ['title' => 'Crear Categoria'])
+@include('layouts.navbars.auth.topnav', ['title' => 'Agregar Categoria'])
     <section class="content container-fluid">
         <div class="row">
             <div class="col-md-12">

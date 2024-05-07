@@ -52,7 +52,7 @@
         //inicio de proyectos
         //proyectos cuadro
         <div class="title-container">
-            <h1 class="big-title">EMPOWER</h1>
+            <h1 class="big-title">ENPOWERR</h1>
         </div>
 
         <div class="container">
