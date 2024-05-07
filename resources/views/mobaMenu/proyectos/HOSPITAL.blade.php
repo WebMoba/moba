@@ -52,7 +52,8 @@
         //inicio de proyectos
         //proyectos cuadro
         <div class="title-container">
-            <h1 class="big-title ">HOSPITAL DE SOGAMOSO</h1>
+            <h1 class="big-title ">HOSPITAL</h1>
+            <h1 class="big-title1 ">SOGAMOSO</h1>
         </div>
 
         <div class="container">
@@ -167,6 +168,30 @@
                 /* Establece el contenedor como posición relativa para que los elementos internos puedan ser posicionados relativamente a él */
             }
 
+            .title-container .big-title {
+                position: relative;
+                top: 80px;
+                left: 20px;
+                width: calc(50% - 40px);
+                /* Ajusta el ancho según sea necesario */
+                padding: 0 20px;
+                color: #2bb9e5;
+                font-weight: bold;
+                font-size: 70px;
+            }
+
+            .title-container .big-title1 {
+                position: relative;
+                top: 80px;
+                left: 20px;
+                width: calc(50% - 40px);
+                /* Ajusta el ancho según sea necesario */
+                padding: 0 20px;
+                color: white;
+                font-weight: bold;
+                font-size: 70px;
+            }
+
             .titulo {
                 position: absolute;
                 /* Establece la posición absoluta para que el título pueda posicionarse en la esquina superior izquierda del contenedor */
@@ -179,10 +204,13 @@
                 padding: 0 20px;
                 /* Espacio interno del título */
             }
+
             .custom-title {
                 position: relative;
-                top: -10px; /* Ajusta este valor según sea necesario */
+                top: -10px;
+                /* Ajusta este valor según sea necesario */
             }
+
             .galeria {
                 width: calc(50% - 40px);
                 /* Calcula el ancho de la galería para ocupar la mitad del contenedor menos los márgenes */

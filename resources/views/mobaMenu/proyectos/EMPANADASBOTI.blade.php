@@ -52,7 +52,7 @@
         //inicio de proyectos
         //proyectos cuadro
         <div class="title-container">
-            <h1 class="big-title">EMPANADAS BOTI</h1>
+            <h1 class="big-title">EMPANADAS DONDE BOTI</h1>
         </div>
 
         <div class="container">
