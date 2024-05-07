@@ -51,7 +51,7 @@
         </div>
         //inicio de proyectos
         //proyectos cuadro
-        <div class="title-container">
+        <div class="title-container vjvsdjvb">
             <h1 class="big-title">ACERIAS PAZ DEL RIO</h1>
         </div>
 

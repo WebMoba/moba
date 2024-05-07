@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ __('Create') }} Event
+    {{ __('Agregar Personas') }} Event
 @endsection
 
 @section('content')
-@include('layouts.navbars.auth.topnav', ['title' => 'Menu'])
+@include('layouts.navbars.auth.topnav', ['title' => 'Crear Evento'])
     <section class="content container-fluid">
         <div class="row">
             <div class="col-md-12">
