@@ -35,17 +35,17 @@
                             
                             <div class="form-group">
                                 {{ Form::label('Descripción', null, ['class' => 'required']) }}
-                                {{ Form::text('description', $quote->description, ['id' => 'Descripción','class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''),'required']) }}
+                                {{ Form::text('description', $quote->description, ['id' => 'Descripción','class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''),'required','placeholder' => 'Descripción de la cotización']) }}
                                 {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
                             </div>
                             <div class="form-group">
                                 {{ Form::label('Total', null, ['class' => 'required']) }}
-                                {{ Form::number('total', $quote->total, ['id' => 'Total','class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''),'required']) }}
+                                {{ Form::number('total', $quote->total, ['id' => 'Total','class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''),'required', 'placeholder' => 'Valor total de la cotización']) }}
                                 {!! $errors->first('total', '<div class="invalid-feedback">:message</div>') !!}
                             </div>
                             <div class="form-group">
                                 {{ Form::label('Descuento', null, ['class' => 'required']) }}
-                                {{ Form::text('discount', $quote->discount, ['id' => 'Descuento','class' => 'form-control' . ($errors->has('discount') ? ' is-invalid' : ''),'required']) }}
+                                {{ Form::text('discount', $quote->discount, ['id' => 'Descuento','class' => 'form-control' . ($errors->has('discount') ? ' is-invalid' : ''),'required', 'placeholder' => 'Descuento en pesos']) }}
                                 {!! $errors->first('discount', '<div class="invalid-feedback">:message</div>') !!}
                             </div>
                             <div class="form-group">
@@ -57,8 +57,8 @@
                             <div class="form-group">
                                 {{ Form::label('Nombre del cliente', null, ['class' => 'required-label']) }}
                                 {{ Form::select(
-                                    'name',
-                                    $usersName,
+                                    'people_id',
+                                    $persons,
                                     $quote->client_name,
                                     [
                                         'class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''),
@@ -68,20 +68,6 @@
                                     ]
                                 ) }}
                                 {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
-                            </div>
-                            <div class="form-group">
-                                {{ Form::label('client_id', 'Nombre del cliente', ['class' => 'required-label']) }}
-                                {{ Form::select(
-                                    'client_id',
-                                    $clients,
-                                    $quote->people_id,
-                                    [
-                                        'class' => 'form-control' . ($errors->has('client_id') ? ' is-invalid' : ''),
-                                        'required',
-                                        'placeholder' => 'Nombre del cliente',
-                                    ]
-                                ) }}
-                                {!! $errors->first('client_id', '<div class="invalid-feedback">:message</div>') !!}
                             </div>
                             
                 </div>

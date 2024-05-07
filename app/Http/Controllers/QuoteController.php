@@ -54,7 +54,6 @@ class QuoteController extends Controller
         $quote = new Quote();
         $detailQuote = new DetailQuote();
 
-        $persons = Person::pluck('id_card', 'id');
         $services = Service::pluck('name', 'id');
         $products = Product::pluck('name', 'id');
         $projects = Project::pluck('name', 'id');
@@ -65,7 +64,7 @@ class QuoteController extends Controller
             ->where('disable', false) // Agregar esta línea si es necesario
             ->get();
 
-        $usersName = User::with('person')
+        $persons = User::with('person')
             ->whereHas('person', function ($query) {
                 $query->where('rol', 'Cliente')
                     ->where('users_id', '!=', null)
@@ -73,9 +72,9 @@ class QuoteController extends Controller
             })
             ->pluck('name', 'id');
 
-        $clients = Person::clients()->get();
+        // $clients = Person::clients()->get();
 
-        return view('quote.create', compact('quote', 'clients', 'usersName', 'detailQuote', 'persons', 'services', 'products', 'projects', 'quotes'));
+        return view('quote.create', compact('quote', 'clients', 'detailQuote', 'persons', 'services', 'products', 'projects', 'quotes'));
     }
 
     /**
@@ -110,7 +109,7 @@ class QuoteController extends Controller
         }
     }
 
-    return redirect()->route('quote.index')->with('success', 'Cotización creada correctamente.');
+    return redirect()->route('quotes.index')->with('success', 'Cotización creada correctamente.');
 }
 
 

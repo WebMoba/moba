@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
             'rol' => 'Administrador',
             'region_id' => 15,
             'disable' => false,
-            'number_phones_id' => 4,
+            'number_phones_id' => 5,
             'towns_id' => 923,
             'users_id' => 6,
         ]);
