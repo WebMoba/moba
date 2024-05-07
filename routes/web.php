@@ -4,7 +4,6 @@
 
 use App\Exports\CategoriesExport;
 use App\Http\Controllers\ContactoController;
-
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\BusquedaController;
@@ -60,7 +59,8 @@ Route::resources([
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+
 
 Route::resource('product', ProductController::class);
 Route::resource('unit', UnitController::class);
@@ -68,9 +68,12 @@ Route::resource('unit', UnitController::class);
 Route::get('/pdf/product', [ProductController::class, 'generatePDF'])->name('pdf.product');
 Route::get('/pdf/unit', [UnitController::class, 'generatePDF'])->name('pdf.unit');
 
+//dashboard
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/pages/dashboard', [QuoteController::class, 'QuotesData'])->name('pages.dashboard');
 
 
 Route::middleware('auth')->group(function () {
@@ -80,7 +83,6 @@ Route::middleware('auth')->group(function () {
 
     /*Controladores tablas Eventos, People, Buscar */
     Route::resource('events', EventController::class);
-    Route::resource('person', PersonController::class);
     Route::resource('number-phone', NumberPhoneController::class);
     Route::resource('person', PersonController::class);
     Route::get('/buscar', [BusquedaController::class, 'buscar'])->name('buscar');
@@ -208,6 +210,7 @@ Route::view('/tuArteMenu/Contacto/index', 'tuArteMenu.Contacto.index')->name('tu
 
 
 
+
 //ruta Correo electronico
 Route::post('/enviar-correo', [ContactoController::class, 'enviarCorreo'])->name('enviar-correo');
 
@@ -216,8 +219,8 @@ Route::post('/enviar-correo', [ContactoController::class, 'enviarCorreo'])->name
 
 Route::get('/tuArteMenu/categorias', function () {
     $categorias = CategoriesProductsService::where('disable', false)
-                                            ->orderBy('created_at', 'asc')
-                                            ->get();
+        ->orderBy('created_at', 'asc')
+        ->get();
     return view('tuArteMenu.categorias.index', compact('categorias'));
 })->name('tuArteMenu.categorias.index');
 require __DIR__ . '/auth.php';
@@ -226,3 +229,47 @@ Auth::routes();
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\ResetPassword;
+use App\Http\Controllers\ChangePassword;
+use App\Http\Controllers\DashboardController;
+
+
+Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
+Route::post('/register', [RegisterController::class, 'store'])->middleware('guest')->name('register.perform');
+Route::get('/login', [LoginController::class, 'show'])->middleware('guest')->name('login');
+Route::post('/login', [LoginController::class, 'login'])->middleware('guest')->name('login.perform');
+Route::get('/reset-password', [ResetPassword::class, 'show'])->middleware('guest')->name('reset-password');
+Route::post('/reset-password', [ResetPassword::class, 'send'])->middleware('guest')->name('reset.perform');
+Route::get('/change-password', [ChangePassword::class, 'show'])->middleware('guest')->name('change-password');
+Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
+Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard')->middleware('auth');
+/* Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middleware('auth');*/
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
+    Route::post('/profile', [UserProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile-static', [PageController::class, 'profile'])->name('profile-static');
+    Route::get('/sign-in-static', [PageController::class, 'signin'])->name('sign-in-static');
+    Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static');
+    Route::get('/{page}', [PageController::class, 'index'])->name('page');
+    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+    Route::resource('service', ServiceController::class);
+    Route::resource('categories-products-service', CategoriesProductsServiceController::class);
+    Route::resource('product', ProductController::class);
+    Route::resource('unit', UnitController::class);
+    Route::resource('events', EventController::class);
+    Route::resource('number-phone', NumberPhoneController::class);
+    Route::resource('person', PersonController::class);
+    Route::resource('materials_raws', App\Http\Controllers\MaterialsRawController::class);
+    Route::resource('units', App\Http\Controllers\UnitController::class);
+    Route::resource('sales', SaleController::class)->middleware('auth');
+    Route::resource('detail-sale', DetailSaleController::class)->middleware('auth');
+    Route::resource('projects', ProjectController::class)->middleware('auth');
+    Route::resource('team-works', TeamWorkController::class)->middleware('auth');
+    Route::resource('quotes', QuoteController::class)->middleware('auth');
+});

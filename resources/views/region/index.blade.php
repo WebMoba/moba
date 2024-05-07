@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+@include('layouts.navbars.auth.topnav', ['title' => 'Menu'])
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -17,8 +18,8 @@
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('regions.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                <a href="{{ route('regions.create') }}" class="btn btn-success"  data-placement="left">
+                                  {{ __('Crear') }}
                                 </a>
                               </div>
                         </div>

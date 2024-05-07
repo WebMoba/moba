@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+@include('layouts.navbars.auth.topnav', ['title' => 'Menu'])
     @if ($message = Session::get('success'))
         <div class="alert alert-success text-center">
             <p>{{ $message }}</p>
@@ -38,9 +39,9 @@
                                 <i class="fa fa-file-pdf"></i> {{ __('Generar PDF') }}
                             </a>
                             <div class="float-right">
-                                <a href="{{ route('unit.create') }}" class="btn btn-primary btn-sm float-right"
+                                <a href="{{ route('unit.create') }}" class="btn btn-success"
                                     data-placement="left">
-                                    {{ __('Crear Unidad') }}
+                                    {{ __('Crear') }}
                                 </a>
                             </div>
                         </div>

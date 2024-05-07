@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+@include('layouts.navbars.auth.topnav', ['title' => 'Menu'])
     <section class="content container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -19,7 +20,7 @@
                     </div>
 
                     <div class="card-body">
-                        <h2>Compra</h2>
+                        <h2>Venta</h2>
 
 
                         <div class="form-group">
@@ -35,8 +36,8 @@
                             {{ $sale->date }}
                         </div>
                         <div class="form-group">
-                            <strong>N° de Cotización:</strong>
-                            {{ $sale->quote->id  }}
+                            <strong>Total de la venta:</strong>
+                            {{ $sale->total }}
                         </div>
 
                         <h2>Detalles de la venta</h2>

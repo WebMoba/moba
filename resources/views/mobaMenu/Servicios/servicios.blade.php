@@ -313,7 +313,7 @@
             align-items: center;
             justify-content: center;
             color: #2bb9e5;
-
+            text-align: center;
         }
 
         .subtitulo {
@@ -323,6 +323,7 @@
             flex-direction: column;
             color: white;
             padding: 1%;
+            text-align: center;
         }
 
         .subtitulo h4 {
@@ -528,11 +529,149 @@
             padding: 0 !important;
         }
 
+        @media screen and (max-width: 1200px) {
+            .texto-cuadro{
+                width: 400px; 
+                height: 300px; 
+            }
+        }
+
+        @media screen and (max-width: 1000px) {
+            .texto-cuadro{
+                width: 350px; 
+                height: 300px; 
+            }
+        }
+
+        @media screen and (max-width: 900px) {
+            .texto-cuadro{
+                width: 300px; 
+                height: 250px; 
+                padding-bottom:20%; 
+            }
+            .creatividad{
+                width: 200px; 
+            }
+            .creatividad .t1 {
+                font-size: 25px;
+                font-weight: bold
+            }
+    
+            .creatividad .t2 {
+                font-size: 20px;
+            }
+    
+            .creatividad .t3 {
+                font-size: 20px;
+                color: #2bb9e5;
+                font-weight: bold;
+            }
+    
+            .creatividad .t4 {
+                font-size: 20px;
+                font-weight: bold;
+            }
+            .texto {
+                font-size: 20px;
+            }
+        }
+
+        @media screen and (max-width: 700px) {
+            .texto-cuadro{
+                width: 250px; 
+                height: 200px; 
+                padding-bottom:20%; 
+            }
+            .creatividad{
+                width: 150px; 
+            }
+            .creatividad .t1 {
+                font-size: 20px;
+                font-weight: bold
+            }
+    
+            .creativida15.t2 {
+                font-size: 15px;
+            }
+    
+            .creatividad .t3 {
+                font-size: 15px;
+                color: #2bb9e5;
+                font-weight: bold;
+            }
+    
+            .creatividad .t4 {
+                font-size: 15px;
+                font-weight: bold;
+            }
+            .titulos-cuadro h1,h2{
+                font-size: 20px;
+                font-weight: bold;
+            }
+            .contenido-cuadro p {
+                font-size: 10px;
+            }
+            .texto {
+                font-size: 14px;
+            }
+        }
+        
+        @media screen and (max-width: 580px) {
+            .contenido2{
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            .texto-cuadro{
+                width: 250px; 
+                height: 200px; 
+                padding-bottom:20%; 
+            }
+            .creatividad{
+                width: 150px; 
+            }
+            .creatividad .t1 {
+                font-size: 20px;
+                font-weight: bold
+            }
+    
+            .creativida15.t2 {
+                font-size: 15px;
+            }
+    
+            .creatividad .t3 {
+                font-size: 15px;
+                color: #2bb9e5;
+                font-weight: bold;
+            }
+    
+            .creatividad .t4 {
+                font-size: 15px;
+                font-weight: bold;
+            }
+            .titulos-cuadro h1,h2{
+                font-size: 20px;
+                font-weight: bold;
+            }
+            .contenido-cuadro p {
+                font-size: 10px;
+            }
+            .texto {
+                font-size: 14px;
+            }
+        }
+
         @media screen and (max-width: 400px) {
             .contenido2{
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
+            }
+            .contenido2 .creatividad{
+
+            }
+            .contenido2 .contenedor{
+                padding-right: 10%;
             }
         }
 

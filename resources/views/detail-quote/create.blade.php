@@ -16,7 +16,8 @@
                         <span class="card-title">{{ __('Crear') }} Detalle de Cotización</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('detail-quotes.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('detail-quotes.store') }}" role="form"
+                            enctype="multipart/form-data">
                             @csrf
 
                             @include('detail-quote.form')

@@ -38,7 +38,6 @@ class Person extends Model
 
     static $rules = [
         'id_card' => 'required',
-        'team_works_id' => 'required',
         'number_phones_id' => 'required',
         'towns_id' => 'required',
         'users_id' => 'required',
@@ -125,6 +124,10 @@ class Person extends Model
     public function isProvider()
     {
         return $this->rol === 'Proveedor';
+    }
+    public function isClient()
+    {
+        return $this->rol === 'Cliente';
     }
 
     public function scopeClients($query)

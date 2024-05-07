@@ -147,9 +147,9 @@
             detalles: detalles
         };
 
-        // Ahora puedes enviar `data` que contiene tanto la información principal como los detalles de la compra
+        // Ahora puedes enviar data que contiene tanto la información principal como los detalles de la compra
         //console.log(data);
-        // Aquí puedes enviar `data` a través de AJAX u otro método según tus necesidades
+        // Aquí puedes enviar data a través de AJAX u otro método según tus necesidades
 
         $.ajax({
             type: "POST",

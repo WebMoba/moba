@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('subtotal')->nullable();
             $table->integer('discount')->nullable();
             $table->integer('total')->nullable();
-            $table->boolean('disable')->default(true);
+            $table->boolean('disable')->default(false);
             $table->timestamps();
             $table->integer('materials_raws_id')->index('fk_detail_purchases_materials_raws1_idx');
             $table->integer('purchases_id')->index('fk_detail_purchases_purchases1_idx');

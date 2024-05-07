@@ -55,15 +55,21 @@
         </div>
 
         <div class="logotexto">
-            <div class="texto">
-                <p>MOBA surge como una propuesta novedosa apostándole a la creatividad y a la imaginación, 
-                    para satisfacer las necesidades de las marcas y los clientes.</p>
-                <br>
-                <p>Con 8 años de experiencia, somos un referente en diseño, comunicación y publicidad; 
-                    contamos con talento humano capaz de crear estructuras, desarrollar e implementar campañas 
-                    eficaces en medios impresos y digitales.</p>
-                <br>
-                <p>Los pilares y bases de nuestro trabajo, estan regidos por la honestidad, la disiplina y la...</p>
+            <div class="textonda">
+                <div class="texto">
+                    <p>MOBA surge como una propuesta novedosa apostándole a la creatividad y a la imaginación, 
+                        para satisfacer las necesidades de las marcas y los clientes.</p>
+                    <br>
+                    <p>Con 8 años de experiencia, somos un referente en diseño, comunicación y publicidad; 
+                        contamos con talento humano capaz de crear estructuras, desarrollar e implementar campañas 
+                        eficaces en medios impresos y digitales.</p>
+                    <br>
+                    <p>Los pilares y bases de nuestro trabajo, estan regidos por la honestidad, la disiplina y la...</p>
+                </div>
+                <!-- buena onda-->
+                <div class="onda">
+                        <h1>"Buena Onda"</h1>
+                </div>
             </div>
             <div class="logomoba">
                 <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
@@ -78,116 +84,107 @@
         </div>
     </div>
     <!-- Líneas verticales con iconos -->
-    <!-- buena onda-->
-    <div class="onda">
-            <h1>"Buena Onda"</h1>
-    </div>
     
-    <!-- galeria de imagenes -->
+    
+    <div class="container-slider">
+        <div class="slider-background">  
+            <div class="slider">
+                <div class="slide-track">
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/2.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/1.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/2.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/1.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/6.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }}" alt="">
+                    </div>
 
-        <!-- galeria de imagenes -->
-    <div class="contenedor__carrusel">   
-        <div class="carousel">
-            <div class="carousel__contenedor">
-                <button aria-label="Anterior" class="carousel__anterior">
-                    <i class="fa-solid fa-angle-left"></i>
-                </button>
-
-                <div class="carousel__lista">
-                    <div class="carousel__elemento">
-                        <img src="{{ asset('Imagenes/imgs-gallery/1.jpg') }} " alt="Rock and Roll Hall of Fame">
-                        
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/3.jpg') }}" alt="">
                     </div>
-                    <div class="carousel__elemento">
-                        <img src="{{ asset('Imagenes/imgs-gallery/2.jpg') }} " alt="Constitution Square - Tower I">
-                        
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }}" alt="">
                     </div>
-                    <div class="carousel__elemento">
-                        <img src="{{ asset('Imagenes/imgs-gallery/3.jpg') }} " alt="Empire State Building">
-                    
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/6.jpg') }}" alt="">
                     </div>
-                    <div class="carousel__elemento">
-                        <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }} " alt="Harmony Tower">
-
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/3.jpg') }}" alt="">
                     </div>
-
-                    <div class="carousel__elemento">
-                        <img src="{{ asset('Imagenes/imgs-gallery/5.jpg') }} " alt="Empire State Building">
-                    
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/5.jpg') }}" alt="">
                     </div>
-                    <div class="carousel__elemento">
-                        <img src="{{ asset('Imagenes/imgs-gallery/7.jpg') }} " alt="Harmony Tower">
-
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/2.jpg') }}" alt="">
                     </div>
-                    <div class="carousel__elemento">
-                        <img src="{{ asset('Imagenes/imgs-gallery/8.jpg') }} " alt="Empire State Building">
-                        
-                    </div>
-                    <div class="carousel__elemento">
-                        <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }} " alt="Harmony Tower">
-
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/6.jpg') }}" alt="">
                     </div>
                 </div>
-
-                <button aria-label="Siguiente" class="carousel__siguiente">
-                    <i class="fa-solid fa-angle-right"></i>
-                </button>
             </div>
-            <div role="tablist" class="carousel__indicadores"></div>
+            <div class="slider">
+                <div class="slide-track">
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/7.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/5.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/2.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/1.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/6.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/3.jpg') }}" alt="">
+                    </div>
+
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/3.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/6.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/3.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/5.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/2.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/6.jpg') }}" alt="">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    
-
-
-    <!-- Contenido de la página aquí -->
-    <!-- script galeria -->
-    <script>
-        const fulImgBox = document.getElementById("fulImgBox"),
-        fulImg = document.getElementById("fulImg");
-
-        function openFulImg(reference){
-            fulImgBox.style.display = "flex";
-            fulImg.src = reference
-        }
-        function closeImg(){
-            fulImgBox.style.display = "none";
-        }
-    </script>
-    <!-- script carrusel -->
-    <script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
-    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
-    <script>
-        window.addEventListener('load', function(){
-            new Glider(document.querySelector('.carousel__lista'), {
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                dots: '.carousel__indicadores',
-                arrows: {
-                    prev: '.carousel__anterior',
-                    next: '.carousel__siguiente'
-                },
-                responsive: [
-                    {
-                    // screens greater than >= 775px
-                    breakpoint: 450,
-                    settings: {
-                        // Set to `auto` and provide item width to adjust to viewport
-                        slidesToShow: 2,
-                        slidesToScroll: 2
-                    }
-                    },{
-                    // screens greater than >= 1024px
-                    breakpoint: 800,
-                    settings: {
-                        slidesToShow: 4,
-                        slidesToScroll: 4
-                    }
-                    }
-                ]
-            });
-        });
-    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
@@ -236,7 +233,7 @@
             margin-top:9%;
         }
         .logotexto .texto{
-            width: 65%;
+            width: 100%;
             height: 80%;
         }
 
@@ -244,8 +241,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 45%;
+            width: 35%;
             height: 80%;
+            padding-bottom: 10%;
+            padding-right: 15%;
         }
 
 
@@ -258,139 +257,133 @@
 
 
         .logotexto .logomoba img{
-            width: 300px;
-            height: 100px;
+            width: 410px;
+            height: 150px;
         }
         
+        .textonda{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 65%;
+            height: 90%;
+            flex-direction: column
+        }
         /* buena onda */
         .onda{
             display: flex;
             align-items: center;
             justify-content: center;
-            padding-right: 20%;
         }
         .onda h1{
-            font-size: 50px;
+            font-size: 60px;
             font-weight: bold;
             color: white;
+            text-decoration: none;
         }
 
+        .container-fluid{
+            padding: 0 !important;
+        }
 
-        /* galeria imagenes */
-        .img-gallery{
-            background-color: white;
-            width: 80%;
-            margin: 50px auto 50px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
-            gap: 30px;
-        }
-        .img-gallery img{
-            width: 100%;
-            cursor: pointer;
-            transition: 1s;
-            padding: 1rem;
-        }
-        .img-gallery img:hover{
-            transform: scale(1.1);
-        }
-        .ful-img{
-            width: 100%;
-            height: 100vh;
-            background-color: rgba(0, 0,0, 0.9);
-            position: fixed;
-            top: 0;
-            left: 0;
-            display: none;
-            align-items: center;
+        /*carrousel infinito*/
+        .container-slider{
+            width:100%;
+            display: flex;
             justify-content: center;
-            z-index: 99;
+            align-items: center;
         }
-        .ful-img span{
-            position: absolute;
-            top: 5%;
-            right: 5%;
-            font-size: 30px;
-            color: #fff;
-            cursor: pointer;
-        }
-        .ful-img img{
-            width: 90%;
-            max-width: 600px;
-        }
-
-        /* --- --- CAROUSEL --- --- */
-        .contenedor__carrusel{
-            background-color: white;
+        .slider-background{
             width: 80%;
-            margin: 50px auto 50px;
-                        
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: white;
         }
-        .carousel__contenedor {
-            position: relative;
-        }
-
-        .carousel__anterior,
-        .carousel__siguiente {
-            position: absolute;
-            display: block;
-            width: 30px;
-            height: 30px;
-            border: none;
-            top: calc(50% - 40px);
-            cursor: pointer;
-            line-height: 30px;
-            text-align: center;
-            background: none;
-            opacity: 20%;
-        }
-
-        .carousel__anterior:hover,
-        .carousel__siguiente:hover {
-            opacity: 100%;
-        }
-
-        .carousel__lista {
+        .slider {
+            width: 95%;
+            height: auto;
             overflow: hidden;
+            margin-bottom: 2%;
+            margin-top: 2%;
+        }
+        
+        .slider .slide-track {
+            display: flex;
+            animation: scroll 40s linear infinite;
+            -webkit-animation: scroll 40s linear infinite;
+            width: calc(200px * 14);
+        }
+        
+        .slider .slide {
+            width: 200px;
+        }
+        
+        .slider .slide img {
+            width: 100%;
+            padding-right: 5%;
         }
 
-        .carousel__elemento {
-            text-align: center;
-            padding: 1%;
-        }
-
-        .carousel__indicadores .glider-dot {
-            display: block;
-            width: 30px;
-            height: 4px;
-            background: black;
-            opacity: .2;
-            border-radius: 0;
-        }
-
-        .carousel__indicadores .glider-dot:hover {
-            opacity: .5;
-        }
-
-        .carousel__indicadores .glider-dot.active {
-            opacity: 1;
-        }
-
-        @media screen and (max-width: 800px) {
-            body {
-                padding: 40px 0;
+        @media screen and (max-width:1200px){
+            .logotexto .logomoba img{
+                width: 350px;
+                height: 150px;
             }
-
-            .contenido-principal {
-                flex-direction: column;
+            .logotexto .logomoba{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 35%;
+                height: 80%;
+                padding-bottom: 10%;
             }
+        }
 
-            .contenido-principal > * {
-                width: 100%;
+        @media screen and (max-width: 1000px) {
+            .logotexto{
+                flex-direction: row;
             }
-        }   
+            .logotexto .logomoba img{
+                width: 300px;
+                height: 100px;
+            }
+        }
 
-        @media screen and (max-width:400px){
+        @media screen and (max-width: 900px) {
+            
+            .logotexto{
+                flex-direction: row;
+            }
+            .logotexto .logomoba img{
+                width: 250px;
+                height: 80px;
+            }
+        }
+        
+        @media screen and (max-width: 700px){
+            .logotexto{
+                flex-direction: row;
+            }
+            .logotexto .logomoba img{
+                width: 180px;
+                height: 80px;
+            }
+            .onda h1{
+                font-size: 40px;
+                font-weight: bold;
+                color: white;
+            }
+            .logotexto .texto p{
+                font-size:10px;
+                color: white;
+                text-align: justify;
+                width: 80%;
+                padding-top: 10%;
+            }
+        } 
+
+        @media screen and (max-width:520px){
             h1{
                 text-decoration: underline;
             }
@@ -400,9 +393,36 @@
             h1 span{
                 padding: 0;
             }
+            .logotexto .texto p{
+                font-size:10px;
+                color: white;
+                text-align: justify;
+                width: 80%;
+                padding-top: 10%;
+            }
+            .logotexto{
+                flex-direction: column;
+            }
+            .logotexto .logomoba img{
+                width: 150px;
+                height: 60px;
+            }
+            .onda h1{
+                font-size: 30px;
+                font-weight: bold;
+                color: white;
+            }
         }
-        .container-fluid{
-            padding: 0 !important;
+        
+        @keyframes scroll {
+            0% {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+            100% {
+                -webkit-transform: translateX(calc(-200px * 7));
+                transform: translateX(calc(-200px * 7));
+            }
         }
 
     </style>

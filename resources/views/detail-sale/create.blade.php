@@ -16,7 +16,8 @@
                         <span class="card-title">{{ __('Crear nuevo') }} detalle venta</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('detail-sale.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('detail-sale.store') }}" role="form"
+                            enctype="multipart/form-data">
                             @csrf
 
                             @include('detail-sale.form')

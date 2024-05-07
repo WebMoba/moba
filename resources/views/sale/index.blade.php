@@ -7,6 +7,7 @@
 @endsection
 
 @section('content')
+@include('layouts.navbars.auth.topnav', ['title' => 'Menu'])
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -33,17 +34,17 @@
                             </form>
                             <div class="float-right">
                                 <a href="{{ route('pdf.sales') }}" class="btn btn-danger btn-sm float-right">
-                                    <i class="fa fa-file-pdf"></i> <i class="bi bi-file-pdf-fill"></i>
+                                  <i class="bi bi-file-pdf-fill"></i>
                                 </a>
                                 <a href="{{ route('export.sales') }}" class="btn btn-success btn-sm float-right">
-                                    <i class="fa fa-file-excel"></i> <i class="bi bi-file-earmark-excel-fill"></i>
+                                    <i class="bi bi-file-earmark-excel-fill"></i>
                                 </a>
                                 
                             </div>
                             <div class="float-right">
-                                <a href="{{ route('sales.create') }}" class="btn btn-primary btn-sm float-right"
+                                <a href="{{ route('sales.create') }}" class="btn btn-success"
                                     data-placement="left">
-                                    <i class="bi bi-plus-lg"></i>
+                                    <i class="bi bi-plus-circle-fill"></i>
                                 </a>
                             </div>
                         </div>
@@ -63,7 +64,7 @@
                                         <th>Nombre Cliente</th>
                                         <th>Id Persona</th>
                                         <th>Fecha venta</th>
-                                        <th>N° Cotización</th>
+                                        <th>Total venta</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -78,7 +79,7 @@
                                                 <td>{{ $sale->name }}</td>
                                                 <td>{{ $sale->person->id_card }}</td>
                                                 <td>{{ $sale->date }}</td>
-                                                <td>{{ $sale->quote->id }}</td>
+                                                <td>{{ $sale->total }}</td>
                                                 <td>
                                                     <form action="{{ route('sales.destroy', $sale->id) }}" method="POST">
                                                         <a class="btn btn-sm btn-primary {{ $sale->disable ? 'disabled' : '' }}"
@@ -88,7 +89,7 @@
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger btn-sm"
                                                             onclick="return confirm('¿Está seguro de que desea {{ $sale->disable ? 'Habilitar' : 'Deshabilitar' }} a la  venta?')">
-                                                            <i class="fa fa-fw fa-trash"></i>
+                                                            
                                                             {!! $sale->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>' !!}
                                                         </button>
                                                     </form>
@@ -96,6 +97,7 @@
                                             </tr>
                                         @endforeach
                                     @endif
+
 
                                 </tbody>
                             </table>

@@ -1,4 +1,3 @@
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <div class="box box-info padding-1">
 
@@ -17,12 +16,12 @@
         </div>
 
         <div class="form-group">
-            {{ Form::label('Identificacion' , null, ['class' => 'required']) }}
+            {{ Form::label('Identificacion', null, ['class' => 'required']) }}
             {{ Form::text('id_card', $person->id_card, ['class' => 'form-control' . ($errors->has('id_card') ? ' is-invalid' : ''), 'placeholder' => 'Identificacion', 'maxlength' => '10']) }}
             {!! $errors->first('id_card', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('Nombre' , null, ['class' => 'required']) }}
+            {{ Form::label('Nombre', null, ['class' => 'required']) }}
             {{ Form::select('user_name', $usersName, $person->users_id, ['class' => 'form-control' . ($errors->has('user_name') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
             {!! $errors->first('user_name', '<div class="invalid-feedback">:message</div>') !!}
         </div>
@@ -34,18 +33,19 @@
         </div>
 
         <div class="form-group" style="display: none">
-            {{ Form::label('Numero Celular' , null, ['class' => 'required']) }}
-            {{ Form::text('number_phones_id', $numberPhoneId, ['class' => 'form-control', 'readonly' => true]) }} <!-- Mostrar el ID del número de teléfono -->
+            {{ Form::label('Numero Celular', null, ['class' => 'required']) }}
+            {{ Form::text('number_phones_id', $numberPhoneId, ['class' => 'form-control', 'readonly' => true]) }}
+            <!-- Mostrar el ID del número de teléfono -->
         </div>
-        
+
         <div class="form-group">
             {{ Form::label('phone_number', 'Número de Celular', ['class' => 'required']) }}
             {{ Form::text('phone_number', isset($numberPhone) ? $numberPhone->number : '', ['class' => 'form-control', 'placeholder' => 'Número de teléfono', 'maxlength' => '10']) }}
         </div>
 
         <div class="form-group">
-            {{ Form::label('Grupo de Trabajo' , null, ['class' => 'required']) }}
-            {{ Form::select('team_works_id', $teamWorks, $person->team_works_id, ['class' => 'form-control' . ($errors->has('team_works_id') ? ' is-invalid' : ''), 'placeholder' => 'Grupo de trabajo']) }}
+            {{ Form::label('Grupo de Trabajo', null, ['class' => 'required']) }}
+            {{ Form::select('team_works_id', $teamWorks, $person->team_works_id, ['class' => 'form-control' . ($errors->has('team_works_id') ? ' is-invalid' : ''), 'placeholder' => '']) }}
             {!! $errors->first('team_works_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
@@ -54,22 +54,23 @@
             {{ Form::select('region', $regions, $person->region_id, ['id' => 'regions_select', 'class' => 'form-control' . ($errors->has('region') ? ' is-invalid' : ''), 'placeholder' => 'Departamento']) }}
             {!! $errors->first('region', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        
+
         <div class="form-group">
-            {{ Form::label('Ciudad' , null, ['class' => 'required']) }}
+            {{ Form::label('Ciudad', null, ['class' => 'required']) }}
             {{ Form::select('towns_id', $towns, $person->towns_id, ['id' => 'towns_select', 'class' => 'form-control' . ($errors->has('towns_id') ? ' is-invalid' : ''), 'placeholder' => 'Ciudad']) }}
             {!! $errors->first('towns_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
         <div class="form-group">
-            {{ Form::label('Usuario' , null, ['class' => 'required']) }}
+            {{ Form::label('Usuario', null, ['class' => 'required']) }}
             {{ Form::select('users_id', $users, $person->users_id, ['class' => 'form-control' . ($errors->has('users_id') ? ' is-invalid' : ''), 'placeholder' => 'Correo Electronico']) }}
             {!! $errors->first('users_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
     </div>
     <div class="box-footer mt20">
-        <br><button type="submit" class="btn btn-primary" >{{ __('Crear') }}</button>
+        <br><button type="submit" class="btn btn-success btn-Crear">{{ __('Crear') }}</button>
+        <a type="submit" class="btn btn-primary" href="{{ route('person.index') }}">Volver</a>
     </div>
 </div>
 <script>
@@ -82,14 +83,17 @@
                 $.ajax({
                     type: "GET",
                     url: "{{ route('get_towns_by_region') }}",
-                    data: { regions_id: regionId },
+                    data: {
+                        regions_id: regionId
+                    },
                     success: function(towns) {
                         console.log(towns);
                         // Limpiar las opciones actuales del campo de selección de ciudades
                         $('#towns_select').empty();
                         // Agregar las nuevas opciones de ciudades basadas en la respuesta AJAX
                         $.each(towns, function(key, value) {
-                            $('#towns_select').append('<option value="' + key + '">' + value + '</option>');
+                            $('#towns_select').append('<option value="' + key +
+                                '">' + value + '</option>');
                         });
                     }
                 });
@@ -104,8 +108,8 @@
 
 <style>
     .required::after {
-    content: "*";
-    color: red;
-    margin-left: 4px;
-}
+        content: "*";
+        color: red;
+        margin-left: 4px;
+    }
 </style>

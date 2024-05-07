@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+@include('layouts.navbars.auth.topnav', ['title' => 'Menu'])
     @if ($message = Session::get('success'))
         <div class="alert alert-success text-center">
             <p>{{ $message }}</p>
@@ -37,16 +38,16 @@
                             </form>
                             <div class="float-right">
                                 <a href="{{ route('pdf.product') }}" class="btn btn-danger btn-sm float-right">
-                                    <i class="fa fa-file-pdf"></i> <i class="bi bi-file-pdf-fill"></i>
+                                    <i class="bi bi-file-pdf-fill"></i>
                                 </a>
                                 <a href="{{ route('excel.product') }}" class="btn btn-success btn-sm float-right">
-                                    <i class="fa fa-file-excel"></i><i class="bi bi-file-earmark-excel-fill"></i>
+                                    <i class="bi bi-file-earmark-excel-fill"></i>
                                 </a>
                             </div>
                             <div class="float-right">
-                                <a href="{{ route('product.create') }}" class="btn btn-primary btn-sm float-right"
+                                <a href="{{ route('product.create') }}" class="btn btn-success"
                                     data-placement="left">
-                                    <i class="bi bi-plus-lg"></i>
+                                    <i class="bi bi-plus-circle-fill"></i>
                                 </a>
                             </div>
                         </div>
@@ -80,16 +81,13 @@
                                             <td>
                                                 <form action="{{ route('product.destroy', $product->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary {{ $product->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('product.show', $product->id) }}"><i
-                                                            class="fa fa-fw fa-eye"></i> <i class="bi bi-eye-fill"></i></a>
+                                                        href="{{ route('product.show', $product->id) }}"> <i class="bi bi-eye-fill"></i></a>
                                                     <a class="btn btn-sm btn-success {{ $product->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('product.edit', $product->id) }}"><i
-                                                            class="fa fa-fw fa-edit"></i><i class="bi bi-pencil-square"></i></a>
+                                                        href="{{ route('product.edit', $product->id) }}"><i class="bi bi-pencil-square"></i></a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"
                                                         onclick="return confirm('¿Está seguro de que desea {{ $product->disable ? 'Habilitar' : 'Deshabilitar' }} el producto?')">
-                                                        <i class="fa fa-fw fa-trash"></i>
                                                         {!!$product->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>'!!}
                                                     </button>
                                                 </form>

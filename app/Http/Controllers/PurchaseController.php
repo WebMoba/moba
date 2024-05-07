@@ -83,17 +83,20 @@ class PurchaseController extends Controller
 
         $providers = Person::whereHas('teamWork')
             ->where('rol', 'Proveedor')
-            ->where('disable', false) // Agregar esta línea
-            ->get();
+            ->get('id_card');
 
 
-            $usersName = User::with('person')
+        $usersName = User::with('person')
             ->whereHas('person', function ($query) {
                 $query->where('rol', 'Proveedor')
-                    ->where('users_id', '!=', null)
                     ->where('disable', false);
             })
-            ->pluck('name', 'id');
+            ->get()
+            ->mapWithKeys(function ($user) {
+                $providerName = $user->name;
+                $providerDocument = $user->person ? $user->person->id_card : '';
+                return [$user->id => $providerName . ' - ' . $providerDocument];
+            });
 
 
 
@@ -129,6 +132,7 @@ class PurchaseController extends Controller
         $compra = new Purchase();
         $compra->name = $datos['nombre_proveedor'];
         $compra->date = $datos['fecha'];
+        $compra->total = $datos['totalP'];
         $compra->people_id = $datos['proveedor_id'];
         $compra->save();
 

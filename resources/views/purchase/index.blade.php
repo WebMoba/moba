@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+@include('layouts.navbars.auth.topnav', ['title' => 'Menu'])
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -27,17 +28,17 @@
                             </form>
                             <div class="float-right">
                                 <a href="{{ route('pdf.purchase') }}" class="btn btn-danger btn-sm float-right">
-                                    <i class="fa fa-file-pdf"></i></i><i class="bi bi-file-pdf-fill"></i>
+                                    </i><i class="bi bi-file-pdf-fill"></i>
                                 </a>
                                 <a href="{{ route('excel.purchase') }}" class="btn btn-success btn-sm float-right">
-                                    <i class="fa fa-file-excel"></i><i class="bi bi-file-earmark-excel-fill"></i>
+                                   <i class="bi bi-file-earmark-excel-fill"></i>
                                 </a>
 
                             </div>
                             <div class="float-right">
-                                <a href="{{ route('purchases.create') }}" class="btn btn-primary btn-sm float-right"
+                                <a href="{{ route('purchases.create') }}" class="btn btn-success" 
                                     data-placement="left">
-                                    <i class="bi bi-plus-lg"></i>
+                                    <i class="bi bi-plus-circle-fill"></i>
                                 </a>
                             </div>
                         </div>
@@ -54,12 +55,9 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-
-
-
-
                                         <th>Nombre del proveedor</th>
                                         <th>Documento del proveedor</th>
+                                        <th>Valor de la compra</th>
                                         <th>Fecha realizacion de la compra</th>
 
                                         <th></th>
@@ -77,8 +75,7 @@
 
                                                 <td>{{ $purchase->user->name }}</td>
                                                 <td>{{ $purchase->person->id_card }}</td>
-
-
+                                                <td>{{ $purchase->total }}</td>
                                                 <td>{{ $purchase->date }}</td>
 
                                                 <td>
@@ -91,7 +88,7 @@
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger btn-sm"
                                                             onclick="return confirm('¿Está seguro de que desea {{ $purchase->disable ? 'Habilitar' : 'Deshabilitar' }} a la  compra?')">
-                                                            <i class="fa fa-fw fa-trash"></i>
+                                                           
                                                             {!! $purchase->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>' !!}
                                                         </button>
                                                     </form>

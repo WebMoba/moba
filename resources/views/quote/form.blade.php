@@ -6,35 +6,11 @@
         <title>Título de tu página</title>
         <!-- Agrega enlaces a tus estilos CSS y a Bootstrap si los estás utilizando -->
         <style>
-            body {
-                background-color: white; /* Cambia el color de fondo según sea necesario */
-            }
-
-            .container {
-                display: flex;
-                justify-content: space-between;
-                margin: 20px; /* Agrega un margen para separar del borde del cuerpo */
-            }
-
-            .box {
-                width: 48%; /* Para dejar un pequeño espacio entre las tablas */
-                background-color: white; /* Fondo blanco para las tablas */
-                padding: 20px; /* Agrega un relleno para separar el contenido del borde */
-                border-radius: 5px; /* Agrega bordes redondeados */
-            }
             .required::after {
                 content: "*";
                 color: red;
                 margin-left: 4px;
             }
-            /* .box-footer {
-                margin-top: 20px;
-                text-align: center; /* Para centrar el botón "Enviar" 
-            }
-
-            .btn-enviar {
-                margin-top: 20px;
-            }*/
         </style>
     </head>
     <body>
@@ -43,27 +19,33 @@
             <div class="box">
                 <h2>Cotización</h2>
                 <!-- Contenido de la primera tabla -->
-                <div class="box-body">
+                <div class="box-body col-mt-10">
                             <div class="form-group">
                                 {{ Form::label('Fecha de expedición', null, ['class' => 'required']) }}
-                                {{ Form::date('date_issuance', optional($quote->date_issuance)->format('y-m-d'), ['id' => 'Fecha de expedición','class' => 'form-control' . ($errors->has('date_issuance') ? ' is-invalid' : ''), 'required', 'id' => 'date_issuance','min' => now()->format('Y-m-d')]) }}
+                                {{ Form::date('date_issuance', \Carbon\Carbon::now()->format('Y-m-d'), [
+                                    'class' => 'form-control' . ($errors->has('date_issuance') ? ' is-invalid' : ''),
+                                    'required',
+                                    'min' => now()->format('Y-m-d'),
+                                    'readonly' => 'readonly',
+                                ]) }}
                                 {!! $errors->first('date_issuance', '<div class="invalid-feedback">:message</div>') !!}
-
+                            
                                 <small class="text-muted">Por cuestiones de seguridad este campo no es editable.</small>
-                            </div>    
+                            </div>
+                            
                             <div class="form-group">
                                 {{ Form::label('Descripción', null, ['class' => 'required']) }}
-                                {{ Form::text('description', $quote->description, ['id' => 'Descripción','class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''),'required']) }}
+                                {{ Form::text('description', $quote->description, ['id' => 'Descripción','class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''),'required','placeholder' => 'Descripción de la cotización']) }}
                                 {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
                             </div>
                             <div class="form-group">
                                 {{ Form::label('Total', null, ['class' => 'required']) }}
-                                {{ Form::number('total', $quote->total, ['id' => 'Total','class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''),'required']) }}
+                                {{ Form::number('total', $quote->total, ['id' => 'Total','class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''),'required', 'placeholder' => 'Valor total de la cotización']) }}
                                 {!! $errors->first('total', '<div class="invalid-feedback">:message</div>') !!}
                             </div>
                             <div class="form-group">
                                 {{ Form::label('Descuento', null, ['class' => 'required']) }}
-                                {{ Form::text('discount', $quote->discount, ['id' => 'Descuento','class' => 'form-control' . ($errors->has('discount') ? ' is-invalid' : ''),'required']) }}
+                                {{ Form::text('discount', $quote->discount, ['id' => 'Descuento','class' => 'form-control' . ($errors->has('discount') ? ' is-invalid' : ''),'required', 'placeholder' => 'Descuento en pesos']) }}
                                 {!! $errors->first('discount', '<div class="invalid-feedback">:message</div>') !!}
                             </div>
                             <div class="form-group">
@@ -75,8 +57,8 @@
                             <div class="form-group">
                                 {{ Form::label('Nombre del cliente', null, ['class' => 'required-label']) }}
                                 {{ Form::select(
-                                    'name',
-                                    $usersName,
+                                    'people_id',
+                                    $persons,
                                     $quote->client_name,
                                     [
                                         'class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''),
@@ -88,13 +70,8 @@
                                 {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
                             </div>
                             
-
-                            {{--  <div class="form-group">
-                                {{ Form::label('Persona', null, ['class' => 'required']) }}
-                                {{ Form::select('people_id',$persons, $quote->people_id, ['id' => 'Persona','class' => 'form-control' . ($errors->has('people_id') ? ' is-invalid' : ''),'required']) }}
-                                {!! $errors->first('people_id', '<div class="invalid-feedback">:message</div>') !!}
-                            </div>  --}}
                 </div>
+                
                 <div class="container">
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success btn-enviar">{{ __('Enviar') }}</button>
@@ -132,26 +109,28 @@
                                 <th>
                                     <div class="form-group">
                                     {{ Form::label('') }}
-                                    {{ Form::select('services_id[]', $services, null, ['class' => 'form-control' . ($errors->has('services_id') ? ' is-invalid' : ''), 'required']) }}
+                                    {{ Form::select('services_id[]', $services, null, ['class' => 'form-control' . ($errors->has('services_id') ? ' is-invalid' : '')]) }}
                                     {!! $errors->first('services_id', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
                                 </th>
                                 <th>
                                     <div class="form-group">
                                     {{ Form::label('') }}
-                                    {{ Form::select('products_id[]', $products, null, ['class' => 'form-control' . ($errors->has('products_id') ? ' is-invalid' : ''), 'required']) }}
+                                    {{ Form::select('products_id[]', $products, null, ['class' => 'form-control' . ($errors->has('products_id') ? ' is-invalid' : '')]) }}
                                     {!! $errors->first('products_id', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
                                 </th>
                                 <th>
                                     <div class="form-group">
                                     {{ Form::label('') }}
-                                    {{ Form::select('projects_id[]', $projects, null, ['class' => 'form-control' . ($errors->has('projects_id') ? ' is-invalid' : ''), 'required']) }}
+                                    {{ Form::select('projects_id[]', $projects, null, ['class' => 'form-control' . ($errors->has('projects_id') ? ' is-invalid' : '')]) }}
                                     {!! $errors->first('projects_id', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
                                 </th>
                                 <th>
-                                    <button class="btn btn-danger eliminar-detalle">Eliminar detalle</button>
+                                    <button type="button" class="btn btn-danger mt-3 eliminar-detalle">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
                                 </th>
                             </tr>
                         </tbody>

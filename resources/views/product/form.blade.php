@@ -37,9 +37,11 @@
 
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary"
+        <button type="submit" class="btn btn-success"
             @if ($mode == 'Editar') onclick="return confirm('¿Está seguro de que desea {{ $mode }} el producto?')" @endif>{{ $mode }}</button>
+            <a type="submit" class="btn btn-primary" href="{{ route('team-works.index') }}">Volver</a>
     </div>
+
 </div>
 <script>
     function previewImage(event) {
@@ -75,4 +77,3 @@
         height: 150px;
     }
 </style>
-

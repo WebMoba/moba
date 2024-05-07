@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+@include('layouts.navbars.auth.topnav', ['title' => 'Menu'])
 
     <section class="content container-fluid">
         <a class="btn btn-primary" href="{{ route('person.index') }}"> {{ __('Volver') }}</a>
@@ -15,7 +16,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Editar') }} Person</span>
+                        <span class="card-title">{{ __('Editar') }} Persona</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('person.update', $person->id) }}"  role="form" enctype="multipart/form-data">

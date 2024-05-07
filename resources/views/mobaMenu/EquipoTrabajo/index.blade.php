@@ -212,7 +212,7 @@
 
         <div class="box-2  ">
 
-
+            
 
             <div class="imagenes">
 
@@ -479,6 +479,58 @@
         /* Color de la línea */
     }
 
+    
+    
+
+    .btn-primary {
+    background-color: transparent !important;
+    color: #fff;
+    border-color: transparent !important;
+    font-size: 1.3vw;
+}
+
+.btn-primary:hover {
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+
+.btn-primary:active,
+.btn-primary:focus {
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+    
+    .dropdown-menu .dropdown-item:hover {
+        background-color: transparent !important;
+        border-color: transparent !important;
+        border: none;
+        text-shadow: 0 0 5px #f80008;
+    }
+
+    .dropdown-menu .dropdown-item:hover {
+        background-color: rgba(161, 174, 250, 0.274) !important;
+        /* Cambia el color de fondo al pasar el cursor sobre las opciones del menú */
+    }
+
+    .dropdown-item:hover {
+        color: #2bb9e5 !important;
+    }
+
+    .dropdown-menu {
+        background-color: transparent !important;
+        border-color: #73a3b6 !important;
+    }
+
+    .dropdown-menu .dropdown-item {
+        color: #2bb9e5 !important;
+        background-color: transparent !important;
+        border-color: #2bb9e5 !important;
+    }
+
+    .dropdown-menu .dropdown-divider {
+        border-top: 1px solid #2bb9e5;
+    }
+
     .box-1,
     .box-2 {
 
@@ -528,7 +580,7 @@
     }
 
     .box-2 {
-        #border: solid 1px #e5b32b;
+      
         display: flex;
         text-align: center;
         align-items: center;
@@ -547,7 +599,7 @@
 
     .contenido,
     .imagenes {
-        #border: solid 1px #2bb9e5;
+       
         position: relative;
         font-size: 300%
     }

@@ -5,6 +5,8 @@
 @endsection
 
 @section('content')
+@include('layouts.navbars.auth.topnav', ['title' => 'Menu'])
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -36,9 +38,9 @@
 
                             </div>
                             <div class="float-right">
-                                <a href="{{ route('person.create') }}" class="btn btn-primary btn-sm float-right"
+                                <a href="{{ route('person.create') }}" class="btn btn-success" 
                                     data-placement="left">
-                                    <i class="bi bi-plus-lg"></i>
+                                    <i class="bi bi-plus-circle-fill"></i>
                                 </a>
                             </div>
                         </div>
@@ -88,21 +90,33 @@
                                             <td>{{ $person->town ? $person->town->name : 'N/A' }}</td>
                                             <td>{{ $person->user ? $person->user->email : 'N/A' }}</td>
                                             <td>
-                                                <form action="{{ route('person.destroy', $person->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary {{ $person->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('person.show', $person->id) }}"><i class="bi bi-eye-fill"></i></a>
+                                            <form action="{{ route('person.destroy', $person->id) }}" method="POST">
+        <a class="btn btn-sm btn-primary {{ $person->disable ? 'disabled' : '' }}"
+            href="{{ route('person.show', $person->id) }}"><i class="bi bi-eye-fill"></i></a>
 
-                                                    <a class="btn btn-sm btn-success {{ $person->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('person.edit', $person->id) }}"><i class="bi bi-pencil-square"></i></a>
-                                                            
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"
-                                                        onclick="return confirm('¿Está seguro de que desea {{ $person->disable ? 'Habilitar' : 'Deshabilitar' }} a la  persona?')">
-                                                        <i class="fa fa-fw fa-trash"></i>
-                                                        {!! $person->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>' !!}
-                                                    </button>
-                                                </form>
+        <a class="btn btn-sm btn-success {{ $person->disable ? 'disabled' : '' }}"
+            href="{{ route('person.edit', $person->id) }}"><i class="bi bi-pencil-square"></i></a>
+            
+        @csrf
+        @method('DELETE')
+
+        @php
+            $user = $person->user;
+        @endphp
+
+        @if ($user && $user->email === 'agenciamoba@gmail.com')
+            <button type="button" class="btn btn-danger btn-sm" disabled>
+                {!! $person->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>' !!}
+            </button>
+            <span class="text-muted">(No inhabilitable)</span>
+        @else
+            <button type="submit" class="btn btn-danger btn-sm"
+                onclick="return confirm('¿Está seguro de que desea {{ $person->disable ? 'Habilitar' : 'Deshabilitar' }} a la  persona?')">
+                
+                {!! $person->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>' !!}
+            </button>
+        @endif
+    </form>
                                             </td>
                                         </tr>
                                     @endforeach

@@ -35,11 +35,11 @@ class QuoteController extends Controller
 
         $search = trim($request->get('search'));
         $quotes = Quote::select('id', 'date_issuance', 'description', 'total', 'discount', 'status', 'people_id', 'disable')
-                ->where('id', 'LIKE', '%' . $search . '%')
-                ->orWhere('description', 'LIKE', '%' . $search . '%')
-                ->orderBy('date_issuance', 'asc')
-                ->paginate(10);
-        
+            ->where('id', 'LIKE', '%' . $search . '%')
+            ->orWhere('description', 'LIKE', '%' . $search . '%')
+            ->orderBy('date_issuance', 'asc')
+            ->paginate(10);
+
         return view('quote.index', compact('quotes', 'search'));
         // ->with('i', (request()->input('page', 1) - 1) * $quotes->perPage());
     }
@@ -54,7 +54,6 @@ class QuoteController extends Controller
         $quote = new Quote();
         $detailQuote = new DetailQuote();
 
-        $persons = Person::pluck('id_card', 'id');
         $services = Service::pluck('name', 'id');
         $products = Product::pluck('name', 'id');
         $projects = Project::pluck('name', 'id');
@@ -64,8 +63,8 @@ class QuoteController extends Controller
         $clients = Person::where('rol', 'Cliente')
             ->where('disable', false) // Agregar esta línea si es necesario
             ->get();
-        
-        $usersName = User::with('person')
+
+        $persons = User::with('person')
             ->whereHas('person', function ($query) {
                 $query->where('rol', 'Cliente')
                     ->where('users_id', '!=', null)
@@ -73,9 +72,9 @@ class QuoteController extends Controller
             })
             ->pluck('name', 'id');
 
-        $clients = Person::clients()->get();
+        // $clients = Person::clients()->get();
 
-        return view('quote.create', compact('quote','clients','usersName', 'detailQuote', 'persons', 'services', 'products', 'projects', 'quotes'));
+        return view('quote.create', compact('quote', 'clients', 'detailQuote', 'persons', 'services', 'products', 'projects', 'quotes'));
     }
 
     /**
@@ -85,52 +84,34 @@ class QuoteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        request()->validate(Quote::$rules);
-    
-        $msj=[
-            'required'=>'El atributo es requerido',
-            'max'=>'No puede ingresar mas caracteres en este campo',
-            'string' => 'El campo debe ser una cadena de texto.',
-            'date' => 'El campo no debe ser una fecha anterior al dia de Hoy.',
-        ];
-    
-        $request->validate([
-            'date_issuance'=>'required|date',
-            'description'=>'required|string|max:300',
-            'total'=>'required|numeric',
-            'discount'=>'required|numeric',
-            'status' => 'required|in:aprobado,rechazado,pendiente',
-            'people_id'=>'required',
-        ], $msj);
-    
-        $quote = Quote::create($request->all());
-    
-        $detailQuote = new DetailQuote() ;
+{
+    $request->validate([
+        'date_issuance' => 'required|date',
+        'description' => 'required|string|max:300',
+        'total' => 'required|numeric',
+        'discount' => 'required|numeric',
+        'status' => 'required|in:aprobado,rechazado,pendiente',
+        'people_id' => 'required',
+    ]);
 
-        $quote->date_issuance = now()->format('Y-m-d');
-        $servicesId = $request->input('services_id');
-        $productsId = $request->input('products_id');
-        $projectsId = $request->input('projects_id');
-        $quotesId = $request->input('quotes_id');
-       
+    $quote = Quote::create($request->all());
+
+    // Verificar si los campos relacionados con los detalles de la cotización están presentes en la solicitud
+    if ($request->has('services_id') && $request->has('products_id') && $request->has('projects_id')) {
         // Crear los detalles de la cotización
-        if ($request->has('services_id')) {
-            foreach ($request->services_id as $key => $serviceId) {
-                $detalle = new DetailQuote([
-                    'services_id' => $serviceId,
-                    'products_id' => $request->products_id[$key],
-                    'projects_id' => $request->projects_id[$key],
-                ]);
-                $quote->detailQuotes()->save($detalle);
-            }
+        foreach ($request->services_id as $key => $serviceId) {
+            $detalle = new DetailQuote([
+                'services_id' => $serviceId,
+                'products_id' => $request->products_id[$key],
+                'projects_id' => $request->projects_id[$key],
+            ]);
+            $quote->detailQuotes()->save($detalle);
         }
-    
-        return redirect()->route('quotes.index')->with('success', 'Cotización creada correctamente.');
-        
     }
 
-    
+    return redirect()->route('quotes.index')->with('success', 'Cotización creada correctamente.');
+}
+
 
     /**
      * Display the specified resource.
@@ -168,7 +149,7 @@ class QuoteController extends Controller
         $quote->date_issuance = now()->format('Y-m-d');
         return view('quote.create', compact('quote', 'detailQuote', 'persons', 'services', 'products', 'projects', 'quotes'));
     }
-    
+
 
 
     /**

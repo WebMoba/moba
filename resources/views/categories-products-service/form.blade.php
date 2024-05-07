@@ -1,4 +1,5 @@
 <div class="box box-info padding-1">
+    
     <div class="box-body">
 
         <div class="form-group">
@@ -23,25 +24,27 @@
         </div>
         <div class="form-group">
             {{ Form::label('Popular', null, ['class' => 'required']) }}
-            {{ Form::select('popular',['Alta' => 'Alta', 'Media' => 'Media','Baja'=> 'Baja'], $categoriesProductsService->popular, ['class' => 'form-control' . ($errors->has('popular') ? ' is-invalid' : '')]) }}
+            {{ Form::select('popular', ['Alta' => 'Alta', 'Media' => 'Media', 'Baja' => 'Baja'], $categoriesProductsService->popular, ['class' => 'form-control' . ($errors->has('popular') ? ' is-invalid' : '')]) }}
             {!! $errors->first('popular', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('Tipo', null, ['class' => 'required']) }}
-            {{ Form::select('type', ['servicio' => 'Servicio', 'producto' => 'Producto'],$categoriesProductsService->type, ['class' => 'form-control' . ($errors->has('type') ? ' is-invalid' : '')]) }}
+            {{ Form::select('type', ['servicio' => 'Servicio', 'producto' => 'Producto'], $categoriesProductsService->type, ['class' => 'form-control' . ($errors->has('type') ? ' is-invalid' : '')]) }}
             {!! $errors->first('type', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
     </div><br>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary"
-            @if ($mode == 'Editar') onclick="return confirm('¿Está seguro de que desea {{ $mode }} esta categoria?')" @endif><i class="bi bi-plus-lg"></i></button>
+        <button type="submit" class="btn btn-success"
+            @if ($mode == 'Editar') onclick="return confirm('¿Está seguro de que desea {{ $mode }} esta categoria?')" @endif><i
+                class="bi bi-plus-lg"></i></button>
+                <a type="submit" class="btn btn-primary" href="{{ route('team-works.index') }}">Volver</a>
     </div>
 </div>
 <style>
     .required::after {
-    content: "*";
-    color: red;
-    margin-left: 4px;
-}
+        content: "*";
+        color: red;
+        margin-left: 4px;
+    }
 </style>

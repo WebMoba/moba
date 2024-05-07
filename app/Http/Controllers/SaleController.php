@@ -97,13 +97,20 @@ class SaleController extends Controller
             ->where('disable', false) // Agregar esta línea
             ->get();
 
+
+
+
         $usersName = User::with('person')
             ->whereHas('person', function ($query) {
                 $query->where('rol', 'Cliente')
-                    ->where('users_id', '!=', null)
-                    ->where('disable', false); // Agregar esta línea
+                    ->where('disable', false);
             })
-            ->pluck('name', 'id');
+            ->get()
+            ->mapWithKeys(function ($user) {
+                $providerName = $user->name;
+                $providerDocument = $user->person ? $user->person->id_card : '';
+                return [$user->id => $providerName . ' - ' . $providerDocument];
+            });
 
         // Obtener una lista de productos para el select
         $products = Product::pluck('name', 'id');
@@ -130,55 +137,54 @@ class SaleController extends Controller
      */
 
 
-     public function store(Request $request)
-     {
-         try {
-             // Obtener los datos enviados desde el formulario
-             $data = $request->input('data');
-     
-             // Crear una nueva venta
-             $venta = new Sale();
-             $venta->name = $data['nombre_cliente'];
-             $venta->date = $data['fecha'];
-             $venta->quotes_id = $data['cotizacion_id'];
-             $venta->people_id = $data['cliente_id'];
-             $venta->save();
-     
-             // Recorrer y guardar los detalles de la venta en la base de datos
-             foreach ($data['detalles'] as $detalle) {
-                 $detalleVenta = new DetailSale();
-                 $detalleVenta->quantity = $detalle['cantidad'];
-                 $detalleVenta->price_unit = $detalle['precio_unitario'];
-                 $detalleVenta->subtotal = $detalle['subtotal'];
-                 $detalleVenta->discount = $detalle['descuento'] ?? 0; // Valor predeterminado de descuento
-                 $detalleVenta->total = $detalle['total'];
-                 $detalleVenta->products_id = $detalle['producto_id'];
-                 $detalleVenta->sales_id = $venta->id; // Asociar el detalle con la venta creada
-                 $detalleVenta->save();
-             }
-     
-             // Retornar una respuesta de éxito
-             return response()->json(['success' => true, 'message' => 'Registro creado exitosamente']);
-     
-         } catch (\Exception $e) {
-             // Manejar cualquier excepción que ocurra durante el proceso
-             return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
-         }
-     }
-     
+    public function store(Request $request)
+    {
+        try {
+            // Obtener los datos enviados desde el formulario
+            $data = $request->input('data');
+
+            // Crear una nueva venta
+            $venta = new Sale();
+            $venta->name = $data['nombre_cliente'];
+            $venta->date = $data['fecha'];
+            $venta->total = $data['totalP'];
+            $venta->people_id = $data['cliente_id'];
+            $venta->save();
+
+            // Recorrer y guardar los detalles de la venta en la base de datos
+            foreach ($data['detalles'] as $detalle) {
+                $detalleVenta = new DetailSale();
+                $detalleVenta->quantity = $detalle['cantidad'];
+                $detalleVenta->price_unit = $detalle['precio_unitario'];
+                $detalleVenta->subtotal = $detalle['subtotal'];
+                $detalleVenta->discount = $detalle['descuento'] ?? 0; // Valor predeterminado de descuento
+                $detalleVenta->total = $detalle['total'];
+                $detalleVenta->products_id = $detalle['producto_id'];
+                $detalleVenta->sales_id = $venta->id; // Asociar el detalle con la venta creada
+                $detalleVenta->save();
+            }
+
+            // Retornar una respuesta de éxito
+            return response()->json(['success' => true, 'message' => 'Registro creado exitosamente']);
+        } catch (\Exception $e) {
+            // Manejar cualquier excepción que ocurra durante el proceso
+            return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
+        }
+    }
 
 
 
 
 
 
-     public function show($id)
-     {
-         $sale = Sale::with('person', 'user')->findOrFail($id);
-         $details = DetailSale::where('sales_id', $id)->get();
- 
-         return view('sale.show', compact('sale', 'details'));
-     }
+
+    public function show($id)
+    {
+        $sale = Sale::with('person', 'user')->findOrFail($id);
+        $details = DetailSale::where('sales_id', $id)->get();
+
+        return view('sale.show', compact('sale', 'details'));
+    }
 
     public function edit($id)
     {
@@ -234,18 +240,18 @@ class SaleController extends Controller
 
     public function destroy($id)
     {
-       // Encuentra la materia prima con el ID dado
-       $sale = Sale::find($id);
-       if (!$sale) {
-           return redirect()->route('sales.index')->with('error', 'La venta no existe');
-       }
+        // Encuentra la materia prima con el ID dado
+        $sale = Sale::find($id);
+        if (!$sale) {
+            return redirect()->route('sales.index')->with('error', 'La venta no existe');
+        }
 
-       // Cambia el estado de la materia prima
-       $sale->disable = !$sale->disable; // Corregir a 'disabled'
-       $sale->save();
+        // Cambia el estado de la materia prima
+        $sale->disable = !$sale->disable; // Corregir a 'disabled'
+        $sale->save();
 
-       // Redirige con un mensaje de éxito
-       return redirect()->route('sales.index')->with('success', 'Estado de la venta cambiado con éxito');
+        // Redirige con un mensaje de éxito
+        return redirect()->route('sales.index')->with('success', 'Estado de la venta cambiado con éxito');
     }
 
     public function exportToExcel()

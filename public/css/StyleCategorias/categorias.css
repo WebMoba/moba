@@ -87,7 +87,7 @@ body::after {
 
     .dropdown-menu {
         background-color: transparent !important;
-        border-color: #73a3b6 !important;
+        border-color: #f80008 !important;
     }
 
     .dropdown-menu .dropdown-item {
@@ -99,6 +99,7 @@ body::after {
     .dropdown-menu .dropdown-divider {
         border-top: 1px solid #f80008;
     }
+
 
     .vertical-line {
         position: fixed;
@@ -225,11 +226,14 @@ body::after {
     color: white;
     font-family: Georgia, 'Times New Roman', Times, serif, sans-serif;
     font-weight: bold;
-    font-size: 4vw; /* Tamaño del texto en em (ajústalo según sea necesario) */
-    letter-spacing: -0.3em; /* Espaciado entre letras en em (ajústalo según sea necesario) */
-    text-align: center;
-    writing-mode: vertical-rl;
+    font-size: 4vw;
+    /*Tamañodeltextoenem(ajústalosegúnseanecesario)*/letter-spacing: -0.3em;
+    /*Espaciadoentreletrasenem(ajústalosegúnseanecesario)*/text-align: center;
+    writing-mode: vertical-lr;
     text-orientation: upright;
+    -webkit-writing-mode: vertical-lr;
+    -ms-writing-mode: vertical-lr;
+    -webkit-text-orientation: upright;
 }
 
 .container-fluid{

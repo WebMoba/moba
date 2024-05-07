@@ -513,6 +513,24 @@
             padding: 10px 20px;
             cursor: pointer;
         }
+        .dropdown-item:hover {
+        color: #2bb9e5 !important;
+    }
+
+    .dropdown-menu {
+        background-color: transparent !important;
+        border-color: #73a3b6 !important;
+    }
+
+    .dropdown-menu .dropdown-item {
+        color: #2bb9e5 !important;
+        background-color: transparent !important;
+        border-color: #2bb9e5 !important;
+    }
+
+    .dropdown-menu .dropdown-divider {
+        border-top: 1px solid #2bb9e5;
+    }
     </style>
 
 @include('partials.footerMoba')

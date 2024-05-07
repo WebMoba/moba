@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+@include('layouts.navbars.auth.topnav', ['title' => 'Menu'])
     <section class="content container-fluid">
         <div class="">
             <div class="col-md-12">
@@ -29,5 +30,5 @@
                 </div>
             </div>
         </div>
-    </section>//card-header d-flex justify-content-between align-items-center(sustituyendolo sirve  para ponerlo al final)
+    </section>
 @endsection
