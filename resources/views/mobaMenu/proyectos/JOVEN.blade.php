@@ -70,7 +70,10 @@
                             y 33% de las acciones con dividendo preferencial y sin derecho a voto, seguidas por el
                             Instituto de Fomento y Desarrollo de Boyacá IDEBOY, que posee el 13,27% de acciones
                             ordinarias de la Compañía, el restante 4.24% de las acciones ordinarias corresponde a la
-                            participación de nuestros accionistas minoritarios.</p>
+                            participación de nuestros accionistas minoritarios.
+                            Acerías Paz del Río S. A. es una sociedad de naturaleza anónima, de carácter comercial y su
+                            nacionalidad es colombiana. Por ser emisor de valores está sometida al control exclusivo de
+                            la Superintendencia Financiera de Colombia.</p>
                     </div>
                 </div>
                 <!-- Columna para el carrusel -->

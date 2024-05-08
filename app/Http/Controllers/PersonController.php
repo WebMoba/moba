@@ -69,6 +69,7 @@ class PersonController extends Controller
         $numberPhone = NumberPhone::find($numberPhoneId);
 
         return view('person.create', compact('person', 'teamWorks', 'users', 'towns', 'numberPhones', 'usersName', 'regions', 'roles', 'identificationTypes', 'numberPhoneId', 'numberPhone'));
+        
     }
     /**
      * Store a newly created resource in storage.
