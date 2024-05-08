@@ -51,6 +51,8 @@
                 <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte">
             </a>
         </div>
+        @include('partials.inicio')
+
     </nav>
     <!-- Líneas verticales con iconos -->
     <div class="vertical-line left-line">

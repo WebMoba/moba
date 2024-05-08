@@ -41,6 +41,8 @@
             <a href="{{ asset('/') }}">
             <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte"></a>
         </div>
+        @include('partials.inicio')
+
     </nav>
     <div class="content">
         <div class="vertical-line left-line">

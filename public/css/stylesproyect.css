@@ -35,6 +35,7 @@ body::after {
     top: 0;
     width: 100vw;
     z-index: 1000;
+    padding-top: 2%;
 }
 
 .navbar-buttons {

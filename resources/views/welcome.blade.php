@@ -28,10 +28,7 @@
 
         <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen ">
             @if (Route::has('login'))
-
-
                 <div class="nav">
-
                     @auth
                         <a href="{{ url('/dashboard') }}" class="letter">Inicio</a>
                     @else
