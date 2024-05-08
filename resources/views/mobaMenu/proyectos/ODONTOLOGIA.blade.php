@@ -66,6 +66,12 @@
                             estratégicos a proveedores; ofreciendo condiciones dignas de trabajo a personal idóneo que
                             vive y aplica principios de integridad, honestidad y constancia, garantizando la retribución
                             a los socios, conformando así un equipo comprometido con el desarrollo y bienestar de la
+                            comunidad. Somos una empresa dedicada a satisfacer las necesidades de nuestros clientes,
+                            principalmente
+                            en frutas, verduras y demás productos de la canasta familiar; vinculando como aliados
+                            estratégicos a proveedores; ofreciendo condiciones dignas de trabajo a personal idóneo que
+                            vive y aplica principios de integridad, honestidad y constancia, garantizando la retribución
+                            a los socios, conformando así un equipo comprometido con el desarrollo y bienestar de la
                             comunidad.</p>
                     </div>
                 </div>
@@ -178,7 +184,7 @@
                 width: calc(50% - 40px);
                 /* Ajusta el ancho según sea necesario */
                 padding: 0 20px;
-                color:white;
+                color: white;
                 font-weight: bold;
                 font-size: 60px;
             }
