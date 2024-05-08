@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-@include('layouts.navbars.auth.topnav', ['title' => 'Menu'])
+@include('layouts.navbars.auth.topnav', ['title' => 'Editar Producto'])
     @if ($message = Session::get('danger'))
         <div class="alert alert-danger text-center">
             <p>{{ $message }}</p>

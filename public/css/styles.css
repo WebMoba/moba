@@ -35,6 +35,7 @@ body::after {
     top: 0;
     width: 100vw;
     z-index: 1000;
+
 }
 
 .navbar-buttons {
@@ -74,7 +75,7 @@ body::after {
         background-color: transparent !important;
         border-color: transparent !important;
         border: none;
-        text-shadow: 0 0 5px #f80008;
+        text-shadow: 0 0 5px  #2bb9e5;
     }
 
     .dropdown-menu .dropdown-item:hover {
