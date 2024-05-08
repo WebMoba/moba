@@ -158,7 +158,7 @@
 }
 .active-link {
     position: relative;
-    color:#2bb9e5;
+    color:red;
 }
 
 .active-link:after {
@@ -169,7 +169,7 @@
     bottom: 0;
     width: 100%;
     height: 2px; /* Grosor de la línea */
-    background-color: blue; /* Color de la línea */
+    background-color: red; /* Color de la línea */
 }
 .box{
     height: 70%;
