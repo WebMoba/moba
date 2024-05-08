@@ -212,7 +212,7 @@
 
         <div class="box-2  ">
 
-
+            
 
             <div class="imagenes">
 

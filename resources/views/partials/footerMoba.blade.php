@@ -12,12 +12,19 @@
             </div>
             <div class="col-md-2 col-sm-2 col-xs-2"></div>
             <div class="col-md-2 col-sm-2 col-xs-2">
-               
+            <h5 class="heading">Moba</h5>
+                <ul class="card-text">
+                    <li class="enlaceFooter"><a href="{{ route('mobaMenu.index')}}" >Nosotros</a></li>
+                    <li class="enlaceFooter"><a href="{{ route('mobaMenu.proyectos.index') }}">Proyectos</a></li>
+                    <li class="enlaceFooter"><a href="{{ route('mobaMenu.EquipoTrabajo.index') }}">Equipo de trabajo</a></li>
+                    <li class="enlaceFooter"><a href="{{ route('mobaMenu.Contacto.index') }}">Contáctanos</a></li>
+                </ul>
             </div>
+
+            
             <div class="col-md-2 col-sm-2 col-xs-2">
                 <h5 class="heading">Tu Arte</h5>
                 <ul class="card-text">
-
                     <li class="enlaceFooter"><a href="{{ route('tuArteMenu.servicios.Accesorios.index') }}" >Servicios</a></li>
                     <li class="enlaceFooter"><a href="{{ route('tuArteMenu.index') }}" >Nosotros</a></li>
                     <li class="enlaceFooter"><a href="{{ route('tuArteMenu.categorias.index') }}">Categorias</a></li>
@@ -32,7 +39,6 @@
                     <li><i class="bi bi-telephone"> + 57 3133466060</i></li>
                     <li><i class="bi bi-envelope-at">  agenciamoba@gmail.com</i></li>
                     <li><i class="bi bi-browser-chrome"> teamMoba.com.co</i></li>
-                  
                 </ul>
             </div>
         </div>

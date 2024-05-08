@@ -68,7 +68,7 @@
                             S.A.S. Banca de Inversión son los accionistas mayoritarios de la sociedad con una
                             participación del 55.27% y el 27.27% de las acciones ordinarias, respectivamente, y del 77%
                             y 33% de las acciones con dividendo preferencial y sin derecho a voto, seguidas por el
-                            Instituto de Fomento y Desarrollo de Boyacá  IDEBOY, que posee el 13,27% de acciones
+                            Instituto de Fomento y Desarrollo de Boyacá IDEBOY, que posee el 13,27% de acciones
                             ordinarias de la Compañía, el restante 4.24% de las acciones ordinarias corresponde a la
                             participación de nuestros accionistas minoritarios.</p>
                     </div>
@@ -170,6 +170,18 @@
                 /* Establece el contenedor como posición relativa para que los elementos internos puedan ser posicionados relativamente a él */
             }
 
+            .title-container .big-title {
+                position: relative;
+                top: 80px;
+                left: 20px;
+                width: calc(50% - 40px);
+                /* Ajusta el ancho según sea necesario */
+                padding: 0 20px;
+                color: #2bb9e5;
+                font-weight: bold;
+                font-size: 70px;
+            }
+
             .titulo {
                 position: absolute;
                 /* Establece la posición absoluta para que el título pueda posicionarse en la esquina superior izquierda del contenedor */
@@ -182,9 +194,11 @@
                 padding: 0 20px;
                 /* Espacio interno del título */
             }
+
             .custom-title {
                 position: relative;
-                top: -10px; /* Ajusta este valor según sea necesario */
+                top: -10px;
+                /* Ajusta este valor según sea necesario */
             }
 
             .galeria {
@@ -211,13 +225,20 @@
                 height: auto;
                 /* Altura automática para mantener la proporción */
             }
+
             .carousel-img {
-                width: 100%; /* Ancho máximo del div del carrusel */
-                height: auto; /* Para mantener la proporción de aspecto de la imagen */
-                max-height: 400px; /* Altura máxima de las imágenes */
-                min-height: 400px; /* Altura mínima de las imágenes */
-                object-fit: cover; /* Para recortar y ajustar la imagen dentro del contenedor */
+                width: 100%;
+                /* Ancho máximo del div del carrusel */
+                height: auto;
+                /* Para mantener la proporción de aspecto de la imagen */
+                max-height: 400px;
+                /* Altura máxima de las imágenes */
+                min-height: 400px;
+                /* Altura mínima de las imágenes */
+                object-fit: cover;
+                /* Para recortar y ajustar la imagen dentro del contenedor */
             }
+
             .botones {
                 position: absolute;
                 top: 10px;

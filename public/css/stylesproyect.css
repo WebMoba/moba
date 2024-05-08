@@ -159,7 +159,7 @@ body::after {
 /*INICIO ESTILOS EDWIN */
 .title-container {
     text-align: center;
-    margin-top: 220px;
+    margin-top: 80px;
 }
 
 .big-title {
@@ -211,7 +211,7 @@ body::after {
     position: relative;
     overflow: hidden;
     padding-bottom: 75%; /* Proporción para mantener la misma altura */
-    margin: 10px; /* Márgenes iguales en los cuatro lados */
+    margin: 20px 0 0 0 ; /* Márgenes iguales en los cuatro lados */
 }
 
 .image-container img {

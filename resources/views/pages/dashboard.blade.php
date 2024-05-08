@@ -132,8 +132,8 @@
                     <div class="card-header pb-0 pt-3 bg-transparent">
                         <h6 class="text-capitalize">Resumen de ventas</h6>
                         <p class="text-sm mb-0">
-                            <i class="fa fa-arrow-up text-success"></i>
-                            <span class="font-weight-bold">4% more</span> en {{ date('Y') }}
+                            <i class="{{ $iconClass }}"></i>
+                            <span class="font-weight-bold">Total de ventas por mes en {{ date('Y') }}</span>
                         </p>
                     </div>
                     <div class="card-body p-3">
@@ -209,12 +209,13 @@
         gradientStroke1.addColorStop(1, 'rgba(251, 99, 64, 0.2)');
         gradientStroke1.addColorStop(0.2, 'rgba(251, 99, 64, 0.0)');
         gradientStroke1.addColorStop(0, 'rgba(251, 99, 64, 0)');
+
         new Chart(ctx1, {
             type: "line",
             data: {
-                labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
                 datasets: [{
-                    label: "Mobile apps",
+                    label: "Ventas por mes",
                     tension: 0.4,
                     borderWidth: 0,
                     pointRadius: 0,
@@ -222,9 +223,12 @@
                     backgroundColor: gradientStroke1,
                     borderWidth: 3,
                     fill: true,
-                    data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+                    data: [
+                        @foreach (range(1, 12) as $month)
+                            {{ $salesByMonth[$month] ?? 0 }},
+                        @endforeach
+                    ],
                     maxBarThickness: 6
-
                 }],
             },
             options: {

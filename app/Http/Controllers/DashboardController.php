@@ -69,7 +69,42 @@ class DashboardController extends Controller
             $percentageChangeSale = 0; // Evitar división por cero
         }
         //FIN SALES
+
+        //ICONO
+        $year = date('Y');
+        $previousYear = $year - 1;
+
+        // Obtener ventas por año
+        $currentYearSales = Sale::whereYear('created_at', $year)->count();
+        $previousYearSales = Sale::whereYear('created_at', $previousYear)->count();
+
+        // Determinar el cambio porcentual
+        if ($previousYearSales > 0) {
+            $percentageChangeSales = (($currentYearSales - $previousYearSales) / $previousYearSales) * 100;
+        } else {
+            $percentageChangeSales = 0; // Evitar división por cero
+        }
+
         
+        // Determinar el ícono basado en el cambio porcentual
+        if ($percentageChangeSales > 0) {
+            $iconClass = 'fa fa-arrow-up text-success';
+        } elseif ($percentageChangeSales < 0) {
+            $iconClass = 'fa fa-arrow-down text-danger';
+        } else {
+            // En caso de que no haya cambio
+            $iconClass = 'fa fa-minus text-muted';
+        }
+        //FIN ICONO
+        
+        //GRAFICA
+        $salesByMonth = Sale::selectRaw('MONTH(created_at) as month, COUNT(*) as total')
+            ->whereYear('created_at', $year)
+            ->groupBy('month')
+            ->orderBy('month')
+            ->pluck('total', 'month')
+            ->toArray();
+        //FIN GRAFICA
 
         return view('pages.dashboard', [
             'totalQuotesCount' => $totalQuotesCount,
@@ -83,7 +118,9 @@ class DashboardController extends Controller
             'percentageChangePurchases' => $percentageChangePurchases,
             'totalSaleCount' => $totalSaleCount,
             'currentSaleCount' => $currentSaleCount,
-            'percentageChangeSale' => $percentageChangeSale
+            'percentageChangeSale' => $percentageChangeSale,
+            'salesByMonth' => $salesByMonth,
+            'iconClass' => $iconClass
         ]);
     }
 }

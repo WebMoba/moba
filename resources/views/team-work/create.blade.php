@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-@include('layouts.navbars.auth.topnav', ['title' => 'Menu'])
+@include('layouts.navbars.auth.topnav', ['title' => 'Agregar Equipo de Trabajo'])
     <section class="content container-fluid">
         <div class="row">
             <div class="col-md-10 mx-auto">
