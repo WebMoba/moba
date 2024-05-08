@@ -1,8 +1,8 @@
-<div style="width: 0.5%"></div>
+<div style="width: 0.5%"><a href="{{ asset('/') }}" class="letter">Volver</a></div>
             @if (Route::has('login'))
                 <div class="log-in">
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="letter">Inicio</a>
+                        <a href="{{ url('/dashboard') }}" class="letter" >Inicio</a>
                     @else
                         <a href="{{ route('login') }}" class="letter">Ingresar </a>
 
