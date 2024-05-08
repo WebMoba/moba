@@ -93,6 +93,7 @@ Route::middleware('auth')->group(function () {
     Route::get('get-towns-by-region', [PersonController::class, 'getTownsByRegion'])->name('get_towns_by_region');
     Route::get('/export-person', [PersonController::class, 'export'])->name('excel.person');
     Route::get('/export-events', [EventController::class, 'export'])->name('excel.events');
+    
 
     /*Rutas product y unit*/
     Route::resource('product', ProductController::class);

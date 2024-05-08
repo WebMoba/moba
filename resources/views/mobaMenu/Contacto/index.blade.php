@@ -61,13 +61,17 @@
 
  <!-- Contenido contacto  -->
 
-    <div class="box"><h1>Contacto</h1><br><br>
+    <div class="box">
+    <div class="boxText">
+    <h1>Contacto</h1><br><br>
     <h3>¡Somos el estudio de diseño y comunicación que buscabas!</h3>
     <h3>Las soluciones en comunicación que ofrecemos a nuestros 
     clientes son completamente personalizadas y adaptadas a 
     cada necesidad.</h3>
     <h3> Haz clic al botón azul para coordinar una reunión estratégica con LA AGENCIA</h3><br>
-    <h3> Contacto: (051) 933 375 953</h3></div>
+    <h3> Contacto: (051) 933 375 953</h3>
+    </div>   
+    </div>
 
  <!-- Contenido formulario de contacto -->
 
@@ -76,11 +80,32 @@
     @csrf
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" value="{{ auth()->check() ? auth()->user()->name : '' }}" required><br><br>
-
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" value="{{ auth()->check() ? auth()->user()->email : '' }}" required><br><br>
-		<label for="telefono">Teléfono:</label>
-		<input type="tel" id="telefono" name="telefono" required><br><br>
+		
+        <ul class="option-list">Tipo Identificacion 
+    <li class="option-item">
+        <input type="radio" id="option1" name="options" class="option-input">
+        <label for="option1" class="option-label">Cedula</label>
+    </li>
+    <li class="option-item">
+        <input type="radio" id="option2" name="options" class="option-input">
+        <label for="option2" class="option-label">Cedula de extranjeria </label>
+    </li>
+    <li class="option-item">
+        <input type="radio" id="option3" name="options" class="option-input">
+        <label for="option3" class="option-label">NIT</label>
+    </li>
+    </ul><br>
+        <label for="NumeroId">Numero Identificación:</label>
+        <input type="text" id="NumeroId" name="NumeroId" maxlength="10" required><br><br>
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" id="telefono" name="telefono" maxlength="10" required><br><br>
+        <label for="telefono">Departamento</label>
+		<input type="text" id="Departamento" name="Departamento" required><br><br>
+        <label for="telefono">Ciudad</label>
+		<input type="text" id="Ciudad" name="Ciudad" required><br><br>
+
 
 		<label for="mensaje">Mensaje:</label><br>
 		<textarea id="mensaje" name="mensaje" rows="5" ></textarea><br><br>
@@ -145,18 +170,33 @@
 }
 .box{
     height: 70%;
-    width: 50%;
+    width: 45%;
     margin-top:5%;
+    overflow: auto;
+    
 }
-h1, h3{
+.boxText{
+    width: 95%;
+    height: 95%;
+    margin-top: 2%;
+}
+
+h1{
+    color: white;
+} 
+
+h3{
     color: #BCCCE0;
 }
 label{
     color:  #BCCCE0 ;
+    
 }
 form{
     margin-top: 10%;
-    margin-left: 10%;
+    margin-left: 20%;
+ 
+
 }
 input{
     width: 90%;
@@ -178,6 +218,43 @@ textarea{
 .container-fluid{
     padding: 0 !important;
 }
+
+
+
+.option-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: inline-flex;
+    }
+
+    /* Estilo para cada opción */
+    .option-item {
+        margin-bottom: 10px;
+    }
+
+    /* Estilo para el input oculto */
+    .option-input {
+        display: none;
+    }
+
+    /* Estilo para la etiqueta */
+    .option-label {
+        display: inline-block;
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    /* Estilo para cuando se pasa el mouse sobre la etiqueta */
+    .option-label:hover {
+        background-color: #f0f0f0;
+    }
+    .option-input:checked + .option-label {
+        background-color: #007bff;
+        color: white;
+    }
 
 
 </style>

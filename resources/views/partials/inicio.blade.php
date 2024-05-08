@@ -24,6 +24,7 @@ a.letter{
 }
 .log-in{
     padding-top: 0.5%;
+    padding-right: 0.4%;
 }
 
 </style>
