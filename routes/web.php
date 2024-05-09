@@ -93,6 +93,7 @@ Route::middleware('auth')->group(function () {
     Route::get('get-towns-by-region', [PersonController::class, 'getTownsByRegion'])->name('get_towns_by_region');
     Route::get('/export-person', [PersonController::class, 'export'])->name('excel.person');
     Route::get('/export-events', [EventController::class, 'export'])->name('excel.events');
+    
 
     /*Rutas product y unit*/
     Route::resource('product', ProductController::class);
@@ -272,4 +273,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('projects', ProjectController::class)->middleware('auth');
     Route::resource('team-works', TeamWorkController::class)->middleware('auth');
     Route::resource('quotes', QuoteController::class)->middleware('auth');
-});
+    Route::get('/pdf/project', [ProjectController::class, 'generatePDF'])->name('pdf.project');
+    Route::get('/pdf/teamwork', [TeamWorkController::class, 'generatePDF'])->name('pdf.teamwork');
+    Route::get('/pdf/quote', [QuoteController::class, 'generatePDF'])->name('pdf.quote');
+    Route::get('/export-project', [ProjectController::class, 'export'])->name('excel.project');
+    Route::get('/export-quote', [QuoteController::class, 'export'])->name('excel.quote');
+    Route::get('/export-teamwork', [TeamWorkController::class, 'export'])->name('excel.teamwork');});

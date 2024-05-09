@@ -41,6 +41,8 @@
             <a href="{{ asset('/') }}">
             <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte"></a>
         </div>
+        @include('partials.inicio')
+
     </nav>
     <div class="content">
         <div class="vertical-line left-line">
@@ -514,6 +516,55 @@
             cursor: pointer;
         }
         .dropdown-item:hover {
+        color: #2bb9e5 !important;
+    }
+
+    .dropdown-menu {
+        background-color: transparent !important;
+        border-color: #73a3b6 !important;
+    }
+
+    .dropdown-menu .dropdown-item {
+        color: #2bb9e5 !important;
+        background-color: transparent !important;
+        border-color: #2bb9e5 !important;
+    }
+
+    .dropdown-menu .dropdown-divider {
+        border-top: 1px solid #2bb9e5;
+    }
+
+    .btn-primary {
+    background-color: transparent !important;
+    color: #fff;
+    border-color: transparent !important;
+    font-size: 1.3vw;
+}
+
+.btn-primary:hover {
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+
+.btn-primary:active,
+.btn-primary:focus {
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+    
+    .dropdown-menu .dropdown-item:hover {
+        background-color: transparent !important;
+        border-color: transparent !important;
+        border: none;
+        text-shadow: 0 0 5px  #2bb9e5;
+    }
+
+    .dropdown-menu .dropdown-item:hover {
+        background-color: rgba(161, 174, 250, 0.274) !important;
+        /* Cambia el color de fondo al pasar el cursor sobre las opciones del menú */
+    }
+
+    .dropdown-item:hover {
         color: #2bb9e5 !important;
     }
 

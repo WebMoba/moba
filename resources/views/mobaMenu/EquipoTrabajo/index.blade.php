@@ -49,6 +49,8 @@
                 <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte">
             </a>
         </div>
+        @include('partials.inicio')
+
     </nav>
 
     <!-- Líneas verticales con iconos -->
@@ -683,4 +685,7 @@
 
         cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="white" stroke="black" stroke-width="2"/><path d="M12 6v12m-6-6h12" fill="none" stroke="black" stroke-width="2"/></svg>'), auto;
     }
+
+
+    
 </style>
