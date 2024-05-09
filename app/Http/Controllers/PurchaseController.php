@@ -46,6 +46,14 @@ class PurchaseController extends Controller
         return $pdf->stream('document.pdf');
     }
 
+    public function view($purchases)
+    {
+        // Obtén la cotización (Quote) basada en el ID proporcionado
+        $purchases = Purchase::findOrFail($purchases);
+
+        // Cargar la vista deseada y pasar los datos necesarios
+        return view('purchase.show', compact('purchases'));
+    }
     /**
      * Display a listing of the resource.
      *

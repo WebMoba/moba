@@ -93,7 +93,7 @@ Route::middleware('auth')->group(function () {
     Route::get('get-towns-by-region', [PersonController::class, 'getTownsByRegion'])->name('get_towns_by_region');
     Route::get('/export-person', [PersonController::class, 'export'])->name('excel.person');
     Route::get('/export-events', [EventController::class, 'export'])->name('excel.events');
-    
+
 
     /*Rutas product y unit*/
     Route::resource('product', ProductController::class);
@@ -214,6 +214,13 @@ Route::view('/tuArteMenu/Contacto/index', 'tuArteMenu.Contacto.index')->name('tu
 
 //ruta Correo electronico
 Route::post('/enviar-correo', [ContactoController::class, 'enviarCorreo'])->name('enviar-correo');
+//Breadcrumds
+Route::get('quotes/show/{quote}', [QuoteController::class, 'view'])->name('quote.show');
+Route::get('person/show/{person}', [PersonController::class, 'view'])->name('person.show');
+Route::get('person/edit/{person}', [PersonController::class, 'view'])->name('person.edit');
+Route::get('event/show/{event}', [EventController::class, 'view'])->name('event.show');
+Route::get('event/edit/{event}', [EventController::class, 'view'])->name('event.edit');
+Route::get('purchases/show/{purchases}', [PurchaseController::class, 'view'])->name('purchase.show');
 
 
 //ruta nombre categorias 
@@ -259,23 +266,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static');
     Route::get('/{page}', [PageController::class, 'index'])->name('page');
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
-    Route::resource('service', ServiceController::class);
-    Route::resource('categories-products-service', CategoriesProductsServiceController::class);
-    Route::resource('product', ProductController::class);
-    Route::resource('unit', UnitController::class);
-    Route::resource('events', EventController::class);
-    Route::resource('number-phone', NumberPhoneController::class);
-    Route::resource('person', PersonController::class);
-    Route::resource('materials_raws', App\Http\Controllers\MaterialsRawController::class);
-    Route::resource('units', App\Http\Controllers\UnitController::class);
-    Route::resource('sales', SaleController::class)->middleware('auth');
-    Route::resource('detail-sale', DetailSaleController::class)->middleware('auth');
-    Route::resource('projects', ProjectController::class)->middleware('auth');
-    Route::resource('team-works', TeamWorkController::class)->middleware('auth');
-    Route::resource('quotes', QuoteController::class)->middleware('auth');
-    Route::get('/pdf/project', [ProjectController::class, 'generatePDF'])->name('pdf.project');
-    Route::get('/pdf/teamwork', [TeamWorkController::class, 'generatePDF'])->name('pdf.teamwork');
-    Route::get('/pdf/quote', [QuoteController::class, 'generatePDF'])->name('pdf.quote');
-    Route::get('/export-project', [ProjectController::class, 'export'])->name('excel.project');
-    Route::get('/export-quote', [QuoteController::class, 'export'])->name('excel.quote');
-    Route::get('/export-teamwork', [TeamWorkController::class, 'export'])->name('excel.teamwork');});
+});

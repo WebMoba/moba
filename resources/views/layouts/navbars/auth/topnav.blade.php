@@ -13,11 +13,51 @@
                         <a class="opacity-5 text-white" href="{{ route('quotes.index') }}">Cotizaciones</a>
                     </li>
                     <li class="breadcrumb-item text-sm text-white active" aria-current="page">Agregar Cotización</li>
-                @elseif (Request::is('quotes/show/*'))
+                @elseif (Request::is('quotes/*'))
                     <li class="breadcrumb-item text-sm">
                         <a class="opacity-5 text-white" href="{{ route('quotes.index') }}">Cotizaciones</a>
                     </li>
                     <li class="breadcrumb-item text-sm text-white active" aria-current="page">Mostrar Cotización</li>
+                @elseif (Request::is('person/create'))
+                    <li class="breadcrumb-item text-sm">
+                        <a class="opacity-5 text-white" href="{{ route('person.index') }}">Personas</a>
+                    </li>
+                    <li class="breadcrumb-item text-sm text-white active" aria-current="page">Agregar Persona</li>
+                @elseif (Request::is('person/show/*'))
+                    <li class="breadcrumb-item text-sm">
+                        <a class="opacity-5 text-white" href="{{ route('person.index') }}">Personas</a>
+                    </li>
+                    <li class="breadcrumb-item text-sm text-white active" aria-current="page">Mostrar Persona</li>
+                @elseif (Request::is('person/edit/*'))
+                    <li class="breadcrumb-item text-sm">
+                        <a class="opacity-5 text-white" href="{{ route('person.index') }}">Personas</a>
+                    </li>
+                    <li class="breadcrumb-item text-sm text-white active" aria-current="page">Editar Persona</li>
+                @elseif (Request::is('events/create'))
+                    <li class="breadcrumb-item text-sm">
+                        <a class="opacity-5 text-white" href="{{ route('events.index') }}">Eventos</a>
+                    </li>
+                    <li class="breadcrumb-item text-sm text-white active" aria-current="page">Agregar Evento</li>
+                @elseif (Request::is('events/*'))
+                    <li class="breadcrumb-item text-sm">
+                        <a class="opacity-5 text-white" href="{{ route('events.index') }}">Eventos</a>
+                    </li>
+                    <li class="breadcrumb-item text-sm text-white active" aria-current="page">Mostrar Evento</li>
+                @elseif (Request::is('events/*/edit'))
+                    <li class="breadcrumb-item text-sm">
+                        <a class="opacity-5 text-white" href="{{ route('events.index') }}">Eventos</a>
+                    </li>
+                    <li class="breadcrumb-item text-sm text-white active" aria-current="page">Editar Evento</li>
+                @elseif (Request::is('purchasesD/purchases/create'))
+                    <li class="breadcrumb-item text-sm">
+                        <a class="opacity-5 text-white" href="{{ route('purchases.index') }}">Compras</a>
+                    </li>
+                    <li class="breadcrumb-item text-sm text-white active" aria-current="page">Agregar Compra</li>
+                @elseif (Request::is('purchasesD/purchases/*'))
+                    <li class="breadcrumb-item text-sm">
+                        <a class="opacity-5 text-white" href="{{ route('purchases.index') }}">Compras</a>
+                    </li>
+                    <li class="breadcrumb-item text-sm text-white active" aria-current="page">Mostrar Compra</li>
                 @else
                     <li class="breadcrumb-item text-sm text-white active" aria-current="page">{{ $title }}</li>
                 @endif

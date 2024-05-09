@@ -44,6 +44,14 @@ class QuoteController extends Controller
         // ->with('i', (request()->input('page', 1) - 1) * $quotes->perPage());
     }
 
+    public function view($quote)
+    {
+        // Obtén la cotización (Quote) basada en el ID proporcionado
+        $quote = Quote::findOrFail($quote);
+
+        // Cargar la vista deseada y pasar los datos necesarios
+        return view('quotes.view', compact('quote'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -84,33 +92,33 @@ class QuoteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-{
-    $request->validate([
-        'date_issuance' => 'required|date',
-        'description' => 'required|string|max:300',
-        'total' => 'required|numeric',
-        'discount' => 'required|numeric',
-        'status' => 'required|in:aprobado,rechazado,pendiente',
-        'people_id' => 'required',
-    ]);
+    {
+        $request->validate([
+            'date_issuance' => 'required|date',
+            'description' => 'required|string|max:300',
+            'total' => 'required|numeric',
+            'discount' => 'required|numeric',
+            'status' => 'required|in:aprobado,rechazado,pendiente',
+            'people_id' => 'required',
+        ]);
 
-    $quote = Quote::create($request->all());
+        $quote = Quote::create($request->all());
 
-    // Verificar si los campos relacionados con los detalles de la cotización están presentes en la solicitud
-    if ($request->has('services_id') && $request->has('products_id') && $request->has('projects_id')) {
-        // Crear los detalles de la cotización
-        foreach ($request->services_id as $key => $serviceId) {
-            $detalle = new DetailQuote([
-                'services_id' => $serviceId,
-                'products_id' => $request->products_id[$key],
-                'projects_id' => $request->projects_id[$key],
-            ]);
-            $quote->detailQuotes()->save($detalle);
+        // Verificar si los campos relacionados con los detalles de la cotización están presentes en la solicitud
+        if ($request->has('services_id') && $request->has('products_id') && $request->has('projects_id')) {
+            // Crear los detalles de la cotización
+            foreach ($request->services_id as $key => $serviceId) {
+                $detalle = new DetailQuote([
+                    'services_id' => $serviceId,
+                    'products_id' => $request->products_id[$key],
+                    'projects_id' => $request->projects_id[$key],
+                ]);
+                $quote->detailQuotes()->save($detalle);
+            }
         }
-    }
 
-    return redirect()->route('quotes.index')->with('success', 'Cotización creada correctamente.');
-}
+        return redirect()->route('quotes.index')->with('success', 'Cotización creada correctamente.');
+    }
 
 
     /**

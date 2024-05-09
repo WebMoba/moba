@@ -33,6 +33,15 @@ class EventController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * $events->perPage());
     }
 
+    public function view($event)
+    {
+        // Obtén la cotización (Quote) basada en el ID proporcionado
+        $event = Event::findOrFail($event);
+
+        // Cargar la vista deseada y pasar los datos necesarios
+        return view('event.show', compact('event'));
+        return view('event.edit', compact('event'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -41,8 +50,7 @@ class EventController extends Controller
     public function create()
     {
         $event = new Event();
-        return view('event.create', compact('event')) ;
-
+        return view('event.create', compact('event'));
     }
 
     /**
@@ -127,7 +135,7 @@ class EventController extends Controller
             'date_start' => 'required|date',
             'date_end' => 'required|date|after_or_equal:date_start',
             'importance_range' => 'required|string|in:baja,media,alta',
-        ],$customMessages);
+        ], $customMessages);
 
         $event->update($request->all());
 
@@ -141,29 +149,29 @@ class EventController extends Controller
      * @throws \Exception
      */
     public function destroy($id)
-{
-    $event = Event::find($id);
-    
-    if (!$event) {
-        return redirect()->route('events.index')->with('error', 'El evento no existe');
-    }
-    
-    if ($event->disable) {
-        $event->disable = false;
-    } else {
-        $event->disable = true;
-    }
-    
-    $event->save();
+    {
+        $event = Event::find($id);
 
-    return redirect()->route('events.index')->with('success', 'Estado del evento actualizado con éxito');
-}
+        if (!$event) {
+            return redirect()->route('events.index')->with('error', 'El evento no existe');
+        }
+
+        if ($event->disable) {
+            $event->disable = false;
+        } else {
+            $event->disable = true;
+        }
+
+        $event->save();
+
+        return redirect()->route('events.index')->with('success', 'Estado del evento actualizado con éxito');
+    }
 
     public function generatePDF(Request $request)
     {
         // Obtener el filtro de la solicitud
         $filter = $request->input('findId');
-        
+
         // Obtener los datos de los eventos filtrados si se aplicó un filtro
         if ($filter) {
             $events = Event::where('place', $filter)->get();
@@ -171,26 +179,25 @@ class EventController extends Controller
             // Si no hay filtro, obtener todos los eventos
             $events = Event::all();
         }
-        
+
         // Pasar los datos a la vista pdf-template
         $data = [
             'events' => $events
         ];
-        
+
         // Generar el PDF
         $pdf = new Dompdf();
         $pdf->loadHtml(view('event.pdf-template', $data));
-    
+
         $pdf->setPaper('A4', 'portrait');
-    
+
         $pdf->render();
-    
+
         return $pdf->stream('Eventos.pdf'); // Cambiado el nombre del archivo a "Eventos.pdf"
     }
 
-    public function export() 
-{
-    return Excel::download(new EventsExport, 'events.xlsx');
-}
-
+    public function export()
+    {
+        return Excel::download(new EventsExport, 'events.xlsx');
+    }
 }
