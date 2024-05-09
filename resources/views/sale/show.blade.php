@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-@include('layouts.navbars.auth.topnav', ['title' => 'Mostrar Venta'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Mostrar Venta'])
     <section class="content container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -14,22 +14,16 @@
                         <div class="float-left">
                             <span class="card-title">{{ __('Vista') }} Venta</span>
                         </div>
-                        <div class="float-right">
-                            <a class="btn btn-danger" href="{{ route('sales.index') }}"> {{ __('Volver') }}</a>
-                        </div>
                     </div>
-
                     <div class="card-body">
                         <h2>Venta</h2>
-
-
                         <div class="form-group">
                             <strong>Nombre del proveedor:</strong>
                             {{ $sale->name }}
                         </div>
                         <div class="form-group">
                             <strong>Documento del Cliente:</strong>
-                            {{ $sale->person->id_card }} 
+                            {{ $sale->person->id_card }}
                         </div>
                         <div class="form-group">
                             <strong>Fecha realizacion de la venta:</strong>
@@ -39,15 +33,13 @@
                             <strong>Total de la venta:</strong>
                             {{ $sale->total }}
                         </div>
-
                         <h2>Detalles de la venta</h2>
-
                         @if ($details->count())
                             <div class="form-group">
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                                            <th>'#'</th>
                                             <th>Cantidad</th>
                                             <th>Precio unitario</th>
                                             <th>Subtotal</th>
@@ -74,9 +66,8 @@
                         @else
                             <p>No se encontraron detalles asociados a esta compra.</p>
                         @endif
-
-
-
+                        <a type="button" class="btn btn-primary" href="{{ route('sales.index') }}"><i
+                                class="bi bi-arrow-left-circle"></i></a>
                     </div>
                 </div>
             </div>

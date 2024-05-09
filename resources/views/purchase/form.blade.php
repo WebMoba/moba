@@ -52,9 +52,10 @@
 
 
     </div>
-    <div class="box-footer" style="margin: 20px;">
+    <div class="box-footer">
         <button type="button" class="btn btn-success" onclick="enviarDetalles()">Enviar</button>
-        <a type="submit" class="btn btn-primary" href="{{ route('purchases.index') }}">Volver</a>
+        <a type="submit" class="btn btn-primary" href="{{ route('purchases.index') }}"><i
+                class="bi bi-arrow-left-circle"></i></a>
     </div>
 </div>
 

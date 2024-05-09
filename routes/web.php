@@ -217,13 +217,25 @@ Route::view('/tuArteMenu/Contacto/index', 'tuArteMenu.Contacto.index')->name('tu
 //ruta Correo electronico
 Route::post('/enviar-correo', [ContactoController::class, 'enviarCorreo'])->name('enviar-correo');
 //Breadcrumds
-Route::get('quotes/show/{quote}', [QuoteController::class, 'view'])->name('quote.show');
-Route::get('person/show/{person}', [PersonController::class, 'view'])->name('person.show');
-Route::get('person/edit/{person}', [PersonController::class, 'view'])->name('person.edit');
-Route::get('event/show/{event}', [EventController::class, 'view'])->name('event.show');
-Route::get('event/edit/{event}', [EventController::class, 'view'])->name('event.edit');
-Route::get('purchases/show/{purchases}', [PurchaseController::class, 'view'])->name('purchase.show');
-
+Route::get('quotes/show/{quote}', [QuoteController::class, 'show'])->name('quote.show');
+Route::get('person/show/{person}', [PersonController::class, 'show'])->name('person.show');
+Route::get('person/edit/{person}', [PersonController::class, 'edit'])->name('person.edit');
+Route::get('event/show/{event}', [EventController::class, 'show'])->name('event.show');
+Route::get('event/edit/{event}', [EventController::class, 'edit'])->name('event.edit');
+Route::get('materials_raws/materialsRaw/{event}', [MaterialsRawController ::class, 'show'])->name('materials-raw.show');
+Route::get('materials_raws/materialsRaw/{event}', [MaterialsRawController ::class, 'edit'])->name('materials-raw.edit');
+Route::get('purchases/show/{purchases}', [PurchaseController::class, 'show'])->name('purchase.show');
+Route::get('sale/show/{sale}', [SaleController::class, 'show'])->name('sale.show');
+Route::get('product/show/{products}', [ProductController::class, 'show'])->name('products.show');
+Route::get('product/edit/{products}', [ProductController::class, 'edit'])->name('products.edit');
+Route::get('categories-products-service/show/{categoriesProductsService}', [CategoriesProductsServiceController::class, 'show'])->name('categories-products-service.show');
+Route::get('categories-products-service/edit/{categoriesProductsService}', [CategoriesProductsServiceController::class, 'edit'])->name('categories-products-service.edit');
+Route::get('service/show/{service}', [ServiceController::class, 'show'])->name('service.show');
+Route::get('service/edit/{service}', [ServiceController::class, 'edit'])->name('service.edit');
+Route::get('project/show/{project}', [ProjectController::class, 'edit'])->name('project.show');
+Route::get('project/edit/{project}', [ProjectController::class, 'edit'])->name('project.edit');
+Route::get('team-works/show/{teamWork}', [TeamWorkController::class, 'show'])->name('team-work.show');
+Route::get('team-works/edit/{teamWork}', [TeamWorkController::class, 'edit'])->name('team-work.edit');
 
 //ruta nombre categorias 
 

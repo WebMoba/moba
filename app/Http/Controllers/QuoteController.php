@@ -44,14 +44,6 @@ class QuoteController extends Controller
         // ->with('i', (request()->input('page', 1) - 1) * $quotes->perPage());
     }
 
-    public function view($quote)
-    {
-        // Obtén la cotización (Quote) basada en el ID proporcionado
-        $quote = Quote::findOrFail($quote);
-
-        // Cargar la vista deseada y pasar los datos necesarios
-        return view('quotes.view', compact('quote'));
-    }
     /**
      * Show the form for creating a new resource.
      *

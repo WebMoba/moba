@@ -39,15 +39,6 @@ class PersonController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * $people->perPage());
     }
 
-    public function view($person)
-    {
-        // Obtén la cotización (Quote) basada en el ID proporcionado
-        $person = Person::findOrFail($person);
-
-        // Cargar la vista deseada y pasar los datos necesarios
-        return view('person.show', compact('person'));
-        return view('person.edit', compact('person'));
-    }
     /**
      * Show the form for creating a new resource.
      *

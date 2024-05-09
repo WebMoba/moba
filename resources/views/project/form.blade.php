@@ -35,7 +35,8 @@
     </div>
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-success">{{ __('Crear') }}</button>
-        <a type="submit" class="btn btn-primary" href="{{ route('projects.index') }}">Volver</a>
+        <a class="btn btn-primary" href="{{ route('projects.index') }}"><i
+            class="bi bi-arrow-left-circle"></i></a>
     </div>
 </div>
 <style>

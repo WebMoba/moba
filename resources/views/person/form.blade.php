@@ -70,7 +70,7 @@
     </div>
     <div class="box-footer mt20">
         <br><button type="submit" class="btn btn-success btn-Crear">{{ __('Crear') }}</button>
-        <a type="submit" class="btn btn-primary" href="{{ route('person.index') }}">Volver</a>
+        <a type="submit" class="btn btn-primary" href="{{ route('person.index') }}"><i class="bi bi-arrow-left-circle"></i></a>
     </div>
 </div>
 <script>

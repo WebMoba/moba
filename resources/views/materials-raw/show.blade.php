@@ -14,9 +14,6 @@
                         <div class="float-left">
                             <span class="card-title">{{ __('Show') }} Materials Raw</span>
                         </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('materials_raws.index') }}"> {{ __('Back') }}</a>
-                        </div>
                     </div>
 
                     <div class="card-body">
@@ -33,7 +30,8 @@
                             <strong>Tipo de unidad:</strong>
                             {{ $materialsRaw->unit->unit_type }}
                         </div>
-
+                        <a class="btn btn-primary" href="{{ route('materials_raws.index') }}"><i
+                            class="bi bi-arrow-left-circle"></i></a>
                     </div>
                 </div>
             </div>
