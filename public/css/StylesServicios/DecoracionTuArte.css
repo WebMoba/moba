@@ -29,6 +29,7 @@
     background-color: transparent !important;
     color: #fff;
     border-color: transparent !important;
+    font-size: 1.3vw;
 }
 
 .btn-primary:hover {
