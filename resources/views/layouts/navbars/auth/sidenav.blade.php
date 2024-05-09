@@ -8,7 +8,7 @@
                 <img src="{{ asset('/Imagenes/Logotipo_moba.png') }}" class="navbar-brand-img h-180" alt="main_logo"
                     width="90px" height="80px">
                 <img src="{{ asset('/Imagenes/LogoTuArte.png') }}" class="navbar-brand-img h-100" alt="main_logo"
-                    width="47px" height="47x">
+                    width="43px" height="47x">
             </div>
         </a>
     </div>
