@@ -144,7 +144,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/export-teamwork', [TeamWorkController::class, 'export'])->name('excel.teamwork');
     //fin-fabian
 
+    //formulario de contacto 
 
+    Route::post('/contacto', [ContactoController::class, 'enviarMensaje'])->name('enviar-mensaje');
 
 
 });
