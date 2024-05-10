@@ -13,7 +13,14 @@
             </div>
             <div class="col-md-2 col-sm-2 col-xs-2"></div>
             <div class="col-md-2 col-sm-2 col-xs-2">
-               
+            <h5 class="heading">Tu Arte</h5>
+                <ul class="card-text">
+                    <li class="enlaceFooter"><a href="{{ route('tuArteMenu.servicios.Accesorios.index') }}" >Servicios</a></li>
+                    <li class="enlaceFooter"><a href="{{ route('tuArteMenu.index') }}" >Nosotros</a></li>
+                    <li class="enlaceFooter"><a href="{{ route('tuArteMenu.categorias.index') }}">Categorias</a></li>
+                    <li class="enlaceFooter"><a href="{{ route('tuArteMenu.galeria.index') }}">Galeria</a></li>
+                    <li class="enlaceFooter"><a href="{{ route('tuArteMenu.Contacto.index') }}" >Contáctanos</a></li>
+                </ul>
             </div>
             <div class="col-md-2 col-sm-2 col-xs-2">
                 <h5 class="heading">Moba</h5>

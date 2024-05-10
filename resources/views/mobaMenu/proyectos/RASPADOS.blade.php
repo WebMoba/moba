@@ -17,7 +17,7 @@
 
     <nav class="navbar">
         <div class="container-fluid">
-            <a href="{{ asset('/') }}">
+        <a href="{{ route('mobaMenu.index')}}">
                 <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba"></a>
             <div class="navbar-buttons">
                 <div class="dropdown">
@@ -38,7 +38,7 @@
                 <a href="{{ route('mobaMenu.EquipoTrabajo.index') }}" class="btn btn-primary">Equipo de trabajo</a>
                 <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
-            <a href="{{ asset('/') }}">
+            <a href="{{ route('tuArteMenu.index') }}">
                 <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte"></a>
         </div>
     </nav>
@@ -52,7 +52,8 @@
         //inicio de proyectos
         //proyectos cuadro
         <div class="title-container">
-            <h1 class="big-title">RASPADOS IGLU</h1>
+            <h1 class="big-title">RASPADOS</h1>
+            <h1 class="big-title1">IGLU</h1>
         </div>
 
         <div class="container">
@@ -65,7 +66,13 @@
                             estratégicos a proveedores; ofreciendo condiciones dignas de trabajo a personal idóneo que
                             vive y aplica principios de integridad, honestidad y constancia, garantizando la retribución
                             a los socios, conformando así un equipo comprometido con el desarrollo y bienestar de la
-                            comunidad.</p>
+                            comunidad.Somos una empresa dedicada a satisfacer las necesidades de nuestros clientes,
+                            principalmente
+                            en frutas, verduras y demás productos de la canasta familiar; vinculando como aliados
+                            estratégicos a proveedores; ofreciendo condiciones dignas de trabajo a personal idóneo que
+                            vive y aplica principios de integridad, honestidad y constancia, garantizando la retribución
+                            a los socios, conformando así un equipo comprometido con el desarrollo y bienestar de la
+                            comunidad</p>
                     </div>
                 </div>
                 <!-- Columna para el carrusel -->
@@ -105,6 +112,7 @@
 
             </pindiv>
         </div>
+
         <!-- navbar -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
@@ -157,6 +165,30 @@
                 padding-bottom: 50px;
                 position: relative;
                 /* Establece el contenedor como posición relativa para que los elementos internos puedan ser posicionados relativamente a él */
+            }
+
+            .title-container .big-title {
+                position: relative;
+                top: 80px;
+                left: 20px;
+                width: calc(50% - 40px);
+                /* Ajusta el ancho según sea necesario */
+                padding: 0 20px;
+                color: #2bb9e5;
+                font-weight: bold;
+                font-size: 70px;
+            }
+
+            .title-container .big-title1 {
+                position: relative;
+                top: 80px;
+                left: 20px;
+                width: calc(50% - 40px);
+                /* Ajusta el ancho según sea necesario */
+                padding: 0 20px;
+                color: white;
+                font-weight: bold;
+                font-size: 70px;
             }
 
             .titulo {

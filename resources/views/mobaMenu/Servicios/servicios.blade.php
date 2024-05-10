@@ -17,7 +17,7 @@
 
     <nav class="navbar">
         <div class="container-fluid">
-            <a href="{{ asset('/') }}">
+        <a href="{{ route('mobaMenu.index')}}">
                 <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
             </a>
             <div class="navbar-buttons">
@@ -39,10 +39,12 @@
                 <a href="{{ route('mobaMenu.EquipoTrabajo.index') }}" class="btn btn-primary">Equipo de trabajo</a>
                 <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
-            <a href="{{ asset('/') }}">
+            <a href="{{ route('tuArteMenu.index') }}">
                 <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Moba">
             </a>
         </div>
+        @include('partials.inicio')
+
     </nav>
     <div class="content">
         <div class="vertical-line left-line">

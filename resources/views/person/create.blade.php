@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-@include('layouts.navbars.auth.topnav', ['title' => 'Menu'])
+@include('layouts.navbars.auth.topnav', ['title' => 'Agregar Persona'])
     <section class="content container-fluid">
         <a class="btn btn-primary" href="{{ route('person.index') }}"> {{ __('Volver') }}</a><br><br>
         <div class="row">

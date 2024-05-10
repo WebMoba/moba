@@ -6,9 +6,9 @@
             <a class="navbar-brand m-0" href="{{ route('welcome')}}">
             <div class="brand-container d-flex justify-content-between align-items-center">
                 <img src="{{ asset('/Imagenes/Logotipo_moba.png') }}" class="navbar-brand-img h-180" alt="main_logo"
-                    width="70px" height="80px">
+                    width="90px" height="80px">
                 <img src="{{ asset('/Imagenes/LogoTuArte.png') }}" class="navbar-brand-img h-100" alt="main_logo"
-                    width="40px" height="45px">
+                    width="43px" height="47x">
             </div>
         </a>
     </div>

@@ -17,7 +17,7 @@
 
     <nav class="navbar">
         <div class="container-fluid">
-            <a href="{{ asset('/') }}">
+        <a href="{{ route('mobaMenu.index')}}">
                 <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
             </a>
             <div class="navbar-buttons">
@@ -47,6 +47,8 @@
                 <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte">
             </a>
         </div>
+        @include('partials.inicio')
+
     </nav>
 
     <!-- Líneas verticales con iconos -->
@@ -67,7 +69,7 @@
                 en nuestro portafolio, solo debes contactarnos, estaremos
                 muy felices de hablar contigo.</p><br>
             <h4>Nos caracteriza nuestra honestidad, entrega, creatividad y nuestra...</h4><br>
-            <h1>"Buena Onda"</h1>
+            <h1 style="color: white;">"Buena Onda"</h1>
         </div>
         <div class="box">
             <img src="{{ asset('Imagenes/imgPrincipalView/LogotipoTuArte.png') }}" alt="">

@@ -39,7 +39,8 @@
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-success"
             @if ($mode == 'Editar') onclick="return confirm('¿Está seguro de que desea {{ $mode }} el producto?')" @endif>{{ $mode }}</button>
-            <a type="submit" class="btn btn-primary" href="{{ route('team-works.index') }}">Volver</a>
+        <a type="submit" class="btn btn-primary" href="{{ route('product.index') }}"><i
+                class="bi bi-arrow-left-circle"></i></a>
     </div>
 
 </div>

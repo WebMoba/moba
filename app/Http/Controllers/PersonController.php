@@ -33,9 +33,6 @@ class PersonController extends Controller
      */
     public function index()
     {
-        
-
-
         $people = Person::orderBy('created_at', 'desc')->paginate(10);
 
         return view('person.index', compact('people'))
@@ -69,6 +66,7 @@ class PersonController extends Controller
         $numberPhone = NumberPhone::find($numberPhoneId);
 
         return view('person.create', compact('person', 'teamWorks', 'users', 'towns', 'numberPhones', 'usersName', 'regions', 'roles', 'identificationTypes', 'numberPhoneId', 'numberPhone'));
+        
     }
     /**
      * Store a newly created resource in storage.

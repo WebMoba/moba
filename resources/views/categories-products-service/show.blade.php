@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-@include('layouts.navbars.auth.topnav', ['title' => 'Menu'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Mostrar Categoria'])
     <section class="content container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -14,13 +14,9 @@
                         <div class="float-left">
                             <span class="card-title">{{ __('Mostrar') }} Categorias</span>
                         </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('categories-products-service.index') }}"> {{ __('Volver') }}</a>
-                        </div>
                     </div>
-
                     <div class="card-body">
-                        
+
                         <div class="form-group">
                             <strong>Nombre:</strong>
                             {{ $categoriesProductsService->name }}
@@ -45,7 +41,8 @@
                             <strong>Tipo:</strong>
                             {{ $categoriesProductsService->type }}
                         </div>
-
+                        <a class="btn btn-primary" href="{{ route('categories-products-service.index') }}"><i
+                                class="bi bi-arrow-left-circle"></i></a>
                     </div>
                 </div>
             </div>

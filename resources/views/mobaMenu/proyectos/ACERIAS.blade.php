@@ -17,7 +17,7 @@
 
     <nav class="navbar">
         <div class="container-fluid">
-            <a href="{{ asset('/') }}">
+        <a href="{{ route('mobaMenu.index')}}">
                 <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba"></a>
             <div class="navbar-buttons">
                 <div class="dropdown">
@@ -38,7 +38,7 @@
                 <a href="{{ route('mobaMenu.EquipoTrabajo.index') }}" class="btn btn-primary">Equipo de trabajo</a>
                 <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
-            <a href="{{ asset('/') }}">
+            <a href="{{ route('tuArteMenu.index') }}">
                 <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte"></a>
         </div>
     </nav>
@@ -52,7 +52,8 @@
         //inicio de proyectos
         //proyectos cuadro
         <div class="title-container">
-            <h1 class="big-title">ACERIAS PAZ DEL RIO</h1>
+            <h1 class="big-title">ACERIAS</h1>
+            <h1 class="big-title1"> PAZ DEL RIO</h1>
         </div>
 
         <div class="container">
@@ -163,31 +164,48 @@
                 font-family: Arial, sans-serif;
             }
 
+            .title-container .big-title {
+                position: relative;
+                top: 80px;
+                left: 20px;
+                width: calc(50% - 40px);
+                /* Ajusta el ancho según sea necesario */
+                padding: 0 20px;
+                color: #2bb9e5;
+                font-weight: bold;
+                font-size: 70px;
+            }
+
+            .title-container .big-title1 {
+                position: relative;
+                top: 80px;
+                left: 20px;
+                width: calc(50% - 40px);
+                /* Ajusta el ancho según sea necesario */
+                padding: 0 20px;
+                color: white;
+                font-weight: bold;
+                font-size: 70px;
+            }
+
             .container {
                 padding-top: 50px;
                 padding-bottom: 50px;
                 position: relative;
-                /* Establece el contenedor como posición relativa para que los elementos internos puedan ser posicionados relativamente a él */
             }
 
             .titulo {
                 position: absolute;
-                /* Establece la posición absoluta para que el título pueda posicionarse en la esquina superior izquierda del contenedor */
                 top: 80px;
-                /* Espacio desde la parte superior del contenedor */
                 left: 20px;
-                /* Espacio desde el lado izquierdo del contenedor */
                 width: calc(50% - 40px);
-                /* Calcula el ancho del título para ocupar la mitad del contenedor menos los márgenes */
+                /* Ajusta el ancho según sea necesario */
                 padding: 0 20px;
-                /* Espacio interno del título */
             }
 
-            .custom-title {
-                position: relative;
-                top: -10px;
-                /* Ajusta este valor según sea necesario */
-            }
+            /* Otras reglas CSS necesarias */
+
+
 
             .galeria {
                 width: calc(50% - 40px);

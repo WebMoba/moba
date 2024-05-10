@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-@include('layouts.navbars.auth.topnav', ['title' => 'Menu'])
+@include('layouts.navbars.auth.topnav', ['title' => 'Personas'])
 
     <div class="container-fluid">
         <div class="row">

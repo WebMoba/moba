@@ -17,7 +17,7 @@
 
     <nav class="navbar">
         <div class="container-fluid">
-            <a href="{{ asset('/') }}">
+        <a href="{{ route('mobaMenu.index')}}">
                 <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba"></a>
             <div class="navbar-buttons">
                 <div class="dropdown">
@@ -38,9 +38,11 @@
                 <a href="{{ route('mobaMenu.EquipoTrabajo.index') }}" class="btn btn-primary">Equipo de trabajo</a>
                 <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
-            <a href="{{ asset('/') }}">
+            <a href="{{ route('tuArteMenu.index') }}">
             <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte"></a>
         </div>
+        @include('partials.inicio')
+
     </nav>
     <div class="content">
         <div class="vertical-line left-line">
@@ -167,7 +169,7 @@
                         <a href="{{ asset('mobaMenu/proyectos/DULCES') }}">
                             <img src="{{ asset('Imagenes/imgproyectos/lafrez1.jpg') }}" alt="LAFREZ">
                             <div class="overlay">
-                                <div class="text">DULCES LA FREZ</div>
+                                <div class="text">LA FREZ</div>
                             </div>
                         </a>
                     </div>
@@ -237,7 +239,7 @@
                         <a href="{{ asset('mobaMenu/proyectos/CAFEMANA') }}">
                             <img src="{{ asset('Imagenes/imgproyectos/CAFEMANA.jpeg') }}" alt="RASPADOS">
                             <div class="overlay">
-                                <div class="text">CAFE MANA</div>
+                                <div class="text">CAFE MANA BARUCH</div>
                             </div>
                         </a>
                     </div>
@@ -245,9 +247,9 @@
                 <div class="col-md-4">
                     <div class="image-container">
                         <a href="{{ asset('mobaMenu/proyectos/EMPANADASBOTI') }}">
-                            <img src="{{ asset('Imagenes/imgproyectos/EMPANADASBOTI1.jpg') }}" alt="RASPADOS">
+                            <img src="{{ asset('Imagenes/imgproyectos/EMPANADASBOT1.jpg') }}" alt="RASPADOS">
                             <div class="overlay">
-                                <div class="text">EMPANADAS BOTI</div>
+                                <div class="text">EMPANADAS DONDE BOTI</div>
                             </div>
                         </a>
                     </div>
@@ -280,7 +282,7 @@
                         <a href="{{ asset('mobaMenu/proyectos/PALMAS') }}">
                             <img src="{{ asset('Imagenes/imgproyectos/PALMAS1.jpg') }}" alt="RASPADOS">
                             <div class="overlay">
-                                <div class="text">PALMAS</div>
+                                <div class="text">PALMAS CLUB</div>
                             </div>
                         </a>
                     </div>
@@ -514,6 +516,55 @@
             cursor: pointer;
         }
         .dropdown-item:hover {
+        color: #2bb9e5 !important;
+    }
+
+    .dropdown-menu {
+        background-color: transparent !important;
+        border-color: #73a3b6 !important;
+    }
+
+    .dropdown-menu .dropdown-item {
+        color: #2bb9e5 !important;
+        background-color: transparent !important;
+        border-color: #2bb9e5 !important;
+    }
+
+    .dropdown-menu .dropdown-divider {
+        border-top: 1px solid #2bb9e5;
+    }
+
+    .btn-primary {
+    background-color: transparent !important;
+    color: #fff;
+    border-color: transparent !important;
+    font-size: 1.3vw;
+}
+
+.btn-primary:hover {
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+
+.btn-primary:active,
+.btn-primary:focus {
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+    
+    .dropdown-menu .dropdown-item:hover {
+        background-color: transparent !important;
+        border-color: transparent !important;
+        border: none;
+        text-shadow: 0 0 5px  #2bb9e5;
+    }
+
+    .dropdown-menu .dropdown-item:hover {
+        background-color: rgba(161, 174, 250, 0.274) !important;
+        /* Cambia el color de fondo al pasar el cursor sobre las opciones del menú */
+    }
+
+    .dropdown-item:hover {
         color: #2bb9e5 !important;
     }
 

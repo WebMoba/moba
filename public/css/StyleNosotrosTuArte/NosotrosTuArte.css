@@ -34,6 +34,7 @@ body::after {
     top: 0;
     width: 100vw;
     z-index: 1000;
+
 }
 
 .navbar-buttons {
@@ -208,9 +209,9 @@ body::after {
     }
 
     .box img {
-        margin-top: 20%;
-        width: 30vw;
-        height: 30vw;
+        margin-top: 30%;
+        width: 25vw;
+        height: 25vw;
     }
     .container-fluid{
         padding: 0 !important;

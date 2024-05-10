@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-@include('layouts.navbars.auth.topnav', ['title' => 'Menu'])
+@include('layouts.navbars.auth.topnav', ['title' => 'Agregar Materia Prima'])
     <section class="content container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -14,7 +14,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Create') }} Maateria Prima</span>
+                        <span class="card-title">{{ __('Create') }} Materia Prima</span>
                     </div>
                     
                     <div class="card-body">

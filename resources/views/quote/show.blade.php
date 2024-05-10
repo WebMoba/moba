@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-@include('layouts.navbars.auth.topnav', ['title' => 'Menu'])
+@include('layouts.navbars.auth.topnav', ['title' => 'Mostrar Cotización'])
     <section class="content container-fluid">
         <div class="row">
             <div class="col-md-10 mx-auto">
@@ -13,9 +13,6 @@
                     <div class="card-header">
                         <div class="float-left">
                             <span class="card-title">{{ __('Ver Cotización') }}</span>
-                        </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('quotes.index') }}">{{ __('Volver') }}</a>
                         </div>
                     </div>
 
@@ -63,6 +60,8 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <a type="submit" class="btn btn-primary" href="{{ route('quotes.index') }}"><i
+                            class="bi bi-arrow-left-circle"></i></a>
                     </div>
                 </div>
             </div>
