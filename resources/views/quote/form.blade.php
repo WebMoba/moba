@@ -79,9 +79,10 @@
                     </div>
                 </div>
             </div>
+            
+            
             <div class="box">
                 <h2>Detalle Cotización</h2>
-                <!-- Contenido de la segunda tabla -->
                 <div class="box-body">
                     <table id="detalle-table" class="table">
                         <thead>
@@ -89,81 +90,153 @@
                                 <th>Servicio</th>
                                 <th>Producto</th>
                                 <th>Proyecto</th>
-                                <th>Eliminar</th>
-                                
                             </tr>
-                            <!-- <tr>
-                                <th>
-                                    <a type="submit" class="btn btn-primary" href="{{ route('service.index') }}"> Crear Servicio </a>
-                                </th>
-                                <th>
-                                    <a type="submit" class="btn btn-primary " href="{{ route('product.index') }}"> Crear Producto </a>
-                                </th>
-                                <th>
-                                    <a type="submit" class="btn btn-primary " href="{{ route('projects.index') }}"> Crear Proyecto </a>
-                                </th>
-                            </tr> -->
-                        </thead>
-                        <tbody>
                             <tr>
                                 <th>
-                                    <div class="form-group">
-                                    {{ Form::label('') }}
-                                    {{ Form::select('services_id[]', $services, null, ['class' => 'form-control' . ($errors->has('services_id') ? ' is-invalid' : '')]) }}
-                                    {!! $errors->first('services_id', '<div class="invalid-feedback">:message</div>') !!}
-                                    </div>
+                                    <button type="button" class="btn btn-primary mt-2 agregar-detalleS">
+                                        <i class="bi bi-plus-circle-fill"></i> Agregar Servicio
+                                    </button>
                                 </th>
                                 <th>
-                                    <div class="form-group">
-                                    {{ Form::label('') }}
-                                    {{ Form::select('products_id[]', $products, null, ['class' => 'form-control' . ($errors->has('products_id') ? ' is-invalid' : '')]) }}
-                                    {!! $errors->first('products_id', '<div class="invalid-feedback">:message</div>') !!}
-                                    </div>
+                                    <button type="button" class="btn btn-primary mt-2 agregar-detalleP">
+                                        <i class="bi bi-plus-circle-fill"></i> Agregar Producto
+                                    </button>
                                 </th>
                                 <th>
-                                    <div class="form-group">
-                                    {{ Form::label('') }}
-                                    {{ Form::select('projects_id[]', $projects, null, ['class' => 'form-control' . ($errors->has('projects_id') ? ' is-invalid' : '')]) }}
-                                    {!! $errors->first('projects_id', '<div class="invalid-feedback">:message</div>') !!}
-                                    </div>
-                                </th>
-                                <th>
-                                    <button type="button" class="btn btn-danger mt-3 eliminar-detalle">
-                                        <i class="fas fa-trash-alt"></i>
+                                    <button type="button" class="btn btn-primary mt-2 agregar-detallePj">
+                                        <i class="bi bi-plus-circle-fill"></i> Agregar Proyecto
                                     </button>
                                 </th>
                             </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="form-group" id="select-service">
+                                        {{ Form::label('') }}
+                                        {{ Form::select('services_id[]', $services, null, ['class' => 'form-control' . ($errors->has('services_id') ? ' is-invalid' : '')]) }}
+                                        {!! $errors->first('services_id', '<div class="invalid-feedback">:message</div>') !!}
+                                    </div>
+                                    <button type="button" class="btn btn-danger mt-3 eliminar-detalleS">
+                                        <i class="fas fa-trash-alt"></i> Eliminar
+                                    </button>
+                                </td>
+                                <td>
+                                    <div class="form-group" id="select-product">
+                                        {{ Form::label('') }}
+                                        {{ Form::select('products_id[]', $products, null, ['class' => 'form-control' . ($errors->has('products_id') ? ' is-invalid' : '')]) }}
+                                        {!! $errors->first('products_id', '<div class="invalid-feedback">:message</div>') !!}
+                                    </div>
+                                    <button type="button" class="btn btn-danger mt-3 eliminar-detalleP">
+                                        <i class="fas fa-trash-alt"></i> Eliminar
+                                    </button>
+                                </td>
+                                <td>
+                                    <div class="form-group" id="select-project">
+                                        {{ Form::label('') }}
+                                        {{ Form::select('projects_id[]', $projects, null, ['class' => 'form-control' . ($errors->has('projects_id') ? ' is-invalid' : '')]) }}
+                                        {!! $errors->first('projects_id', '<div class="invalid-feedback">:message</div>') !!}
+                                    </div>
+                                    <button type="button" class="btn btn-danger mt-3 eliminar-detallePj">
+                                        <i class="fas fa-trash-alt"></i> Eliminar
+                                    </button>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
-                            <button type="button" id="agregarDetalle" class="btn btn-primary mt-2">Agregar detalle</button>
                 </div>
             </div>
-        </div>
+            
+            <script>
 
-        <script>
-            document.getElementById('agregarDetalle').addEventListener('click', function() {
-                var container = document.querySelector('#detalle-table tbody');
-                var nuevoDetalle = container.children[0].cloneNode(true);
-
-                // Limpiar los campos del nuevo detalle clonado
-                nuevoDetalle.querySelectorAll('select').forEach(function(select) {
-                    select.selectedIndex = 0;
+                document.querySelectorAll('.agregar-detalleS').addEventListener('click', function() {
+                    var container = document.querySelector('#select-service');
+                    var nuevoDetalle = container.children[0].cloneNode(true);
+    
+                    // Limpiar los campos del nuevo detalle clonado
+                    nuevoDetalle.querySelectorAll('select').forEach(function(select) {
+                        select.selectedIndex = 0;
+                    });
+                    container.appendChild(nuevoDetalle);
                 });
 
-                // Agregar el nuevo detalle a la tabla
-                container.appendChild(nuevoDetalle);
+                var botonEliminar = nuevoDetalle.querySelector('.eliminar-detalleS');
+                    botonEliminar.addEventListener('click', function() {
+                        // Obtén la fila a la que pertenece el botón
+                        var fila = this.closest('td');
+                        
+                        // Elimina la fila
+                        fila.parentNode.removeChild(fila);
+                    });
 
-                // Obtener el botón de eliminar del nuevo detalle y agregar el evento de clic
-                var botonEliminar = nuevoDetalle.querySelector('.eliminar-detalle');
-                botonEliminar.addEventListener('click', function() {
-                    // Obtén la fila a la que pertenece el botón
-                    var fila = this.closest('tr');
-                    
-                    // Elimina la fila
-                    fila.parentNode.removeChild(fila);
+            
+                document.querySelectorAll('.agregar-detalleP').addEventListener('click', function() {
+                    var container = document.querySelector('#select-product');
+                    var nuevoDetalle = container.children[0].cloneNode(true);
+    
+                    // Limpiar los campos del nuevo detalle clonado
+                    nuevoDetalle.querySelectorAll('select').forEach(function(select) {
+                        select.selectedIndex = 0;
+                    });
+                    container.appendChild(nuevoDetalle);
                 });
-            });
-        </script>
+
+                var botonEliminar = nuevoDetalle.querySelector('.eliminar-detalleP');
+                    botonEliminar.addEventListener('click', function() {
+                        // Obtén la fila a la que pertenece el botón
+                        var fila = this.closest('td');
+                        
+                        // Elimina la fila
+                        fila.parentNode.removeChild(fila);
+                    });
+
+            
+                document.querySelectorAll('.agregar-detallePj').addEventListener('click', function() {
+                    var container = document.querySelector('#select-project');
+                    var nuevoDetalle = container.children[0].cloneNode(true);
+    
+                    // Limpiar los campos del nuevo detalle clonado
+                    nuevoDetalle.querySelectorAll('select').forEach(function(select) {
+                        select.selectedIndex = 0;
+                    });
+                    container.appendChild(nuevoDetalle);
+                });
+
+                var botonEliminar = nuevoDetalle.querySelector('.eliminar-detallePj');
+                    botonEliminar.addEventListener('click', function() {
+                        // Obtén la fila a la que pertenece el botón
+                        var fila = this.closest('td');
+                        
+                        // Elimina la fila
+                        fila.parentNode.removeChild(fila);
+                    });
+
+                /*
+                    document.getElementById('agregarDetalle').addEventListener('click', function() {
+                        var container = document.querySelector('#detalle-table tbody');
+                        var nuevoDetalle = container.children[0].cloneNode(true);
+
+                        // Limpiar los campos del nuevo detalle clonado
+                        nuevoDetalle.querySelectorAll('select').forEach(function(select) {
+                            select.selectedIndex = 0;
+                        });
+
+                        // Agregar el nuevo detalle a la tabla
+                        container.appendChild(nuevoDetalle);
+
+                        // Obtener el botón de eliminar del nuevo detalle y agregar el evento de clic
+                        var botonEliminar = nuevoDetalle.querySelector('.eliminar-detalle');
+                        botonEliminar.addEventListener('click', function() {
+                            // Obtén la fila a la que pertenece el botón
+                            var fila = this.closest('tr');
+                            
+                            // Elimina la fila
+                            fila.parentNode.removeChild(fila);
+                        });
+                    });
+                */
+            </script>
+            
 
     </body>
 </html>
