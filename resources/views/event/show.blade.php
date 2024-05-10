@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ $event->name ??  __('Mostrar Evento') }}
+    {{ $event->name ?? __('Mostrar Evento') }}
 @endsection
 
 @section('content')
-@include('layouts.navbars.auth.topnav', ['title' => 'Mostrar Evento'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Mostrar Evento'])
     <section class="content container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <a class="btn btn-primary" href="{{ route('events.index') }}"> {{ __('Volver') }}</a>
-                <br>   <br>
+                <br> <br>
 
                 <div class="card">
                     <div class="card-header">
@@ -48,7 +48,8 @@
                             <strong>Rango Importancia:</strong>
                             {{ $event->importance_range }}
                         </div>
-
+                        <a type="submit" class="btn btn-primary" href="{{ route('events.index') }}"><i
+                                class="bi bi-arrow-left-circle"></i></a>
                     </div>
                 </div>
             </div>

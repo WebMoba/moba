@@ -40,7 +40,8 @@
         <button type="submit" class="btn btn-success btn-Crear"
             @if ($mode == 'Editar') onclick="return confirm('¿Está seguro de que desea {{ $mode }} este servicio ?')" @endif>
             {{ $mode }}</button>
-            <a type="submit" class="btn btn-primary" href="{{ route('service.index') }}">Volver</a>
+            <a class="btn btn-primary" href="{{ route('service.index') }}"><i
+                class="bi bi-arrow-left-circle"></i></a>
     </div>
 </div>
 <style>

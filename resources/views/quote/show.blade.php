@@ -14,9 +14,6 @@
                         <div class="float-left">
                             <span class="card-title">{{ __('Ver Cotización') }}</span>
                         </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('quotes.index') }}">{{ __('Volver') }}</a>
-                        </div>
                     </div>
 
                     <div class="card-body">
@@ -63,6 +60,8 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <a type="submit" class="btn btn-primary" href="{{ route('quotes.index') }}"><i
+                            class="bi bi-arrow-left-circle"></i></a>
                     </div>
                 </div>
             </div>

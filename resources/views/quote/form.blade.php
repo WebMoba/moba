@@ -75,7 +75,8 @@
                 <div class="container">
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success btn-enviar">{{ __('Enviar') }}</button>
-                        <a type="submit" class="btn btn-primary" href="{{ route('quotes.index') }}">Volver</a>
+                        <a type="submit" class="btn btn-primary" href="{{ route('quotes.index') }}"><i
+                            class="bi bi-arrow-left-circle"></i></a>
                     </div>
                 </div>
             </div>

@@ -30,11 +30,12 @@
 
         @if ($confirm)
             <button type="submit" class="btn btn-primary"
-                onclick="return confirm('¿Está seguro de editar este registro?');">{{ __('Submit') }}</button>
+                onclick="return confirm('¿Está seguro de editar este registro?');">{{ __('Editar') }}</button>
         @else
             <button type="submit" class="btn btn-success">{{ __('Crear') }}</button>
         @endif
-        <a class="btn btn-primary" href="{{ route('materials_raws.index') }}"> {{ __('Back') }}</a>
+        <a class="btn btn-primary" href="{{ route('materials_raws.index') }}"><i
+            class="bi bi-arrow-left-circle"></i></a>
 
     </div>
 

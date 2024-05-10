@@ -29,7 +29,8 @@
     </div>
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-success">{{ __('Crear') }}</button>
-        <a type="submit" class="btn btn-primary" href="{{ route('team-works.index') }}">Volver</a>
+        <a type="submit" class="btn btn-primary" href="{{ route('team-works.index') }}"><i
+            class="bi bi-arrow-left-circle"></i></a>
     </div>
 </div>
 <style>

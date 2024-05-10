@@ -33,15 +33,6 @@ class EventController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * $events->perPage());
     }
 
-    public function view($event)
-    {
-        // Obtén la cotización (Quote) basada en el ID proporcionado
-        $event = Event::findOrFail($event);
-
-        // Cargar la vista deseada y pasar los datos necesarios
-        return view('event.show', compact('event'));
-        return view('event.edit', compact('event'));
-    }
     /**
      * Show the form for creating a new resource.
      *
