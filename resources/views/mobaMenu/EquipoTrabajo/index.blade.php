@@ -17,7 +17,7 @@
 
     <!-- menu  -->
 
-    <nav class="navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a href="{{ asset('/') }}">
                 <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
@@ -75,103 +75,114 @@
         <hr class="linea2">
     </div>
 
+    <aside>
+        <aside id="miAsideJavier" style="display: none;" class="aside-container">
+            <button id="cerrarAsideJavier" class="cerrarAside">X</button>
+            <p class="p1">
+                Sus años en la universidad de la vida y su carrera profesional lo forjaron y mentalizaron para crear y
+                fundar a MOBA, esto lo llevo a entender que antes de llevar el timón hay que aprender a remar en equipo.
+                Ese esfuerzo y pasión por lo que cree y hace, le permiten vivir al máximo cada reto que se propone al
+                emprender una idea para sacarla a flote. Sin duda tiene el don de la palabra para llegar a las personas,
+                toca en sus corazones las fibras de la alegría y siempre logra sacar una sonrisa en el prójimo.
 
-            <aside id="miAsideJavier" style="display: none;" class="aside-container">
-                <button id="cerrarAsideJavier" class="cerrarAside">X</button>
-                <p class="p1">
-                    Sus años en la universidad de la vida y su carrera profesional lo forjaron y mentalizaron para crear y
-                    fundar a MOBA, esto lo llevo a entender que antes de llevar el timón hay que aprender a remar en equipo.
-                    Ese esfuerzo y pasión por lo que cree y hace, le permiten vivir al máximo cada reto que se propone al
-                    emprender una idea para sacarla a flote. Sin duda tiene el don de la palabra para llegar a las personas,
-                    toca en sus corazones las fibras de la alegría y siempre logra sacar una sonrisa en el prójimo.
+            </p>
+            <p class="p1">
+                Le encanta la música, su tercer idioma son las groserías, ama el anime en especial One Piece. Para él la
+                familia es su piedra angular en la vida, sus mascotas le dan sentido a sus días, y está enamorado de su
+                segunda familia “MOBA”. De cualquier forma, su interés está en mejorar la calidad de vida de las
+                personas,
+                tratar de hacer feliz a sus familiares, amigos y al mundo en general.
+            </p>
+        </aside>
 
-                </p>
-                <p class="p1">
-                    Le encanta la música, su tercer idioma son las groserías, ama el anime en especial One Piece. Para él la
-                    familia es su piedra angular en la vida, sus mascotas le dan sentido a sus días, y está enamorado de su
-                    segunda familia “MOBA”. De cualquier forma, su interés está en mejorar la calidad de vida de las personas,
-                    tratar de hacer feliz a sus familiares, amigos y al mundo en general.
-                </p>
-            </aside>
+        <aside id="miAsideSofia" style="display: none;" class="aside-container">
+            <button id="cerrarAsideSofia" class="cerrarAside">X</button>
+            <p class="p1">
+                "Nunca permitas que nadie borre esa sonrisa de tu rostro"
+                es lo que ella piensa cada vez que emprende algo en su vida y es la frase que usa como mantra para
+                mantener
+                la frente en alto en cada paso.
+            </p>
+            <p class="p1">
 
-            <aside id="miAsideSofia" style="display: none;" class="aside-container">
-                <button id="cerrarAsideSofia" class="cerrarAside">X</button>
-                <p class="p1">
-                    "Nunca permitas que nadie borre esa sonrisa de tu rostro"
-                    es lo que ella piensa cada vez que emprende algo en su vida y es la frase que usa como mantra para mantener
-                    la frente en alto en cada paso.
-                </p>
-                <p class="p1">
+                Emocionada por lograr éxito para sus empresas, Sofía pone un sello de alegria y singularidad a cada una
+                de
+                sus actividades.
+                Ella gasta toda su energía en entregar lo mejor para MOBA y TU ARTE, y dia a dia la recarga con una
+                caricia
+                a sus mascotas y
+                con el compartir diario en sus entrenamientos deportivos, además de un delicioso café que se hace más
+                delicioso por estar en compañía de su familia y amigos.
+                Ama el arte y la música aunque lleva años intentando aprender a tocar guitarra. Y asi se la pasa
+                poniendo
+                color a cada Minuto de los 10.080 minutos de cada semana.
+            </p>
+        </aside>
 
-                    Emocionada por lograr éxito para sus empresas, Sofía pone un sello de alegria y singularidad a cada una de
-                    sus actividades.
-                    Ella gasta toda su energía en entregar lo mejor para MOBA y TU ARTE, y dia a dia la recarga con una caricia
-                    a sus mascotas y
-                    con el compartir diario en sus entrenamientos deportivos, además de un delicioso café que se hace más
-                    delicioso por estar en compañía de su familia y amigos.
-                    Ama el arte y la música aunque lleva años intentando aprender a tocar guitarra. Y asi se la pasa poniendo
-                    color a cada Minuto de los 10.080 minutos de cada semana.
-                </p>
-            </aside>
+        <aside id="miAsideDayana" style="display: none;" class="aside-container">
+            <button id="cerrarAsideDayana" class="cerrarAside">X</button>
+            <p class="p1">
+                Su paso por Moba nos demuestra que a veces las segundas partes sí son buenas, y es que Dayana ya trabajó
+                con
+                nosotros más de 4 años y se fue a aventurarse por otros lados.
 
-            <aside id="miAsideDayana" style="display: none;" class="aside-container">
-                <button id="cerrarAsideDayana" class="cerrarAside">X</button>
-                <p class="p1">
-                    Su paso por Moba nos demuestra que a veces las segundas partes sí son buenas, y es que Dayana ya trabajó con
-                    nosotros más de 4 años y se fue a aventurarse por otros lados.
+                Allí se dió cuenta que las pintas están bien, pero como una cervecita frente al mar no hay nada y tras
+                unos
+                meses regresó.
 
-                    Allí se dió cuenta que las pintas están bien, pero como una cervecita frente al mar no hay nada y tras unos
-                    meses regresó.
+            </p>
+            <p class="p1">
+                Y así volvió a formar parte de nuestra familia.
+            </p>
+            <p class="p1">
+                Apasionada por la pintura y la creatividad, a veces introvertida pero cuando tiene confianza puede
+                explotar
+                en alegría,
+                amante de las cosas minimalistas y esto lo demuestra en cada cosa que hace por eso en su mente siempre
+                tiene
+                la frase " menos es más".
+                Apasionada por lo que hace y un poco malhumorada cunado las cosas no sle como las espera.
+                Es amante de las cosas pequeñas,
+                un paseo por la montaña con su hiperactiva perra, salidas con los amigos, visitas a su familia.
+            </p>
+        </aside>
 
-                </p>
-                <p class="p1">
-                    Y así volvió a formar parte de nuestra familia.
-                </p>
-                <p class="p1">
-                    Apasionada por la pintura y la creatividad, a veces introvertida pero cuando tiene confianza puede explotar
-                    en alegría,
-                    amante de las cosas minimalistas y esto lo demuestra en cada cosa que hace por eso en su mente siempre tiene
-                    la frase " menos es más".
-                    Apasionada por lo que hace y un poco malhumorada cunado las cosas no sle como las espera.
-                    Es amante de las cosas pequeñas,
-                    un paseo por la montaña con su hiperactiva perra, salidas con los amigos, visitas a su familia.
-                </p>
-            </aside>
+        <aside id="miAsideLinda" style="display: none;" class="aside-container">
+            <button id="cerrarAsideLinda" class="cerrarAside">X</button>
+            <p class="p1">
+                Hay personas que en la mirada y en su sonrisa cargan toneladas de ternura y alegría, y si,
+                ella parece ser una de esas personas. Hace parte del equipo ya hace muuuchos días, y día tras
+                día le da ese toque único a cada trabajo o actividad en la que participa.
 
-            <aside id="miAsideLinda" style="display: none;" class="aside-container">
-                <button id="cerrarAsideLinda" class="cerrarAside">X</button>
-                <p class="p1">
-                    Hay personas que en la mirada y en su sonrisa cargan toneladas de ternura y alegría, y si,
-                    ella parece ser una de esas personas. Hace parte del equipo ya hace muuuchos días, y día tras
-                    día le da ese toque único a cada trabajo o actividad en la que participa.
+            </p>
+            <p class="p1">
 
-                </p>
-                <p class="p1">
-
-                    Su disposición para aprender nos hace ser mejores, nos exige mas calidad y compromiso y su Juventud
-                    nos recuerda las ganas de estar vivos y lograr las metas que nos proponemos.
-                    Ella tiene alma de Gato y su amor por el deporte la hace un ser completo, lleno de energía y de color que
-                    comparte con quienes mas quiere, de vez en cuando gruñona, la mayoría de veces alegre, y esto le da
-                    equilibrio a su vida,
-                    haciéndola un ser único para complementar nuestro equipo.
-                </p>
-            </aside>
-
+                Su disposición para aprender nos hace ser mejores, nos exige mas calidad y compromiso y su Juventud
+                nos recuerda las ganas de estar vivos y lograr las metas que nos proponemos.
+                Ella tiene alma de Gato y su amor por el deporte la hace un ser completo, lleno de energía y de color
+                que
+                comparte con quienes mas quiere, de vez en cuando gruñona, la mayoría de veces alegre, y esto le da
+                equilibrio a su vida,
+                haciéndola un ser único para complementar nuestro equipo.
+            </p>
+        </aside>
+    </aside>
     <!---------------------------------------------------------------------------------------------------------------->
     <div class="main-contentainer">
 
-        <div class="container mt-5 mb-5">
+        <div class="container mt-5 mb-5 ">
 
             <div class="container ms-5">
                 <div class="equipo" style="position: relative; display: inline-block;">
-                    <img src="{{ asset('Imagenes/imgs-gallery/EquipoDeTrabajo_1.jpg') }}" alt="Equipo" id="equipo" class="img-equipo">
-                    <div class="text-container" style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);">
-                        <a class="text  p-1 mb-5 border-opacity-20 rounded-2" id="equipo">EQUIPO MOBA</a>
+                    <img src="{{ asset('Imagenes/imgs-gallery/EquipoDeTrabajo_1.jpg') }}" alt="Equipo"
+                        id="equipo" class="img-equipo img-fluid">
+                    <div class="text-container position-absolute bottom-0 start-50 translate-middle-x">
+                        <a class="text-1  p-1 mb-5 border-opacity-30 rounded-2 fondo-equipo" id="equipo">EQUIPO MOBA</a>
                     </div>
                 </div>
             </div>
-            
-            
+
+
 
             <div class="box-1">
                 <div class="texto">
@@ -181,7 +192,8 @@
                     <p class="p mt-3">
                         Este es el espacio donde seguramente una agencia diría que, en efecto, es una agencia. </p>
                     <p class="p">
-                        Nosotros nos consideramos una familia, porque estamos hechos de personas, con todo tipo de talentos.
+                        Nosotros nos consideramos una familia, porque estamos hechos de personas, con todo tipo de
+                        talentos.
 
                         En esta familia hay artistas, músicos, emprendedores, deportistas, en fin. Y es gracias a esa
                         calidad
@@ -197,76 +209,76 @@
 
             </div>
 
-            <div class="box-2">
-                <div class="contenido">
-
-                    <p class="text-white" style="text-align: justify; line-height: 1.5;">Y sí... </p>
-                    <p class="text-white" style="text-align: justify; line-height: 1.5;">Estos somos</p>
-                    <p class="text-1" style="text-align: justify; line-height: 1.5;">nosotros</p>
-                </div>
-            </div>
 
         </div>
+        
+        <div class="imagenes col-md-7">
 
+            <div class="contenido col-md-3">
 
-
-        <div class="box-2  ">
+                <a> Y sí... </a> <br>
+                <a> Estos somos</a><br>
+                <a class="text-1"> nosotros</a>
+            </div>
 
             
+            <a target="_blank" class="imagen-contenedor javier-imagen" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Javier" >
+                <img src="{{ asset('Imagenes/imgs-gallery/javier1.jpg') }}" alt="JAVIER" id="JAVIER" name="Javier" class="img-thumbnail img-fluid" title="Javier">
+                <span class="tooltip">Javier</span>
+            </a>
 
-            <div class="imagenes">
+            <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Canela">
+                <img src="{{ asset('Imagenes\imgs-gallery\Canela.jpg') }}" alt="Canela" name="Canela" class="img-thumbnail img-fluid">
+                <span class="tooltip">Canela</span>
+            </a>
 
-                <a target="_blank" class="imagen-contenedor javier-imagen">
-                    <img src="{{ asset('Imagenes/imgs-gallery/javier1.jpg') }}" alt="JAVIER" id="JAVIER"
-                        class="img-thumbnail">
-                </a>
+            <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Haku">
+                <img src="{{ asset('Imagenes\imgs-gallery\Haku_.jpg') }}" alt="Haku" name="Haku" class="img-thumbnail img-fluid">
+                <span class="tooltip">Haku</span>
+            </a>
 
-                <a target="_blank" class="imagen-contenedor">
-                    <img src="{{ asset('Imagenes\imgs-gallery\Canela.jpg') }}" alt="Canela" class="img-thumbnail">
-                </a>
+            <a target="_blank" class="imagen-contenedor sofia-imagen" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Javier">
+                <img src="{{ asset('Imagenes\imgs-gallery\SOFIA_PEREZ12.jpg') }}" alt="SOFIA_PEREZ1" name="Sofia"id="SOFIA_PEREZ1" class="img-thumbnail img-fluid">
+                <span class="tooltip">Sofia</span>
+            </a>
 
-                <a target="_blank" class="imagen-contenedor">
-                    <img src="{{ asset('Imagenes\imgs-gallery\Haku_.jpg') }}" alt="Haku" class="img-thumbnail">
-                </a>
+            <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Javier">
+                <img src="{{ asset('Imagenes\imgs-gallery\Gamin_.jpg') }}" alt="Gamin" name="Gamin" class="img-thumbnail img-fluid">
+                <span class="tooltip">Gamin</span>
+            </a>
 
-                <a target="_blank" class="imagen-contenedor sofia-imagen">
+            <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Javier">
+                <img src="{{ asset('Imagenes\imgs-gallery\Mischa_.jpg') }}" alt="Mischa" name="Mischa" class="img-thumbnail img-fluid">
+                <span class="tooltip">Mischa</span>
+            </a>
 
-                    <img src="{{ asset('Imagenes\imgs-gallery\SOFIA_PEREZ12.jpg') }}" alt="SOFIA_PEREZ1"
-                        id="SOFIA_PEREZ1" class="img-thumbnail">
-                </a>
+            <a target="_blank" class="imagen-contenedor dayana-imagen" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Javier">
+                <img src="{{ asset('Imagenes\imgs-gallery\DAYANA_FONSECA1.jpg') }}" alt="DAYANA_FONSECA1" name="Dayana" id="DAYANA_FONSECA1" class="img-thumbnail img-fluid">
+                <span class="tooltip">Dayana</span>
+            </a>
 
-                <a target="_blank" class="imagen-contenedor">
-                    <img src="{{ asset('Imagenes\imgs-gallery\Gamin_.jpg') }}" alt="Gamin" class="img-thumbnail">
-                </a>
+            <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Javier">
+                <img src="{{ asset('Imagenes\imgs-gallery\Billu.jpg') }}" alt="Billu" name="Billu" class="img-thumbnail img-fluid">
+                <span class="tooltip">Billu</span>
+            </a>
 
-                <a target="_blank" class="imagen-contenedor">
-                    <img src="{{ asset('Imagenes\imgs-gallery\Mischa_.jpg') }}" alt="Mischa" class="img-thumbnail">
-                </a>
+            <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Javier">
+                <img src="{{ asset('Imagenes\imgs-gallery\Samy.jpg') }}" alt="Samy" name="Samy" class="img-thumbnail img-fluid">
+                <span class="tooltip">Samy</span>
+            </a>
 
-                <a target="_blank" class="imagen-contenedor dayana-imagen">
-                    <img src="{{ asset('Imagenes\imgs-gallery\DAYANA_FONSECA1.jpg') }}" alt="DAYANA_FONSECA1"
-                        id="DAYANA_FONSECA1" class="img-thumbnail">
-                </a>
+            <a target="_blank" class="imagen-contenedor linda-imagen" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Javier">
+                <img src="{{ asset('Imagenes\imgs-gallery\LINDA_PEREZ_1l.JPG') }}" alt="LINDA_PEREZ" name="Linda" id="LINDA_PEREZ" class="img-thumbnail img-fluid">
+                <span class="tooltip">Linda</span>
+            </a>
 
-                <a target="_blank" class="imagen-contenedor">
-                    <img src="{{ asset('Imagenes\imgs-gallery\Billu.jpg') }}" alt="Billu" class="img-thumbnail">
-                </a>
-
-                <a target="_blank" class="imagen-contenedor">
-                    <img src="{{ asset('Imagenes\imgs-gallery\Samy.jpg') }}" alt="Samy" class="img-thumbnail">
-                </a>
-
-                <a target="_blank" class="imagen-contenedor linda-imagen">
-                    <img src="{{ asset('Imagenes\imgs-gallery\LINDA_PEREZ_1l.JPG') }}" alt="LINDA_PEREZ"
-                        id="LINDA_PEREZ" class="img-thumbnail">
-                </a>
-
-                <a target="_blank" class="imagen-contenedor">
-                    <img src="{{ asset('Imagenes\imgs-gallery\Tokio.jpg') }}" alt="Tokio" class="img-thumbnail">
-                </a>
-            </div>
-
+            <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Javier">
+                <img src="{{ asset('Imagenes\imgs-gallery\Tokio.jpg') }}" alt="Tokio" name="Tokio"class="img-thumbnail img-fluid">
+                <span class="tooltip">Tokio</span>
+            </a>
         </div>
+
+    </div>
 
 
 
@@ -278,12 +290,14 @@
 
 
 
-    <!-- Contenido de la página aquí -->
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
     <script>
+        
+        
         document.addEventListener('DOMContentLoaded', function() {
             // Obtener la referencia a las imágenes y los asides correspondientes
             const imagenJavier = document.getElementById('JAVIER');
@@ -363,36 +377,43 @@
 </html>
 
 <style>
-    body, html {
+    body,
+    html {
         margin: 0;
         padding: 0;
         height: 10%;
     }
-    
+
     .main-container {
         min-height: 100vh;
         display: flex;
         flex-direction: column;
         flex-grow: 1;
     }
+
     .main-contentainer {
         flex-grow: 1;
     }
 
+    .fondo-equipo {
+        background-color: #BCCCE0;
+    }
 
     footer {
-        margin-top: 510px; /*Aquí bajamos el footer para dar la posición despues de la ultima imagen */
+        margin-top: 510px;
+        /*Aquí bajamos el footer para dar la posición despues de la ultima imagen */
         width: 100%;
     }
 
     .img-container {
         position: relative;
     }
-    
+
     .text-container {
-       
+
         padding: 5px 10px;
-        border: 1px solid #ffffff; /* Ajusta el estilo del borde según lo desees */
+        border: 1px solid #ffffff;
+        /* Ajusta el estilo del borde según lo desees */
         border-radius: 5px;
     }
 
@@ -479,27 +500,27 @@
         /* Color de la línea */
     }
 
-    
-    
+
+
 
     .btn-primary {
-    background-color: transparent !important;
-    color: #fff;
-    border-color: transparent !important;
-    font-size: 1.3vw;
-}
+        background-color: transparent !important;
+        color: #fff;
+        border-color: transparent !important;
+        font-size: 1.3vw;
+    }
 
-.btn-primary:hover {
-    background-color: transparent !important;
-    border-color: transparent !important;
-}
+    .btn-primary:hover {
+        background-color: transparent !important;
+        border-color: transparent !important;
+    }
 
-.btn-primary:active,
-.btn-primary:focus {
-    background-color: transparent !important;
-    border-color: transparent !important;
-}
-    
+    .btn-primary:active,
+    .btn-primary:focus {
+        background-color: transparent !important;
+        border-color: transparent !important;
+    }
+
     .dropdown-menu .dropdown-item:hover {
         background-color: transparent !important;
         border-color: transparent !important;
@@ -580,7 +601,7 @@
     }
 
     .box-2 {
-      
+
         display: flex;
         text-align: center;
         align-items: center;
@@ -599,9 +620,9 @@
 
     .contenido,
     .imagenes {
-       
+        align-items: center;
         position: relative;
-        font-size: 300%
+        font-size: 180%
     }
 
     .imagenes {
@@ -648,15 +669,39 @@
         transform: scale(1.1);
     }
 
+    .imagen-contenedor {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 20px; /* Ajusta la separación entre las imágenes */
+    }
+    
+    .tooltip {
+        /* Estilos del tooltip estos estilos 
+        son para llamar el Nombre del integrante del Equipo*/
+        position: absolute;
+        bottom: -30px; /* Ajusta la posición vertical del nombre */
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(244, 243, 243, 0.7);
+        color: #000000;
+        font-weight: bold; /* Agrega negrita */
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 25px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .imagen-contenedor:hover .tooltip {
+        opacity: 1;
+    }
+    
+
     .container-fluid {
         padding: 0 !important;
     }
 
-    .imagen-contenedor {
-        position: relative;
-        display: inline-block;
-    }
-
+    
     .imagen-contenedor::after {
         content: attr(alt);
         position: absolute;
