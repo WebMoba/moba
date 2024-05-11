@@ -15,7 +15,7 @@
 
 <body class="background-image">
 
-    <nav class="navbar">
+    <nav class="navbar" style="display: inline-block;">
         <div class="container-fluid">
         <a href="{{ route('mobaMenu.index')}}">
                 <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
@@ -48,9 +48,20 @@
                 <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte">
             </a>
         </div>
+
+         <!--- inicio breaddrums-->
+
+    <div class="breadcrums">
+        @include('helpers.breadcrumbs', ['breadcrumbs' => [
+        ['url' => route('tuArteMenu.index'), 'label' => 'Tu Arte /Nosotros'],
+        ['url' => route('tuArteMenu.Contacto.index'), 'label' => 'Contacto'],]])
+    </div>
+
         @include('partials.inicio')
 
+      
     </nav>
+
 
     <!-- Líneas verticales con iconos -->
     <div class="vertical-line left-line">
@@ -77,6 +88,8 @@
         </div>
 
         <!-- Contenido formulario de contacto -->
+
+        
 
         <div class="box">
     <form method="POST" action="{{ route('enviar-correo') }}">
@@ -260,6 +273,16 @@ textarea{
         background-color: #007bff;
         color: white;
     }
+
+
+    .breadcrums a {
+    text-decoration: none;
+    color: white;
+    font-size: 0.6vw;
+    display: inline;
+    margin-right: 10px; /* Esto agrega un espacio entre los enlaces */
+   
+}
 
 
 </style>
