@@ -20,6 +20,7 @@
 
 <style>
 a.letter{
+    display: inline-block;
     font-size: 0.9vw;
     text-decoration: none;
     color: #BCCCE0;
@@ -27,9 +28,7 @@ a.letter{
     margin-right: 10px;
 }
 .log-in{
-   
-
-    padding-right: 0.4%;
+   padding-right: 0.4%;
 }
 
 </style>

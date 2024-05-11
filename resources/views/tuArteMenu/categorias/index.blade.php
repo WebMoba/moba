@@ -17,6 +17,15 @@
 <body class="background-image">
 
     <nav class="navbar">
+        <!--- inicio breaddrums-->
+    <div class="breadcrums">
+        @include('helpers.breadcrumbs', ['breadcrumbs' => [
+        ['url' => route('welcome'), 'label' => 'Bienvenido /'],
+        ['url' => route('tuArteMenu.index'), 'label' => 'Tu Arte /'],
+        ['url' => route('tuArteMenu.categorias.index'), 'label' => 'Categorias'],]])
+        </div>
+<!--- final breaddrums-->
+
         <div class="container-fluid">
         <a href="{{ route('mobaMenu.index')}}">
                 <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
@@ -130,7 +139,30 @@
 
 </html>
 
+<style>
 
+    /*estilos Breadcrums*/
+
+    .breadcrums {
+    display: flex;
+}
+
+.breadcrums a {
+    text-decoration: none;
+    color: white;
+    font-size: 0.6vw;
+    margin-right: 2px; /* Esto agrega un espacio entre los enlaces */
+}
+
+.breadcrumbs li {
+    display: inline;
+    padding: 0;
+}
+
+.breadcrumbs a:hover{
+    color: red;
+}
+</style>
 
 
 
