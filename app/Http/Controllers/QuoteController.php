@@ -94,23 +94,41 @@ class QuoteController extends Controller
             'people_id' => 'required',
         ]);
 
+        // Crear la cotización
         $quote = Quote::create($request->all());
+        
+        // Obtener los detalles de los campos del formulario
+        $servicesIds = $request->input('services_id');
+        $productsIds = $request->input('products_id');
+        $projectsIds = $request->input('projects_id');
 
-        // Verificar si los campos relacionados con los detalles de la cotización están presentes en la solicitud
-        if ($request->has('services_id') && $request->has('products_id') && $request->has('projects_id')) {
-            // Crear los detalles de la cotización
-            foreach ($request->services_id as $key => $serviceId) {
-                $detalle = new DetailQuote([
-                    'services_id' => $serviceId,
-                    'products_id' => $request->products_id[$key],
-                    'projects_id' => $request->projects_id[$key],
-                ]);
-                $quote->detailQuotes()->save($detalle);
-            }
+        foreach ($servicesIds as $key => $serviceId) {
+            $productId = isset($productsIds[$key]) ? $productsIds[$key] : null;
+            $projectId = isset($projectsIds[$key]) ? $projectsIds[$key] : null;
+        
+            DetailQuote::create([
+                'services_id' => $serviceId,
+                'products_id' => $productId,
+                'projects_id' => $projectId,
+                'quotes_id' => $quote->id,
+            ]);
         }
+        
+
+        // // Iterar sobre los detalles y guardarlos asociándolos a la cotización
+        // foreach ($servicesIds as $key => $serviceId) {
+        //     DetailQuote::create([
+        //         'services_id' => $serviceId,
+        //         'products_id' => $productsIds[$key], // Usar el mismo índice para los otros campos
+        //         'projects_id' => $projectsIds[$key],
+        //         'quotes_id' => $quote->id, // $quote debe ser la cotización que acabas de crear
+        //     ]);
+        // }
 
         return redirect()->route('quotes.index')->with('success', 'Cotización creada correctamente.');
     }
+
+
 
 
     /**
