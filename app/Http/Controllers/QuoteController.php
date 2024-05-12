@@ -113,17 +113,6 @@ class QuoteController extends Controller
                 'quotes_id' => $quote->id,
             ]);
         }
-        
-
-        // // Iterar sobre los detalles y guardarlos asociándolos a la cotización
-        // foreach ($servicesIds as $key => $serviceId) {
-        //     DetailQuote::create([
-        //         'services_id' => $serviceId,
-        //         'products_id' => $productsIds[$key], // Usar el mismo índice para los otros campos
-        //         'projects_id' => $projectsIds[$key],
-        //         'quotes_id' => $quote->id, // $quote debe ser la cotización que acabas de crear
-        //     ]);
-        // }
 
         return redirect()->route('quotes.index')->with('success', 'Cotización creada correctamente.');
     }

@@ -133,12 +133,12 @@ class ProjectController extends Controller
         ];
 
         $request->validate([
-            'name'=>'required|string|max:100',
-            'description'=>'required|string|max:300',
-            'date_start'=>'required|date',
-            'date_end'=>'required|date|after_or_equal:date_start',
-            'status'=>'required|select',
-        ],$msj);
+            'name' => 'required|string|max:100',
+            'description' => 'required|string|max:300',
+            'date_start' => 'required|date',
+            'date_end' => 'required|date|after_or_equal:date_start',
+            'status' => 'required|in:en curso,finalizado,pausado,pendiente',
+        ], $msj);
         
         // request()->validate(Project::$rules);
 
