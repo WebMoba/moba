@@ -398,7 +398,7 @@
     }
 
     .fondo-equipo {
-        background-color: #BCCCE0;
+        background-color: #030303;
     }
 
     footer {
