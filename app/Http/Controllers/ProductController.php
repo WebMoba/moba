@@ -125,8 +125,10 @@ class ProductController extends Controller
 
         $product = new Product();
         $units = Unit::pluck('unit_type', 'id');
+        $editing = false;
 
-        return view('product.create', compact('product', 'units', 'categories_products_service'));
+
+        return view('product.create', compact('product', 'editing', 'units', 'categories_products_service'));
     }
 
     /**
@@ -179,7 +181,9 @@ class ProductController extends Controller
         $product = Product::find($id);
         $units = Unit::pluck('unit_type', 'id');
         $categories_products_service = CategoriesProductsService::pluck('name', 'id');
-        return view('product.edit', compact('product', 'units', 'categories_products_service'));
+        $editing = true;
+
+        return view('product.edit', compact('product', 'editing', 'units', 'categories_products_service'));
     }
 
     /**

@@ -79,15 +79,16 @@
                                             <td>{{ $product->unit->unit_type }}</td>
                                             <td>{{ $product->categoriesProductsService->name }}</td>
                                             <td>
-                                                <form action="{{ route('product.destroy', $product->id) }}" method="POST">
+                                                 <form class="frData"
+                                                    action="{{ route('product.destroy', $product->id) }}"
+                                                    method="POST" data-disable="{{ $product->disable }}">
                                                     <a class="btn btn-sm btn-primary {{ $product->disable ? 'disabled' : '' }}"
                                                         href="{{ route('product.show', $product->id) }}"> <i class="bi bi-eye-fill"></i></a>
                                                     <a class="btn btn-sm btn-success {{ $product->disable ? 'disabled' : '' }}"
                                                         href="{{ route('product.edit', $product->id) }}"><i class="bi bi-pencil-square"></i></a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"
-                                                        onclick="return confirm('¿Está seguro de que desea {{ $product->disable ? 'Habilitar' : 'Deshabilitar' }} el producto?')">
+                                                    <button type="submit" class="btn btn-danger btn-sm">
                                                         {!!$product->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>'!!}
                                                     </button>
                                                 </form>
@@ -104,3 +105,5 @@
         </div>
     </div>
 @endsection
+
+@extends('layouts.alerts')

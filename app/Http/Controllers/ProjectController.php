@@ -49,7 +49,9 @@ class ProjectController extends Controller
         // $proyect->disable=false;
         $project->date_start = now()->format('Y-m-d');
         $project->date_end = now()->format('Y-m-d');
-        return view('project.create', compact('project'));
+        $editing = false;
+
+        return view('project.create', compact('project', 'editing'));
     }
 
     /**
@@ -112,7 +114,9 @@ class ProjectController extends Controller
 
         $project->date_start = optional($project->date_start)->format('Y-m-d');
         $project->date_end = optional($project->date_end)->format('Y-m-d');
-        return view('project.edit', compact('project'));
+        $editing = true;
+
+        return view('project.edit', compact('project', 'editing'));
     }
 
     /**

@@ -71,10 +71,12 @@ class QuoteController extends Controller
                     ->where('disable', false);
             })
             ->pluck('name', 'id');
+        $editing = false;
+
 
         // $clients = Person::clients()->get();
 
-        return view('quote.create', compact('quote', 'clients', 'detailQuote', 'persons', 'services', 'products', 'projects', 'quotes'));
+        return view('quote.create', compact('quote', 'editing', 'clients', 'detailQuote', 'persons', 'services', 'products', 'projects', 'quotes'));
     }
 
     /**
@@ -154,7 +156,10 @@ class QuoteController extends Controller
         $projects = Project::pluck('name', 'id');
         $quotes = Quote::pluck('description', 'id');
         $quote->date_issuance = now()->format('Y-m-d');
-        return view('quote.create', compact('quote', 'detailQuote', 'persons', 'services', 'products', 'projects', 'quotes'));
+
+        $editing = true;
+
+        return view('quote.create', compact('quote', 'editing', 'detailQuote', 'persons', 'services', 'products', 'projects', 'quotes'));
     }
 
 

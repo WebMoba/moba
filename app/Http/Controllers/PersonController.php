@@ -33,6 +33,9 @@ class PersonController extends Controller
      */
     public function index()
     {
+
+
+
         $people = Person::orderBy('created_at', 'desc')->paginate(10);
 
         return view('person.index', compact('people'))
@@ -65,8 +68,9 @@ class PersonController extends Controller
         // Obtener el número de teléfono correspondiente al ID seleccionado
         $numberPhone = NumberPhone::find($numberPhoneId);
 
-        return view('person.create', compact('person', 'teamWorks', 'users', 'towns', 'numberPhones', 'usersName', 'regions', 'roles', 'identificationTypes', 'numberPhoneId', 'numberPhone'));
-        
+        $editing = false;
+
+        return view('person.create', compact('person', 'editing', 'teamWorks', 'users', 'towns', 'numberPhones', 'usersName', 'regions', 'roles', 'identificationTypes', 'numberPhoneId', 'numberPhone'));
     }
     /**
      * Store a newly created resource in storage.
@@ -82,24 +86,24 @@ class PersonController extends Controller
             'users_id.unique' => 'El correo electrónico ya está en uso',
         ];
 
-    $request->validate([
-        'id_card' => [
-            'required',
-            'max:10', // Máximo 10 caracteres
-            Rule::unique('people', 'id_card')->ignore($request->id),
-        ],
-        'user_name' => 'required',
-        
-        'phone_number' => ['required', 'max:10'], // Asegúrate de que el campo del número de teléfono esté presente en la solicitud
-        'region' => 'required',
-        'towns_id' => 'required',
-        'users_id' => [
-            'required',
-            Rule::unique('people', 'users_id')->ignore($request->id),
-        ],
-        'rol' => 'required',
-        'identification_type' => 'required',
-    ], $customMessages);
+        $request->validate([
+            'id_card' => [
+                'required',
+                'max:10', // Máximo 10 caracteres
+                Rule::unique('people', 'id_card')->ignore($request->id),
+            ],
+            'user_name' => 'required',
+
+            'phone_number' => ['required', 'max:10'], // Asegúrate de que el campo del número de teléfono esté presente en la solicitud
+            'region' => 'required',
+            'towns_id' => 'required',
+            'users_id' => [
+                'required',
+                Rule::unique('people', 'users_id')->ignore($request->id),
+            ],
+            'rol' => 'required',
+            'identification_type' => 'required',
+        ], $customMessages);
 
 
 
@@ -149,25 +153,26 @@ class PersonController extends Controller
 
 
     public function edit($id)
-{
-    // Obtener la persona a editar
-    $person = Person::find($id);
-    // Obtener el número de teléfono asociado a la persona
-    $numberPhoneId = $person->number_phones_id;
-    $numberPhone = NumberPhone::find($numberPhoneId);
-   
-    // Obtener listas de selección para otros campos
-    
-    $usersName = User::pluck('name', 'id');
-    $teamWorks = TeamWork::pluck('assigned_work', 'id');
-    $regions = Region::pluck('name', 'id');
-    $towns = Town::pluck('name','id');
-    $users = User::pluck('email', 'id');
-    
-    
+    {
+        // Obtener la persona a editar
+        $person = Person::find($id);
+        // Obtener el número de teléfono asociado a la persona
+        $numberPhoneId = $person->number_phones_id;
+        $numberPhone = NumberPhone::find($numberPhoneId);
+
+        // Obtener listas de selección para otros campos
+
+        $usersName = User::pluck('name', 'id');
+        $teamWorks = TeamWork::pluck('assigned_work', 'id');
+        $regions = Region::pluck('name', 'id');
+        $towns = Town::pluck('name', 'id');
+        $users = User::pluck('email', 'id');
+
+        $editing = true;
+
 
         // Pasar los datos a la vista de edición
-        return view('person.edit', compact('person', 'teamWorks', 'users', 'towns', 'numberPhone', 'usersName', 'regions', 'numberPhoneId'));
+        return view('person.edit', compact('person','editing', 'teamWorks', 'users', 'towns', 'numberPhone', 'usersName', 'regions', 'numberPhoneId'));
     }
 
     /**
@@ -179,44 +184,44 @@ class PersonController extends Controller
      */
     public function update(Request $request, Person $person)
 
-    
-{
-    // Validar la solicitud
-    $request->validate([
-        'rol' => ['required', Rule::in(['Administrador', 'Cliente', 'Proveedor'])], // Asegúrate de que los valores de 'rol' sean válidos
-        'id_card' => 'required',
-        'identification_type' => ['required', Rule::in(['cedula', 'cedula Extranjeria', 'NIT'])],
-        'addres' => 'required',
-        'phone_number' => 'required',
-        'region' => 'required', // Asegúrate de que el campo 'region' esté presente en la solicitud
-        'towns_id' => 'required',
-        'user_name' => 'required',
-    ]);
-    $regionId = $request->input('region');
 
-   
-
-    // Actualizar los datos de la persona
-    $person->update([
-        'name' => $request->input('user_name'),
-        'addres'=> $request->input('addres'),
-        'team_works_id' => $request->input('team_works_id'),
-        'phone_number' => $request->input('phone_number'),
-        'region_id' => $request->input('region'),
-        'towns_id' => $request->input('towns_id'),
-        'users_id' =>$request->input('users_id'),
+    {
+        // Validar la solicitud
+        $request->validate([
+            'rol' => ['required', Rule::in(['Administrador', 'Cliente', 'Proveedor'])], // Asegúrate de que los valores de 'rol' sean válidos
+            'id_card' => 'required',
+            'identification_type' => ['required', Rule::in(['cedula', 'cedula Extranjeria', 'NIT'])],
+            'addres' => 'required',
+            'phone_number' => 'required',
+            'region' => 'required', // Asegúrate de que el campo 'region' esté presente en la solicitud
+            'towns_id' => 'required',
+            'user_name' => 'required',
+        ]);
+        $regionId = $request->input('region');
 
 
-       $person->rol = $request->input('rol'), // Actualizar el campo 'rol' con el valor de la solicitud
-       $person->identification_type = $request->input('identification_type'),
-       $person->region_id = $request->input('region'),
-        // Otras asignaciones de datos...
-    ]);
-   
-    // Actualizar el número de teléfono asociado a la persona si se ha cambiado en el formulario
-    if ($request->has('phone_number')) {
-        $person->numberPhone->update(['number' => $request->input('phone_number')]);
-    }
+
+        // Actualizar los datos de la persona
+        $person->update([
+            'name' => $request->input('user_name'),
+            'addres' => $request->input('addres'),
+            'team_works_id' => $request->input('team_works_id'),
+            'phone_number' => $request->input('phone_number'),
+            'region_id' => $request->input('region'),
+            'towns_id' => $request->input('towns_id'),
+            'users_id' => $request->input('users_id'),
+
+
+            $person->rol = $request->input('rol'), // Actualizar el campo 'rol' con el valor de la solicitud
+            $person->identification_type = $request->input('identification_type'),
+            $person->region_id = $request->input('region'),
+            // Otras asignaciones de datos...
+        ]);
+
+        // Actualizar el número de teléfono asociado a la persona si se ha cambiado en el formulario
+        if ($request->has('phone_number')) {
+            $person->numberPhone->update(['number' => $request->input('phone_number')]);
+        }
 
 
         return redirect()->route('person.index')
@@ -240,11 +245,11 @@ class PersonController extends Controller
 
 
     public function getTownsByRegion(Request $request)
-{
-    $regionId = $request->input('regions_id'); // Cambiado de 'region_id' a 'regions_id'
-    $towns = Town::where('regions_id', $regionId)->pluck('name', 'id');
-    return response()->json($towns);
-}
+    {
+        $regionId = $request->input('regions_id'); // Cambiado de 'region_id' a 'regions_id'
+        $towns = Town::where('regions_id', $regionId)->pluck('name', 'id');
+        return response()->json($towns);
+    }
 
     public function generatePDF(Request $request)
     {

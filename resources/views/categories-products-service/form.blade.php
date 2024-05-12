@@ -1,3 +1,4 @@
+<small class="text-right">Los campos indicados con <span style="color: red;">*</span> son obligatorios</small>
 <div class="box box-info padding-1">
     
     <div class="box-body">
@@ -34,12 +35,15 @@
         </div>
 
     </div><br>
-    <div class="box-footer mt20">
-        <button type="submit" class="btn btn-success"
-            @if ($mode == 'Editar') onclick="return confirm('¿Está seguro de que desea {{ $mode }} esta categoria?')" @endif>{{ $mode }}</i></button>
-                <a class="btn btn-primary" href="{{ route('categories-products-service.index') }}"><i
-                    class="bi bi-arrow-left-circle"></i></a>
+    <div class="box-footer mt20 my-2">
+        @if ($editing)
+            {{ Form::submit(__('Submit'), ['class' => 'btn btn-primary', 'id' => 'editButton']) }}
+        @else
+            {{ Form::submit(__('Crear'), ['class' => 'btn btn-success', 'id' => 'createButton']) }}
+        @endif
+        <a class="btn btn-primary" href="{{ route('team-works.index') }}">{{ __('Back') }}</a>
     </div>
+   
 </div>
 <style>
     .required::after {
@@ -47,4 +51,12 @@
         color: red;
         margin-left: 4px;
     }
+    .text-right {
+        float: right;
+        margin-top: -8px;
+        /* Ajusta según sea necesario para alinear verticalmente con el formulario */
+    }
 </style>
+
+
+@extends('layouts.alerts')
