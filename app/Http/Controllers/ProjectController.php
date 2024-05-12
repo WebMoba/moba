@@ -136,13 +136,7 @@ class ProjectController extends Controller
             'date' => 'El campo no debe ser una fecha anterior al dia de Hoy.',
         ];
 
-        $request->validate([
-            'name'=>'required|string|max:100',
-            'description'=>'required|string|max:300',
-            'date_start'=>'required|date',
-            'date_end'=>'required|date|after_or_equal:date_start',
-            'status'=>'required|select',
-        ],$msj);
+        
         
         // request()->validate(Project::$rules);
 
