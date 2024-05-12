@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-@include('layouts.navbars.auth.topnav', ['title' => 'Proyectos'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Proyectos'])
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 mx-auto">
@@ -24,7 +24,8 @@
                                         placeholder="Buscar...">
                                 </div>
                                 <div class="col-auto">
-                                    <button type="submit" class="btn btn-primary btn-sm"><i class="bi bi-search"></i></button>
+                                    <button type="submit" class="btn btn-primary btn-sm"><i
+                                            class="bi bi-search"></i></button>
                                 </div>
                             </form>
                             <div class="float-right">
@@ -33,12 +34,11 @@
                                 </a>
 
                                 <a href="{{ route('excel.project') }}" class="btn btn-success btn-sm float-right">
-                                     <i class="bi bi-file-earmark-excel-fill"></i>
+                                    <i class="bi bi-file-earmark-excel-fill"></i>
                                 </a>
                             </div>
                             <div class="float-right">
-                                <a href="{{ route('projects.create') }}" class="btn btn-success"
-                                    data-placement="left">
+                                <a href="{{ route('projects.create') }}" class="btn btn-success" data-placement="left">
                                     <i class="bi bi-plus-circle-fill"></i>
                                 </a>
                             </div>
@@ -73,18 +73,18 @@
                                             <td>{{ $project->date_end }}</td>
                                             <td>{{ $project->status }}</td>
                                             <td>
-                                                <form action="{{ route('projects.destroy', $project->id) }}"
-                                                    method="POST">
+                                                <form class="frData" action="{{ route('projects.destroy', $project->id) }}"
+                                                    method="POST" data-disable="{{ $project->disable }}">
                                                     <a class="btn btn-sm btn-primary {{ $project->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('projects.show', $project->id) }}"> <i class="bi bi-eye-fill"></i></a>
+                                                        href="{{ route('projects.show', $project->id) }}"> <i
+                                                            class="bi bi-eye-fill"></i></a>
                                                     <a class="btn btn-sm btn-success {{ $project->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('projects.edit', $project->id) }}"><i class="bi bi-pencil-square"></i></a>
+                                                        href="{{ route('projects.edit', $project->id) }}"><i
+                                                            class="bi bi-pencil-square"></i></a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit"
-                                                        onclick="return confirm('¿Está seguro de que desea {{ $project->disable ? 'Habilitar' : 'Deshabilitar' }} el proyecto?')"
-                                                        class="btn btn-danger btn-sm">
-                                                        {!! $project->disable ?  '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>'!!}
+                                                    <button type="submit" class="btn btn-danger btn-sm">
+                                                        {!! $project->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>' !!}
                                                     </button>
                                                 </form>
                                             </td>
@@ -100,3 +100,5 @@
         </div>
     </div>
 @endsection
+
+@extends('layouts.alerts')

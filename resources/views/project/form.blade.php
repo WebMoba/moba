@@ -1,14 +1,16 @@
+<small class="text-right">Los campos indicados con <span style="color: red;">*</span> son obligatorios</small>
+
 <div class="box box-info padding-1">
     <div class="box-body">
         <div class="form-group col-md-8">
             {{Form::label('Nombre', null, ['class' => 'required'])}}
-            {{Form::text ('name',$project->name, ['class' => 'form-control' . ($errors->has('name') ? 'is-invalid':''),'required'])}}
+            {{Form::text ('name',$project->name, ['class' => 'form-control' . ($errors->has('name') ? 'is-invalid':'')])}}
             {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
         </div>
     
         <div class="form-group col-md-8">
             {{ Form::label('Descripción', null, ['class' => 'required']) }}
-            {{ Form::text('description', $project->description, ['id' => 'Descripción','class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''),'required']) }}
+            {{ Form::text('description', $project->description, ['id' => 'Descripción','class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : '')]) }}
             {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         
@@ -33,10 +35,15 @@
         </div>
         <br>
     </div>
-    <div class="box-footer mt20">
-        <button type="submit" class="btn btn-success">{{ __('Crear') }}</button>
-        <a type="submit" class="btn btn-primary" href="{{ route('projects.index') }}">Volver</a>
+     <div class="box-footer mt20 my-2">
+        @if ($editing)
+            {{ Form::submit(__('Submit'), ['class' => 'btn btn-primary', 'id' => 'editButton']) }}
+        @else
+            {{ Form::submit(__('Crear'), ['class' => 'btn btn-success', 'id' => 'createButton']) }}
+        @endif
+        <a class="btn btn-primary" href="{{ route('projects.index') }}">{{ __('Back') }}</a>
     </div>
+    
 </div>
 <style>
     .required::after {
@@ -44,4 +51,11 @@
         color: red;
         margin-left: 4px;
     }
+    .text-right {
+        float: right;
+        margin-top: -8px;
+        /* Ajusta según sea necesario para alinear verticalmente con el formulario */
+    }
 </style>
+
+@extends('layouts.alerts')

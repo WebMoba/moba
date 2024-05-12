@@ -50,7 +50,9 @@ class ServiceController extends Controller
     {
         $service = new Service();
         $categories_products_service = CategoriesProductsService::where('type', 'servicio')->pluck('name', 'id');
-        return view('service.create', compact('service', 'categories_products_service'));
+        $editing = false;
+
+        return view('service.create', compact('service', 'categories_products_service', 'editing'));
     }
 
     /**
@@ -98,7 +100,9 @@ class ServiceController extends Controller
     {
         $service = Service::find($id);
         $categories_products_service = CategoriesProductsService::pluck('name', 'id');
-        return view('service.edit', compact('service', 'categories_products_service'));
+        $editing = true;
+
+        return view('service.edit', compact('service', 'categories_products_service', 'editing'));
     }
 
     /**

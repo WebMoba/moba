@@ -1,3 +1,5 @@
+<small class="text-right">Los campos indicados con <span style="color: red;">*</span> son obligatorios</small>
+
 <div class="box box-info padding-1">
     <div class="box-body">
 
@@ -36,13 +38,17 @@
         </div>
 
     </div>
-    <div class="box-footer mt20">
-        <button type="submit" class="btn btn-success"
-            @if ($mode == 'Editar') onclick="return confirm('¿Está seguro de que desea {{ $mode }} el producto?')" @endif>{{ $mode }}</button>
-            <a type="submit" class="btn btn-primary" href="{{ route('team-works.index') }}">Volver</a>
+    <div class="box-footer mt20 my-2">
+        @if ($editing)
+            {{ Form::submit(__('Submit'), ['class' => 'btn btn-primary', 'id' => 'editButton']) }}
+        @else
+            {{ Form::submit(__('Crear'), ['class' => 'btn btn-success', 'id' => 'createButton']) }}
+        @endif
+        <a class="btn btn-primary" href="{{ route('materials_raws.index') }}">{{ __('Back') }}</a>
     </div>
 
 </div>
+
 <script>
     function previewImage(event) {
         var input = event.target;
@@ -76,4 +82,11 @@
         width: 150px;
         height: 150px;
     }
+     .text-right {
+        float: right;
+        margin-top: -8px;
+        /* Ajusta según sea necesario para alinear verticalmente con el formulario */
+    }
 </style>
+
+@extends('layouts.alerts')

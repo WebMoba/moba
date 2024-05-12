@@ -10,12 +10,21 @@
         color: red;
         margin-left: 5px;
     }
+
+    .text-right {
+        float: right;
+        margin-top: -8px;
+        /* Ajusta según sea necesario para alinear verticalmente con el formulario */
+    }
 </style>
+
+<small class="text-right">Los campos indicados con <span style="color: red;">*</span> son obligatorios</small>
 
 <div class="box box-small">
     <h2>Compra</h2>
     <div class="box-body">
         <div class="form-group">
+            {{ Form::label('Nombre y documento del proveedor', null, ['class' => 'required-label']) }}
             {{ Form::select(
                 'name',
                 $usersName->mapWithKeys(function ($name, $id) use ($providers) {
@@ -53,7 +62,7 @@
 
     </div>
     <div class="box-footer" style="margin: 20px;">
-        <button type="button" class="btn btn-success" onclick="enviarDetalles()">Enviar</button>
+        <button type="button" id="enviarBtn" class="btn btn-success" onclick="enviarDetalles()">Enviar</button>
         <a type="submit" class="btn btn-primary" href="{{ route('purchases.index') }}">Volver</a>
     </div>
 </div>
@@ -233,56 +242,86 @@
     });
 
     // Función para enviar detalles
-    function enviarDetalles() {
-        const detalles = [];
-        document.querySelectorAll('#detalle-table tbody tr').forEach(function(detalle) {
-            const materiaPrima = detalle.querySelector('select[name^="materials_raws_id"]').value;
-            const cantidad = detalle.querySelector('input[name^="quantity"]').value;
-            const precioUnitario = detalle.querySelector('input[name^="price_unit"]').value;
-            const subtotal = detalle.querySelector('input[name^="subtotal"]').value;
-            const descuento = detalle.querySelector('input[name^="discount"]').value;
-            const total = detalle.querySelector('input[name^="total"]').value;
-
-            detalles.push({
-                materia_prima: materiaPrima,
-                cantidad: cantidad,
-                precio_unitario: precioUnitario,
-                subtotal: subtotal,
-                descuento: descuento,
-                total: total
-            });
+    // Función para enviar detalles
+function enviarDetalles() {
+    // Validar si se ha seleccionado un proveedor
+    if (!proveedorSeleccionado.nombre || !proveedorSeleccionado.proveedor_id) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Por favor, selecciona un proveedor antes de continuar.",
         });
-
-        // Recopilar información principal del formulario de compra
-        const fecha = document.querySelector('input[name="date"]').value;
-        const totalP = document.querySelector('input[name="total"]').value;
-
-        const data = {
-            nombre_proveedor: proveedorSeleccionado.nombre,
-            proveedor_id: proveedorSeleccionado.proveedor_id,
-            fecha: fecha,
-            totalP: totalP,
-            detalles: detalles
-        };
-
-        // Enviar datos al controlador de Laravel mediante AJAX
-        $.ajax({
-            type: "POST",
-            url: "{{ route('purchases.store') }}",
-            data: {
-                _token: '{{ csrf_token() }}',
-                data: data
-            },
-            success: function(response) {
-                // Manejar la respuesta del servidor si es necesario
-                console.log(response);
-            },
-            error: function(err) {
-                // Manejar errores si los hay
-                console.error(err);
-            }
-        });
-
-        window.location.href = "{{ route('purchases.index') }}";
+        return; // Detener el proceso si no se ha seleccionado un proveedor
     }
+    
+    let allFieldsCompleted = true; // Bandera para controlar si todos los campos están completos
+    const detalles = [];
+    
+    document.querySelectorAll('#detalle-table tbody tr').forEach(function(detalle) {
+        const materiaPrima = detalle.querySelector('select[name^="materials_raws_id"]').value;
+        const cantidad = detalle.querySelector('input[name^="quantity"]').value;
+        const precioUnitario = detalle.querySelector('input[name^="price_unit"]').value;
+        const subtotal = detalle.querySelector('input[name^="subtotal"]').value;
+        const descuento = detalle.querySelector('input[name^="discount"]').value;
+        const total = detalle.querySelector('input[name^="total"]').value;
+
+        // Validar que los campos de precio unitario y descuento no estén vacíos
+        if (precioUnitario.trim() === '' || descuento.trim() === '') {
+            allFieldsCompleted = false; // Si hay algún campo vacío, setear la bandera a false
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Completa todos los campos!",
+            });
+            return; // Detener el proceso si los campos obligatorios no están completados
+        }
+
+        detalles.push({
+            materia_prima: materiaPrima,
+            cantidad: cantidad,
+            precio_unitario: precioUnitario,
+            subtotal: subtotal,
+            descuento: descuento,
+            total: total
+        });
+    });
+
+    // Validar campos antes de enviar los datos
+    if (!allFieldsCompleted) {
+        return; // Detener el proceso si no están completados todos los campos
+    }
+
+    // Recopilar información principal del formulario de compra
+    const fecha = document.querySelector('input[name="date"]').value;
+    const totalP = document.querySelector('input[name="total"]').value;
+
+    const data = {
+        nombre_proveedor: proveedorSeleccionado.nombre,
+        proveedor_id: proveedorSeleccionado.proveedor_id,
+        fecha: fecha,
+        totalP: totalP,
+        detalles: detalles
+    };
+
+    // Enviar datos al controlador de Laravel mediante AJAX
+    $.ajax({
+        type: "POST",
+        url: "{{ route('purchases.store') }}",
+        data: {
+            _token: '{{ csrf_token() }}',
+            data: data
+        },
+        success: function(response) {
+            // Manejar la respuesta del servidor si es necesario
+            console.log(response);
+            // Redireccionar solo si la compra se creó exitosamente
+            window.location.href = "{{ route('purchases.index') }}";
+        },
+        error: function(err) {
+            // Manejar errores si los hay
+            console.error(err);
+        }
+    });
+}
+
 </script>

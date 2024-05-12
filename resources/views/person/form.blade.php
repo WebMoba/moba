@@ -1,4 +1,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<small class="text-right">Los campos indicados con <span style="color: red;">*</span> son obligatorios</small>
 <div class="box box-info padding-1">
 
     <div class="box-body">
@@ -33,7 +35,6 @@
         </div>
 
         <div class="form-group" style="display: none">
-            {{ Form::label('Numero Celular', null, ['class' => 'required']) }}
             {{ Form::text('number_phones_id', $numberPhoneId, ['class' => 'form-control', 'readonly' => true]) }}
             <!-- Mostrar el ID del número de teléfono -->
         </div>
@@ -44,7 +45,7 @@
         </div>
 
         <div class="form-group">
-            {{ Form::label('Grupo de Trabajo', null, ['class' => 'required']) }}
+            {{ Form::label('Grupo de Trabajo') }}
             {{ Form::select('team_works_id', $teamWorks, $person->team_works_id, ['class' => 'form-control' . ($errors->has('team_works_id') ? ' is-invalid' : ''), 'placeholder' => '']) }}
             {!! $errors->first('team_works_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
@@ -68,11 +69,19 @@
         </div>
 
     </div>
-    <div class="box-footer mt20">
-        <br><button type="submit" class="btn btn-success btn-Crear">{{ __('Crear') }}</button>
-        <a type="submit" class="btn btn-primary" href="{{ route('person.index') }}">Volver</a>
+
+     <div class="box-footer mt20 my-2">
+        @if ($editing)
+            {{ Form::submit(__('Submit'), ['class' => 'btn btn-primary', 'id' => 'editButton']) }}
+        @else
+            {{ Form::submit(__('Crear'), ['class' => 'btn btn-success', 'id' => 'createButton']) }}
+        @endif
+        <a class="btn btn-primary" href="{{ route('person.index') }}">{{ __('Back') }}</a>
     </div>
+
 </div>
+@extends('layouts.alerts')
+
 <script>
     $(document).ready(function() {
         // Manejar el cambio en la selección de departamentos
@@ -112,4 +121,9 @@
         color: red;
         margin-left: 4px;
     }
+    .text-right {
+    float: right;
+    margin-top: -8px; /* Ajusta según sea necesario para alinear verticalmente con el formulario */
+    }
 </style>
+

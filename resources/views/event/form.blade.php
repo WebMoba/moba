@@ -1,3 +1,18 @@
+
+<style>
+    .required::after {
+        content: "*";
+        color: red;
+        margin-left: 4px;
+    }
+     .text-right {
+    float: right;
+    margin-top: -8px; /* Ajusta según sea necesario para alinear verticalmente con el formulario */
+     }
+</style>
+
+<small class="text-right">Los campos indicados con <span style="color: red;">*</span> son obligatorios</small>
+
 <div class="box box-info padding-1">
     <div class="box-body">
 
@@ -34,16 +49,16 @@
 
     </div>
     <br>
-    <div class="box-footer mt20">
-        <button type="submit" class="btn btn-success">{{ __('Crear') }}</button>
-        <a type="submit" class="btn btn-primary" href="{{ route('events.index') }}">Volver</a>
+     <div class="box-footer mt20 my-2">
+        @if ($editing)
+            {{ Form::submit(__('Submit'), ['class' => 'btn btn-primary', 'id' => 'editButton']) }}
+        @else
+            {{ Form::submit(__('Crear'), ['class' => 'btn btn-success', 'id' => 'createButton']) }}
+        @endif
+        <a class="btn btn-primary" href="{{ route('events.index') }}">{{ __('Back') }}</a>
     </div>
+
+
 </div>
 
-<style>
-    .required::after {
-        content: "*";
-        color: red;
-        margin-left: 4px;
-    }
-</style>
+@extends('layouts.alerts')

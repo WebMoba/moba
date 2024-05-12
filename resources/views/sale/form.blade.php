@@ -19,12 +19,19 @@
             color: red;
             margin-left: 5px;
         }
+
+        .text-right {
+            float: right;
+            margin-top: -8px;
+            /* Ajusta según sea necesario para alinear verticalmente con el formulario */
+        }
     </style>
 
 
 </head>
 
 <body>
+    <small class="text-right">Los campos indicados con <span style="color: red;">*</span> son obligatorios</small>
 
     <div class="container">
         <div class="box mt-2">
@@ -178,6 +185,8 @@
 
 <script>
     function enviarDetalles() {
+        let errores = false; // Variable para indicar si hay errores
+
         const detalles = [];
         const fechaInput = document.querySelector('input[name="date"]');
         const nombreClienteSelect = document.querySelector('select[name="name"]');
@@ -187,19 +196,54 @@
         const clienteId = nombreClienteSelect.value;
         const nombreCliente = nombreClienteSelect.options[nombreClienteSelect.selectedIndex].text.split(' - ')[0];
 
+        // Validar campos del formulario de detalle
+        var detalleFields = document.querySelectorAll(
+            '#detalle-table tbody tr input[required], #detalle-table tbody tr select[required]');
+        var allDetailFieldsCompleted = true;
+        detalleFields.forEach(function(field) {
+            if (field.value.trim() === '') {
+                errores = true; // Hay errores
+                allDetailFieldsCompleted = false;
+            }
+        });
+
+        if (!allDetailFieldsCompleted) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Completa todos los campos del detalle!",
+            });
+            return; // Detener el proceso si no están completados todos los campos del detalle
+        }
+
         document.querySelectorAll('#detalle-table tbody tr').forEach(function(detalle) {
-            const productoSelect = detalle.querySelector('select[name^="product_id"]');
             const cantidadInput = detalle.querySelector('input[name^="quantity"]');
+            const descuentoInput = detalle.querySelector('input[name^="discount"]');
+
+            const cantidad = cantidadInput.value;
+            const descuento = descuentoInput.value;
+
+            // Validar campos de cantidad y descuento
+            if (cantidad.trim() === '' || descuento.trim() === '') {
+                errores = true; // Hay errores
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Completa todos los campos del formulario!",
+                });
+                // Detener el proceso si no están completados todos los campos de cantidad y descuento del detalle
+                return;
+            }
+
+            // Si todos los campos están completos, continuar con la creación del detalle
+            const productoSelect = detalle.querySelector('select[name^="product_id"]');
             const precioUnitarioInput = detalle.querySelector('input[name^="price_unit"]');
             const subtotalInput = detalle.querySelector('input[name^="subtotal"]');
-            const descuentoInput = detalle.querySelector('input[name^="discount"]');
             const totalInput = detalle.querySelector('input[name^="total"]');
 
             const productoId = productoSelect.value;
-            const cantidad = cantidadInput.value;
             const precioUnitario = precioUnitarioInput.value;
             const subtotal = subtotalInput.value;
-            const descuento = descuentoInput.value;
             const total = totalInput.value;
 
             detalles.push({
@@ -220,24 +264,47 @@
             detalles: detalles
         };
 
-        $.ajax({
-            type: "POST",
-            url: "{{ route('sales.store') }}",
-            data: {
-                _token: '{{ csrf_token() }}',
-                data: data
-            },
-            success: function(response) {
-                // Manejar la respuesta del servidor si es necesario
-                console.log(response);
-            },
-            error: function(err) {
-                // Manejar errores si los hay
-                console.error(err);
+        // Validar campos antes de enviar los datos
+        var requiredFields = document.querySelectorAll('input[name="date"], select[name="name"], input[name="total"]');
+        var allFieldsCompleted = true;
+        requiredFields.forEach(function(field) {
+            if (field.value.trim() === '') {
+                errores = true; // Hay errores
+                allFieldsCompleted = false;
             }
         });
-        window.location.href = "{{ route('sales.index') }}";
+
+        if (!allFieldsCompleted) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Completa todos los campos del formulario de ventas!",
+            });
+            return; // Detener el proceso si no están completados todos los campos del formulario de ventas
+        }
+
+        // Si no hay errores, enviar los datos
+        if (!errores) {
+            $.ajax({
+                type: "POST",
+                url: "{{ route('sales.store') }}",
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    data: data
+                },
+                success: function(response) {
+                    // Manejar la respuesta del servidor si es necesario
+                    console.log(response);
+                    window.location.href = "{{ route('sales.index') }}";
+                },
+                error: function(err) {
+                    // Manejar errores si los hay
+                    console.error(err);
+                }
+            });
+        }
     }
+
 
 
 
