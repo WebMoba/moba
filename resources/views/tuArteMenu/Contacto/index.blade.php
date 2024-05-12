@@ -15,9 +15,20 @@
 
 <body class="background-image">
 
-    <nav class="navbar">
+    <nav class="navbar" style="display: inline-block;">
+
+<!--- inicio breaddrums-->
+    <div class="breadcrums">
+        @include('helpers.breadcrumbs', ['breadcrumbs' => [
+        ['url' => route('welcome'), 'label' => 'Bienvenido /'],
+        ['url' => route('tuArteMenu.index'), 'label' => 'Tu Arte /'],
+        ['url' => route('tuArteMenu.Contacto.index'), 'label' => 'Contactanos'],]])
+        </div>
+<!--- final breaddrums-->
+
+
         <div class="container-fluid">
-            <a href="{{ asset('/') }}">
+        <a href="{{ route('mobaMenu.index')}}">
                 <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
             </a>
             <div class="navbar-buttons">
@@ -44,13 +55,20 @@
                 <a href="{{ route('tuArteMenu.galeria.index') }}" class="btn btn-primary">Galeria</a>
                 <a href="{{ route('tuArteMenu.Contacto.index') }}" class="btn btn-primary active-link">Contáctanos</a>
             </div>
-            <a href="{{ asset('/') }}">
+            <a href="{{ route('tuArteMenu.index') }}">
                 <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte">
             </a>
         </div>
+
+         <!--- inicio breaddrums-->
+
+   
+
         @include('partials.inicio')
 
+      
     </nav>
+
 
     <!-- Líneas verticales con iconos -->
     <div class="vertical-line left-line">
@@ -78,6 +96,8 @@
 
         <!-- Contenido formulario de contacto -->
 
+        
+
         <div class="box">
     <form method="POST" action="{{ route('enviar-correo') }}">
     @csrf
@@ -86,31 +106,31 @@
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" value="{{ auth()->check() ? auth()->user()->email : '' }}" required><br><br>
 		
-        <ul class="option-list">Tipo Identificacion 
-    <li class="option-item">
-        <input type="radio" id="option1" name="options" class="option-input">
-        <label for="option1" class="option-label">Cedula</label>
-    </li>
-    <li class="option-item">
-        <input type="radio" id="option2" name="options" class="option-input">
-        <label for="option2" class="option-label">Cedula de extranjeria </label>
-    </li>
-    <li class="option-item">
-        <input type="radio" id="option3" name="options" class="option-input">
-        <label for="option3" class="option-label">NIT</label>
-    </li>
+        <ul class="option-list">
+        <li class="option-item">
+            <input type="radio" id="option1" name="options" class="option-input" required>
+            <label for="option1" class="option-label">Cedula</label>
+        </li>
+        <li class="option-item">
+            <input type="radio" id="option2" name="options" class="option-input" required>
+            <label for="option2" class="option-label">Cedula de extranjeria</label>
+        </li>
+        <li class="option-item">
+            <input type="radio" id="option3" name="options" class="option-input" required>
+            <label for="option3" class="option-label">NIT</label>
+        </li>
     </ul><br>
-        <label for="NumeroId">Numero Identificación:</label>
+
+
+        <label for="numeroId">Numero Identificación</label>
         <input type="text" id="NumeroId" name="NumeroId" maxlength="10" required><br><br>
-        <label for="telefono">Teléfono:</label>
+        <label for="telefono">Teléfono</label>
         <input type="tel" id="telefono" name="telefono" maxlength="10" required><br><br>
-        <label for="telefono">Departamento</label>
+        <label for="departamento">Departamento</label>
 		<input type="text" id="Departamento" name="Departamento" required><br><br>
-        <label for="telefono">Ciudad</label>
+        <label for="ciudad">Ciudad</label>
 		<input type="text" id="Ciudad" name="Ciudad" required><br><br>
-
-
-		<label for="mensaje">Mensaje:</label><br>
+		<label for="mensaje">Mensaje</label><br>
 		<textarea id="mensaje" name="mensaje" rows="5" ></textarea><br><br>
 
 		<input type="submit" value="Enviar" id="submit">
@@ -138,6 +158,8 @@
         document.querySelector('.dropdown').addEventListener('mouseleave', function() {
             this.querySelector('.dropdown-menu').classList.remove('show');
         });
+
+        
     </script>
 
 
@@ -260,4 +282,26 @@ textarea{
     }
 
 
+
+/*estilos Breadcrums*/
+
+    .breadcrums {
+    display: flex;
+}
+
+.breadcrums a {
+    text-decoration: none;
+    color: white;
+    font-size: 0.6vw;
+    margin-right: 2px; /* Esto agrega un espacio entre los enlaces */
+}
+
+.breadcrumbs li {
+    display: inline;
+    padding: 0;
+}
+
+.breadcrumbs a:hover{
+    color: red;
+}
 </style>

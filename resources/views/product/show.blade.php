@@ -13,7 +13,6 @@
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <span class="card-title">{{ __('Mostrar Productos') }}</span>
-                            <a class="btn btn-primary" href="{{ route('product.index') }}">{{ __('Volver') }}</a>
                         </div>
                     </div>
 
@@ -42,6 +41,8 @@
                             <strong>Categoria:</strong>
                             {{ $product->categoriesProductsService->name }}
                         </div>
+                        <a class="btn btn-primary" href="{{ route('product.index') }}"><i
+                            class="bi bi-arrow-left-circle"></i></a>
                     </div>
                 </div>
             </div>

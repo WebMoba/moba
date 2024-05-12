@@ -14,7 +14,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Create') }} Maateria Prima</span>
+                        <span class="card-title">{{ __('Create') }} Materia Prima</span>
                     </div>
                     
                     <div class="card-body">

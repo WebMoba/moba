@@ -6,7 +6,7 @@
 
 
 @section('content')
-@include('layouts.navbars.auth.topnav', ['title' => 'Agrgar Venta'])
+@include('layouts.navbars.auth.topnav', ['title' => 'Agregar Venta'])
     <section class="content container-fluid">
         <div class="row">
             <div class="col-md-12">

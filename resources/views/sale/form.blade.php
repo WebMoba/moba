@@ -78,7 +78,8 @@
                         onclick="enviarDetalles()">
                         {{ __('Enviar') }}
                     </button>
-                    <a type="button" class="btn btn-primary" href="{{ route('sales.index') }}">Volver</a>
+                    <a type="button" class="btn btn-primary" href="{{ route('sales.index') }}"><i
+                        class="bi bi-arrow-left-circle"></i></a>
                 </div>
 
             </form>

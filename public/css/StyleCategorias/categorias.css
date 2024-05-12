@@ -192,7 +192,7 @@ body::after {
 }
 
     .campo {
-        border: 2vh solid white;
+        border: 1.8vh solid white;
       
         
 }
@@ -204,11 +204,11 @@ body::after {
 
     .campo1 {
         flex-grow: 1; /* Hacer que el campo se expanda automáticamente */
-        height: 40vw;
-        margin-top: 8%;
+        height: 38vw;
+        margin-top: 12%;
         /* 100% de altura */
         position: relative;
-        border-bottom: 4vw solid white;
+        border-bottom: 3.5vw solid white;
 }
 
     .campo1:hover {

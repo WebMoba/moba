@@ -18,8 +18,16 @@
         style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{ asset('Imagenes/FondoPrueba.png') }}'); background-size: cover; background-position: center top; background-repeat: no-repeat; opacity: 1; z-index: -1; filter: brightness(30%); -webkit-filter: brightness(30%);">
     </div>
     <nav class="navbar">
+                      <!--- inicio breaddrums-->
+    <div class="breadcrums">
+        @include('helpers.breadcrumbs', ['breadcrumbs' => [
+        ['url' => route('welcome'), 'label' => 'Bienvenido /'],
+        ['url' => route('tuArteMenu.index'), 'label' => 'Tu Arte /'],
+        ['url' => route('tuArteMenu.servicios.JoditasPalRecuerdo.index'), 'label' => 'Servicios / Joditas Pal Recuerdo'],]])
+        </div>
+<!--- final breaddrums-->
         <div class="container-fluid">
-            <a href="{{ asset('/') }}">
+        <a href="{{ route('mobaMenu.index')}}">
                 <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
             </a>
             <div class="navbar-buttons">
@@ -47,7 +55,7 @@
                 <a href="{{ route('tuArteMenu.galeria.index') }}" class="btn btn-primary">Galeria</a>
                 <a href="{{ route('tuArteMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
-            <a href="{{ asset('/') }}">
+            <a href="{{ route('tuArteMenu.index') }}">
                 <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte">
             </a>
         </div>
@@ -175,3 +183,28 @@
 </body>
 
 </html>
+
+<style>
+    
+/*estilos Breadcrums*/
+
+.breadcrums {
+    display: flex;
+}
+
+.breadcrums a {
+    text-decoration: none;
+    color: white;
+    font-size: 0.6vw;
+    margin-right: 2px; /* Esto agrega un espacio entre los enlaces */
+}
+
+.breadcrumbs li {
+    display: inline;
+    padding: 0;
+}
+
+.breadcrumbs a:hover{
+    color: red;
+}
+</style>

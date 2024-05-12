@@ -16,8 +16,16 @@
 <body class="background-image">
 
     <nav class="navbar">
+                <!--- inicio breaddrums-->
+    <div class="breadcrums">
+        @include('helpers.breadcrumbs', ['breadcrumbs' => [
+        ['url' => route('welcome'), 'label' => 'Bienvenido /'],
+        ['url' => route('tuArteMenu.index'), 'label' => 'Tu Arte /'],
+        ['url' => route('tuArteMenu.index'), 'label' => 'Nosotros'],]])
+        </div>
+<!--- final breaddrums-->
         <div class="container-fluid">
-            <a href="{{ asset('/') }}">
+        <a href="{{ route('mobaMenu.index')}}">
                 <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
             </a>
             <div class="navbar-buttons">
@@ -69,7 +77,7 @@
                 en nuestro portafolio, solo debes contactarnos, estaremos
                 muy felices de hablar contigo.</p><br>
             <h4>Nos caracteriza nuestra honestidad, entrega, creatividad y nuestra...</h4><br>
-            <h1>"Buena Onda"</h1>
+            <h1 style="color: white;">"Buena Onda"</h1>
         </div>
         <div class="box">
             <img src="{{ asset('Imagenes/imgPrincipalView/LogotipoTuArte.png') }}" alt="">
@@ -103,4 +111,28 @@
 </body>
 
 </html>
+
+<style>
+    /*estilos Breadcrums*/
+
+    .breadcrums {
+    display: flex;
+}
+
+.breadcrums a {
+    text-decoration: none;
+    color: white;
+    font-size: 0.6vw;
+    margin-right: 2px; /* Esto agrega un espacio entre los enlaces */
+}
+
+.breadcrumbs li {
+    display: inline;
+    padding: 0;
+}
+
+.breadcrumbs a:hover{
+    color: red;
+}
+</style>
 

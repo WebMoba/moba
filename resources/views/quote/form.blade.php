@@ -103,13 +103,19 @@
                         </tr>
                         <!-- <tr>
                                 <th>
-                                    <a type="submit" class="btn btn-primary" href="{{ route('service.index') }}"> Crear Servicio </a>
+                                    <button type="button" class="btn btn-primary mt-2 agregar-detalleS">
+                                        <i class="bi bi-plus-circle-fill"></i> Agregar Servicio
+                                    </button>
                                 </th>
                                 <th>
-                                    <a type="submit" class="btn btn-primary " href="{{ route('product.index') }}"> Crear Producto </a>
+                                    <button type="button" class="btn btn-primary mt-2 agregar-detalleP">
+                                        <i class="bi bi-plus-circle-fill"></i> Agregar Producto
+                                    </button>
                                 </th>
                                 <th>
-                                    <a type="submit" class="btn btn-primary " href="{{ route('projects.index') }}"> Crear Proyecto </a>
+                                    <button type="button" class="btn btn-primary mt-2 agregar-detallePj">
+                                        <i class="bi bi-plus-circle-fill"></i> Agregar Proyecto
+                                    </button>
                                 </th>
                             </tr> -->
                     </thead>

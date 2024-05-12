@@ -19615,9 +19615,11 @@ textarea.form-control-lg {
 
 .card {
   box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15);
+  background-color: #F4F4F4;
 }
 .card .card-header {
   padding: 1.5rem;
+  background-color: #E2E2E2;
 }
 .card .card-body {
   font-family: "Open Sans", sans-serif;

@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-@include('layouts.navbars.auth.topnav', ['title' => 'Mostrar Compra'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Mostrar Compra'])
     <section class="content container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -13,9 +13,6 @@
                     <div class="card-header">
                         <div class="float-left">
                             <span class="card-title">{{ __('Show') }} Compra</span>
-                        </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('purchases.index') }}"> {{ __('Back') }}</a>
                         </div>
                     </div>
 
@@ -29,11 +26,11 @@
                         </div>
                         <div class="form-group">
                             <strong>Documento del proveedor:</strong>
-                            {{ $purchase->person->id_card }} 
+                            {{ $purchase->person->id_card }}
                         </div>
                         <div class="form-group">
                             <strong>Total de la compra:</strong>
-                            {{ $purchase->total }} 
+                            {{ $purchase->total }}
                         </div>
                         <div class="form-group">
                             <strong>Fecha realizacion de la compra:</strong>
@@ -74,10 +71,10 @@
                         @else
                             <p>No se encontraron detalles asociados a esta compra.</p>
                         @endif
-
-
-
+                        <a type="submit" class="btn btn-primary" href="{{ route('purchases.index') }}"><i
+                                class="bi bi-arrow-left-circle"></i></a>
                     </div>
+
                 </div>
             </div>
         </div>
