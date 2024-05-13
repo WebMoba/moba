@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-@include('layouts.navbars.auth.topnav', ['title' => 'Equipo de Trabajo'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Equipo de Trabajo'])
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 mx-auto">
@@ -27,7 +27,8 @@
                                         placeholder="Buscar...">
                                 </div>
                                 <div class="col-auto">
-                                    <button type="submit" class="btn btn-primary btn-sm"><i class="bi bi-search"></i></button>
+                                    <button type="submit" class="btn btn-primary btn-sm"><i
+                                            class="bi bi-search"></i></button>
                                 </div>
                             </form>
                             <div class="float-right">
@@ -40,8 +41,7 @@
                                 </a>
                             </div>
                             <div class="float-right">
-                                <a href="{{ route('team-works.create') }}" class="btn btn-success"
-                                    data-placement="left">
+                                <a href="{{ route('team-works.create') }}" class="btn btn-success" data-placement="left">
                                     <i class="bi bi-plus-circle-fill"></i>
                                 </a>
                             </div>
@@ -74,18 +74,19 @@
                                             <td>{{ $teamWork->assigned_date }}</td>
                                             <td>{{ $teamWork->project->name }}</td>
                                             <td>
-                                                <form action="{{ route('team-works.destroy', $teamWork->id) }}"
-                                                    method="POST">
+                                                <form class="frData"
+                                                    action="{{ route('team-works.destroy', $teamWork->id) }}"
+                                                    method="POST" data-disable="{{ $teamWork->disable }}">
                                                     <a class="btn btn-sm btn-primary {{ $teamWork->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('team-works.show', $teamWork->id) }}"><i class="bi bi-eye-fill"></i></a>
+                                                        href="{{ route('team-works.show', $teamWork->id) }}"><i
+                                                            class="bi bi-eye-fill"></i></a>
                                                     <a class="btn btn-sm btn-success {{ $teamWork->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('team-works.edit', $teamWork->id) }}"> <i class="bi bi-pencil-square"></i></a>
+                                                        href="{{ route('team-works.edit', $teamWork->id) }}"> <i
+                                                            class="bi bi-pencil-square"></i></a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit"
-                                                        onclick="return confirm('¿Está seguro de que desea {{ $teamWork->disable ? 'Habilitar' : 'Deshabilitar' }} este equipo de trabajo?')"
-                                                        class="btn btn-danger btn-sm">
-                                                        {!! $teamWork->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>'!!}
+                                                    <button type="submit" class="btn btn-danger btn-sm">
+                                                        {!! $teamWork->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>' !!}
                                                     </button>
                                                 </form>
                                             </td>
@@ -101,3 +102,5 @@
         </div>
     </div>
 @endsection
+
+@extends('layouts.alerts')

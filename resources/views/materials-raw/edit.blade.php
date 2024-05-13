@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-@include('layouts.navbars.auth.topnav', ['title' => 'Editar Materia Prima'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Editar Materia Prima'])
     <section class="content container-fluid">
         <div class="">
             <div class="col-md-12">
@@ -17,7 +17,8 @@
                         <span class="card-title">{{ __('Update') }} Materia Prima</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('materials_raws.update', $materialsRaw->id) }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('materials_raws.update', $materialsRaw->id) }}" role="form"
+                            enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
 
@@ -30,3 +31,4 @@
         </div>
     </section>
 @endsection
+

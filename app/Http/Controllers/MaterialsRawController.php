@@ -30,7 +30,7 @@ class MaterialsRawController extends Controller
         }
         // Pasar los datos a la vista pdf-template
         $data = [
-            'materials_raws' => $materials_raws
+            'materials_raws' => $materials_raws,
         ];
 
         // Generar el PDF
@@ -48,15 +48,14 @@ class MaterialsRawController extends Controller
      */
     public function index(Request $request)
     {
-
         $search = trim($request->get('search'));
         $materialsRaws = MaterialsRaw::with('unit')
             ->where('name', 'LIKE', '%' . $search . '%')
             ->orwhere('existing_quantity', 'LIKE', '%' . $search . '%')
+            ->orderBy('created_at', 'desc')
             ->paginate(10);
 
-        return view('materials-raw.index', compact('materialsRaws', 'search'))
-            ->with('i', (request()->input('page', 1) - 1) * $materialsRaws->perPage());
+        return view('materials-raw.index', compact('materialsRaws', 'search'))->with('i', (request()->input('page', 1) - 1) * $materialsRaws->perPage());
     }
 
     /**
@@ -68,8 +67,8 @@ class MaterialsRawController extends Controller
     {
         $materialsRaw = new MaterialsRaw();
         $units = Unit::pluck('unit_type', 'id');
-        $confirm = false;
-        return view('materials-raw.create', compact('materialsRaw', 'units', 'confirm'));
+        $editing = false;
+        return view('materials-raw.create', compact('materialsRaw', 'units', 'editing'));
     }
 
     /**
@@ -79,24 +78,22 @@ class MaterialsRawController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-{
-    // Validar los datos de entrada
-    request()->validate(MaterialsRaw::$rules);
-    
-    // Crear la materia prima con todos los datos proporcionados en la solicitud
-    $materialsRaw = MaterialsRaw::create($request->all());
+    {
+        // Validar los datos de entrada
+        request()->validate(MaterialsRaw::$rules);
 
-    // Establecer el estado de habilitación como verdadero (habilitado)
-    $materialsRaw->disable = false;
+        // Crear la materia prima con todos los datos proporcionados en la solicitud
+        $materialsRaw = MaterialsRaw::create($request->all());
 
-    // Guardar la materia prima en la base de datos
-    $materialsRaw->save();
+        // Establecer el estado de habilitación como verdadero (habilitado)
+        $materialsRaw->disable = false;
 
-    // Redireccionar con un mensaje de éxito
-    return redirect()->route('materials_raws.index')
-        ->with('success', 'Registro creado exitosamente');
-}
+        // Guardar la materia prima en la base de datos
+        $materialsRaw->save();
 
+        // Redireccionar con un mensaje de éxito
+        return redirect()->route('materials_raws.index')->with('success', 'Registro creado exitosamente');
+    }
 
     /**
      * Display the specified resource.
@@ -121,8 +118,8 @@ class MaterialsRawController extends Controller
     {
         $materialsRaw = MaterialsRaw::find($id);
         $units = Unit::pluck('unit_type', 'id');
-        $confirm = true;
-        return view('materials-raw.edit', compact('materialsRaw', 'units', 'confirm'));
+        $editing = true;
+        return view('materials-raw.edit', compact('materialsRaw', 'units', 'editing'));
     }
 
     /**
@@ -138,8 +135,7 @@ class MaterialsRawController extends Controller
 
         $materialsRaw->update($request->all());
 
-        return redirect()->route('materials_raws.index')
-            ->with('success', 'Registro actualizado exitosamente');
+        return redirect()->route('materials_raws.index')->with('success', 'Registro actualizado exitosamente');
     }
 
     /**
@@ -148,20 +144,20 @@ class MaterialsRawController extends Controller
      * @throws \Exception
      */
     public function destroy($id)
-{
-    // Encuentra la materia prima con el ID dado
-    $materialsRaw = MaterialsRaw::find($id);
-    if (!$materialsRaw) {
-        return redirect()->route('materials_raws.index')->with('error', 'La materia prima no existe');
+    {
+        // Encuentra la materia prima con el ID dado
+        $materialsRaw = MaterialsRaw::find($id);
+        if (!$materialsRaw) {
+            return redirect()->route('materials_raws.index')->with('error', 'La materia prima no existe');
+        }
+
+        // Cambia el estado de la materia prima
+        $materialsRaw->disable = !$materialsRaw->disable; // Corregir a 'disabled'
+        $materialsRaw->save();
+
+        // Redirige con un mensaje de éxito
+        return redirect()->route('materials_raws.index')->with('success', 'Estado de la materia prima cambiado con éxito');
     }
-
-    // Cambia el estado de la materia prima
-    $materialsRaw->disable = !$materialsRaw->disable; // Corregir a 'disabled'
-    $materialsRaw->save();
-
-    // Redirige con un mensaje de éxito
-    return redirect()->route('materials_raws.index')->with('success', 'Estado de la materia prima cambiado con éxito');
-}
 
     public function exportToExcel()
     {

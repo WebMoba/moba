@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{{ asset('css/StyleFooter.css') }}">
 
     <!-- Styles -->
     <style>
@@ -26,11 +27,18 @@
 
     <div class = "container">
 
-        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen ">
+        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen">
             @if (Route::has('login'))
                 <div class="nav">
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="letter">Inicio</a>
+                    <a href="{{ url('/dashboard') }}" class="letter">Inicio</a>
+                    <form role="form" method="post" action="{{ route('logout') }}" id="logout-form">
+                        @csrf
+                        <a href="{{ route('logout') }}" class="letter"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Cerrar Sesión
+                        </a>
+                    </form>
                     @else
                         <a href="{{ route('login') }}" class="letter">Ingresar </a>
 
@@ -232,4 +240,7 @@
 .logos div {
         transform-style: preserve-3d;
     }
+
+
+
 </style>

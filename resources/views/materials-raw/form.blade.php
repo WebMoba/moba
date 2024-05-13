@@ -4,9 +4,17 @@
         color: red;
         margin-left: 5px;
     }
+
+    .text-right {
+        float: right;
+        margin-top: -8px;
+        /* Ajusta según sea necesario para alinear verticalmente con el formulario */
+    }
 </style>
 
+<small class="text-right">Los campos indicados con <span style="color: red;">*</span> son obligatorios</small>
 <div class="box box-info padding-1">
+
     <div class="box-body">
 
         <div class="form-group">
@@ -27,16 +35,14 @@
 
     </div>
     <div class="box-footer mt20 my-2">
-
-        @if ($confirm)
-            <button type="submit" class="btn btn-primary"
-                onclick="return confirm('¿Está seguro de editar este registro?');">{{ __('Editar') }}</button>
+        @if ($editing)
+            {{ Form::submit(__('Submit'), ['class' => 'btn btn-primary', 'id' => 'editButton']) }}
         @else
-            <button type="submit" class="btn btn-success">{{ __('Crear') }}</button>
+            {{ Form::submit(__('Crear'), ['class' => 'btn btn-success', 'id' => 'createButton']) }}
         @endif
-        <a class="btn btn-primary" href="{{ route('materials_raws.index') }}"><i
-            class="bi bi-arrow-left-circle"></i></a>
-
+        <a class="btn btn-primary" href="{{ route('materials_raws.index') }}">{{ __('Back') }}</a>
     </div>
 
 </div>
+
+@extends('layouts.alerts')

@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-@include('layouts.navbars.auth.topnav', ['title' => 'Categorias'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Categorias'])
     @if ($message = Session::get('success'))
         <div class="alert alert-success text-center">
             <p>{{ $message }}</p>
@@ -33,7 +33,8 @@
                                     <input type="text" class="form-control " id="search" name="search">
                                 </div>
                                 <div class="col-auto">
-                                    <button type="submit" class="btn btn-primary btn-sm"><i class="bi bi-search"></i></button>
+                                    <button type="submit" class="btn btn-primary btn-sm"><i
+                                            class="bi bi-search"></i></button>
                                 </div>
                             </form>
                             <div class="float-right">
@@ -41,13 +42,14 @@
                                     class="btn btn-danger btn-sm float-right">
                                     <i class="bi bi-file-pdf-fill"></i>
                                 </a>
-                                <a href="{{ route('excel.categories-products-service') }}" class="btn btn-success btn-sm float-right">
+                                <a href="{{ route('excel.categories-products-service') }}"
+                                    class="btn btn-success btn-sm float-right">
                                     <i class="bi bi-file-earmark-excel-fill"></i>
                                 </a>
                             </div>
                             <div class="float-right">
-                                <a href="{{ route('categories-products-service.create') }}"
-                                    class="btn btn-success" data-placement="left">
+                                <a href="{{ route('categories-products-service.create') }}" class="btn btn-success"
+                                    data-placement="left">
                                     <i class="bi bi-plus-circle-fill"></i>
                                 </a>
                             </div>
@@ -86,20 +88,23 @@
                                                 <td>{{ $categoriesProductsService->type }}</td>
 
                                                 <td>
-                                                    <form
+
+                                                    <form class="frData"
                                                         action="{{ route('categories-products-service.destroy', $categoriesProductsService->id) }}"
-                                                        method="POST">
+                                                        method="POST"
+                                                        data-disable="{{ $categoriesProductsService->disable }}">
                                                         <a class="btn btn-sm btn-primary {{ $categoriesProductsService->disable ? 'disabled' : '' }}"
                                                             href="{{ route('categories-products-service.show', $categoriesProductsService->id) }}">
-                                                                 <i class="bi bi-eye-fill"></i></a>
+                                                            <i class="bi bi-eye-fill"></i></a>
                                                         <a class="btn btn-sm btn-success {{ $categoriesProductsService->disable ? 'disabled' : '' }}"
                                                             href="{{ route('categories-products-service.edit', $categoriesProductsService->id) }}">
-                                                             <i class="bi bi-pencil-square"></i></a>
+                                                            <i class="bi bi-pencil-square"></i></a>
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger btn-sm"
-                                                            onclick="return confirm('¿Está seguro de que desea {{ $categoriesProductsService->disable ? 'Habilitar' : 'Deshabilitar' }} la categoria?')">
-                                                            {!!$categoriesProductsService->disable ?  '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>'!!}
+                                                        <button type="submit" class="btn btn-danger btn-sm">
+                                                            {!! $categoriesProductsService->disable
+                                                                ? '<i class="bi bi-check-circle-fill"></i>'
+                                                                : '<i class="bi bi-x-circle"></i>' !!}
                                                         </button>
                                                     </form>
                                                 </td>
@@ -116,4 +121,4 @@
         </div>
     @endsection
 
-    
+@extends('layouts.alerts')

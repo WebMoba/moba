@@ -46,7 +46,9 @@ class CategoriesProductsServiceController extends Controller
     public function create()
     {
         $categoriesProductsService = new CategoriesProductsService();
-        return view('categories-products-service.create', compact('categoriesProductsService'));
+        $editing = false;
+
+        return view('categories-products-service.create', compact('categoriesProductsService', 'editing'));
     }
 
     /**
@@ -99,8 +101,10 @@ class CategoriesProductsServiceController extends Controller
     public function edit($id)
     {
         $categoriesProductsService = CategoriesProductsService::find($id);
+        $editing = true;
 
-        return view('categories-products-service.edit', compact('categoriesProductsService'));
+
+        return view('categories-products-service.edit', compact('categoriesProductsService', 'editing'));
     }
 
     /**

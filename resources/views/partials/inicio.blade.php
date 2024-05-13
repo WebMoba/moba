@@ -1,30 +1,42 @@
-<div style="width: 0.5%"><a href="{{ asset('/') }}" class="letter">Volver</a></div>
-            @if (Route::has('login'))
-                <div class="log-in">
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="letter" >Inicio</a>
+
+
+<div style="width: 100%; display: flex; ">
+      <div class="log-in">
+    <a href="{{ asset('/') }}" class="letter" >Volver / </a> 
+        @if (Route::has('login'))
+        @auth
+                    <a href="{{ url('/dashboard') }}" class="letter">Inicio /  </a>
+                    <form role="form" method="post" action="{{ route('logout') }}" id="logout-form">
+                        @csrf
+                        <a href="{{ route('logout') }}" class="letter"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Cerrar Sesión
+                        </a>
+                    </form>
                     @else
-                        <a href="{{ route('login') }}" class="letter">Ingresar </a>
+                        <a href="{{ route('login') }}" class="letter">Ingresar /  </a>
 
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="letter">Registrarse</a>
                         @endif
                     @endauth
-                </div>
-            @endif
-
+        @endif
+    </div>
+</div>
 
 <style>
+
+
 a.letter{
-    font-size: 0.9vw;
     text-decoration: none;
-    color: white;
-    font-family: 'Times New Roman', Times, serif;
-    margin-right: 10px;
+    color: white    ;
+    font-size: 0.9vw;
+    margin-bottom: 5%;
+    
 }
+
 .log-in{
-    padding-top: 0.5%;
-    padding-right: 0.4%;
+    display: flex;
 }
 
 </style>

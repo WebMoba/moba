@@ -5,7 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Contacto</title>
+    <link rel="shortcut icon" type="image/png" href="{{ asset('Imagenes/Logotipo Moba-06.png') }}">
+<title>
+    Moba
+</title> 
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
@@ -16,6 +20,16 @@
 <body>
 
     <nav class="navbar">
+        <!--- inicio breaddrums-->
+    <div class="breadcrums">
+        @include('helpers.breadcrumbs', ['breadcrumbs' => [
+        ['url' => route('welcome'), 'label' => 'Bienvenido /'],
+        ['url' => route('mobaMenu.index'), 'label' => 'Moba /'],
+        ['url' => route('mobaMenu.Contacto.index'), 'label' => 'Contactanos'],]])
+        </div>
+        <div class="inicioRegistro"> @include('partials.inicio')</div>
+<!--- final breaddrums-->
+
         <div class="container-fluid">
         <a href="{{ route('mobaMenu.index')}}">
                 <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
@@ -44,7 +58,7 @@
         </div>
 
     
-@include('partials.inicio')
+
 
 
     </nav>
@@ -172,6 +186,7 @@
     height: 70%;
     width: 45%;
     margin-top:5%;
+    margin-left: 10%;
     overflow: auto;
     
 }
@@ -256,5 +271,32 @@ textarea{
         color: white;
     }
 
+
+    /*estilos Breadcrums*/
+
+    .breadcrums {
+    display: flex;
+}
+
+.breadcrums a {
+    text-decoration: none;
+    color: white;
+    font-size: 0.8vw;
+    margin-right: 2px; /* Esto agrega un espacio entre los enlaces */
+}
+
+.breadcrumbs li {
+    display: inline;
+    padding: 0;
+}
+
+.breadcrumbs a:hover{
+    color:  #2bb9e5;
+}
+
+form{
+    margin: 0px !important;
+    
+}
 
 </style>

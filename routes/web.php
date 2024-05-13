@@ -64,53 +64,58 @@ Route::get('/', function () {
 
 Route::resource('product', ProductController::class);
 Route::resource('unit', UnitController::class);
-
 Route::get('/pdf/product', [ProductController::class, 'generatePDF'])->name('pdf.product');
 Route::get('/pdf/unit', [UnitController::class, 'generatePDF'])->name('pdf.unit');
 
 //dashboard
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/pages/dashboard', [QuoteController::class, 'QuotesData'])->name('pages.dashboard');
+Route::middleware(['auth'])->group(function () {
+    Route::middleware(['admin'])->group(function () {
 
+        // Todas las rutas protegidas para administradores
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->name('dashboard');
 
-Route::middleware('auth')->group(function () {
+        Route::get('/pages/dashboard', [QuoteController::class, 'QuotesData'])->name('pages.dashboard');
+        
+        // Otras rutas protegidas para administradores...
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    /*Controladores tablas Eventos, People, Buscar */
-    Route::resource('events', EventController::class);
-    Route::resource('number-phone', NumberPhoneController::class);
-    Route::resource('person', PersonController::class);
-    Route::get('/buscar', [BusquedaController::class, 'buscar'])->name('buscar');
-    Route::get('/buscarPeople', [BusquedaController::class, 'buscarPeople'])->name('buscarPeople');
-    Route::get('/buscarCel', [BusquedaController::class, 'buscarCel'])->name('buscarCel');
-    Route::get('/pdf/person', [PersonController::class, 'generatePDF'])->name('pdf.person');
-    Route::get('/pdf/event', [EventController::class, 'generatePDF'])->name('pdf.event');
-    Route::get('get-towns-by-region', [PersonController::class, 'getTownsByRegion'])->name('get_towns_by_region');
-    Route::get('/export-person', [PersonController::class, 'export'])->name('excel.person');
-    Route::get('/export-events', [EventController::class, 'export'])->name('excel.events');
+     /*Controladores tablas Eventos, People, Buscar */
+     Route::resource('events', EventController::class);
+     Route::resource('number-phone', NumberPhoneController::class);
+     Route::resource('person', PersonController::class);
+     Route::get('/buscar', [BusquedaController::class, 'buscar'])->name('buscar');
+     Route::get('/buscarPeople', [BusquedaController::class, 'buscarPeople'])->name('buscarPeople');
+     Route::get('/buscarCel', [BusquedaController::class, 'buscarCel'])->name('buscarCel');
+     Route::get('/pdf/person', [PersonController::class, 'generatePDF'])->name('pdf.person');
+     Route::get('/pdf/event', [EventController::class, 'generatePDF'])->name('pdf.event');
+     Route::get('get-towns-by-region', [PersonController::class, 'getTownsByRegion'])->name('get_towns_by_region');
+     Route::get('/export-person', [PersonController::class, 'export'])->name('excel.person');
+     Route::get('/export-events', [EventController::class, 'export'])->name('excel.events');
+ 
+ 
+     /*Rutas product y unit*/
+     Route::resource('product', ProductController::class);
+     Route::resource('unit', UnitController::class);
+     Route::get('/pdf/product', [ProductController::class, 'generatePDF'])->name('pdf.product');
+     Route::get('/pdf/unit', [UnitController::class, 'generatePDF'])->name('pdf.unit');
+     Route::get('/export-product', [ProductController::class, 'export'])->name('excel.product');
+     /*Fin Rutas product y uni*/
+ 
+     /*Rutas categories_products_services y services*/
+     Route::resource('service', ServiceController::class);
+     Route::resource('categories-products-service', CategoriesProductsServiceController::class);
+     Route::get('/pdf/service', [ServiceController::class, 'generatePDF'])->name('pdf.service');
+     Route::get('/pdf/categories-products-service', [CategoriesProductsServiceController::class, 'generatePDF'])->name('pdf.categories-products-service');
+     Route::get('/export-categories-products-service', [CategoriesProductsServiceController::class, 'export'])->name('excel.categories-products-service');
+     Route::get('/export-service', [ServiceController::class, 'export'])->name('excel.service');
 
-
-    /*Rutas product y unit*/
-    Route::resource('product', ProductController::class);
-    Route::resource('unit', UnitController::class);
-    Route::get('/pdf/product', [ProductController::class, 'generatePDF'])->name('pdf.product');
-    Route::get('/pdf/unit', [UnitController::class, 'generatePDF'])->name('pdf.unit');
-    Route::get('/export-product', [ProductController::class, 'export'])->name('excel.product');
-    /*Fin Rutas product y uni*/
-
-    /*Rutas categories_products_services y services*/
-    Route::resource('service', ServiceController::class);
-    Route::resource('categories-products-service', CategoriesProductsServiceController::class);
-    Route::get('/pdf/service', [ServiceController::class, 'generatePDF'])->name('pdf.service');
-    Route::get('/pdf/categories-products-service', [CategoriesProductsServiceController::class, 'generatePDF'])->name('pdf.categories-products-service');
-    Route::get('/export-categories-products-service', [CategoriesProductsServiceController::class, 'export'])->name('excel.categories-products-service');
-    Route::get('/export-service', [ServiceController::class, 'export'])->name('excel.service');
-    /*Fin Rutas categories_products_services y services*/
+        /*Fin Rutas categories_products_services y services*/
 
     /*Incio Rutas purchases, detailPurchases, y materialsRaws*/
     Route::resource('materials_raws', App\Http\Controllers\MaterialsRawController::class);
@@ -124,32 +129,29 @@ Route::middleware('auth')->group(function () {
         Route::get('/export/materials-raw', [MaterialsRawController::class, 'exportToExcel'])->name('export.materials.raw');
     });
     /*Fin Rutas purchases, detailPurchases, y materialsRaws*/
+        /** Inicio de Controladores Sale y DetailSale */
+        Route::resource('sales', SaleController::class)->middleware('auth');
+        Route::get('/pdf/sales', [SaleController::class, 'generatePDF'])->name('pdf.sales');
+        Route::resource('detail-sale', DetailSaleController::class)->middleware('auth');
+        Route::get('/export/sales', [SaleController::class, 'exportToExcel'])->name('export.sales');
+        /** fin de Controladores Sale y DetailSale  */
+    
+        //projects,teamwork y quote - fabian
+        Route::resource('projects', ProjectController::class)->middleware('auth');
+        Route::resource('team-works', TeamWorkController::class)->middleware('auth');
+        Route::resource('quotes', QuoteController::class)->middleware('auth');
+        Route::get('/pdf/project', [ProjectController::class, 'generatePDF'])->name('pdf.project');
+        Route::get('/pdf/teamwork', [TeamWorkController::class, 'generatePDF'])->name('pdf.teamwork');
+        Route::get('/pdf/quote', [QuoteController::class, 'generatePDF'])->name('pdf.quote');
+        Route::get('/export-project', [ProjectController::class, 'export'])->name('excel.project');
+        Route::get('/export-quote', [QuoteController::class, 'export'])->name('excel.quote');
+        Route::get('/export-teamwork', [TeamWorkController::class, 'export'])->name('excel.teamwork');
+        //fin-fabian
+    
+    });
+    
+    });
 
-    /** Inicio de Controladores Sale y DetailSale */
-    Route::resource('sales', SaleController::class)->middleware('auth');
-    Route::get('/pdf/sales', [SaleController::class, 'generatePDF'])->name('pdf.sales');
-    Route::resource('detail-sale', DetailSaleController::class)->middleware('auth');
-    Route::get('/export/sales', [SaleController::class, 'exportToExcel'])->name('export.sales');
-    /** fin de Controladores Sale y DetailSale  */
-
-    //projects,teamwork y quote - fabian
-    Route::resource('projects', ProjectController::class)->middleware('auth');
-    Route::resource('team-works', TeamWorkController::class)->middleware('auth');
-    Route::resource('quotes', QuoteController::class)->middleware('auth');
-    Route::get('/pdf/project', [ProjectController::class, 'generatePDF'])->name('pdf.project');
-    Route::get('/pdf/teamwork', [TeamWorkController::class, 'generatePDF'])->name('pdf.teamwork');
-    Route::get('/pdf/quote', [QuoteController::class, 'generatePDF'])->name('pdf.quote');
-    Route::get('/export-project', [ProjectController::class, 'export'])->name('excel.project');
-    Route::get('/export-quote', [QuoteController::class, 'export'])->name('excel.quote');
-    Route::get('/export-teamwork', [TeamWorkController::class, 'export'])->name('excel.teamwork');
-    //fin-fabian
-
-    //formulario de contacto 
-
-    Route::post('/contacto', [ContactoController::class, 'enviarMensaje'])->name('enviar-mensaje');
-
-
-});
 
 //Vistas carpeta servicios
 Route::get('/mobaMenu/index', function () {
@@ -216,6 +218,8 @@ Route::view('/tuArteMenu/Contacto/index', 'tuArteMenu.Contacto.index')->name('tu
 
 //ruta Correo electronico
 Route::post('/enviar-correo', [ContactoController::class, 'enviarCorreo'])->name('enviar-correo');
+Route::post('/contacto', [ContactoController::class, 'enviarMensaje'])->name('enviar-mensaje');
+
 //Breadcrumds
 Route::get('quotes/show/{quote}', [QuoteController::class, 'show'])->name('quote.show');
 Route::get('person/show/{person}', [PersonController::class, 'show'])->name('person.show');
@@ -247,8 +251,8 @@ Route::get('/tuArteMenu/categorias', function () {
 })->name('tuArteMenu.categorias.index');
 require __DIR__ . '/auth.php';
 
-Auth::routes();
 
+Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
