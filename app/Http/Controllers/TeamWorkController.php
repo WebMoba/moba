@@ -106,6 +106,8 @@ class TeamWorkController extends Controller
     public function edit($id)
     {
         $teamWork = TeamWork::find($id);
+        $teamWork->assigned_date = optional($teamWork->assigned_date)->format('Y-m-d');
+
         $projects = Project::pluck('name','id');
         $editing = true;
 

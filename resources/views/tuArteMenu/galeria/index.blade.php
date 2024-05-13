@@ -312,7 +312,7 @@
     }
 
     .dropdown-menu .dropdown-item {
-        color: #f80008 !important;
+        color: #ffffff !important;
         background-color: transparent !important;
         border-color: #f80008 !important;
     }

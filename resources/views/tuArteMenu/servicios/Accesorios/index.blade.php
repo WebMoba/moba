@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Servicios</title>
+    <link rel="shortcut icon" type="image/png" href="{{ asset('Imagenes/LogoTuArte.png') }}">
+    <title>
+        TuArte
+    </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/StylesServicios/AccesoriosTuArte.css') }}">
@@ -19,25 +22,28 @@
     </div>
     <nav class="navbar">
         <!--- inicio breaddrums-->
-    <div class="breadcrums">
-        @include('helpers.breadcrumbs', ['breadcrumbs' => [
-        ['url' => route('welcome'), 'label' => 'Bienvenido /'],
-        ['url' => route('tuArteMenu.index'), 'label' => 'Tu Arte /'],
-        ['url' => route('tuArteMenu.servicios.Accesorios.index'), 'label' => 'Servicios / Accesorios'],]])
+        <div class="breadcrums">
+            @include('helpers.breadcrumbs', [
+                'breadcrumbs' => [
+                    ['url' => route('welcome'), 'label' => 'Bienvenido /'],
+                    ['url' => route('tuArteMenu.index'), 'label' => 'Tu Arte /'],
+                    ['url' => route('tuArteMenu.servicios.Accesorios.index'), 'label' => 'Servicios / Accesorios'],
+                ],
+            ])
         </div>
         <div class="inicioRegistro"> @include('partials.inicio')</div>
 <!--- final breaddrums-->
 
 
         <div class="container-fluid">
-        <a href="{{ route('mobaMenu.index')}}">
+            <a href="{{ route('mobaMenu.index') }}">
                 <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
             </a>
             <div class="navbar-buttons">
                 <div class="dropdown">
                     <a href="" class="active-link">
-                        <button class="btn btn-primary active-lonk dropdown-toggle" type="button" id="dropdownMenuButton"
-                            aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-primary active-lonk dropdown-toggle" type="button"
+                            id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
                             Servicios
                         </button>
                     </a>
@@ -124,7 +130,9 @@
                                             @endfor
                                         </div>
                                         <h5 class="card-title">{{ $product->name }}</h5>
-                                        <p class="card-text">${{ $product->price }}</p>
+                                        <div class="mt-auto">
+                                            <p class="card-text">${{ $product->price }}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -187,12 +195,11 @@
 
 
 <style>
-    
-/*estilos Breadcrums*/
+    /*estilos Breadcrums*/
 
-.breadcrums {
-    display: flex;
-}
+    .breadcrums {
+        display: flex;
+    }
 
 .breadcrums a {
     text-decoration: none;
@@ -201,12 +208,12 @@
     margin-right: 2px; /* Esto agrega un espacio entre los enlaces */
 }
 
-.breadcrumbs li {
-    display: inline;
-    padding: 0;
-}
+    .breadcrumbs li {
+        display: inline;
+        padding: 0;
+    }
 
-.breadcrumbs a:hover{
-    color: red;
-}
+    .breadcrumbs a:hover {
+        color: red;
+    }
 </style>
