@@ -16,6 +16,7 @@
 <body class="background-image">
 
     <nav class="navbar">
+        
                 <!--- inicio breaddrums-->
     <div class="breadcrums">
         @include('helpers.breadcrumbs', ['breadcrumbs' => [
@@ -23,6 +24,7 @@
         ['url' => route('tuArteMenu.index'), 'label' => 'Tu Arte /'],
         ['url' => route('tuArteMenu.index'), 'label' => 'Nosotros'],]])
         </div>
+        <div class="inicioRegistro"> @include('partials.inicio')</div>
 <!--- final breaddrums-->
         <div class="container-fluid">
         <a href="{{ route('mobaMenu.index')}}">
@@ -55,7 +57,7 @@
                 <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte">
             </a>
         </div>
-        @include('partials.inicio')
+       
 
     </nav>
 
@@ -122,7 +124,7 @@
 .breadcrums a {
     text-decoration: none;
     color: white;
-    font-size: 0.6vw;
+    font-size: 0.8vw;
     margin-right: 2px; /* Esto agrega un espacio entre los enlaces */
 }
 

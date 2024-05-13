@@ -26,11 +26,18 @@
 
     <div class = "container">
 
-        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen ">
+        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen">
             @if (Route::has('login'))
                 <div class="nav">
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="letter">Inicio</a>
+                    <a href="{{ url('/dashboard') }}" class="letter">Inicio</a>
+                    <form role="form" method="post" action="{{ route('logout') }}" id="logout-form">
+                        @csrf
+                        <a href="{{ route('logout') }}" class="letter"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Cerrar Sesión
+                        </a>
+                    </form>
                     @else
                         <a href="{{ route('login') }}" class="letter">Ingresar </a>
 
@@ -232,4 +239,18 @@
 .logos div {
         transform-style: preserve-3d;
     }
+
+
+    a.letter{
+    text-decoration: none;
+    color: white    ;
+    font-size: 0.8vw;
+    margin-bottom: 5%;
+    padding-bottom: 0% !important;
+}
+
+.log-in{
+    display: flex;
+}
+
 </style>
