@@ -2,7 +2,7 @@
 
 @section('content')
 <div>
-        <a href="{{ asset('/') }}" style="margin-left: 10px; font-size: 0.9vw; margin-top: 0" >Volver</a> 
+        <a href="{{ asset('/') }}" class="btn btn-primary" style="margin: 10px 10px;">Volver</a> 
     </div>
     <div class="container position-sticky z-index-sticky top-0">
 

@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{{ asset('css/StyleFooter.css') }}">
 
     <!-- Styles -->
     <style>
@@ -241,16 +242,5 @@
     }
 
 
-    a.letter{
-    text-decoration: none;
-    color: white    ;
-    font-size: 0.8vw;
-    margin-bottom: 5%;
-    padding-bottom: 0% !important;
-}
-
-.log-in{
-    display: flex;
-}
 
 </style>
