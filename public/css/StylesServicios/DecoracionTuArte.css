@@ -54,6 +54,7 @@
     background-color: rgba(255, 0, 0, 0.274) !important;
     /* Cambia el color de fondo al pasar el cursor sobre las opciones del menú */
 }
+
 .dropdown-item:hover {
     color: #f80008 !important;
 }
@@ -251,6 +252,7 @@
 .carousel-item .card {
     margin-left: 10px;
     background-color: red;
+    height: 350px;
 }
 
 .carousel-item .card img {
@@ -296,7 +298,23 @@
 .card-text,
 .card-title {
     color: rgb(0, 0, 0);
+    margin-top: auto; /* Empuja el precio hacia la parte inferior */
     font-weight: bold;
+    font-size: 1rem;
+}
+
+/* .card-title{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+} */
+.card-body {
+    padding-top: 0;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Opcional: asegura que la tarjeta ocupe toda la altura disponible */
 }
 
 /*ESTRELLAS*/
@@ -313,7 +331,8 @@
 .stars i.active {
     color: yellow;
 }
-.container-fluid{
+
+.container-fluid {
     padding: 0 !important;
 }
 
