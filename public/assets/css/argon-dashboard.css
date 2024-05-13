@@ -21694,6 +21694,8 @@ hr.horizontal.gray-light {
   }
 }
 
+
+/* linea de aside*/
 .sidenav[data-color=primary] .navbar-nav > .nav-item > .nav-link.active {
   background-image: linear-gradient(310deg, #fb6340 0%, #fb6340 100%);
 }
@@ -21843,6 +21845,7 @@ hr.horizontal.gray-light {
   opacity: 1;
 }
 
+/*
 @media (max-width: 1199.98px) {
   .g-sidenav-show.rtl .sidenav {
     transform: translateX(17.125rem);
@@ -21857,6 +21860,15 @@ hr.horizontal.gray-light {
     transform: translateX(0);
   }
 }
+*/
+
+
+/* linea de aside*/
+
+
+
+
+
 .navbar-vertical.bg-white {
   box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15);
 }
