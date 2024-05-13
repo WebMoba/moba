@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-@include('layouts.navbars.auth.topnav', ['title' => 'Personas'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Personas'])
 
     <div class="container-fluid">
         <div class="row">
@@ -20,26 +20,25 @@
 
                             <form action="{{ route('buscarPeople') }}" method="GET" class="d-flex align-items-center">
                                 <div class="col-auto mr-2">
-                                    <input type="text" class="form-control" name="findId"
-                                        placeholder="Buscar...">
+                                    <input type="text" class="form-control" name="findId" placeholder="Buscar...">
                                 </div>
                                 <div class="col-auto">
-                                    <button type="submit" class="btn btn-primary btn-sm"><i class="bi bi-search"></i></button>
+                                    <button type="submit" class="btn btn-primary btn-sm"><i
+                                            class="bi bi-search"></i></button>
                                 </div>
                             </form>
                             <div class="float-right">
                                 <a href="{{ route('pdf.person') }}" class="btn btn-danger btn-sm float-right">
-                                <i class="bi bi-file-pdf-fill"></i>
+                                    <i class="bi bi-file-pdf-fill"></i>
                                 </a>
 
                                 <a href="{{ route('excel.person') }}" class="btn btn-success btn-sm float-right">
-                                <i class="bi bi-file-earmark-excel-fill"></i>
-                               </a>
+                                    <i class="bi bi-file-earmark-excel-fill"></i>
+                                </a>
 
                             </div>
                             <div class="float-right">
-                                <a href="{{ route('person.create') }}" class="btn btn-success" 
-                                    data-placement="left">
+                                <a href="{{ route('person.create') }}" class="btn btn-success" data-placement="left">
                                     <i class="bi bi-plus-circle-fill"></i>
                                 </a>
                             </div>
@@ -90,33 +89,37 @@
                                             <td>{{ $person->town ? $person->town->name : 'N/A' }}</td>
                                             <td>{{ $person->user ? $person->user->email : 'N/A' }}</td>
                                             <td>
-                                            <form action="{{ route('person.destroy', $person->id) }}" method="POST">
-        <a class="btn btn-sm btn-primary {{ $person->disable ? 'disabled' : '' }}"
-            href="{{ route('person.show', $person->id) }}"><i class="bi bi-eye-fill"></i></a>
+                                                
+                                                    <form class="frData"
+                                                        action="{{ route('person.destroy', $person->id) }}"
+                                                        method="POST" data-disable="{{ $person->disable }}">
+                                                        <a class="btn btn-sm btn-primary {{ $person->disable ? 'disabled' : '' }}"
+                                                            href="{{ route('person.show', $person->id) }}"><i
+                                                                class="bi bi-eye-fill"></i></a>
 
-        <a class="btn btn-sm btn-success {{ $person->disable ? 'disabled' : '' }}"
-            href="{{ route('person.edit', $person->id) }}"><i class="bi bi-pencil-square"></i></a>
-            
-        @csrf
-        @method('DELETE')
+                                                        <a class="btn btn-sm btn-success {{ $person->disable ? 'disabled' : '' }}"
+                                                            href="{{ route('person.edit', $person->id) }}"><i
+                                                                class="bi bi-pencil-square"></i></a>
 
-        @php
-            $user = $person->user;
-        @endphp
+                                                        @csrf
+                                                        @method('DELETE')
 
-        @if ($user && $user->email === 'agenciamoba@gmail.com')
-            <button type="button" class="btn btn-danger btn-sm" disabled>
-                {!! $person->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>' !!}
-            </button>
-            <span class="text-muted">(No inhabilitable)</span>
-        @else
-            <button type="submit" class="btn btn-danger btn-sm"
-                onclick="return confirm('¿Está seguro de que desea {{ $person->disable ? 'Habilitar' : 'Deshabilitar' }} a la  persona?')">
-                
-                {!! $person->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>' !!}
-            </button>
-        @endif
-    </form>
+                                                        @php
+                                                            $user = $person->user;
+                                                        @endphp
+
+                                                        @if ($user && $user->email === 'agenciamoba@gmail.com')
+                                                            <button type="button" class="btn btn-danger btn-sm" disabled>
+                                                                {!! $person->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>' !!}
+                                                            </button>
+                                                            <span class="text-muted">(No inhabilitable)</span>
+                                                        @else
+                                                            <button type="submit" class="btn btn-danger btn-sm">
+
+                                                                {!! $person->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>' !!}
+                                                            </button>
+                                                        @endif
+                                                    </form>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -130,3 +133,5 @@
         </div>
     </div>
 @endsection
+
+@extends('layouts.alerts')

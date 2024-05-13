@@ -81,14 +81,15 @@
                                                 <td>{{ $sale->date }}</td>
                                                 <td>{{ $sale->total }}</td>
                                                 <td>
-                                                    <form action="{{ route('sales.destroy', $sale->id) }}" method="POST">
+                                                    <form class="frData"
+                                                        action="{{ route('sales.destroy', $sale->id) }}"
+                                                        method="POST" data-disable="{{ $sale->disable }}">
                                                         <a class="btn btn-sm btn-primary {{ $sale->disable ? 'disabled' : '' }}"
                                                             href="{{ route('sales.show', $sale->id) }}"><i
                                                                 class="bi bi-eye-fill"></i></a>
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger btn-sm"
-                                                            onclick="return confirm('¿Está seguro de que desea {{ $sale->disable ? 'Habilitar' : 'Deshabilitar' }} a la  venta?')">
+                                                        <button type="submit" class="btn btn-danger btn-sm">
                                                             
                                                             {!! $sale->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>' !!}
                                                         </button>
@@ -109,3 +110,5 @@
         </div>
     </div>
 @endsection
+
+@extends('layouts.alerts')

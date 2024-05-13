@@ -49,7 +49,9 @@ class ProjectController extends Controller
         // $proyect->disable=false;
         $project->date_start = now()->format('Y-m-d');
         $project->date_end = now()->format('Y-m-d');
-        return view('project.create', compact('project'));
+        $editing = false;
+
+        return view('project.create', compact('project', 'editing'));
     }
 
     /**
@@ -112,7 +114,9 @@ class ProjectController extends Controller
 
         $project->date_start = optional($project->date_start)->format('Y-m-d');
         $project->date_end = optional($project->date_end)->format('Y-m-d');
-        return view('project.edit', compact('project'));
+        $editing = true;
+
+        return view('project.edit', compact('project', 'editing'));
     }
 
     /**
@@ -133,12 +137,12 @@ class ProjectController extends Controller
         ];
 
         $request->validate([
-            'name'=>'required|string|max:100',
-            'description'=>'required|string|max:300',
-            'date_start'=>'required|date',
-            'date_end'=>'required|date|after_or_equal:date_start',
-            'status'=>'required|select',
-        ],$msj);
+            'name' => 'required|string|max:100',
+            'description' => 'required|string|max:300',
+            'date_start' => 'required|date',
+            'date_end' => 'required|date|after_or_equal:date_start',
+            'status' => 'required|in:en curso,finalizado,pausado,pendiente',
+        ], $msj);
         
         // request()->validate(Project::$rules);
 

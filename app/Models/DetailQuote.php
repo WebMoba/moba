@@ -39,7 +39,15 @@ class DetailQuote extends Model
      *
      * @var array
      */
-    protected $fillable = ['services_id','products_id','projects_id','quotes_id'];
+    protected $fillable = ['services_id', 'products_id', 'projects_id', 'quotes_id'];
+
+    /**
+     * Relación con el modelo Quote
+     */
+    public function quote()
+    {
+        return $this->belongsTo('App\Models\Quote', 'quotes_id');
+    }
 
 
     /**
@@ -61,10 +69,6 @@ class DetailQuote extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function quote()
-    {
-        return $this->belongsTo('App\Models\Quote', 'id', 'quotes_id');
-    }
     
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

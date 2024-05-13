@@ -76,7 +76,9 @@
                                             <td>{{ $quote->status }}</td>
                                             <td>{{ $quote->people_id }}</td>
                                             <td>
-                                                <form action="{{ route('quotes.destroy', $quote->id) }}" method="POST">
+                                                <form class="frData"
+                                                    action="{{ route('quotes.destroy', $quote->id) }}"
+                                                    method="POST" data-disable="{{ $quote->disable }}">
                                                     <a class="btn btn-sm btn-primary {{ $quote->disable ? 'disabled' : '' }}"
                                                         href="{{ route('quotes.show', $quote->id) }}">
                                                         <i class="bi bi-eye-fill"></i>
@@ -88,7 +90,7 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"
-                                                        onclick="return confirm('¿Está seguro de que desea {{ $quote->disable ? 'Habilitar' : 'Deshabilitar' }} la cotización?')">
+                                                        >
                                                         {!! $quote->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>'!!}
                                                     </button>
                                                 </form>
@@ -105,3 +107,6 @@
         </div>
     </div>
 @endsection
+
+
+@extends('layouts.alerts')

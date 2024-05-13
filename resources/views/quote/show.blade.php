@@ -49,9 +49,9 @@
                                         <ul>
                                             @foreach ($quote->detailQuotes as $detail)
                                                 <li>
-                                                    <strong>Servicio:</strong> {{ $detail->service->name }}<br>
-                                                    <strong>Producto:</strong> {{ $detail->product->name }}<br>
-                                                    <strong>Proyecto:</strong> {{ $detail->project->name }}<br>
+                                                    <strong>Servicio:</strong> {{ $detail->service ? $detail->service->name : 'N/A' }}<br>
+                                                    <strong>Producto:</strong> {{ $detail->product ? $detail->product->name : 'N/A' }}<br>
+                                                    <strong>Proyecto:</strong> {{ $detail->project ? $detail->project->name : 'N/A' }}<br>
                                                     <strong>Cotización:</strong> {{ $detail->quotes_id }}
                                                 </li>
                                             @endforeach

@@ -22,6 +22,6 @@
         "bootstrap-icons": "^1.11.3",
         "lodash": "^4.17.21",
         "perfect-scrollbar": "^1.5.5",
-        "sweetalert2": "^11.10.8"
+        "sweetalert2": "^11.11.0"
     }
 }

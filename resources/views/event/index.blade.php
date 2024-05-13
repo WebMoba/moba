@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-@include('layouts.navbars.auth.topnav', ['title' => 'Eventos'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Eventos'])
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -22,21 +22,21 @@
                                     <input type="text" name="termino" class="form-control" placeholder="Buscar....">
                                 </div>
                                 <div class="col-auto mr-2">
-                                    <button type="submit" class="btn btn-primary btn-sm"><i class="bi bi-search"></i></button>
+                                    <button type="submit" class="btn btn-primary btn-sm"><i
+                                            class="bi bi-search"></i></button>
                                 </div>
                             </form>
                             <div class="float-right">
                                 <a href="{{ route('pdf.event', ['findId' => request()->get('findId')]) }}"
                                     class="btn btn-danger btn-sm float-right">
-                                  <i class="bi bi-file-pdf-fill"></i>
+                                    <i class="bi bi-file-pdf-fill"></i>
                                 </a>
                                 <a href="{{ route('excel.events') }}" class="btn btn-success btn-sm float-right">
-                                     <i class="bi bi-file-earmark-excel-fill"></i>
+                                    <i class="bi bi-file-earmark-excel-fill"></i>
                                 </a>
                             </div>
                             <div class="float-right">
-                                <a href="{{ route('events.create') }}" class="btn btn-success" 
-                                    data-placement="left">
+                                <a href="{{ route('events.create') }}" class="btn btn-success" data-placement="left">
                                     <i class="bi bi-plus-circle-fill"></i>
                                 </a>
                             </div>
@@ -78,21 +78,23 @@
                                             <td>{{ $event->importance_range }}</td>
 
                                             <td>
-                                                <form action="{{ route('events.destroy', $event->id) }}" method="POST">
+                                                <form class="frData" action="{{ route('events.destroy', $event->id) }}"
+                                                    method="POST" data-disable="{{ $event->disable }}">
+
+
                                                     <a class="btn btn-sm btn-primary {{ $event->disable ? 'disabled' : '' }}"
                                                         href="{{ route('events.show', $event->id) }}">
-                                                       </i> <i class="bi bi-eye-fill"></i>
+                                                        </i> <i class="bi bi-eye-fill"></i>
                                                     </a>
                                                     <a class="btn btn-sm btn-success {{ $event->disable ? 'disabled' : '' }}"
                                                         href="{{ route('events.edit', $event->id) }}">
-                                                         <i class="bi bi-pencil-square"></i>
+                                                        <i class="bi bi-pencil-square"></i>
                                                     </a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"
-                                                        onclick="return confirm('¿Está seguro de que desea {{ $event->disable ? 'Habilitar' : 'Deshabilitar' }} el evento?')">
-                                                        
-                                                        {!! $event->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>'!!}
+                                                    <button type="submit" class="btn btn-danger btn-sm">
+
+                                                        {!! $event->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>' !!}
                                                     </button>
                                                 </form>
                                             </td>
@@ -108,3 +110,5 @@
         </div>
     </div>
 @endsection
+
+@extends('layouts.alerts')

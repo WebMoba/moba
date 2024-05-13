@@ -52,7 +52,9 @@ class TeamWorkController extends Controller
         $teamWork = new TeamWork();
         $projects = Project::pluck('name','id');
         $teamWork -> assigned_date = now()->format('Y-m-d');
-        return view('team-work.create', compact('teamWork','projects'));
+        $editing = false;
+
+        return view('team-work.create', compact('teamWork', 'editing','projects'));
     }
 
     /**
@@ -104,8 +106,12 @@ class TeamWorkController extends Controller
     public function edit($id)
     {
         $teamWork = TeamWork::find($id);
+        $teamWork->assigned_date = optional($teamWork->assigned_date)->format('Y-m-d');
+
         $projects = Project::pluck('name','id');
-        return view('team-work.edit', compact('teamWork','projects'));
+        $editing = true;
+
+        return view('team-work.edit', compact('teamWork', 'editing','projects'));
     }
 
     /**

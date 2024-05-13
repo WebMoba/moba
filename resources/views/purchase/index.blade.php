@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-@include('layouts.navbars.auth.topnav', ['title' => 'Compras'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Compras'])
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -31,13 +31,12 @@
                                     </i><i class="bi bi-file-pdf-fill"></i>
                                 </a>
                                 <a href="{{ route('excel.purchase') }}" class="btn btn-success btn-sm float-right">
-                                   <i class="bi bi-file-earmark-excel-fill"></i>
+                                    <i class="bi bi-file-earmark-excel-fill"></i>
                                 </a>
 
                             </div>
                             <div class="float-right">
-                                <a href="{{ route('purchases.create') }}" class="btn btn-success" 
-                                    data-placement="left">
+                                <a href="{{ route('purchases.create') }}" class="btn btn-success" data-placement="left">
                                     <i class="bi bi-plus-circle-fill"></i>
                                 </a>
                             </div>
@@ -79,19 +78,22 @@
                                                 <td>{{ $purchase->date }}</td>
 
                                                 <td>
-                                                    <form action="{{ route('purchases.destroy', $purchase->id) }}"
-                                                        method="POST">
-                                                        <a class="btn btn-sm btn-primary {{ $purchase->disable ? 'disabled' : '' }}"
-                                                            href="{{ route('purchases.show', $purchase->id) }}"><i
-                                                                class="bi bi-eye-fill"></i></a>
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger btn-sm"
-                                                            onclick="return confirm('¿Está seguro de que desea {{ $purchase->disable ? 'Habilitar' : 'Deshabilitar' }} a la  compra?')">
-                                                           
-                                                            {!! $purchase->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>' !!}
-                                                        </button>
-                                                    </form>
+                                                    <form class="frData"
+                                                        action="{{ route('purchases.destroy', $purchase->id) }}"
+                                                        method="POST" data-disable="{{ $purchase->disable }}">
+
+                                                        
+                                                            <a class="btn btn-sm btn-primary {{ $purchase->disable ? 'disabled' : '' }}"
+                                                                href="{{ route('purchases.show', $purchase->id) }}"><i
+                                                                    class="bi bi-eye-fill"></i></a>
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                                >
+
+                                                                {!! $purchase->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>' !!}
+                                                            </button>
+                                                        </form>
 
 
 
@@ -109,3 +111,5 @@
         </div>
     </div>
 @endsection
+
+@extends('layouts.alerts')

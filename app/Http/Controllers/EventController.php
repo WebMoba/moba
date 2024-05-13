@@ -41,7 +41,10 @@ class EventController extends Controller
     public function create()
     {
         $event = new Event();
-        return view('event.create', compact('event'));
+        $editing = false;
+
+        return view('event.create', compact('event', 'editing')) ;
+
     }
 
     /**
@@ -101,7 +104,10 @@ class EventController extends Controller
         // Formatea las fechas para que se muestren correctamente en los campos de entrada de fecha
         $event->date_start = optional($event->date_start)->format('Y-m-d');
         $event->date_end = optional($event->date_end)->format('Y-m-d');
-        return view('event.edit', compact('event'));
+
+        $editing = true;
+
+        return view('event.edit', compact('event', 'editing'));
     }
     /**
      * Update the specified resource in storage.
