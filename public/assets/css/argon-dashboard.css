@@ -636,7 +636,7 @@ progress {
   padding-right: var(--bs-gutter-x, 1.5rem);
   padding-left: var(--bs-gutter-x, 1.5rem);
   margin-right: auto;
-  margin-left: auto;
+  margin-left: 18%;
 }
 
 @media (min-width: 576px) {
@@ -680,6 +680,8 @@ progress {
   padding-right: calc(var(--bs-gutter-x) * 0.5);
   padding-left: calc(var(--bs-gutter-x) * 0.5);
   margin-top: var(--bs-gutter-y);
+  margin-left: auto;
+  
 }
 
 .col {
@@ -8235,7 +8237,7 @@ textarea.form-control-lg {
 }
 
 .my-3 {
-  margin-top: 1rem !important;
+  margin-top: 4rem !important;
   margin-bottom: 1rem !important;
 }
 
@@ -24880,5 +24882,33 @@ pre[class*=language-] {
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   .ps {
     overflow: auto !important;
+  }
+}
+
+
+@media (max-width: 990px) {
+  .sidenav-background-black {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+  }
+  
+  .sidenav-background-transparent {
+    background-color: transparent !important;
+  }
+
+  .navbar-nav {
+    display: none;
+  }
+
+  .navbar-vertical.bg-white {
+    box-shadow: none !important;
+  }
+
+  .sidenav .navbar-brand {
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    border-radius: 8px !important;
+    -webkit-border-radius: 8px !important;
+    -moz-border-radius: 8px !important;
+    -ms-border-radius: 8px !important;
+    -o-border-radius: 8px !important;
   }
 }
