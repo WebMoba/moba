@@ -36,11 +36,11 @@
     </div>
     <div class="box-footer mt20 my-2">
         @if ($editing)
-            {{ Form::submit(__('Submit'), ['class' => 'btn btn-primary', 'id' => 'editButton']) }}
+            {{ Form::button('<i class="bi bi-pencil-square"></i>', ['type' => 'submit', 'class' => 'btn btn-success', 'id' => 'editButton']) }}
         @else
-            {{ Form::submit(__('Crear'), ['class' => 'btn btn-success', 'id' => 'createButton']) }}
+            {{ Form::button('<i class="bi bi-plus-circle"></i>', ['type' => 'submit', 'class' => 'btn btn-success', 'id' => 'createButton']) }}
         @endif
-        <a class="btn btn-primary" href="{{ route('materials_raws.index') }}">{{ __('Back') }}</a>
+        <a class="btn btn-primary" href="{{ route('materials_raws.index') }}"><i class="bi bi-arrow-left-circle"></i></a>
     </div>
 
 </div>

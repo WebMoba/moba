@@ -5,7 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Moba</title>
+    <link rel="shortcut icon" type="image/png" href="{{ asset('Imagenes/Logotipo Moba-06.png') }}">
+    <title>
+        Moba / TuArte
+    </title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -152,7 +155,8 @@
         justify-content: center;
         width: 45%;
         height: 95%;
-        perspective: 1000px; /* Ajusta la perspectiva para el efecto 3D */
+        perspective: 1000px;
+        /* Ajusta la perspectiva para el efecto 3D */
 
     }
 
@@ -214,22 +218,40 @@
 
 
     @keyframes pulse-opacity {
-        0% { opacity: 1; }
-        50% { opacity: 0.5; }
-        100% { opacity: 1; }
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.5;
+        }
+
+        100% {
+            opacity: 1;
+        }
     }
 
     @keyframes spin-horizontal {
-        0% { transform: rotateY(0deg); }
-        50% { transform: rotateY(85deg); }
-        100% { transform: rotateY(-85deg); }
+        0% {
+            transform: rotateY(0deg);
+        }
+
+        50% {
+            transform: rotateY(85deg);
+        }
+
+        100% {
+            transform: rotateY(-85deg);
+        }
     }
 
-.logos img {
-    animation: pulse-opacity 3s ease-in-out infinite, spin-horizontal 15s linear infinite;
-    transform-style: preserve-3d; /* Importante para la perspectiva 3D */
-}
-.logos div {
+    .logos img {
+        animation: pulse-opacity 3s ease-in-out infinite, spin-horizontal 15s linear infinite;
+        transform-style: preserve-3d;
+        /* Importante para la perspectiva 3D */
+    }
+
+    .logos div {
         transform-style: preserve-3d;
     }
 </style>
