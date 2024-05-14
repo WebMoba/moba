@@ -636,7 +636,7 @@ progress {
   padding-right: var(--bs-gutter-x, 1.5rem);
   padding-left: var(--bs-gutter-x, 1.5rem);
   margin-right: auto;
-  margin-left: 18%;
+  margin-left: auto;
 }
 
 @media (min-width: 576px) {
@@ -671,7 +671,7 @@ progress {
   flex-wrap: wrap;
   margin-top: calc(-1 * var(--bs-gutter-y));
   margin-right: calc(-0.5 * var(--bs-gutter-x));
-  margin-left: calc(-0.5 * var(--bs-gutter-x));
+  margin-left: 15%;
 }
 .row > * {
   flex-shrink: 0;
@@ -680,8 +680,7 @@ progress {
   padding-right: calc(var(--bs-gutter-x) * 0.5);
   padding-left: calc(var(--bs-gutter-x) * 0.5);
   margin-top: var(--bs-gutter-y);
-  margin-left: auto;
-  
+  margin-left: 1.5rem;
 }
 
 .col {
@@ -23244,7 +23243,7 @@ p {
   background-color: #051139 !important;
 }
 .dark-version .sidenav {
-  background: #111C44 !important;
+  background: transparent !important;
 }
 .dark-version .sidenav.bg-transparent {
   background: transparent !important;
@@ -23256,7 +23255,7 @@ p {
   color: #fff !important;
 }
 .dark-version .sidenav.bg-white {
-  background: #fff !important;
+  background: transparent !important;
 }
 .dark-version .sidenav.bg-white .navbar-nav .nav-link.active:after {
   color: rgba(206, 212, 218, 0.7);
