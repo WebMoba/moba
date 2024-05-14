@@ -65,16 +65,19 @@ class TeamWorkController extends Controller
      */
     public function store(Request $request)
     {
-        // $area=[
-        //     'specialty'=>'required|string|max:100',
-        //     'assigned_work'=>'required|string|max:100',
-        //     'project'=>'required|select',
-        // ];
-        // $msj=[
-        //     'required'=>'El atributo es requerido',
-        //     'max'=>'No puede ingresar mas caracteres en este campo',
-        // ];
-        // $this->validate($request, $area,$msj);
+        $msj=[
+            'required'=>'El atributo es requerido',
+            'max'=>'No puede ingresar mas caracteres en este campo',
+            'string' => 'El campo debe ser una cadena de texto.',
+            'date' => 'El campo no debe ser una fecha anterior al dia de Hoy.',
+        ];
+
+        $request->validate([
+            'specialty'=>'required|string|max:100',
+            'assigned_work'=>'required|string|max:100',
+            'assigned_date'=>'required|date',
+            'projects_id'=>'required',
+        ], $msj);
 
         request()->validate(TeamWork::$rules);
 
@@ -106,12 +109,17 @@ class TeamWorkController extends Controller
     public function edit($id)
     {
         $teamWork = TeamWork::find($id);
-        $teamWork->assigned_date = optional($teamWork->assigned_date)->format('Y-m-d');
 
-        $projects = Project::pluck('name','id');
+        // Verificar si el registro existe
+        if (!$teamWork) {
+            return redirect()->route('team-works.index')->with('error', 'Equipo de trabajo no encontrado');
+        }
+
+        $teamWork->assigned_date = optional($teamWork->assigned_date)->format('Y-m-d');
+        $projects = Project::pluck('name', 'id');
         $editing = true;
 
-        return view('team-work.edit', compact('teamWork', 'editing','projects'));
+        return view('team-work.edit', compact('teamWork', 'editing', 'projects'));
     }
 
     /**
@@ -123,29 +131,30 @@ class TeamWorkController extends Controller
      */
     public function update(Request $request, TeamWork $teamWork)
     {
-        $msj=[
-            'required'=>'El atributo es requerido',
-            'max'=>'No puede ingresar mas caracteres en este campo',
+        $msj = [
+            'required' => 'El atributo es requerido',
+            'max' => 'No puede ingresar más caracteres en este campo',
             'string' => 'El campo debe ser una cadena de texto.',
-            'date' => 'El campo no debe ser una fecha anterior al dia de Hoy.',
+            'date' => 'El campo no debe ser una fecha anterior al día de hoy.',
         ];
 
         $request->validate([
-            'specialty'=>'required|string|max:100',
-            'assigned_work'=>'required|string|max:100',
-            'assigned_date'=>'required|date',
-            'project'=>'required',
+            'specialty' => 'required|string|max:100',
+            'assigned_work' => 'required|string|max:100',
+            'assigned_date' => 'required|date',
+            'projects_id' => 'required',
         ], $msj);
 
-        // request()->validate(TeamWork::$rules);
+        // Agrega depuración aquí
+        \Log::info('Datos de actualización', $request->all());
 
-        $teamWork->update($request->all(), [
-            'disable' => 0,
-        ]);
-        
+        $teamWork->update($request->all());
+
         return redirect()->route('team-works.index')
             ->with('success', 'Equipo de trabajo actualizado con éxito');
     }
+
+
 
     /**
      * @param int $id

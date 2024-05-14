@@ -10,7 +10,7 @@
 
         <div class="form-group col-md-10 ">
             {{ Form::label('Trabajo asignado', null, ['class' => 'required']) }}
-            {{ Form::text('assigned_work', $teamWork->assigned_work, ['class' => 'form-control' . ($errors->has('date') ? ' is-invalid' : ''), 'required']) }}
+            {{ Form::text('assigned_work', $teamWork->assigned_work, ['class' => 'form-control' . ($errors->has('assigned_work') ? ' is-invalid' : ''), 'required']) }}
             {!! $errors->first('assigned_work', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
@@ -18,8 +18,6 @@
             {{ Form::label('Fecha asignada', null, ['class' => 'required']) }}
             {{ Form::date('assigned_date', optional($teamWork->assigned_date)->format('Y-m-d'), ['class' => 'form-control' . ($errors->has('assigned_date') ? ' is-invalid' : ''), 'required', 'id' => 'assigned_date', 'min' => now()->format('Y-m-d')]) }}
             {!! $errors->first('assigned_date', '<div class="invalid-feedback">:message</div>') !!}
-
-            <small class="text-muted">Por cuestiones de seguridad este campo no es editable.</small>
         </div>
 
         <div class="form-group col-md-10 ">
@@ -38,6 +36,7 @@
         <a class="btn btn-primary" href="{{ route('team-works.index') }}">{{ __('Back') }}</a>
     </div>
 </div>
+
 <style>
     .required::after {
         content: "*";
