@@ -50,8 +50,9 @@ class Project extends Model
      */
     public function teamWorks()
     {
-        return $this->hasMany('App\Models\TeamWork', 'projects_id', 'id');
+        return $this->hasMany(TeamWork::class);
     }
+    
     
     public function quotes()
     {

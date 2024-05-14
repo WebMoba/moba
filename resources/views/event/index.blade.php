@@ -26,7 +26,7 @@
                                             class="bi bi-search"></i></button>
                                 </div>
                             </form>
-                            <div class="float-right">
+                            <div class="float-right" style="display:flex">
                                 <a href="{{ route('pdf.event', ['findId' => request()->get('findId')]) }}"
                                     class="btn btn-danger btn-sm float-right">
                                     <i class="bi bi-file-pdf-fill"></i>

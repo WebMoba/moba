@@ -16,9 +16,21 @@
 <body>
 
     <!-- menu  -->
+   
+    <nav class="navbar">
+            <!--- inicio breaddrums-->
+            <div class="breadcrums">
+        @include('helpers.breadcrumbs', ['breadcrumbs' => [
+        ['url' => route('welcome'), 'label' => 'Bienvenido /'],
+        ['url' => route('mobaMenu.index'), 'label' => 'Moba /'],
+        ['url' => route('mobaMenu.EquipoTrabajo.index'), 'label' => 'EquipoDeTrabajo'],]])
+        </div>
+        <div class="inicioRegistro"> @include('partials.inicio')</div>
+<!--- final breaddrums-->
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
         <div class="container-fluid">
+            
         <a href="{{ route('mobaMenu.index')}}">
                 <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
             </a>
@@ -49,7 +61,7 @@
                 <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte">
             </a>
         </div>
-        @include('partials.inicio')
+      
 
     </nav>
 
@@ -398,7 +410,7 @@
     }
 
     .fondo-equipo {
-        background-color: #BCCCE0;
+        background-color: #030303;
     }
 
     footer {
@@ -730,6 +742,32 @@
 
         cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="white" stroke="black" stroke-width="2"/><path d="M12 6v12m-6-6h12" fill="none" stroke="black" stroke-width="2"/></svg>'), auto;
     }
+
+
+
+    
+    /*estilos Breadcrums*/
+
+    .breadcrums {
+    display: flex;
+}
+
+.breadcrums a {
+    text-decoration: none;
+    color: white;
+    font-size: 0.8vw;
+    margin-right: 2px; /* Esto agrega un espacio entre los enlaces */
+}
+
+.breadcrumbs li {
+    display: inline;
+    padding: 0;
+}
+
+.breadcrumbs a:hover{
+    color:  #2bb9e5;
+}
+
 
 
     

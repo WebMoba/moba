@@ -1,10 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+    <div>
+        <a href="{{ asset('/') }}" class="btn btn-primary" style="margin: 10px 10px;">Volver</a> 
+    </div>
     <div class="container position-sticky z-index-sticky top-0">
+
+    
         <div class="row">
+            
             <div class="col-12">
                 @include('layouts.navbars.guest.navbar')
+                
             </div>
         </div>
     </div>

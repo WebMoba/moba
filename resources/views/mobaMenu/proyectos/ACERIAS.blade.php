@@ -24,6 +24,7 @@
         ['url' => route('mobaMenu.proyectos.index'), 'label' => 'Proyectos /'],
         ['url' => route('mobaMenu.proyectos.ACERIAS'), 'label' => 'Acerias'],]])
         </div>
+        <div class="inicioRegistro"> @include('partials.inicio')</div>
 <!--- final breaddrums-->
 
         <div class="container-fluid">
@@ -447,7 +448,7 @@
 .breadcrums a {
     text-decoration: none;
     color: white;
-    font-size: 0.6vw;
+    font-size: 0.8vw;
     margin-right: 2px; /* Esto agrega un espacio entre los enlaces */
 }
 

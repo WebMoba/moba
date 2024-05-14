@@ -7,8 +7,10 @@
 @section('content')
 @include('layouts.navbars.auth.topnav', ['title' => 'Editar Proyecto'])
     <section class="content container-fluid">
-        <div class="">
-            <div class="col-md-10 mx-auto">
+    <div class="container"> <!-- Agregar contenedor -->
+            <div class="row justify-content-center"> 
+            <div class="col-md-8">
+
 
                 @includeif('partials.errors')
 
@@ -28,5 +30,6 @@
                 </div>
             </div>
         </div>
+    </div>
     </section>
 @endsection

@@ -12,8 +12,10 @@
         </div>
     @endif
     <section class="content container-fluid">
-        <div class="">
-            <div class="col-md-12">
+    <div class="container"> <!-- Agregar contenedor -->
+            <div class="row justify-content-center"> 
+            <div class="col-md-8">
+
 
                 @includeif('partials.errors')
 
@@ -33,6 +35,7 @@
                         </form>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </section>
