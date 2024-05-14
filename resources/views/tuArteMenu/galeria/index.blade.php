@@ -16,17 +16,20 @@
 <body class="background-image">
 
     <nav class="navbar">
-                <!--- inicio breaddrums-->
-    <div class="breadcrums">
-        @include('helpers.breadcrumbs', ['breadcrumbs' => [
-        ['url' => route('welcome'), 'label' => 'Bienvenido /'],
-        ['url' => route('tuArteMenu.index'), 'label' => 'Tu Arte /'],
-        ['url' => route('tuArteMenu.galeria.index'), 'label' => 'Galeria'],]])
+        <!--- inicio breaddrums-->
+        <div class="breadcrums">
+            @include('helpers.breadcrumbs', [
+                'breadcrumbs' => [
+                    ['url' => route('welcome'), 'label' => 'Bienvenido /'],
+                    ['url' => route('tuArteMenu.index'), 'label' => 'Tu Arte /'],
+                    ['url' => route('tuArteMenu.galeria.index'), 'label' => 'Galeria'],
+                ],
+            ])
         </div>
         <div class="inicioRegistro"> @include('partials.inicio')</div>
-<!--- final breaddrums-->
+        <!--- final breaddrums-->
         <div class="container-fluid">
-        <a href="{{ route('mobaMenu.index')}}">
+            <a href="{{ route('mobaMenu.index') }}">
                 <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
             </a>
             <div class="navbar-buttons">
@@ -56,7 +59,7 @@
                 <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte">
             </a>
         </div>
-       
+
 
     </nav>
 
@@ -108,57 +111,24 @@
                     <div class="lightbox" data-mdb-lightbox-init>
                         <div class="row">
                             <div class="col-lg-4">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img1.jpeg') }}"
-                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img2.jpg') }}"
-                                    alt="Coconut with Strawberries" class="w-100 shadow-1-strong " />
-                            </div>
-                            <div class="col-lg-8">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img3.webp') }}"
-                                    alt="Dark Roast Iced Coffee" class="w-100 shadow-1-strong" />
-                            </div>
-                            <div class="mt-4 col-lg-4">
                                 <img src="{{ asset('Imagenes/img-tuArte-gallery/Img4.webp') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img3.webp') }}"
+                                    alt="Coconut with Strawberries" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
-                            <div class=" ult col-lg-4">
+                            <div class="col-lg-8">
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img6.webp') }}"
+                                    alt="Dark Roast Iced Coffee" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                            </div>
+                            <div class="mt-4 mb-2 col-lg-4">
                                 <img src="{{ asset('Imagenes/img-tuArte-gallery/Img5.webp') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
-                            <div class="ult col-lg-4">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img6.webp') }}"
-                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <!-- Gallery -->
-            </div>
-            <div class="carousel-item">
-                <!-- Gallery -->
-                <div class="container col-lg-9">
-                    <div class="lightbox" data-mdb-lightbox-init>
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img3.webp') }}"
-                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img2.jpg') }}"
-                                    alt="Coconut with Strawberries" class="w-100 shadow-1-strong " />
-                            </div>
-                            <div class="col-lg-8">
+                            <div class=" ult mb-2 col-lg-4">
                                 <img src="{{ asset('Imagenes/img-tuArte-gallery/Img1.jpeg') }}"
-                                    alt="Dark Roast Iced Coffee" class="w-100 shadow-1-strong" />
-                            </div>
-                            <div class="mt-4 col-lg-4">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img4.webp') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
-                            <div class=" ult col-lg-4">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img6.webp') }}"
-                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
-                            </div>
-                            <div class="ult col-lg-4">
+                            <div class="ult mb-2 col-lg-4">
                                 <img src="{{ asset('Imagenes/img-tuArte-gallery/Img4.webp') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
@@ -177,21 +147,54 @@
                                 <img src="{{ asset('Imagenes/img-tuArte-gallery/Img4.webp') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                                 <img src="{{ asset('Imagenes/img-tuArte-gallery/Img3.webp') }}"
-                                    alt="Coconut with Strawberries" class="w-100 shadow-1-strong " />
+                                    alt="Coconut with Strawberries" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
                             <div class="col-lg-8">
                                 <img src="{{ asset('Imagenes/img-tuArte-gallery/Img6.webp') }}"
-                                    alt="Dark Roast Iced Coffee" class="w-100 shadow-1-strong" />
+                                    alt="Dark Roast Iced Coffee" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
-                            <div class="mt-4 col-lg-4">
+                            <div class="mt-4 mb-2 col-lg-4">
                                 <img src="{{ asset('Imagenes/img-tuArte-gallery/Img5.webp') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
-                            <div class=" ult col-lg-4">
+                            <div class=" ult mb-2 col-lg-4">
                                 <img src="{{ asset('Imagenes/img-tuArte-gallery/Img1.jpeg') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
-                            <div class="ult col-lg-4">
+                            <div class="ult mb-2 col-lg-4">
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img4.webp') }}"
+                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery -->
+            </div>
+            <div class="carousel-item">
+                <!-- Gallery -->
+                <div class="container col-lg-9">
+                    <div class="lightbox" data-mdb-lightbox-init>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img4.webp') }}"
+                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img3.webp') }}"
+                                    alt="Coconut with Strawberries" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                            </div>
+                            <div class="col-lg-8">
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img6.webp') }}"
+                                    alt="Dark Roast Iced Coffee" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                            </div>
+                            <div class="mt-4 mb-2 col-lg-4">
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img5.webp') }}"
+                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                            </div>
+                            <div class=" ult mb-2 col-lg-4">
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img1.jpeg') }}"
+                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                            </div>
+                            <div class="ult mb-2 col-lg-4">
                                 <img src="{{ asset('Imagenes/img-tuArte-gallery/Img4.webp') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
@@ -216,29 +219,32 @@
 
 
 
- @include('partials.footerTuArte')
+    @include('partials.footerTuArte')
 </body>
 
 </html>
 
 
 
-<style> 
- .active-link {
+<style>
+    .active-link {
         position: relative;
-        color:red;
+        color: red;
     }
 
     .active-link:after {
-        color:red;
+        color: red;
         content: '';
         position: absolute;
         left: 0;
         bottom: 0;
         width: 100%;
-        height: 2px; /* Grosor de la línea */
-        background-color: red; /* Color de la línea */
+        height: 2px;
+        /* Grosor de la línea */
+        background-color: red;
+        /* Color de la línea */
     }
+
     /* Estilos para los botones de indicadores */
     .carousel-indicators [data-bs-target] {
         width: 30px;
@@ -254,6 +260,15 @@
     }
 
     /* ------Estilo de galeria ----------*/
+    .container {
+        padding-left: 5em;
+        padding-right: 5em;
+    }
+
+    .mb-2 {
+        margin-bottom: 1.3rem !important;
+    }
+
     .container {
         margin-top: 9em;
     }
@@ -272,11 +287,12 @@
 
     .ult img {
         height: 21em;
-        margin-top: -1.9em;
+        margin-top: .8em;
     }
 
     .container img {
-        border: 2px solid #d9534f;
+        border: .2em solid #d9534f;
+        border-radius: .5em; 
     }
 
     body {
@@ -284,7 +300,7 @@
     }
 
     .container img {
-        object-fit: cover;
+        object-fit: fill;
         /* Ajusta la imagen manteniendo la relación de aspecto, cubriendo el contenedor */
     }
 
@@ -321,30 +337,31 @@
         border-top: 1px solid #f80008;
     }
 
-    .container-fluid{
+    .container-fluid {
         padding: 0 !important;
     }
-    
-    
+
+
     /*estilos Breadcrums*/
 
     .breadcrums {
-    display: flex;
-}
+        display: flex;
+    }
 
-.breadcrums a {
-    text-decoration: none;
-    color: white;
-    font-size: 0.8vw;
-    margin-right: 2px; /* Esto agrega un espacio entre los enlaces */
-}
+    .breadcrums a {
+        text-decoration: none;
+        color: white;
+        font-size: 0.8vw;
+        margin-right: 2px;
+        /* Esto agrega un espacio entre los enlaces */
+    }
 
-.breadcrumbs li {
-    display: inline;
-    padding: 0;
-}
+    .breadcrumbs li {
+        display: inline;
+        padding: 0;
+    }
 
-.breadcrumbs a:hover{
-    color: red;
-}
+    .breadcrumbs a:hover {
+        color: red;
+    }
 </style>
