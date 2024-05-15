@@ -5,17 +5,8 @@
 @endsection
 
 @section('content')
-@include('layouts.navbars.auth.topnav', ['title' => 'Productos'])
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success text-center">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
-    @if ($message = Session::get('danger'))
-        <div class="alert alert-danger text-center">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
+    @include('layouts.navbars.auth.topnav', ['title' => 'Productos'])
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -33,7 +24,8 @@
                                         placeholder="Buscar por Nombre">
                                 </div>
                                 <div class="col-auto">
-                                    <button type="submit" class="btn btn-primary btn-sm"><i class="bi bi-search"></i></button>
+                                    <button type="submit" class="btn btn-primary btn-sm"><i
+                                            class="bi bi-search"></i></button>
                                 </div>
                             </form>
                             <div class="float-right">
@@ -45,14 +37,22 @@
                                 </a>
                             </div>
                             <div class="float-right">
-                                <a href="{{ route('product.create') }}" class="btn btn-success"
-                                    data-placement="left">
+                                <a href="{{ route('product.create') }}" class="btn btn-success" data-placement="left">
                                     <i class="bi bi-plus-circle"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
-
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success text-center">
+                            <p>{{ $message }}</p>
+                        </div>
+                    @endif
+                    @if ($message = Session::get('danger'))
+                        <div class="alert alert-danger text-center">
+                            <p>{{ $message }}</p>
+                        </div>
+                    @endif
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
@@ -79,17 +79,18 @@
                                             <td>{{ $product->unit->unit_type }}</td>
                                             <td>{{ $product->categoriesProductsService->name }}</td>
                                             <td>
-                                                 <form class="frData"
-                                                    action="{{ route('product.destroy', $product->id) }}"
+                                                <form class="frData" action="{{ route('product.destroy', $product->id) }}"
                                                     method="POST" data-disable="{{ $product->disable }}">
                                                     <a class="btn btn-sm btn-primary {{ $product->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('product.show', $product->id) }}"> <i class="bi bi-eye-fill"></i></a>
+                                                        href="{{ route('product.show', $product->id) }}"> <i
+                                                            class="bi bi-eye-fill"></i></a>
                                                     <a class="btn btn-sm btn-success {{ $product->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('product.edit', $product->id) }}"><i class="bi bi-pencil-square"></i></a>
+                                                        href="{{ route('product.edit', $product->id) }}"><i
+                                                            class="bi bi-pencil-square"></i></a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm">
-                                                        {!!$product->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>'!!}
+                                                        {!! $product->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>' !!}
                                                     </button>
                                                 </form>
                                             </td>

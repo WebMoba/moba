@@ -31,16 +31,23 @@ class ProductController extends Controller
     {
         $search = request()->input('search');
 
-
         if (!empty($search)) {
-            $products = Product::where('name', 'like', '%' . $search . '%')->with('unit', 'categoriesProductsService')
+            $products = Product::where('name', 'like', '%' . $search . '%')
+                ->with('unit', 'categoriesProductsService')
+                ->orderBy('created_at', 'desc') // Ordenar por fecha de creación descendente
                 ->paginate(10);
         } else {
-            $products = Product::with('unit', 'categoriesProductsService')->paginate(10);
+            $products = Product::with('unit', 'categoriesProductsService')
+                ->orderBy('created_at', 'desc') // Ordenar por fecha de creación descendente
+                ->paginate(10);
         }
 
-        return view('product.index', compact('products'))
-            ->with('i', (request()->input('page', 1) - 1) * $products->perPage());
+        // Calcular el índice correcto para la paginación
+        $currentPage = request()->input('page', 1);
+        $startIndex = ($currentPage - 1) * $products->perPage();
+
+        return view('product.index', compact('products', 'startIndex'))
+            ->with('i', $startIndex);
     }
 
     public function indexForAccessories()

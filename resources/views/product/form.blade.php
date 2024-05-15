@@ -11,8 +11,10 @@
         <div class="form-group">
             {{ Form::label('Imagen', null, ['class' => 'required']) }}
             <br>
-            <img id="image-preview" src="#" alt="Vista previa de la imagen"
-                style="display: none; width: 150px; height: 150px;">
+            @if ($product->image)
+                <img src="{{ asset('storage/' . $product->image) }}" alt="Imagen actual" style="width: 150px; height: 150px;">
+                <br><br>
+            @endif
             {{ Form::file('image', ['class' => 'form-control' . ($errors->has('image') ? ' is-invalid' : ''), 'onchange' => 'previewImage(event)']) }}
             {!! $errors->first('image', '<div class="invalid-feedback">:message</div>') !!}
         </div>
