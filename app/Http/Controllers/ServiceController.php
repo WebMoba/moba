@@ -140,8 +140,9 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        $service = Service::find($id)->delete();
-
+        $service = Service::find($id);
+        $service->disable=!$service->disable;
+        $service->save();
         return redirect()->route('service.index')
             ->with('success', 'Servicio Eliminado Exitosamente');
     }

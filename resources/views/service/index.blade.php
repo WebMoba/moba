@@ -6,16 +6,7 @@
 
 @section('content')
     @include('layouts.navbars.auth.topnav', ['title' => 'Servicios'])
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success text-center">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
-    @if ($message = Session::get('danger'))
-        <div class="alert alert-danger text-center">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -49,6 +40,16 @@
                             </div>
                         </div>
                     </div>
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success text-center">
+                            <p>{{ $message }}</p>
+                        </div>
+                    @endif
+                    @if ($message = Session::get('danger'))
+                        <div class="alert alert-danger text-center">
+                            <p>{{ $message }}</p>
+                        </div>
+                    @endif
                     <div class="card-body">
 
                         <div class="table-responsive">
@@ -76,21 +77,20 @@
                                                     height="150"></td>
                                             <td>{{ $service->categoriesProductsService->name }}</td>
                                             <td>
-                                                    <form class="frData"
-                                                        action="{{ route('service.destroy', $service->id) }}"
-                                                        method="POST" data-disable="{{ $service->disable }}">
-                                                        <a class="btn btn-sm btn-primary {{ $service->disable ? 'disabled' : '' }}"
-                                                            href="{{ route('service.show', $service->id) }}"><i
-                                                                class="bi bi-eye-fill"></i></a>
-                                                        <a class="btn btn-sm btn-success {{ $service->disable ? 'disabled' : '' }}"
-                                                            href="{{ route('service.edit', $service->id) }}"><i
-                                                                class="bi bi-pencil-square"></i></a>
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger btn-sm">
-                                                            {!! $service->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>' !!}
-                                                        </button>
-                                                    </form>
+                                                <form class="frData" action="{{ route('service.destroy', $service->id) }}"
+                                                    method="POST" data-disable="{{ $service->disable }}">
+                                                    <a class="btn btn-sm btn-primary {{ $service->disable ? 'disabled' : '' }}"
+                                                        href="{{ route('service.show', $service->id) }}"><i
+                                                            class="bi bi-eye-fill"></i></a>
+                                                    <a class="btn btn-sm btn-success {{ $service->disable ? 'disabled' : '' }}"
+                                                        href="{{ route('service.edit', $service->id) }}"><i
+                                                            class="bi bi-pencil-square"></i></a>
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm">
+                                                        {!! $service->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>' !!}
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach

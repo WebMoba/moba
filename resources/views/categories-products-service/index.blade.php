@@ -5,17 +5,6 @@
 @endsection
 
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Categorias'])
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success text-center">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
-    @if ($message = Session::get('danger'))
-        <div class="alert alert-danger text-center">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -55,7 +44,17 @@
                             </div>
                         </div>
                     </div>
-
+                    @include('layouts.navbars.auth.topnav', ['title' => 'Categorias'])
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success text-center">
+                            <p>{{ $message }}</p>
+                        </div>
+                    @endif
+                    @if ($message = Session::get('danger'))
+                        <div class="alert alert-danger text-center">
+                            <p>{{ $message }}</p>
+                        </div>
+                    @endif
                     <div class="card-body">
                         <div class="card-body">
 
@@ -121,4 +120,4 @@
         </div>
     @endsection
 
-@extends('layouts.alerts')
+    @extends('layouts.alerts')
