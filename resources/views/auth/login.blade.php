@@ -1,17 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <div>
-        <a href="{{ asset('/') }}" class="btn btn-primary" style="margin: 10px 10px;">Volver</a> 
-    </div>
     <div class="container position-sticky z-index-sticky top-0">
 
-    
+
         <div class="row">
-            
+
             <div class="col-12">
                 @include('layouts.navbars.guest.navbar')
-                
+
             </div>
         </div>
     </div>
@@ -19,6 +16,10 @@
         <section>
             <div class="page-header min-vh-100">
                 <div class="container">
+                    <div>
+                        <a href="{{ asset('/') }}" class="btn btn-primary" style="margin-top: 1.25%;"><i
+                                class="bi bi-arrow-left-circle"></i></a>
+                    </div>
                     <div class="row">
                         <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
                             <div class="card card-plain">

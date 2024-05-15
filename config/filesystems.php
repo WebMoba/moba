@@ -29,11 +29,9 @@ return [
     */
 
     'disks' => [
-
-        'local' => [
+        'documentos' => [
             'driver' => 'local',
-            'root' => storage_path('app'),
-            'throw' => false,
+            'root' => 'C:\\Backups',
         ],
 
         'public' => [

@@ -68,7 +68,7 @@
                                 <tbody>
                                     @foreach ($quotes as $quote)
                                         <tr>
-                                            <td>{{ $quote->id }}</td>
+                                            <td>{{ ++$i }}</td>
                                             <td>{{ $quote->date_issuance }}</td>
                                             <td>{{ $quote->description }}</td>
                                             <td>{{ $quote->total }}</td>

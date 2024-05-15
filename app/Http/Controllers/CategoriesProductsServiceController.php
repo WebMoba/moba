@@ -145,7 +145,7 @@ class CategoriesProductsServiceController extends Controller
 
         //terona a la pagina de indice con un mensaje de exito
         return redirect()->route('categories-products-service.index')
-            ->with('success', 'Categoria Eliminada Exitosamente');
+            ->with('success', 'Categoria desabilitada exitosamente');
     }
     public function generatePDF(Request $request)
     {

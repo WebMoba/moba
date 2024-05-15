@@ -34,8 +34,8 @@ class ProjectController extends Controller
                     ->orderBy('date_start','asc')
                     ->paginate(4);
 
-        return view('project.index', compact('projects','search')) ;
-            // ->with('i', (request()->input('page', 1) - 1) * $projects->perPage());
+        return view('project.index', compact('projects','search')) 
+            ->with('i', (request()->input('page', 1) - 1) * $projects->perPage());
     }
 
     /**

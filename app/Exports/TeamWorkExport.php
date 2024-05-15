@@ -3,15 +3,18 @@
 namespace App\Exports;
 
 use App\Models\TeamWork;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
 
-class TeamWorkExport implements FromCollection
+class TeamWorkExport implements FromView
 {
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function collection()
+    public function view(): View
     {
-        return TeamWork::all();
+        return view('team-work/exportTeamWork', [
+            'teamwork' => TeamWork::all()
+        ]);
     }
 }

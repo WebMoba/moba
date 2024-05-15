@@ -178,12 +178,15 @@
             </div>
             <ul class="navbar-nav  justify-content-end">
                 <li class="nav-item d-flex align-items-center">
-                <a href="{{ asset('/') }}"  style="margin: 10px 10px;  text-decoration: underline;" class="nav-link text-white font-weight-bold px-0">Volver</a> 
+                    <a href="{{ asset('/') }}" style="margin: 10px 10px;  text-decoration: underline;"
+                        class="nav-link text-white font-weight-bold px-0">Volver</a>
                     <form role="form" method="post" action="{{ route('logout') }}" id="logout-form">
                         @csrf
-                         <a href="{{ route('logout') }}"
+                        <a href="{{ route('logout') }}"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                            class="nav-link text-white font-weight-bold px-0"  style="margin: 10px 10px;  text-decoration: underline;">
+                            class="nav-link text-white font-weight-bold px-0"
+                            style="margin: 10px 10px;  text-decoration: underline;">
+                            <i class="bi bi-person-circle"></i>
                             <span class="d-sm-inline d-none">Cerrar Sesión</span>
                         </a>
                     </form>

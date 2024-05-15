@@ -27,8 +27,8 @@
         <div class="inicioRegistro"> @include('partials.inicio')</div>
 <!--- final breaddrums-->
         <div class="container-fluid">
-        <a href="{{ route('mobaMenu.index')}}">
-                <img src="{{ asset('Imagenes/Logomoba.png') }}" class="navbar-img-left" alt="Logo Moba"></a>
+            <a href="{{ route('mobaMenu.index')}}">
+                <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba"></a>
             <div class="navbar-buttons">
                 <div class="dropdown">
                     <a href="{{ route('mobaMenu.Servicios.servicios') }}"><button

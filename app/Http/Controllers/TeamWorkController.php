@@ -38,8 +38,8 @@ class TeamWorkController extends Controller
                     ->orderBy('assigned_date','asc')
                     ->paginate(10);
 
-        return view('team-work.index', compact('teamWorks','search'));
-            // ->with('i', (request()->input('page', 1) - 1) * $teamWorks->perPage());
+        return view('team-work.index', compact('teamWorks','search'))
+            ->with('i', (request()->input('page', 1) - 1) * $teamWorks->perPage());
     }
 
     /**
