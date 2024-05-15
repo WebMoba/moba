@@ -62,8 +62,7 @@
         //inicio de proyectos
         //proyectos cuadro
         <div class="title-container ">
-            <h1 class="big-title custom-title">ODONTOLOGA</h1>
-            <h1 class="big-title custom-title1">ANA CAROLINA CAMACHO</h1>
+            <h1 class="big-title custom-title">ODONTOLOGA ANA CAROLINA CAMACHO</h1>
         </div>
 
         <div class="container">
