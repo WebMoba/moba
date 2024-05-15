@@ -12,7 +12,7 @@
         <!-- @php $i = 0; @endphp -->
         @foreach ($teamwork as $teamWork)
             <tr>
-                <td>{{ $teamWork->id }}</td>
+                <td>{{ ++$i }}</td>
                 <td>{{ $teamWork->specialty }}</td>
                 <td>{{ $teamWork->assigned_work }}</td>
                 <td>{{ $teamWork->assigned_date }}</td>

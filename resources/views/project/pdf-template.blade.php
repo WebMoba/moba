@@ -53,7 +53,7 @@
             <!-- @php $i = 0; @endphp -->
             @foreach ($project as $projects)
                 <tr>
-                    <td>{{ $projects->id }}</td>               
+                    <td>{{ ++$i }}</td>               
 					<td>{{ $projects->name }}</td>
 					<td>{{ $projects->description }}</td>
 					<td>{{ $projects->date_start }}</td>
