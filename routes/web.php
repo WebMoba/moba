@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 /*controlador para envio de correo electronico*/
 

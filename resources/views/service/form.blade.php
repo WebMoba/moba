@@ -14,12 +14,12 @@
             {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('Fecha Inicio' , null, ['class' => 'required']) }}
+            {{ Form::label('Fecha Inicio', null, ['class' => 'required']) }}
             {{ Form::date('date_start', optional($service->date_start)->format('Y-m-d'), ['class' => 'form-control' . ($errors->has('date_start') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Inicio', 'min' => now()->format('Y-m-d')]) }}
             {!! $errors->first('date_start', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('Fecha Final' , null, ['class' => 'required']) }}
+            {{ Form::label('Fecha Final', null, ['class' => 'required']) }}
             {{ Form::date('date_end', optional($service->date_end)->format('Y-m-d'), ['class' => 'form-control' . ($errors->has('date_end') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Final', 'min' => optional($service->date_start)->format('Y-m-d') ?: now()->format('Y-m-d')]) }}
             {!! $errors->first('date_end', '<div class="invalid-feedback">:message</div>') !!}
         </div>
@@ -40,13 +40,13 @@
     </div>
     <div class="box-footer mt20 my-2">
         @if ($editing)
-            {{ Form::submit(__('Submit'), ['class' => 'btn btn-primary', 'id' => 'editButton']) }}
+            {{ Form::button('<i class="bi bi-pencil-square"></i>', ['type' => 'submit', 'class' => 'btn btn-success', 'id' => 'editButton']) }}
         @else
-            {{ Form::submit(__('Crear'), ['class' => 'btn btn-success', 'id' => 'createButton']) }}
+            {{ Form::button('<i class="bi bi-plus-circle"></i>', ['type' => 'submit', 'class' => 'btn btn-success', 'id' => 'createButton']) }}
         @endif
-        <a class="btn btn-primary" href="{{ route('service.index') }}">{{ __('Back') }}</a>
+        <a class="btn btn-primary" href="{{ route('service.index') }}"><i class="bi bi-arrow-left-circle"></i></a>
     </div>
-    
+
 </div>
 <style>
     .required::after {
@@ -54,6 +54,7 @@
         color: red;
         margin-left: 4px;
     }
+
     .text-right {
         float: right;
         margin-top: -8px;

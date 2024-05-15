@@ -50,7 +50,7 @@
                             <div class="float-right">
                                 <a href="{{ route('categories-products-service.create') }}" class="btn btn-success"
                                     data-placement="left">
-                                    <i class="bi bi-plus-circle-fill"></i>
+                                    <i class="bi bi-plus-circle"></i>
                                 </a>
                             </div>
                         </div>

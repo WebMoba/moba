@@ -69,14 +69,14 @@
         </div>
 
     </div>
-
-     <div class="box-footer mt20 my-2">
+    
+    <div class="box-footer mt20 my-2">
         @if ($editing)
-            {{ Form::submit(__('Submit'), ['class' => 'btn btn-primary', 'id' => 'editButton']) }}
+            {{ Form::button('<i class="bi bi-pencil-square"></i>', ['type' => 'submit', 'class' => 'btn btn-success', 'id' => 'editButton']) }}
         @else
-            {{ Form::submit(__('Crear'), ['class' => 'btn btn-success', 'id' => 'createButton']) }}
+            {{ Form::button('<i class="bi bi-plus-circle"></i>', ['type' => 'submit', 'class' => 'btn btn-success', 'id' => 'createButton']) }}
         @endif
-        <a class="btn btn-primary" href="{{ route('person.index') }}">{{ __('Back') }}</a>
+        <a class="btn btn-primary" href="{{ route('person.index') }}"><i class="bi bi-arrow-left-circle"></i></a>
     </div>
 
 </div>
@@ -121,9 +121,10 @@
         color: red;
         margin-left: 4px;
     }
+
     .text-right {
-    float: right;
-    margin-top: -8px; /* Ajusta según sea necesario para alinear verticalmente con el formulario */
+        float: right;
+        margin-top: -8px;
+        /* Ajusta según sea necesario para alinear verticalmente con el formulario */
     }
 </style>
-

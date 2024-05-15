@@ -1,17 +1,21 @@
 <?php
+// app/Exports/PeopleExport.php
 
 namespace App\Exports;
 
 use App\Models\Person;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
 
-class PeopleExport implements FromCollection
+class PeopleExport implements FromView
 {
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function collection()
+    public function view(): View
     {
-        return Person::all();
+        return view('person/exportPerson', [
+            'persons' => Person::all()
+        ]);
     }
 }

@@ -39,7 +39,7 @@
                             </div>
                             <div class="float-right">
                                 <a href="{{ route('projects.create') }}" class="btn btn-success" data-placement="left">
-                                    <i class="bi bi-plus-circle-fill"></i>
+                                    <i class="bi bi-plus-circle"></i>
                                 </a>
                             </div>
                         </div>
