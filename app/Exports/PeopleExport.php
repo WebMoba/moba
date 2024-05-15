@@ -14,7 +14,7 @@ class PeopleExport implements FromView
     */
     public function view(): View
     {
-        return view('exportPersons', [
+        return view('person/exportPerson', [
             'persons' => Person::all()
         ]);
     }
