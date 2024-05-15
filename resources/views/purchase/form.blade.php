@@ -62,8 +62,9 @@
 
     </div>
     <div class="box-footer" style="margin: 20px;">
-        <button type="button" id="enviarBtn" class="btn btn-success" onclick="enviarDetalles()">Enviar</button>
-        <a type="submit" class="btn btn-primary" href="{{ route('purchases.index') }}">Volver</a>
+        <button type="button" id="enviarBtn" class="btn btn-success" onclick="enviarDetalles()"><i class="bi bi-plus-circle"></i></button>
+        <a type="submit" class="btn btn-primary" href="{{ route('purchases.index') }}"><i
+            class="bi bi-arrow-left-circle"></i></a>
     </div>
 </div>
 

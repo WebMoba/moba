@@ -7,8 +7,10 @@
 @section('content')
 @include('layouts.navbars.auth.topnav', ['title' => 'Editar Evento'])
     <section class="content container-fluid">
-        <div class="">
-            <div class="col-md-12">
+    <div class="container"> <!-- Agregar contenedor -->
+            <div class="row justify-content-center"> 
+            <div class="col-md-8">
+
 
                 @includeif('partials.errors')
                 <a class="btn btn-primary" href="{{ route('events.index') }}"> {{ __('Volver') }}</a><br><br>
@@ -29,5 +31,6 @@
                 </div>
             </div>
         </div>
+    </div>
     </section>
 @endsection

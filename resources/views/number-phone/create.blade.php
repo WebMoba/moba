@@ -8,8 +8,9 @@
 @include('layouts.navbars.auth.topnav', ['title' => 'Menu'])
     <section class="content container-fluid">
     <a class="btn btn-primary" href="{{ route('number-phone.index') }}"> {{ __('Volver') }}</a><br><br>
-        <div class="row">
-            <div class="col-md-12">
+    <div class="container"> <!-- Agregar contenedor -->
+            <div class="row justify-content-center"> 
+            <div class="col-md-8">
 
                 @includeif('partials.errors')
 
@@ -28,5 +29,6 @@
                 </div>
             </div>
         </div>
+    </div>
     </section>
 @endsection

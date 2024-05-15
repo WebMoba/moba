@@ -635,8 +635,8 @@ progress {
   width: 100%;
   padding-right: var(--bs-gutter-x, 1.5rem);
   padding-left: var(--bs-gutter-x, 1.5rem);
-  margin-right: auto;
-  margin-left: auto;
+  
+
 }
 
 @media (min-width: 576px) {
@@ -671,7 +671,7 @@ progress {
   flex-wrap: wrap;
   margin-top: calc(-1 * var(--bs-gutter-y));
   margin-right: calc(-0.5 * var(--bs-gutter-x));
-  margin-left: calc(-0.5 * var(--bs-gutter-x));
+  margin-left: 15%;
 }
 .row > * {
   flex-shrink: 0;
@@ -680,6 +680,7 @@ progress {
   padding-right: calc(var(--bs-gutter-x) * 0.5);
   padding-left: calc(var(--bs-gutter-x) * 0.5);
   margin-top: var(--bs-gutter-y);
+  margin-left: 1.5rem;
 }
 
 .col {
@@ -8235,7 +8236,7 @@ textarea.form-control-lg {
 }
 
 .my-3 {
-  margin-top: 1rem !important;
+  margin-top: 4rem !important;
   margin-bottom: 1rem !important;
 }
 
@@ -21694,6 +21695,8 @@ hr.horizontal.gray-light {
   }
 }
 
+
+/* linea de aside*/
 .sidenav[data-color=primary] .navbar-nav > .nav-item > .nav-link.active {
   background-image: linear-gradient(310deg, #fb6340 0%, #fb6340 100%);
 }
@@ -21843,6 +21846,7 @@ hr.horizontal.gray-light {
   opacity: 1;
 }
 
+/*
 @media (max-width: 1199.98px) {
   .g-sidenav-show.rtl .sidenav {
     transform: translateX(17.125rem);
@@ -21857,6 +21861,15 @@ hr.horizontal.gray-light {
     transform: translateX(0);
   }
 }
+*/
+
+
+/* linea de aside*/
+
+
+
+
+
 .navbar-vertical.bg-white {
   box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15);
 }
@@ -23230,7 +23243,7 @@ p {
   background-color: #051139 !important;
 }
 .dark-version .sidenav {
-  background: #111C44 !important;
+  background: transparent !important;
 }
 .dark-version .sidenav.bg-transparent {
   background: transparent !important;
@@ -23242,7 +23255,7 @@ p {
   color: #fff !important;
 }
 .dark-version .sidenav.bg-white {
-  background: #fff !important;
+  background: transparent !important;
 }
 .dark-version .sidenav.bg-white .navbar-nav .nav-link.active:after {
   color: rgba(206, 212, 218, 0.7);
@@ -24868,5 +24881,33 @@ pre[class*=language-] {
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   .ps {
     overflow: auto !important;
+  }
+}
+
+
+@media (max-width: 990px) {
+  .sidenav-background-black {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+  }
+  
+  .sidenav-background-transparent {
+    background-color: transparent !important;
+  }
+
+  .navbar-nav {
+    display: none;
+  }
+
+  .navbar-vertical.bg-white {
+    box-shadow: none !important;
+  }
+
+  .sidenav .navbar-brand {
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    border-radius: 8px !important;
+    -webkit-border-radius: 8px !important;
+    -moz-border-radius: 8px !important;
+    -ms-border-radius: 8px !important;
+    -o-border-radius: 8px !important;
   }
 }

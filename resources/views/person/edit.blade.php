@@ -9,8 +9,10 @@
 
     <section class="content container-fluid">
         <a class="btn btn-primary" href="{{ route('person.index') }}"> {{ __('Volver') }}</a>
-        <div class="">
-            <div class="col-md-12">
+        <div class="container"> <!-- Agregar contenedor -->
+            <div class="row justify-content-center"> 
+            <div class="col-md-8">
+
 
                 @includeif('partials.errors')
 
@@ -29,6 +31,7 @@
                         </form>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </section>

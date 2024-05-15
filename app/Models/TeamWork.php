@@ -22,9 +22,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TeamWork extends Model
 {
-    
     static $rules = [
-		'projects_id' => 'required',
+        'projects_id' => 'required',
     ];
 
     protected $perPage = 20;
@@ -34,8 +33,7 @@ class TeamWork extends Model
      *
      * @var array
      */
-    protected $fillable = ['specialty','assigned_work','assigned_date','projects_id', 'disable'];
-
+    protected $fillable = ['specialty', 'assigned_work', 'assigned_date', 'projects_id', 'disable'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -52,6 +50,4 @@ class TeamWork extends Model
     {
         return $this->hasOne('App\Models\Project', 'id', 'projects_id');
     }
-    
-
 }

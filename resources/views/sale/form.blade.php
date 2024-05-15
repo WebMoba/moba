@@ -76,10 +76,10 @@
                 <div class="box-footer mt-3">
                     <button type="button" id="submitButton" class="btn btn-success btn-enviar"
                         onclick="enviarDetalles()">
-                        {{ __('Enviar') }}
+                        <i class="bi bi-plus-circle"></i>
                     </button>
                     <a type="button" class="btn btn-primary" href="{{ route('sales.index') }}"><i
-                        class="bi bi-arrow-left-circle"></i></a>
+                            class="bi bi-arrow-left-circle"></i></a>
                 </div>
 
             </form>

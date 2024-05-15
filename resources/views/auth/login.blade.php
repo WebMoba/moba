@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div>
+    <div>
         <a href="{{ asset('/') }}" class="btn btn-primary" style="margin: 10px 10px;">Volver</a> 
     </div>
     <div class="container position-sticky z-index-sticky top-0">

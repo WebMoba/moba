@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 /*controlador para envio de correo electronico*/
 
@@ -96,6 +96,7 @@ Route::middleware(['auth'])->group(function () {
      Route::get('/pdf/event', [EventController::class, 'generatePDF'])->name('pdf.event');
      Route::get('get-towns-by-region', [PersonController::class, 'getTownsByRegion'])->name('get_towns_by_region');
      Route::get('/export-person', [PersonController::class, 'export'])->name('excel.person');
+     Route::get('export-persons', [PersonController::class, 'export']);
      Route::get('/export-events', [EventController::class, 'export'])->name('excel.events');
  
  
