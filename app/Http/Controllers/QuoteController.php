@@ -40,8 +40,8 @@ class QuoteController extends Controller
             ->orderBy('date_issuance', 'asc')
             ->paginate(10);
 
-        return view('quote.index', compact('quotes', 'search'));
-        // ->with('i', (request()->input('page', 1) - 1) * $quotes->perPage());
+        return view('quote.index', compact('quotes', 'search'))
+            ->with('i', (request()->input('page', 1) - 1) * $quotes->perPage());
     }
 
     /**

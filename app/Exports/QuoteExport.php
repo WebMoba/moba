@@ -3,15 +3,18 @@
 namespace App\Exports;
 
 use App\Models\Quote;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
 
-class QuoteExport implements FromCollection
+class QuoteExport implements FromView
 {
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function collection()
+    public function view(): View
     {
-        return Quote::all();
+        return view('quote/exportQuote', [
+            'quote' => Quote::all()
+        ]);
     }
 }

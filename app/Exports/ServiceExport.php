@@ -3,15 +3,18 @@
 namespace App\Exports;
 
 use App\Models\Service;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
 
-class ServiceExport implements FromCollection
+class ServiceExport implements FromView
 {
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function collection()
+    public function view(): View
     {
-        return Service::all();
+        return view('service/exportService', [
+            'services' => Service::all()
+        ]);
     }
 }

@@ -3,15 +3,18 @@
 namespace App\Exports;
 
 use App\Models\CategoriesProductsService;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
 
-class CategoriesExport implements FromCollection
+class CategoriesExport implements FromView
 {
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function collection()
+    public function view(): View
     {
-        return CategoriesProductsService::all();
+        return view('categories-products-service/exportCategories', [
+            'categoriesProductsServices' => CategoriesProductsService::all()
+        ]);
     }
 }

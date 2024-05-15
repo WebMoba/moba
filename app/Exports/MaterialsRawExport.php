@@ -3,15 +3,18 @@
 namespace App\Exports;
 
 use App\Models\MaterialsRaw;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
 
-class MaterialsRawExport implements FromCollection
+class MaterialsRawExport implements FromView
 {
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function collection()
+    public function view(): View
     {
-        return MaterialsRaw::all();
+        return view('materials-raw/exportMaterialsRaws', [
+            'materials_raws' => MaterialsRaw::all()
+        ]);
     }
 }

@@ -161,6 +161,6 @@ class MaterialsRawController extends Controller
 
     public function exportToExcel()
     {
-        return Excel::download(new MaterialsRawExport(), 'materials_raw.xlsx');
+        return Excel::download(new MaterialsRawExport, 'Materia Prima.xlsx');
     }
 }
