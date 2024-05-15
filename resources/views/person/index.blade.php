@@ -27,7 +27,7 @@
                                             class="bi bi-search"></i></button>
                                 </div>
                             </form>
-                            <div class="float-right">
+                            <div class="float-right" style="display: flex;">
                                 <a href="{{ route('pdf.person') }}" class="btn btn-danger btn-sm float-right">
                                     <i class="bi bi-file-pdf-fill"></i>
                                 </a>
@@ -112,7 +112,7 @@
                                                             <button type="button" class="btn btn-danger btn-sm" disabled>
                                                                 {!! $person->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>' !!}
                                                             </button>
-                                                            <span class="text-muted">(No inhabilitable)</span>
+                                                            
                                                         @else
                                                             <button type="submit" class="btn btn-danger btn-sm">
 

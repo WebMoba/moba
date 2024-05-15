@@ -29,7 +29,7 @@
 
         <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen">
             @if (Route::has('login'))
-                <div class="nav">
+                <div class="nav" style="display:flex;justify-content: end;">
                     @auth
                     <a href="{{ url('/dashboard') }}" class="letter">Inicio</a>
                     <form role="form" method="post" action="{{ route('logout') }}" id="logout-form">

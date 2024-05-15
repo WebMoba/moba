@@ -351,7 +351,7 @@
     .breadcrums a {
         text-decoration: none;
         color: white;
-        font-size: 0.8vw;
+        font-size: 0.9vw;
         margin-right: 2px;
         /* Esto agrega un espacio entre los enlaces */
     }
