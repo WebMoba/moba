@@ -21138,13 +21138,12 @@ hr.horizontal.gray-light {
   display: block;
   position: fixed;
   top: 0;
-  bottom: 0;
-  width: 100%;
   max-width: 15.625rem !important;
   overflow-y: auto;
   padding: 0;
   box-shadow: none;
   z-index: 9999;
+  height: 90vh;
 }
 .navbar-vertical.navbar-expand-xs .navbar-collapse {
   display: block;
@@ -21822,6 +21821,7 @@ hr.horizontal.gray-light {
 }
 .sidenav .navbar-brand {
   padding: 1.5rem 1rem;
+  width: 85%;
 }
 
 .sidenav-header {
@@ -24892,10 +24892,13 @@ pre[class*=language-] {
   
   .sidenav-background-transparent {
     background-color: transparent !important;
+    
   }
 
   .navbar-nav {
     display: none;
+    height: 70%;
+    
   }
 
   .navbar-vertical.bg-white {
