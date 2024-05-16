@@ -208,7 +208,7 @@
                         <!-- Primera fila del carrusel 2 -->
                         <div class="col-md-4">
                             <div class="image-container">
-                                <a href="{{ asset('mobaMenu/proyectos/ODONTOLOGA') }}">
+                                <a href="{{ asset('mobaMenu/proyectos/odontologa1') }}">
                                     <img src="{{ asset('Imagenes/imgproyectos/odontologa1.jpg') }}" alt="ODONTOLOGA">
                                     <div class="overlay">
                                         <div class="text">ODONTOLOGA CAROLINA CAMACHO</div>
