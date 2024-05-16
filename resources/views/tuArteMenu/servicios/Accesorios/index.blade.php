@@ -32,7 +32,7 @@
             ])
         </div>
         <div class="inicioRegistro"> @include('partials.inicio')</div>
-<!--- final breaddrums-->
+        <!--- final breaddrums-->
 
 
         <div class="container-fluid">
@@ -63,12 +63,15 @@
                 <a href="{{ route('tuArteMenu.categorias.index') }}"class="btn btn-primary">Categorias</a>
                 <a href="{{ route('tuArteMenu.galeria.index') }}" class="btn btn-primary">Galeria</a>
                 <a href="{{ route('tuArteMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
+                <a href="{{ route('tuArteMenu.Contacto.index') }}" class="btn btn-cart">
+                    <i class="bi bi-cart3"></i>
+                </a>
             </div>
             <a href="{{ route('tuArteMenu.index') }}">
                 <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte">
             </a>
         </div>
-      
+
 
     </nav>
     <!-- Líneas verticales con iconos -->
@@ -112,29 +115,33 @@
                     <div class="row">
                         @foreach ($chunk as $product)
                             <div class="col">
-                                <div class="card">
-                                    <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top"
-                                        alt="{{ $product->name }}">
-                                    <div class="card-body">
-                                        <div class="stars">
-                                            @php
-                                                // Genera un número aleatorio entre 4 y 5 para las estrellas amarillas
-                                                $randomStars = rand(4, 5);
-                                            @endphp
-                                            @for ($i = 0; $i < 5; $i++)
-                                                @if ($i < $randomStars)
-                                                    <i class="bi bi-star-fill active"></i>
-                                                @else
-                                                    <i class="bi bi-star-fill"></i>
-                                                @endif
-                                            @endfor
-                                        </div>
-                                        <h5 class="card-title">{{ $product->name }}</h5>
-                                        <div class="mt-auto">
-                                            <p class="card-text">${{ $product->price }}</p>
+                                <a href="" class="card-link">
+                                    <div class="card">
+                                        <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top"
+                                            alt="{{ $product->name }}">
+                                        <div class="card-body">
+                                            <div class="stars">
+                                                @php
+                                                    // Genera un número aleatorio entre 4 y 5 para las estrellas amarillas
+                                                    $randomStars = rand(4, 5);
+                                                @endphp
+                                                @for ($i = 0; $i < 5; $i++)
+                                                    @if ($i < $randomStars)
+                                                        <i class="bi bi-star-fill active"></i>
+                                                    @else
+                                                        <i class="bi bi-star-fill"></i>
+                                                    @endif
+                                                @endfor
+                                            </div>
+                                            <h5 class="card-title">{{ $product->name }}</h5>
+                                            <div class="mt-auto d-flex justify-content-between align-items-center">
+                                                <p class="card-text">${{ $product->price }}</p>
+                                                <span class="check-icon" style="display: none;"><i
+                                                        class="bi bi-check-circle"></i></span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         @endforeach
                     </div>
@@ -186,7 +193,27 @@
             });
         });
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const cards = document.querySelectorAll('.card');
 
+            cards.forEach(card => {
+                card.addEventListener('click', function(event) {
+                    event
+                        .preventDefault(); // Prevenir el comportamiento predeterminado del evento clic
+
+                    const checkIcon = this.querySelector('.check-icon');
+
+                    if (checkIcon.style.display === 'none') {
+                        checkIcon.style.display =
+                            'inline-block'; // Mostrar el icono de verificación
+                    } else {
+                        checkIcon.style.display = 'none'; // Ocultar el icono de verificación
+                    }
+                });
+            });
+        });
+    </script>
     @include('partials.footerTuArte')
 </body>
 
@@ -201,12 +228,13 @@
         display: flex;
     }
 
-.breadcrums a {
-    text-decoration: none;
-    color: white;
-    font-size: 0.9vw;
-    margin-right: 2px; /* Esto agrega un espacio entre los enlaces */
-}
+    .breadcrums a {
+        text-decoration: none;
+        color: white;
+        font-size: 0.9vw;
+        margin-right: 2px;
+        /* Esto agrega un espacio entre los enlaces */
+    }
 
     .breadcrumbs li {
         display: inline;
