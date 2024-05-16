@@ -89,7 +89,7 @@
 
  <!-- Contenido formulario de contacto -->
 
-    <div class="box">
+ <div class="box">
     <form method="POST" action="{{ route('enviar-correo') }}">
     @csrf
         <label for="nombre">Nombre:</label>
@@ -97,20 +97,23 @@
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" value="{{ auth()->check() ? auth()->user()->email : '' }}" required><br><br>
 		
-        <ul class="option-listOne">Tipo Identificacion 
-    <li class="option-item">
-        <input type="radio" id="option1" name="options" class="option-input">
-        <label for="option1" class="option-label">Cedula</label>
-    </li>
-    <li class="option-item">
-        <input type="radio" id="option2" name="options" class="option-input">
-        <label for="option2" class="option-label">Cedula de extranjeria </label>
-    </li>
-    <li class="option-item">
-        <input type="radio" id="option3" name="options" class="option-input">
-        <label for="option3" class="option-label">NIT</label>
-    </li>
+        <ul class="option-listOne">Tipo Identificación
+        <li class="option-item">
+            <input type="radio" id="option2" name="options" class="option-input" required>
+            <label for="option2" class="option-label">Cedula Extranjeria</label>
+        </li>
+        <li class="option-item">
+            <input type="radio" id="option1" name="options" class="option-input" required>
+            <label for="option1" class="option-label">Cedula</label>
+        </li>
+       
+        <li class="option-item">
+            <input type="radio" id="option3" name="options" class="option-input" required>
+            <label for="option3" class="option-label">NIT</label>
+        </li>
     </ul><br>
+
+
         <label for="NumeroId">Numero Identificación:</label>
         <input type="text" id="NumeroId" name="NumeroId" maxlength="10" required><br><br>
         <label for="telefono">Teléfono:</label>

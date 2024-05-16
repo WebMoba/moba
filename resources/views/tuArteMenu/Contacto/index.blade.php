@@ -250,6 +250,7 @@ textarea{
 
 
 
+
 .option-listOne {
         list-style-type: none;
         padding: 0;
@@ -274,10 +275,11 @@ textarea{
         display: none;
     }
 
+
     /* Estilo para la etiqueta */
     .option-label {
-        width: 100%;
-        padding: 2px 2px;
+        display: inline-block;
+        padding: 8px 12px;
         border: 1px solid #ccc;
         border-radius: 5px;
         cursor: pointer;
@@ -291,7 +293,6 @@ textarea{
         background-color: #007bff;
         color: white;
     }
-
 
 
 /*estilos Breadcrums*/

@@ -32,7 +32,7 @@
                                     ]) }}
                                     {!! $errors->first('date_issuance', '<div class="invalid-feedback">:message</div>') !!}
                                 
-                                    <small class="text-muted">Por cuestiones de seguridad este campo no es editable.</small>
+                                    <small class="text-muted">Este campo no es editable.</small>
                                 </div>
                                 
                                 <div class="form-group">

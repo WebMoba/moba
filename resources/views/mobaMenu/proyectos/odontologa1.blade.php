@@ -22,7 +22,7 @@
         ['url' => route('welcome'), 'label' => 'Bienvenido /'],
         ['url' => route('mobaMenu.index'), 'label' => 'Moba /'],
         ['url' => route('mobaMenu.proyectos.index'), 'label' => 'Proyectos /'],
-        ['url' => route('mobaMenu.proyectos.ODONTOLOGA'), 'label' => 'OdontologaAnaCamacho'],]])
+        ['url' => route('mobaMenu.proyectos.ODONTOLOGIA'), 'label' => 'OdontoligiaLizethDorado'],]])
         </div>
         <div class="inicioRegistro"> @include('partials.inicio')</div>
 <!--- final breaddrums-->
@@ -37,10 +37,9 @@
                             Servicios
                         </button></a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="">Identidad
-                                Corporativa</a></li>
-                        <li><a class="dropdown-item" href="#">Avisos y Publicidad para interiores</a></li>
-                        <li><a class="dropdown-item" href="#">POP y álgo más</a></li>
+                        <li><a class="dropdown-item" href="{{route('mobaMenu.Servicios.servicios')}}">Identidad Corporativa</a></li>
+                        <li><a class="dropdown-item" href="{{route('mobaMenu.Servicios.servicios')}}">Avisos y Publicidad para interiores</a></li>
+                        <li><a class="dropdown-item" href="{{route('mobaMenu.Servicios.servicios')}}">POP y álgo más</a></li>
                     </ul>
                 </div>
                 <a href="{{ route('mobaMenu.index') }}" class="btn btn-primary">Nosotros</a>
@@ -61,23 +60,23 @@
         </div>
         //inicio de proyectos
         //proyectos cuadro
-        <div class="title-container ">
-            <h1 class="big-title custom-title">ODONTOLOGA ANA CAROLINA CAMACHO</h1>
+        <div class="title-container">
+            <h1 class="big-title">ODONTOLOGA</h1>
+            <h1 class="big-title1">CAROLINA CAMACHO</h1>
         </div>
 
         <div class="container">
             <div class="row">
                 <!-- Columna para el párrafo -->
-                <div class="col-md-6 ">
-                    <div class="titulo  mt-4 mb-4">
-                        <br>
+                <div class="col-md-6">
+                    <div class="titulo mt-4 mb-4">
                         <p>Somos una empresa dedicada a satisfacer las necesidades de nuestros clientes, principalmente
                             en frutas, verduras y demás productos de la canasta familiar; vinculando como aliados
                             estratégicos a proveedores; ofreciendo condiciones dignas de trabajo a personal idóneo que
                             vive y aplica principios de integridad, honestidad y constancia, garantizando la retribución
                             a los socios, conformando así un equipo comprometido con el desarrollo y bienestar de la
-                            comunidad.
-                            Somos una empresa dedicada a satisfacer las necesidades de nuestros clientes, principalmente
+                            comunidad. Somos una empresa dedicada a satisfacer las necesidades de nuestros clientes,
+                            principalmente
                             en frutas, verduras y demás productos de la canasta familiar; vinculando como aliados
                             estratégicos a proveedores; ofreciendo condiciones dignas de trabajo a personal idóneo que
                             vive y aplica principios de integridad, honestidad y constancia, garantizando la retribución
@@ -179,12 +178,6 @@
                 /* Establece el contenedor como posición relativa para que los elementos internos puedan ser posicionados relativamente a él */
             }
 
-            .custom-title {
-                position: relative;
-                top: -10px;
-                /* Ajusta este valor según sea necesario */
-            }
-
             .title-container .big-title {
                 position: relative;
                 top: 80px;
@@ -197,6 +190,17 @@
                 font-size: 60px;
             }
 
+            .title-container .big-title1 {
+                position: relative;
+                top: 80px;
+                left: 20px;
+                width: calc(50% - 40px);
+                /* Ajusta el ancho según sea necesario */
+                padding: 0 20px;
+                color: white;
+                font-weight: bold;
+                font-size: 60px;
+            }
 
             .titulo {
                 position: absolute;
@@ -209,6 +213,12 @@
                 /* Calcula el ancho del título para ocupar la mitad del contenedor menos los márgenes */
                 padding: 0 20px;
                 /* Espacio interno del título */
+            }
+
+            .custom-title {
+                position: relative;
+                top: -10px;
+                /* Ajusta este valor según sea necesario */
             }
 
             .galeria {

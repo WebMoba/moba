@@ -27,4 +27,5 @@
             </div>
         </div>
     </section>
+    @include('layouts.footers.auth.footer')
 @endsection
