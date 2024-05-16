@@ -99,6 +99,7 @@
             </div>
         </div>
     </div>
+    @include('layouts.footers.auth.footer')
 @endsection
 
 @extends('layouts.alerts')

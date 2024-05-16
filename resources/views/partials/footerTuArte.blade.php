@@ -50,12 +50,18 @@
                 </div>
             </div>
             <div class="col-md-6 col-sm-6 col-xs-6">
-                <div class="pull-right mr-4 d-flex policy">
-                    <div class="textFooter">Terms of Use</div>
-                    <div class="textFooter">Privacy Policy</div>
-                    <div class="textFooter">Cookie Policy</div>
-                </div>
+            <div class="foot"> <p> 2024 &copy; Todos los derechos reservados.
+                    creado por Grupo 2 SENA 2615133 </p>
+                   <p>Las imágenes utilizadas en este sitio son propiedad de la empresa Moba.</p></div>
+            </div>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+    .foot p {
+    margin: 0; /* Elimina el margen */
+    padding: 0; /* Elimina el relleno (padding) */
+}
+</style>
