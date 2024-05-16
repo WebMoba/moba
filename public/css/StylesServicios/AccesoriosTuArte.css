@@ -304,7 +304,13 @@
     font-weight: bold;
     font-size: 1rem;
 }
+.card-title {
+    margin-top: 0;
+}
 
+.card-text{
+    margin-bottom: 0;
+}
 /* .card-title{
     white-space: nowrap;
     overflow: hidden;
@@ -318,6 +324,32 @@
     justify-content: space-between;
     /* Opcional: asegura que la tarjeta ocupe toda la altura disponible */
 }
+
+.card-link {
+    text-decoration: none;
+    /* Elimina el subrayado del enlace */
+    color: inherit;
+    /* Hereda el color de texto de su contenedor */
+}
+
+.card-link:hover {
+    text-decoration: none;
+    /* Asegura que no haya subrayado al pasar el cursor */
+}
+
+.check-icon {
+    display: inline-block; /* Muestra el icono de verificación en línea con el precio */
+}
+
+.check-icon i {
+    color: rgb(0, 255, 0);
+    /* Establecer el color verde para el icono de verificación */
+    font-size: 1.3em;
+    /* Ajustar el tamaño del icono según sea necesario */
+    margin-left: 5px; /* Agrega un espacio a la izquierda del icono */
+    vertical-align: middle; /* Alinea verticalmente el icono con el contenido */
+}
+
 
 /*ESTRELLAS*/
 
