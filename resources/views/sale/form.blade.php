@@ -42,7 +42,7 @@
                 @csrf
                 <div class="box-body mt-3 ">
 
-                    <div class="form-group">
+                    <div class="form-group col-md-5">
                         {{ Form::label('Nombre y documento del cliente', null, ['class' => 'required-label']) }}
                         {{ Form::select(
                             'name',
@@ -57,7 +57,7 @@
                         {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group col-md-3">
                         {{ Form::label('Fecha', null, ['class' => 'required-label']) }}
                         {{ Form::text('date', $sale->date, ['class' => 'form-control' . ($errors->has('date') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Date', 'readonly' => true, 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
                         {!! $errors->first('date', '<div class="invalid-feedback">:message</div>') !!}
@@ -65,7 +65,7 @@
                         <small class="text-muted">Por cuestiones de seguridad este campo no es editable.</small>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group col-md-3">
                         {{ Form::label('Total', null, ['class' => 'required-label']) }}
                         {{ Form::text('total', $sale->total, ['class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Total', 'readonly' => true, 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
                         {!! $errors->first('total', '<div class="invalid-feedback">:message</div>') !!}

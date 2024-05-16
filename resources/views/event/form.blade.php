@@ -32,12 +32,12 @@
             {{ Form::text('description', $event->description, ['class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''), 'placeholder' => 'Descripcion']) }}
             {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-3">
             {{ Form::label('Fecha Inicio', null, ['class' => 'required']) }}
             {{ Form::date('date_start', optional($event->date_start)->format('Y-m-d'), ['class' => 'form-control' . ($errors->has('date_start') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Inicio', 'min' => now()->format('Y-m-d')]) }}
             {!! $errors->first('date_start', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-3">
             {{ Form::label('Fecha Final', null, ['class' => 'required']) }}
             {{ Form::date('date_end', optional($event->date_end)->format('Y-m-d'), ['class' => 'form-control' . ($errors->has('date_end') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Final', 'min' => optional($event->date_start)->format('Y-m-d') ?: now()->format('Y-m-d')]) }}
             {!! $errors->first('date_end', '<div class="invalid-feedback">:message</div>') !!}
