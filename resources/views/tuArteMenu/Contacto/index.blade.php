@@ -108,15 +108,16 @@
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" value="{{ auth()->check() ? auth()->user()->email : '' }}" required><br><br>
 		
-        <ul class="option-list">
+        <ul class="option-listOne">Tipo Identificación
+        <li class="option-item">
+            <input type="radio" id="option2" name="options" class="option-input" required>
+            <label for="option2" class="option-label">Cedula Extranjeria</label>
+        </li>
         <li class="option-item">
             <input type="radio" id="option1" name="options" class="option-input" required>
             <label for="option1" class="option-label">Cedula</label>
         </li>
-        <li class="option-item">
-            <input type="radio" id="option2" name="options" class="option-input" required>
-            <label for="option2" class="option-label">Cedula de extranjeria</label>
-        </li>
+       
         <li class="option-item">
             <input type="radio" id="option3" name="options" class="option-input" required>
             <label for="option3" class="option-label">NIT</label>
@@ -249,16 +250,23 @@ textarea{
 
 
 
-.option-list {
+.option-listOne {
         list-style-type: none;
         padding: 0;
         margin: 0;
-        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 2px; 
+        display: flex;
+        
     }
 
     /* Estilo para cada opción */
     .option-item {
-        margin-bottom: 10px;
+        width: 7.3vw;
+        font-size: 0.9vw;
+        margin-bottom: 5px;
+        text-align: center;
+        
     }
 
     /* Estilo para el input oculto */
@@ -268,8 +276,8 @@ textarea{
 
     /* Estilo para la etiqueta */
     .option-label {
-        display: inline-block;
-        padding: 8px 12px;
+        width: 100%;
+        padding: 2px 2px;
         border: 1px solid #ccc;
         border-radius: 5px;
         cursor: pointer;

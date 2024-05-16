@@ -97,7 +97,7 @@
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" value="{{ auth()->check() ? auth()->user()->email : '' }}" required><br><br>
 		
-        <ul class="option-list">Tipo Identificacion 
+        <ul class="option-listOne">Tipo Identificacion 
     <li class="option-item">
         <input type="radio" id="option1" name="options" class="option-input">
         <label for="option1" class="option-label">Cedula</label>
@@ -236,22 +236,30 @@ textarea{
 
 
 
-.option-list {
+.option-listOne {
         list-style-type: none;
         padding: 0;
         margin: 0;
-        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 2px; 
+        display: flex;
+        
     }
 
     /* Estilo para cada opción */
     .option-item {
-        margin-bottom: 10px;
+        width: 7.3vw;
+        font-size: 0.9vw;
+        margin-bottom: 5px;
+        text-align: center;
+        
     }
 
     /* Estilo para el input oculto */
     .option-input {
         display: none;
     }
+
 
     /* Estilo para la etiqueta */
     .option-label {
