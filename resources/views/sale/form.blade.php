@@ -62,7 +62,7 @@
                         {{ Form::text('date', $sale->date, ['class' => 'form-control' . ($errors->has('date') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Date', 'readonly' => true, 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
                         {!! $errors->first('date', '<div class="invalid-feedback">:message</div>') !!}
 
-                        <small class="text-muted">Por cuestiones de seguridad este campo no es editable.</small>
+                        <small class="text-muted">Este campo no es editable.</small>
                     </div>
 
                     <div class="form-group col-md-3">
