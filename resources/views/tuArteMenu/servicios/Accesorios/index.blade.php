@@ -63,9 +63,10 @@
                 <a href="{{ route('tuArteMenu.categorias.index') }}"class="btn btn-primary">Categorias</a>
                 <a href="{{ route('tuArteMenu.galeria.index') }}" class="btn btn-primary">Galeria</a>
                 <a href="{{ route('tuArteMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
-                <a href="{{ route('tuArteMenu.Contacto.index') }}" class="btn btn-cart">
+                <button class="btn btn-cart position-relative" data-bs-toggle="modal" data-bs-target="#cartModal">
                     <i class="bi bi-cart3"></i>
-                </a>
+                    <span class="badge bg-success rounded-pill cart-badge">0</span>
+                </button>
             </div>
             <a href="{{ route('tuArteMenu.index') }}">
                 <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte">
@@ -115,7 +116,10 @@
                     <div class="row">
                         @foreach ($chunk as $product)
                             <div class="col">
-                                <a href="" class="card-link">
+                                <a href="" class="card-link" data-product-id="{{ $product->id }}"
+                                    data-product-name="{{ $product->name }}"
+                                    data-product-price="{{ $product->price }}"
+                                    data-product-image="{{ asset('storage/' . $product->image) }}">
                                     <div class="card">
                                         <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top"
                                             alt="{{ $product->name }}">
@@ -157,6 +161,39 @@
             <span class="visually-hidden">Siguiente</span>
         </button>
     </div>
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">Tus productos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Imagen</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Descripción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cartItems">
+                            <!-- Los elementos del carrito se agregarán aquí dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-success">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz4fnFO9gybBogGz5qFa8dU4szVv5UqVf+I0Yb0EG7Pa3Xf6LCpHe5tg3f" crossorigin="anonymous">
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
@@ -193,9 +230,12 @@
             });
         });
     </script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const cards = document.querySelectorAll('.card');
+            const cards = document.querySelectorAll('.card-link');
+            const cartBadge = document.querySelector('.cart-badge');
+            const cartItems = document.getElementById('cartItems');
 
             cards.forEach(card => {
                 card.addEventListener('click', function(event) {
@@ -203,16 +243,59 @@
                         .preventDefault(); // Prevenir el comportamiento predeterminado del evento clic
 
                     const checkIcon = this.querySelector('.check-icon');
+                    let activeCheckIcons = document.querySelectorAll(
+                        '.check-icon[style="display: inline-block;"]');
 
                     if (checkIcon.style.display === 'none') {
                         checkIcon.style.display =
                             'inline-block'; // Mostrar el icono de verificación
+                        activeCheckIcons = document.querySelectorAll(
+                            '.check-icon[style="display: inline-block;"]');
                     } else {
                         checkIcon.style.display = 'none'; // Ocultar el icono de verificación
+                        activeCheckIcons = document.querySelectorAll(
+                            '.check-icon[style="display: inline-block;"]');
+                    }
+
+                    // Mostrar u ocultar el contador flotante
+                    if (activeCheckIcons.length > 0) {
+                        cartBadge.classList.add('active'); // Mostrar el contador
+                        cartBadge.textContent = activeCheckIcons
+                            .length; // Actualizar el número de íconos activos
+                    } else {
+                        cartBadge.classList.remove(
+                            'active'); // Ocultar el contador si no hay íconos activos
+                    }
+
+                    // Agregar producto al carrito
+                    const productId = this.getAttribute('data-product-id');
+                    const productName = this.getAttribute('data-product-name');
+                    const productPrice = this.getAttribute('data-product-price');
+                    const productImage = this.getAttribute('data-product-image');
+
+                    const existingItem = document.querySelector(
+                        `#cartItems tr[data-product-id="${productId}"]`);
+                    if (existingItem) {
+                        const quantityInput = existingItem.querySelector('.product-quantity');
+                        quantityInput.value = parseInt(quantityInput.value) + 1;
+                    } else {
+                        const newRow = document.createElement('tr');
+                        newRow.setAttribute('data-product-id', productId);
+                        newRow.innerHTML = `
+                            <td><img src="${productImage}" alt="${productName}" width="50"></td>
+                            <td>${productName}</td>
+                            <td>${productPrice}</td>
+                            <td><input type="number" class="form-control product-quantity" value="1" min="1" max="99"></td>
+                            <td><input type="text" class="form-control product-description" value="¿Quieres tu producto personalizado? describelo aqui..." ></td>
+                        `;
+                        cartItems.appendChild(newRow);
                     }
                 });
             });
         });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-QF6B5UcQk8k3CENQ1qIRjN3xIqby0mESMQTjZcCRtbRL8xOyBBzUfuG4Pb+v5w8d" crossorigin="anonymous">
     </script>
     @include('partials.footerTuArte')
 </body>
