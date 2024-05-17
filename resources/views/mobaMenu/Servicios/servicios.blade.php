@@ -106,14 +106,6 @@
                                 <h2>CORPORATIVA</h2>
                             </div>
                             <div class="contenido-cuadro">
-                                <div class="mayme">
-                                    <p>
-                                        <
-                                    </p>
-                                    <p>
-                                        >
-                                    </p>
-                                </div>
                                 <p>
                                     Nuestra Agencia se enfoca en el sentido de cada marca que manejamos, lo que
                                     quieren y deben transmitir con su imagen corporativa, cada detalle cuenta
@@ -143,14 +135,6 @@
                                 <h2>para interiores</h2>
                             </div>
                             <div class="contenido-cuadro">
-                                <div class="mayme">
-                                    <p>
-                                        <
-                                    </p>
-                                    <p>
-                                        >
-                                    </p>
-                                </div>
                                 <p>
                                     La primera impresión que las marcas que manejamos dejan en sus clientes debe
                                     ser siempre positiva, debe transmitir el ser de cada empresa y generar en el
@@ -178,14 +162,6 @@
                                 <h2>y algo más</h2>
                             </div>
                             <div class="contenido-cuadro">
-                                <div class="mayme">
-                                    <p>
-                                        <
-                                    </p>
-                                    <p>
-                                        >    
-                                    </p>
-                                </div>
                                 <div class="textoC">
                                     <p>
                                         Nuestra empresa cuenta con servicios y productos adicionales que complementan
@@ -389,6 +365,7 @@
             flex-direction: column;
             height: 100%;
             width: 40%;
+            margin-left: 5%;
             color: white;
             padding-bottom: 10%;
         }
@@ -429,7 +406,7 @@
         .contenedor {
             height: 100%;
             width: 40%;
-            margin-left: 10%;
+            margin-left: 5%;
         }
 
         .contenedor h1 {
@@ -443,6 +420,7 @@
 
         .contenedor p {
             color: #6094b0;
+            font-size: larger;
         }
         
         .cuadro {
@@ -465,8 +443,8 @@
             border: 2px solid grey;
             padding: 20px;
             overflow-y: auto;
-            width: 500px; 
-            height: 400px; 
+            width: 400px; 
+            height: 350px; 
         }
 
         .titulos-cuadro {
@@ -634,13 +612,17 @@
                 align-items: center;
                 justify-content: center;
             }
+            .contenedor{
+                margin-right: 20%;
+            }
             .texto-cuadro{
                 width: 250px; 
                 height: 200px; 
                 padding-bottom:20%; 
             }
             .creatividad{
-                width: 150px; 
+                width: 300px; 
+                margin-left: 15%;
             }
             .creatividad .t1 {
                 font-size: 20px;
@@ -679,11 +661,12 @@
                 align-items: center;
                 justify-content: center;
             }
-            .contenido2 .creatividad{
-
+            .contenedor{
+                margin-right: 35%;
             }
-            .contenido2 .contenedor{
-                padding-right: 10%;
+            .creatividad{
+                width: 300px; 
+                margin-left: 15%;
             }
         }
            /*estilos Breadcrums*/

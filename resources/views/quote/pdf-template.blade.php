@@ -54,7 +54,7 @@
             <!-- @php $i = 0; @endphp -->
             @foreach ($quote as $quotes)
                 <tr>
-                    <td>{{ $quotes->id }}</td>
+                    <td>{{ ++$i }}</td>
 				    <td>{{ $quotes->date_issuance }}</td>
 				    <td>{{ $quotes->description }}</td>
 				    <td>{{ $quotes->total }}</td>

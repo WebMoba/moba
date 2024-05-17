@@ -212,7 +212,7 @@
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: "Completa todos los campos del detalle!",
+                text: "Completa todos los campos!",
             });
             return; // Detener el proceso si no están completados todos los campos del detalle
         }
@@ -279,7 +279,7 @@
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: "Completa todos los campos del formulario de ventas!",
+                text: "Completa todos los campos!",
             });
             return; // Detener el proceso si no están completados todos los campos del formulario de ventas
         }
