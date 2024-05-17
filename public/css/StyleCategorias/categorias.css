@@ -163,7 +163,7 @@ body::after {
         text-align: center;
         align-items: center;
         width: 90%;
-        height: 90vh;
+        height: 70vw;
     }
     
     .active-link {

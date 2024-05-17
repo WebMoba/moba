@@ -121,4 +121,5 @@
         });
     });
 </script>
+@include('layouts.footers.auth.footer')
 @endsection
