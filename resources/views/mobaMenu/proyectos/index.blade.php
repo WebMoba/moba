@@ -16,18 +16,21 @@
 <body class="background-image">
 
     <nav class="navbar">
-<!--- inicio breaddrums-->
-    <div class="breadcrums">
-        @include('helpers.breadcrumbs', ['breadcrumbs' => [
-        ['url' => route('welcome'), 'label' => 'Bienvenido /'],
-        ['url' => route('mobaMenu.index'), 'label' => 'Moba /'],
-        ['url' => route('mobaMenu.proyectos.index'), 'label' => 'Proyectos'],]])
+        <!--- inicio breaddrums-->
+        <div class="breadcrums">
+            @include('helpers.breadcrumbs', [
+                'breadcrumbs' => [
+                    ['url' => route('welcome'), 'label' => 'Bienvenido /'],
+                    ['url' => route('mobaMenu.index'), 'label' => 'Moba /'],
+                    ['url' => route('mobaMenu.proyectos.index'), 'label' => 'Proyectos'],
+                ],
+            ])
         </div>
         <div class="inicioRegistro"> @include('partials.inicio')</div>
-<!--- final breaddrums-->
+        <!--- final breaddrums-->
 
         <div class="container-fluid">
-        <a href="{{ route('mobaMenu.index')}}">
+            <a href="{{ route('mobaMenu.index') }}">
                 <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba"></a>
             <div class="navbar-buttons">
                 <div class="dropdown">
@@ -37,10 +40,9 @@
                             Servicios
                         </button></a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="">Identidad
-                                Corporativa</a></li>
-                        <li><a class="dropdown-item" href="#">Avisos y Publicidad para interiores</a></li>
-                        <li><a class="dropdown-item" href="#">POP y álgo más</a></li>
+                        <li><a class="dropdown-item" href="{{route('mobaMenu.Servicios.servicios')}}">Identidad Corporativa</a></li>
+                        <li><a class="dropdown-item" href="{{route('mobaMenu.Servicios.servicios')}}">Avisos y Publicidad para interiores</a></li>
+                        <li><a class="dropdown-item" href="{{route('mobaMenu.Servicios.servicios')}}">POP y álgo más</a></li>
                     </ul>
                 </div>
                 <a href="{{ route('mobaMenu.index') }}" class="btn btn-primary">Nosotros</a>
@@ -49,9 +51,9 @@
                 <a href="{{ route('mobaMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
             </div>
             <a href="{{ route('tuArteMenu.index') }}">
-            <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte"></a>
+                <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte"></a>
         </div>
-       
+
 
     </nav>
     <div class="content">
@@ -85,233 +87,239 @@
     </div>
 
 
-</pindiv>
-</div>
-<!-- prueba de carrusel -->
-<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-<div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-</div>
-<div class="carousel-inner">
-    <div class="carousel-item active">
-        <div class="container">
-            <div class="row">
-                <!-- Primera fila del carrusel 1 -->
-                <div class="col-md-4">
-                    <div class="image-container">
-                        <a href="{{ asset('mobaMenu/proyectos/PARAISO') }}">
-                            <img src="{{ asset('Imagenes/imgproyectos/paraiso1.jpg') }}" alt="PARAISO1">
-                            <div class="overlay">
-                                <div class="text">ALMACENES PARAISO</div>
+    </pindiv>
+    </div>
+    <!-- prueba de carrusel -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="row">
+                        <!-- Primera fila del carrusel 1 -->
+                        <div class="col-md-4">
+                            <div class="image-container">
+                                <a href="{{ asset('mobaMenu/proyectos/PARAISO') }}">
+                                    <img src="{{ asset('Imagenes/imgproyectos/paraiso1.jpg') }}" alt="PARAISO1">
+                                    <div class="overlay">
+                                        <div class="text">ALMACENES PARAISO</div>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="image-container">
+                                <a href="{{ asset('mobaMenu/proyectos/JAATELO') }}">
+                                    <img src="{{ asset('Imagenes/imgproyectos/jaatelo1.jpg') }}" alt="JAATELO">
+                                    <div class="overlay">
+                                        <div class="text">HELADERIA JAATELO</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="image-container">
+                                <a href="{{ asset('mobaMenu/proyectos/ACERIAS') }}">
+                                    <img src="{{ asset('Imagenes/imgproyectos/acerias1.jpg') }}" alt="ACERIAS">
+                                    <div class="overlay">
+                                        <div class="text">ACERIAS PAZ DEL RIO</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="image-container">
-                        <a href="{{ asset('mobaMenu/proyectos/JAATELO') }}">
-                            <img src="{{ asset('Imagenes/imgproyectos/jaatelo1.jpg') }}" alt="JAATELO">
-                            <div class="overlay">
-                                <div class="text">HELADERIA JAATELO</div>
+                    <div class="row">
+                        <!-- Segunda fila del carrusel 1 -->
+                        <div class="col-md-4">
+                            <div class="image-container">
+                                <a href="{{ asset('mobaMenu/proyectos/BIOSALUD') }}">
+                                    <img src="{{ asset('Imagenes/imgproyectos/biosalud1.jpg') }}" alt="BIOSALUD">
+                                    <div class="overlay">
+                                        <div class="text">BIOSALUD</div>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="image-container">
+                                <a href="{{ asset('mobaMenu/proyectos/CABUBARA') }}">
+                                    <img src="{{ asset('Imagenes/imgproyectos/cabubara1.jpg') }}" alt="CABUBARA">
+                                    <div class="overlay">
+                                        <div class="text">CABUBARA</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="image-container">
+                                <a href="{{ asset('mobaMenu/proyectos/HOSPITAL') }}">
+                                    <img src="{{ asset('Imagenes/imgproyectos/hospital1.jpeg') }}" alt="HOSPITAL">
+                                    <div class="overlay">
+                                        <div class="text">HOSPITAL REGIONAL</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="image-container">
-                        <a href="{{ asset('mobaMenu/proyectos/ACERIAS') }}">
-                            <img src="{{ asset('Imagenes/imgproyectos/acerias1.jpg') }}" alt="ACERIAS">
-                            <div class="overlay">
-                                <div class="text">ACERIAS PAZ DEL RIO</div>
+                    <div class="row">
+                        <!-- Tercera fila del carrusel 1 -->
+                        <div class="col-md-4">
+                            <div class="image-container">
+                                <a href="{{ asset('mobaMenu/proyectos/JOVEN') }}">
+                                    <img src="{{ asset('Imagenes/imgproyectos/jovenpro1.jpg') }}" alt="JOVENPRO">
+                                    <div class="overlay">
+                                        <div class="text">JOVEN PRO</div>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="image-container">
+                                <a href="{{ asset('mobaMenu/proyectos/DULCES') }}">
+                                    <img src="{{ asset('Imagenes/imgproyectos/lafrez1.jpg') }}" alt="LAFREZ">
+                                    <div class="overlay">
+                                        <div class="text">LA FREZ</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="image-container">
+                                <a href="{{ asset('mobaMenu/proyectos/ODONTOLOGIA') }}">
+                                    <img src="{{ asset('Imagenes/imgproyectos/lizethdorado1.jpg') }}"
+                                        alt="ODONTOLOGIA-LIZETH">
+                                    <div class="overlay">
+                                        <div class="text">ODONTOLOGIA LIZETH DORADO</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <!-- Segunda fila del carrusel 1 -->
-                <div class="col-md-4">
-                    <div class="image-container">
-                        <a href="{{ asset('mobaMenu/proyectos/BIOSALUD') }}">
-                            <img src="{{ asset('Imagenes/imgproyectos/biosalud1.jpg') }}" alt="BIOSALUD">
-                            <div class="overlay">
-                                <div class="text">BIOSALUD</div>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row">
+                        <!-- Primera fila del carrusel 2 -->
+                        <div class="col-md-4">
+                            <div class="image-container">
+                                <a href="{{ asset('mobaMenu/proyectos/odontologa1') }}">
+                                    <img src="{{ asset('Imagenes/imgproyectos/odontologa1.jpg') }}" alt="ODONTOLOGA">
+                                    <div class="overlay">
+                                        <div class="text">ODONTOLOGA CAROLINA CAMACHO</div>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="image-container">
+                                <a href="{{ asset('mobaMenu/proyectos/PUNTOCERO') }}">
+                                    <img src="{{ asset('Imagenes/imgproyectos/puntocero1.jpg') }}" alt="PUNTOCERO">
+                                    <div class="overlay">
+                                        <div class="text">COMIDAS RAPIDAS PUNTO CERO</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="image-container">
+                                <a href="{{ asset('mobaMenu/proyectos/RASPADOS') }}">
+                                    <img src="{{ asset('Imagenes/imgproyectos/raspadosiglu1.jpg') }}" alt="RASPADOS">
+                                    <div class="overlay">
+                                        <div class="text">RASPADOS IGLU</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="image-container">
-                        <a href="{{ asset('mobaMenu/proyectos/CABUBARA') }}">
-                            <img src="{{ asset('Imagenes/imgproyectos/cabubara1.jpg') }}" alt="CABUBARA">
-                            <div class="overlay">
-                                <div class="text">CABUBARA</div>
+                    <div class="row">
+                        <!-- Segunda fila del carrusel 2 -->
+                        <div class="col-md-4">
+                            <div class="image-container">
+                                <a href="{{ asset('mobaMenu/proyectos/CAFELATINO') }}">
+                                    <img src="{{ asset('Imagenes/imgproyectos/CAFELATINO1.jpg') }}" alt="RASPADOS">
+                                    <div class="overlay">
+                                        <div class="text">CAFE LATINO</div>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="image-container">
+                                <a href="{{ asset('mobaMenu/proyectos/CAFEMANA') }}">
+                                    <img src="{{ asset('Imagenes/imgproyectos/CAFEMANA.jpeg') }}" alt="RASPADOS">
+                                    <div class="overlay">
+                                        <div class="text">CAFE MANA BARUCH</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="image-container">
+                                <a href="{{ asset('mobaMenu/proyectos/EMPANADASBOTI') }}">
+                                    <img src="{{ asset('Imagenes/imgproyectos/EMPANADASBOT1.jpg') }}" alt="RASPADOS">
+                                    <div class="overlay">
+                                        <div class="text">EMPANADAS DONDE BOTI</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="image-container">
-                        <a href="{{ asset('mobaMenu/proyectos/HOSPITAL') }}">
-                            <img src="{{ asset('Imagenes/imgproyectos/hospital1.jpeg') }}" alt="HOSPITAL">
-                            <div class="overlay">
-                                <div class="text">HOSPITAL REGIONAL</div>
+                    <div class="row">
+                        <!-- Tercera fila del carrusel 2 -->
+                        <div class="col-md-4">
+                            <div class="image-container">
+                                <a href="{{ asset('mobaMenu/proyectos/EMPANADASRANCHO') }}">
+                                    <img src="{{ asset('Imagenes/imgproyectos/EMPANADASRANCHO1.jpg') }}"
+                                        alt="RASPADOS">
+                                    <div class="overlay">
+                                        <div class="text">EMPANADAS RANCHO</div>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <!-- Tercera fila del carrusel 1 -->
-                <div class="col-md-4">
-                    <div class="image-container">
-                        <a href="{{ asset('mobaMenu/proyectos/JOVEN') }}">
-                            <img src="{{ asset('Imagenes/imgproyectos/jovenpro1.jpg') }}" alt="JOVENPRO">
-                            <div class="overlay">
-                                <div class="text">JOVEN PRO</div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="image-container">
+                                <a href="{{ asset('mobaMenu/proyectos/EMPOWER') }}">
+                                    <img src="{{ asset('Imagenes/imgproyectos/ENPOWER1.jpg') }}" alt="RASPADOS">
+                                    <div class="overlay">
+                                        <div class="text">EMPOWER</div>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="image-container">
-                        <a href="{{ asset('mobaMenu/proyectos/DULCES') }}">
-                            <img src="{{ asset('Imagenes/imgproyectos/lafrez1.jpg') }}" alt="LAFREZ">
-                            <div class="overlay">
-                                <div class="text">LA FREZ</div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="image-container">
+                                <a href="{{ asset('mobaMenu/proyectos/PALMAS') }}">
+                                    <img src="{{ asset('Imagenes/imgproyectos/PALMAS1.jpg') }}" alt="RASPADOS">
+                                    <div class="overlay">
+                                        <div class="text">PALMAS CLUB</div>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="image-container">
-                        <a href="{{ asset('mobaMenu/proyectos/ODONTOLOGIA') }}">
-                            <img src="{{ asset('Imagenes/imgproyectos/lizethdorado1.jpg') }}" alt="ODONTOLOGIA-LIZETH">
-                            <div class="overlay">
-                                <div class="text">ODONTOLOGIA LIZETH DORADO</div>
-                            </div>
-                        </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
-    <div class="carousel-item">
-        <div class="container">
-            <div class="row">
-                <!-- Primera fila del carrusel 2 -->
-                <div class="col-md-4">
-                    <div class="image-container">
-                        <a href="{{ asset('mobaMenu/proyectos/ODONTOLOGA') }}">
-                            <img src="{{ asset('Imagenes/imgproyectos/odontologa1.jpg') }}" alt="ODONTOLOGA">
-                            <div class="overlay">
-                                <div class="text">ODONTOLOGA CAROLINA CAMACHO</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="image-container">
-                        <a href="{{ asset('mobaMenu/proyectos/PUNTOCERO') }}">
-                            <img src="{{ asset('Imagenes/imgproyectos/puntocero1.jpg') }}" alt="PUNTOCERO">
-                            <div class="overlay">
-                                <div class="text" >COMIDAS RAPIDAS PUNTO CERO</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="image-container">
-                        <a href="{{ asset('mobaMenu/proyectos/RASPADOS') }}">
-                            <img src="{{ asset('Imagenes/imgproyectos/raspadosiglu1.jpg') }}" alt="RASPADOS">
-                            <div class="overlay">
-                                <div class="text">RASPADOS IGLU</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <!-- Segunda fila del carrusel 2 -->
-                <div class="col-md-4">
-                    <div class="image-container">
-                        <a href="{{ asset('mobaMenu/proyectos/CAFELATINO') }}">
-                            <img src="{{ asset('Imagenes/imgproyectos/CAFELATINO1.jpg') }}" alt="RASPADOS">
-                            <div class="overlay">
-                                <div class="text">CAFE LATINO</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="image-container">
-                        <a href="{{ asset('mobaMenu/proyectos/CAFEMANA') }}">
-                            <img src="{{ asset('Imagenes/imgproyectos/CAFEMANA.jpeg') }}" alt="RASPADOS">
-                            <div class="overlay">
-                                <div class="text">CAFE MANA BARUCH</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="image-container">
-                        <a href="{{ asset('mobaMenu/proyectos/EMPANADASBOTI') }}">
-                            <img src="{{ asset('Imagenes/imgproyectos/EMPANADASBOT1.jpg') }}" alt="RASPADOS">
-                            <div class="overlay">
-                                <div class="text">EMPANADAS DONDE BOTI</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <!-- Tercera fila del carrusel 2 -->
-                <div class="col-md-4">
-                    <div class="image-container">
-                        <a href="{{ asset('mobaMenu/proyectos/EMPANADASRANCHO') }}">
-                            <img src="{{ asset('Imagenes/imgproyectos/EMPANADASRANCHO1.jpg') }}" alt="RASPADOS">
-                            <div class="overlay">
-                                <div class="text">EMPANADAS RANCHO</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="image-container">
-                        <a href="{{ asset('mobaMenu/proyectos/EMPOWER') }}">
-                            <img src="{{ asset('Imagenes/imgproyectos/ENPOWER1.jpg') }}" alt="RASPADOS">
-                            <div class="overlay">
-                                <div class="text">EMPOWER</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="image-container">
-                        <a href="{{ asset('mobaMenu/proyectos/PALMAS') }}">
-                            <img src="{{ asset('Imagenes/imgproyectos/PALMAS1.jpg') }}" alt="RASPADOS">
-                            <div class="overlay">
-                                <div class="text">PALMAS CLUB</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-</button>
-<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-</button>
-</div>
 
-    
+
 
 
     <!-- navbar -->
@@ -525,100 +533,102 @@
             padding: 10px 20px;
             cursor: pointer;
         }
+
         .dropdown-item:hover {
-        color: #2bb9e5 !important;
-    }
+            color: #2bb9e5 !important;
+        }
 
-    .dropdown-menu {
-        background-color: transparent !important;
-        border-color: #73a3b6 !important;
-    }
+        .dropdown-menu {
+            background-color: transparent !important;
+            border-color: #73a3b6 !important;
+        }
 
-    .dropdown-menu .dropdown-item {
-        color: #2bb9e5 !important;
-        background-color: transparent !important;
-        border-color: #2bb9e5 !important;
-    }
+        .dropdown-menu .dropdown-item {
+            color: #2bb9e5 !important;
+            background-color: transparent !important;
+            border-color: #2bb9e5 !important;
+        }
 
-    .dropdown-menu .dropdown-divider {
-        border-top: 1px solid #2bb9e5;
-    }
+        .dropdown-menu .dropdown-divider {
+            border-top: 1px solid #2bb9e5;
+        }
 
-    .btn-primary {
-    background-color: transparent !important;
-    color: #fff;
-    border-color: transparent !important;
-    font-size: 1.3vw;
-}
+        .btn-primary {
+            background-color: transparent !important;
+            color: #fff;
+            border-color: transparent !important;
+            font-size: 1.3vw;
+        }
 
-.btn-primary:hover {
-    background-color: transparent !important;
-    border-color: transparent !important;
-}
+        .btn-primary:hover {
+            background-color: transparent !important;
+            border-color: transparent !important;
+        }
 
-.btn-primary:active,
-.btn-primary:focus {
-    background-color: transparent !important;
-    border-color: transparent !important;
-}
-    
-    .dropdown-menu .dropdown-item:hover {
-        background-color: transparent !important;
-        border-color: transparent !important;
-        border: none;
-        text-shadow: 0 0 5px  #2bb9e5;
-    }
+        .btn-primary:active,
+        .btn-primary:focus {
+            background-color: transparent !important;
+            border-color: transparent !important;
+        }
 
-    .dropdown-menu .dropdown-item:hover {
-        background-color: rgba(161, 174, 250, 0.274) !important;
-        /* Cambia el color de fondo al pasar el cursor sobre las opciones del menú */
-    }
+        .dropdown-menu .dropdown-item:hover {
+            background-color: transparent !important;
+            border-color: transparent !important;
+            border: none;
+            text-shadow: 0 0 5px #2bb9e5;
+        }
 
-    .dropdown-item:hover {
-        color: #2bb9e5 !important;
-    }
+        .dropdown-menu .dropdown-item:hover {
+            background-color: rgba(161, 174, 250, 0.274) !important;
+            /* Cambia el color de fondo al pasar el cursor sobre las opciones del menú */
+        }
 
-    .dropdown-menu {
-        background-color: transparent !important;
-        border-color: #73a3b6 !important;
-    }
+        .dropdown-item:hover {
+            color: #2bb9e5 !important;
+        }
 
-    .dropdown-menu .dropdown-item {
-        color: #2bb9e5 !important;
-        background-color: transparent !important;
-        border-color: #2bb9e5 !important;
-    }
+        .dropdown-menu {
+            background-color: transparent !important;
+            border-color: #73a3b6 !important;
+        }
 
-    .dropdown-menu .dropdown-divider {
-        border-top: 1px solid #2bb9e5;
-    }
+        .dropdown-menu .dropdown-item {
+            color: #2bb9e5 !important;
+            background-color: transparent !important;
+            border-color: #2bb9e5 !important;
+        }
+
+        .dropdown-menu .dropdown-divider {
+            border-top: 1px solid #2bb9e5;
+        }
 
 
-    
-    /*estilos Breadcrums*/
 
-    .breadcrums {
-    display: flex;
-}
+        /*estilos Breadcrums*/
 
-.breadcrums a {
-    text-decoration: none;
-    color: white;
-    font-size: 0.9vw;
-    margin-right: 2px; /* Esto agrega un espacio entre los enlaces */
-}
+        .breadcrums {
+            display: flex;
+        }
 
-.breadcrumbs li {
-    display: inline;
-    padding: 0;
-}
+        .breadcrums a {
+            text-decoration: none;
+            color: white;
+            font-size: 0.9vw;
+            margin-right: 2px;
+            /* Esto agrega un espacio entre los enlaces */
+        }
 
-.breadcrumbs a:hover{
-    color:  #2bb9e5;
-}
+        .breadcrumbs li {
+            display: inline;
+            padding: 0;
+        }
+
+        .breadcrumbs a:hover {
+            color: #2bb9e5;
+        }
     </style>
 
-@include('partials.footerMoba')
+    @include('partials.footerMoba')
 
 </body>
 

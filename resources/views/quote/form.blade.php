@@ -22,7 +22,7 @@
                     <h2>Cotización</h2>
                     <!-- Contenido de la primera tabla -->
                     <div class="box-body col-mt-10">
-                                <div class="form-group">
+                                <div class="form-group col-md-3">
                                     {{ Form::label('Fecha de expedición', null, ['class' => 'required']) }}
                                     {{ Form::date('date_issuance', \Carbon\Carbon::now()->format('Y-m-d'), [
                                         'class' => 'form-control' . ($errors->has('date_issuance') ? ' is-invalid' : ''),
@@ -32,7 +32,7 @@
                                     ]) }}
                                     {!! $errors->first('date_issuance', '<div class="invalid-feedback">:message</div>') !!}
                                 
-                                    <small class="text-muted">Por cuestiones de seguridad este campo no es editable.</small>
+                                    <small class="text-muted">Este campo no es editable.</small>
                                 </div>
                                 
                                 <div class="form-group">

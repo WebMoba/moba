@@ -20,7 +20,7 @@
                         <a href="{{ asset('/') }}" class="btn btn-primary" style="margin-top: 1.25%;"><i
                                 class="bi bi-arrow-left-circle"></i></a>
                     </div>
-                    <div class="row">
+                    <div class="row" style="margin-left:0;">
                         <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
                             <div class="card card-plain">
                                 <div class="card-header pb-0 text-start">

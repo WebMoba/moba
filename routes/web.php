@@ -169,7 +169,6 @@ Route::view('/mobaMenu/proyectos/BIOSALUD', 'mobaMenu.proyectos.BIOSALUD')->name
 Route::view('/mobaMenu/proyectos/HOSPITAL', 'mobaMenu.proyectos.HOSPITAL')->name('mobaMenu.proyectos.HOSPITAL');
 Route::view('/mobaMenu/proyectos/DULCES', 'mobaMenu.proyectos.DULCES')->name('mobaMenu.proyectos.DULCES');
 Route::view('/mobaMenu/proyectos/CABUBARA', 'mobaMenu.proyectos.CABUBARA')->name('mobaMenu.proyectos.CABUBARA');
-Route::view('/mobaMenu/proyectos/ODONTOLOGA', 'mobaMenu.proyectos.ODONTOLOGA')->name('mobaMenu.proyectos.ODONTOLOGA');
 Route::view('/mobaMenu/proyectos/ODONTOLOGIA', 'mobaMenu.proyectos.ODONTOLOGIA')->name('mobaMenu.proyectos.ODONTOLOGIA');
 Route::view('/mobaMenu/proyectos/PUNTOCERO', 'mobaMenu.proyectos.PUNTOCERO')->name('mobaMenu.proyectos.PUNTOCERO');
 Route::view('/mobaMenu/proyectos/RASPADOS', 'mobaMenu.proyectos.RASPADOS')->name('mobaMenu.proyectos.RASPADOS');
@@ -180,6 +179,8 @@ Route::view('/mobaMenu/proyectos/EMPANADASBOTI', 'mobaMenu.proyectos.EMPANADASBO
 Route::view('/mobaMenu/proyectos/EMPANADASRANCHO', 'mobaMenu.proyectos.EMPANADASRANCHO')->name('mobaMenu.proyectos.EMPANADASRANCHO');
 Route::view('/mobaMenu/proyectos/EMPOWER', 'mobaMenu.proyectos.EMPOWER')->name('mobaMenu.proyectos.EMPOWER');
 Route::view('/mobaMenu/proyectos/PALMAS', 'mobaMenu.proyectos.PALMAS')->name('mobaMenu.proyectos.PALMAS');
+Route::view('/mobaMenu/proyectos/odontologa1', 'mobaMenu.proyectos.odontologa1')->name('mobaMenu.proyectos.odontologa1');
+
 
 
 

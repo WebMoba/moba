@@ -89,7 +89,7 @@
 
  <!-- Contenido formulario de contacto -->
 
-    <div class="box">
+ <div class="box form">
     <form method="POST" action="{{ route('enviar-correo') }}">
     @csrf
         <label for="nombre">Nombre:</label>
@@ -97,20 +97,23 @@
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" value="{{ auth()->check() ? auth()->user()->email : '' }}" required><br><br>
 		
-        <ul class="option-list">Tipo Identificacion 
-    <li class="option-item">
-        <input type="radio" id="option1" name="options" class="option-input">
-        <label for="option1" class="option-label">Cedula</label>
-    </li>
-    <li class="option-item">
-        <input type="radio" id="option2" name="options" class="option-input">
-        <label for="option2" class="option-label">Cedula de extranjeria </label>
-    </li>
-    <li class="option-item">
-        <input type="radio" id="option3" name="options" class="option-input">
-        <label for="option3" class="option-label">NIT</label>
-    </li>
+        <ul class="option-listOne">Tipo Identificación
+        <li class="option-item">
+            <input type="radio" id="option2" name="options" class="option-input" required>
+            <label for="option2" class="option-label">Cedula Extranjeria</label>
+        </li>
+        <li class="option-item">
+            <input type="radio" id="option1" name="options" class="option-input" required>
+            <label for="option1" class="option-label">Cedula</label>
+        </li>
+       
+        <li class="option-item">
+            <input type="radio" id="option3" name="options" class="option-input" required>
+            <label for="option3" class="option-label">NIT</label>
+        </li>
     </ul><br>
+
+
         <label for="NumeroId">Numero Identificación:</label>
         <input type="text" id="NumeroId" name="NumeroId" maxlength="10" required><br><br>
         <label for="telefono">Teléfono:</label>
@@ -159,12 +162,14 @@
 </html>
 
 <style>
+
 .container{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 70vw;
     width: 100%;
+    margin-top: 5%;
     
 }
 .active-link {
@@ -186,7 +191,7 @@
     height: 70%;
     width: 45%;
     margin-top:5%;
-    margin-left: 10%;
+    margin-left: 5%;
     overflow: auto;
     
 }
@@ -202,11 +207,18 @@ h1{
 
 h3{
     color: #BCCCE0;
-}
+    font-size: 1.8vw;
+} 
 label{
     color:  #BCCCE0 ;
     
 }
+
+.box form{
+
+width: 45hw;
+height: 50hw;
+}    
 form{
     margin-top: 10%;
     margin-left: 20%;
@@ -236,22 +248,30 @@ textarea{
 
 
 
-.option-list {
+.option-listOne {
         list-style-type: none;
         padding: 0;
         margin: 0;
-        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 2px; 
+        display: flex;
+        
     }
 
     /* Estilo para cada opción */
     .option-item {
-        margin-bottom: 10px;
+        width: 7.3vw;
+        font-size: 0.9vw;
+        margin-bottom: 5px;
+        text-align: center;
+        
     }
 
     /* Estilo para el input oculto */
     .option-input {
         display: none;
     }
+
 
     /* Estilo para la etiqueta */
     .option-label {
@@ -260,6 +280,8 @@ textarea{
         border: 1px solid #ccc;
         border-radius: 5px;
         cursor: pointer;
+        width: 6vw;
+        height: 2wv;
     }
 
     /* Estilo para cuando se pasa el mouse sobre la etiqueta */
