@@ -34,7 +34,7 @@ class ContactoController extends Controller
             return redirect()->back()->with('success', 'El correo electrónico ha sido enviado correctamente.');
         } else {
             // El usuario no está autenticado, mostrar un mensaje en una alerta y redirigir a la página de registro
-            echo '<script>alert("Para enviar un mensaje, primero debes registrarte."); window.location.href = "'.route('register').'";</script>';
+            echo '<script>alert("Para enviar un mensaje, primero debes Inicar sesion o registrarte."); window.location.href = "'.route('login').'";</script>';
             exit;
         }
     }
