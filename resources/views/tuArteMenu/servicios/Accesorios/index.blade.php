@@ -165,7 +165,8 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="cartModalLabel">Tus productos</h5>
+                    <h5 class="modal-title header-title" id="cartModalLabel">Tus productos</h5>
+                    <h5 class="modal-title total-price">Total: $<span id="totalPrice">0</span></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -176,7 +177,6 @@
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Precio</th>
                                 <th scope="col">Cantidad</th>
-                                <th scope="col">Descripción</th>
                             </tr>
                         </thead>
                         <tbody id="cartItems">
@@ -236,38 +236,52 @@
             const cards = document.querySelectorAll('.card-link');
             const cartBadge = document.querySelector('.cart-badge');
             const cartItems = document.getElementById('cartItems');
+            const totalPriceElement = document.getElementById('totalPrice');
+
+            function updateTotal() {
+                let total = 0;
+                const cartRows = cartItems.querySelectorAll('tr');
+                cartRows.forEach(row => {
+                    const price = parseFloat(row.querySelector('.product-price').textContent.replace('$',
+                        ''));
+                    const quantity = parseInt(row.querySelector('.product-quantity').value);
+                    total += price * quantity;
+                });
+                totalPriceElement.textContent = Math.round(total);
+            }
 
             cards.forEach(card => {
                 card.addEventListener('click', function(event) {
-                    event
-                        .preventDefault(); // Prevenir el comportamiento predeterminado del evento clic
-
+                    event.preventDefault();
                     const checkIcon = this.querySelector('.check-icon');
                     let activeCheckIcons = document.querySelectorAll(
                         '.check-icon[style="display: inline-block;"]');
 
                     if (checkIcon.style.display === 'none') {
-                        checkIcon.style.display =
-                            'inline-block'; // Mostrar el icono de verificación
+                        checkIcon.style.display = 'inline-block';
                         activeCheckIcons = document.querySelectorAll(
                             '.check-icon[style="display: inline-block;"]');
                     } else {
-                        checkIcon.style.display = 'none'; // Ocultar el icono de verificación
+                        checkIcon.style.display = 'none';
                         activeCheckIcons = document.querySelectorAll(
                             '.check-icon[style="display: inline-block;"]');
+                        // Si el producto ya está en el carrito, elimínalo
+                        const productId = this.getAttribute('data-product-id');
+                        const existingItem = document.querySelector(
+                            `#cartItems tr[data-product-id="${productId}"]`);
+                        if (existingItem) {
+                            existingItem.remove();
+                            updateTotal();
+                        }
                     }
 
-                    // Mostrar u ocultar el contador flotante
                     if (activeCheckIcons.length > 0) {
-                        cartBadge.classList.add('active'); // Mostrar el contador
-                        cartBadge.textContent = activeCheckIcons
-                            .length; // Actualizar el número de íconos activos
+                        cartBadge.classList.add('active');
+                        cartBadge.textContent = activeCheckIcons.length;
                     } else {
-                        cartBadge.classList.remove(
-                            'active'); // Ocultar el contador si no hay íconos activos
+                        cartBadge.classList.remove('active');
                     }
 
-                    // Agregar producto al carrito
                     const productId = this.getAttribute('data-product-id');
                     const productName = this.getAttribute('data-product-name');
                     const productPrice = this.getAttribute('data-product-price');
@@ -275,27 +289,44 @@
 
                     const existingItem = document.querySelector(
                         `#cartItems tr[data-product-id="${productId}"]`);
-                    if (existingItem) {
-                        const quantityInput = existingItem.querySelector('.product-quantity');
-                        quantityInput.value = parseInt(quantityInput.value) + 1;
-                    } else {
+                    if (!existingItem && checkIcon.style.display !== 'none') {
                         const newRow = document.createElement('tr');
                         newRow.setAttribute('data-product-id', productId);
                         newRow.innerHTML = `
                             <td><img src="${productImage}" alt="${productName}" width="50"></td>
                             <td>${productName}</td>
-                            <td>${productPrice}</td>
+                            <td class="product-price">${productPrice}</td>
                             <td><input type="number" class="form-control product-quantity" value="1" min="1" max="99"></td>
-                            <td><input type="text" class="form-control product-description" value="¿Quieres tu producto personalizado? describelo aqui..." ></td>
+                            <td><i class="bi bi-x-lg remove-product" style="cursor: pointer;"></i></td>
                         `;
                         cartItems.appendChild(newRow);
+
+                        newRow.querySelector('.product-quantity').addEventListener('change',
+                            function() {
+                                if (this.value < 1) this.value = 1;
+                                updateTotal();
+                            });
                     }
+                    updateTotal();
                 });
             });
+
+            // Agregar listener para eliminar productos del carrito al hacer clic en la "x"
+            cartItems.addEventListener('click', function(event) {
+                if (event.target.classList.contains('remove-product')) {
+                    const row = event.target.closest('tr');
+                    row.remove();
+                    updateTotal();
+                    // Desmarcar el producto correspondiente en la lista de productos
+                    const productId = row.getAttribute('data-product-id');
+                    const card = document.querySelector(`.card-link[data-product-id="${productId}"]`);
+                    if (card) {
+                        const checkIcon = card.querySelector('.check-icon');
+                        checkIcon.style.display = 'none';
+                    }
+                }
+            });
         });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-QF6B5UcQk8k3CENQ1qIRjN3xIqby0mESMQTjZcCRtbRL8xOyBBzUfuG4Pb+v5w8d" crossorigin="anonymous">
     </script>
     @include('partials.footerTuArte')
 </body>
