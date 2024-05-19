@@ -193,7 +193,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-success">Enviar</button>
+                    <button type="button" class="btn btn-success">Comprar</button>
                 </div>
             </div>
         </div>
