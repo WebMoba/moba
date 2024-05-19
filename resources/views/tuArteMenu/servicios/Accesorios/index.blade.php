@@ -18,7 +18,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<body style="position: relative;">
+<body onload="loadCart()" style="position: relative;">
     <div
         style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{ asset('Imagenes/FondoPrueba.png') }}'); background-size: cover; background-position: center top; background-repeat: no-repeat; opacity: 1; z-index: -1; filter: brightness(30%); -webkit-filter: brightness(30%);">
     </div>
@@ -332,6 +332,103 @@
     </script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            const cartBadge = document.querySelector('.cart-badge');
+            const cartItems = document.getElementById('cartItems');
+            const totalPriceElement = document.getElementById('totalPrice');
+
+            function saveCart() {
+                const cartData = [];
+                cartItems.querySelectorAll('tr').forEach(row => {
+                    const productId = row.getAttribute('data-product-id');
+                    const productName = row.querySelector('td:nth-child(2)').textContent;
+                    const productPrice = row.querySelector('.product-price').textContent;
+                    const productImage = row.querySelector('img').src;
+                    const productQuantity = row.querySelector('.product-quantity').value;
+                    cartData.push({
+                        productId,
+                        productName,
+                        productPrice,
+                        productImage,
+                        productQuantity
+                    });
+                });
+                localStorage.setItem('cart', JSON.stringify(cartData));
+            }
+
+            function loadCart() {
+                const cartData = JSON.parse(localStorage.getItem('cart') || '[]');
+                cartData.forEach(item => {
+                    addCartItem(item.productId, item.productName, item.productPrice, item.productImage, item
+                        .productQuantity);
+                });
+                updateTotal();
+            }
+
+            function addCartItem(productId, productName, productPrice, productImage, productQuantity = 1) {
+                const existingItem = document.querySelector(`#cartItems tr[data-product-id="${productId}"]`);
+                if (!existingItem) {
+                    const newRow = document.createElement('tr');
+                    newRow.setAttribute('data-product-id', productId);
+                    newRow.innerHTML = `
+                        <td><img src="${productImage}" alt="${productName}" width="50"></td>
+                        <td>${productName}</td>
+                        <td class="product-price">${productPrice}</td>
+                        <td><input type="number" class="form-control product-quantity" value="${productQuantity}" min="1" max="99"></td>
+                        <td><i class="bi bi-x-lg remove-product" style="cursor: pointer;"></i></td>
+                    `;
+                    cartItems.appendChild(newRow);
+
+                    newRow.querySelector('.product-quantity').addEventListener('change', function() {
+                        if (this.value < 1) this.value = 1;
+                        updateTotal();
+                        saveCart();
+                    });
+
+                    newRow.querySelector('.remove-product').addEventListener('click', function() {
+                        newRow.remove();
+                        updateTotal();
+                        saveCart();
+                    });
+                }
+            }
+
+            function updateTotal() {
+                let total = 0;
+                const cartRows = cartItems.querySelectorAll('tr');
+                cartRows.forEach(row => {
+                    const price = parseFloat(row.querySelector('.product-price').textContent.replace('$',
+                        ''));
+                    const quantity = parseInt(row.querySelector('.product-quantity').value);
+                    total += price * quantity;
+                });
+                totalPriceElement.textContent = Math.round(total);
+                cartBadge.textContent = cartRows.length;
+                if (cartRows.length > 0) {
+                    cartBadge.classList.add('active');
+                } else {
+                    cartBadge.classList.remove('active');
+                }
+            }
+
+            document.querySelectorAll('.card-link').forEach(card => {
+                card.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const productId = this.getAttribute('data-product-id');
+                    const productName = this.getAttribute('data-product-name');
+                    const productPrice = this.getAttribute('data-product-price');
+                    const productImage = this.getAttribute('data-product-image');
+                    addCartItem(productId, productName, productPrice, productImage);
+                    updateTotal();
+                    saveCart();
+                });
+            });
+
+            loadCart();
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
             // Verificar si el usuario está autenticado
             const isAuthenticated = {{ Auth::check() ? 'true' : 'false' }};
 
@@ -342,7 +439,7 @@
                     showCancelButton: true,
                     confirmButtonColor: "#3085d6",
                     cancelButtonColor: "#d33",
-                    confirmButtonText: "Registrarse",
+                    confirmButtonText: "Iniciar sesión",
                     cancelButtonText: "Cancelar"
                 }).then((result) => {
                     if (result.isConfirmed) {
