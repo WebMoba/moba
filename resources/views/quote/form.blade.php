@@ -70,8 +70,8 @@
                 </div>
                 <div class="container">
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-success btn-enviar"><i class="bi bi-plus-circle"></i></button>
-                        <a type="submit" class="btn btn-primary" href="{{ route('quotes.index') }}"><i class="bi bi-arrow-left-circle"></i></a>
+                        <button type="submit" class="btn btn-success btn-enviar"><i class="bi bi-plus-circle"></i><span class="tooltiptext">Crear</span></button>
+                        <a type="submit" class="btn btn-primary" href="{{ route('quotes.index') }}"><i class="bi bi-arrow-left-circle"></i><span class="tooltiptext">Volver</span></a>
                     </div>
                 </div>
             </div>
