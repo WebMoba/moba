@@ -23,21 +23,21 @@
                                 </div>
                                 <div class="col-auto">
                                     <button type="submit" class="btn btn-primary btn-sm"><i
-                                            class="bi bi-search"></i></button>
+                                            class="bi bi-search"></i><span class="tooltiptext">Buscar</span></button>
                                 </div>
                             </form>
                             <div class="float-right">
                                 <a href="{{ route('pdf.purchase') }}" class="btn btn-danger btn-sm float-right">
-                                    </i><i class="bi bi-file-pdf-fill"></i>
+                                    </i><i class="bi bi-file-pdf-fill"></i><span class="tooltiptext">Pdf</span>
                                 </a>
                                 <a href="{{ route('excel.purchase') }}" class="btn btn-success btn-sm float-right">
-                                    <i class="bi bi-file-earmark-excel-fill"></i>
+                                    <i class="bi bi-file-earmark-excel-fill"></i><span class="tooltiptext">Excel</span>
                                 </a>
 
                             </div>
                             <div class="float-right">
                                 <a href="{{ route('purchases.create') }}" class="btn btn-success" data-placement="left">
-                                    <i class="bi bi-plus-circle"></i>
+                                    <i class="bi bi-plus-circle"></i><span class="tooltiptext">Crear</span>
                                 </a>
                             </div>
                         </div>
@@ -85,11 +85,10 @@
                                                         
                                                             <a class="btn btn-sm btn-primary {{ $purchase->disable ? 'disabled' : '' }}"
                                                                 href="{{ route('purchases.show', $purchase->id) }}"><i
-                                                                    class="bi bi-eye-fill"></i></a>
+                                                                    class="bi bi-eye-fill"></i><span class="tooltiptext">Mostrar</span></a>
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger btn-sm"
-                                                                >
+                                                            <button type="submit" class="btn btn-danger btn-sm">
 
                                                                 {!! $purchase->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>' !!}
                                                             </button>

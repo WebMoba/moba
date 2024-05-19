@@ -76,9 +76,9 @@
                     
                     <div class="container">
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-success btn-enviar"><i class="bi bi-plus-circle"></i></button>
+                            <button type="submit" class="btn btn-success btn-enviar"><i class="bi bi-plus-circle"></i><span class="tooltiptext">Crear</span></button>
                             <a type="submit" class="btn btn-primary" href="{{ route('quotes.index') }}"><i
-                                class="bi bi-arrow-left-circle"></i></a>
+                                class="bi bi-arrow-left-circle"></i><span class="tooltiptext">Volver</span></a>
                         </div>
                     </div>
                 </div>
@@ -97,17 +97,17 @@
                                 <tr>
                                     <th>
                                         <button type="button" class="btn btn-primary mt-2 agregar-detalleS" onclick="agregarDetalle('service')">
-                                            <i class="bi bi-plus-circle-fill"></i> Agregar Servicio
+                                            <i class="bi bi-plus-circle-fill"></i> <span class="tooltiptext">Agregar Servicio</span>
                                         </button>
                                     </th>
                                     <th>
                                         <button type="button" class="btn btn-primary mt-2 agregar-detalleP" onclick="agregarDetalle('product')">
-                                            <i class="bi bi-plus-circle-fill"></i> Agregar Producto
+                                            <i class="bi bi-plus-circle-fill"></i> <span class="tooltiptext">Agregar Producto</span>
                                         </button>
                                     </th>
                                     <th>
                                         <button type="button" class="btn btn-primary mt-2 agregar-detallePj" onclick="agregarDetalle('project')">
-                                            <i class="bi bi-plus-circle-fill"></i> Agregar Proyecto
+                                            <i class="bi bi-plus-circle-fill"></i><span class="tooltiptext">Agregar Proyecto</span>
                                         </button>
                                     </th>
                                 </tr>
@@ -122,7 +122,7 @@
                                                 {!! $errors->first('services_id', '<div class="invalid-feedback">:message</div>') !!}
                                             </div>
                                             <button type="button" class="btn btn-danger mt-3 eliminar-detalleS" onclick="eliminarDetalle('select-service')">
-                                                <i class="fas fa-trash-alt"></i> Eliminar
+                                                <i class="fas fa-trash-alt"></i> <span class="tooltiptext">Eliminar</span>
                                             </button>
                                         </div>
                                     </td>
@@ -134,7 +134,7 @@
                                                 {!! $errors->first('products_id', '<div class="invalid-feedback">:message</div>') !!}
                                             </div>
                                             <button type="button" class="btn btn-danger mt-3 eliminar-detalleP" onclick="eliminarDetalle('select-product')">
-                                                <i class="fas fa-trash-alt"></i> Eliminar
+                                                <i class="fas fa-trash-alt"></i> <span class="tooltiptext">Eliminar</span>
                                             </button>
                                         </div>
                                     </td>
@@ -146,7 +146,7 @@
                                                 {!! $errors->first('projects_id', '<div class="invalid-feedback">:message</div>') !!}
                                             </div>
                                             <button type="button" class="btn btn-danger mt-3 eliminar-detallePj" onclick="eliminarDetalle('select-project')">
-                                                <i class="fas fa-trash-alt"></i> Eliminar
+                                                <i class="fas fa-trash-alt"></i> <span class="tooltiptext">Eliminar</span>
                                             </button>
                                         </div>
                                     </td>

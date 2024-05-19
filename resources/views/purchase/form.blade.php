@@ -59,8 +59,8 @@
         </div>
     </div>
     <div class="box-footer" style="margin: 20px;">
-        <button type="button" id="enviarBtn" class="btn btn-success" onclick="enviarDetalles()"><i class="bi bi-plus-circle"></i></button>
-        <a type="submit" class="btn btn-primary" href="{{ route('purchases.index') }}"><i class="bi bi-arrow-left-circle"></i></a>
+        <button type="button" id="enviarBtn" class="btn btn-success" onclick="enviarDetalles()"><i class="bi bi-plus-circle"></i><span class="tooltiptext">Crear</span></button>
+        <a type="submit" class="btn btn-primary" href="{{ route('purchases.index') }}"><i class="bi bi-arrow-left-circle"></i><span class="tooltiptext">Volver</span></a>
     </div>
 </div>
 
@@ -119,7 +119,7 @@
                         </div>
                     </th>
                     <th>
-                        <button type="button" class="btn btn-danger eliminar-detalle" onclick="eliminarDetalle(this)"><i class="fas fa-trash-alt"></i></button>
+                        <button type="button" class="btn btn-danger eliminar-detalle" onclick="eliminarDetalle(this)"><i class="fas fa-trash-alt"></i><span class="tooltiptext">Eliminar</span></button>
                     </th>
                 </tr>
             </tbody>

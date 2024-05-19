@@ -72,7 +72,7 @@
                             <p>No se encontraron detalles asociados a esta compra.</p>
                         @endif
                         <a type="submit" class="btn btn-primary" href="{{ route('purchases.index') }}"><i
-                                class="bi bi-arrow-left-circle"></i></a>
+                                class="bi bi-arrow-left-circle"></i><span class="tooltiptext">Volver</span></a>
                     </div>
 
                 </div>
