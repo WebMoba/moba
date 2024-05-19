@@ -150,12 +150,8 @@
 
                                 <!-- boton para eliminar el detalle creado demás -->
                                 <th>
-
-                                    <button type="button" class="btn btn-danger mt-3" onclick="eliminarDetalle(this)">
-                                        <i class="fas fa-trash-alt"></i> <!-- Icono de papelera de Font Awesome -->
-                                    </button>
-
-                                </th>
+                        <button type="button" class="btn btn-danger eliminar-detalle" onclick="eliminarDetalle(this)"><i class="fas fa-trash-alt"></i></button>
+                    </th>
                             </tr>
                         </tbody>
                     </table>
@@ -367,12 +363,12 @@
         });
     }
 
-    document.querySelectorAll('#detalle-table input').forEach(function(input) {
-        input.addEventListener('input', calcularTotalCompra);
-    });
     // Calcular el total de la compra al cargar la página
     document.addEventListener('DOMContentLoaded', function() {
         calcularTotalCompra();
+
+        // Ocultar el botón de eliminar del primer detalle
+        document.querySelector('#detalle-table tbody tr .eliminar-detalle').style.display = 'none';
     });
 
     function eliminarDetalle(button) {
@@ -398,6 +394,9 @@
 
         // Agregar eventos de escucha para el nuevo detalle
         addEventListeners(nuevoDetalle);
+
+        // Agregar el botón de eliminar solo al nuevo detalle
+        nuevoDetalle.querySelector('.eliminar-detalle').style.display = 'inline-block';
 
         // Agregar el nuevo detalle a la tabla
         container.appendChild(nuevoDetalle);

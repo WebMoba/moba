@@ -15,9 +15,11 @@
     <link rel="stylesheet" href="{{ asset('css/StylesServicios/MascotasTuArte.css') }}">
     <link rel="stylesheet" href="{{ asset('css/StyleFooter.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<body style="position: relative;">
+<body onload="loadCart()" style="position: relative;">
     <div
         style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{ asset('Imagenes/FondoPrueba.png') }}'); background-size: cover; background-position: center top; background-repeat: no-repeat; opacity: 1; z-index: -1; filter: brightness(30%); -webkit-filter: brightness(30%);">
     </div>
@@ -33,7 +35,7 @@
             ])
         </div>
         <div class="inicioRegistro"> @include('partials.inicio')</div>
-<!--- final breaddrums-->
+        <!--- final breaddrums-->
         <div class="container-fluid">
             <a href="{{ route('mobaMenu.index') }}">
                 <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
@@ -62,12 +64,16 @@
                 <a href="{{ route('tuArteMenu.categorias.index') }}"class="btn btn-primary">Categorias</a>
                 <a href="{{ route('tuArteMenu.galeria.index') }}" class="btn btn-primary">Galeria</a>
                 <a href="{{ route('tuArteMenu.Contacto.index') }}" class="btn btn-primary">Contáctanos</a>
+                <button class="btn btn-cart position-relative" data-bs-toggle="modal" data-bs-target="#cartModal">
+                    <i class="bi bi-cart3"></i>
+                    <span class="badge bg-success rounded-pill cart-badge">0</span>
+                </button>
             </div>
             <a href="{{ route('tuArteMenu.index') }}">
                 <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte">
             </a>
         </div>
-      
+
 
     </nav>
     <!-- Líneas verticales con iconos -->
@@ -114,29 +120,36 @@
                     <div class="row">
                         @foreach ($chunk as $product)
                             <div class="col">
-                                <div class="card">
-                                    <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top"
-                                        alt="{{ $product->name }}">
-                                    <div class="card-body">
-                                        <div class="stars">
-                                            @php
-                                                // Genera un número aleatorio entre 4 y 5 para las estrellas amarillas
-                                                $randomStars = rand(4, 5);
-                                            @endphp
-                                            @for ($i = 0; $i < 5; $i++)
-                                                @if ($i < $randomStars)
-                                                    <i class="bi bi-star-fill active"></i>
-                                                @else
-                                                    <i class="bi bi-star-fill"></i>
-                                                @endif
-                                            @endfor
-                                        </div>
-                                        <h5 class="card-title">{{ $product->name }}</h5>
-                                        <div class="mt-auto">
-                                            <p class="card-text">${{ $product->price }}</p>
+                                <a href="" class="card-link" data-product-id="{{ $product->id }}"
+                                    data-product-name="{{ $product->name }}"
+                                    data-product-price="{{ $product->price }}"
+                                    data-product-image="{{ asset('storage/' . $product->image) }}">
+                                    <div class="card">
+                                        <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top"
+                                            alt="{{ $product->name }}">
+                                        <div class="card-body">
+                                            <div class="stars">
+                                                @php
+                                                    // Genera un número aleatorio entre 4 y 5 para las estrellas amarillas
+                                                    $randomStars = rand(4, 5);
+                                                @endphp
+                                                @for ($i = 0; $i < 5; $i++)
+                                                    @if ($i < $randomStars)
+                                                        <i class="bi bi-star-fill active"></i>
+                                                    @else
+                                                        <i class="bi bi-star-fill"></i>
+                                                    @endif
+                                                @endfor
+                                            </div>
+                                            <h5 class="card-title">{{ $product->name }}</h5>
+                                            <div class="mt-auto d-flex justify-content-between align-items-center">
+                                                <p class="card-text">${{ $product->price }}</p>
+                                                <span class="check-icon" style="display: none;"><i
+                                                        class="bi bi-check-circle"></i></span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         @endforeach
                     </div>
@@ -151,6 +164,36 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Siguiente</span>
         </button>
+    </div>
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title header-title" id="cartModalLabel">Tus productos</h5>
+                    <h5 class="modal-title total-price">Total: $<span id="totalPrice">0</span></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Imagen</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">Cantidad</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cartItems">
+                            <!-- Los elementos del carrito se agregarán aquí dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-success">Comprar</button>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
@@ -188,7 +231,245 @@
             });
         });
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const cards = document.querySelectorAll('.card-link');
+            const cartBadge = document.querySelector('.cart-badge');
+            const cartItems = document.getElementById('cartItems');
+            const totalPriceElement = document.getElementById('totalPrice');
 
+            function updateTotal() {
+                let total = 0;
+                const cartRows = cartItems.querySelectorAll('tr');
+                cartRows.forEach(row => {
+                    const price = parseFloat(row.querySelector('.product-price').textContent.replace('$',
+                        ''));
+                    const quantity = parseInt(row.querySelector('.product-quantity').value);
+                    total += price * quantity;
+                });
+                totalPriceElement.textContent = Math.round(total);
+            }
+
+            cards.forEach(card => {
+                card.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const checkIcon = this.querySelector('.check-icon');
+                    let activeCheckIcons = document.querySelectorAll(
+                        '.check-icon[style="display: inline-block;"]');
+
+                    if (checkIcon.style.display === 'none') {
+                        checkIcon.style.display = 'inline-block';
+                        activeCheckIcons = document.querySelectorAll(
+                            '.check-icon[style="display: inline-block;"]');
+                    } else {
+                        checkIcon.style.display = 'none';
+                        activeCheckIcons = document.querySelectorAll(
+                            '.check-icon[style="display: inline-block;"]');
+                        // Si el producto ya está en el carrito, elimínalo
+                        const productId = this.getAttribute('data-product-id');
+                        const existingItem = document.querySelector(
+                            `#cartItems tr[data-product-id="${productId}"]`);
+                        if (existingItem) {
+                            existingItem.remove();
+                            updateTotal();
+                        }
+                    }
+
+                    if (activeCheckIcons.length > 0) {
+                        cartBadge.classList.add('active');
+                        cartBadge.textContent = activeCheckIcons.length;
+                    } else {
+                        cartBadge.classList.remove('active');
+                    }
+
+                    const productId = this.getAttribute('data-product-id');
+                    const productName = this.getAttribute('data-product-name');
+                    const productPrice = this.getAttribute('data-product-price');
+                    const productImage = this.getAttribute('data-product-image');
+
+                    const existingItem = document.querySelector(
+                        `#cartItems tr[data-product-id="${productId}"]`);
+                    if (!existingItem && checkIcon.style.display !== 'none') {
+                        const newRow = document.createElement('tr');
+                        newRow.setAttribute('data-product-id', productId);
+                        newRow.innerHTML = `
+                            <td><img src="${productImage}" alt="${productName}" width="50"></td>
+                            <td>${productName}</td>
+                            <td class="product-price">${productPrice}</td>
+                            <td><input type="number" class="form-control product-quantity" value="1" min="1" max="99"></td>
+                            <td><i class="bi bi-x-lg remove-product" style="cursor: pointer;"></i></td>
+                        `;
+                        cartItems.appendChild(newRow);
+
+                        newRow.querySelector('.product-quantity').addEventListener('change',
+                            function() {
+                                if (this.value < 1) this.value = 1;
+                                updateTotal();
+                            });
+                    }
+                    updateTotal();
+                });
+            });
+
+            // Agregar listener para eliminar productos del carrito al hacer clic en la "x"
+            cartItems.addEventListener('click', function(event) {
+                if (event.target.classList.contains('remove-product')) {
+                    const row = event.target.closest('tr');
+                    row.remove();
+                    updateTotal();
+                    // Desmarcar el producto correspondiente en la lista de productos
+                    const productId = row.getAttribute('data-product-id');
+                    const card = document.querySelector(`.card-link[data-product-id="${productId}"]`);
+                    if (card) {
+                        const checkIcon = card.querySelector('.check-icon');
+                        checkIcon.style.display = 'none';
+                    }
+                }
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const cartBadge = document.querySelector('.cart-badge');
+            const cartItems = document.getElementById('cartItems');
+            const totalPriceElement = document.getElementById('totalPrice');
+
+            function saveCart() {
+                const cartData = [];
+                cartItems.querySelectorAll('tr').forEach(row => {
+                    const productId = row.getAttribute('data-product-id');
+                    const productName = row.querySelector('td:nth-child(2)').textContent;
+                    const productPrice = row.querySelector('.product-price').textContent;
+                    const productImage = row.querySelector('img').src;
+                    const productQuantity = row.querySelector('.product-quantity').value;
+                    cartData.push({
+                        productId,
+                        productName,
+                        productPrice,
+                        productImage,
+                        productQuantity
+                    });
+                });
+                localStorage.setItem('cart', JSON.stringify(cartData));
+            }
+
+            function loadCart() {
+                const cartData = JSON.parse(localStorage.getItem('cart') || '[]');
+                cartData.forEach(item => {
+                    addCartItem(item.productId, item.productName, item.productPrice, item.productImage, item
+                        .productQuantity);
+                });
+                updateTotal();
+            }
+
+            function addCartItem(productId, productName, productPrice, productImage, productQuantity = 1) {
+                const existingItem = document.querySelector(`#cartItems tr[data-product-id="${productId}"]`);
+                if (!existingItem) {
+                    const newRow = document.createElement('tr');
+                    newRow.setAttribute('data-product-id', productId);
+                    newRow.innerHTML = `
+                        <td><img src="${productImage}" alt="${productName}" width="50"></td>
+                        <td>${productName}</td>
+                        <td class="product-price">${productPrice}</td>
+                        <td><input type="number" class="form-control product-quantity" value="${productQuantity}" min="1" max="99"></td>
+                        <td><i class="bi bi-x-lg remove-product" style="cursor: pointer;"></i></td>
+                    `;
+                    cartItems.appendChild(newRow);
+
+                    newRow.querySelector('.product-quantity').addEventListener('change', function() {
+                        if (this.value < 1) this.value = 1;
+                        updateTotal();
+                        saveCart();
+                    });
+
+                    newRow.querySelector('.remove-product').addEventListener('click', function() {
+                        newRow.remove();
+                        updateTotal();
+                        saveCart();
+                    });
+                }
+            }
+
+            function updateTotal() {
+                let total = 0;
+                const cartRows = cartItems.querySelectorAll('tr');
+                cartRows.forEach(row => {
+                    const price = parseFloat(row.querySelector('.product-price').textContent.replace('$',
+                        ''));
+                    const quantity = parseInt(row.querySelector('.product-quantity').value);
+                    total += price * quantity;
+                });
+                totalPriceElement.textContent = Math.round(total);
+                cartBadge.textContent = cartRows.length;
+                if (cartRows.length > 0) {
+                    cartBadge.classList.add('active');
+                } else {
+                    cartBadge.classList.remove('active');
+                }
+            }
+
+            document.querySelectorAll('.card-link').forEach(card => {
+                card.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const productId = this.getAttribute('data-product-id');
+                    const productName = this.getAttribute('data-product-name');
+                    const productPrice = this.getAttribute('data-product-price');
+                    const productImage = this.getAttribute('data-product-image');
+                    addCartItem(productId, productName, productPrice, productImage);
+                    updateTotal();
+                    saveCart();
+                });
+            });
+
+            loadCart();
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Verificar si el usuario está autenticado
+            const isAuthenticated = {{ Auth::check() ? 'true' : 'false' }};
+
+            function showLoginAlert() {
+                Swal.fire({
+                    title: "Inicia sesión para realizar una compra",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Iniciar sesión",
+                    cancelButtonText: "Cancelar"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "{{ route('login') }}";
+                    } else {
+                        // Recargar la página si se cierra la alerta o se presiona "Cancelar"
+                        window.location.reload();
+                    }
+                });
+            }
+
+            // Añadir productos al carrito
+            const productLinks = document.querySelectorAll('.card-link');
+            productLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    if (!isAuthenticated) {
+                        event.preventDefault();
+                        showLoginAlert();
+                    }
+                });
+            });
+
+            // Acceder al carrito
+            const cartButton = document.querySelector('.btn-cart');
+            cartButton.addEventListener('click', function(event) {
+                if (!isAuthenticated) {
+                    event.preventDefault();
+                    showLoginAlert();
+                }
+            });
+        });
+    </script>
     @include('partials.footerTuArte')
 </body>
 
@@ -203,12 +484,13 @@
         display: flex;
     }
 
-.breadcrums a {
-    text-decoration: none;
-    color: white;
-    font-size: 0.9vw;
-    margin-right: 2px; /* Esto agrega un espacio entre los enlaces */
-}
+    .breadcrums a {
+        text-decoration: none;
+        color: white;
+        font-size: 0.9vw;
+        margin-right: 2px;
+        /* Esto agrega un espacio entre los enlaces */
+    }
 
     .breadcrumbs li {
         display: inline;

@@ -3,7 +3,6 @@
     integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-
 <style>
     .required-label::after {
         content: "*";
@@ -58,17 +57,12 @@
             {!! $errors->first('total', '<div class="invalid-feedback">:message</div>') !!}
             <small class="text-muted">Este campo no es editable.</small>
         </div>
-
-
     </div>
     <div class="box-footer" style="margin: 20px;">
         <button type="button" id="enviarBtn" class="btn btn-success" onclick="enviarDetalles()"><i class="bi bi-plus-circle"></i></button>
-        <a type="submit" class="btn btn-primary" href="{{ route('purchases.index') }}"><i
-            class="bi bi-arrow-left-circle"></i></a>
+        <a type="submit" class="btn btn-primary" href="{{ route('purchases.index') }}"><i class="bi bi-arrow-left-circle"></i></a>
     </div>
 </div>
-
-
 
 <div class="box box-large">
     <h2>Detalle Compra</h2>
@@ -125,8 +119,7 @@
                         </div>
                     </th>
                     <th>
-                        <button type="button" class="btn btn-danger" onclick="eliminarDetalle(this)"><i
-                                class="fas fa-trash-alt"></i></button>
+                        <button type="button" class="btn btn-danger eliminar-detalle" onclick="eliminarDetalle(this)"><i class="fas fa-trash-alt"></i></button>
                     </th>
                 </tr>
             </tbody>
@@ -152,6 +145,9 @@
         // Agregar eventos de escucha para el nuevo detalle
         addEventListeners(nuevoDetalle);
 
+        // Agregar el botón de eliminar solo al nuevo detalle
+        nuevoDetalle.querySelector('.eliminar-detalle').style.display = 'inline-block';
+
         // Agregar el nuevo detalle a la tabla
         container.appendChild(nuevoDetalle);
     });
@@ -171,7 +167,6 @@
         const totalField = document.querySelector('input[name="total"]');
         totalField.value = totalCompra.toFixed(2);
     }
-
 
     function addEventListeners(detalle) {
         const quantityField = detalle.querySelector('#quantity');
@@ -203,9 +198,13 @@
     document.querySelectorAll('#detalle-table input').forEach(function(input) {
         input.addEventListener('input', calcularTotalCompra);
     });
+
     // Calcular el total de la compra al cargar la página
     document.addEventListener('DOMContentLoaded', function() {
         calcularTotalCompra();
+
+        // Ocultar el botón de eliminar del primer detalle
+        document.querySelector('#detalle-table tbody tr .eliminar-detalle').style.display = 'none';
     });
 
     function eliminarDetalle(button) {
@@ -222,8 +221,6 @@
         addEventListeners(initialDetail);
     });
 
-
-
     // Variable global para almacenar la información del proveedor seleccionado
     var proveedorSeleccionado = {
         nombre: '',
@@ -239,90 +236,87 @@
         var splitText = text.split(' - ');
         proveedorSeleccionado.nombre = splitText[0];
         proveedorSeleccionado.proveedor_id = selectedOption.value;
-
     });
 
     // Función para enviar detalles
-    // Función para enviar detalles
-function enviarDetalles() {
-    // Validar si se ha seleccionado un proveedor
-    if (!proveedorSeleccionado.nombre || !proveedorSeleccionado.proveedor_id) {
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Por favor, selecciona un proveedor antes de continuar.",
-        });
-        return; // Detener el proceso si no se ha seleccionado un proveedor
-    }
-    
-    let allFieldsCompleted = true; // Bandera para controlar si todos los campos están completos
-    const detalles = [];
-    
-    document.querySelectorAll('#detalle-table tbody tr').forEach(function(detalle) {
-        const materiaPrima = detalle.querySelector('select[name^="materials_raws_id"]').value;
-        const cantidad = detalle.querySelector('input[name^="quantity"]').value;
-        const precioUnitario = detalle.querySelector('input[name^="price_unit"]').value;
-        const subtotal = detalle.querySelector('input[name^="subtotal"]').value;
-        const descuento = detalle.querySelector('input[name^="discount"]').value;
-        const total = detalle.querySelector('input[name^="total"]').value;
-
-        // Validar que los campos de precio unitario y descuento no estén vacíos
-        if (precioUnitario.trim() === '' || descuento.trim() === '') {
-            allFieldsCompleted = false; // Si hay algún campo vacío, setear la bandera a false
+    function enviarDetalles() {
+        // Validar si se ha seleccionado un proveedor
+        if (!proveedorSeleccionado.nombre || !proveedorSeleccionado.proveedor_id) {
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: "Completa todos los campos!",
+                text: "Por favor, selecciona un proveedor antes de continuar.",
             });
-            return; // Detener el proceso si los campos obligatorios no están completados
+            return; // Detener el proceso si no se ha seleccionado un proveedor
         }
+        
+        let allFieldsCompleted = true; // Bandera para controlar si todos los campos están completos
+        const detalles = [];
+        
+        document.querySelectorAll('#detalle-table tbody tr').forEach(function(detalle) {
+            const materiaPrima = detalle.querySelector('select[name^="materials_raws_id"]').value;
+            const cantidad = detalle.querySelector('input[name^="quantity"]').value;
+            const precioUnitario = detalle.querySelector('input[name^="price_unit"]').value;
+            const subtotal = detalle.querySelector('input[name^="subtotal"]').value;
+            const descuento = detalle.querySelector('input[name^="discount"]').value;
+            const total = detalle.querySelector('input[name^="total"]').value;
 
-        detalles.push({
-            materia_prima: materiaPrima,
-            cantidad: cantidad,
-            precio_unitario: precioUnitario,
-            subtotal: subtotal,
-            descuento: descuento,
-            total: total
+            // Validar que los campos de precio unitario y descuento no estén vacíos
+            if (precioUnitario.trim() === '' || descuento.trim() === '') {
+                allFieldsCompleted = false; // Si hay algún campo vacío, setear la bandera a false
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Completa todos los campos!",
+                });
+                return; // Detener el proceso si los campos obligatorios no están completados
+            }
+
+            detalles.push({
+                materia_prima: materiaPrima,
+                cantidad: cantidad,
+                precio_unitario: precioUnitario,
+                subtotal: subtotal,
+                descuento: descuento,
+                total: total
+            });
         });
-    });
 
-    // Validar campos antes de enviar los datos
-    if (!allFieldsCompleted) {
-        return; // Detener el proceso si no están completados todos los campos
-    }
-
-    // Recopilar información principal del formulario de compra
-    const fecha = document.querySelector('input[name="date"]').value;
-    const totalP = document.querySelector('input[name="total"]').value;
-
-    const data = {
-        nombre_proveedor: proveedorSeleccionado.nombre,
-        proveedor_id: proveedorSeleccionado.proveedor_id,
-        fecha: fecha,
-        totalP: totalP,
-        detalles: detalles
-    };
-
-    // Enviar datos al controlador de Laravel mediante AJAX
-    $.ajax({
-        type: "POST",
-        url: "{{ route('purchases.store') }}",
-        data: {
-            _token: '{{ csrf_token() }}',
-            data: data
-        },
-        success: function(response) {
-            // Manejar la respuesta del servidor si es necesario
-            console.log(response);
-            // Redireccionar solo si la compra se creó exitosamente
-            window.location.href = "{{ route('purchases.index') }}";
-        },
-        error: function(err) {
-            // Manejar errores si los hay
-            console.error(err);
+        // Validar campos antes de enviar los datos
+        if (!allFieldsCompleted) {
+            return; // Detener el proceso si no están completados todos los campos
         }
-    });
-}
 
+        // Recopilar información principal del formulario de compra
+        const fecha = document.querySelector('input[name="date"]').value;
+        const totalP = document.querySelector('input[name="total"]').value;
+
+        const data = {
+            nombre_proveedor: proveedorSeleccionado.nombre,
+            proveedor_id: proveedorSeleccionado.proveedor_id,
+            fecha: fecha,
+            totalP: totalP,
+            detalles: detalles
+        };
+
+        // Enviar datos al controlador de Laravel mediante AJAX
+        $.ajax({
+            type: "POST",
+            url: "{{ route('purchases.store') }}",
+            data: {
+                _token: '{{ csrf_token() }}',
+                data: data
+            },
+            success: function(response) {
+                // Manejar la respuesta del servidor si es necesario
+                console.log(response);
+                // Redireccionar solo si la compra se creó exitosamente
+                window.location.href = "{{ route('purchases.index') }}";
+            },
+            error: function(err) {
+                // Manejar errores si los hay
+                console.error(err);
+            }
+        });
+    }
 </script>

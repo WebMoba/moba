@@ -113,7 +113,6 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
                     {!! $categoriesProductsServices->links() !!}
                 </div>
             </div>
