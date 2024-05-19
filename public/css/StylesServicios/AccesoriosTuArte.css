@@ -313,11 +313,6 @@
     margin-bottom: 0;
 }
 
-/* .card-title{
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-} */
 .card-body {
     padding-top: 0;
     padding-left: 0;
@@ -403,17 +398,34 @@
     /* Ajusta el ancho del input numérico según sea necesario */
 }
 
-/* Estilos para el valor de la descripción */
-.product-description {
-    color: #6b6b6b;
-    width: 420px;
-    /* Color del texto de la descripción */
-}
-
 /* Estilos para alinear verticalmente el contenido de las celdas <td> */
 table tbody tr td {
     vertical-align: middle;
 }
+
+.total-price {
+    color: black;
+}
+
+.header-title {
+    color: black;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.total-price {
+    margin: 0 auto;
+}
+
+.remove-product {
+    cursor: pointer;
+    color: red;
+}
+
 
 /*ESTRELLAS*/
 
