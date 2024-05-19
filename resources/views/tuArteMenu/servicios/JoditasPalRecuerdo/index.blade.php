@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="{{ asset('css/StylesServicios/JoditasPalRecuerdoTuArte.css') }}">
     <link rel="stylesheet" href="{{ asset('css/StyleFooter.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body style="position: relative;">
@@ -328,6 +330,51 @@
                         const checkIcon = card.querySelector('.check-icon');
                         checkIcon.style.display = 'none';
                     }
+                }
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Verificar si el usuario está autenticado
+            const isAuthenticated = {{ Auth::check() ? 'true' : 'false' }};
+
+            function showLoginAlert() {
+                Swal.fire({
+                    title: "Inicia sesión para realizar una compra",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Registrarse",
+                    cancelButtonText: "Cancelar"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "{{ route('login') }}";
+                    } else {
+                        // Recargar la página si se cierra la alerta o se presiona "Cancelar"
+                        window.location.reload();
+                    }
+                });
+            }
+
+            // Añadir productos al carrito
+            const productLinks = document.querySelectorAll('.card-link');
+            productLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    if (!isAuthenticated) {
+                        event.preventDefault();
+                        showLoginAlert();
+                    }
+                });
+            });
+
+            // Acceder al carrito
+            const cartButton = document.querySelector('.btn-cart');
+            cartButton.addEventListener('click', function(event) {
+                if (!isAuthenticated) {
+                    event.preventDefault();
+                    showLoginAlert();
                 }
             });
         });
