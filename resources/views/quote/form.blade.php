@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Título de tu página</title>
-    <!-- Agrega enlaces a tus estilos CSS y a Bootstrap si los estás utilizando -->
     <style>
         .required::after {
             content: "*";
@@ -34,44 +33,34 @@
                     </div>
                     <div class="form-group">
                         {{ Form::label('Descripción', null, ['class' => 'required']) }}
-                        {{ Form::text('description', $quote->description, ['id' => 'Descripción','class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''),'required','placeholder' => 'Descripción de la cotización']) }}
+                        {{ Form::text('description', old('description'), ['id' => 'Descripción', 'class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Descripción de la cotización']) }}
                         {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
                     <div class="form-group">
                         {{ Form::label('Total', null, ['class' => 'required']) }}
-                        {{ Form::number('total', $quote->total, ['id' => 'Total','class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''),'required', 'placeholder' => 'Valor total de la cotización']) }}
+                        {{ Form::number('total', old('total'), ['id' => 'Total', 'class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Valor total de la cotización']) }}
                         {!! $errors->first('total', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
                     <div class="form-group">
                         {{ Form::label('Descuento', null, ['class' => 'required']) }}
-                        {{ Form::text('discount', $quote->discount, ['id' => 'Descuento','class' => 'form-control' . ($errors->has('discount') ? ' is-invalid' : ''),'required', 'placeholder' => 'Descuento en pesos']) }}
+                        {{ Form::text('discount', old('discount'), ['id' => 'Descuento', 'class' => 'form-control' . ($errors->has('discount') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Descuento en pesos']) }}
                         {!! $errors->first('discount', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
                     <div class="form-group">
                         {{ Form::label('Estado', null, ['class' => 'required']) }}
-                        {{ Form::select('status', ['aprobado' => 'Aprobado', 'rechazado' => 'Rechazado', 'pendiente' => 'Pendiente'], isset($quote->status) ? $quote->status : old('status'), ['id' => 'Estado', 'class' => 'form-control' . ($errors->has('status') ? ' is-invalid' : ''), 'required' => 'required']) }}
+                        {{ Form::select('status', ['aprobado' => 'Aprobado', 'rechazado' => 'Rechazado', 'pendiente' => 'Pendiente'], old('status'), ['id' => 'Estado', 'class' => 'form-control' . ($errors->has('status') ? ' is-invalid' : ''), 'required']) }}
                         {!! $errors->first('status', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
                     <div class="form-group">
                         {{ Form::label('Nombre del cliente', null, ['class' => 'required-label']) }}
-                        {{ Form::select(
-                            'people_id',
-                            $persons,
-                            $quote->client_name,
-                            [
-                                'class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''),
-                                'required',
-                                'placeholder' => 'Nombre del cliente',
-                                'id' => 'name',
-                            ]
-                        ) }}
-                        {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
+                        {{ Form::select('people_id', $persons, old('people_id'), ['class' => 'form-control' . ($errors->has('people_id') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Nombre del cliente', 'id' => 'name']) }}
+                        {!! $errors->first('people_id', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
                 </div>
                 <div class="container">
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success btn-enviar"><i class="bi bi-plus-circle"></i></button>
-                        <a type="submit" class="btn btn-primary" href="{{ route('quotes.index') }}"><i class="bi bi-arrow-left-circle"></i></a>
+                        <a type="button" class="btn btn-primary" href="{{ route('quotes.index') }}"><i class="bi bi-arrow-left-circle"></i></a>
                     </div>
                 </div>
             </div>
@@ -155,11 +144,11 @@
         function getOptions(type) {
             var options = '';
             if (type === 'service') {
-                options = `@foreach ($services as $id => $name)<option value="{{ $id }}">{{ $name }}</option>@endforeach`;
+                options = `{!! $services->map(function($name, $id) { return "<option value=\"$id\">$name</option>"; })->implode('') !!}`;
             } else if (type === 'product') {
-                options = `@foreach ($products as $id => $name)<option value="{{ $id }}">{{ $name }}</option>@endforeach`;
+                options = `{!! $products->map(function($name, $id) { return "<option value=\"$id\">$name</option>"; })->implode('') !!}`;
             } else if (type === 'project') {
-                options = `@foreach ($projects as $id => $name)<option value="{{ $id }}">{{ $name }}</option>@endforeach`;
+                options = `{!! $projects->map(function($name, $id) { return "<option value=\"$id\">$name</option>"; })->implode('') !!}`;
             }
             return options;
         }

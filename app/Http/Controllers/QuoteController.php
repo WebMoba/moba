@@ -34,10 +34,11 @@ class QuoteController extends Controller
     {
 
         $search = trim($request->get('search'));
+        // $quotes = Quote::orderBy('created_at', 'desc')->paginate(10);
         $quotes = Quote::select('id', 'date_issuance', 'description', 'total', 'discount', 'status', 'people_id', 'disable')
             ->where('id', 'LIKE', '%' . $search . '%')
             ->orWhere('description', 'LIKE', '%' . $search . '%')
-            ->orderBy('date_issuance', 'asc')
+            ->orderBy('created_at', 'desc')
             ->paginate(10);
 
         return view('quote.index', compact('quotes', 'search'))
@@ -84,28 +85,32 @@ class QuoteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $request->validate([
-            'date_issuance' => 'required|date',
-            'description' => 'required|string|max:300',
-            'total' => 'required|numeric',
-            'discount' => 'required|numeric',
-            'status' => 'required|in:aprobado,rechazado,pendiente',
-            'people_id' => 'required',
-        ]);
+{
+    $request->validate([
+        'date_issuance' => 'required|date',
+        'description' => 'required|string|max:300',
+        'total' => 'required|numeric',
+        'discount' => 'required|numeric',
+        'status' => 'required|in:aprobado,rechazado,pendiente',
+        'people_id' => 'required',
+    ]);
 
-        // Crear la cotización
-        $quote = Quote::create($request->all());
-        
-        // Obtener los detalles de los campos del formulario
-        $servicesIds = $request->input('services_id');
-        $productsIds = $request->input('products_id');
-        $projectsIds = $request->input('projects_id');
+    // Crear la cotización
+    $quote = Quote::create($request->all());
 
-        foreach ($servicesIds as $key => $serviceId) {
-            $productId = isset($productsIds[$key]) ? $productsIds[$key] : null;
-            $projectId = isset($projectsIds[$key]) ? $projectsIds[$key] : null;
-        
+    // Obtener los detalles de los campos del formulario
+    $servicesIds = $request->input('services_id', []);
+    $productsIds = $request->input('products_id', []);
+    $projectsIds = $request->input('projects_id', []);
+
+    $maxItems = max(count($servicesIds), count($productsIds), count($projectsIds));
+
+    for ($i = 0; $i < $maxItems; $i++) {
+        $serviceId = $servicesIds[$i] ?? null;
+        $productId = $productsIds[$i] ?? null;
+        $projectId = $projectsIds[$i] ?? null;
+
+        if ($serviceId || $productId || $projectId) {
             DetailQuote::create([
                 'services_id' => $serviceId,
                 'products_id' => $productId,
@@ -113,20 +118,12 @@ class QuoteController extends Controller
                 'quotes_id' => $quote->id,
             ]);
         }
-        
-
-        // // Iterar sobre los detalles y guardarlos asociándolos a la cotización
-        // foreach ($servicesIds as $key => $serviceId) {
-        //     DetailQuote::create([
-        //         'services_id' => $serviceId,
-        //         'products_id' => $productsIds[$key], // Usar el mismo índice para los otros campos
-        //         'projects_id' => $projectsIds[$key],
-        //         'quotes_id' => $quote->id, // $quote debe ser la cotización que acabas de crear
-        //     ]);
-        // }
-
-        return redirect()->route('quotes.index')->with('success', 'Cotización creada correctamente.');
     }
+
+    return redirect()->route('quotes.index')->with('success', 'Cotización creada exitosamente');
+}
+
+
 
 
 
