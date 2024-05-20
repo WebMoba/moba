@@ -24,22 +24,22 @@
                                 </div>
                                 <div class="col-auto">
                                     <button type="submit" class="btn btn-primary btn-sm"><i
-                                            class="bi bi-search"></i></button>
+                                            class="bi bi-search"></i><span class="tooltiptext">Buscar</span></button>
                                 </div>
                             </form>
                             <div class="float-right" style="display: flex;">
                                 <a href="{{ route('pdf.person') }}" class="btn btn-danger btn-sm float-right">
-                                    <i class="bi bi-file-pdf-fill"></i>
+                                    <i class="bi bi-file-pdf-fill"></i><span class="tooltiptext">Pdf</span>
                                 </a>
 
                                 <a href="{{ route('excel.person') }}" class="btn btn-success btn-sm float-right">
-                                    <i class="bi bi-file-earmark-excel-fill"></i>
+                                    <i class="bi bi-file-earmark-excel-fill"></i><span class="tooltiptext">Excel</span>
                                 </a>
 
                             </div>
                             <div class="float-right">
                                 <a href="{{ route('person.create') }}" class="btn btn-success" data-placement="left">
-                                    <i class="bi bi-plus-circle-fill"></i>
+                                    <i class="bi bi-plus-circle-fill"></i><span class="tooltiptext">Crear</span>
                                 </a>
                             </div>
                         </div>
@@ -95,11 +95,11 @@
                                                         method="POST" data-disable="{{ $person->disable }}">
                                                         <a class="btn btn-sm btn-primary {{ $person->disable ? 'disabled' : '' }}"
                                                             href="{{ route('person.show', $person->id) }}"><i
-                                                                class="bi bi-eye-fill"></i></a>
+                                                                class="bi bi-eye-fill"></i><span class="tooltiptext">Mostrar</span></a>
 
                                                         <a class="btn btn-sm btn-success {{ $person->disable ? 'disabled' : '' }}"
                                                             href="{{ route('person.edit', $person->id) }}"><i
-                                                                class="bi bi-pencil-square"></i></a>
+                                                                class="bi bi-pencil-square"></i><span class="tooltiptext">Editar</span></a>
 
                                                         @csrf
                                                         @method('DELETE')
@@ -132,7 +132,6 @@
             </div>
         </div>
     </div>
-    @include('layouts.footers.auth.footer')
 @endsection
 
 @extends('layouts.alerts')

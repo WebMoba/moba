@@ -24,23 +24,23 @@
                                 </div>
                                 <div class="col-auto">
                                     <button type="submit" class="btn btn-primary btn-sm"><i
-                                            class="bi bi-search"></i></button>
+                                            class="bi bi-search"></i> <span class="tooltiptext">Buscar</span></button>
                                 </div>
                             </form>
                             <div class="float-right">
                                 <a href="{{ route('pdf.categories-products-service') }}"
                                     class="btn btn-danger btn-sm float-right">
-                                    <i class="bi bi-file-pdf-fill"></i>
+                                    <i class="bi bi-file-pdf-fill"></i><span class="tooltiptext">Pdf</span>
                                 </a>
                                 <a href="{{ route('excel.categories-products-service') }}"
                                     class="btn btn-success btn-sm float-right">
-                                    <i class="bi bi-file-earmark-excel-fill"></i>
+                                    <i class="bi bi-file-earmark-excel-fill"></i></i><span class="tooltiptext">Excel</span>
                                 </a>
                             </div>
                             <div class="float-right">
                                 <a href="{{ route('categories-products-service.create') }}" class="btn btn-success"
                                     data-placement="left">
-                                    <i class="bi bi-plus-circle"></i>
+                                    <i class="bi bi-plus-circle"></i><span class="tooltiptext">Crear</span>
                                 </a>
                             </div>
                         </div>
@@ -95,10 +95,10 @@
                                                     data-disable="{{ $categoriesProductsService->disable }}">
                                                     <a class="btn btn-sm btn-primary {{ $categoriesProductsService->disable ? 'disabled' : '' }}"
                                                         href="{{ route('categories-products-service.show', $categoriesProductsService->id) }}">
-                                                        <i class="bi bi-eye-fill"></i></a>
+                                                        <i class="bi bi-eye-fill"></i><span class="tooltiptext">Mostrar</span></a>
                                                     <a class="btn btn-sm btn-success {{ $categoriesProductsService->disable ? 'disabled' : '' }}"
                                                         href="{{ route('categories-products-service.edit', $categoriesProductsService->id) }}">
-                                                        <i class="bi bi-pencil-square"></i></a>
+                                                        <i class="bi bi-pencil-square"></i><span class="tooltiptext">Editar</span></a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm">

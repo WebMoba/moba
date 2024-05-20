@@ -41,7 +41,7 @@
                             {{ $service->categories_products_services_id }}
                         </div>
                         <a class="btn btn-primary" href="{{ route('service.index') }}"><i
-                                class="bi bi-arrow-left-circle"></i></a>
+                                class="bi bi-arrow-left-circle"></i><span class="tooltiptext">Volver</span></a>
                     </div>
                 </div>
             </div>

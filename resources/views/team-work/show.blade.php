@@ -37,7 +37,7 @@
                             </tbody>
                         </table>
                         <a type="submit" class="btn btn-primary" href="{{ route('team-works.index') }}"><i
-                                class="bi bi-arrow-left-circle"></i></a>
+                                class="bi bi-arrow-left-circle"></i><span class="tooltiptext">Volver</span></a>
                     </div>
                 </div>
             </div>
