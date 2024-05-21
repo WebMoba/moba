@@ -429,8 +429,16 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Verificar si el usuario está autenticado
             const isAuthenticated = {{ Auth::check() ? 'true' : 'false' }};
+
+            function clearCart() {
+                localStorage.removeItem('cart');
+                const cartItems = document.getElementById('cartItems');
+                while (cartItems.firstChild) {
+                    cartItems.removeChild(cartItems.firstChild);
+                }
+                updateTotal();
+            }
 
             function showLoginAlert() {
                 Swal.fire({
@@ -445,32 +453,82 @@
                     if (result.isConfirmed) {
                         window.location.href = "{{ route('login') }}";
                     } else {
-                        // Recargar la página si se cierra la alerta o se presiona "Cancelar"
                         window.location.reload();
                     }
                 });
             }
 
-            // Añadir productos al carrito
+            function handleProductClick(event) {
+                if (!isAuthenticated) {
+                    event.preventDefault();
+                    clearCart();
+                    showLoginAlert();
+                }
+            }
+
             const productLinks = document.querySelectorAll('.card-link');
             productLinks.forEach(link => {
-                link.addEventListener('click', function(event) {
-                    if (!isAuthenticated) {
-                        event.preventDefault();
-                        showLoginAlert();
-                    }
-                });
+                link.addEventListener('click', handleProductClick);
             });
 
-            // Acceder al carrito
             const cartButton = document.querySelector('.btn-cart');
             cartButton.addEventListener('click', function(event) {
                 if (!isAuthenticated) {
                     event.preventDefault();
+                    clearCart();
                     showLoginAlert();
                 }
             });
         });
+
+        function loadCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItems = document.getElementById('cartItems');
+            cart.forEach(item => {
+                addItemToCart(item);
+            });
+            updateTotal();
+        }
+
+        function updateTotal() {
+            let total = 0;
+            const cartItems = document.getElementById('cartItems');
+            const cartRows = cartItems.querySelectorAll('tr');
+            cartRows.forEach(row => {
+                const price = parseFloat(row.querySelector('.product-price').textContent.replace('$', ''));
+                const quantity = parseInt(row.querySelector('.product-quantity').value);
+                total += price * quantity;
+            });
+            const totalPriceElement = document.getElementById('totalPrice');
+            totalPriceElement.textContent = Math.round(total);
+            const cartBadge = document.querySelector('.cart-badge');
+            cartBadge.textContent = cartRows.length;
+            if (cartRows.length > 0) {
+                cartBadge.classList.add('active');
+            } else {
+                cartBadge.classList.remove('active');
+            }
+        }
+
+        function addItemToCart(product) {
+            const cartItems = document.getElementById('cartItems');
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td><img src="${product.image}" class="img-thumbnail" width="50"></td>
+                <td>${product.name}</td>
+                <td class="product-price">$${product.price}</td>
+                <td><input type="number" class="form-control product-quantity" value="${product.quantity}" min="1"></td>
+                <td class="product-total">$${product.price * product.quantity}</td>
+                <td><button class="btn btn-danger btn-sm" onclick="removeItemFromCart(this)">Eliminar</button></td>
+            `;
+            cartItems.appendChild(row);
+        }
+
+        function removeItemFromCart(button) {
+            const row = button.closest('tr');
+            row.remove();
+            updateTotal();
+        }
     </script>
     @include('partials.footerTuArte')
 
