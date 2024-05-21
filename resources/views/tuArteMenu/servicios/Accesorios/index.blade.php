@@ -263,18 +263,6 @@
                         checkIcon.style.display = 'inline-block';
                         activeCheckIcons = document.querySelectorAll(
                             '.check-icon[style="display: inline-block;"]');
-                    } else {
-                        checkIcon.style.display = 'none';
-                        activeCheckIcons = document.querySelectorAll(
-                            '.check-icon[style="display: inline-block;"]');
-                        // Si el producto ya está en el carrito, elimínalo
-                        const productId = this.getAttribute('data-product-id');
-                        const existingItem = document.querySelector(
-                            `#cartItems tr[data-product-id="${productId}"]`);
-                        if (existingItem) {
-                            existingItem.remove();
-                            updateTotal();
-                        }
                     }
 
                     if (activeCheckIcons.length > 0) {
@@ -298,7 +286,7 @@
                             <td><img src="${productImage}" alt="${productName}" width="50"></td>
                             <td>${productName}</td>
                             <td class="product-price">${productPrice}</td>
-                            <td><input type="number" class="form-control product-quantity" value="1" min="1" max="99"></td>
+                            <td><input type="number" class="form-control product-quantity" value="1" min="1" max="999" onfocus="clearMinValue(this)" onblur="resetMinValue(this)" oninput="validateQuantity(this)"></td>
                             <td><i class="bi bi-x-lg remove-product" style="cursor: pointer;"></i></td>
                         `;
                         cartItems.appendChild(newRow);
@@ -515,6 +503,48 @@
             row.remove();
             updateTotal();
         }
+    </script>
+    <script>
+        function clearMinValue(input) {
+            if (input.value === "1") {
+                input.value = "";
+            }
+        }
+
+        function resetMinValue(input) {
+            if (input.value === "") {
+                input.value = "1";
+            } else {
+                validateQuantity(input);
+            }
+        }
+
+        function validateQuantity(input) {
+            const max = 999;
+            const min = 1;
+            if (input.value > max) {
+                input.value = max;
+            }
+            if (input.value < min) {
+                input.value = min;
+            }
+        }
+
+        // Aplicar esta validación a todos los inputs existentes cuando se carga la página
+        document.addEventListener("DOMContentLoaded", function() {
+            const quantityInputs = document.querySelectorAll('.product-quantity');
+            quantityInputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    clearMinValue(this);
+                });
+                input.addEventListener('blur', function() {
+                    resetMinValue(this);
+                });
+                input.addEventListener('input', function() {
+                    validateQuantity(this);
+                });
+            });
+        });
     </script>
     @include('partials.footerTuArte')
 </body>
