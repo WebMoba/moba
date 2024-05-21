@@ -508,20 +508,6 @@
             }
         }
 
-        function addItemToCart(product) {
-            const cartItems = document.getElementById('cartItems');
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td><img src="${product.image}" class="img-thumbnail" width="50"></td>
-                <td>${product.name}</td>
-                <td class="product-price">$${product.price}</td>
-                <td><input type="number" class="form-control product-quantity" value="${product.quantity}" min="1"></td>
-                <td class="product-total">$${product.price * product.quantity}</td>
-                <td><button class="btn btn-danger btn-sm" onclick="removeItemFromCart(this)">Eliminar</button></td>
-            `;
-            cartItems.appendChild(row);
-        }
-
         function removeItemFromCart(button) {
             const row = button.closest('tr');
             row.remove();
