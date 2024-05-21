@@ -1,5 +1,8 @@
  <?php
 
+
+//email 
+
 /*controlador para envio de correo electronico*/
 
 use App\Exports\CategoriesExport;
@@ -60,6 +63,9 @@ Route::resources([
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
+
+//email
+
 
 
 Route::resource('product', ProductController::class);
