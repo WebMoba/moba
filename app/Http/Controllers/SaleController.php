@@ -237,21 +237,27 @@ class SaleController extends Controller
 
         return redirect()->route('sales.index')->with('success', 'Venta actualizada con éxito');
     }
+    
+     /**
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
 
     public function destroy($id)
     {
-        // Encuentra la materia prima con el ID dado
+        // Encuentra la venta con el ID dado
         $sale = Sale::find($id);
         if (!$sale) {
             return redirect()->route('sales.index')->with('error', 'La venta no existe');
         }
 
-        // Cambia el estado de la materia prima
-        $sale->disable = !$sale->disable; // Corregir a 'disabled'
+        // Anula la venta (asumiendo que 'disable' representa el estado de anulación)
+        $sale->disable = true;
         $sale->save();
 
         // Redirige con un mensaje de éxito
-        return redirect()->route('sales.index')->with('success', 'Estado de la venta cambiado con éxito');
+        return redirect()->route('sales.index')->with('success', 'La venta ha sido anulada con éxito');
     }
 
     public function exportToExcel()
