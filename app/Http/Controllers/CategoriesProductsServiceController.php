@@ -75,7 +75,7 @@ class CategoriesProductsServiceController extends Controller
     ]), $customMessages);
 
     // Crear la categoría de productos o servicios
-    $categoriesProductsService = CategoriesProductsService::create(array_merge($request->all(), ['disable' => 0]));
+    $categoriesProductsService = CategoriesProductsService::create(array_merge($request->all(), ['disable' => 1]));
 
     // Redireccionar con mensaje de éxito
     return redirect()->route('categories-products-service.index')

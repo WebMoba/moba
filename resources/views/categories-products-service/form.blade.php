@@ -20,7 +20,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('Cantidad', null, ['class' => 'required']) }}
-            {{ Form::number('quantity', $categoriesProductsService->quantity, ['class' => 'form-control' . ($errors->has('quantity') ? ' is-invalid' : ''), 'min' => 0]) }}
+            {{ Form::number('quantity', $categoriesProductsService->quantity, ['class' => 'form-control' . ($errors->has('quantity') ? ' is-invalid' : ''), 'min' => 1]) }}
             {!! $errors->first('quantity', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         
