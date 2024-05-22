@@ -42,11 +42,15 @@
     </div>
     <div class="box-footer mt20 my-2">
         @if ($editing)
-            {{ Form::button('<i class="bi bi-pencil-square"></i>', ['type' => 'submit', 'class' => 'btn btn-success', 'id' => 'editButton']) }}
+        <button type="submit" class="btn btn-success" id="editButton" data-bs-toggle="tooltip" title="Editar">
+        <i class="bi bi-pencil-square"></i>
+        </button>
         @else
-            {{ Form::button('<i class="bi bi-plus-circle"></i>', ['type' => 'submit', 'class' => 'btn btn-success', 'id' => 'createButton']) }}
+        <button type="submit" class="btn btn-success" id="createButton" data-bs-toggle="tooltip" title="Crear">
+        <i class="bi bi-plus-circle"></i>
+        </button>
         @endif
-        <a class="btn btn-primary" href="{{ route('product.index') }}"><i class="bi bi-arrow-left-circle"></i></a>
+        <a class="btn btn-primary" href="{{ route('product.index') }}"><i class="bi bi-arrow-left-circle"></i><span class="tooltiptext">Volver</span></a>
     </div>
 
 </div>

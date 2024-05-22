@@ -21,22 +21,22 @@
                                     <input type="text" class="form-control" name="search" placeholder="Buscar...">
                                 </div>
                                 <div class="col-auto">
-                                    <button type="submit" class="btn btn-primary btn-sm"><i class="bi bi-search"></i>
+                                    <button type="submit" class="btn btn-primary btn-sm"><i class="bi bi-search"></i>  <span class="tooltiptext">Buscar</span>
                                     </button>
                                 </div>
                             </form>
                             <div class="">
                                 <a href="{{ route('pdf.materials_raw') }}" class="btn btn-danger btn-sm float-right">
-                                    <i class="bi bi-file-pdf-fill"></i>
+                                    <i class="bi bi-file-pdf-fill"></i><span class="tooltiptext">Pdf</span>
                                 </a>
                                 <a href="{{ route('export.materials.raw') }}" class="btn btn-success btn-sm float-right">
-                                    <i class="bi bi-file-earmark-excel-fill"></i>
+                                    <i class="bi bi-file-earmark-excel-fill"></i><span class="tooltiptext">Excel</span>
                                 </a>
                             </div>
                             <div class="float-right">
                                 <a href="{{ route('materials_raws.create') }}" class="btn btn-success"
                                     data-placement="left">
-                                    <i class="bi bi-plus-circle"></i>
+                                    <i class="bi bi-plus-circle"></i><span class="tooltiptext">Crear</span>
                                 </a>
                             </div>
                         </div>
@@ -72,11 +72,11 @@
                                                     method="POST" data-disable="{{ $materialsRaw->disable }}">
                                                     <a class="btn btn-sm btn-primary {{ $materialsRaw->disable ? 'disabled' : '' }}"
                                                         href="{{ route('materials_raws.show', $materialsRaw->id) }}">
-                                                        <i class="bi bi-eye-fill"></i>
+                                                        <i class="bi bi-eye-fill"></i><span class="tooltiptext">Mostrar</span>
                                                     </a>
                                                     <a class="btn btn-sm btn-success {{ $materialsRaw->disable ? 'disabled' : '' }}"
                                                         href="{{ route('materials_raws.edit', $materialsRaw->id) }}">
-                                                        <i class="bi bi-pencil-square"></i>
+                                                        <i class="bi bi-pencil-square"></i><span class="tooltiptext">Editar</span>
                                                     </a>
                                                     @csrf
                                                     @method('DELETE')

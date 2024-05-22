@@ -102,94 +102,92 @@
             <div class="slider">
                 <div class="slide-track">
                     <div class="slide">
-                        <img src="{{ asset('Imagenes/imgs-gallery/2.jpg') }}" alt="">
+                        <img src="{{ asset('Imagenes/imgs-gallery/Logos/1.png') }}" alt="">
                     </div>
                     <div class="slide">
-                        <img src="{{ asset('Imagenes/imgs-gallery/1.jpg') }}" alt="">
+                        <img src="{{ asset('Imagenes/imgs-gallery/Tarjetas/1.png') }}" alt="">
                     </div>
                     <div class="slide">
-                        <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }}" alt="">
+                        <img src="{{ asset('Imagenes/imgs-gallery/Logos/2.png') }}" alt="">
                     </div>
                     <div class="slide">
-                        <img src="{{ asset('Imagenes/imgs-gallery/2.jpg') }}" alt="">
+                        <img src="{{ asset('Imagenes/imgs-gallery/Tarjetas/2.png') }}" alt="">
                     </div>
                     <div class="slide">
-                        <img src="{{ asset('Imagenes/imgs-gallery/1.jpg') }}" alt="">
+                        <img src="{{ asset('Imagenes/imgs-gallery/Logos/3.jpg') }}" alt="">
                     </div>
                     <div class="slide">
-                        <img src="{{ asset('Imagenes/imgs-gallery/6.jpg') }}" alt="">
+                        <img src="{{ asset('Imagenes/imgs-gallery/Tarjetas/3.png') }}" alt="">
                     </div>
                     <div class="slide">
-                        <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }}" alt="">
-                    </div>
-
-                    <div class="slide">
-                        <img src="{{ asset('Imagenes/imgs-gallery/3.jpg') }}" alt="">
+                        <img src="{{ asset('Imagenes/imgs-gallery/Logos/4.jpg') }}" alt="">
                     </div>
                     <div class="slide">
-                        <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }}" alt="">
+                        <img src="{{ asset('Imagenes/imgs-gallery/Tarjetas/4.png') }}" alt="">
                     </div>
                     <div class="slide">
-                        <img src="{{ asset('Imagenes/imgs-gallery/6.jpg') }}" alt="">
+                        <img src="{{ asset('Imagenes/imgs-gallery/Logos/5.png') }}" alt="">
                     </div>
                     <div class="slide">
-                        <img src="{{ asset('Imagenes/imgs-gallery/3.jpg') }}" alt="">
+                        <img src="{{ asset('Imagenes/imgs-gallery/Tarjetas/5.png') }}" alt="">
                     </div>
                     <div class="slide">
-                        <img src="{{ asset('Imagenes/imgs-gallery/5.jpg') }}" alt="">
+                        <img src="{{ asset('Imagenes/imgs-gallery/Logos/6.png') }}" alt="">
                     </div>
                     <div class="slide">
-                        <img src="{{ asset('Imagenes/imgs-gallery/2.jpg') }}" alt="">
+                        <img src="{{ asset('Imagenes/imgs-gallery/Tarjetas/6.png') }}" alt="">
                     </div>
                     <div class="slide">
-                        <img src="{{ asset('Imagenes/imgs-gallery/6.jpg') }}" alt="">
+                        <img src="{{ asset('Imagenes/imgs-gallery/Logos/7.jpeg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/Tarjetas/7.png') }}" alt="">
                     </div>
                 </div>
             </div>
             <div class="slider">
                 <div class="slide-track">
                     <div class="slide">
-                        <img src="{{ asset('Imagenes/imgs-gallery/7.jpg') }}" alt="">
+                        <img src="{{ asset('Imagenes/imgs-gallery/Tarjetas/8.png') }}" alt="">
                     </div>
                     <div class="slide">
-                        <img src="{{ asset('Imagenes/imgs-gallery/5.jpg') }}" alt="">
+                        <img src="{{ asset('Imagenes/imgs-gallery/Logos/8.png') }}" alt="">
                     </div>
                     <div class="slide">
-                        <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }}" alt="">
+                        <img src="{{ asset('Imagenes/imgs-gallery/Tarjetas/9.png') }}" alt="">
                     </div>
                     <div class="slide">
-                        <img src="{{ asset('Imagenes/imgs-gallery/2.jpg') }}" alt="">
+                        <img src="{{ asset('Imagenes/imgs-gallery/Logos/9.jpg') }}" alt="">
                     </div>
                     <div class="slide">
-                        <img src="{{ asset('Imagenes/imgs-gallery/1.jpg') }}" alt="">
+                        <img src="{{ asset('Imagenes/imgs-gallery/Tarjetas/14.png') }}" alt="">
                     </div>
                     <div class="slide">
-                        <img src="{{ asset('Imagenes/imgs-gallery/6.jpg') }}" alt="">
+                        <img src="{{ asset('Imagenes/imgs-gallery/Logos/13.jpg') }}" alt="">
                     </div>
                     <div class="slide">
-                        <img src="{{ asset('Imagenes/imgs-gallery/3.jpg') }}" alt="">
-                    </div>
-
-                    <div class="slide">
-                        <img src="{{ asset('Imagenes/imgs-gallery/3.jpg') }}" alt="">
+                        <img src="{{ asset('Imagenes/imgs-gallery/Tarjetas/10.png') }}" alt="">
                     </div>
                     <div class="slide">
-                        <img src="{{ asset('Imagenes/imgs-gallery/4.jpg') }}" alt="">
+                        <img src="{{ asset('Imagenes/imgs-gallery/Logos/10.jpg') }}" alt="">
                     </div>
                     <div class="slide">
-                        <img src="{{ asset('Imagenes/imgs-gallery/6.jpg') }}" alt="">
+                        <img src="{{ asset('Imagenes/imgs-gallery/Tarjetas/11.png') }}" alt="">
                     </div>
                     <div class="slide">
-                        <img src="{{ asset('Imagenes/imgs-gallery/3.jpg') }}" alt="">
+                        <img src="{{ asset('Imagenes/imgs-gallery/Logos/11.jpg') }}" alt="">
                     </div>
                     <div class="slide">
-                        <img src="{{ asset('Imagenes/imgs-gallery/5.jpg') }}" alt="">
+                        <img src="{{ asset('Imagenes/imgs-gallery/Tarjetas/12.png') }}" alt="">
                     </div>
                     <div class="slide">
-                        <img src="{{ asset('Imagenes/imgs-gallery/2.jpg') }}" alt="">
+                        <img src="{{ asset('Imagenes/imgs-gallery/Logos/12.png') }}" alt="">
                     </div>
                     <div class="slide">
-                        <img src="{{ asset('Imagenes/imgs-gallery/6.jpg') }}" alt="">
+                        <img src="{{ asset('Imagenes/imgs-gallery/Tarjetas/13.png') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('Imagenes/imgs-gallery/Logos/4.jpg') }}" alt="">
                     </div>
                 </div>
             </div>
@@ -322,8 +320,8 @@
         
         .slider .slide-track {
             display: flex;
-            animation: scroll 40s linear infinite;
-            -webkit-animation: scroll 40s linear infinite;
+            animation: scroll 50s linear infinite;
+            -webkit-animation: scroll 50s linear infinite;
             width: calc(200px * 14);
         }
         
@@ -409,7 +407,38 @@
                 color: white;
                 text-align: justify;
                 width: 80%;
-                padding-top: 10%;
+                padding-top: 15%;
+            }
+            .logotexto{
+                flex-direction: column;
+            }
+            .logotexto .logomoba img{
+                width: 150px;
+                height: 60px;
+            }
+            .onda h1{
+                font-size: 30px;
+                font-weight: bold;
+                color: white;
+            }
+        }
+        
+        @media screen and (max-width:400px){
+            h1{
+                text-decoration: underline;
+            }
+            h1::before{
+                display: none;  
+            }
+            h1 span{
+                padding: 0;
+            }
+            .logotexto .texto p{
+                font-size:10px;
+                color: white;
+                text-align: justify;
+                width: 80%;
+                padding-top: 20%;
             }
             .logotexto{
                 flex-direction: column;

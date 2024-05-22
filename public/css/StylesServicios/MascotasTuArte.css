@@ -304,11 +304,6 @@
     font-size: 1rem;
 }
 
-/* .card-title{
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-} */
 .card-body {
     padding-top: 0;
     padding-left: 0;
@@ -317,6 +312,111 @@
     justify-content: space-between;
     /* Opcional: asegura que la tarjeta ocupe toda la altura disponible */
 }
+
+.card-link {
+    text-decoration: none;
+    /* Elimina el subrayado del enlace */
+    color: inherit;
+    /* Hereda el color de texto de su contenedor */
+}
+
+.card-link:hover {
+    text-decoration: none;
+    /* Asegura que no haya subrayado al pasar el cursor */
+}
+
+.check-icon {
+    display: inline-block;
+    /* Muestra el icono de verificación en línea con el precio */
+}
+
+.check-icon i {
+    color: rgb(0, 255, 0);
+    /* Establecer el color verde para el icono de verificación */
+    font-size: 1.3em;
+    /* Ajustar el tamaño del icono según sea necesario */
+    margin-left: 5px;
+    /* Agrega un espacio a la izquierda del icono */
+    vertical-align: middle;
+    /* Alinea verticalmente el icono con el contenido */
+}
+
+/* Estilos para el botón del carrito (btn-cart) */
+.btn-cart {
+    position: relative;
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-size: 1.5em;
+    /* Ajusta el tamaño del icono según sea necesario */
+}
+
+.btn-cart:hover {
+    background-color: transparent;
+}
+
+/* Estilos para el icono dentro del botón del carrito */
+.btn-cart i {
+    vertical-align: middle;
+}
+
+/* Estilos para el contador flotante (cart-badge) */
+.cart-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    display: none;
+    color: white;
+    font-size: 0.8em;
+    padding: 0.3em 0.6em;
+    border-radius: 50%;
+    background-color: red;
+    border: 1px solid white;
+    z-index: 1;
+}
+
+/* Mostrar el contador solo cuando hay íconos activos */
+.cart-badge.active {
+    display: inline-block;
+}
+
+/* Estilos para el input numérico */
+.product-quantity {
+    width: 84px;
+    /* Ajusta el ancho del input numérico según sea necesario */
+}
+
+/* Estilos para alinear verticalmente el contenido de las celdas <td> */
+table tbody tr td {
+    vertical-align: middle;
+}
+
+.total-price {
+    color: black;
+}
+
+.header-title {
+    color: black;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.total-price {
+    margin: 0 auto;
+}
+
+.remove-product {
+    cursor: pointer;
+    color: red;
+}
+
 
 /*ESTRELLAS*/
 

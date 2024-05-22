@@ -1,5 +1,3 @@
-
-
 @section('scripts')
     <script>
         $(document).ready(function() {
@@ -10,7 +8,6 @@
                 var actionText = disable ? 'Habilitar' : 'Deshabilitar';
                 Swal.fire({
                     title: "¿Está seguro de que desea " + actionText + "?",
-                    text: "¡Más tarde podrías revertir este cambio!",
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#3085d6",
@@ -32,7 +29,6 @@
                 e.preventDefault();
                 Swal.fire({
                     title: "¿Está seguro de que desea editar?",
-                    text: "¡Más tarde podrías editar nuevamente este cambio!",
                     icon: "question",
                     showCancelButton: true,
                     confirmButtonColor: "#3085d6",
@@ -47,24 +43,7 @@
                 });
             });
 
-            $('#createButton').click(function(e) {
-                e.preventDefault();
-                Swal.fire({
-                    title: "¿Está seguro de que desea crear?",
-                    text: "¡Despues no podras eiminar el registro!",
-                    icon: "question",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Sí, crear",
-                    cancelButtonText: "Cancelar"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $(this).closest('form')
-                            .submit(); // Enviar el formulario más cercano al botón de enviar que se hizo clic
-                    }
-                });
-            });
+
         });
     </script>
 
@@ -75,7 +54,7 @@
                 var requiredFields = $('.required').closest('.form-group').find('input, select');
                 var hasEmptyFields = false;
                 var hasValidationErrors = $('.is-invalid').length > 0;
-                var errorMessage = "Completa todos los campos obligatorios del formulario!";
+                var errorMessage = "Completa todos los campos!";
 
                 // Limpiar los campos marcados en rojo
                 $('.is-invalid').removeClass('is-invalid');
@@ -83,15 +62,13 @@
                 requiredFields.each(function() {
                     if ($(this).val() === '') {
                         hasEmptyFields = true;
-                        
+
                     }
                 });
 
-                if (hasValidationErrors) {
-                    errorMessage += "Por favor, corrige los errores en los campos marcados en rojo.";
-                }
 
-                if (hasEmptyFields || hasValidationErrors) {
+
+                if (hasEmptyFields) {
                     e.preventDefault();
                     Swal.fire({
                         icon: "error",
@@ -105,29 +82,52 @@
 
     <script>
         $(document).ready(function() {
-            $('#editButton, #createButton').click(function(e) {
-                var requiredFields = $('.required-label').closest('.form-group').find('input, select');
-                var emptyFieldNames = []; // Array para almacenar los nombres de los campos vacíos
+            // Manejar el evento invalid.bs.validator
+            $('form').on('invalid.bs.validator', function(event) {
+                event.preventDefault(); // Evitar el envío del formulario
 
-                requiredFields.each(function() {
-                    if ($(this).val() === '') {
-                        var fieldName = $(this).closest('.form-group').find('label').text().trim();
-                        emptyFieldNames.push(fieldName);
-                        $(this).addClass(
-                        'is-invalid'); // Agregar clase de estilo para resaltar el campo vacío
-                    }
+                // Obtener los campos inválidos
+                var invalidFields = $(this).find('.is-invalid');
+
+                // Construir el mensaje de error
+                var errorMessage = 'Por favor, corrige los siguientes campos:<br>';
+                invalidFields.each(function() {
+                    var fieldName = $(this).closest('.form-group').find('label').text().trim();
+                    errorMessage += '- ' + fieldName + '<br>';
                 });
 
-                if (emptyFieldNames.length > 0) {
-                    e.preventDefault();
-                    var errorMessage = "Completa todos los campos obligatorios del formulario!";
-                    
-                    Swal.fire({
-                        icon: "error",
-                        title: "Oops...",
-                        html: errorMessage
-                    });
-                }
+                // Mostrar la alerta de SweetAlert
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    html: errorMessage
+                });
+            });
+        });
+    </script>
+
+
+
+
+    <script>
+        $(document).ready(function() {
+            $('.frData').on('submit', function(e) {
+                e.preventDefault();
+                var form = this;
+                Swal.fire({
+                    title: "¿Está seguro de que desea anular este registro?",
+                    text: "Una vez anulado, no lo podras recuperar",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Sí, anular",
+                    cancelButtonText: "Cancelar"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
             });
         });
     </script>

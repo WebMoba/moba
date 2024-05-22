@@ -76,10 +76,10 @@
                 <div class="box-footer mt-3">
                     <button type="button" id="submitButton" class="btn btn-success btn-enviar"
                         onclick="enviarDetalles()">
-                        <i class="bi bi-plus-circle"></i>
+                        <i class="bi bi-plus-circle"></i><span class="tooltiptext">Crear</span>
                     </button>
                     <a type="button" class="btn btn-primary" href="{{ route('sales.index') }}"><i
-                            class="bi bi-arrow-left-circle"></i></a>
+                            class="bi bi-arrow-left-circle"></i><span class="tooltiptext">Volver</span></a>
                 </div>
 
             </form>
@@ -150,12 +150,8 @@
 
                                 <!-- boton para eliminar el detalle creado demás -->
                                 <th>
-
-                                    <button type="button" class="btn btn-danger mt-3" onclick="eliminarDetalle(this)">
-                                        <i class="fas fa-trash-alt"></i> <!-- Icono de papelera de Font Awesome -->
-                                    </button>
-
-                                </th>
+                        <button type="button" class="btn btn-danger eliminar-detalle" onclick="eliminarDetalle(this)"><i class="fas fa-trash-alt"></i></button>
+                    </th>
                             </tr>
                         </tbody>
                     </table>
@@ -212,7 +208,7 @@
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: "Completa todos los campos del detalle!",
+                text: "Completa todos los campos!",
             });
             return; // Detener el proceso si no están completados todos los campos del detalle
         }
@@ -279,7 +275,7 @@
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: "Completa todos los campos del formulario de ventas!",
+                text: "Completa todos los campos!",
             });
             return; // Detener el proceso si no están completados todos los campos del formulario de ventas
         }
@@ -365,14 +361,53 @@
             priceUnitField.value = price;
             calculateSubtotalAndTotal(); // Actualizar subtotal y total después de cambiar el precio unitario
         });
+
+        quantityField.addEventListener('input', function() {
+            if (!/^\d*$/.test(this.value) || parseInt(this.value) < 1) {
+                this.value = '';
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Valor inválido',
+                    text: 'Solo se permiten números enteros positivos mayores a cero (0).',
+                });
+            } else {
+                calculateSubtotalAndTotal();
+            }
+        });
+
+        priceUnitField.addEventListener('input', function() {
+            if (!/^\d*$/.test(this.value) || parseInt(this.value) < 1) {
+                this.value = '';
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Valor inválido',
+                    text: 'Solo se permiten números enteros positivos enteros positivos mayores a cero (0).',
+                });
+            } else {
+                calculateSubtotalAndTotal();
+            }
+        });
+
+        discountField.addEventListener('input', function() {
+            if (!/^\d*\.?\d*$/.test(this.value) || parseFloat(this.value) < 0 || parseFloat(this.value) > 100) {
+                this.value = '';
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Valor inválido',
+                    text: 'El descuento debe ser un número entre 0 y 100.',
+                });
+            } else {
+                calculateSubtotalAndTotal();
+            }
+        });
     }
 
-    document.querySelectorAll('#detalle-table input').forEach(function(input) {
-        input.addEventListener('input', calcularTotalCompra);
-    });
     // Calcular el total de la compra al cargar la página
     document.addEventListener('DOMContentLoaded', function() {
         calcularTotalCompra();
+
+        // Ocultar el botón de eliminar del primer detalle
+        document.querySelector('#detalle-table tbody tr .eliminar-detalle').style.display = 'none';
     });
 
     function eliminarDetalle(button) {
@@ -398,6 +433,9 @@
 
         // Agregar eventos de escucha para el nuevo detalle
         addEventListeners(nuevoDetalle);
+
+        // Agregar el botón de eliminar solo al nuevo detalle
+        nuevoDetalle.querySelector('.eliminar-detalle').style.display = 'inline-block';
 
         // Agregar el nuevo detalle a la tabla
         container.appendChild(nuevoDetalle);

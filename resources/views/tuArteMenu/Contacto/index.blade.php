@@ -19,6 +19,18 @@
 
 <body class="background-image">
 
+@if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
     <nav class="navbar" >
 
 <!--- inicio breaddrums-->
@@ -100,44 +112,42 @@
 
         
 
-        <div class="box">
-    <form method="POST" action="{{ route('enviar-correo') }}">
+        <div class="box form">
+        <form method="POST" action="{{ route('enviar-correo') }}">
     @csrf
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" value="{{ auth()->check() ? auth()->user()->name : '' }}" required><br><br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" value="{{ auth()->check() ? auth()->user()->email : '' }}" required><br><br>
-		
-        <ul class="option-listOne">Tipo Identificación
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" value="{{ auth()->check() ? auth()->user()->name : '' }}" required><br><br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" value="{{ auth()->check() ? auth()->user()->email : '' }}" required><br><br>
+
+    <ul class="option-listOne">Tipo Identificación
         <li class="option-item">
-            <input type="radio" id="option2" name="options" class="option-input" required>
+            <input type="radio" id="option1" name="options" value="Cedula Extranjeria" required class="circle">
             <label for="option2" class="option-label">Cedula Extranjeria</label>
         </li>
         <li class="option-item">
-            <input type="radio" id="option1" name="options" class="option-input" required>
+            <input type="radio" id="option2" name="options" value="Cedula" required class="circle">
             <label for="option1" class="option-label">Cedula</label>
         </li>
-       
         <li class="option-item">
-            <input type="radio" id="option3" name="options" class="option-input" required>
+            <input type="radio" id="option3" name="options" value="NIT" required class="circle">
             <label for="option3" class="option-label">NIT</label>
         </li>
     </ul><br>
 
+    <label for="numeroId">Numero Identificación</label>
+    <input type="text" id="numeroId" name="numeroId" maxlength="10" required><br><br>
+    <label for="telefono">Teléfono</label>
+    <input type="tel" id="telefono" name="telefono" maxlength="10" required><br><br>
+    <label for="departamento">Departamento</label>
+    <input type="text" id="departamento" name="departamento" required><br><br>
+    <label for="ciudad">Ciudad</label>
+    <input type="text" id="ciudad" name="ciudad" required><br><br>
+    <label for="mensaje">Mensaje</label><br>
+    <textarea id="mensaje" name="mensaje" rows="5"></textarea><br><br>
 
-        <label for="numeroId">Numero Identificación</label>
-        <input type="text" id="NumeroId" name="NumeroId" maxlength="10" required><br><br>
-        <label for="telefono">Teléfono</label>
-        <input type="tel" id="telefono" name="telefono" maxlength="10" required><br><br>
-        <label for="departamento">Departamento</label>
-		<input type="text" id="Departamento" name="Departamento" required><br><br>
-        <label for="ciudad">Ciudad</label>
-		<input type="text" id="Ciudad" name="Ciudad" required><br><br>
-		<label for="mensaje">Mensaje</label><br>
-		<textarea id="mensaje" name="mensaje" rows="5" ></textarea><br><br>
-
-		<input type="submit" value="Enviar" id="submit">
-	</form>
+    <input type="submit" value="Enviar" id="submit">
+</form>
     </div>
 </div>
 
@@ -177,8 +187,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 70vw;
     width: 100%;
+    margin-top: 5%;
     
 }
 .active-link {
@@ -200,7 +211,7 @@
     height: 70%;
     width: 45%;
     margin-top:5%;
-    margin-left: 10%;
+    margin-left: 5%;
     overflow: auto;
     
 }
@@ -216,11 +227,20 @@ h1{
 
 h3{
     color: #BCCCE0;
+    font-size: 1.8vw;
 }
 label{
     color:  #BCCCE0 ;
-    
-}
+    font-size: 2hw;
+ }
+
+.box form{
+
+width: 45hw;
+height: 50hw;
+}    
+
+
 form{
     margin-top: 10%;
     margin-left: 20%;
@@ -228,7 +248,8 @@ form{
 
 }
 input{
-    width: 90%;
+    width: 90hw;
+    height: 1.5vw;
     margin-right: 10%;
     background-color: #3E3E3F;
     color: white;
@@ -264,7 +285,7 @@ textarea{
     /* Estilo para cada opción */
     .option-item {
         width: 7.3vw;
-        font-size: 0.9vw;
+        font-size: 0.7vw;
         margin-bottom: 5px;
         text-align: center;
         
@@ -273,6 +294,7 @@ textarea{
     /* Estilo para el input oculto */
     .option-input {
         display: none;
+        
     }
 
 
@@ -280,14 +302,14 @@ textarea{
     .option-label {
         display: inline-block;
         padding: 8px 12px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
         cursor: pointer;
+        width: 6vw;
+        height: 2wv;
     }
 
     /* Estilo para cuando se pasa el mouse sobre la etiqueta */
     .option-label:hover {
-        background-color: #f0f0f0;
+        background-color: red;
     }
     .option-input:checked + .option-label {
         background-color: #007bff;
@@ -320,5 +342,11 @@ form{
     margin: 0px !important;
     
 }
-
+input.circle {
+    /* Aquí puedes definir los estilos */
+    /* Por ejemplo: */
+    width: 1vw;
+    background-color: red;
+    /* Y cualquier otro estilo que desees */
+}
 </style>

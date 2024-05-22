@@ -1,5 +1,8 @@
  <?php
 
+
+//email 
+use App\Http\Controllers\BackupController;
 /*controlador para envio de correo electronico*/
 
 use App\Exports\CategoriesExport;
@@ -61,6 +64,9 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+//email
+
+
 
 Route::resource('product', ProductController::class);
 Route::resource('unit', UnitController::class);
@@ -84,6 +90,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+
 
      /*Controladores tablas Eventos, People, Buscar */
      Route::resource('events', EventController::class);

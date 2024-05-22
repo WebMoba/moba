@@ -64,4 +64,10 @@
     margin: 0; /* Elimina el margen */
     padding: 0; /* Elimina el relleno (padding) */
 }
+ul>li i:hover {
+    color: #C5CAE9 !important;
+    cursor: none;
+}
+
+
 </style>

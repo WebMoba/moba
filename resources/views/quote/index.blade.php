@@ -25,22 +25,22 @@
                                         id="search">
                                 </div>
                                 <div class="col-auto">
-                                    <button type="submit" class="btn btn-primary btn-sm"><i class="bi bi-search"></i></button>
+                                    <button type="submit" class="btn btn-primary btn-sm"><i class="bi bi-search"></i><span class="tooltiptext">Buscar</span></button>
                                 </div>
                             </form>
                             <div class="float-right">
                                 <a href="{{ route('pdf.quote') }}" class="btn btn-danger btn-sm float-right">
-                                   <i class="bi bi-file-pdf-fill"></i>
+                                   <i class="bi bi-file-pdf-fill"></i><span class="tooltiptext">Pdf</span>
                                 </a>
 
                                 <a href="{{ route('excel.quote') }}" class="btn btn-success btn-sm float-right">
-                                    <i class="bi bi-file-earmark-excel-fill"></i>
+                                    <i class="bi bi-file-earmark-excel-fill"></i><span class="tooltiptext">Excel</span>
                                 </a>
                             </div>
                             <div class="float-right">
                                 <a href="{{ route('quotes.create') }}" class="btn btn-success"
                                     data-placement="left">
-                                    <i class="bi bi-plus-circle"></i>
+                                    <i class="bi bi-plus-circle"></i><span class="tooltiptext">Crear</span>
                                 </a>
                             </div>
                         </div>
@@ -81,7 +81,7 @@
                                                     method="POST" data-disable="{{ $quote->disable }}">
                                                     <a class="btn btn-sm btn-primary {{ $quote->disable ? 'disabled' : '' }}"
                                                         href="{{ route('quotes.show', $quote->id) }}">
-                                                        <i class="bi bi-eye-fill"></i>
+                                                        <i class="bi bi-eye-fill"></i><span class="tooltiptext">Mostrar</span>
                                                     </a>
                                                     {{--  <a class="btn btn-sm btn-success {{ $quote->disable ? 'disabled' : '' }}"
                                                         href="{{ route('quotes.edit', $quote->id) }}"><i class="fa fa-fw fa-edit"></i> 

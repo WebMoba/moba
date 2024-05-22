@@ -42,7 +42,7 @@
                             {{ $product->categoriesProductsService->name }}
                         </div>
                         <a class="btn btn-primary" href="{{ route('product.index') }}"><i
-                            class="bi bi-arrow-left-circle"></i></a>
+                            class="bi bi-arrow-left-circle"></i><span class="tooltiptext">Volver</span></a>
                     </div>
                 </div>
             </div>
