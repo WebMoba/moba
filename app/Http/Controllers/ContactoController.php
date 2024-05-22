@@ -20,6 +20,7 @@ class ContactoController extends Controller
 
             $nombre = $request->input('nombre');
             $email = $request->input('email');
+            $tipoIdentificacion = $request->input('options');
             $numeroId = $request->input('numeroId');
             $telefono = $request->input('telefono');
             $departamento = $request->input('departamento');
@@ -29,6 +30,7 @@ class ContactoController extends Controller
             $contenidoCorreo = "
                 Nombre: $nombre
                 Email: $email
+                tipoIdentificacion: $tipoIdentificacion
                 Número Identificación: $numeroId
                 Teléfono: $telefono
                 Departamento: $departamento

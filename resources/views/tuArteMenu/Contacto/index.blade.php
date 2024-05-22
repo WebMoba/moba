@@ -110,11 +110,11 @@
 
     <ul class="option-listOne">Tipo Identificación
         <li class="option-item">
-            <input type="radio" id="option2" name="options" value="Cedula Extranjeria" required class="circle">
+            <input type="radio" id="option1" name="options" value="Cedula Extranjeria" required class="circle">
             <label for="option2" class="option-label">Cedula Extranjeria</label>
         </li>
         <li class="option-item">
-            <input type="radio" id="option1" name="options" value="Cedula" required class="circle">
+            <input type="radio" id="option2" name="options" value="Cedula" required class="circle">
             <label for="option1" class="option-label">Cedula</label>
         </li>
         <li class="option-item">
