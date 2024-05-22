@@ -30,7 +30,7 @@ class ContactoController extends Controller
             $contenidoCorreo = "
                 Nombre: $nombre
                 Email: $email
-                tipoIdentificacion: $tipoIdentificacion
+                Tipo Identificación: $tipoIdentificacion
                 Número Identificación: $numeroId
                 Teléfono: $telefono
                 Departamento: $departamento
@@ -39,8 +39,11 @@ class ContactoController extends Controller
             ";
 
             try {
-                Mail::raw($contenidoCorreo, function ($message) {
-                    $message->to('diegointernacional2017@gmail.com', 'Destinatario')->subject('Nuevo mensaje de contacto');
+                // Modifica el remitente y el destinatario aquí
+                Mail::raw($contenidoCorreo, function ($message) use ($email) { 
+                    $message->from('agenciaMoba@gmail.com', 'Web Moba')
+                            ->to('diegointernacional2017@gmail.com', 'Destinatario') // Cambia al correo deseado
+                            ->subject('Nuevo mensaje de contacto');
                 });
 
                 return redirect()->back()->with('success', 'El correo electrónico ha sido enviado correctamente.');
