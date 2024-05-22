@@ -188,7 +188,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-success">Comprar</button>
+                    <button type="button" class="btn btn-success">Realizar Pedido</button>
                 </div>
             </div>
         </div>
@@ -430,7 +430,7 @@
 
             function showLoginAlert() {
                 Swal.fire({
-                    title: "Inicia sesión para realizar una compra",
+                    title: "Inicia sesión para realizar un pedido",
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#3085d6",
