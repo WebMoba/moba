@@ -242,18 +242,18 @@ class PurchaseController extends Controller
      */
     public function destroy($id)
     {
-        // Encuentra la materia prima con el ID dado
+        // Encuentra la compra con el ID dado
         $purchase = Purchase::find($id);
         if (!$purchase) {
             return redirect()->route('purchases.index')->with('error', 'La compra no existe');
         }
 
-        // Cambia el estado de la materia prima
-        $purchase->disable = !$purchase->disable; // Corregir a 'disabled'
+        // Anula la compra (asumiendo que 'disable' representa el estado de anulación)
+        $purchase->disable = true;
         $purchase->save();
 
         // Redirige con un mensaje de éxito
-        return redirect()->route('purchases.index')->with('success', 'Estado de la compra cambiado con éxito');
+        return redirect()->route('purchases.index')->with('success', 'La compra ha sido anulada con éxito');
     }
 
     public function exportToExcel()

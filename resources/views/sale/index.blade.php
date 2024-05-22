@@ -1,4 +1,4 @@
-@extends( 'layouts.app' )
+@extends('layouts.app')
 @if (Session::has('msj'))
     {{ Session::get('msj') }}
 @endif
@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-@include('layouts.navbars.auth.topnav', ['title' => 'Ventas'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Ventas'])
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -26,24 +26,23 @@
                                 </div>
 
                                 <div class="col-auto">
-                                    <button type="submit" class="btn btn-primary btn-sm"><i
-                                            class="bi bi-search"></i><span class="tooltiptext">Buscar</span></button>
+                                    <button type="submit" class="btn btn-primary btn-sm"><i class="bi bi-search"></i><span
+                                            class="tooltiptext">Buscar</span></button>
                                 </div>
 
 
                             </form>
                             <div class="float-right">
                                 <a href="{{ route('pdf.sales') }}" class="btn btn-danger btn-sm float-right">
-                                  <i class="bi bi-file-pdf-fill"></i><span class="tooltiptext">Pdf</span>
+                                    <i class="bi bi-file-pdf-fill"></i><span class="tooltiptext">Pdf</span>
                                 </a>
                                 <a href="{{ route('export.sales') }}" class="btn btn-success btn-sm float-right">
                                     <i class="bi bi-file-earmark-excel-fill"></i><span class="tooltiptext">Excel</span>
                                 </a>
-                                
+
                             </div>
                             <div class="float-right">
-                                <a href="{{ route('sales.create') }}" class="btn btn-success"
-                                    data-placement="left">
+                                <a href="{{ route('sales.create') }}" class="btn btn-success" data-placement="left">
                                     <i class="bi bi-plus-circle"></i><span class="tooltiptext">Crear</span>
                                 </a>
                             </div>
@@ -81,17 +80,19 @@
                                                 <td>{{ $sale->date }}</td>
                                                 <td>{{ $sale->total }}</td>
                                                 <td>
-                                                    <form class="frData"
-                                                        action="{{ route('sales.destroy', $sale->id) }}"
-                                                        method="POST" data-disable="{{ $sale->disable }}">
-                                                        <a class="btn btn-sm btn-primary {{ $sale->disable ? 'disabled' : '' }}"
-                                                            href="{{ route('sales.show', $sale->id) }}"><i
-                                                                class="bi bi-eye-fill"></i><span class="tooltiptext">Mostrar</span></a>
+                                                    <form class="frData" action="{{ route('sales.destroy', $sale->id) }}"
+                                                        method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger btn-sm">
-                                                            
-                                                            {!! $sale->disable ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle"></i>' !!}
+                                                        <a class="btn btn-sm btn-primary {{ $sale->disable ? 'disabled' : '' }}"
+                                                            href="{{ route('sales.show', $sale->id) }}">
+                                                            <i class="bi bi-eye-fill"></i><span
+                                                                class="tooltiptext">Mostrar</span>
+                                                        </a>
+                                                        <button type="submit"
+                                                            class="btn btn-danger btn-sm {{ $sale->disable ? 'disabled' : '' }}">
+                                                            <i class="bi bi-x-circle"></i><span
+                                                                class="tooltiptext">Anular</span>
                                                         </button>
                                                     </form>
                                                 </td>
