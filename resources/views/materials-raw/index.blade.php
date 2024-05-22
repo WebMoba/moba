@@ -54,7 +54,6 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nombre</th>
-                                        <th>Cantidad existente</th>
                                         <th>Tipo de unidad</th>
                                         <th></th>
                                     </tr>
@@ -64,7 +63,6 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             <td>{{ $materialsRaw->name }}</td>
-                                            <td>{{ $materialsRaw->existing_quantity }}</td>
                                             <td>{{ $materialsRaw->unit->unit_type }}</td>
                                             <td>
                                                 <form class="frData"

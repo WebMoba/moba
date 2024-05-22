@@ -106,9 +106,6 @@
         });
     </script>
 
-
-
-
     <script>
         $(document).ready(function() {
             $('.frData').on('submit', function(e) {
@@ -130,5 +127,67 @@
                 });
             });
         });
+    </script>
+
+
+
+
+
+
+
+    <script>
+ <script>
+        $(document).ready(function() {
+            $('#editButton, #createButton').click(function(e) {
+                var requiredFields = $('.required').closest('.form-group').find('input, select');
+                var hasEmptyFields = false;
+                var hasValidationErrors = $('.is-invalid').length > 0;
+                var errorMessage = "Completa todos los campos!";
+
+                // Limpiar los campos marcados en rojo
+                $('.is-invalid').removeClass('is-invalid');
+
+                requiredFields.each(function() {
+                    if ($(this).val() === '') {
+                        hasEmptyFields = true;
+                        $(this).addClass('is-invalid');
+                    }
+                });
+
+                if (hasEmptyFields || hasValidationErrors) {
+                    e.preventDefault();
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        html: errorMessage
+                    });
+                } else {
+                    // Si no hay campos vacíos o errores de validación, permitir el envío del formulario
+                    $(this).closest('form').submit();
+                }
+            });
+
+            $('form').on('invalid.bs.validator', function(event) {
+                event.preventDefault(); // Evitar el envío del formulario
+
+                // Obtener los campos inválidos
+                var invalidFields = $(this).find('.is-invalid');
+
+                // Construir el mensaje de error
+                var errorMessage = 'Por favor, corrige los siguientes campos:<br>';
+                invalidFields.each(function() {
+                    var fieldName = $(this).closest('.form-group').find('label').text().trim();
+                    errorMessage += '- ' + fieldName + '<br>';
+                });
+
+                // Mostrar la alerta de SweetAlert
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    html: errorMessage
+                });
+            });
+        });
+    </script>
     </script>
 @endsection
