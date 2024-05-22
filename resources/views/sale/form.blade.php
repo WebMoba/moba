@@ -361,6 +361,45 @@
             priceUnitField.value = price;
             calculateSubtotalAndTotal(); // Actualizar subtotal y total después de cambiar el precio unitario
         });
+
+        quantityField.addEventListener('input', function() {
+            if (!/^\d*$/.test(this.value) || parseInt(this.value) < 1) {
+                this.value = '';
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Valor inválido',
+                    text: 'Solo se permiten números enteros positivos mayores a cero (0).',
+                });
+            } else {
+                calculateSubtotalAndTotal();
+            }
+        });
+
+        priceUnitField.addEventListener('input', function() {
+            if (!/^\d*$/.test(this.value) || parseInt(this.value) < 1) {
+                this.value = '';
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Valor inválido',
+                    text: 'Solo se permiten números enteros positivos enteros positivos mayores a cero (0).',
+                });
+            } else {
+                calculateSubtotalAndTotal();
+            }
+        });
+
+        discountField.addEventListener('input', function() {
+            if (!/^\d*\.?\d*$/.test(this.value) || parseFloat(this.value) < 0 || parseFloat(this.value) > 100) {
+                this.value = '';
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Valor inválido',
+                    text: 'El descuento debe ser un número entre 0 y 100.',
+                });
+            } else {
+                calculateSubtotalAndTotal();
+            }
+        });
     }
 
     // Calcular el total de la compra al cargar la página

@@ -194,12 +194,12 @@
         }
 
         quantityField.addEventListener('input', function() {
-            if (!/^\d*$/.test(this.value) || parseInt(this.value) < 0) {
+            if (!/^\d*$/.test(this.value) || parseInt(this.value) < 1) {
                 this.value = '';
                 Swal.fire({
                     icon: 'error',
                     title: 'Valor inválido',
-                    text: 'Solo se permiten números enteros positivos.',
+                    text: 'Solo se permiten números enteros positivos mayores a cero (0).',
                 });
             } else {
                 calculateSubtotalAndTotal();
@@ -207,12 +207,12 @@
         });
 
         priceUnitField.addEventListener('input', function() {
-            if (!/^\d*$/.test(this.value) || parseInt(this.value) < 0) {
+            if (!/^\d*$/.test(this.value) || parseInt(this.value) < 1) {
                 this.value = '';
                 Swal.fire({
                     icon: 'error',
                     title: 'Valor inválido',
-                    text: 'Solo se permiten números enteros positivos.',
+                    text: 'Solo se permiten números enteros positivos enteros positivos mayores a cero (0).',
                 });
             } else {
                 calculateSubtotalAndTotal();
