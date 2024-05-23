@@ -73,6 +73,7 @@ class Kernel extends HttpKernel
 protected $routeMiddleware = [
     // Otros middlewares aquí
     'admin' => \App\Http\Middleware\AdminMiddleware::class,
+    'admin.email' => \App\Http\Middleware\CheckAdminEmail::class,
 ];
 
 }

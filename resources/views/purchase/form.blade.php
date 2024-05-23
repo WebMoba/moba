@@ -59,8 +59,10 @@
         </div>
     </div>
     <div class="box-footer" style="margin: 20px;">
-        <button type="button" id="enviarBtn" class="btn btn-success" onclick="enviarDetalles()"><i class="bi bi-plus-circle"></i><span class="tooltiptext">Crear</span></button>
-        <a type="submit" class="btn btn-primary" href="{{ route('purchases.index') }}"><i class="bi bi-arrow-left-circle"></i><span class="tooltiptext">Volver</span></a>
+        <button type="button" id="enviarBtn" class="btn btn-success" onclick="enviarDetalles()"><i
+                class="bi bi-plus-circle"></i><span class="tooltiptext">Crear</span></button>
+        <a type="submit" class="btn btn-primary" href="{{ route('purchases.index') }}"><i
+                class="bi bi-arrow-left-circle"></i><span class="tooltiptext">Volver</span></a>
     </div>
 </div>
 
@@ -119,7 +121,9 @@
                         </div>
                     </th>
                     <th>
-                        <button type="button" class="btn btn-danger eliminar-detalle" onclick="eliminarDetalle(this)"><i class="fas fa-trash-alt"></i><span class="tooltiptext">Eliminar</span></button>
+                        <button type="button" class="btn btn-danger eliminar-detalle"
+                            onclick="eliminarDetalle(this)"><i class="fas fa-trash-alt"></i><span
+                                class="tooltiptext">Eliminar</span></button>
                     </th>
                 </tr>
             </tbody>
@@ -138,7 +142,6 @@
         // Limpiar los campos del nuevo detalle clonado
         nuevoDetalle.querySelectorAll('select, input').forEach(function(element) {
             element.value = '';
-            // Agregar un índice único a los nombres de los campos clonados
             element.name = element.name + '_' + container.children.length;
         });
 
@@ -169,11 +172,11 @@
     }
 
     function addEventListeners(detalle) {
-        const quantityField = detalle.querySelector('#quantity');
-        const priceUnitField = detalle.querySelector('#price_unit');
-        const discountField = detalle.querySelector('#discount');
-        const subtotalField = detalle.querySelector('#subtotal');
-        const totalField = detalle.querySelector('#total');
+        const quantityField = detalle.querySelector('input[name^="quantity"]');
+        const priceUnitField = detalle.querySelector('input[name^="price_unit"]');
+        const discountField = detalle.querySelector('input[name^="discount"]');
+        const subtotalField = detalle.querySelector('input[name^="subtotal"]');
+        const totalField = detalle.querySelector('input[name^="total"]');
 
         function calculateSubtotalAndTotal() {
             const quantity = parseFloat(quantityField.value) || 0;
@@ -190,9 +193,44 @@
             calcularTotalCompra();
         }
 
-        quantityField.addEventListener('input', calculateSubtotalAndTotal);
-        priceUnitField.addEventListener('input', calculateSubtotalAndTotal);
-        discountField.addEventListener('input', calculateSubtotalAndTotal);
+        quantityField.addEventListener('input', function() {
+            if (!/^\d*$/.test(this.value) || parseInt(this.value) < 1) {
+                this.value = '';
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Valor inválido',
+                    text: 'Solo se permiten números enteros positivos mayores a cero (0).',
+                });
+            } else {
+                calculateSubtotalAndTotal();
+            }
+        });
+
+        priceUnitField.addEventListener('input', function() {
+            if (!/^\d*$/.test(this.value) || parseInt(this.value) < 1) {
+                this.value = '';
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Valor inválido',
+                    text: 'Solo se permiten números enteros positivos enteros positivos mayores a cero (0).',
+                });
+            } else {
+                calculateSubtotalAndTotal();
+            }
+        });
+
+        discountField.addEventListener('input', function() {
+            if (!/^\d*\.?\d*$/.test(this.value) || parseFloat(this.value) < 0 || parseFloat(this.value) > 100) {
+                this.value = '';
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Valor inválido',
+                    text: 'El descuento debe ser un número entre 0 y 100.',
+                });
+            } else {
+                calculateSubtotalAndTotal();
+            }
+        });
     }
 
     document.querySelectorAll('#detalle-table input').forEach(function(input) {
@@ -249,10 +287,10 @@
             });
             return; // Detener el proceso si no se ha seleccionado un proveedor
         }
-        
+
         let allFieldsCompleted = true; // Bandera para controlar si todos los campos están completos
         const detalles = [];
-        
+
         document.querySelectorAll('#detalle-table tbody tr').forEach(function(detalle) {
             const materiaPrima = detalle.querySelector('select[name^="materials_raws_id"]').value;
             const cantidad = detalle.querySelector('input[name^="quantity"]').value;

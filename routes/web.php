@@ -1,7 +1,6 @@
  <?php
 
-/*controlador para envio de correo electronico*/
-
+use App\Http\Controllers\DashboardController;
 use App\Exports\CategoriesExport;
 use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\PersonController;
@@ -11,7 +10,6 @@ use App\Http\Controllers\NumberPhoneController;
 use App\Http\Controllers\ProfileController;
 use App\Exports\PeopleExport;
 use App\Exports\EventsExport;
-
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SaleController;
@@ -57,29 +55,26 @@ Route::resources([
     'sale'      => SaleController::class
 ]);
 
+
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
 
-Route::resource('product', ProductController::class);
-Route::resource('unit', UnitController::class);
-Route::get('/pdf/product', [ProductController::class, 'generatePDF'])->name('pdf.product');
-Route::get('/pdf/unit', [UnitController::class, 'generatePDF'])->name('pdf.unit');
-
 //dashboard
 
-Route::middleware(['auth'])->group(function () {
-    Route::middleware(['admin'])->group(function () {
+Route::middleware(['auth', 'admin.email'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard')->middleware('auth');
 
-        // Todas las rutas protegidas para administradores
-        Route::get('/dashboard', function () {
-            return view('dashboard');
-        })->name('dashboard');
-
-        Route::get('/pages/dashboard', [QuoteController::class, 'QuotesData'])->name('pages.dashboard');
+    Route::get('/pages/dashboard', [QuoteController::class, 'QuotesData'])->name('pages.dashboard');
+    Route::resource('product', ProductController::class);
+    Route::resource('unit', UnitController::class);
+    Route::get('/pdf/product', [ProductController::class, 'generatePDF'])->name('pdf.product');
+    Route::get('/pdf/unit', [UnitController::class, 'generatePDF'])->name('pdf.unit');
         
-        // Otras rutas protegidas para administradores...
+    // Otras rutas protegidas para administradores...
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -98,8 +93,7 @@ Route::middleware(['auth'])->group(function () {
      Route::get('/export-person', [PersonController::class, 'export'])->name('excel.person');
      Route::get('/export-events', [EventController::class, 'export'])->name('excel.events');
  
- 
-     /*Rutas product y unit*/
+      /*Rutas product y unit*/
      Route::resource('product', ProductController::class);
      Route::resource('unit', UnitController::class);
      Route::get('/pdf/product', [ProductController::class, 'generatePDF'])->name('pdf.product');
@@ -150,8 +144,7 @@ Route::middleware(['auth'])->group(function () {
     
     });
     
-    });
-
+ 
 
 //Vistas carpeta servicios
 Route::get('/mobaMenu/index', function () {
@@ -159,7 +152,6 @@ Route::get('/mobaMenu/index', function () {
 });
 Route::view('/mobaMenu/Servicios/servicios', 'mobaMenu.servicios.servicios')->name('mobaMenu.Servicios.servicios');
 //Fin vistas carpeta servicios
-
 
 //vistas de proyectos
 Route::view('/mobaMenu/proyectos/PARAISO', 'mobaMenu.proyectos.PARAISO')->name('mobaMenu.proyectos.PARAISO');
@@ -181,13 +173,6 @@ Route::view('/mobaMenu/proyectos/EMPOWER', 'mobaMenu.proyectos.EMPOWER')->name('
 Route::view('/mobaMenu/proyectos/PALMAS', 'mobaMenu.proyectos.PALMAS')->name('mobaMenu.proyectos.PALMAS');
 Route::view('/mobaMenu/proyectos/odontologa1', 'mobaMenu.proyectos.odontologa1')->name('mobaMenu.proyectos.odontologa1');
 
-
-
-
-
-
-
-
 //Vistas fronted Moba
 Route::view('/mobaMenu/index', 'mobaMenu.index')->name('mobaMenu.index');
 Route::view('/mobaMenu/EquipoTrabajo/index', 'mobaMenu.EquipoTrabajo.index')->name('mobaMenu.EquipoTrabajo.index');
@@ -197,9 +182,6 @@ Route::view('/mobaMenu/EquipoTrabajo/integranteTres', 'mobaMenu.EquipoTrabajo.in
 Route::view('/mobaMenu/EquipoTrabajo/integranteCuatro', 'mobaMenu.EquipoTrabajo.integranteCuatro')->name('mobaMenu.EquipoTrabajo.integranteCuatro');
 Route::view('/mobaMenu/Contacto/index', 'mobaMenu.Contacto.index')->name('mobaMenu.Contacto.index');
 Route::view('/mobaMenu/proyectos/index', 'mobaMenu.proyectos.index')->name('mobaMenu.proyectos.index');
-
-
-
 
 //vistas froted tu arte 
 Route::view('/tuArteMenu/index', 'tuArteMenu.index')->name('tuArteMenu.index');
@@ -211,11 +193,6 @@ Route::get('/tuArteMenu/servicios/Decoracion/index', [ProductController::class, 
 Route::get('/tuArteMenu/servicios/JoditasPalRecuerdo/index', [ProductController::class, 'indexForJoditas'])->name('tuArteMenu.servicios.JoditasPalRecuerdo.index');
 Route::get('/tuArteMenu/servicios/Mascotas/index', [ProductController::class, 'indexForPets'])->name('tuArteMenu.servicios.Mascotas.index');
 Route::view('/tuArteMenu/Contacto/index', 'tuArteMenu.Contacto.index')->name('tuArteMenu.Contacto.index');
-
-
-
-
-
 
 //ruta Correo electronico
 Route::post('/enviar-correo', [ContactoController::class, 'enviarCorreo'])->name('enviar-correo');
@@ -255,8 +232,6 @@ require __DIR__ . '/auth.php';
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\RegisterController;
@@ -264,8 +239,6 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;
-use App\Http\Controllers\DashboardController;
-
 
 Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->middleware('guest')->name('register.perform');
@@ -275,7 +248,7 @@ Route::get('/reset-password', [ResetPassword::class, 'show'])->middleware('guest
 Route::post('/reset-password', [ResetPassword::class, 'send'])->middleware('guest')->name('reset.perform');
 Route::get('/change-password', [ChangePassword::class, 'show'])->middleware('guest')->name('change-password');
 Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
-Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard')->middleware('auth');
+
 /* Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middleware('auth');*/
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');

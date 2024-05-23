@@ -189,7 +189,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-success">Comprar</button>
+                    <button type="button" class="btn btn-success">Realizar Pedido</button>
                 </div>
             </div>
         </div>
@@ -373,7 +373,7 @@
                         <td><img src="${productImage}" alt="${productName}" width="50"></td>
                         <td>${productName}</td>
                         <td class="product-price">${productPrice}</td>
-                        <td><input type="number" class="form-control product-quantity" value="${productQuantity}" min="1" max="99"></td>
+                        <td><input type="number" class="form-control product-quantity" value="${productQuantity}" min="1" max="999" onfocus="clearMinValue(this)" onblur="resetMinValue(this)" oninput="validateQuantity(this)"></td>
                         <td><i class="bi bi-x-lg remove-product" style="cursor: pointer;"></i></td>
                     `;
                     cartItems.appendChild(newRow);
@@ -429,12 +429,20 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Verificar si el usuario está autenticado
             const isAuthenticated = {{ Auth::check() ? 'true' : 'false' }};
+
+            function clearCart() {
+                localStorage.removeItem('cart');
+                const cartItems = document.getElementById('cartItems');
+                while (cartItems.firstChild) {
+                    cartItems.removeChild(cartItems.firstChild);
+                }
+                updateTotal();
+            }
 
             function showLoginAlert() {
                 Swal.fire({
-                    title: "Inicia sesión para realizar una compra",
+                    title: "Inicia sesión para realizar un pedido",
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#3085d6",
@@ -445,30 +453,108 @@
                     if (result.isConfirmed) {
                         window.location.href = "{{ route('login') }}";
                     } else {
-                        // Recargar la página si se cierra la alerta o se presiona "Cancelar"
                         window.location.reload();
                     }
                 });
             }
 
-            // Añadir productos al carrito
+            function handleProductClick(event) {
+                if (!isAuthenticated) {
+                    event.preventDefault();
+                    clearCart();
+                    showLoginAlert();
+                }
+            }
+
             const productLinks = document.querySelectorAll('.card-link');
             productLinks.forEach(link => {
-                link.addEventListener('click', function(event) {
-                    if (!isAuthenticated) {
-                        event.preventDefault();
-                        showLoginAlert();
-                    }
-                });
+                link.addEventListener('click', handleProductClick);
             });
 
-            // Acceder al carrito
             const cartButton = document.querySelector('.btn-cart');
             cartButton.addEventListener('click', function(event) {
                 if (!isAuthenticated) {
                     event.preventDefault();
+                    clearCart();
                     showLoginAlert();
                 }
+            });
+        });
+
+        function loadCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItems = document.getElementById('cartItems');
+            cart.forEach(item => {
+                addItemToCart(item);
+            });
+            updateTotal();
+        }
+
+        function updateTotal() {
+            let total = 0;
+            const cartItems = document.getElementById('cartItems');
+            const cartRows = cartItems.querySelectorAll('tr');
+            cartRows.forEach(row => {
+                const price = parseFloat(row.querySelector('.product-price').textContent.replace('$', ''));
+                const quantity = parseInt(row.querySelector('.product-quantity').value);
+                total += price * quantity;
+            });
+            const totalPriceElement = document.getElementById('totalPrice');
+            totalPriceElement.textContent = Math.round(total);
+            const cartBadge = document.querySelector('.cart-badge');
+            cartBadge.textContent = cartRows.length;
+            if (cartRows.length > 0) {
+                cartBadge.classList.add('active');
+            } else {
+                cartBadge.classList.remove('active');
+            }
+        }
+
+        function removeItemFromCart(button) {
+            const row = button.closest('tr');
+            row.remove();
+            updateTotal();
+        }
+    </script>
+    <script>
+        function clearMinValue(input) {
+            if (input.value === "1") {
+                input.value = "";
+            }
+        }
+
+        function resetMinValue(input) {
+            if (input.value === "") {
+                input.value = "1";
+            } else {
+                validateQuantity(input);
+            }
+        }
+
+        function validateQuantity(input) {
+            const max = 999;
+            const min = 1;
+            if (input.value > max) {
+                input.value = max;
+            }
+            if (input.value < min) {
+                input.value = min;
+            }
+        }
+
+        // Aplicar esta validación a todos los inputs existentes cuando se carga la página
+        document.addEventListener("DOMContentLoaded", function() {
+            const quantityInputs = document.querySelectorAll('.product-quantity');
+            quantityInputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    clearMinValue(this);
+                });
+                input.addEventListener('blur', function() {
+                    resetMinValue(this);
+                });
+                input.addEventListener('input', function() {
+                    validateQuantity(this);
+                });
             });
         });
     </script>

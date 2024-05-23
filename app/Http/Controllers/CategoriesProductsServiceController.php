@@ -58,27 +58,30 @@ class CategoriesProductsServiceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        // Contar la cantidad de productos deshabilitados
-        $disabledProductCount = CategoriesProductsService::where('type', 'producto')->where('disable', 1)->count();
-        $maxProducts = 4;
-    
-        // Validar si se pueden crear más productos
-        if ($disabledProductCount >= $maxProducts) {
-            return redirect()->back()->with('error', 'No se pueden crear más categorías de productos.');
-        }
-    
-        // Validación de los campos requeridos
-        $customMessages = ['required' => 'El campo es obligatorio.'];
-        request()->validate(CategoriesProductsService::$rules, $customMessages);
-    
-        // Crear la categoría de productos o servicios
-        $categoriesProductsService = CategoriesProductsService::create(array_merge($request->all(), ['disable' => 0]));
-    
-        // Redireccionar con mensaje de éxito
-        return redirect()->route('categories-products-service.index')
-            ->with('success', 'Categoría creada exitosamente.');
+{
+    // Contar la cantidad de productos deshabilitados
+    $disabledProductCount = CategoriesProductsService::where('type', 'producto')->where('disable', 1)->count();
+    $maxProducts = 4;
+
+    // Validar si se pueden crear más productos
+    if ($disabledProductCount >= $maxProducts) {
+        return redirect()->back()->with('error', 'No se pueden crear más categorías de productos.');
     }
+
+    // Validación de los campos requeridos incluyendo la validación de cantidad no negativa
+    $customMessages = ['required' => 'El campo es obligatorio.'];
+    $request->validate(array_merge(CategoriesProductsService::$rules, [
+        'quantity' => 'required|numeric|min:0'
+    ]), $customMessages);
+
+    // Crear la categoría de productos o servicios
+    $categoriesProductsService = CategoriesProductsService::create(array_merge($request->all(), ['disable' => 1]));
+
+    // Redireccionar con mensaje de éxito
+    return redirect()->route('categories-products-service.index')
+        ->with('success', 'Categoría creada exitosamente.');
+}
+
     /**
      * Display the specified resource.
      *

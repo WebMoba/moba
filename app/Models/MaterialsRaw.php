@@ -26,8 +26,6 @@ class MaterialsRaw extends Model
     static $rules = [
 		'units_id' => 'required',
 		'name' => 'required',
-		'existing_quantity' => 'required|numeric',
-
     ];
 
     protected $perPage = 20;
