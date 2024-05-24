@@ -22,8 +22,8 @@
         </div>
     </div>
 
-    <div class="content">
-        <h1>Listado de Productos</h1>
+    <div class="content">   
+        <h1 style="text-align: right;">Listado de Productos</h1>
         <p style="text-align: right;">Fecha: {{ now()->format('Y-m-d') }}</p>
         
         <table>
@@ -119,6 +119,7 @@
         td {
             border: 1px solid #ddd;
             padding: 8px;
+            text-align: center;
         }
 
         th {

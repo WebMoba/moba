@@ -40,10 +40,11 @@ class PurchaseController extends Controller
 
         // Generar el PDF
         $pdf = new Dompdf();
+        $pdf->set_option('isRemoteEnabled', true);
         $pdf->loadHtml(view('purchase.pdf-template', $data));
         $pdf->setPaper('A4', 'portrait');
         $pdf->render();
-        return $pdf->stream('document.pdf');
+        return $pdf->stream('Compras.pdf');
     }
 
     public function view($purchases)

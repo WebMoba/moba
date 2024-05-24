@@ -169,6 +169,7 @@ class CategoriesProductsServiceController extends Controller
 
         // Generar el PDF
         $pdf = new Dompdf();
+        $pdf->set_option('isRemoteEnabled', true);
         $pdf->loadHtml(view('categories-products-service.pdf-template', $data));
         $pdf->setPaper('A4', 'portrait');
         $pdf->render();

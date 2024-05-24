@@ -193,6 +193,7 @@ class ProjectController extends Controller
 
         // Generar el PDF
         $pdf = new DompdfDompdf();
+        $pdf->set_option('isRemoteEnabled', true);
         $pdf->loadHtml(view('project.pdf-template', $data));
         $pdf->setPaper('A4', 'portrait');
         $pdf->render();

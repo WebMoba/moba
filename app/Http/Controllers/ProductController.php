@@ -247,38 +247,38 @@ class ProductController extends Controller
     }
 
     public function generatePDF(Request $request)
-{
-    // Obtener el filtro de la solicitud
-    $filter = $request->input('findId');
+    {
+        // Obtener el filtro de la solicitud
+        $filter = $request->input('findId');
 
-    // Obtener los datos de los productos filtrados si se aplicó un filtro
-    if ($filter) {
-        $products = Product::where('name', 'LIKE', '%' . $filter . '%')->get();
-    } else {
-        // Si no hay filtro, obtener todos los productos
-        $products = Product::all();
+        // Obtener los datos de los productos filtrados si se aplicó un filtro
+        if ($filter) {
+            $products = Product::where('name', 'LIKE', '%' . $filter . '%')->get();
+        } else {
+            // Si no hay filtro, obtener todos los productos
+            $products = Product::all();
+        }
+
+        // Verificar la existencia de las imágenes y agregar un indicador a cada producto
+        foreach ($products as $product) {
+            $imagePath = public_path('storage/' . $product->image);
+            $product->image_exists = file_exists($imagePath);
+            $product->image_url = $product->image_exists ? asset('storage/' . $product->image) : null;
+        }
+
+        // Pasar los datos a la vista pdf-template
+        $data = [
+            'products' => $products
+        ];
+
+        // Generar el PDF
+        $pdf = new \Dompdf\Dompdf();
+        $pdf->set_option('isRemoteEnabled', true);  // Habilitar acceso remoto
+        $pdf->loadHtml(view('product.pdf-template', $data)->render());
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->render();
+        return $pdf->stream('Productos.pdf');
     }
-
-    // Verificar la existencia de las imágenes y agregar un indicador a cada producto
-    foreach ($products as $product) {
-        $imagePath = public_path('storage/' . $product->image);
-        $product->image_exists = file_exists($imagePath);
-        $product->image_url = $product->image_exists ? asset('storage/' . $product->image) : null;
-    }
-
-    // Pasar los datos a la vista pdf-template
-    $data = [
-        'products' => $products
-    ];
-
-    // Generar el PDF
-    $pdf = new \Dompdf\Dompdf();
-    $pdf->set_option('isRemoteEnabled', true);  // Habilitar acceso remoto
-    $pdf->loadHtml(view('product.pdf-template', $data)->render());
-    $pdf->setPaper('A4', 'portrait');
-    $pdf->render();
-    return $pdf->stream('Productos.pdf');
-}
 
     
 

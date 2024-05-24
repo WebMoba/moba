@@ -184,6 +184,7 @@ class EventController extends Controller
 
         // Generar el PDF
         $pdf = new Dompdf();
+        $pdf->set_option('isRemoteEnabled', true);
         $pdf->loadHtml(view('event.pdf-template', $data));
 
         $pdf->setPaper('A4', 'portrait');
