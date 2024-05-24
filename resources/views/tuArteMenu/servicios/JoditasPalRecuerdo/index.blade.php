@@ -193,7 +193,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-success">Realizar Pedido</button>
+                    <button type="button" class="btn btn-success" id="realizarPedido">Realizar Pedido</button>
                 </div>
             </div>
         </div>
@@ -558,6 +558,55 @@
                 });
                 input.addEventListener('input', function() {
                     validateQuantity(this);
+                });
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById('realizarPedido').addEventListener('click', function() {
+                Swal.fire({
+                    title: 'Complete el siguiente formulario para finalizar su pedido',
+                    icon: 'info',
+                    confirmButtonText: 'Aceptar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "{{ route('tuArteMenu.Contacto.index') }}";
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById('realizarPedido').addEventListener('click', function() {
+                // Recopilar información del carrito
+                const cartRows = document.querySelectorAll('#cartItems tr');
+                let cartInfo = '';
+
+                cartRows.forEach(row => {
+                    const productName = row.querySelector('td:nth-child(2)').textContent;
+                    const productPrice = row.querySelector('.product-price').textContent;
+                    const productQuantity = row.querySelector('.product-quantity').value;
+                    cartInfo +=
+                        `${productName} - Precio: ${productPrice}, Cantidad: ${productQuantity}\n`;
+                });
+
+                // Obtener el total del carrito
+                const totalPrice = document.getElementById('totalPrice').textContent;
+                cartInfo += `Total: ${totalPrice}`;
+
+                // Mostrar la alerta
+                Swal.fire({
+                    title: 'Complete el siguiente formulario para finalizar su pedido',
+                    icon: 'info',
+                    confirmButtonText: 'Aceptar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Redirigir a la página de contacto con la información del carrito como parámetro
+                        window.location.href =
+                            `{{ route('tuArteMenu.Contacto.index') }}?cartInfo=${encodeURIComponent(cartInfo)}`;
+                    }
                 });
             });
         });
