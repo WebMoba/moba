@@ -224,11 +224,6 @@ class QuoteController extends Controller
 
     public function generatePDF(Request $request)
     {
-
-        // $quote = new Quote();
-        // $detailQuote = new DetailQuote();  
-
-        // return view('quote.pdf-template', compact('quote','detailQuote')); <td>{{ $detailQuote ? $detailQuote->service->name : 'N/A' }} </td>
         // Obtener el filtro de la solicitud
         $filter = $request->input('findId');
 
@@ -252,6 +247,33 @@ class QuoteController extends Controller
         $pdf->render();
         return $pdf->stream('Listado_Cotizaciones.pdf');
     }
+
+    public function generateDetailPDF(Request $request)
+    {
+        $filter = $request->input('findId');
+
+        // Obtener los datos de la cotización y sus detalles
+        if ($filter) {
+            $quote = Quote::with('detailQuotes.service', 'detailQuotes.product', 'detailQuotes.project')->find($filter);
+        } else {
+            // Si no hay filtro, redirigir a otra página o mostrar un error
+            return redirect()->back()->with('error', 'No se encontró la cotización');
+        }
+
+        // Pasar los datos a la vista pdf-template
+        $data = [
+            'quote' => $quote
+        ];
+
+        // Generar el PDF
+        $pdf = new DompdfDompdf();
+        $pdf->set_option('isRemoteEnabled', true);
+        $pdf->loadHtml(view('quote.pdf-template-detail', $data)->render());
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->render();
+        return $pdf->stream('Cotización detallada.pdf');
+    }
+
 
     public function export()
     {

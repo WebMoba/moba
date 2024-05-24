@@ -136,6 +136,7 @@ Route::middleware(['auth', 'admin.email'])->group(function () {
         Route::resource('quotes', QuoteController::class)->middleware('auth');
         Route::get('/pdf/project', [ProjectController::class, 'generatePDF'])->name('pdf.project');
         Route::get('/pdf/teamwork', [TeamWorkController::class, 'generatePDF'])->name('pdf.teamwork');
+        Route::get('/pdf/quote-detail', [QuoteController::class, 'generateDetailPDF'])->name('pdf.quote-detail');
         Route::get('/pdf/quote', [QuoteController::class, 'generatePDF'])->name('pdf.quote');
         Route::get('/export-project', [ProjectController::class, 'export'])->name('excel.project');
         Route::get('/export-quote', [QuoteController::class, 'export'])->name('excel.quote');
