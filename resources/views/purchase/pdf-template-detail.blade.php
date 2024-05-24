@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Cotizaciones</title>
+    <title>Compra</title>
     <style>
         h1 {
             color: #333;
@@ -30,9 +30,8 @@
         }
         .moba {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
             padding: 20px;
             border-bottom: 1px solid #ddd;
             margin-bottom: 20px;
@@ -88,42 +87,41 @@
     </div>
 
     <div class="card-body">
+        <div style="text-align: right; margin-bottom: 20px;">
+            <h3>Compra</h3>
+            <p>Fecha: {{ date(now()->format('Y-m-d')) }}</p>
+        </div>
+        @if ($purchase->detailPurchases->count())
         <table class="table">
             <tbody>
                 <tr>
-                    <th>Fecha de expedición:</th>
-                    <td>{{ $quote->date_issuance }}</td>
+                    <th>Nombre del proveedor:</th>
+                    <td>{{ $purchase->user->name }}</td>
                 </tr>
                 <tr>
-                    <th>Descripción:</th>
-                    <td>{{ $quote->description }}</td>
+                    <th>Documento del proveedor:</th>
+                    <td>{{ $purchase->person->id_card }}</td>
                 </tr>
                 <tr>
-                    <th>Total:</th>
-                    <td>{{ $quote->total }}</td>
+                    <th>Total de la compra:</th>
+                    <td>{{ $purchase->total }}</td>
                 </tr>
                 <tr>
-                    <th>Descuento:</th>
-                    <td>{{ $quote->discount }}</td>
+                    <th>Fecha realización de la compra:</th>
+                    <td>{{ $purchase->date }}</td>
                 </tr>
                 <tr>
-                    <th>Estado:</th>
-                    <td>{{ $quote->status }}</td>
-                </tr>
-                <tr>
-                    <th>Persona:</th>
-                    <td>{{ $quote->people_id }}</td>
-                </tr>
-                <tr>
-                    <th>Detalles de la cotización:</th>
+                    <th>Detalles de la compra:</th>
                     <td>
                         <ul>
-                            @foreach ($quote->detailQuotes as $detail)
+                            @foreach ($purchase->detailPurchases as $detail)
                                 <li>
-                                    <strong>Servicio:</strong> {{ $detail->service ? $detail->service->name : 'N/A' }}<br>
-                                    <strong>Producto:</strong> {{ $detail->product ? $detail->product->name : 'N/A' }}<br>
-                                    <strong>Proyecto:</strong> {{ $detail->project ? $detail->project->name : 'N/A' }}<br>
-                                    <strong>Cotización:</strong> {{ $detail->quotes_id }}
+                                    <strong>Cantidad:</strong> {{ $detail->quantity }}<br>
+                                    <strong>Precio unitario:</strong> {{ $detail->price_unit }}<br>
+                                    <strong>Subtotal:</strong> {{ $detail->subtotal }}<br>
+                                    <strong>Descuento:</strong> {{ $detail->discount }}<br>
+                                    <strong>Total:</strong> {{ $detail->total }}<br>
+                                    <strong>Nombre de la materia prima:</strong> {{ $detail->materialsRaw->name }}
                                 </li>
                             @endforeach
                         </ul>
@@ -131,6 +129,9 @@
                 </tr>
             </tbody>
         </table>
+        @else
+        <p>No se encontraron detalles asociados a esta compra.</p>
+        @endif
     </div>
 
     <footer class="footer">

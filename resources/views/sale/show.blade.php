@@ -14,58 +14,58 @@
                         <div class="float-left">
                             <span class="card-title">{{ __('Vista') }} Venta</span>
                         </div>
+                        <div class="float-right">
+                            <a href="{{ route('pdf.sale-detail', ['findId' => $sale->id]) }}" class="btn btn-danger btn-sm float-right">
+                                </i><i class="bi bi-file-pdf-fill"></i><span class="tooltiptext">Pdf</span>
+                            </a>
+                        </div>
                     </div>
                     <div class="card-body">
-                        <h2>Venta</h2>
-                        <div class="form-group">
-                            <strong>Nombre del proveedor:</strong>
-                            {{ $sale->name }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Documento del Cliente:</strong>
-                            {{ $sale->person->id_card }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Fecha realizacion de la venta:</strong>
-                            {{ $sale->date }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Total de la venta:</strong>
-                            {{ $sale->total }}
-                        </div>
-                        <h2>Detalles de la venta</h2>
-                        @if ($details->count())
-                            <div class="form-group">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>'#'</th>
-                                            <th>Cantidad</th>
-                                            <th>Precio unitario</th>
-                                            <th>Subtotal</th>
-                                            <th>Descuento</th>
-                                            <th>Total</th>
-                                            <th>Nombre del producto</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($details as $index => $detail)
-                                            <tr>
-                                                <td>{{ $index + 1 }}</td>
-                                                <td>{{ $detail->quantity }}</td>
-                                                <td>{{ $detail->price_unit }}</td>
-                                                <td>{{ $detail->subtotal }}</td>
-                                                <td>{{ $detail->discount }}</td>
-                                                <td>{{ $detail->total }}</td>
-                                                <td>{{ $detail->product->name }}</td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                        @if ($sale->detailSales->count())
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th>Nombre del cliente:</th>
+                                    <td>{{ $sale->name }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Documento del cliente:</th>
+                                    <td>{{ $sale->person->id_card }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Total de la venta:</th>
+                                    <td>{{ $sale->total }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Fecha realización de la venta:</th>
+                                    <td>{{ $sale->date }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Detalles de la venta:</th>
+                                    <td>
+                                        <ul>
+                                            @foreach ($sale->detailSales as $detail)
+                                                <li>
+                                                    @foreach ($details as $index => $detail)
+                                                    <strong>Detalle:</strong>{{  $index + 1  }}
+                                                    @endforeach
+                                                    <strong>Cantidad:</strong> {{ $detail->quantity }}<br>
+                                                    <strong>Precio unitario:</strong> {{ $detail->price_unit }}<br>
+                                                    <strong>Subtotal:</strong> {{ $detail->subtotal }}<br>
+                                                    <strong>Descuento:</strong> {{ $detail->discount }}<br>
+                                                    <strong>Total:</strong> {{ $detail->total }}<br>
+                                                    <strong>Nombre del producto:</strong> {{ $detail->product->name }}
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                         @else
-                            <p>No se encontraron detalles asociados a esta compra.</p>
+                        <p>No se encontraron detalles asociados a esta venta.</p>
                         @endif
+                    
                         <a type="button" class="btn btn-primary" href="{{ route('sales.index') }}"><i
                                 class="bi bi-arrow-left-circle"></i></a>
                     </div>
