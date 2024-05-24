@@ -45,8 +45,8 @@
                                     <td>{{ $quote->status }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Persona:</th>
-                                    <td>{{ $quote->people_id }}</td>
+                                    <th>Cliente:</th>
+                                    <td>{{ $persons->name }}</td>
                                 </tr>
                                 <tr>
                                     <th>Detalles de la cotización:</th>

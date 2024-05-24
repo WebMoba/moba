@@ -139,7 +139,13 @@ class QuoteController extends Controller
         $quote = Quote::find($id);
         // Convierte la fecha a un formato de cadena 'Y-m-d'
         // $quote->date_issuance = $quote->date_issuance ? $quote->date_issuance->format('Y-m-d') : null;
-
+        $persons = User::with('person')
+            ->whereHas('person', function ($query) {
+                $query->where('rol', 'Cliente')
+                    ->where('users_id', '!=', null)
+                    ->where('disable', false);
+            })
+            ->pluck('name', 'id');
         $detailQuote = DetailQuote::where('quotes_id', $quote->id)->get();
         $detailQuote = $quote->detailQuotes;
         $quote->load('detailQuotes');

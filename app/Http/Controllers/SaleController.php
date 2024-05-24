@@ -13,6 +13,7 @@ use Dompdf\Dompdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
+use Dompdf\Dompdf as DompdfDompdf;
 
 /**
  * Class SaleController
@@ -45,6 +46,33 @@ class SaleController extends Controller
         $pdf->setPaper('A4', 'portrait');
         $pdf->render();
         return $pdf->stream('Registro_Venta.pdf');
+    }
+
+
+   public function generateDetailPDF(Request $request)
+    {
+        $filter = $request->input('findId');
+
+        // Obtener los datos de la venta y sus detalles
+        if ($filter) {
+            $sale = Sale::with('detailSales.product', 'person')->find($filter);
+        } else {
+            // Si no hay filtro, redirigir a otra página o mostrar un error
+            return redirect()->back()->with('error', 'No se encontró la venta');
+        }
+
+        // Pasar los datos a la vista pdf-template
+        $data = [
+            'sale' => $sale
+        ];
+
+        // Generar el PDF
+        $pdf = new Dompdf();
+        $pdf->set_option('isRemoteEnabled', true);
+        $pdf->loadHtml(view('sale.pdf-template-detail', $data)->render());
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->render();
+        return $pdf->stream('Venta_detallada.pdf');
     }
 
     /**
@@ -181,7 +209,7 @@ class SaleController extends Controller
 
     public function show($id)
     {
-        $sale = Sale::with('person', 'user')->findOrFail($id);
+        $sale = Sale::with('person', 'user', 'detailSales.product')->findOrFail($id);
         $details = DetailSale::where('sales_id', $id)->get();
 
         return view('sale.show', compact('sale', 'details'));

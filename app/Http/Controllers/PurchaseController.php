@@ -9,6 +9,7 @@ use App\Models\MaterialsRaw;
 use App\Models\Person;
 use Illuminate\Http\Request;
 use Dompdf\Dompdf;
+use Dompdf\Dompdf as DompdfDompdf;
 
 
 use App\Exports\PurchasesExport;
@@ -45,6 +46,33 @@ class PurchaseController extends Controller
         $pdf->setPaper('A4', 'portrait');
         $pdf->render();
         return $pdf->stream('Compras.pdf');
+    }
+
+
+    public function generateDetailPDF(Request $request)
+    {
+        $filter = $request->input('findId');
+
+        // Obtener los datos de la compra y sus detalles
+        if ($filter) {
+            $purchase = Purchase::with('detailPurchases.materialsRaw', 'person', 'user')->find($filter);
+        } else {
+            // Si no hay filtro, redirigir a otra página o mostrar un error
+            return redirect()->back()->with('error', 'No se encontró la compra');
+        }
+
+        // Pasar los datos a la vista pdf-template
+        $data = [
+            'purchase' => $purchase
+        ];
+
+        // Generar el PDF
+        $pdf = new DompdfDompdf();
+        $pdf->set_option('isRemoteEnabled', true);
+        $pdf->loadHtml(view('purchase.pdf-template-detail', $data)->render());
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->render();
+        return $pdf->stream('Compra detallada.pdf');
     }
 
     public function view($purchases)
@@ -174,7 +202,7 @@ class PurchaseController extends Controller
      */
     public function show($id)
     {
-        $purchase = Purchase::with('person', 'user')->findOrFail($id);
+        $purchase = Purchase::with('person', 'user', 'detailPurchases.materialsRaw')->findOrFail($id);
         $details = DetailPurchase::where('purchases_id', $id)->get();
 
         return view('purchase.show', compact('purchase', 'details'));
