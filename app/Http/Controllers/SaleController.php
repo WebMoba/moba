@@ -40,6 +40,7 @@ class SaleController extends Controller
 
         //Generar el PDF
         $pdf = new Dompdf();
+        $pdf->set_option('isRemoteEnabled', true);
         $pdf->loadHtml(view('sale.pdf-template', $data));
         $pdf->setPaper('A4', 'portrait');
         $pdf->render();

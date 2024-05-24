@@ -12,7 +12,12 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Ver Cotización') }}</span>
+                            <span class="card-title">{{ __('Cotización Detallada') }}</span>
+                        </div>
+                        <div class="float-right">
+                            <a href="{{ route('pdf.quote-detail', ['findId' => $quote->id]) }}" class="btn btn-danger btn-sm float-right">
+                               <i class="bi bi-file-pdf-fill"></i><span class="tooltiptext">Pdf</span>
+                            </a>
                         </div>
                     </div>
 

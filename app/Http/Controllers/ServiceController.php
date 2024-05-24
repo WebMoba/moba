@@ -165,11 +165,13 @@ class ServiceController extends Controller
 
         // Generar el PDF
         $pdf = new Dompdf();
+        $pdf->set_option('isRemoteEnabled', true);
         $pdf->loadHtml(view('service.pdf-template', $data));
         $pdf->setPaper('A4', 'portrait');
         $pdf->render();
-        return $pdf->stream('vista de servicios.pdf');
+        return $pdf->stream('Servicios.pdf');
     }
+    
     public function export()
     {
         return Excel::download(new ServiceExport, 'servicios.xlsx');

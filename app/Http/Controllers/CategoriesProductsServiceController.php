@@ -75,7 +75,7 @@ class CategoriesProductsServiceController extends Controller
     ]), $customMessages);
 
     // Crear la categoría de productos o servicios
-    $categoriesProductsService = CategoriesProductsService::create(array_merge($request->all(), ['disable' => 0]));
+    $categoriesProductsService = CategoriesProductsService::create(array_merge($request->all(), ['disable' => 1]));
 
     // Redireccionar con mensaje de éxito
     return redirect()->route('categories-products-service.index')
@@ -169,6 +169,7 @@ class CategoriesProductsServiceController extends Controller
 
         // Generar el PDF
         $pdf = new Dompdf();
+        $pdf->set_option('isRemoteEnabled', true);
         $pdf->loadHtml(view('categories-products-service.pdf-template', $data));
         $pdf->setPaper('A4', 'portrait');
         $pdf->render();
