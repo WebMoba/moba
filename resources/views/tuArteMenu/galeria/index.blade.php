@@ -111,25 +111,58 @@
                     <div class="lightbox" data-mdb-lightbox-init>
                         <div class="row">
                             <div class="col-lg-4">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img4.webp') }}"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider1/Arete1.jpg') }}"
+                                    alt="LaverosArtesanalesRecuerdos" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider1/Arete2.jpg') }}"
+                                    alt="Llaveros-Artesanales-Buhos" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                            </div>
+                            <div class="col-lg-8">
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider1/Arete3.jpg') }}"
+                                    alt="Llaveros Artesanales Corazones" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                            </div>
+                            <div class="mt-4 mb-2 col-lg-4">
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider1/Arete4.jpg') }}"
+                                    alt="Llaveros Artesanales Personalizados" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                            </div>
+                            <div class=" ult mb-2 col-lg-4">
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider1/Arete5.jpg') }}"
+                                    alt="Llaveros Personajes Animados" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                            </div>
+                            <div class="ult mb-2 col-lg-4">
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider1/Arete6.jpg') }}"
+                                    alt="Llaveros Personalizado sNombres" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery -->
+            </div>
+            <div class="carousel-item">
+                <!-- Gallery -->
+                <div class="container col-lg-9">
+                    <div class="lightbox" data-mdb-lightbox-init>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider2/Llavero1.jpg') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img3.webp') }}"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider2/Llavero2.jpg') }}"
                                     alt="Coconut with Strawberries" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
                             <div class="col-lg-8">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img6.webp') }}"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider2/Llavero3.jpg') }}"
                                     alt="Dark Roast Iced Coffee" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
                             <div class="mt-4 mb-2 col-lg-4">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img5.webp') }}"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider2/Llavero4.jpg') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
                             <div class=" ult mb-2 col-lg-4">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img1.jpeg') }}"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider2/Llavero5.jpg') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
                             <div class="ult mb-2 col-lg-4">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img4.webp') }}"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider2/Llavero6.jpg') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
 
@@ -144,58 +177,25 @@
                     <div class="lightbox" data-mdb-lightbox-init>
                         <div class="row">
                             <div class="col-lg-4">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img4.webp') }}"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider3/Animalitos.jpg') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img3.webp') }}"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider3/Arboles.jpg') }}"
                                     alt="Coconut with Strawberries" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
                             <div class="col-lg-8">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img6.webp') }}"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider3/Frida.jpg') }}"
                                     alt="Dark Roast Iced Coffee" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
                             <div class="mt-4 mb-2 col-lg-4">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img5.webp') }}"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider3/Monitos.jpg') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
                             <div class=" ult mb-2 col-lg-4">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img1.jpeg') }}"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider3/Perritos.jpg') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
                             <div class="ult mb-2 col-lg-4">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img4.webp') }}"
-                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <!-- Gallery -->
-            </div>
-            <div class="carousel-item">
-                <!-- Gallery -->
-                <div class="container col-lg-9">
-                    <div class="lightbox" data-mdb-lightbox-init>
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img4.webp') }}"
-                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img3.webp') }}"
-                                    alt="Coconut with Strawberries" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
-                            </div>
-                            <div class="col-lg-8">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img6.webp') }}"
-                                    alt="Dark Roast Iced Coffee" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
-                            </div>
-                            <div class="mt-4 mb-2 col-lg-4">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img5.webp') }}"
-                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
-                            </div>
-                            <div class=" ult mb-2 col-lg-4">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img1.jpeg') }}"
-                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
-                            </div>
-                            <div class="ult mb-2 col-lg-4">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Img4.webp') }}"
+                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider3/Topitos.jpg') }}"
                                     alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
                             </div>
 
