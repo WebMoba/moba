@@ -20,6 +20,9 @@
         th {
             background-color: #f2f2f2;
         }
+        li{
+            text-align: left;
+        }
         body {
             font-family: Arial, sans-serif;
             font-size: 12px;
@@ -29,21 +32,22 @@
             height: 100%;
         }
         .moba {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: row;
+            display: flex; !important
+            justify-content: center; !important
+            align-items: center; !important
+            flex-direction: column; !important
             padding: 20px;
             border-bottom: 1px solid #ddd;
             margin-bottom: 20px;
         }
         .logo1, .logo2 {
             flex: 0 0 auto;
-            width: 25%;
+            width: 25%; !important
         }
         .info {
             flex: 1;
             text-align: center;
+            width: 50%;
         }
         .info h1 {
             margin-top: 0;
@@ -118,13 +122,15 @@
                     <th>Detalles de la cotización:</th>
                     <td>
                         <ul>
-                            @foreach ($quote->detailQuotes as $detail)
-                                <li>
-                                    <strong>Servicio:</strong> {{ $detail->service ? $detail->service->name : 'N/A' }}<br>
-                                    <strong>Producto:</strong> {{ $detail->product ? $detail->product->name : 'N/A' }}<br>
-                                    <strong>Proyecto:</strong> {{ $detail->project ? $detail->project->name : 'N/A' }}<br>
-                                    <strong>Cotización:</strong> {{ $detail->quotes_id }}
-                                </li>
+                            @foreach ($quote->detailQuotes as $index => $detail)
+                            <li>
+                                <strong>Detalle:</strong>{{  $index + 1  }}<br>
+                                <strong>Servicio:</strong> {{ $detail->service ? $detail->service->name : 'N/A' }}<br>
+                                <strong>Producto:</strong> {{ $detail->product ? $detail->product->name : 'N/A' }}<br>
+                                <strong>Proyecto:</strong> {{ $detail->project ? $detail->project->name : 'N/A' }}<br>
+                                <strong>Cotización:</strong> {{ $detail->quotes_id }}<br>
+                                <br>
+                            </li>
                             @endforeach
                         </ul>
                     </td>
