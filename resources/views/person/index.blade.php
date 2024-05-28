@@ -133,6 +133,11 @@
             </div>
         </div>
     </div>
+    <style>
+        th, td{
+            text-align: center;
+        }
+    </style>
 @endsection
 
 @extends('layouts.alerts')
