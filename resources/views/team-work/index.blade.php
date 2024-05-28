@@ -12,7 +12,7 @@
     @include('layouts.navbars.auth.topnav', ['title' => 'Equipo de Trabajo'])
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12 mx-auto">
+            <div class="col-sm-11 mx-auto">
                 <div class="card">
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
