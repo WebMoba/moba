@@ -8,7 +8,7 @@
     @include('layouts.navbars.auth.topnav', ['title' => 'Mostrar Persona'])
     <section class="content container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-11">
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">

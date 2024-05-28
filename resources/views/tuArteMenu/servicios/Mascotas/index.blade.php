@@ -477,6 +477,7 @@
                     showLoginAlert();
                 }
             });
+            loadCart();
         });
 
         function loadCart() {
@@ -592,7 +593,7 @@
 
                 // Mostrar la alerta
                 Swal.fire({
-                    title: 'Complete el siguiente formulario para finalizar su pedido',
+                    title: 'Completa el siguiente formulario para finalizar tu pedido',
                     icon: 'info',
                     confirmButtonText: 'Aceptar'
                 }).then((result) => {

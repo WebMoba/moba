@@ -8,7 +8,7 @@
     @include('layouts.navbars.auth.topnav', ['title' => 'Mostrar Venta'])
     <section class="content container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-11">
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
@@ -46,9 +46,9 @@
                                         <ul>
                                             @foreach ($sale->detailSales as $detail)
                                                 <li>
-                                                    @foreach ($details as $index => $detail)
-                                                    <strong>Detalle:</strong>{{  $index + 1  }}
-                                                    @endforeach
+                                                    {{--  @foreach ($sale as $index => $detail)
+                                                    <strong>Detalle:</strong>{{  $index + 1  }}<br>
+                                                    @endforeach  --}}
                                                     <strong>Cantidad:</strong> {{ $detail->quantity }}<br>
                                                     <strong>Precio unitario:</strong> {{ $detail->price_unit }}<br>
                                                     <strong>Subtotal:</strong> {{ $detail->subtotal }}<br>
