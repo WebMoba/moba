@@ -116,6 +116,9 @@
                         <ul>
                             @foreach ($purchase->detailPurchases as $detail)
                                 <li>
+                                    @foreach ($details as $index => $detail)
+                                    <strong>Detalle:</strong> {{ $index + 1 }}<br>
+                                    @endforeach
                                     <strong>Cantidad:</strong> {{ $detail->quantity }}<br>
                                     <strong>Precio unitario:</strong> {{ $detail->price_unit }}<br>
                                     <strong>Subtotal:</strong> {{ $detail->subtotal }}<br>

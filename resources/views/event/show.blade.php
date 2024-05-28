@@ -8,7 +8,7 @@
     @include('layouts.navbars.auth.topnav', ['title' => 'Mostrar Evento'])
     <section class="content container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-11">
                 <a class="btn btn-primary" href="{{ route('events.index') }}"> {{ __('Volver') }}</a>
                 <br> <br>
 

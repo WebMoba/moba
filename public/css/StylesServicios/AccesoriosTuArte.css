@@ -387,6 +387,10 @@
     z-index: 1;
 }
 
+.card-link img {
+    pointer-events: none;
+}
+
 /* Mostrar el contador solo cuando hay íconos activos */
 .cart-badge.active {
     display: inline-block;

@@ -8,7 +8,7 @@
 @include('layouts.navbars.auth.topnav', ['title' => 'Mostrar Cotización'])
     <section class="content container-fluid">
         <div class="row">
-            <div class="col-md-10 mx-auto">
+            <div class="col-md-11 mx-auto">
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
@@ -54,6 +54,9 @@
                                         <ul>
                                             @foreach ($quote->detailQuotes as $detail)
                                                 <li>
+                                                    {{--  @foreach ($quote as $index => $detail)
+                                                    <strong>Detalle:</strong>{{  $index + 1  }}<br>
+                                                    @endforeach  --}}
                                                     <strong>Servicio:</strong> {{ $detail->service ? $detail->service->name : 'N/A' }}<br>
                                                     <strong>Producto:</strong> {{ $detail->product ? $detail->product->name : 'N/A' }}<br>
                                                     <strong>Proyecto:</strong> {{ $detail->project ? $detail->project->name : 'N/A' }}<br>
