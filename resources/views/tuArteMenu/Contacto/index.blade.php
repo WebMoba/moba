@@ -330,6 +330,7 @@
         margin-right: 10%;
         background-color: #3E3E3F;
         color: white;
+        font-size: 1vw;
     }
 
     textarea {
