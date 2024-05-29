@@ -186,7 +186,7 @@
                 <a href="{{ url('documentos/ManualAdministrativo.pdf') }}" class="circle-btn" target="_blank">?</a> 
 
                     <a href="{{ asset('/') }}" style="margin: 10px 10px;  text-decoration: underline;"
-                        class="nav-link text-white font-weight-bold px-0">Volver</a>
+                        class="nav-link text-white font-weight-bold px-0">Principal</a>
                     <form role="form" method="post" action="{{ route('logout') }}" id="logout-form">
                         @csrf
                         <a href="{{ route('logout') }}"
