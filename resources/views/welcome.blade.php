@@ -33,10 +33,13 @@
         <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen">
             @if (Route::has('login'))
                 <div class="nav" style="display:flex;justify-content: end;">
+                <a href="{{ url('documentos/ManualUsuario.pdf') }}" class="circle-btn" target="_blank">?</a>
                     @auth
+
                     <a href="{{ url('/dashboard') }}" class="letter">Inicio</a>
                     <form role="form" method="post" action="{{ route('logout') }}" id="logout-form">
                         @csrf
+                        
                         <a href="{{ route('logout') }}" class="letter"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             Cerrar Sesión
@@ -262,6 +265,20 @@
     .logos div {
         transform-style: preserve-3d;
     }
+    .circle-btn {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1.5px solid;
+            background-color: transparent;
+            color: white;
+            text-align: center;
+            line-height: 18px;
+            font-size: 15px;
+            margin-right: 15px;
+            transition: background-color 0.3s;
+        }
 
 
 

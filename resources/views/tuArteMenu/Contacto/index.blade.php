@@ -181,19 +181,24 @@
         document.querySelector('.dropdown').addEventListener('mouseleave', function() {
             this.querySelector('.dropdown-menu').classList.remove('show');
         });
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            // Show SweetAlert
-            Swal.fire({
-                title: 'Enviado',
-                text: 'Uno de nuestros asesores te contactará pronto.',
-                icon: 'success',
-                confirmButtonText: 'Aceptar'
-            }).then(() => {
-                // Redirect to another page 
-                window.location.href = "{{ route('tuArteMenu.index') }}";
+        document.addEventListener("DOMContentLoaded", function() {
+            const isAuthenticated = {{ Auth::check() ? 'true' : 'false' }};
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                // Show SweetAlert
+                Swal.fire({
+                    title: 'Enviado',
+                    text: 'Uno de nuestros asesores te contactará pronto.',
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar'
+                }).then(() => {
+                    // Redirect to another page 
+                    window.location.href = "{{ route('tuArteMenu.index') }}";
+                });
+                localStorage.removeItem('cart');
+            });.then((result) => {
+                window.location.reload();
             });
-            localStorage.removeItem('cart');
         });
     </script>
 
