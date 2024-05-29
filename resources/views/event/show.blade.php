@@ -8,7 +8,7 @@
     @include('layouts.navbars.auth.topnav', ['title' => 'Mostrar Evento'])
     <section class="content container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-11">
                 <a class="btn btn-primary" href="{{ route('events.index') }}"> {{ __('Volver') }}</a>
                 <br> <br>
 
@@ -49,7 +49,7 @@
                             {{ $event->importance_range }}
                         </div>
                         <a type="submit" class="btn btn-primary" href="{{ route('events.index') }}"><i
-                                class="bi bi-arrow-left-circle"></i><span class="tooltiptext">Volver</span</a>
+                                class="bi bi-arrow-left-circle"></i><span class="tooltiptext">Volver</span></a>
                     </div>
                 </div>
             </div>

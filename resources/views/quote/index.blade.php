@@ -10,7 +10,7 @@
 @include('layouts.navbars.auth.topnav', ['title' => 'Cotizaciones'])
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12 mx-auto">
+            <div class="col-sm-11 mx-auto">
                 <div class="card">
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -61,7 +61,7 @@
                                         <th>Total</th>
                                         <th>Descuento</th>
                                         <th>Estado</th>
-                                        <th>Persona</th>
+                                        <th>Cliente</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -74,7 +74,7 @@
                                             <td>{{ $quote->total }}</td>
                                             <td>{{ $quote->discount }}</td>
                                             <td>{{ $quote->status }}</td>
-                                            <td>{{ $quote->people_id }}</td>
+                                            <td>{{ $quote->person->name ?? 'N/A' }}</td>
                                             <td>
                                                 <form class="frData"
                                                     action="{{ route('quotes.destroy', $quote->id) }}"
@@ -106,6 +106,11 @@
             </div>
         </div>
     </div>
+    <style>
+        th, td{
+            text-align: center;
+        }
+    </style>
     @include('layouts.footers.auth.footer')
 @endsection
 

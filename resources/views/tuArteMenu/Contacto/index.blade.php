@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('css/StyleContactoTuArte/ContactoTuArte.css') }}">
     <link rel="stylesheet" href="{{ asset('css/StyleFooter.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="background-image">
@@ -116,7 +117,7 @@
 
 
         <div class="box form">
-            <form method="POST" action="{{ route('enviar-correo') }}">
+            <form method="POST" action="{{ route('enviar-correo') }}" id="contact-form">
                 @csrf
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre"
@@ -150,11 +151,11 @@
                 <label for="ciudad">Ciudad</label>
                 <input type="text" id="ciudad" name="ciudad" required><br><br>
                 <label for="mensaje">Mensaje</label><br>
-                <textarea id="mensaje" name="mensaje" rows="5" @if(isset($_GET['cartInfo'])) readonly @endif>@php
+                <textarea id="mensaje" name="mensaje" rows="5" @if (isset($_GET['cartInfo'])) readonly @endif>@php
                     // Obtener la información del carrito de la URL
                     $cartInfo = isset($_GET['cartInfo']) ? urldecode($_GET['cartInfo']) : '';
                     echo $cartInfo;
-                @endphp</textarea><br><br>               
+                @endphp</textarea><br><br>
                 <input type="submit" value="Enviar" id="submit">
             </form>
         </div>
@@ -179,6 +180,20 @@
 
         document.querySelector('.dropdown').addEventListener('mouseleave', function() {
             this.querySelector('.dropdown-menu').classList.remove('show');
+        });
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Show SweetAlert
+            Swal.fire({
+                title: 'Enviado',
+                text: 'Uno de nuestros asesores te contactará pronto.',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            }).then(() => {
+                // Redirect to another page 
+                window.location.href = "{{ route('tuArteMenu.index') }}";
+            });
+            localStorage.removeItem('cart');
         });
     </script>
 

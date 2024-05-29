@@ -8,7 +8,7 @@
 @include('layouts.navbars.auth.topnav', ['title' => 'Mostrar Cotización'])
     <section class="content container-fluid">
         <div class="row">
-            <div class="col-md-10 mx-auto">
+            <div class="col-md-11 mx-auto">
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
@@ -46,19 +46,21 @@
                                 </tr>
                                 <tr>
                                     <th>Cliente:</th>
-                                    <td>{{ $persons->name }}</td>
+                                    <td>{{ $quote->person->name ?? 'N/A' }}</td>
                                 </tr>
                                 <tr>
                                     <th>Detalles de la cotización:</th>
                                     <td>
                                         <ul>
-                                            @foreach ($quote->detailQuotes as $detail)
-                                                <li>
-                                                    <strong>Servicio:</strong> {{ $detail->service ? $detail->service->name : 'N/A' }}<br>
-                                                    <strong>Producto:</strong> {{ $detail->product ? $detail->product->name : 'N/A' }}<br>
-                                                    <strong>Proyecto:</strong> {{ $detail->project ? $detail->project->name : 'N/A' }}<br>
-                                                    <strong>Cotización:</strong> {{ $detail->quotes_id }}
-                                                </li>
+                                            @foreach ($quote->detailQuotes as $index => $detail)
+                                            <li>
+                                                <strong>Detalle:</strong>{{  $index + 1  }}<br>
+                                                <strong>Servicio:</strong> {{ $detail->service ? $detail->service->name : 'N/A' }}<br>
+                                                <strong>Producto:</strong> {{ $detail->product ? $detail->product->name : 'N/A' }}<br>
+                                                <strong>Proyecto:</strong> {{ $detail->project ? $detail->project->name : 'N/A' }}<br>
+                                                <strong>Cotización:</strong> {{ $detail->quotes_id }}<br>
+                                                <br>
+                                            </li>
                                             @endforeach
                                         </ul>
                                     </td>

@@ -72,9 +72,9 @@ class Quote extends Model
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
 
-    public function person()
+     public function person()
     {
-        return $this->belongsTo(Person::class);
+        return $this->belongsTo(Person::class, 'people_id');
     }
 
     /**

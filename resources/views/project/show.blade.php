@@ -8,7 +8,7 @@
     @include('layouts.navbars.auth.topnav', ['title' => 'Mostrar Proyectos'])
     <section class="content container-fluid">
         <div class="row">
-            <div class="col-md-8 mx-auto">
+            <div class="col-md-11 mx-auto">
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">

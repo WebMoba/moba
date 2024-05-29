@@ -8,7 +8,7 @@
 @include('layouts.navbars.auth.topnav', ['title' => 'Editar Compra'])
     <section class="content container-fluid">
         <div class="">
-            <div class="col-md-12">
+            <div class="col-md-11">
 
                 @includeif('partials.errors')
 
