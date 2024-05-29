@@ -3,7 +3,7 @@
 <div style="width: 100%; display: flex; ">
       <div class="log-in">
       <a href="{{ url('documentos/ManualUsuario.pdf') }}" class="circle-btn" target="_blank">?</a>
-    <a href="{{ asset('/') }}" class="letter" >Volver / </a> 
+    <a href="{{ asset('/') }}" class="letter" >Principal / </a> 
         @if (Route::has('login'))
         @auth
                     <a href="{{ url('/dashboard') }}" class="letter">Inicio /  </a>
@@ -54,5 +54,8 @@ a.letter{
             margin-right: 15px;
             transition: background-color 0.3s;
         }
-
+        
+        .circle-btn:hover{
+            color: grey;
+        }
 </style>

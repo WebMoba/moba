@@ -183,7 +183,7 @@
 
                 <li class="nav-item d-flex align-items-center">
                     
-                <a href="{{ url('documentos/ManualAdministrativo.pdf') }}" class="circle-btn" target="_blank">?</a>
+                <a href="{{ url('documentos/ManualAdministrativo.pdf') }}" class="circle-btn" target="_blank">?</a> 
 
                     <a href="{{ asset('/') }}" style="margin: 10px 10px;  text-decoration: underline;"
                         class="nav-link text-white font-weight-bold px-0">Volver</a>
@@ -217,5 +217,8 @@
             font-size: 15px;
             margin-right: 15px;
             transition: background-color 0.3s;
+        }
+        .circle-btn:hover{
+            color: cornflowerblue;
         }
 </style>
