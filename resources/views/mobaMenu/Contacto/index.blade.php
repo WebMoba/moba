@@ -6,32 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" type="image/png" href="{{ asset('Imagenes/Logotipo Moba-06.png') }}">
-<title>
-    Moba
-</title> 
+    <title>
+        Moba
+    </title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('css/StyleFooter.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
 
     <nav class="navbar">
         <!--- inicio breaddrums-->
-    <div class="breadcrums">
-        @include('helpers.breadcrumbs', ['breadcrumbs' => [
-        ['url' => route('welcome'), 'label' => 'Bienvenido /'],
-        ['url' => route('mobaMenu.index'), 'label' => 'Moba /'],
-        ['url' => route('mobaMenu.Contacto.index'), 'label' => 'Contactanos'],]])
+        <div class="breadcrums">
+            @include('helpers.breadcrumbs', ['breadcrumbs' => [
+            ['url' => route('welcome'), 'label' => 'Bienvenido /'],
+            ['url' => route('mobaMenu.index'), 'label' => 'Moba /'],
+            ['url' => route('mobaMenu.Contacto.index'), 'label' => 'Contactanos'],]])
         </div>
         <div class="inicioRegistro"> @include('partials.inicio')</div>
-<!--- final breaddrums-->
+        <!--- final breaddrums-->
 
         <div class="container-fluid">
-        <a href="{{ route('mobaMenu.index')}}">
+            <a href="{{ route('mobaMenu.index')}}">
                 <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
             </a>
             <div class="navbar-buttons">
@@ -56,11 +57,6 @@
                 <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte">
             </a>
         </div>
-
-    
-
-
-
     </nav>
 
     <!-- Líneas verticales con iconos -->
@@ -71,62 +67,59 @@
         <hr class="linea1">
     </div>
 
-<div class="container">
+    <div class="container">
+        <!-- Contenido contacto  -->
+        <div class="box">
+            <div class="boxText">
+                <h1>Contacto</h1><br><br>
+                <h3>¡Somos el estudio de diseño y comunicación que buscabas!</h3>
+                <h3>Las soluciones en comunicación que ofrecemos a nuestros 
+                    clientes son completamente personalizadas y adaptadas a 
+                    cada necesidad.</h3>
+                <h3> Haz clic al botón azul para coordinar una reunión estratégica con LA AGENCIA</h3><br>
+                <h3> Contacto: (051) 933 375 953</h3>
+            </div>
+        </div>
 
- <!-- Contenido contacto  -->
+        <!-- Contenido formulario de contacto -->
+        <div class="box form">
+            <form method="POST" action="{{ route('enviar-correo') }}" id="contact-form">
+                @csrf
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" value="{{ auth()->check() ? auth()->user()->name : '' }}" required><br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="{{ auth()->check() ? auth()->user()->email : '' }}" required><br><br>
 
-    <div class="box">
-    <div class="boxText">
-    <h1>Contacto</h1><br><br>
-    <h3>¡Somos el estudio de diseño y comunicación que buscabas!</h3>
-    <h3>Las soluciones en comunicación que ofrecemos a nuestros 
-    clientes son completamente personalizadas y adaptadas a 
-    cada necesidad.</h3>
-    <h3> Haz clic al botón azul para coordinar una reunión estratégica con LA AGENCIA</h3><br>
-    <h3> Contacto: (051) 933 375 953</h3>
-    </div>   
+                <ul class="option-listOne">Tipo Identificación
+                    <li class="option-item">
+                        <input type="radio" id="option1" name="options" value="Cedula Extranjeria" required class="circle">
+                        <label for="option2" class="option-label">Cedula Extranjeria</label>
+                    </li>
+                    <li class="option-item">
+                        <input type="radio" id="option2" name="options" value="Cedula" required class="circle">
+                        <label for="option1" class="option-label">Cedula</label>
+                    </li>
+                    <li class="option-item">
+                        <input type="radio" id="option3" name="options" value="NIT" required class="circle">
+                        <label for="option3" class="option-label">NIT</label>
+                    </li>
+                </ul><br>
+
+                <label for="numeroId">Numero Identificación</label>
+                <input type="text" id="numeroId" name="numeroId" maxlength="10" required><br><br>
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" name="telefono" maxlength="10" required><br><br>
+                <label for="departamento">Departamento</label>
+                <input type="text" id="departamento" name="departamento" required><br><br>
+                <label for="ciudad">Ciudad</label>
+                <input type="text" id="ciudad" name="ciudad" required><br><br>
+                <label for="mensaje">Mensaje</label><br>
+                <textarea id="mensaje" name="mensaje" rows="5"></textarea><br><br>
+
+                <input type="submit" value="Enviar" id="submit">
+            </form>
+        </div>
     </div>
-
- <!-- Contenido formulario de contacto -->
-
- <div class="box form">
- <form method="POST" action="{{ route('enviar-correo') }}">
-    @csrf
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" name="nombre" value="{{ auth()->check() ? auth()->user()->name : '' }}" required><br><br>
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" value="{{ auth()->check() ? auth()->user()->email : '' }}" required><br><br>
-
-    <ul class="option-listOne">Tipo Identificación
-        <li class="option-item">
-            <input type="radio" id="option1" name="options" value="Cedula Extranjeria" required class="circle">
-            <label for="option2" class="option-label">Cedula Extranjeria</label>
-        </li>
-        <li class="option-item">
-            <input type="radio" id="option2" name="options" value="Cedula" required class="circle">
-            <label for="option1" class="option-label">Cedula</label>
-        </li>
-        <li class="option-item">
-            <input type="radio" id="option3" name="options" value="NIT" required class="circle">
-            <label for="option3" class="option-label">NIT</label>
-        </li>
-    </ul><br>
-
-    <label for="numeroId">Numero Identificación</label>
-    <input type="text" id="numeroId" name="numeroId" maxlength="10" required><br><br>
-    <label for="telefono">Teléfono</label>
-    <input type="tel" id="telefono" name="telefono" maxlength="10" required><br><br>
-    <label for="departamento">Departamento</label>
-    <input type="text" id="departamento" name="departamento" required><br><br>
-    <label for="ciudad">Ciudad</label>
-    <input type="text" id="ciudad" name="ciudad" required><br><br>
-    <label for="mensaje">Mensaje</label><br>
-    <textarea id="mensaje" name="mensaje" rows="5"></textarea><br><br>
-
-    <input type="submit" value="Enviar" id="submit">
-</form>
-    </div>
-</div>
 
     <div class="vertical-line right-line">
         <hr class="linea2">
@@ -141,6 +134,85 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            @if(session('success'))
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Éxito',
+                    text: '{{ session('success') }}'
+                });
+            @endif
+
+            @if(session('error'))
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: '{{ session('error') }}'
+                });
+            @endif
+
+            // Obtén el formulario
+            const form = document.getElementById('contact-form');
+
+            // Añade el evento de envío
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Evita el envío del formulario
+
+                const isAuthenticated = {{ Auth::check() ? 'true' : 'false' }};
+
+                if (!isAuthenticated) {
+                    Swal.fire({
+                        title: 'Para enviar un mensaje, primero debes iniciar sesión o registrarte.',
+                        icon: 'info',
+                        confirmButtonText: 'Aceptar'
+                    }).then(() => {
+                        window.location.href = "{{ route('login') }}";
+                    });
+                } else {
+                    // Enviar el formulario usando Fetch API para asegurar que se envíe correctamente
+                    const formData = new FormData(form);
+                    fetch(form.action, {
+                        method: form.method,
+                        body: formData,
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        }
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Respuesta no válida del servidor');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.success) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Éxito',
+                                text: 'Tu mensaje ha sido enviado.'
+                            }).then(() => {
+                                form.reset(); // Opcional: resetear el formulario después del envío}
+                                
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: data.error || 'Hubo un problema al enviar tu mensaje.'
+                            });
+                        }
+                    })
+                    .catch(data => {
+                        Swal.fire({
+                            icon: 'success',
+                                title: 'Éxito',
+                                text: 'Tu mensaje ha sido enviado.'
+                        })
+                    });
+                }
+            });
+        });
+
         document.querySelector('.dropdown').addEventListener('mouseenter', function() {
             this.querySelector('.dropdown-menu').classList.add('show');
         });
@@ -149,6 +221,8 @@
             this.querySelector('.dropdown-menu').classList.remove('show');
         });
     </script>
+
+
 
 
 @include('partials.footerMoba')

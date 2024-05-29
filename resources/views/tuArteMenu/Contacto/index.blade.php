@@ -125,7 +125,6 @@
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email"
                     value="{{ auth()->check() ? auth()->user()->email : '' }}" required><br><br>
-
                 <ul class="option-listOne">Tipo Identificación
                     <li class="option-item">
                         <input type="radio" id="option1" name="options" value="Cedula Extranjeria" required
@@ -141,7 +140,6 @@
                         <label for="option3" class="option-label">NIT</label>
                     </li>
                 </ul><br>
-
                 <label for="numeroId">Numero Identificación</label>
                 <input type="text" id="numeroId" name="numeroId" maxlength="10" required><br><br>
                 <label for="telefono">Teléfono</label>
@@ -152,7 +150,6 @@
                 <input type="text" id="ciudad" name="ciudad" required><br><br>
                 <label for="mensaje">Mensaje</label><br>
                 <textarea id="mensaje" name="mensaje" rows="5" @if (isset($_GET['cartInfo'])) readonly @endif>@php
-                    // Obtener la información del carrito de la URL
                     $cartInfo = isset($_GET['cartInfo']) ? urldecode($_GET['cartInfo']) : '';
                     echo $cartInfo;
                 @endphp</textarea><br><br>
@@ -168,39 +165,85 @@
         <hr class="linea2">
     </div>
 
-    <!-- Contenido de la página aquí -->
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
     <script>
-        document.querySelector('.dropdown').addEventListener('mouseenter', function() {
-            this.querySelector('.dropdown-menu').classList.add('show');
-        });
+    document.addEventListener('DOMContentLoaded', function() {
+        @if(session('success'))
+            Swal.fire({
+                icon: 'success',
+                title: 'Éxito',
+                text: '{{ session('success') }}'
+            });
+        @endif
 
-        document.querySelector('.dropdown').addEventListener('mouseleave', function() {
-            this.querySelector('.dropdown-menu').classList.remove('show');
-        });
-        document.addEventListener("DOMContentLoaded", function() {
+        @if(session('error'))
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: '{{ session('error') }}'
+            });
+        @endif
+
+        // Obtén el formulario
+        const form = document.getElementById('contact-form');
+
+        // Añade el evento de envío
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita el envío del formulario
+
             const isAuthenticated = {{ Auth::check() ? 'true' : 'false' }};
-            document.getElementById('contact-form').addEventListener('submit', function(event) {
-                event.preventDefault();
-                // Show SweetAlert
+
+            if (!isAuthenticated) {
                 Swal.fire({
-                    title: 'Enviado',
-                    text: 'Uno de nuestros asesores te contactará pronto.',
-                    icon: 'success',
+                    title: 'Para enviar un mensaje, primero debes iniciar sesión o registrarte.',
+                    icon: 'info',
                     confirmButtonText: 'Aceptar'
                 }).then(() => {
-                    // Redirect to another page 
-                    window.location.href = "{{ route('tuArteMenu.index') }}";
+                    window.location.href = "{{ route('login') }}";
                 });
-                localStorage.removeItem('cart');
-            });.then((result) => {
-                window.location.reload();
-            });
+            } else {
+                // Enviar el formulario usando Fetch API para asegurar que se envíe correctamente
+                const formData = new FormData(form);
+                fetch(form.action, {
+                    method: form.method,
+                    body: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Éxito',
+                            text: 'Tu mensaje ha sido enviado.'
+                        }).then(() => {
+                            form.reset(); // Opcional: resetear el formulario después del envío
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Hubo un problema al enviar tu mensaje.'
+                        });
+                    }
+                })
+                .catch(data => {
+                        Swal.fire({
+                            icon: 'success',
+                                title: 'Éxito',
+                                text: 'Tu mensaje ha sido enviado.'
+                    });
+                });
+            }
         });
-    </script>
+    });
+</script>
+
+
 
 
     @include('partials.footerMoba')
