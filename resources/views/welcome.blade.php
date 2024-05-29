@@ -124,26 +124,26 @@
         height: 100vh;
         /* 100% del viewport height */
         background-color: black;
+        display: flex;
+        flex-direction: column;
     }
 
     .container {
-
-        height: 100%;
-        /* Ajuste la altura del contenedor al 100% */
-
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     .nav {
-
         height: 5vh;
         text-align: right;
         padding: 20px 10px 1px 1px;
-
-
     }
 
     .letter {
-        font-size: 14.4px Nunito, sans-serif;
+        font-size: 14.4px;
+        font-family: Nunito, sans-serif;
         color: white;
         text-decoration: none;
         margin-right: 10px;
@@ -157,10 +157,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 60vh;
+        height: 90vh;
         width: 100%;
-        margin-top: 8%;
-
     }
 
     .logos {
@@ -171,39 +169,38 @@
         height: 95%;
         perspective: 1000px;
         /* Ajusta la perspectiva para el efecto 3D */
-
     }
 
     /* Ajustar el ancho y alto de la imagen Moba */
     .logos img {
-        width: 120%;
-        height: 65%;
-        transition: width 0.7s, height 0.7s;
+        width: 130%;
+        height: 60%;
+        max-width: 100%;
+        max-height: 100%;
+        transition: transform 0.7s;
         cursor: pointer;
     }
 
     .logos img:hover {
-        width: 140%;
-        height: 85%
+        transform: scale(1.2);
     }
 
     /* Ajustar el ancho y alto de la imagen tu arte */
     #img2 {
-        width: 90%;
-        height: 85%
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
     }
 
     #img2:hover {
-        width: 110%;
-        height: 105%
+        transform: scale(1.2);
     }
 
     .links {
         display: flex;
         flex-direction: column;
-        /* Establecer el diseño en columna */
         align-items: center;
-        /* Centrar verticalmente los elementos */
         justify-content: center;
         width: 5%;
         height: 80%;
@@ -228,8 +225,6 @@
     .linea.grey {
         border-left: 1px solid #BCCCE0;
     }
-
-
 
     @keyframes pulse-opacity {
         0% {
@@ -268,42 +263,72 @@
     .logos div {
         transform-style: preserve-3d;
     }
+
     .circle-btn {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            border: 1.5px solid;
-            background-color: transparent;
-            color: white;
-            text-align: center;
-            line-height: 18px;
-            font-size: 15px;
-            margin-right: 15px;
-            transition: background-color 0.3s;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 1.5px solid;
+        background-color: transparent;
+        color: white;
+        text-align: center;
+        line-height: 18px;
+        font-size: 15px;
+        margin-right: 15px;
+        transition: background-color 0.3s;
+    }
+
+    .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1000;
+        /* Asegúrate de que el tooltip esté por encima de otros elementos */
+        bottom: 125%;
+        left: 50%;
+        margin-left: -60px;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .circle-btn:hover .tooltiptext,
+    .circle-btn:focus .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+        .logos img {
+            width: 100%;
+            height: 50%;
         }
-.tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 1000; /* Asegúrate de que el tooltip esté por encima de otros elementos */
-    bottom: 125%;
-    left: 50%;
-    margin-left: -60px;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
 
-.btn:hover.tooltiptext,
-.btn:focus.tooltiptext {
-    visibility: visible;
-    opacity: 1;
-}
+        #img2 {
+            width: 90%;
+        }
+    }
 
+    @media (max-width: 480px) {
+        .logos img {
+            width: 100%;
+            height: 40%;
+        }
 
+        #img2 {
+            width: 80%;
+        }
+    }
 </style>
+
+
+
+
+
+
+
