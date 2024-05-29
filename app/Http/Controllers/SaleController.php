@@ -24,6 +24,11 @@ class SaleController extends Controller
 
     public function generatePDF(Request $request)
     {
+        // Aumentar el límite de tiempo de ejecución a 120 segundos
+        set_time_limit(120);
+        // Aumentar el límite de memoria a 256MB
+        ini_set('memory_limit', '256M');
+
         //Obtener el filtro de la solicitud
         $filter = $request->input('findId');
 
@@ -51,6 +56,11 @@ class SaleController extends Controller
 
    public function generateDetailPDF(Request $request)
     {
+        // Aumentar el límite de tiempo de ejecución a 120 segundos
+        set_time_limit(120);
+        // Aumentar el límite de memoria a 256MB
+        ini_set('memory_limit', '256M');
+
         $filter = $request->input('findId');
 
         // Obtener los datos de la venta y sus detalles

@@ -61,7 +61,7 @@
                                         <th>Total</th>
                                         <th>Descuento</th>
                                         <th>Estado</th>
-                                        <th>Persona</th>
+                                        <th>Cliente</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -74,7 +74,7 @@
                                             <td>{{ $quote->total }}</td>
                                             <td>{{ $quote->discount }}</td>
                                             <td>{{ $quote->status }}</td>
-                                            <td>{{ $quote->people_id }}</td>
+                                            <td>{{ $quote->person->name ?? 'N/A' }}</td>
                                             <td>
                                                 <form class="frData"
                                                     action="{{ route('quotes.destroy', $quote->id) }}"
@@ -106,6 +106,11 @@
             </div>
         </div>
     </div>
+    <style>
+        th, td{
+            text-align: center;
+        }
+    </style>
     @include('layouts.footers.auth.footer')
 @endsection
 

@@ -34,7 +34,7 @@ class QuoteController extends Controller
     {
 
         $search = trim($request->get('search'));
-        // $quotes = Quote::orderBy('created_at', 'desc')->paginate(10);
+        $quotes = Quote::with('person');
         $quotes = Quote::select('id', 'date_issuance', 'description', 'total', 'discount', 'status', 'people_id', 'disable')
             ->where('id', 'LIKE', '%' . $search . '%')
             ->orWhere('description', 'LIKE', '%' . $search . '%')
@@ -45,11 +45,53 @@ class QuoteController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * $quotes->perPage());
     }
 
+    // public function index(Request $request)
+    // {
+    //     $search = trim($request->get('search'));
+    //     $quotes = Quote::with('person') // Cargar los datos de la persona asociada a la cotización
+    //         ->select('id', 'date_issuance', 'description', 'total', 'discount', 'status', 'people_id', 'disable')
+    //         ->where('id', 'LIKE', '%' . $search . '%')
+    //         ->orWhere('description', 'LIKE', '%' . $search . '%')
+    //         ->orderBy('created_at', 'desc')
+    //         ->paginate(10);
+
+    //     return view('quote.index', compact('quotes', 'search'))
+    //         ->with('i', (request()->input('page', 1) - 1) * $quotes->perPage());
+    // }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+    // public function create()
+    // {
+    //     $quote = new Quote();
+    //     $detailQuote = new DetailQuote();
+
+    //     $services = Service::pluck('name', 'id');
+    //     $products = Product::pluck('name', 'id');
+    //     $projects = Project::pluck('name', 'id');
+    //     $quotes = Quote::pluck('description', 'id');
+    //     $quote->date_issuance = now()->format('Y-m-d');
+
+    //     $clients = Person::where('rol', 'Cliente')
+    //         ->where('disable', false) // Agregar esta línea si es necesario
+    //         ->get();
+
+    //     $persons = User::with('person')
+    //         ->whereHas('person', function ($query) {
+    //             $query->where('rol', 'Cliente')
+    //                 ->where('users_id', '!=', null)
+    //                 ->where('disable', false);
+    //         })
+    //         ->pluck('name', 'id');
+
+    //     // $clients = Person::clients()->get();
+
+    //     return view('quote.create', compact('quote', 'clients', 'detailQuote', 'persons', 'services', 'products', 'projects', 'quotes'));
+    // }
+
     public function create()
     {
         $quote = new Quote();
@@ -63,19 +105,10 @@ class QuoteController extends Controller
 
         $clients = Person::where('rol', 'Cliente')
             ->where('disable', false) // Agregar esta línea si es necesario
-            ->get();
-
-        $persons = User::with('person')
-            ->whereHas('person', function ($query) {
-                $query->where('rol', 'Cliente')
-                    ->where('users_id', '!=', null)
-                    ->where('disable', false);
-            })
+            ->get()
             ->pluck('name', 'id');
 
-        // $clients = Person::clients()->get();
-
-        return view('quote.create', compact('quote', 'clients', 'detailQuote', 'persons', 'services', 'products', 'projects', 'quotes'));
+        return view('quote.create', compact('quote', 'clients', 'detailQuote', 'services', 'products', 'projects', 'quotes'));
     }
 
     /**
@@ -136,7 +169,8 @@ class QuoteController extends Controller
      */
     public function show($id)
     {
-        $quote = Quote::find($id);
+        $quote = Quote::with('person', 'detailQuotes')->find($id);
+        // $quote = Quote::find($id);
         // Convierte la fecha a un formato de cadena 'Y-m-d'
         // $quote->date_issuance = $quote->date_issuance ? $quote->date_issuance->format('Y-m-d') : null;
         $persons = User::with('person')
@@ -149,8 +183,13 @@ class QuoteController extends Controller
         $detailQuote = DetailQuote::where('quotes_id', $quote->id)->get();
         $detailQuote = $quote->detailQuotes;
         $quote->load('detailQuotes');
-        return view('quote.show', compact('quote', 'detailQuote'));
+        return view('quote.show', compact('quote', 'detailQuote','persons'));
     }
+    // public function show($id)
+    // {
+    //     $quote = Quote::with('person', 'detailQuotes')->find($id); // Cargar los datos de la persona asociada a la cotización y los detalles
+    //     return view('quote.show', compact('quote'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -230,6 +269,11 @@ class QuoteController extends Controller
 
     public function generatePDF(Request $request)
     {
+        // Aumentar el límite de tiempo de ejecución a 120 segundos
+        set_time_limit(120);
+        // Aumentar el límite de memoria a 256MB
+        ini_set('memory_limit', '256M');
+
         // Obtener el filtro de la solicitud
         $filter = $request->input('findId');
 
@@ -256,6 +300,11 @@ class QuoteController extends Controller
 
     public function generateDetailPDF(Request $request)
     {
+        // Aumentar el límite de tiempo de ejecución a 120 segundos
+        set_time_limit(120);
+        // Aumentar el límite de memoria a 256MB
+        ini_set('memory_limit', '256M');
+
         $filter = $request->input('findId');
 
         // Obtener los datos de la cotización y sus detalles

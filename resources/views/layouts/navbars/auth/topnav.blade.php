@@ -177,7 +177,14 @@
             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
             </div>
             <ul class="navbar-nav  justify-content-end">
+
+           
+          
+
                 <li class="nav-item d-flex align-items-center">
+                    
+                <a href="{{ url('documentos/ManualAdministrativo.pdf') }}" class="circle-btn" target="_blank">?</a>
+
                     <a href="{{ asset('/') }}" style="margin: 10px 10px;  text-decoration: underline;"
                         class="nav-link text-white font-weight-bold px-0">Volver</a>
                     <form role="form" method="post" action="{{ route('logout') }}" id="logout-form">
@@ -196,3 +203,19 @@
     </div>
 </nav>
 <!-- End Navbar -->
+<style>
+     .circle-btn {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1.5px solid;
+            background-color: transparent;
+            color: white;
+            text-align: center;
+            line-height: 18px;
+            font-size: 15px;
+            margin-right: 15px;
+            transition: background-color 0.3s;
+        }
+</style>
