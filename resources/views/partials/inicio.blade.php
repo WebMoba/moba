@@ -2,6 +2,7 @@
 
 <div style="width: 100%; display: flex; ">
       <div class="log-in">
+      <a href="{{ url('documentos/ManualUsuario.pdf') }}" class="circle-btn" target="_blank">?</a>
     <a href="{{ asset('/') }}" class="letter" >Volver / </a> 
         @if (Route::has('login'))
         @auth
@@ -38,5 +39,20 @@ a.letter{
 .log-in{
     display: flex;
 }
+
+.circle-btn {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1.5px solid;
+            background-color: transparent;
+            color: white;
+            text-align: center;
+            line-height: 18px;
+            font-size: 15px;
+            margin-right: 15px;
+            transition: background-color 0.3s;
+        }
 
 </style>

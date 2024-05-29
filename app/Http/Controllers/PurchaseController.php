@@ -140,7 +140,8 @@ class PurchaseController extends Controller
 
         $detailPurchase = new DetailPurchase();
         $purchases = Purchase::pluck('name', 'id');
-        $materialsRaws = MaterialsRaw::pluck('name', 'id');
+        //$materialsRaws = MaterialsRaw::pluck('name', 'id');
+        $materialsRaws = MaterialsRaw::where('disable', false)->pluck('name', 'id');
 
         $purchaseName = $purchase->name;
         $confirm = false;

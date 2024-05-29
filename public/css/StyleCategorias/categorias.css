@@ -199,11 +199,13 @@ body::after {
     .campo a{
         text-decoration: none;
         color: white;
+        
 
 }
 
     .campo1 {
         flex-grow: 1; /* Hacer que el campo se expanda automáticamente */
+        
         height: 38vw;
         margin-top: 12%;
         /* 100% de altura */

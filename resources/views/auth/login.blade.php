@@ -12,16 +12,16 @@
             </div>
         </div>
     </div>
-    <main class="main-content  mt-0">
+    <main class="main-content mt-0">
         <section>
             <div class="page-header min-vh-100">
                 <div class="container">
                     <div class="row" style="margin-left:0;">
                         <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
                             <div class="card card-plain">
-                                <div class="card-header pb-0 text-start">
-                                    <a href="{{ asset('/') }}" class="btn btn-primary" style="margin-top: 1.25%;"><i
-                                            class="bi bi-arrow-left-circle"></i><span class="tooltiptext">Volver</span></a>
+                                <div class="card-header pb-0 text-start"><a href="{{ asset('/') }}"
+                                        class="btn btn-primary" style=""><i class="bi bi-arrow-left-circle"></i><span
+                                            class="tooltiptext">Volver</span></a>
                                     <h4 class="font-weight-bolder">Iniciar Sesión</h4>
                                     <p class="mb-0">Ingresa tu email y contraseña para ingresar</p>
                                 </div>
@@ -72,8 +72,7 @@
                         <div
                             class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
                             <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden"
-                                style="background-image: url('{{ asset('Imagenes/FondoPrueba.png') }}');
-              background-size: cover;">
+                                style="background-image: url('{{ asset('Imagenes/FondoPrueba.png') }}'); background-size: cover;">
                                 <span class="mask bg-gradient-primary opacity-6"></span>
                                 <h4 class="mt-5 text-white font-weight-bolder position-relative">"La atención es la nueva
                                     moneda"</h4>

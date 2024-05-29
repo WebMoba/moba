@@ -145,6 +145,12 @@ Route::middleware(['auth', 'admin.email'])->group(function () {
         Route::get('/export-quote', [QuoteController::class, 'export'])->name('excel.quote');
         Route::get('/export-teamwork', [TeamWorkController::class, 'export'])->name('excel.teamwork');
         //fin-fabian
+
+        //ruta pdf manual administrativo
+        Route::get('/ver-pdf', function () {
+            $filePath = public_path('documentos/ManualAdministrativo.pdf');
+            return response()->file($filePath);
+        });
     
     });
     
@@ -262,4 +268,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static');
     Route::get('/{page}', [PageController::class, 'index'])->name('page');
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+
+    // ruta manual Usuario 
+
+    Route::get('/ver-pdf', function () {
+        $filePath = public_path('documentos/ManualUsuario.pdf');
+        return response()->file($filePath);
+    });
 });

@@ -14,7 +14,8 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="{{ asset('css/StyleFooter.css') }}">
+    <link rel="stylesheet" href="{{asset('css/StyleBotones')}}">
+    <link rel="stylesheet" href="{{ asset('css/StyleFooter') }}">
 
     <!-- Styles -->
     <style>
@@ -33,10 +34,15 @@
         <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen">
             @if (Route::has('login'))
                 <div class="nav" style="display:flex;justify-content: end;">
+                <a href="{{ url('documentos/ManualUsuario.pdf') }}" class="circle-btn" target="_blank">?
+            <span class="tooltiptext">Ayuda</span>
+        </a>
                     @auth
+
                     <a href="{{ url('/dashboard') }}" class="letter">Inicio</a>
                     <form role="form" method="post" action="{{ route('logout') }}" id="logout-form">
                         @csrf
+                        
                         <a href="{{ route('logout') }}" class="letter"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             Cerrar Sesión
@@ -262,7 +268,42 @@
     .logos div {
         transform-style: preserve-3d;
     }
+    .circle-btn {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1.5px solid;
+            background-color: transparent;
+            color: white;
+            text-align: center;
+            line-height: 18px;
+            font-size: 15px;
+            margin-right: 15px;
+            transition: background-color 0.3s;
+        }
+.tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1000; /* Asegúrate de que el tooltip esté por encima de otros elementos */
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
 
+.btn:hover.tooltiptext,
+.btn:focus.tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
 
 
 </style>
