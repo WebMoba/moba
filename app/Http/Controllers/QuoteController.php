@@ -64,6 +64,34 @@ class QuoteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // public function create()
+    // {
+    //     $quote = new Quote();
+    //     $detailQuote = new DetailQuote();
+
+    //     $services = Service::pluck('name', 'id');
+    //     $products = Product::pluck('name', 'id');
+    //     $projects = Project::pluck('name', 'id');
+    //     $quotes = Quote::pluck('description', 'id');
+    //     $quote->date_issuance = now()->format('Y-m-d');
+
+    //     $clients = Person::where('rol', 'Cliente')
+    //         ->where('disable', false) // Agregar esta línea si es necesario
+    //         ->get();
+
+    //     $persons = User::with('person')
+    //         ->whereHas('person', function ($query) {
+    //             $query->where('rol', 'Cliente')
+    //                 ->where('users_id', '!=', null)
+    //                 ->where('disable', false);
+    //         })
+    //         ->pluck('name', 'id');
+
+    //     // $clients = Person::clients()->get();
+
+    //     return view('quote.create', compact('quote', 'clients', 'detailQuote', 'persons', 'services', 'products', 'projects', 'quotes'));
+    // }
+
     public function create()
     {
         $quote = new Quote();
@@ -77,19 +105,10 @@ class QuoteController extends Controller
 
         $clients = Person::where('rol', 'Cliente')
             ->where('disable', false) // Agregar esta línea si es necesario
-            ->get();
-
-        $persons = User::with('person')
-            ->whereHas('person', function ($query) {
-                $query->where('rol', 'Cliente')
-                    ->where('users_id', '!=', null)
-                    ->where('disable', false);
-            })
+            ->get()
             ->pluck('name', 'id');
 
-        // $clients = Person::clients()->get();
-
-        return view('quote.create', compact('quote', 'clients', 'detailQuote', 'persons', 'services', 'products', 'projects', 'quotes'));
+        return view('quote.create', compact('quote', 'clients', 'detailQuote', 'services', 'products', 'projects', 'quotes'));
     }
 
     /**
