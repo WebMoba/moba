@@ -15,11 +15,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => 'Admin',
-            'email' => 'agenciamoba@gmail.com',
-            'password' => bcrypt('Moba2024')
-        ]);
+       $users = [
+
+        [ 'name' => 'Admin', 'email' => 'agenciamoba@gmail.com', 'password' => bcrypt('Moba2024') ],
+           [ 'name' => 'prueba1', 'email' => 'prueba1@11gmail.com', 'password' => bcrypt('Moba2024') ],
+           [ 'name' => 'prueba2', 'email' => 'prueba1@22gmail.com', 'password' => bcrypt('Moba2024') ],
+           [ 'name' => 'prueba3', 'email' => 'prueba1@33gmail.com', 'password' => bcrypt('Moba2024') ],
+           [ 'name' => 'prueba4', 'email' => 'prueba1@44gmail.com', 'password' => bcrypt('Moba2024') ],
+           [ 'name' => 'prueba5', 'email' => 'prueba1@55gmail.com', 'password' => bcrypt('Moba2024') ]
+
+
+       ];
+       
+        DB::table('users')->insert($users);
+        
 
         DB::table('number_phones')->insert([
             'number' => '3106749334',
