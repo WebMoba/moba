@@ -270,7 +270,7 @@
     }
 
     .container {
-        margin-top: 9em;
+        margin-top: 11em;
     }
 
     .col-lg-8 img {
