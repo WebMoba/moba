@@ -154,7 +154,21 @@ Route::middleware(['auth', 'admin.email'])->group(function () {
     
     });
     
- 
+    //rutas nuevas pdf
+    Route::get('Person/pdf', [PersonController::class, 'pdf'])->name('person.pdf');
+    Route::get('Person/pdf', [PersonController::class, 'pdf'])->name('person.pdf');
+    Route::get('Person/pdf', [PersonController::class, 'pdf'])->name('person.pdf');
+    Route::get('Person/pdf', [PersonController::class, 'pdf'])->name('person.pdf');
+    Route::get('Person/pdf', [PersonController::class, 'pdf'])->name('person.pdf');
+    Route::get('Person/pdf', [PersonController::class, 'pdf'])->name('person.pdf');
+    Route::get('Person/pdf', [PersonController::class, 'pdf'])->name('person.pdf');
+    Route::get('Person/pdf', [PersonController::class, 'pdf'])->name('person.pdf');
+    Route::get('Person/pdf', [PersonController::class, 'pdf'])->name('person.pdf');
+    Route::get('Person/pdf', [PersonController::class, 'pdf'])->name('person.pdf');
+    Route::get('Person/pdf', [PersonController::class, 'pdf'])->name('person.pdf');
+    Route::get('Person/pdf', [PersonController::class, 'pdf'])->name('person.pdf');
+    Route::get('Person/pdf', [PersonController::class, 'pdf'])->name('person.pdf');
+    Route::get('Person/pdf', [PersonController::class, 'pdf'])->name('person.pdf');
 
 //Vistas carpeta servicios
 Route::get('/mobaMenu/index', function () {
