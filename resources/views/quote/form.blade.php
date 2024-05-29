@@ -53,7 +53,7 @@
                     </div>
                     <div class="form-group">
                         {{ Form::label('Nombre del cliente', null, ['class' => 'required-label']) }}
-                        {{ Form::select('people_id', $persons, old('people_id'), ['class' => 'form-control' . ($errors->has('people_id') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Nombre del cliente', 'id' => 'name']) }}
+                        {{ Form::select('people_id', $clients, old('people_id'), ['class' => 'form-control' . ($errors->has('people_id') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Nombre del cliente', 'id' => 'name']) }}
                         {!! $errors->first('people_id', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
                 </div>
