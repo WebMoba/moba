@@ -16,12 +16,11 @@
             {{ Form::select('identification_type', ['cedula' => 'Cedula', 'cedula Extranjeria' => 'Cedula Extranjeria', 'NIT' => 'NIT'], $person->identification_type ?? null, ['class' => 'form-control' . ($errors->has('identification_type') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona un tipo de identificación']) }}
             {!! $errors->first('identification_type', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-
         <div class="form-group">
-            {{ Form::label('Identificacion', null, ['class' => 'required']) }}
-            {{ Form::text('id_card', $person->id_card, ['class' => 'form-control' . ($errors->has('id_card') ? ' is-invalid' : ''), 'placeholder' => 'Identificacion', 'maxlength' => '10']) }}
-            {!! $errors->first('id_card', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
+    {{ Form::label('Identificacion', null, ['class' => 'required']) }}
+    {{ Form::text('id_card', $person->id_card, ['class' => 'form-control' . ($errors->has('id_card') ? ' is-invalid' : ''), 'placeholder' => 'Identificacion', 'maxlength' => '10', 'pattern' => '[0-9]*']) }}
+    {!! $errors->first('id_card', '<div class="invalid-feedback">:message</div>') !!}
+</div>
         <div class="form-group">
             {{ Form::label('Nombre', null, ['class' => 'required']) }}
             {{ Form::select('user_name', $usersName, $person->users_id, ['class' => 'form-control' . ($errors->has('user_name') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
@@ -41,9 +40,10 @@
 
         <div class="form-group">
             {{ Form::label('phone_number', 'Número de Celular', ['class' => 'required']) }}
-            {{ Form::text('phone_number', isset($numberPhone) ? $numberPhone->number : '', ['class' => 'form-control', 'placeholder' => 'Número de teléfono', 'maxlength' => '10']) }}
+            {{ Form::text('phone_number', isset($numberPhone) ? $numberPhone->number : '', ['class' => 'form-control', 'placeholder' => 'Número de teléfono', 'maxlength' => '10', 'pattern' => '[0-9]*']) }}
+            {!! $errors->first('phone_number', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-
+        
         <div class="form-group">
             {{ Form::label('Grupo de Trabajo') }}
             {{ Form::select('team_works_id', $teamWorks, $person->team_works_id, ['class' => 'form-control' . ($errors->has('team_works_id') ? ' is-invalid' : ''), 'placeholder' => '']) }}
