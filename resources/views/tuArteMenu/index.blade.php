@@ -129,6 +129,7 @@
     color: white;
     font-size: 0.9vw;
     margin-right: 2px; /* Esto agrega un espacio entre los enlaces */
+    font-family: sans-serif;
 }
 
     .breadcrumbs li {

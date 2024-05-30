@@ -58,6 +58,7 @@ body::after {
     color: #fff;
     border-color: transparent !important;
     font-size: 1.3vw;
+    font-family: sans-serif !important;
 }
 
 .btn-primary:hover {
@@ -167,6 +168,7 @@ body::after {
     color: #36baec;;
     font-size: 3em;
     margin-top: 10%;
+    font-family: sans-serif !important;
 }
 
 
@@ -183,6 +185,7 @@ body::after {
     font-size: 24px;
     /* Tamaño de la fuente */
     position: relative;
+    font-family: sans-serif !important;
     /* Establece la posición relativa para que sea la referencia para el HR */
 }
 
@@ -248,6 +251,7 @@ body::after {
     font-size: 24px;
     font-weight: bold;
     text-align: center;
+    font-family: sans-serif !important;
 }
 
 .container-fluid{

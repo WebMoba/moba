@@ -242,10 +242,6 @@
         });
     });
 </script>
-
-
-
-
     @include('partials.footerMoba')
 
 </body>
@@ -349,9 +345,6 @@
     .container-fluid {
         padding: 0 !important;
     }
-
-
-
 
     .option-listOne {
         list-style-type: none;

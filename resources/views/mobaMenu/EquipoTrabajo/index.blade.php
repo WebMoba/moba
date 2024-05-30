@@ -481,11 +481,10 @@
         margin-left: 8%;
         margin-top: 10%;
         margin-bottom: 10%;
-
-
         text-align: justify;
         line-height: 2;
         margin-bottom: 0;
+        font-family: sans-serif !important;
 
     }
 
@@ -522,6 +521,7 @@
         color: #fff;
         border-color: transparent !important;
         font-size: 1.3vw;
+        font-family: sans-serif !important;
     }
 
     .btn-primary:hover {
@@ -596,6 +596,7 @@
         margin-right: 5%;
         padding: 2%;
         font-weight: 600;
+        font-family: sans-serif !important;
     }
 
     .text {
@@ -604,6 +605,7 @@
         font-weight: bold;
         line-height: 1.5;
         margin-bottom: 2;
+        font-family: sans-serif !important;
     }
 
     .p {
@@ -612,6 +614,7 @@
         text-align: justify;
         line-height: 1.5;
         margin-bottom: 0;
+        font-family: sans-serif !important;
     }
 
     .box-2 {
@@ -630,13 +633,15 @@
         line-height: 1.5;
         margin-bottom: 2;
         font-weight: 1000;
+        font-family: sans-serif !important;
     }
 
     .contenido,
     .imagenes {
         align-items: center;
         position: relative;
-        font-size: 180%
+        font-size: 180%;
+        font-family: sans-serif !important;
     }
 
     .imagenes {
@@ -704,6 +709,7 @@
         font-size: 25px;
         opacity: 0;
         transition: opacity 0.3s ease;
+        font-family: sans-serif !important;
     }
     
     .imagen-contenedor:hover .tooltip {
@@ -729,6 +735,7 @@
         font-size: 14px;
         opacity: 0;
         transition: opacity 0.3s ease;
+        font-family: sans-serif !important;
     }
 
     .imagen-contenedor:hover::after {
@@ -757,6 +764,7 @@
     color: white;
     font-size: 0.9vw;
     margin-right: 2px; /* Esto agrega un espacio entre los enlaces */
+    font-family: sans-serif !important;
 }
 
 .breadcrumbs li {

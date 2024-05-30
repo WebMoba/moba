@@ -273,14 +273,17 @@
 
 h1{
     color: white;
+    font-family: sans-serif !important;
 } 
 
 h3{
     color: #BCCCE0;
     font-size: 1.8vw;
+    font-family: sans-serif !important;
 } 
 label{
     color:  #BCCCE0 ;
+    font-family: sans-serif !important;
     
 }
 
@@ -302,16 +305,19 @@ input{
     background-color: #3E3E3F;
     color: white;
     font-size: 1vw;
+    font-family: sans-serif !important;
 }
 textarea{
     width: 90%;
     background-color: #3E3E3F;
     color: white;
+    font-family: sans-serif !important;
 }
 #submit{
     background-color: #BCCCE0;
     width: 25%;
     color: black;
+    font-family: sans-serif !important;
     
 }
 .container-fluid{
@@ -336,6 +342,7 @@ textarea{
         font-size: 0.7vw;
         margin-bottom: 5px;
         text-align: center;
+        font-family: sans-serif !important;
         
     }
 
@@ -374,6 +381,7 @@ textarea{
     color: white;
     font-size: 0.9vw;
     margin-right: 2px; /* Esto agrega un espacio entre los enlaces */
+    font-family: sans-serif !important;
 }
 
 .breadcrumbs li {
@@ -395,6 +403,7 @@ input.circle {
     /* Por ejemplo: */
     width: 1vw;
     background-color: red;
+    font-family: sans-serif !important;
     /* Y cualquier otro estilo que desees */
 }
 

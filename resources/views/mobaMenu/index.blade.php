@@ -262,6 +262,7 @@
             color: white;
             text-align: justify;
             width: 80%;
+            font-family: sans-serif !important;
         }
 
 
@@ -289,6 +290,7 @@
             font-weight: bold;
             color: white;
             text-decoration: none;
+            font-family: sans-serif !important;
         }
 
         .container-fluid{
@@ -475,6 +477,7 @@
     color: white;
     font-size: 0.9vw;
     margin-right: 2px; /* Esto agrega un espacio entre los enlaces */
+    font-family: sans-serif !important;
 }
 
 .breadcrumbs li {

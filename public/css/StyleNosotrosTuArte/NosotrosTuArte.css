@@ -170,6 +170,7 @@ body::after {
     .active-link {
         position: relative;
         color:red;
+        font-family: sans-serif !important;
     }
 
     .active-link:after {
@@ -196,16 +197,19 @@ body::after {
         color: #BCCCE0;
         margin-top: 30%;
         font-size: 1vw;
+        font-family: sans-serif !important;
     }
 
     h4 {
         color: #BCCCE0;
         font-size: 3vw;
+        font-family: sans-serif !important;
     }
 
     h1 {
         color: #BCCCE0;
         font-size: 4vw;
+        font-family: sans-serif !important;
     }
 
     .box img {

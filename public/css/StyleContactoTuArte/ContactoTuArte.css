@@ -59,6 +59,7 @@ body::after {
     color: #fff;
     border-color: transparent !important;
     font-size: 1.3vw;
+    font-family: sans-serif !important;
 }
 
 .btn-primary:hover {
@@ -191,10 +192,12 @@ body::after {
     h1,
     h3 {
         color: #BCCCE0;
+        font-family: sans-serif !important;
     }
 
     label {
         color: #BCCCE0;
+        font-family: sans-serif !important;
     }
 
     form {
@@ -208,6 +211,7 @@ body::after {
         margin-right: 10%;
         background-color: #3E3E3F;
         color: white;
+        font-family: sans-serif !important;
     }
 
     textarea {
@@ -215,6 +219,7 @@ body::after {
         width: 90%;
         background-color: #3E3E3F;
         color: white;
+        font-family: sans-serif !important;
     }
 
     #submit {

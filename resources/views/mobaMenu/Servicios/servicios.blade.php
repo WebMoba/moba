@@ -317,6 +317,7 @@
         .subtitulo h4 {
             font-weight: bold;
             padding: 1%;
+            font-family: sans-serif !important;
         }
 
         .texto:not(:last-child)::after {
@@ -343,6 +344,7 @@
             position: relative;
             /* Establece la posición relativa para que sea la referencia para el HR */
             font-weight: normal;
+            font-family: sans-serif !important;
         }
 
         a {
@@ -372,35 +374,42 @@
 
         .creatividad p {
             text-align: left;
+            font-family: sans-serif !important;
         }
 
         .creatividad h1,
         h2 {
             text-align: justify;
+            font-family: sans-serif !important;
         }
 
         .creatividad a {
             text-align: justify;
+            font-family: sans-serif !important;
         }
 
         .creatividad .t1 {
             font-size: 35px;
-            font-weight: bold
+            font-weight: bold;
+            font-family: sans-serif !important;
         }
 
         .creatividad .t2 {
             font-size: 30px;
+            font-family: sans-serif !important;
         }
 
         .creatividad .t3 {
             font-size: 30px;
             color: #2bb9e5;
             font-weight: bold;
+            font-family: sans-serif !important;
         }
 
         .creatividad .t4 {
             font-size: 30px;
             font-weight: bold;
+            font-family: sans-serif !important;
         }
 
         .contenedor {
@@ -412,15 +421,18 @@
         .contenedor h1 {
             color: #2bb9e5;
             font-weight: bold;
+            font-family: sans-serif !important;
         }
 
         .contenedor h2 {
             color: white;
+            font-family: sans-serif !important;
         }
 
         .contenedor p {
             color: #6094b0;
             font-size: larger;
+            font-family: sans-serif !important;
         }
         
         .cuadro {
@@ -473,6 +485,7 @@
 
         .contenido-cuadro .mayme p {
             font-size: 50px;
+            font-family: sans-serif !important;
         }
 
         .contenido-cuadro .textoC {
@@ -680,6 +693,7 @@
     color: white;
     font-size: 0.9vw;
     margin-right: 2px; /* Esto agrega un espacio entre los enlaces */
+    font-family: sans-serif !important;
 }
 
 .breadcrumbs li {

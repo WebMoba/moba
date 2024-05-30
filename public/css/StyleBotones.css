@@ -2,7 +2,7 @@
     visibility: hidden;
     width: 60px;
     background-color: black;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, Courier, monospace;
+    font-family: sans-serif !important;
     color: #fff;
     text-align: center;
     border-radius: 6px;

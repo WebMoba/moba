@@ -30,6 +30,7 @@
     color: #fff;
     border-color: transparent !important;
     font-size: 1.3vw;
+    font-family: sans-serif !important;
 }
 
 .btn-primary:hover {
@@ -160,6 +161,7 @@
 .big-title {
     color: red;
     font-size: 3em;
+    font-family: sans-serif !important;
 }
 
 .txt1 {
@@ -171,6 +173,7 @@
     color: #BCCCE0;
     font-size: 1.7em;
     font-weight: normal;
+    font-family: sans-serif !important;
 }
 
 .txt2 {
@@ -181,6 +184,7 @@
     color: rgb(255, 255, 255);
     font-size: 1.8em;
     font-weight: bold;
+    font-family: sans-serif !important;
 }
 
 .txt3 {
@@ -199,6 +203,7 @@
     position: relative;
     /* Establece la posición relativa para que sea la referencia para el HR */
     font-weight: normal;
+    font-family: sans-serif !important;
 }
 
 .txts3:not(:last-child)::after {
@@ -303,6 +308,7 @@
     /* Empuja el precio hacia la parte inferior */
     font-weight: bold;
     font-size: 1rem;
+    font-family: sans-serif !important;
 }
 
 .card-title {
@@ -385,6 +391,7 @@
     background-color: red;
     border: 1px solid white;
     z-index: 1;
+    font-family: sans-serif !important;
 }
 
 .card-link img {

@@ -184,7 +184,6 @@ body::after {
 
     .contenedor {
      display: flex;
-     
     height: 50vw;
     /* 100% de la altura de la ventana */
     width: 90%;
@@ -205,7 +204,6 @@ body::after {
 
     .campo1 {
         flex-grow: 1; /* Hacer que el campo se expanda automáticamente */
-        
         height: 38vw;
         margin-top: 12%;
         /* 100% de altura */
@@ -227,7 +225,7 @@ body::after {
     left: 30%;
     transform: translate(-50%, 50%) scale(0.8);
     color: white;
-    font-family: Georgia, 'Times New Roman', Times, serif, sans-serif;
+    font-family: sans-serif !important;
     font-weight: bold;
     font-size: 4vw;
     /*Tamañodeltextoenem(ajústalosegúnseanecesario)*/letter-spacing: -0.3em;

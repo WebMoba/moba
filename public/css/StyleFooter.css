@@ -60,16 +60,19 @@ hr {
 }
 p{
     color: #C5CAE9 !important;
-    font-size: 1.5vw;
+    font-family: sans-serif !important;
 }
 .textFooter{
     color: #C5CAE9 !important; 
+    font-family: sans-serif !important;
 }
 
 .enlaceFooter a{
     text-decoration: none !important;
     color: #C5CAE9 !important;
+    font-family: sans-serif !important;
 }
 .enlaceFooter a:hover{
     color: #997ad9 !important;
+    font-family: sans-serif !important;
 }
