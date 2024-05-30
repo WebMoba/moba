@@ -18,6 +18,7 @@ use App\Exports\PeopleExport;
 
 
 use App\Models\Person;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 /**
@@ -251,42 +252,20 @@ class PersonController extends Controller
         return response()->json($towns);
     }
 
-    public function generatePDF(Request $request)
+    public function pdf()
     {
-        // Aumentar el límite de tiempo de ejecución a 120 segundos
-        set_time_limit(120);
-        // Aumentar el límite de memoria a 256MB
-        ini_set('memory_limit', '256M');
 
-        // Obtener el filtro de la solicitud
-        $filter = $request->input('findId');
+        $people = Person::all();
 
-        // Obtener los datos de las personas filtradas si se aplicó un filtro
-        $people = Person::query();
+        $pdf = Pdf::loadView('person.pdf-template', ['people' => $people])
+                    ->setPaper('a4','landscape');
 
-        if ($filter) {
-            $people->where('id_card', 'LIKE', "%$filter%");
-        }
-
-        $people = $people->get();
-
-        // Pasar los datos filtrados a la vista pdf-template
-        $data = [
-            'people' => $people
-        ];
-
-        // Generar el PDF
-        $pdf = new Dompdf();
         $pdf->set_option('isRemoteEnabled', true);
-        $pdf->loadHtml(view('person.pdf-template', $data));
 
-        $pdf->setPaper('A4', 'portrait');
-        $pdf->render();
-
-        return $pdf->stream('Personas.pdf');
+        return $pdf->download('Listado Usuarios.pdf');
     }
 
-
+    
 
     public function export()
     {

@@ -278,6 +278,9 @@
         margin-right: 15px;
         transition: background-color 0.3s;
     }
+    .circle-btn:hover{
+        color: grey;
+    }
 
     .tooltiptext {
         visibility: hidden;

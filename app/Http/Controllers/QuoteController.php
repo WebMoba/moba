@@ -17,6 +17,7 @@ use Dompdf\Dompdf as DompdfDompdf;
 use PhpParser\Node\Expr\New_;
 use App\Exports\QuoteExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 
 /**
@@ -267,36 +268,47 @@ class QuoteController extends Controller
         return redirect()->route('quotes.index')->with('success', 'Estado de la cotización cambiada con éxito');
     }
 
+    public function pdf()
+    {
+
+        $people = Quote::all();
+
+        $pdf = Pdf::loadView('person.pdf-template', ['people' => $people])
+                    ->setPaper('a4','landscape');
+
+        $pdf->set_option('isRemoteEnabled', true);
+
+        return $pdf->download('Listado Usuarios.pdf');
+    }
+
     public function generatePDF(Request $request)
     {
-        // Aumentar el límite de tiempo de ejecución a 120 segundos
-        set_time_limit(120);
-        // Aumentar el límite de memoria a 256MB
-        ini_set('memory_limit', '256M');
 
-        // Obtener el filtro de la solicitud
         $filter = $request->input('findId');
 
-        // Obtener los datos de las personas filtradas si se aplicó un filtro
         if ($filter) {
-            $quote = Quote::where('id', $filter)->get();
+            $quote = Quote::with(['detailQuotes.service', 'detailQuotes.product', 'detailQuotes.project'])
+                ->where('id', $filter)
+                ->first();
         } else {
-            // Si no hay filtro, obtener todas las personas
-            $quote = Quote::all();
+            return redirect()->back()->with('error', 'No se encontró la cotización');
         }
-        // Pasar los datos a la vista pdf-template
+
         $data = [
             'quote' => $quote
         ];
 
-        // Generar el PDF
         $pdf = new DompdfDompdf();
         $pdf->set_option('isRemoteEnabled', true);
-        $pdf->loadHtml(view('quote.pdf-template', $data));
+
+        $html = view('quote.pdf-template', $data)->render();
+        $pdf->loadHtml($html);
         $pdf->setPaper('A4', 'portrait');
         $pdf->render();
-        return $pdf->stream('Listado_Cotizaciones.pdf');
+
+        return $pdf->download('Listado_Cotizaciones.pdf');
     }
+
 
     public function generateDetailPDF(Request $request)
     {
