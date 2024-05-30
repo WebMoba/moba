@@ -78,7 +78,7 @@
                                                 <td>{{ $purchase->date }}</td>
 
                                                 <td>
-                                                    <form class="frData"
+                                                    <form class="frDataN"
                                                         action="{{ route('purchases.destroy', $purchase->id) }}"
                                                         method="POST">
                                                         @csrf

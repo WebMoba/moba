@@ -80,7 +80,7 @@
                                                 <td>{{ $sale->date }}</td>
                                                 <td>{{ $sale->total }}</td>
                                                 <td>
-                                                    <form class="frData" action="{{ route('sales.destroy', $sale->id) }}"
+                                                    <form class="frDataN" action="{{ route('sales.destroy', $sale->id) }}"
                                                         method="POST">
                                                         @csrf
                                                         @method('DELETE')
