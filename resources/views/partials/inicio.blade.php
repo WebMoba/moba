@@ -32,8 +32,7 @@ a.letter{
     text-decoration: none;
     color: white    ;
     font-size: 0.9vw;
-    margin-bottom: 5%;
-    
+    font-family: sans-serif !important;
 }
 
 .log-in{

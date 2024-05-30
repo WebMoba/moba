@@ -377,8 +377,8 @@
         display: inline-block;
         padding: 8px 12px;
         cursor: pointer;
-        width: 6vw;
-        height: 2wv;
+            width: 6vw;
+            height: 2wv;
     }
 
     /* Estilo para cuando se pasa el mouse sobre la etiqueta */

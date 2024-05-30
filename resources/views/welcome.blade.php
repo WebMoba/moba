@@ -140,10 +140,10 @@
         text-align: right;
         padding: 20px 10px 1px 1px;
     }
-
+ 
     .letter {
         font-size: 14.4px;
-        font-family: Nunito, sans-serif;
+        font-family: sans-serif !important;
         color: white;
         text-decoration: none;
         margin-right: 10px;
