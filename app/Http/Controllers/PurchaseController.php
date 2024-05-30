@@ -10,7 +10,7 @@ use App\Models\Person;
 use Illuminate\Http\Request;
 use Dompdf\Dompdf;
 use Dompdf\Dompdf as DompdfDompdf;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 
 use App\Exports\PurchasesExport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -22,6 +22,33 @@ use Maatwebsite\Excel\Facades\Excel;
  */
 class PurchaseController extends Controller
 {
+
+    public function pdf()
+    {
+
+        $purchase = Purchase::all();
+
+        $pdf = Pdf::loadView('purchase.pdf-template', ['purchase' => $purchase])
+                    ->setPaper('a4','landscape');
+
+        $pdf->set_option('isRemoteEnabled', true);
+
+        return $pdf->download('Listado Compras.pdf');
+    }
+
+    public function detailPdf()
+    {
+
+        $purchase = Purchase::all();
+
+        $pdf = Pdf::loadView('purchase.pdf-template', ['purchase' => $purchase])
+                    ->setPaper('a4','landscape');
+
+        $pdf->set_option('isRemoteEnabled', true);
+
+        return $pdf->download('Compra Detallada.pdf');
+    }
+
     public function generatePDF(Request $request)
     {
         // Obtener el filtro de la solicitud

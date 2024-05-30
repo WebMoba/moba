@@ -281,6 +281,19 @@ class QuoteController extends Controller
         return $pdf->download('Listado Usuarios.pdf');
     }
 
+    public function detailPdf()
+    {
+
+        $people = Quote::all();
+
+        $pdf = Pdf::loadView('person.pdf-template', ['people' => $people])
+                    ->setPaper('a4','landscape');
+
+        $pdf->set_option('isRemoteEnabled', true);
+
+        return $pdf->download('Listado Usuarios.pdf');
+    }
+
     public function generatePDF(Request $request)
     {
 

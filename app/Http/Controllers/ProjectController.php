@@ -12,6 +12,7 @@ use Dompdf\Dompdf;
 use Dompdf\Options;
 use App\Exports\ProjectExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 /**
  * Class ProjectController
@@ -171,6 +172,19 @@ class ProjectController extends Controller
     
         return redirect()->route('projects.index')->with('success', 'Estado del proyecto cambiado con éxito');
 
+    }
+
+    public function pdf()
+    {
+
+        $project = Project::all();
+
+        $pdf = Pdf::loadView('caproject.pdf-template', ['project' => $project])
+                    ->setPaper('a4','landscape');
+
+        $pdf->set_option('isRemoteEnabled', true);
+
+        return $pdf->download('Listado Proyectos.pdf');
     }
 
     public function generatePDF(Request $request)

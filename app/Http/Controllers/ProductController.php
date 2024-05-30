@@ -15,6 +15,7 @@ use App\Models\DetailSale;
 use App\Exports\ProductExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 /**
  * Class ProductController
@@ -244,6 +245,19 @@ class ProductController extends Controller
 
         return redirect()->route('product.index')
             ->with('success', 'Estado del producto cambiado con éxito.');
+    }
+
+    public function pdf()
+    {
+
+        $product = Product::all();
+
+        $pdf = Pdf::loadView('product.pdf-template', ['product' => $product])
+                    ->setPaper('a4','landscape');
+
+        $pdf->set_option('isRemoteEnabled', true);
+
+        return $pdf->download('Listado Productos.pdf');
     }
 
     public function generatePDF(Request $request)

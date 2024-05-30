@@ -36,7 +36,12 @@ use App\Exports\TeamWorkExport;
 
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\MaterialsRawController;
+use App\Models\MaterialsRaw;
 use App\Models\Purchase;
+use App\Models\Quote;
+use App\Models\Sale;
+use App\Models\Service;
+use App\Models\TeamWork;
 
 /*
 |--------------------------------------------------------------------------
@@ -156,19 +161,20 @@ Route::middleware(['auth', 'admin.email'])->group(function () {
     
     //rutas nuevas pdf
     Route::get('Person/pdf', [PersonController::class, 'pdf'])->name('person.pdf');
-    Route::get('Person/pdf', [PersonController::class, 'pdf'])->name('person.pdf');
-    Route::get('Person/pdf', [PersonController::class, 'pdf'])->name('person.pdf');
-    Route::get('Person/pdf', [PersonController::class, 'pdf'])->name('person.pdf');
-    Route::get('Person/pdf', [PersonController::class, 'pdf'])->name('person.pdf');
-    Route::get('Person/pdf', [PersonController::class, 'pdf'])->name('person.pdf');
-    Route::get('Person/pdf', [PersonController::class, 'pdf'])->name('person.pdf');
-    Route::get('Person/pdf', [PersonController::class, 'pdf'])->name('person.pdf');
-    Route::get('Person/pdf', [PersonController::class, 'pdf'])->name('person.pdf');
-    Route::get('Person/pdf', [PersonController::class, 'pdf'])->name('person.pdf');
-    Route::get('Person/pdf', [PersonController::class, 'pdf'])->name('person.pdf');
-    Route::get('Person/pdf', [PersonController::class, 'pdf'])->name('person.pdf');
-    Route::get('Person/pdf', [PersonController::class, 'pdf'])->name('person.pdf');
-    Route::get('Person/pdf', [PersonController::class, 'pdf'])->name('person.pdf');
+    Route::get('Event/pdf', [EventController::class, 'pdf'])->name('event.pdf');
+    Route::get('Purchase/pdf', [PurchaseController::class, 'pdf'])->name('purchase.pdf');
+    Route::get('Materials-raw/pdf', [MaterialsRawController::class, 'pdf'])->name('materialsraw.pdf');
+    Route::get('Sale/pdf', [SaleController::class, 'pdf'])->name('sale.pdf');
+    Route::get('Product/pdf', [ProductController::class, 'pdf'])->name('product.pdf');
+    Route::get('Categories/pdf', [CategoriesProductsServiceController::class, 'pdf'])->name('categories.pdf');
+    Route::get('Service/pdf', [ServiceController::class, 'pdf'])->name('service.pdf');
+    Route::get('Project/pdf', [ProjectController::class, 'pdf'])->name('project.pdf');
+    Route::get('Team-work/pdf', [TeamWorkController::class, 'pdf'])->name('teamwork.pdf');
+    Route::get('Quote/pdf', [QuoteController::class, 'pdf'])->name('quote.pdf');
+    //rutas detalle pdf
+    Route::get('Purchase-Detail/pdf', [PurchaseController::class, 'detailPdf'])->name('purchaseDetail.pdf');
+    Route::get('Sale-Detail/pdf', [SaleController::class, 'detailPdf'])->name('saleDetail.pdf');
+    Route::get('Quote-Detail/pdf', [QuoteController::class, 'detailPdf'])->name('quoteDetail.pdf');
 
 //Vistas carpeta servicios
 Route::get('/mobaMenu/index', function () {

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\CategoriesProductsService;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 /**
  * Class ServiceController
@@ -146,6 +147,20 @@ class ServiceController extends Controller
         return redirect()->route('service.index')
             ->with('success', 'Servicio Eliminado Exitosamente');
     }
+
+    public function pdf()
+    {
+
+        $service = Service::all();
+
+        $pdf = Pdf::loadView('service.pdf-template', ['service' => $service])
+                    ->setPaper('a4','landscape');
+
+        $pdf->set_option('isRemoteEnabled', true);
+
+        return $pdf->download('Listado Servicios.pdf');
+    }
+
     public function generatePDF(Request $request)
     {
         // Obtener el filtro de la solicitud

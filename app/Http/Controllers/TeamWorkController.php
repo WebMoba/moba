@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Dompdf\Dompdf as DompdfDompdf;
 use App\Exports\TeamWorkExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 /**
  * Class TeamWorkController
@@ -176,6 +177,19 @@ class TeamWorkController extends Controller
         return redirect()->route('team-works.index')->with('success', 'Estado del equipo de trabajo cambiado con éxito');
     }
     
+    public function pdf()
+    {
+
+        $teamwork = TeamWork::all();
+
+        $pdf = Pdf::loadView('team-work.pdf-template', ['teamwork' => $teamwork])
+                    ->setPaper('a4','landscape');
+
+        $pdf->set_option('isRemoteEnabled', true);
+
+        return $pdf->download('Listado Ventas.pdf');
+    }
+
     public function generatePDF(Request $request)
     {
         // Obtener el filtro de la solicitud

@@ -17,9 +17,6 @@
             <h3>Cl. 15a No.7A - 30, Sogamoso, Boyacá</h3>
             <h4>3112437979</h4>
         </div>
-        <div class="logo2">
-            <img src="{{ public_path('logos/LogotuArte.png') }}" alt="Logo de Tu Arte">
-        </div>
     </div>
 
     <div class="content">

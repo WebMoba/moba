@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use Dompdf\Dompdf as DompdfDompdf;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 /**
  * Class SaleController
@@ -21,6 +22,31 @@ use Dompdf\Dompdf as DompdfDompdf;
  */
 class SaleController extends Controller
 {
+    public function pdf()
+    {
+
+        $sale = Sale::all();
+
+        $pdf = Pdf::loadView('sale.pdf-template', ['sale' => $sale])
+                    ->setPaper('a4','landscape');
+
+        $pdf->set_option('isRemoteEnabled', true);
+
+        return $pdf->download('Listado Ventas.pdf');
+    }
+
+    public function detailPdf()
+    {
+
+        $sale = Sale::all();
+
+        $pdf = Pdf::loadView('sale.pdf-template', ['sale' => $sale])
+                    ->setPaper('a4','landscape');
+
+        $pdf->set_option('isRemoteEnabled', true);
+
+        return $pdf->download('Listado Ventas.pdf');
+    }
 
     public function generatePDF(Request $request)
     {
