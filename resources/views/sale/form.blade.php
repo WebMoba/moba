@@ -93,7 +93,7 @@
                 <table id="detalle-table" class="table table-striped">
                     <thead>
                         <tr>
-                            <th class="required-label mt-5 mb-2">Producto</th>
+                            <th class="required-label">Producto</th>
                             <th class="required-label">Cantidad</th>
                             <th class="required-label">Precio unitario</th>
                             <th class="required-label">Subtotal</th>
