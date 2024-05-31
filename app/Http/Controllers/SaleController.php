@@ -178,7 +178,7 @@ class SaleController extends Controller
             });
 
         // Obtener una lista de productos para el select
-        $products = Product::pluck('name', 'id');
+        $products = Product::where('disable', false)->pluck('name', 'id');
 
         // Obtener los precios de los productos y pasarlos a la vista
         $productPrices = Product::pluck('price', 'id')->toArray();
