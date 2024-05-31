@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Listado Cotizaciones</title>
-    <link rel="stylesheet" href="{{public_path('css/pdf.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ public_path('css/pdf.css') }}" type="text/css">
 </head>
 <body>
   
@@ -34,21 +34,19 @@
                     <th>Total</th>
                     <th>Descuento</th>
                     <th>Estado</th>
-                    <th>Persona</th>
+                    <th>Cliente</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- @php $i = 0; @endphp -->
-                @foreach ($quote as $quotes)
+                @foreach ($quotes as $index => $quote)
                     <tr>
-                        <td>{{ ++$i }}</td>
-                        <td>{{ $quotes->date_issuance }}</td>
-                        <td>{{ $quotes->description }}</td>
-                        <td>{{ $quotes->total }}</td>
-                        <td>{{ $quotes->discount }}</td>
-                        <td>{{ $quotes->status }}</td>
-                        <td>{{ $quotes->people_id }}</td>
-                        
+                        <td>{{ $index + 1 }}</td>
+                        <td>{{ $quote->date_issuance }}</td>
+                        <td>{{ $quote->description }}</td>
+                        <td>{{ $quote->total }}</td>
+                        <td>{{ $quote->discount }}</td>
+                        <td>{{ $quote->status }}</td>
+                        <td>{{ $quote->person->name ?? 'N/A' }}</td>
                     </tr>
                 @endforeach
             </tbody>
@@ -57,6 +55,6 @@
     <footer class="footer">
         <p>&copy; {{ date('Y') }} MOBA. Todos los derechos reservados.</p>
     </footer>
-
 </body>
 </html>
+

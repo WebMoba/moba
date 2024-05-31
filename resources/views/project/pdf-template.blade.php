@@ -21,7 +21,7 @@
 
     <div class="content">
         <div style="text-align: right; margin-bottom: 20px;">
-            <h3>Listado de Projectos</h3>
+            <h1>Listado de Projectos</h1>
             <p>Fecha: {{ date(now()->format('Y-m-d')) }}</p>
         </div>
 
