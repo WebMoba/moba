@@ -151,10 +151,10 @@ class ServiceController extends Controller
     public function pdf()
     {
 
-        $service = Service::all();
+        $services = Service::all();
 
-        $pdf = Pdf::loadView('service.pdf-template', ['service' => $service])
-                    ->setPaper('a4','landscape');
+        $pdf = Pdf::loadView('service.pdf-template', ['services' => $services])
+                    ->setPaper('a4','portrait');
 
         $pdf->set_option('isRemoteEnabled', true);
 

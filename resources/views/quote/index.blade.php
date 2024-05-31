@@ -29,19 +29,20 @@
                                 </div>
                             </form>
                             <div class="float-right">
-                                <a href="{{ route('pdf.quote') }}" class="btn btn-danger btn-sm float-right">
-                                   <i class="bi bi-file-pdf-fill"></i><span class="tooltiptext">Pdf</span>
-                                </a>
 
                                 <a href="{{ route('excel.quote') }}" class="btn btn-success btn-sm float-right">
                                     <i class="bi bi-file-earmark-excel-fill"></i><span class="tooltiptext">Excel</span>
                                 </a>
-                            </div>
-                            <div class="float-right">
+
+                                <button type="button" class="btn btn-danger ms-2 rounded" tooltip="tooltip" title="PDF" onclick="window.location.href='{{ route('quote.pdf') }}'">
+                                    <i class="bi bi-file-pdf-fill"></i><span class="tooltiptext">Pdf</span>
+                                </button>
+
                                 <a href="{{ route('quotes.create') }}" class="btn btn-success"
                                     data-placement="left">
                                     <i class="bi bi-plus-circle"></i><span class="tooltiptext">Crear</span>
                                 </a>
+
                             </div>
                         </div>
                     </div>

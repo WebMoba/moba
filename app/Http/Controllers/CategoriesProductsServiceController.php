@@ -158,7 +158,7 @@ class CategoriesProductsServiceController extends Controller
         $categoriesProductsService = CategoriesProductsService::all();
 
         $pdf = Pdf::loadView('categories-products-service.pdf-template', ['categoriesProductsService' => $categoriesProductsService])
-                    ->setPaper('a4','landscape');
+                    ->setPaper('a4','portrait');
 
         $pdf->set_option('isRemoteEnabled', true);
 

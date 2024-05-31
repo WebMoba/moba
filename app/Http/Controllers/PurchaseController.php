@@ -26,23 +26,28 @@ class PurchaseController extends Controller
     public function pdf()
     {
 
-        $purchase = Purchase::all();
+        $purchases = Purchase::all();
 
-        $pdf = Pdf::loadView('purchase.pdf-template', ['purchase' => $purchase])
-                    ->setPaper('a4','landscape');
+        $pdf = Pdf::loadView('purchase.pdf-template', ['purchases' => $purchases])
+                    ->setPaper('a4','portrait');
 
         $pdf->set_option('isRemoteEnabled', true);
 
         return $pdf->download('Listado Compras.pdf');
     }
 
-    public function detailPdf()
+    public function detailPdf($id)
     {
 
-        $purchase = Purchase::all();
+        $purchase = Purchase::with('detailPurchases')
+        ->find($id);
 
-        $pdf = Pdf::loadView('purchase.pdf-template', ['purchase' => $purchase])
-                    ->setPaper('a4','landscape');
+        if (!$purchase) {
+            return redirect()->back()->with('error', 'No se encontró la compra  ');
+        }
+
+        $pdf = Pdf::loadView('purchase.pdf-template-detail', ['purchase' => $purchase])
+                    ->setPaper('a4','portrait');
 
         $pdf->set_option('isRemoteEnabled', true);
 

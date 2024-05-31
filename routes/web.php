@@ -172,9 +172,11 @@ Route::middleware(['auth', 'admin.email'])->group(function () {
     Route::get('Team-work/pdf', [TeamWorkController::class, 'pdf'])->name('teamwork.pdf');
     Route::get('Quote/pdf', [QuoteController::class, 'pdf'])->name('quote.pdf');
     //rutas detalle pdf
-    Route::get('Purchase-Detail/pdf', [PurchaseController::class, 'detailPdf'])->name('purchaseDetail.pdf');
-    Route::get('Sale-Detail/pdf', [SaleController::class, 'detailPdf'])->name('saleDetail.pdf');
-    Route::get('Quote-Detail/pdf', [QuoteController::class, 'detailPdf'])->name('quoteDetail.pdf');
+    Route::get('Purchase-Detail/pdf/{id}', [PurchaseController::class, 'detailPdf'])->name('purchaseDetail.pdf');
+    Route::get('Sale-Detail/pdf/{id}', [SaleController::class, 'detailPdf'])->name('saleDetail.pdf');
+    Route::get('quote-detail/pdf/{id}', [QuoteController::class, 'detailPdf'])->name('quoteDetail.pdf');
+
+    
 
 //Vistas carpeta servicios
 Route::get('/mobaMenu/index', function () {

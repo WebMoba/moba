@@ -25,23 +25,28 @@ class SaleController extends Controller
     public function pdf()
     {
 
-        $sale = Sale::all();
+        $sales = Sale::all();
 
-        $pdf = Pdf::loadView('sale.pdf-template', ['sale' => $sale])
-                    ->setPaper('a4','landscape');
+        $pdf = Pdf::loadView('sale.pdf-template', ['sales' => $sales])
+                    ->setPaper('a4','portrait');
 
         $pdf->set_option('isRemoteEnabled', true);
 
         return $pdf->download('Listado Ventas.pdf');
     }
 
-    public function detailPdf()
+    public function detailPdf($id)
     {
 
-        $sale = Sale::all();
+        $sale = Sale::with('detailSales')
+        ->find($id);
 
-        $pdf = Pdf::loadView('sale.pdf-template', ['sale' => $sale])
-                    ->setPaper('a4','landscape');
+        if (!$sale) {
+            return redirect()->back()->with('error', 'No se encontró la cotización');
+        }
+
+        $pdf = Pdf::loadView('sale.pdf-template-detail', ['sale' => $sale])
+                    ->setPaper('a4','portrait');
 
         $pdf->set_option('isRemoteEnabled', true);
 
