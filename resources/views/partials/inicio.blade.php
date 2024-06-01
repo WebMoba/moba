@@ -6,12 +6,12 @@
     <a href="{{ asset('/') }}" class="letter" >Principal / </a> 
         @if (Route::has('login'))
         @auth
-                    <a href="{{ url('/dashboard') }}" class="letter">Inicio /  </a>
+                    <a href="{{ url('/dashboard') }}" class="letter">Inicio /   </a>
                     <form role="form" method="post" action="{{ route('logout') }}" id="logout-form">
                         @csrf
                         <a href="{{ route('logout') }}" class="letter"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            Cerrar Sesión
+                             <i class="bi bi-person-circle"></i> Cerrar Sesión
                         </a>
                     </form>
                     @else

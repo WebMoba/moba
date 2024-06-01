@@ -614,7 +614,10 @@
         text-align: justify;
         line-height: 1.5;
         margin-bottom: 0;
-        font-family: sans-serif !important;
+        font-size: 1.3vw;
+        color: white !important;
+    font-family: sans-serif !important;
+    font-weight: normal;
     }
 
     .box-2 {
@@ -627,7 +630,7 @@
     }
 
     .text-1 {
-        color: #2bb9e5;
+        color: #2bb9e5 ;
         font-size: 140%;
         font-weight: bold;
         line-height: 1.5;
@@ -659,6 +662,7 @@
     }
 
     .imagenes a {
+        color: white !important;
         max-width: 30.33%;
         /* Cada elemento ocupa un tercio del ancho disponible */
         box-sizing: border-box;
@@ -666,6 +670,7 @@
         padding: 1%;
         /* Espacio entre las imágenes */
         margin: 1%
+        
     }
 
 
@@ -775,6 +780,12 @@
 .breadcrumbs a:hover{
     color:  #2bb9e5;
 }
+.dropdown-menu .dropdown-item {
+    color: #2bb9e5 !important;
+    background-color: transparent !important;
+    border-color: #2bb9e5 !important;
+}
+
 
 
 

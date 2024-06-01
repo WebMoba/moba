@@ -187,16 +187,27 @@ body::after {
         height: 70%;
         width: 50%;
         margin-top: 5%;
+        margin-right: 5%;
+        font-weight: normal !important;
+        text-align: justify !important;
     }
 
-    h1,
-    h3 {
-        color: #BCCCE0;
+    h1{
+        color: white !important;
         font-family: sans-serif !important;
+        font-size: 1.8vw !important;
+        margin-top: 14%;
+
+    }
+    h3 {
+        color: white !important;
+        font-family: sans-serif !important;
+        font-size: 1vw !important;
+        margin-top: 14%;
     }
 
     label {
-        color: #BCCCE0;
+        color: white !important;
         font-family: sans-serif !important;
     }
 

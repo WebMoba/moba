@@ -170,7 +170,7 @@
 }
 
 .txts1 {
-    color: #BCCCE0;
+    color: white;
     font-size: 1.7em;
     font-weight: normal;
     font-family: sans-serif !important;
@@ -197,8 +197,8 @@
 }
 
 .txts3 {
-    color: #BCCCE0;
-    font-size: 24px;
+    color: white;
+    font-size: 1.7em;
     /* Tamaño de la fuente */
     position: relative;
     /* Establece la posición relativa para que sea la referencia para el HR */

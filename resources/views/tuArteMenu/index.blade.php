@@ -76,11 +76,13 @@
     <!-- Contenido de la página aquí -->
     <div class="container">
         <div class="box">
-            <p class="textoPresentacion">Nuestro deseo más grande es que te hallas enamorado de
-                cada pieza tanto como nosotros, si deseas una pieza personalizada,
-                o adquirir alguna de las piezas que se encuentran
-                en nuestro portafolio, solo debes contactarnos, estaremos
-                muy felices de hablar contigo.</p><br>
+            <p class="textoPresentacion">Tu arte es un emprendimiento sogamoseño, dedicado a la creación, 
+producción y comercialización de accesorios y decoración, elaborada 
+en mdf (madera reciclada) de distintos grosores, cortado y grabado a 
+laser, y pintado a mano con los más finos detalles de creatividad y 
+realismo, logrando así un equilibrio perfecto entre la industria y el 
+trabajo artesanal.
+ </p><br>
             <h4>Nos caracteriza nuestra honestidad, entrega, creatividad y nuestra...</h4><br>
             <h1 style="color: white;">"Buena Onda"</h1>
         </div>

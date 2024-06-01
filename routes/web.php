@@ -69,7 +69,7 @@ Route::get('/', function () {
 
 //dashboard
 
-Route::middleware(['auth', 'admin.email'])->group(function () {
+Route::middleware(['auth', 'admin.email', 'check.disabled'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard')->middleware('auth');

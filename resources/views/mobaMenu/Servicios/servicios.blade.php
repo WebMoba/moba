@@ -392,11 +392,13 @@
             font-size: 35px;
             font-weight: bold;
             font-family: sans-serif !important;
+            margin-bottom: 0;
         }
 
         .creatividad .t2 {
             font-size: 30px;
             font-family: sans-serif !important;
+            margin-bottom: 0;
         }
 
         .creatividad .t3 {
@@ -404,12 +406,14 @@
             color: #2bb9e5;
             font-weight: bold;
             font-family: sans-serif !important;
+            margin-bottom: 0;
         }
 
         .creatividad .t4 {
             font-size: 30px;
             font-weight: bold;
             font-family: sans-serif !important;
+            margin-bottom: 0;
         }
 
         .contenedor {

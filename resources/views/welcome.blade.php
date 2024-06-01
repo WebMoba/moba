@@ -45,7 +45,7 @@
                         
                         <a href="{{ route('logout') }}" class="letter"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            Cerrar Sesión
+                            <i class="bi bi-person-circle"></i> Cerrar Sesión
                         </a>
                     </form>
                     @else
@@ -146,7 +146,7 @@
         font-family: sans-serif !important;
         color: white;
         text-decoration: none;
-        margin-right: 10px;
+        margin-right: 1.8vw;
     }
 
     .letter:hover {

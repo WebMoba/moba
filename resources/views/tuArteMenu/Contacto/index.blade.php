@@ -102,7 +102,7 @@
 
         <div class="box">
             <h1>Contacto</h1><br><br>
-            <h3>¡Somos el estudio de diseño y comunicación que buscabas!</h3>
+        
             <h3>Nuestro deseo más grande es que te hallas enamorado de
                 cada pieza tanto como nosotros, si deseas una pieza personalizada, o adquirir alguna de las piezas que
                 se encuentran
@@ -121,7 +121,7 @@
                 @csrf
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre"
-                    value="{{ auth()->check() ? auth()->user()->name : '' }}" required><br><br>
+                    value="{{ auth()->check() ? auth()->user()->name : '' }}" required><br>
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email"
                     value="{{ auth()->check() ? auth()->user()->email : '' }}" required><br><br>
@@ -139,15 +139,15 @@
                         <input type="radio" id="option3" name="options" value="NIT" required class="circle">
                         <label for="option3" class="option-label">NIT</label>
                     </li>
-                </ul><br>
+                </ul>
                 <label for="numeroId">Numero Identificación</label>
-                <input type="text" id="numeroId" name="numeroId" maxlength="10" required><br><br>
+                <input type="text" id="numeroId" name="numeroId" maxlength="10" required><br>
                 <label for="telefono">Teléfono</label>
-                <input type="tel" id="telefono" name="telefono" maxlength="10" required><br><br>
+                <input type="tel" id="telefono" name="telefono" maxlength="10" required><br>
                 <label for="departamento">Departamento</label>
-                <input type="text" id="departamento" name="departamento" required><br><br>
+                <input type="text" id="departamento" name="departamento" required><br>
                 <label for="ciudad">Ciudad</label>
-                <input type="text" id="ciudad" name="ciudad" required><br><br>
+                <input type="text" id="ciudad" name="ciudad" required><br>
                 <label for="mensaje">Mensaje</label><br>
                 <textarea id="mensaje" name="mensaje" rows="5" @if (isset($_GET['cartInfo'])) readonly @endif>@php
                     $cartInfo = isset($_GET['cartInfo']) ? urldecode($_GET['cartInfo']) : '';
@@ -258,7 +258,7 @@
         justify-content: center;
         height: 70vw;
         width: 100%;
-        margin-top: 5%;
+        
 
     }
 
@@ -313,6 +313,7 @@
 
         width: 45hw;
         height: 50hw;
+        font-size: 1.3vw;
     }
 
 
@@ -356,12 +357,13 @@
         flex-wrap: wrap;
         gap: 2px;
         display: flex;
+        color: white !important;
 
     }
 
     /* Estilo para cada opción */
     .option-item {
-        width: 7.3vw;
+        width: 6.8vw;
         font-size: 0.7vw;
         margin-bottom: 5px;
         text-align: center;
