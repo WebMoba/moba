@@ -372,6 +372,7 @@ textarea{
         cursor: pointer;
         width: 6vw;
         height: 2wv;
+        font-size: 0.8vw;
     }
     /* Estilo para cuando se pasa el mouse sobre la etiqueta */
     .option-label:hover {
