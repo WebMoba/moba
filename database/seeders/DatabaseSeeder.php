@@ -34,6 +34,8 @@ class DatabaseSeeder extends Seeder
             'number' => '3106749334',
         ]);
 
+        
+
         DB::table('regions')->insert([
             ['id' =>5, 'name' => 'ANTIOQUIA'],
             ['id' =>8, 'name' => 'ATLÁNTICO'],
@@ -1253,6 +1255,49 @@ class DatabaseSeeder extends Seeder
                 'unit_type' => 'm2',
             ],
         ]);
+
+        DB::table('materials_raws')->insert([
+            ['name' => 'Madera', 'units_id' => '1' ],
+            ['name' => 'maderas MDF', 'units_id' => '1' ],
+            ['name' => 'Piedra', 'units_id' => '1' ],   
+            ['name' => 'Metal', 'units_id' => '1' ],
+            ['name' => 'Plastico', 'units_id' => '1' ],
+            ['name' => 'Papel', 'units_id' => '9' ],
+            ['name' => 'Vidrio', 'units_id' => '1' ],
+            ['name' => 'Otros', 'units_id' => '1' ],
+            ['name' => 'Madera', 'units_id' => '1' ],
+            ['name' => 'Cinta', 'units_id' => '1' ],
+            ['name' => 'Pintura acrílica (roja)', 'units_id' => '1' ],
+            ['name' => 'Pintura acrílica (blanco)', 'units_id' => '1' ],
+            ['name' => 'Pintura acrílica (cafe)', 'units_id' => '1' ],
+            ['name' => 'Pintura acrílica (morado)', 'units_id' => '1' ],
+            ['name' => 'Pintura acrílica (negro)', 'units_id' => '1' ],
+            ['name' => 'Pintura acrílica (azul)', 'units_id' => '1' ],
+            ['name' => 'Pintura acrílica (verde)', 'units_id' => '1' ],
+            ['name' => 'Pintura acrílica (amarillo)', 'units' => '1' ],
+            ['name' => 'Pintura acrílica (esmalte)', 'units_id' => '1' ],
+            ['name' => 'Pinceles 2”', 'units_id' => '1' ],
+            ['name' => 'Pinceles 1 ½”', 'units_id' => '1' ],
+            ['name' => 'Pinceles ½”', 'units_id' => '1' ],
+            ['name' => 'Papel vinilo', 'units_id' => '9' ],
+            ['name' => 'Otros', 'units_id' => '1' ],
+            ['name' => 'Papel vinilo (roja)', 'units_id' => '9' ],
+            ['name' => 'Papel vinilo (negro)', 'units_id' => '9' ],
+            ['name' => 'Papel vinilo (azul)', 'units_id' => '9' ],
+            ['name' => 'Papel vinilo (verde)', 'units_id' => '9' ],
+            ['name' => 'Papel vinilo (amarillo)', 'units' => '9' ],
+            ['name' => 'Papel vinilo (blanco)', 'units_id' => '9' ],
+            ['name' => 'Papel vinilo (dorado)', 'units_id' => '9' ],
+            ['name' => 'Papel vinilo (negro_mate)', 'units_id' => '9' ],
+            ['name' => 'Papel vinilo (blanco_mate)', 'units_id' => '9' ],
+            ['name' => 'Papel vinilo (aluminio)', 'units_id' => '9' ],
+            ['name' => 'Pocillos', 'units_id' => '2' ],
+            ['name' => 'argollas llaveros', 'units_id' => '4' ],
+            ['name' => 'bisturi', 'units_id' => '1' ],
+            ['name' => 'Papel vinilo (transparente)', 'units_id' => '9' ]
+
+        ]);
+
         DB::table('products')->insert([
             'name' => 'Llavero Mascota',
             'image' => 'imagenesSeeder/Accesorios1.jpg',

@@ -2,11 +2,10 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Cotizaciones</title>
-    <link rel="stylesheet" href="{{public_path('css/pdf.css')}}" type="text/css">
+    <title>Detalle de Cotización</title>
+    <link rel="stylesheet" href="{{ public_path('css/pdf.css') }}" type="text/css">
 </head>
 <body>
-  
     <div class="moba">
         <div class="logo1">
             <img src="{{ public_path('logos/LogoMoba.png') }}" alt="Logo de MOBA">
@@ -44,21 +43,20 @@
                 </tr>
                 <tr>
                     <th>Persona:</th>
-                    <td>{{ $quote->people_id }}</td>
+                    <td>{{ $quote->person->name }}</td>
                 </tr>
                 <tr>
                     <th>Detalles de la cotización:</th>
                     <td>
                         <ul>
                             @foreach ($quote->detailQuotes as $index => $detail)
-                            <li>
-                                <strong>Detalle:</strong>{{  $index + 1  }}<br>
-                                <strong>Servicio:</strong> {{ $detail->service ? $detail->service->name : 'N/A' }}<br>
-                                <strong>Producto:</strong> {{ $detail->product ? $detail->product->name : 'N/A' }}<br>
-                                <strong>Proyecto:</strong> {{ $detail->project ? $detail->project->name : 'N/A' }}<br>
-                                <strong>Cotización:</strong> {{ $detail->quotes_id }}<br>
-                                <br>
-                            </li>
+                                <li>
+                                    <strong>Detalle:</strong> {{ $index + 1 }}<br>
+                                    <strong>Servicio:</strong> {{ $detail->service ? $detail->service->name : 'N/A' }}<br>
+                                    <strong>Producto:</strong> {{ $detail->product ? $detail->product->name : 'N/A' }}<br>
+                                    <strong>Proyecto:</strong> {{ $detail->project ? $detail->project->name : 'N/A' }}<br>
+                                    <br>
+                                </li>
                             @endforeach
                         </ul>
                     </td>

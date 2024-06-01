@@ -253,7 +253,13 @@ class ProductController extends Controller
         $product = Product::all();
 
         $pdf = Pdf::loadView('product.pdf-template', ['product' => $product])
-                    ->setPaper('a4','landscape');
+                    ->setPaper('a4','portrait');
+        
+        foreach ($product as $products) {
+            $imagePath = public_path('storage/' . $products->image);
+            $products->image_exists = file_exists($imagePath);
+            $products->image_url = $products->image_exists ? asset('storage/' . $products->image) : null;
+        }
 
         $pdf->set_option('isRemoteEnabled', true);
 

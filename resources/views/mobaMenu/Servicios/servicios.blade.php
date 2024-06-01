@@ -624,6 +624,10 @@
         }
         
         @media screen and (max-width: 580px) {
+            
+            .contenido1{
+                margin-top: 15%;
+            }
             .contenido2{
                 flex-direction: column;
                 align-items: center;

@@ -432,6 +432,9 @@
     }
 
     .aside-container {
+        max-height: 1000px; /* Establece la altura máxima para activar la barra de desplazamiento */
+        overflow-y: auto; /* Agrega una barra de desplazamiento vertical cuando sea necesario */
+        padding: 30px;
         right: 0;
         /* Alinear desde la derecha */
         top: 10%;
@@ -451,6 +454,8 @@
         align-items: center;
         z-index: 999;
         /* Asegurar que esté por encima del resto del contenido */
+
+
     }
 
     .cerrarAside {
@@ -462,7 +467,7 @@
         /* Borde */
         border-radius: 5px;
         /* Bordes redondeados */
-        padding: 5px 10px;
+        padding: 10px 10px;
         /* Espaciado interno */
         cursor: pointer;
         /* Cambia el cursor al pasar por encima */
