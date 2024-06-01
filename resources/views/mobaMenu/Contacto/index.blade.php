@@ -279,6 +279,7 @@ h1{
         font-family: sans-serif !important;
         font-size: 1.8vw !important;
         margin-top: 14%;
+        margin-bottom: 8%;
 } 
 
 h3{
@@ -288,6 +289,7 @@ h3{
     font-weight: normal;
     text-align: justify !important;
     margin-right: 10%;
+    margin-top: 3%;
 } 
 label{
     color:  white !important;
