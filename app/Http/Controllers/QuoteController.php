@@ -129,8 +129,19 @@ class QuoteController extends Controller
             'people_id' => 'required',
         ]);
 
-        // Crear la cotización
-        $quote = Quote::create($request->all());
+        $total = $request->input('total');
+        $discountPercentage = $request->input('discount');
+        $discountAmount = ($total * $discountPercentage) / 100;
+        $totalAfterDiscount = $total - $discountAmount;
+
+        $quote = Quote::create([
+            'date_issuance' => $request->input('date_issuance'),
+            'description' => $request->input('description'),
+            'total' => $totalAfterDiscount,
+            'discount' => $discountPercentage, // Guardamos el porcentaje de descuento
+            'status' => $request->input('status'),
+            'people_id' => $request->input('people_id'),
+        ]);
 
         // Obtener los detalles de los campos del formulario
         $servicesIds = $request->input('services_id', []);
@@ -155,6 +166,41 @@ class QuoteController extends Controller
         }
 
         return redirect()->route('quotes.index')->with('success', 'Cotización creada exitosamente');
+    }
+
+    public function update(Request $request, Quote $quote)
+    {
+        $msj = [
+            'required' => 'El atributo es requerido',
+            'max' => 'No puede ingresar mas caracteres en este campo',
+            'string' => 'El campo debe ser una cadena de texto.',
+            'date' => 'El campo no debe ser una fecha anterior al dia de Hoy.',
+        ];
+
+        $request->validate([
+            'date_issuance' => 'required|date',
+            'description' => 'required|string|max:300',
+            'total' => 'required|numeric',
+            'discount' => 'required|numeric',
+            'status' => 'required|in:aprobado,rechazado,pendiente',
+            'people_id' => 'required',
+        ], $msj);
+
+        $total = $request->input('total');
+        $discountPercentage = $request->input('discount');
+        $discountAmount = ($total * $discountPercentage) / 100;
+        $totalAfterDiscount = $total - $discountAmount;
+
+        $quote->update([
+            'date_issuance' => $request->input('date_issuance'),
+            'description' => $request->input('description'),
+            'total' => $totalAfterDiscount,
+            'discount' => $discountPercentage,
+            'status' => $request->input('status'),
+            'people_id' => $request->input('people_id'),
+        ]);
+
+        return redirect()->route('quotes.index')->with('success', 'Cotización actualizada exitosamente');
     }
 
 
@@ -220,32 +266,32 @@ class QuoteController extends Controller
      * @param  Quote $quote
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Quote $quote)
-    {
+    // public function update(Request $request, Quote $quote)
+    // {
 
-        $msj = [
-            'required' => 'El atributo es requerido',
-            'max' => 'No puede ingresar mas caracteres en este campo',
-            'string' => 'El campo debe ser una cadena de texto.',
-            'date' => 'El campo no debe ser una fecha anterior al dia de Hoy.',
-        ];
+    //     $msj = [
+    //         'required' => 'El atributo es requerido',
+    //         'max' => 'No puede ingresar mas caracteres en este campo',
+    //         'string' => 'El campo debe ser una cadena de texto.',
+    //         'date' => 'El campo no debe ser una fecha anterior al dia de Hoy.',
+    //     ];
 
-        $request->validate([
-            'date_issuance' => 'required|date',
-            'description' => 'required|string|max:300',
-            'total' => 'required|numeric',
-            'discount' => 'required|numeric',
-            'status' => 'required|in:aprobado,rechazado,pendiente',
-            'people_id' => 'required',
-        ], $msj);
+    //     $request->validate([
+    //         'date_issuance' => 'required|date',
+    //         'description' => 'required|string|max:300',
+    //         'total' => 'required|numeric',
+    //         'discount' => 'required|numeric',
+    //         'status' => 'required|in:aprobado,rechazado,pendiente',
+    //         'people_id' => 'required',
+    //     ], $msj);
 
-        // request()->validate(Quote::$rules);
+    //     // request()->validate(Quote::$rules);
 
-        $quote->update($request->all());
+    //     $quote->update($request->all());
 
-        return redirect()->route('quotes.index')
-            ->with('success', 'Quote updated successfully');
-    }
+    //     return redirect()->route('quotes.index')
+    //         ->with('success', 'Quote updated successfully');
+    // }
 
     /**
      * @param int $id

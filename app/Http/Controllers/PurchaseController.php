@@ -54,67 +54,67 @@ class PurchaseController extends Controller
         return $pdf->download('Compra Detallada.pdf');
     }
 
-    public function generatePDF(Request $request)
-    {
-        // Obtener el filtro de la solicitud
-        $filter = $request->input('findId');
+    // public function generatePDF(Request $request)
+    // {
+    //     // Obtener el filtro de la solicitud
+    //     $filter = $request->input('findId');
 
-        // Obtener los datos de las personas filtradas si se aplicó un filtro
-        if ($filter) {
-            $purchases = Purchase::where('id_card', $filter)->get();
-        } else {
-            // Si no hay filtro, obtener todas las personas
-            $purchases = Purchase::all();
-        }
-        // Pasar los datos a la vista pdf-template
-        $data = [
-            'purchases' => $purchases
-        ];
+    //     // Obtener los datos de las personas filtradas si se aplicó un filtro
+    //     if ($filter) {
+    //         $purchases = Purchase::where('id_card', $filter)->get();
+    //     } else {
+    //         // Si no hay filtro, obtener todas las personas
+    //         $purchases = Purchase::all();
+    //     }
+    //     // Pasar los datos a la vista pdf-template
+    //     $data = [
+    //         'purchases' => $purchases
+    //     ];
 
-        // Generar el PDF
-        $pdf = new Dompdf();
-        $pdf->set_option('isRemoteEnabled', true);
-        $pdf->loadHtml(view('purchase.pdf-template', $data));
-        $pdf->setPaper('A4', 'portrait');
-        $pdf->render();
-        return $pdf->stream('Compras.pdf');
-    }
+    //     // Generar el PDF
+    //     $pdf = new Dompdf();
+    //     $pdf->set_option('isRemoteEnabled', true);
+    //     $pdf->loadHtml(view('purchase.pdf-template', $data));
+    //     $pdf->setPaper('A4', 'portrait');
+    //     $pdf->render();
+    //     return $pdf->stream('Compras.pdf');
+    // }
 
 
-    public function generateDetailPDF(Request $request)
-    {
-        $filter = $request->input('findId');
+    // public function generateDetailPDF(Request $request)
+    // {
+    //     $filter = $request->input('findId');
 
-        // Obtener los datos de la compra y sus detalles
-        if ($filter) {
-            $purchase = Purchase::with('detailPurchases.materialsRaw', 'person', 'user')->find($filter);
-        } else {
-            // Si no hay filtro, redirigir a otra página o mostrar un error
-            return redirect()->back()->with('error', 'No se encontró la compra');
-        }
+    //     // Obtener los datos de la compra y sus detalles
+    //     if ($filter) {
+    //         $purchase = Purchase::with('detailPurchases.materialsRaw', 'person', 'user')->find($filter);
+    //     } else {
+    //         // Si no hay filtro, redirigir a otra página o mostrar un error
+    //         return redirect()->back()->with('error', 'No se encontró la compra');
+    //     }
 
-        // Pasar los datos a la vista pdf-template
-        $data = [
-            'purchase' => $purchase
-        ];
+    //     // Pasar los datos a la vista pdf-template
+    //     $data = [
+    //         'purchase' => $purchase
+    //     ];
 
-        // Generar el PDF
-        $pdf = new DompdfDompdf();
-        $pdf->set_option('isRemoteEnabled', true);
-        $pdf->loadHtml(view('purchase.pdf-template-detail', $data)->render());
-        $pdf->setPaper('A4', 'portrait');
-        $pdf->render();
-        return $pdf->stream('Compra detallada.pdf');
-    }
+    //     // Generar el PDF
+    //     $pdf = new DompdfDompdf();
+    //     $pdf->set_option('isRemoteEnabled', true);
+    //     $pdf->loadHtml(view('purchase.pdf-template-detail', $data)->render());
+    //     $pdf->setPaper('A4', 'portrait');
+    //     $pdf->render();
+    //     return $pdf->stream('Compra detallada.pdf');
+    // }
 
-    public function view($purchases)
-    {
-        // Obtén la cotización (Quote) basada en el ID proporcionado
-        $purchases = Purchase::findOrFail($purchases);
+    // public function view($purchases)
+    // {
+    //     // Obtén la cotización (Quote) basada en el ID proporcionado
+    //     $purchases = Purchase::findOrFail($purchases);
 
-        // Cargar la vista deseada y pasar los datos necesarios
-        return view('purchase.show', compact('purchases'));
-    }
+    //     // Cargar la vista deseada y pasar los datos necesarios
+    //     return view('purchase.show', compact('purchases'));
+    // }
     /**
      * Display a listing of the resource.
      *

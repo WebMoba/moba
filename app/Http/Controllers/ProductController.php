@@ -249,22 +249,22 @@ class ProductController extends Controller
 
     public function pdf()
     {
-
-        $product = Product::all();
-
-        $pdf = Pdf::loadView('product.pdf-template', ['product' => $product])
-                    ->setPaper('a4','portrait');
-        
-        foreach ($product as $products) {
-            $imagePath = public_path('storage/' . $products->image);
-            $products->image_exists = file_exists($imagePath);
-            $products->image_url = $products->image_exists ? asset('storage/' . $products->image) : null;
+        $products = Product::all();
+    
+        foreach ($products as $product) {
+            $imagePath = public_path('storage/' . $product->image);
+            $product->image_exists = file_exists($imagePath);
+            $product->image_url = $product->image_exists ? url('storage/' . $product->image) : null;
         }
-
+    
+        $pdf = Pdf::loadView('product.pdf-template', ['products' => $products])
+                    ->setPaper('a4', 'portrait');
+        
         $pdf->set_option('isRemoteEnabled', true);
-
+    
         return $pdf->download('Listado Productos.pdf');
     }
+    
 
     public function generatePDF(Request $request)
     {

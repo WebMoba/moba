@@ -18,7 +18,6 @@
             @csrf
             <div class="box">
                 <h2>Cotización</h2>
-                <!-- Contenido de la primera tabla -->
                 <div class="box-body col-mt-10">
                     <div class="form-group col-md-3">
                         {{ Form::label('Fecha de expedición', null, ['class' => 'required']) }}
@@ -33,17 +32,17 @@
                     </div>
                     <div class="form-group">
                         {{ Form::label('Descripción', null, ['class' => 'required']) }}
-                        {{ Form::text('description', old('description'), ['id' => 'Descripción', 'class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Descripción de la cotización']) }}
+                        {{ Form::text('description', old('description'), ['id' => 'Descripción', 'class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''), 'required','min' => '0', 'max'=>'1000000000' ,'placeholder' => 'Descripción de la cotización']) }}
                         {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
                     <div class="form-group">
                         {{ Form::label('Total', null, ['class' => 'required']) }}
-                        {{ Form::number('total', old('total'), ['id' => 'Total', 'class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Valor total de la cotización']) }}
+                        {{ Form::number('total', old('total'), ['id' => 'Total', 'class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''), 'required','min' => '0','max'=>'100' , 'placeholder' => 'Valor total de la cotización']) }}
                         {!! $errors->first('total', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
                     <div class="form-group">
-                        {{ Form::label('Descuento', null, ['class' => 'required']) }}
-                        {{ Form::text('discount', old('discount'), ['id' => 'Descuento', 'class' => 'form-control' . ($errors->has('discount') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Descuento en pesos']) }}
+                        {{ Form::label('Descuento (%)', null, ['class' => 'required']) }}
+                        {{ Form::number('discount', old('discount'), ['id' => 'Descuento', 'class' => 'form-control' . ($errors->has('discount') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Descuento en porcentaje', 'step' => '0.01']) }}
                         {!! $errors->first('discount', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
                     <div class="form-group">

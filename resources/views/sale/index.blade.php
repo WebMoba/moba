@@ -37,13 +37,14 @@
                                     <i class="bi bi-file-earmark-excel-fill"></i><span class="tooltiptext">Excel</span>
                                 </a>
                                 
-                                <a href="{{ route('sales.create') }}" class="btn btn-success" data-placement="left">
-                                    <i class="bi bi-plus-circle"></i><span class="tooltiptext">Crear</span>
-                                </a>
                                 <button type="button" class="btn btn-danger ms-2 rounded" tooltip="tooltip"
                                 title="PDF" onclick="window.location.href='{{ route('sale.pdf') }}'">
                                     <i class="bi bi-file-pdf-fill"></i><span class="tooltiptext">Pdf</span>
                                 </button>
+                                
+                                <a href="{{ route('sales.create') }}" class="btn btn-success" data-placement="left">
+                                    <i class="bi bi-plus-circle"></i><span class="tooltiptext">Crear</span>
+                                </a>
                             </div>
                         </div>
                     </div>

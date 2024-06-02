@@ -1,10 +1,10 @@
-s<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
     <title>Productos</title>
-    <link rel="stylesheet" href="{{public_path('css/pdf.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ public_path('css/pdf.css') }}" type="text/css">
 </head>
 <body>
   
@@ -37,22 +37,21 @@ s<!DOCTYPE html>
                 </tr>
             </thead>
             <tbody>
-                @php $i = 0; @endphp
-                @foreach ($product as $products)
+                @foreach ($products as $index => $product)
                     <tr>
-                        <td>{{ ++$i }}</td>
-                        <td>{{ $products->name }}</td>
+                        <td>{{ $index + 1 }}</td>
+                        <td>{{ $product->name }}</td>
                         <td>
-                            @if ($products->image_exists)
-                                <img src="{{ $product->image_url }}" alt="Imagen de {{ $product->name }}">
+                            @if ($product->image_exists)
+                                <img src="{{ $product->image_url }}" alt="Imagen de {{ $product->name }}" style="width: 100px; height: auto;">
                             @else
                                 <p>Imagen no disponible</p>
                             @endif
                         </td>
-                        <td>{{ $products->quantity }}</td>
-                        <td>{{ $products->price }}</td>
-                        <td>{{ $products->unit->unit_type }}</td>
-                        <td>{{ $products->categoriesProductsService->name }}</td>
+                        <td>{{ $product->quantity }}</td>
+                        <td>{{ $product->price }}</td>
+                        <td>{{ $product->unit->unit_type }}</td>
+                        <td>{{ $product->categoriesProductsService->name }}</td>
                     </tr>
                 @endforeach
             </tbody>
@@ -62,7 +61,6 @@ s<!DOCTYPE html>
     <footer class="footer">
         <p>&copy; {{ date('Y') }} MOBA. Todos los derechos reservados.</p>
     </footer>
-
 
 </body>
 
