@@ -74,7 +74,7 @@
             const dateStartInput = document.getElementById('date_start');
             const dateEndInput = document.getElementById('date_end');
             const maxDate = new Date();
-            maxDate.setFullYear(maxDate.getFullYear() + 5);
+            maxDate.setFullYear(maxDate.getFullYear() + 3);
             const maxDateString = maxDate.toISOString().split('T')[0];
 
             dateStartInput.setAttribute('max', maxDateString);
