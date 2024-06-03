@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Título de tu página</title>
     <style>
         .required::after {
@@ -155,6 +156,58 @@
         function eliminarDetalle(div) {
             div.remove();
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Selección de campos
+            const totalField = document.getElementById('Total');
+            const discountField = document.getElementById('Descuento');
+    
+            // Función para mostrar alertas
+            function showAlert(message) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: message,
+                    confirmButtonText: 'OK'
+                });
+            }
+    
+            // Validación de entrada para el campo Total
+            totalField.addEventListener('input', function() {
+                let value = parseFloat(totalField.value);
+                if (isNaN(value) || value < 0) {
+                    totalField.value = '';
+                    showAlert('El campo Total debe ser un número positivo mayor o igual a 0.');
+                }
+            });
+    
+            // Validación de entrada para el campo Descuento
+            discountField.addEventListener('input', function() {
+                let value = parseFloat(discountField.value);
+                if (isNaN(value) || value < 0 || value > 100) {
+                    discountField.value = '';
+                    showAlert('El campo Descuento debe ser un número positivo entre 0 y 100.');
+                }
+            });
+    
+            // Validación adicional en el envío del formulario
+            document.querySelector('form').addEventListener('submit', function(event) {
+                let totalValue = parseFloat(totalField.value);
+                let discountValue = parseFloat(discountField.value);
+    
+                if (isNaN(totalValue) || totalValue < 0) {
+                    showAlert('El campo Total debe ser un número positivo mayor o igual a 0.');
+                    event.preventDefault();
+                    return;
+                }
+    
+                if (isNaN(discountValue) || discountValue < 0 || discountValue > 100) {
+                    showAlert('El campo Descuento debe ser un número positivo entre 0 y 100.');
+                    event.preventDefault();
+                    return;
+                }
+            });
+        });
     </script>
 
     @extends('layouts.alerts')
