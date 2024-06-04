@@ -102,7 +102,7 @@
 
         <div class="box">
             <h1>Contacto</h1><br><br>
-        
+
             <h3>Nuestro deseo más grande es que te hallas enamorado de
                 cada pieza tanto como nosotros, si deseas una pieza personalizada, o adquirir alguna de las piezas que
                 se encuentran
@@ -169,79 +169,89 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        @if(session('success'))
-            Swal.fire({
-                icon: 'success',
-                title: 'Éxito',
-                text: '{{ session('success') }}'
-            });
-        @endif
-
-        @if(session('error'))
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: '{{ session('error') }}'
-            });
-        @endif
-
-        // Obtén el formulario
-        const form = document.getElementById('contact-form');
-
-        // Añade el evento de envío
-        form.addEventListener('submit', function(event) {
-            event.preventDefault(); // Evita el envío del formulario
-
-            const isAuthenticated = {{ Auth::check() ? 'true' : 'false' }};
-
-            if (!isAuthenticated) {
+        document.addEventListener('DOMContentLoaded', function() {
+            @if (session('success'))
                 Swal.fire({
-                    title: 'Para enviar un mensaje, primero debes iniciar sesión o registrarte.',
-                    icon: 'info',
-                    confirmButtonText: 'Aceptar'
-                }).then(() => {
-                    window.location.href = "{{ route('login') }}";
+                    icon: 'success',
+                    title: 'Éxito',
+                    text: '{{ session('success') }}'
                 });
-            } else {
-                // Enviar el formulario usando Fetch API para asegurar que se envíe correctamente
-                const formData = new FormData(form);
-                fetch(form.action, {
-                    method: form.method,
-                    body: formData,
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Éxito',
-                            text: 'Tu mensaje ha sido enviado.'
-                        }).then(() => {
-                            form.reset(); // Opcional: resetear el formulario después del envío
-                        });
-                    } else {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error',
-                            text: 'Hubo un problema al enviar tu mensaje.'
-                        });
-                    }
-                })
-                .catch(data => {
-                        Swal.fire({
-                            icon: 'success',
+            @endif
+
+            @if (session('error'))
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: '{{ session('error') }}'
+                });
+            @endif
+
+            // Obtén el formulario
+            const form = document.getElementById('contact-form');
+
+            // Añade el evento de envío
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Evita el envío del formulario
+
+                const isAuthenticated = {{ Auth::check() ? 'true' : 'false' }};
+
+                if (!isAuthenticated) {
+                    Swal.fire({
+                        title: 'Para enviar un mensaje, primero debes iniciar sesión o registrarte.',
+                        icon: 'info',
+                        confirmButtonText: 'Aceptar'
+                    }).then(() => {
+                        window.location.href = "{{ route('login') }}";
+                    });
+                } else {
+                    // Enviar el formulario usando Fetch API para asegurar que se envíe correctamente
+                    const formData = new FormData(form);
+                    fetch(form.action, {
+                            method: form.method,
+                            body: formData,
+                            headers: {
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                            }
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Éxito',
+                                    text: 'Tu mensaje ha sido enviado.'
+                                }).then(() => {
+                                    form
+                                .reset(); // Opcional: resetear el formulario después del envío
+                                });
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error',
+                                    text: 'Hubo un problema al enviar tu mensaje.'
+                                });
+                            }
+                        })
+                        .catch(data => {
+                            Swal.fire({
+                                icon: 'success',
                                 title: 'Éxito',
                                 text: 'Tu mensaje ha sido enviado.'
-                    });
-                });
-            }
+                            });
+                        });
+                }
+            });
         });
-    });
-</script>
+    </script>
+    <script>
+        document.querySelector('.dropdown').addEventListener('mouseenter', function() {
+            this.querySelector('.dropdown-menu').classList.add('show');
+        });
+
+        document.querySelector('.dropdown').addEventListener('mouseleave', function() {
+            this.querySelector('.dropdown-menu').classList.remove('show');
+        });
+    </script>
     @include('partials.footerMoba')
 
 </body>
@@ -249,16 +259,13 @@
 </html>
 
 <style>
-
-
-
     .container {
         display: flex;
         align-items: center;
         justify-content: center;
         height: 70vw;
         width: 100%;
-        
+
 
     }
 
@@ -382,8 +389,8 @@
         display: inline-block;
         padding: 8px 12px;
         cursor: pointer;
-            width: 6vw;
-            height: 2wv;
+        width: 6vw;
+        height: 2wv;
     }
 
     /* Estilo para cuando se pasa el mouse sobre la etiqueta */
