@@ -56,7 +56,7 @@
                                 return [$id => $name . '  ' . $document];
                             }),
                             $sale->name,
-                            ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Name'],
+                            ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Nombre'],
                         ) }}
                         {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
