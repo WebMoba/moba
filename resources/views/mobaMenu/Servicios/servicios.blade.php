@@ -162,14 +162,12 @@
                                 <h2>y algo más</h2>
                             </div>
                             <div class="contenido-cuadro">
-                                <div class="textoC">
                                     <p>
                                         Nuestra empresa cuenta con servicios y productos adicionales que complementan
                                         y suman a cada uno de nuestros clientes, los cuales están elaborados con la
                                         mayor calidad
                                         y detalle posible, entregando en cada trabajo nuestro mejor
                                     </p>
-                                </div>
                             </div>
 
                         </div>
@@ -502,6 +500,7 @@
             align-items: center;
             justify-content: center;
             height: 100%;
+            width: 400px;
             padding-bottom: 3%;
         }
 
@@ -548,6 +547,9 @@
                 width: 350px; 
                 height: 300px; 
             }
+            .cuadro .botones {
+                width: 350px;
+            }
         }
 
         @media screen and (max-width: 900px) {
@@ -555,6 +557,9 @@
                 width: 300px; 
                 height: 250px; 
                 padding-bottom:20%; 
+            }
+            .cuadro .botones {
+                width: 300px;
             }
             .creatividad{
                 width: 200px; 
@@ -588,6 +593,10 @@
                 width: 250px; 
                 height: 200px; 
                 padding-bottom:20%; 
+            }
+            
+            .cuadro .botones {
+                width: 250px;
             }
             .creatividad{
                 width: 150px; 
@@ -640,6 +649,10 @@
                 width: 250px; 
                 height: 200px; 
                 padding-bottom:20%; 
+            }
+            
+            .cuadro .botones {
+                width: 250px;
             }
             .creatividad{
                 width: 300px; 
