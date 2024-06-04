@@ -57,6 +57,7 @@ body::after {
     color: #fff;
     border-color: transparent !important;
     font-size: 1.3vw;
+    font-family: sans-serif !important
 }
 
 .btn-primary:hover {
@@ -187,7 +188,7 @@ body::after {
     height: 50vw;
     /* 100% de la altura de la ventana */
     width: 90%;
-    margin-top: 5%;
+    
 }
 
     .campo {
@@ -205,7 +206,7 @@ body::after {
     .campo1 {
         flex-grow: 1; /* Hacer que el campo se expanda automáticamente */
         height: 38vw;
-        margin-top: 12%;
+        margin-top: 10%;
         /* 100% de altura */
         position: relative;
         border-bottom: 3.5vw solid white;

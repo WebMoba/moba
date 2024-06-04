@@ -167,10 +167,9 @@
     text-align: center;
     margin-top: 20px;
 }
-
 .txts1 {
-    color: #BCCCE0;
-    font-size: 1.7em;
+    color: white;
+    font-size: 1.6em;
     font-weight: normal;
     font-family: sans-serif !important;
 }
@@ -196,14 +195,15 @@
 }
 
 .txts3 {
-    color: #BCCCE0;
-    font-size: 24px;
+    color: white;
+    font-size: 1.6em;
     /* Tamaño de la fuente */
     position: relative;
     /* Establece la posición relativa para que sea la referencia para el HR */
     font-weight: normal;
     font-family: sans-serif !important;
 }
+
 
 .txts3:not(:last-child)::after {
     content: '';

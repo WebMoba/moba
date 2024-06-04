@@ -71,6 +71,8 @@ body::after {
     background-color: transparent !important;
     border-color: transparent !important;
 }
+
+
     
     .dropdown-menu .dropdown-item:hover {
         background-color: transparent !important;
@@ -80,10 +82,10 @@ body::after {
     }
 
     .dropdown-menu .dropdown-item:hover {
-        background-color: rgba(161, 174, 250, 0.274) !important;
+        background-color: rgba(224, 228, 236, 0.274) !important;
         /* Cambia el color de fondo al pasar el cursor sobre las opciones del menú */
     }
-
+    
     .dropdown-item:hover {
         color: #2bb9e5 !important;
     }
@@ -93,11 +95,11 @@ body::after {
         border-color: #73a3b6 !important;
     }
 
-    .dropdown-menu .dropdown-item {
-        color: #ffffff !important;
-        background-color: transparent !important;
-        border-color: #2bb9e5 !important;
-    }
+ .dropdown-menu .dropdown-item {
+    color: #2bb9e5 !important;
+    background-color: transparent !important;
+    border-color: #2bb9e5 !important;
+}
 
     .dropdown-menu .dropdown-divider {
         border-top: 1px solid #2bb9e5;

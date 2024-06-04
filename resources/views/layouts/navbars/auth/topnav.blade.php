@@ -185,14 +185,14 @@
                     
                 <a href="{{ url('documentos/ManualAdministrativo.pdf') }}" class="circle-btn" target="_blank">?</a> 
 
-                    <a href="{{ asset('/') }}" style="margin: 10px 10px;  text-decoration: underline;"
+                    <a href="{{ asset('/') }}" style="margin: 10px 10px; "
                         class="nav-link text-white font-weight-bold px-0">Principal</a>
                     <form role="form" method="post" action="{{ route('logout') }}" id="logout-form">
                         @csrf
                         <a href="{{ route('logout') }}"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                             class="nav-link text-white font-weight-bold px-0"
-                            style="margin: 10px 10px;  text-decoration: underline;">
+                            style="margin: 10px 10px;">
                             <i class="bi bi-person-circle"></i>
                             <span class="d-sm-inline d-none">Cerrar Sesión</span>
                         </a>
@@ -221,4 +221,5 @@
         .circle-btn:hover{
             color: cornflowerblue;
         }
+     
 </style>

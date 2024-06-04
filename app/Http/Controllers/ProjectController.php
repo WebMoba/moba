@@ -179,8 +179,8 @@ class ProjectController extends Controller
 
         $project = Project::all();
 
-        $pdf = Pdf::loadView('caproject.pdf-template', ['project' => $project])
-                    ->setPaper('a4','landscape');
+        $pdf = Pdf::loadView('project.pdf-template', ['project' => $project])
+                    ->setPaper('a4','portrait');
 
         $pdf->set_option('isRemoteEnabled', true);
 

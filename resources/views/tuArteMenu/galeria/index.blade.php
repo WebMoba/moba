@@ -305,7 +305,6 @@
     }
 
     /* ---------- */
-
     .dropdown-menu .dropdown-item:hover {
         background-color: transparent !important;
         border-color: transparent !important;
@@ -336,7 +335,6 @@
     .dropdown-menu .dropdown-divider {
         border-top: 1px solid #f80008;
     }
-
     .container-fluid {
         padding: 0 !important;
     }

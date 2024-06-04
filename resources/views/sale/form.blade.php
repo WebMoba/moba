@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Título de tu página</title>
+    <title>Formulario de ventas</title>
     <!-- Agrega enlaces a tus estilos CSS y a Bootstrap si los estás utilizando -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
@@ -31,16 +32,19 @@
 </head>
 
 <body>
+    <div class="container">
+
     <small class="text-right">Los campos indicados con <span style="color: red;">*</span> son obligatorios</small>
 
-    <div class="container">
-        <div class="box mt-2">
-            <h2>Formulario de Venta</h2>
+    <div class="mt-4">
+        
+        <h2>Formulario de Venta</h2>
 
             <!-- contenido de la primera tabla "ventas" -->
             <form id="salesForm" method="POST" action="{{ route('sales.store') }}">
                 @csrf
-                <div class="box-body mt-3 ">
+
+                <div class="form-row ">
 
                     <div class="form-group col-md-5">
                         {{ Form::label('Nombre y documento del cliente', null, ['class' => 'required-label']) }}
@@ -73,94 +77,85 @@
                     </div>
 
                 </div>
-                <div class="box-footer mt-3">
-                    <button type="button" id="submitButton" class="btn btn-success btn-enviar"
-                        onclick="enviarDetalles()">
+                <div class="mt-3">
+                    <button type="button" id="submitButton" class="btn btn-success btn-enviar" onclick="enviarDetalles()">
                         <i class="bi bi-plus-circle"></i><span class="tooltiptext">Crear</span>
                     </button>
-                    <a type="button" class="btn btn-primary" href="{{ route('sales.index') }}"><i
-                            class="bi bi-arrow-left-circle"></i><span class="tooltiptext">Volver</span></a>
+                    <a type="button" class="btn btn-primary" href="{{ route('sales.index') }}"><i class="bi bi-arrow-left-circle"></i><span class="tooltiptext">Volver</span></a>
                 </div>
 
             </form>
         </div>
 
-        <div class="box mt-5  ">
-            <h2> Detalle de Ventas</h2>
-            <!-- contenido de la segunda tabla -->
-
-            <div class="">
-                <div class="box-body">
-
-                    <table id="detalle-table" class="table">
-                        <thead>
+        <div class="container mt-5">
+            <h2>Detalle de Ventas</h2>
+            <div class="table-responsive table-responsive-sm">
+                <table id="detalle-table" class="table table-striped">
+                    <thead>
+                        <tr>
                             <th class="required-label">Producto</th>
                             <th class="required-label">Cantidad</th>
                             <th class="required-label">Precio unitario</th>
                             <th class="required-label">Subtotal</th>
                             <th class="required-label">% Descuento</th>
                             <th class="required-label">Total</th>
-                        </thead>
-                        <tbody>
-
-                            <tr>
-                                <th>
-                                    <div class="form-group">
-                                        @if ($detailSale->product)
-                                            {{ Form::select('product_id', [$detailSale->product->id => $detailSale->product->name], null, ['class' => 'form-control', 'id' => 'productSelect', 'placeholder' => 'Seleccione un producto']) }}
-                                        @else
-                                            {{-- Aquí puedes manejar el caso cuando $detailSale->product es null --}}
-                                            {{ Form::select('product_id', $products, null, ['class' => 'form-control', 'id' => 'productSelect', 'placeholder' => 'No hay productos disponibles']) }}
-                                        @endif
-                                        {!! $errors->first('product_id', '<div class="invalid-feedback">:message</div>') !!}
-                                    </div>
-                                </th>
-                                <th>
-                                    <div class="form-group">
-                                        {{ Form::text('quantity', $detailSale->quantity, ['id' => 'quantity', 'class' => 'form-control' . ($errors->has('quantity') ? ' is-invalid' : ''), 'placeholder' => 'Cantidad']) }}
-                                        {!! $errors->first('quantity', '<div class="invalid-feedback">:message</div>') !!}
-                                    </div>
-                                </th>
-                                <th>
-                                    <div class="form-group">
-                                        {{ Form::text('price_unit', $detailSale->product ? $detailSale->product->price : '', ['id' => 'price_unit', 'class' => 'form-control' . ($errors->has('price_unit') ? ' is-invalid' : ''), 'placeholder' => 'Precio Unidad', 'id' => 'priceUnitInput', 'readonly' => 'readonly', 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
-                                        {!! $errors->first('price_unit', '<div class="invalid-feedback">:message</div>') !!}
-                                        <small class="text-muted">Este campo no es editable.</small>
-                                    </div>
-
-                                </th>
-                                <th>
-                                    <div class="form-group">
-                                        {{ Form::text('subtotal', $detailSale->subtotal, ['id' => 'subtotal', 'class' => 'form-control' . ($errors->has('subtotal') ? ' is-invalid' : ''), 'placeholder' => 'Subtotal', 'readonly' => 'readonly', 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
-                                        {!! $errors->first('subtotal', '<div class="invalid-feedback">:message</div>') !!}
-                                    </div>
-                                </th>
-                                <th>
-                                    <div class="form-group">
-                                        {{ Form::text('discount', $detailSale->discount, ['id' => 'discount', 'class' => 'form-control' . ($errors->has('discount') ? ' is-invalid' : ''), 'placeholder' => 'Descuento']) }}
-                                        {!! $errors->first('discount', '<div class="invalid-feedback">:message</div>') !!}
-                                    </div>
-                                </th>
-                                <th>
-                                    <div class="form-group">
-                                        {{ Form::text('total', $detailSale->total, ['id' => 'total', 'class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''), 'placeholder' => 'Total', 'readonly' => 'readonly', 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
-                                        {!! $errors->first('total', '<div class="invalid-feedback">:message</div>') !!}
-                                    </div>
-                                </th>
-
-                                <!-- boton para eliminar el detalle creado demás -->
-                                <th>
-                        <button type="button" class="btn btn-danger eliminar-detalle" onclick="eliminarDetalle(this)"><i class="fas fa-trash-alt"></i></button>
-                    </th>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="box-footer">
-                    <button type="button" id="agregarDetalle" class="btn btn-primary">Agregar detalle</button>
-                </div>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    @if ($detailSale->product)
+                                        {{ Form::select('product_id', [$detailSale->product->id => $detailSale->product->name], null, ['class' => 'form-control', 'id' => 'productSelect', 'placeholder' => 'Seleccione un producto']) }}
+                                    @else
+                                        {{ Form::select('product_id', $products, null, ['class' => 'form-control', 'id' => 'productSelect', 'placeholder' => 'No hay productos disponibles']) }}
+                                    @endif
+                                    {!! $errors->first('product_id', '<div class="invalid-feedback">:message</div>') !!}
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    {{ Form::text('quantity', $detailSale->quantity, ['id' => 'quantity', 'class' => 'form-control' . ($errors->has('quantity') ? ' is-invalid' : ''), 'placeholder' => 'Cantidad']) }}
+                                    {!! $errors->first('quantity', '<div class="invalid-feedback">:message</div>') !!}
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    {{ Form::text('price_unit', $detailSale->product ? $detailSale->product->price : '', ['id' => 'price_unit', 'class' => 'form-control' . ($errors->has('price_unit') ? ' is-invalid' : ''), 'placeholder' => 'Precio Unidad', 'id' => 'priceUnitInput', 'readonly' => 'readonly', 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
+                                    {!! $errors->first('price_unit', '<div class="invalid-feedback">:message</div>') !!}
+                                    <small class="text-muted">Este campo no es editable.</small>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    {{ Form::text('subtotal', $detailSale->subtotal, ['id' => 'subtotal', 'class' => 'form-control' . ($errors->has('subtotal') ? ' is-invalid' : ''), 'placeholder' => 'Subtotal', 'readonly' => 'readonly', 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
+                                    {!! $errors->first('subtotal', '<div class="invalid-feedback">:message</div>') !!}
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    {{ Form::text('discount', $detailSale->discount, ['id' => 'discount', 'class' => 'form-control' . ($errors->has('discount') ? ' is-invalid' : ''), 'placeholder' => 'Descuento']) }}
+                                    {!! $errors->first('discount', '<div class="invalid-feedback">:message</div>') !!}
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    {{ Form::text('total', $detailSale->total, ['id' => 'total', 'class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''), 'placeholder' => 'Total', 'readonly' => 'readonly', 'style' => 'background-color: #f8f9fa; cursor: not-allowed;']) }}
+                                    {!! $errors->first('total', '<div class="invalid-feedback">:message</div>') !!}
+                                </div>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger eliminar-detalle" onclick="eliminarDetalle(this)"><i class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="box-footer">
+                <button type="button" id="agregarDetalle" class="btn btn-primary">Agregar detalle</button>
             </div>
         </div>
+        
     </div>
 </body>
 

@@ -66,10 +66,11 @@
     </div>
 </div>
 
-<div class="box box-large">
+<div class="container mt-5">
     <h2>Detalle Compra</h2>
+    <div class="table-responsive table-responsive-sm">
     <div class="box-body">
-        <table id="detalle-table" class="table">
+        <table id="detalle-table" class="table table-striped ">
             <thead>
                 <tr>
                     <th class="required-label">Materia prima</th>
@@ -129,6 +130,7 @@
             </tbody>
         </table>
     </div>
+
     <div class="box-footer">
         <button type="button" id="agregarDetalle" class="btn btn-primary">Agregar detalle</button>
     </div>

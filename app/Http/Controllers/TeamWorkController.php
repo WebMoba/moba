@@ -181,8 +181,8 @@ class TeamWorkController extends Controller
     {
 
         $teamwork = TeamWork::all();
-
-        $pdf = Pdf::loadView('team-work.pdf-template', ['teamwork' => $teamwork])
+        $project = Project::all();
+        $pdf = Pdf::loadView('team-work.pdf-template', ['teamwork' => $teamwork],['project' => $project])
                     ->setPaper('a4','landscape');
 
         $pdf->set_option('isRemoteEnabled', true);

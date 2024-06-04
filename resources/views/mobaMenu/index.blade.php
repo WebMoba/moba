@@ -239,7 +239,7 @@
             flex-direction: row;
             width: 80%;
             height: 100%;
-            margin-top:9%;
+            margin-top:15%;
         }
         .logotexto .texto{
             width: 100%;
@@ -259,10 +259,11 @@
 
         .logotexto .texto p{
             font-size:larger;
-            color: white;
+            color: white !important;
             text-align: justify;
             width: 80%;
             font-family: sans-serif !important;
+            font-weight: normal;
         }
 
 

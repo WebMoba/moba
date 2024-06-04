@@ -432,6 +432,9 @@
     }
 
     .aside-container {
+        max-height: 1000px; /* Establece la altura máxima para activar la barra de desplazamiento */
+        overflow-y: auto; /* Agrega una barra de desplazamiento vertical cuando sea necesario */
+        padding: 30px;
         right: 0;
         /* Alinear desde la derecha */
         top: 10%;
@@ -451,6 +454,8 @@
         align-items: center;
         z-index: 999;
         /* Asegurar que esté por encima del resto del contenido */
+
+
     }
 
     .cerrarAside {
@@ -462,7 +467,7 @@
         /* Borde */
         border-radius: 5px;
         /* Bordes redondeados */
-        padding: 5px 10px;
+        padding: 10px 10px;
         /* Espaciado interno */
         cursor: pointer;
         /* Cambia el cursor al pasar por encima */
@@ -614,7 +619,10 @@
         text-align: justify;
         line-height: 1.5;
         margin-bottom: 0;
-        font-family: sans-serif !important;
+        font-size: 1.3vw;
+        color: white !important;
+    font-family: sans-serif !important;
+    font-weight: normal;
     }
 
     .box-2 {
@@ -627,7 +635,7 @@
     }
 
     .text-1 {
-        color: #2bb9e5;
+        color: #2bb9e5 ;
         font-size: 140%;
         font-weight: bold;
         line-height: 1.5;
@@ -659,6 +667,7 @@
     }
 
     .imagenes a {
+        color: white !important;
         max-width: 30.33%;
         /* Cada elemento ocupa un tercio del ancho disponible */
         box-sizing: border-box;
@@ -666,6 +675,7 @@
         padding: 1%;
         /* Espacio entre las imágenes */
         margin: 1%
+        
     }
 
 
@@ -775,6 +785,12 @@
 .breadcrumbs a:hover{
     color:  #2bb9e5;
 }
+.dropdown-menu .dropdown-item {
+    color: #2bb9e5 !important;
+    background-color: transparent !important;
+    border-color: #2bb9e5 !important;
+}
+
 
 
 

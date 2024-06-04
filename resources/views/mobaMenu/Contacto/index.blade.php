@@ -86,7 +86,7 @@
             <form method="POST" action="{{ route('enviar-correo') }}" id="contact-form">
                 @csrf
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" value="{{ auth()->check() ? auth()->user()->name : '' }}" required><br><br>
+                <input type="text" id="nombre" name="nombre" value="{{ auth()->check() ? auth()->user()->name : '' }}" required><br>
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" value="{{ auth()->check() ? auth()->user()->email : '' }}" required><br><br>
 
@@ -106,13 +106,13 @@
                 </ul><br>
 
                 <label for="numeroId">Numero Identificación</label>
-                <input type="text" id="numeroId" name="numeroId" maxlength="10" required><br><br>
+                <input type="text" id="numeroId" name="numeroId" maxlength="10" required><br>
                 <label for="telefono">Teléfono</label>
-                <input type="tel" id="telefono" name="telefono" maxlength="10" required><br><br>
+                <input type="tel" id="telefono" name="telefono" maxlength="10" required><br>
                 <label for="departamento">Departamento</label>
-                <input type="text" id="departamento" name="departamento" required><br><br>
+                <input type="text" id="departamento" name="departamento" required><br>
                 <label for="ciudad">Ciudad</label>
-                <input type="text" id="ciudad" name="ciudad" required><br><br>
+                <input type="text" id="ciudad" name="ciudad" required><br>
                 <label for="mensaje">Mensaje</label><br>
                 <textarea id="mensaje" name="mensaje" rows="5"></textarea><br><br>
 
@@ -239,9 +239,11 @@
     justify-content: center;
     height: 70vw;
     width: 100%;
-    margin-top: 5%;
+    
     
 }
+
+
 .active-link {
     position: relative;
     color:#2bb9e5;
@@ -260,9 +262,10 @@
 .box{
     height: 70%;
     width: 45%;
-    margin-top:5%;
+    margin-top:10%;
     margin-left: 5%;
-    overflow: auto;
+    
+   
     
 }
 .boxText{
@@ -272,18 +275,27 @@
 }
 
 h1{
-    color: white;
-    font-family: sans-serif !important;
+    color: white !important;
+        font-family: sans-serif !important;
+        font-size: 1.8vw !important;
+        margin-top: 14%;
+        margin-bottom: 8%;
 } 
 
 h3{
-    color: #BCCCE0;
-    font-size: 1.8vw;
+    color: white;
+    font-size: 1.3vw;
     font-family: sans-serif !important;
+    font-weight: normal;
+    text-align: justify !important;
+    margin-right: 10%;
+    margin-top: 3%;
 } 
 label{
-    color:  #BCCCE0 ;
+    color:  white !important;
     font-family: sans-serif !important;
+    font-size: 1.3vw;
+    font-weight: normal;
     
 }
 
@@ -333,6 +345,9 @@ textarea{
         flex-wrap: wrap;
         gap: 2px; 
         display: flex;
+        color: white !important;
+        font-weight: normal;
+        font-size: 1.3vw;
         
     }
 
@@ -359,6 +374,7 @@ textarea{
         cursor: pointer;
         width: 6vw;
         height: 2wv;
+        font-size: 0.8vw;
     }
     /* Estilo para cuando se pasa el mouse sobre la etiqueta */
     .option-label:hover {
@@ -406,5 +422,7 @@ input.circle {
     font-family: sans-serif !important;
     /* Y cualquier otro estilo que desees */
 }
+
+
 
 </style>

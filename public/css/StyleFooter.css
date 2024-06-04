@@ -59,8 +59,9 @@ hr {
     background-color: #3E3E3F !important;
 }
 p{
-    color: #C5CAE9 !important;
+    color: white !important;
     font-family: sans-serif !important;
+    font-weight: normal;
 }
 .textFooter{
     color: #C5CAE9 !important; 

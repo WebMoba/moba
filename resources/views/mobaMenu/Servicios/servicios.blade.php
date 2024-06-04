@@ -162,14 +162,12 @@
                                 <h2>y algo más</h2>
                             </div>
                             <div class="contenido-cuadro">
-                                <div class="textoC">
                                     <p>
                                         Nuestra empresa cuenta con servicios y productos adicionales que complementan
                                         y suman a cada uno de nuestros clientes, los cuales están elaborados con la
                                         mayor calidad
                                         y detalle posible, entregando en cada trabajo nuestro mejor
                                     </p>
-                                </div>
                             </div>
 
                         </div>
@@ -392,11 +390,13 @@
             font-size: 35px;
             font-weight: bold;
             font-family: sans-serif !important;
+            margin-bottom: 0;
         }
 
         .creatividad .t2 {
             font-size: 30px;
             font-family: sans-serif !important;
+            margin-bottom: 0;
         }
 
         .creatividad .t3 {
@@ -404,12 +404,14 @@
             color: #2bb9e5;
             font-weight: bold;
             font-family: sans-serif !important;
+            margin-bottom: 0;
         }
 
         .creatividad .t4 {
             font-size: 30px;
             font-weight: bold;
             font-family: sans-serif !important;
+            margin-bottom: 0;
         }
 
         .contenedor {
@@ -498,6 +500,7 @@
             align-items: center;
             justify-content: center;
             height: 100%;
+            width: 400px;
             padding-bottom: 3%;
         }
 
@@ -544,6 +547,9 @@
                 width: 350px; 
                 height: 300px; 
             }
+            .cuadro .botones {
+                width: 350px;
+            }
         }
 
         @media screen and (max-width: 900px) {
@@ -551,6 +557,9 @@
                 width: 300px; 
                 height: 250px; 
                 padding-bottom:20%; 
+            }
+            .cuadro .botones {
+                width: 300px;
             }
             .creatividad{
                 width: 200px; 
@@ -584,6 +593,10 @@
                 width: 250px; 
                 height: 200px; 
                 padding-bottom:20%; 
+            }
+            
+            .cuadro .botones {
+                width: 250px;
             }
             .creatividad{
                 width: 150px; 
@@ -620,6 +633,10 @@
         }
         
         @media screen and (max-width: 580px) {
+            
+            .contenido1{
+                margin-top: 15%;
+            }
             .contenido2{
                 flex-direction: column;
                 align-items: center;
@@ -632,6 +649,10 @@
                 width: 250px; 
                 height: 200px; 
                 padding-bottom:20%; 
+            }
+            
+            .cuadro .botones {
+                width: 250px;
             }
             .creatividad{
                 width: 300px; 

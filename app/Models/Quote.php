@@ -65,7 +65,7 @@ class Quote extends Model
 
     public function detailQuotes()
     {
-        return $this->hasMany('App\Models\DetailQuote', 'quotes_id', 'id');
+        return $this->hasMany(DetailQuote::class, 'quotes_id');
     }
 
     /**

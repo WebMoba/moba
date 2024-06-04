@@ -57,6 +57,7 @@ body::after {
     color: #fff;
     border-color: transparent !important;
     font-size: 1.3vw;
+    font-family: sans-serif !important
 }
 
 .btn-primary:hover {
@@ -194,16 +195,21 @@ body::after {
     }
 
     .textoPresentacion {
-        color: #BCCCE0;
+        color: white !important;
         margin-top: 30%;
-        font-size: 1vw;
+        font-size: 1.3vw;
         font-family: sans-serif !important;
+        font-weight: normal !important;
+        text-align: justify !important;
+        margin-left: 5%;
+        margin-right: 5%;
     }
 
     h4 {
-        color: #BCCCE0;
-        font-size: 3vw;
+        color: white;
+        font-size: 1.3vw;
         font-family: sans-serif !important;
+        margin-left: 3%;
     }
 
     h1 {

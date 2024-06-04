@@ -15,9 +15,10 @@
                             <span class="card-title">{{ __('Cotización Detallada') }}</span>
                         </div>
                         <div class="float-right">
-                            <a href="{{ route('pdf.quote-detail', ['findId' => $quote->id]) }}" class="btn btn-danger btn-sm float-right">
-                               <i class="bi bi-file-pdf-fill"></i><span class="tooltiptext">Pdf</span>
-                            </a>
+                            <button type="button" class="btn btn-danger ms-2 rounded" tooltip="tooltip" title="PDF" 
+                                    onclick="window.location.href='{{ route('quoteDetail.pdf', ['id' => $quote->id]) }}'">
+                                <i class="bi bi-file-pdf-fill"></i><span class="tooltiptext">Pdf</span>
+                            </button>
                         </div>
                     </div>
 

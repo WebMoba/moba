@@ -102,7 +102,7 @@
 
         <div class="box">
             <h1>Contacto</h1><br><br>
-            <h3>¡Somos el estudio de diseño y comunicación que buscabas!</h3>
+
             <h3>Nuestro deseo más grande es que te hallas enamorado de
                 cada pieza tanto como nosotros, si deseas una pieza personalizada, o adquirir alguna de las piezas que
                 se encuentran
@@ -121,7 +121,7 @@
                 @csrf
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre"
-                    value="{{ auth()->check() ? auth()->user()->name : '' }}" required><br><br>
+                    value="{{ auth()->check() ? auth()->user()->name : '' }}" required><br>
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email"
                     value="{{ auth()->check() ? auth()->user()->email : '' }}" required><br><br>
@@ -139,15 +139,15 @@
                         <input type="radio" id="option3" name="options" value="NIT" required class="circle">
                         <label for="option3" class="option-label">NIT</label>
                     </li>
-                </ul><br>
+                </ul>
                 <label for="numeroId">Numero Identificación</label>
-                <input type="text" id="numeroId" name="numeroId" maxlength="10" required><br><br>
+                <input type="text" id="numeroId" name="numeroId" maxlength="10" required><br>
                 <label for="telefono">Teléfono</label>
-                <input type="tel" id="telefono" name="telefono" maxlength="10" required><br><br>
+                <input type="tel" id="telefono" name="telefono" maxlength="10" required><br>
                 <label for="departamento">Departamento</label>
-                <input type="text" id="departamento" name="departamento" required><br><br>
+                <input type="text" id="departamento" name="departamento" required><br>
                 <label for="ciudad">Ciudad</label>
-                <input type="text" id="ciudad" name="ciudad" required><br><br>
+                <input type="text" id="ciudad" name="ciudad" required><br>
                 <label for="mensaje">Mensaje</label><br>
                 <textarea id="mensaje" name="mensaje" rows="5" @if (isset($_GET['cartInfo'])) readonly @endif>@php
                     $cartInfo = isset($_GET['cartInfo']) ? urldecode($_GET['cartInfo']) : '';
@@ -169,79 +169,89 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        @if(session('success'))
-            Swal.fire({
-                icon: 'success',
-                title: 'Éxito',
-                text: '{{ session('success') }}'
-            });
-        @endif
-
-        @if(session('error'))
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: '{{ session('error') }}'
-            });
-        @endif
-
-        // Obtén el formulario
-        const form = document.getElementById('contact-form');
-
-        // Añade el evento de envío
-        form.addEventListener('submit', function(event) {
-            event.preventDefault(); // Evita el envío del formulario
-
-            const isAuthenticated = {{ Auth::check() ? 'true' : 'false' }};
-
-            if (!isAuthenticated) {
+        document.addEventListener('DOMContentLoaded', function() {
+            @if (session('success'))
                 Swal.fire({
-                    title: 'Para enviar un mensaje, primero debes iniciar sesión o registrarte.',
-                    icon: 'info',
-                    confirmButtonText: 'Aceptar'
-                }).then(() => {
-                    window.location.href = "{{ route('login') }}";
+                    icon: 'success',
+                    title: 'Éxito',
+                    text: '{{ session('success') }}'
                 });
-            } else {
-                // Enviar el formulario usando Fetch API para asegurar que se envíe correctamente
-                const formData = new FormData(form);
-                fetch(form.action, {
-                    method: form.method,
-                    body: formData,
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Éxito',
-                            text: 'Tu mensaje ha sido enviado.'
-                        }).then(() => {
-                            form.reset(); // Opcional: resetear el formulario después del envío
-                        });
-                    } else {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error',
-                            text: 'Hubo un problema al enviar tu mensaje.'
-                        });
-                    }
-                })
-                .catch(data => {
-                        Swal.fire({
-                            icon: 'success',
+            @endif
+
+            @if (session('error'))
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: '{{ session('error') }}'
+                });
+            @endif
+
+            // Obtén el formulario
+            const form = document.getElementById('contact-form');
+
+            // Añade el evento de envío
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Evita el envío del formulario
+
+                const isAuthenticated = {{ Auth::check() ? 'true' : 'false' }};
+
+                if (!isAuthenticated) {
+                    Swal.fire({
+                        title: 'Para enviar un mensaje, primero debes iniciar sesión o registrarte.',
+                        icon: 'info',
+                        confirmButtonText: 'Aceptar'
+                    }).then(() => {
+                        window.location.href = "{{ route('login') }}";
+                    });
+                } else {
+                    // Enviar el formulario usando Fetch API para asegurar que se envíe correctamente
+                    const formData = new FormData(form);
+                    fetch(form.action, {
+                            method: form.method,
+                            body: formData,
+                            headers: {
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                            }
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Éxito',
+                                    text: 'Tu mensaje ha sido enviado.'
+                                }).then(() => {
+                                    form
+                                .reset(); // Opcional: resetear el formulario después del envío
+                                });
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error',
+                                    text: 'Hubo un problema al enviar tu mensaje.'
+                                });
+                            }
+                        })
+                        .catch(data => {
+                            Swal.fire({
+                                icon: 'success',
                                 title: 'Éxito',
                                 text: 'Tu mensaje ha sido enviado.'
-                    });
-                });
-            }
+                            });
+                        });
+                }
+            });
         });
-    });
-</script>
+    </script>
+    <script>
+        document.querySelector('.dropdown').addEventListener('mouseenter', function() {
+            this.querySelector('.dropdown-menu').classList.add('show');
+        });
+
+        document.querySelector('.dropdown').addEventListener('mouseleave', function() {
+            this.querySelector('.dropdown-menu').classList.remove('show');
+        });
+    </script>
     @include('partials.footerMoba')
 
 </body>
@@ -255,7 +265,7 @@
         justify-content: center;
         height: 70vw;
         width: 100%;
-        margin-top: 5%;
+
 
     }
 
@@ -310,6 +320,7 @@
 
         width: 45hw;
         height: 50hw;
+        font-size: 1.3vw;
     }
 
 
@@ -353,12 +364,13 @@
         flex-wrap: wrap;
         gap: 2px;
         display: flex;
+        color: white !important;
 
     }
 
     /* Estilo para cada opción */
     .option-item {
-        width: 7.3vw;
+        width: 6.8vw;
         font-size: 0.7vw;
         margin-bottom: 5px;
         text-align: center;
@@ -377,8 +389,8 @@
         display: inline-block;
         padding: 8px 12px;
         cursor: pointer;
-            width: 6vw;
-            height: 2wv;
+        width: 6vw;
+        height: 2wv;
     }
 
     /* Estilo para cuando se pasa el mouse sobre la etiqueta */
