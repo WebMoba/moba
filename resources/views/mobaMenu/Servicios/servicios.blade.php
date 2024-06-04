@@ -317,6 +317,15 @@
             padding: 1%;
             font-family: sans-serif !important;
         }
+        .texto::after {
+            content: '';
+            position: absolute;
+            top: 6%;
+            left: -28px;
+            width: 5px;
+            height: 80%;
+            background-color: #36baec;
+        }
 
         .texto:not(:last-child)::after {
             content: '';

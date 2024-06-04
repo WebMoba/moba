@@ -373,6 +373,9 @@
             margin-top: 10%;
             margin-left: 5%;
         }
+        .txt3{
+            width: 60%;
+        }
 
         .active-link {
             position: relative;
