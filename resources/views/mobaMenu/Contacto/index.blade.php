@@ -264,6 +264,7 @@
     width: 45%;
     margin-top:10%;
     margin-left: 5%;
+    overflow: auto !important;
     
    
     
@@ -272,6 +273,7 @@
     width: 95%;
     height: 95%;
     margin-top: 2%;
+    overflow: hidden;
 }
 
 h1{
@@ -303,6 +305,8 @@ label{
 
 width: 45hw;
 height: 50hw;
+
+
 }    
 form{
     margin-top: 10%;
