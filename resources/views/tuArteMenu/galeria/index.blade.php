@@ -252,7 +252,6 @@
             </div>
         </div>
     </div>
-    //SCRIPT CARRO 1
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const cards = document.querySelectorAll('.card-link');
@@ -405,7 +404,6 @@
             loadCart();
         });
     </script>
-    //SCRIPT CARRO 2
     <script>
         function clearMinValue(input) {
             if (input.value === "1") {
@@ -448,7 +446,6 @@
             });
         });
     </script>
-    //SCRIPT CARRO 3
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             document.getElementById('realizarPedido').addEventListener('click', function() {
