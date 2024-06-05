@@ -316,6 +316,17 @@
                 handleProductClick(event);
             });
 
+            let inactivityTimer;
+
+            const resetInactivityTimer = () => {
+                clearTimeout(inactivityTimer);
+                inactivityTimer = setTimeout(clearCart, 20 * 60 * 1000); // 20 minutes
+            }
+
+            window.onload = resetInactivityTimer;
+            document.onmousemove = resetInactivityTimer;
+            document.onkeypress = resetInactivityTimer;
+
             loadCart();
         });
     </script>
