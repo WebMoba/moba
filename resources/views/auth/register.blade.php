@@ -89,15 +89,15 @@
                             <form method="POST" action="{{ route('register.perform') }}">
                                 @csrf
                                 <div class="flex flex-col mb-3">
-                                    <input type="text" name="name" class="form-control" placeholder="Name" aria-label="Name" value="{{ old('Nombre de usuario') }}" >
+                                    <input type="text" name="name" class="form-control" placeholder="Nombre" aria-label="Name" value="{{ old('Nombre de usuario') }}" >
                                     @error('name') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Email" value="{{ old('Email') }}" >
+                                    <input type="email" name="email" class="form-control" placeholder="Correo" aria-label="Email" value="{{ old('Email') }}" >
                                     @error('email') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Contraseña">
+                                    <input type="password" name="password" class="form-control" placeholder="Contraseña" aria-label="Contraseña">
                                     @error('password') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-check form-check-info text-start">
