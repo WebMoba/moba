@@ -190,7 +190,11 @@ class PersonController extends Controller
         // Validar la solicitud
         $request->validate([
             'rol' => ['required', Rule::in(['Administrador', 'Cliente', 'Proveedor'])], // Asegúrate de que los valores de 'rol' sean válidos
-            'id_card' => 'required',
+            'id_card' => [
+                'required',
+                'max:10', // Máximo 10 caracteres
+                Rule::unique('people', 'id_card')->ignore($person->id),
+            ],
             'identification_type' => ['required', Rule::in(['cedula', 'cedula Extranjeria', 'NIT'])],
             'addres' => 'required',
             'phone_number' => 'required',
@@ -204,6 +208,7 @@ class PersonController extends Controller
 
         // Actualizar los datos de la persona
         $person->update([
+            'id_card' => $request->input('id_card'),
             'name' => $request->input('user_name'),
             'addres' => $request->input('addres'),
             'team_works_id' => $request->input('team_works_id'),

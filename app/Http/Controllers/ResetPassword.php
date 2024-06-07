@@ -29,7 +29,7 @@ class ResetPassword extends Controller
 
         if ($user) {
             $this->notify(new ForgotPassword($user->id));
-            return back()->with('succes', 'An email was send to your email address');
+            return back()->with('succes', 'Se ha enviado un correo para que puedas recuperar tu contraseña');
         }
     }
 }

@@ -2612,6 +2612,7 @@ progress {
 }
 
 .form-control {
+  margin-bottom: 16px;
   display: block;
   width: 100%;
   padding: 0.5rem 0.75rem;
@@ -8405,6 +8406,7 @@ textarea.form-control-lg {
 
 .mb-0 {
   margin-bottom: 0 !important;
+  color: white;
 }
 
 .mb-1 {
@@ -9015,6 +9017,7 @@ textarea.form-control-lg {
 .py-4 {
   padding-top: 1.5rem !important;
   padding-bottom: 1.5rem !important;
+  background-color: black !important;
 }
 
 .py-5 {
@@ -9461,7 +9464,7 @@ textarea.form-control-lg {
 }
 
 .bg-primary {
-  background-color: #26BDEF !important;
+  background-color: #3E3E3F !important;
 }
 
 .bg-secondary {
@@ -9949,7 +9952,7 @@ textarea.form-control-lg {
 }
 
 .min-height-300 {
-  min-height: 300px !important;
+  min-height: 90px !important;
 }
 
 .min-height-400 {
@@ -19616,9 +19619,11 @@ textarea.form-control-lg {
 }
 .card {
   box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15);
+  border: 0.5px solid white;
 }
 .card .card-header {
   padding: 1.5rem;
+  background-color: black;
 }
 .card .card-body {
   font-family: "Open Sans", sans-serif;
@@ -20105,6 +20110,7 @@ textarea.form-control-lg {
   align-items: center;
   background-size: cover;
   background-position: 50%;
+  background-color: black;
 }
 .page-header .container {
   z-index: 1;
@@ -20316,6 +20322,7 @@ textarea.form-control-lg {
 .form-switch .form-check-label {
   margin-bottom: 0;
   margin-left: 0.5rem;
+  color: white;
 }
 
 .form-select {
@@ -22934,6 +22941,7 @@ html * {
 body {
   font-weight: 400;
   line-height: 1.6;
+  background-color: black;
 }
 
 h1, .h1 {
@@ -23051,6 +23059,7 @@ p, .p {
 
 .text-sm {
   font-size: 0.875rem !important;
+  color: white;
 }
 
 .text-xs {

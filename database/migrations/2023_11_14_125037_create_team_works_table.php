@@ -15,9 +15,12 @@ return new class extends Migration
     {
         Schema::create('team_works', function (Blueprint $table) {
             $table->integer('id', true);
+            $table->text('name', 10)->nullable();
+            $table->binary('image')->nullable();
             $table->string('specialty', 65)->nullable();
             $table->text('assigned_work')->nullable();
             $table->date('assigned_date')->nullable();
+            $table->text('description', 1000)->nullable();
             $table->boolean('disable')->default(false);
             $table->timestamps();
             $table->integer('projects_id')->index('fk_team_works_projects1_idx');

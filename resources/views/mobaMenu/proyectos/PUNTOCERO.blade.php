@@ -17,17 +17,20 @@
 
     <nav class="navbar">
         <!--- inicio breaddrums-->
-    <div class="breadcrums">
-        @include('helpers.breadcrumbs', ['breadcrumbs' => [
-        ['url' => route('welcome'), 'label' => 'Bienvenido /'],
-        ['url' => route('mobaMenu.index'), 'label' => 'Moba /'],
-        ['url' => route('mobaMenu.proyectos.index'), 'label' => 'Proyectos /'],
-        ['url' => route('mobaMenu.proyectos.PUNTOCERO'), 'label' => 'ComidasPuntoCero'],]])
+        <div class="breadcrums">
+            @include('helpers.breadcrumbs', [
+                'breadcrumbs' => [
+                    ['url' => route('welcome'), 'label' => 'Bienvenido /'],
+                    ['url' => route('mobaMenu.index'), 'label' => 'Moba /'],
+                    ['url' => route('mobaMenu.proyectos.index'), 'label' => 'Proyectos /'],
+                    ['url' => route('mobaMenu.proyectos.PUNTOCERO'), 'label' => 'ComidasPuntoCero'],
+                ],
+            ])
         </div>
         <div class="inicioRegistro"> @include('partials.inicio')</div>
-<!--- final breaddrums-->
+        <!--- final breaddrums-->
         <div class="container-fluid">
-        <a href="{{ route('mobaMenu.index')}}">
+            <a href="{{ route('mobaMenu.index') }}">
                 <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba"></a>
             <div class="navbar-buttons">
                 <div class="dropdown">
@@ -37,9 +40,12 @@
                             Servicios
                         </button></a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="{{route('mobaMenu.Servicios.servicios')}}">Identidad Corporativa</a></li>
-                        <li><a class="dropdown-item" href="{{route('mobaMenu.Servicios.servicios')}}">Avisos y Publicidad para interiores</a></li>
-                        <li><a class="dropdown-item" href="{{route('mobaMenu.Servicios.servicios')}}">POP y álgo más</a></li>
+                        <li><a class="dropdown-item" href="{{ route('mobaMenu.Servicios.servicios') }}">Identidad
+                                Corporativa</a></li>
+                        <li><a class="dropdown-item" href="{{ route('mobaMenu.Servicios.servicios') }}">Avisos y
+                                Publicidad para interiores</a></li>
+                        <li><a class="dropdown-item" href="{{ route('mobaMenu.Servicios.servicios') }}">POP y álgo
+                                más</a></li>
                     </ul>
                 </div>
                 <a href="{{ route('mobaMenu.index') }}" class="btn btn-primary">Nosotros</a>
@@ -448,24 +454,109 @@
             }
 
             .breadcrums {
-    display: flex;
-}
+                display: flex;
+            }
 
-.breadcrums a {
-    text-decoration: none;
-    color: white;
-    font-size: 0.8vw;
-    margin-right: 2px; /* Esto agrega un espacio entre los enlaces */
-}
+            .breadcrums a {
+                text-decoration: none;
+                color: white;
+                font-size: 0.8vw;
+                margin-right: 2px;
+                /* Esto agrega un espacio entre los enlaces */
+            }
 
-.breadcrumbs li {
-    display: inline;
-    padding: 0;
-}
+            .breadcrumbs li {
+                display: inline;
+                padding: 0;
+            }
 
-.breadcrumbs a:hover{
-    color:  #2bb9e5;
-}
+            .breadcrumbs a:hover {
+                color: #2bb9e5;
+            }
+
+            @media (max-width: 1200px) {
+
+                .title-container .big-title,
+                .title-container .big-title1 {
+                    font-size: 60px;
+                }
+            }
+
+            @media (max-width: 992px) {
+
+                .title-container .big-title,
+                .title-container .big-title1 {
+                    font-size: 50px;
+                }
+
+                .titulo,
+                .galeria {
+                    position: relative;
+                    width: 100%;
+                    left: 0;
+                    top: 0;
+                }
+
+                .carousel-img {
+                    max-height: 300px;
+                    min-height: 300px;
+                }
+            }
+
+            @media (max-width: 768px) {
+
+                .title-container .big-title,
+                .title-container .big-title1 {
+                    font-size: 40px;
+                    text-align: center;
+                    width: 100%;
+                    padding: 0;
+                    left: 0;
+                }
+
+                .titulo,
+                .galeria {
+                    position: relative;
+                    width: 100%;
+                    left: 0;
+                    top: 0;
+                }
+
+                .carousel-img {
+                    max-height: 250px;
+                    min-height: 250px;
+                }
+            }
+
+            @media (max-width: 576px) {
+
+                .title-container .big-title,
+                .title-container .big-title1 {
+                    font-size: 30px;
+                    text-align: center;
+                    width: 100%;
+                    padding: 0;
+                    left: 0;
+                }
+
+                .titulo,
+                .galeria {
+                    position: relative;
+                    width: 100%;
+                    left: 0;
+                    top: 0;
+                }
+
+                .carousel-img {
+                    max-height: 200px;
+                    min-height: 200px;
+                }
+
+                .botones {
+                    position: static;
+                    text-align: center;
+                }
+            }
         </style>
         <script>
             function anteriorImagen() {

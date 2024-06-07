@@ -72,12 +72,10 @@
                         <div
                             class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
                             <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden"
-                                style="background-image: url('{{ asset('Imagenes/FondoPrueba.png') }}'); background-size: cover;">
+                                style="background-image: url('https://scontent.fsvz2-1.fna.fbcdn.net/v/t39.30808-6/298667640_588330729387141_5159845902066760305_n.png?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGuYIikel_pb_-8pvPPRnYifkC76S24p-h-QLvpLbin6L6sZaqdoocCug6P5mMGnW-qsqiryrR6IGkP2uXVN9b_&_nc_ohc=pYs4hTP0CSYQ7kNvgFt-owT&_nc_ht=scontent.fsvz2-1.fna&oh=00_AYCKoYww5vBgeSzLxb5vRwY8JF_S_QPrFDlhECm-ieQqaQ&oe=66670BC7'); background-size: cover;">
                                 <span class="mask bg-gradient-primary opacity-6"></span>
-                                <h4 class="mt-5 text-white font-weight-bolder position-relative">"La atención es la nueva
-                                    moneda"</h4>
-                                <p class="text-white position-relative">Cuanto más fácil parece escribir, más esfuerzo ha
-                                    dedicado el escritor al proceso.</p>
+                                <h1 class="mt-5 text-white font-weight-bolder position-relative">MOBA</h1>
+                                <h4 class="mt-5 text-white font-weight-bolder position-relative">"Buena Onda"</h4>
                             </div>
                         </div>
                     </div>

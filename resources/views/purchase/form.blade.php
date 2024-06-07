@@ -35,7 +35,7 @@
                 [
                     'class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''),
                     'required',
-                    'placeholder' => 'Name',
+                    'placeholder' => 'Nombre',
                     'id' => 'name',
                 ],
             ) }}
@@ -91,13 +91,13 @@
                     </th>
                     <th>
                         <div class="form-group">
-                            {{ Form::text('quantity', $detailPurchase->quantity, ['id' => 'quantity', 'class' => 'form-control' . ($errors->has('quantity') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Quantity']) }}
+                            {{ Form::text('quantity', $detailPurchase->quantity, ['id' => 'quantity', 'class' => 'form-control' . ($errors->has('quantity') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Cantidad']) }}
                             {!! $errors->first('quantity', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
                     </th>
                     <th>
                         <div class="form-group">
-                            {{ Form::text('price_unit', $detailPurchase->price_unit, ['id' => 'price_unit', 'class' => 'form-control' . ($errors->has('price_unit') ? ' is-invalid' : ''), 'placeholder' => 'Price Unit']) }}
+                            {{ Form::text('price_unit', $detailPurchase->price_unit, ['id' => 'price_unit', 'class' => 'form-control' . ($errors->has('price_unit') ? ' is-invalid' : ''), 'placeholder' => 'Precio Unitario']) }}
                             {!! $errors->first('price_unit', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
                     </th>
@@ -110,7 +110,7 @@
                     </th>
                     <th>
                         <div class="form-group">
-                            {{ Form::text('discount', $detailPurchase->discount, ['id' => 'discount', 'class' => 'form-control' . ($errors->has('discount') ? ' is-invalid' : ''), 'placeholder' => 'Discount']) }}
+                            {{ Form::text('discount', $detailPurchase->discount, ['id' => 'discount', 'class' => 'form-control' . ($errors->has('discount') ? ' is-invalid' : ''), 'placeholder' => 'Descuento']) }}
                             {!! $errors->first('discount', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
                     </th>

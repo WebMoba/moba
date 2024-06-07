@@ -1,6 +1,3 @@
-
-
-    
 body {
     position: relative;
     /* Aseguramos que el body tenga una posición relativa para que el ::after funcione correctamente */
@@ -35,7 +32,7 @@ body::after {
     top: 0;
     width: 100vw;
     z-index: 1000;
-    
+
 }
 
 .navbar-buttons {
@@ -71,101 +68,103 @@ body::after {
     background-color: transparent !important;
     border-color: transparent !important;
 }
-    
-    .dropdown-menu .dropdown-item:hover {
-        background-color: transparent !important;
-        border-color: transparent !important;
-        border: none;
-        text-shadow: 0 0 5px #f80008;
-    }
 
-    .dropdown-menu .dropdown-item:hover {
-        background-color: rgba(255, 0, 0, 0.274) !important;
-        /* Cambia el color de fondo al pasar el cursor sobre las opciones del menú */
-    }
+.dropdown-menu .dropdown-item:hover {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    border: none;
+    text-shadow: 0 0 5px #f80008;
+}
 
-    .dropdown-item:hover {
-        color: #f80008 !important;
-    }
+.dropdown-menu .dropdown-item:hover {
+    background-color: rgba(255, 0, 0, 0.274) !important;
+    /* Cambia el color de fondo al pasar el cursor sobre las opciones del menú */
+}
 
-    .dropdown-menu {
-        background-color: transparent !important;
-        border-color: #73a3b6 !important;
-    }
+.dropdown-item:hover {
+    color: #f80008 !important;
+}
 
-    .dropdown-menu .dropdown-item {
-        color: #ffffff !important;
-        background-color: transparent !important;
-        border-color: #f80008 !important;
-    }
+.dropdown-menu {
+    background-color: transparent !important;
+    border-color: #73a3b6 !important;
+}
 
-    .dropdown-menu .dropdown-divider {
-        border-top: 1px solid #f80008;
-    }
+.dropdown-menu .dropdown-item {
+    color: #ffffff !important;
+    background-color: transparent !important;
+    border-color: #f80008 !important;
+}
 
-    .vertical-line {
-        position: fixed;
-        bottom: 0;
-        width: 60px;
-        display: flex;
-        flex-direction: column;
-        /* Alinea los elementos verticalmente */
-        justify-content: center;
-        /* Centra los elementos verticalmente */
-        align-items: center;
-        /* Centra los elementos horizontalmente */
-    }
-    
-    .left-line {
-        top: 0;
-        left: 0;
-    }
-    
-    .right-line {
-        top: 0;
-        right: 0;
-    }
-    
-    .vertical-line hr {
-        margin: 5px 0;
-        /* Ancho de las líneas */
-        height: 60px;
-        /* Altura de las líneas */
-        border-radius: 6px;
-        /* Agrega este estilo para redondear los bordes */
-    }
-    
-    .linea1 {
-        border: none;
-        border-right: 3px solid #BCCCE0;
-        /* Agrega una unidad de medida (px) */
-    }
-    
-    .linea2 {
-        border: none;
-        border-left: 3px solid #f80008;
-        /* Agrega una unidad de medida (px) */
-    }
-    
-    .vertical-line.left-line i {
-        color: #BCCCE0;
-        /* Color para los íconos de la izquierda */
-    }
-    
-    .vertical-line.right-line i {
-        color: #ff0008;
-        /* Color para los íconos de la derecha */
-    }
-    
+.dropdown-menu .dropdown-divider {
+    border-top: 1px solid #f80008;
+}
+
+.vertical-line {
+    position: fixed;
+    bottom: 0;
+    width: 60px;
+    display: flex;
+    flex-direction: column;
+    /* Alinea los elementos verticalmente */
+    justify-content: center;
+    /* Centra los elementos verticalmente */
+    align-items: center;
+    /* Centra los elementos horizontalmente */
+}
+
+.left-line {
+    top: 0;
+    left: 0;
+}
+
+.right-line {
+    top: 0;
+    right: 0;
+}
+
+.vertical-line hr {
+    margin: 5px 0;
+    /* Ancho de las líneas */
+    height: 60px;
+    /* Altura de las líneas */
+    border-radius: 6px;
+    /* Agrega este estilo para redondear los bordes */
+}
+
+.linea1 {
+    border: none;
+    border-right: 3px solid #BCCCE0;
+    /* Agrega una unidad de medida (px) */
+}
+
+.linea2 {
+    border: none;
+    border-left: 3px solid #f80008;
+    /* Agrega una unidad de medida (px) */
+}
+
+.vertical-line.left-line i {
+    color: #BCCCE0;
+    /* Color para los íconos de la izquierda */
+}
+
+.vertical-line.right-line i {
+    color: #ff0008;
+    /* Color para los íconos de la derecha */
+}
+
 
 /*INICIO ESTILOS EDWIN */
 .title-container {
     text-align: center;
-    margin-top: 80px;/*espacios entre columnas */
+    margin-top: 80px;
+    /*espacios entre columnas */
 }
 
 .big-title {
-    color: #36baec;;
+    color: #36baec;
+    ;
     font-size: 3em;
     margin-top: 10%;
     font-family: sans-serif !important;
@@ -215,26 +214,34 @@ body::after {
 .image-container {
     position: relative;
     overflow: hidden;
-    padding-bottom: 75%; /* Proporción para mantener la misma altura */
-    margin: 20px 0 0 0 ; /* Márgenes iguales en los cuatro lados */
+    padding-bottom: 75%;
+    /* Proporción para mantener la misma altura */
+    margin: 20px 0 0 0;
+    /* Márgenes iguales en los cuatro lados */
 }
 
 .image-container img {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%; /* Ajustamos el ancho para cubrir todo el espacio */
-    height: 100%; /* Ajustamos la altura para cubrir todo el espacio */
-    object-fit: cover; /* Ajusta la imagen para cubrir todo el espacio */
+    width: 100%;
+    /* Ajustamos el ancho para cubrir todo el espacio */
+    height: 100%;
+    /* Ajustamos la altura para cubrir todo el espacio */
+    object-fit: cover;
+    /* Ajusta la imagen para cubrir todo el espacio */
 }
 
 .overlay {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%; /* Ajustamos el ancho para cubrir todo el espacio */
-    height: 100%; /* Ajustamos la altura para cubrir todo el espacio */
-    background-color: rgba(0, 0, 255, 0.7); /* Azul semitransparente */
+    width: 100%;
+    /* Ajustamos el ancho para cubrir todo el espacio */
+    height: 100%;
+    /* Ajustamos la altura para cubrir todo el espacio */
+    background-color: rgba(0, 0, 255, 0.7);
+    /* Azul semitransparente */
     opacity: 0;
     transition: opacity 0.3s ease;
     display: flex;
@@ -254,8 +261,60 @@ body::after {
     font-family: sans-serif !important;
 }
 
-.container-fluid{
+.container-fluid {
     padding: 0 !important;
 }
+@media (max-width: 1200px) {
+    .big-title {
+        font-size: 2.5em;
+    }
+    .txts3 {
+        font-size: 22px;
+    }
+}
 
+@media (max-width: 992px) {
+    .big-title {
+        font-size: 2.2em;
+    }
+    .txts3 {
+        font-size: 20px;
+    }
+}
 
+@media (max-width: 768px) {
+    .big-title {
+        font-size: 2em;
+    }
+    .txts3 {
+        font-size: 18px;
+    }
+    .vertical-line {
+        display: none; /* Oculta las líneas verticales en dispositivos móviles */
+    }
+}
+
+@media (max-width: 576px) {
+    .big-title {
+        font-size: 1.8em;
+    }
+    .txts3 {
+        font-size: 16px;
+    }
+    .navbar-buttons {
+        flex-direction: column; /* Cambia la dirección de los botones en la barra de navegación */
+        align-items: stretch; /* Alinea los botones de forma completa */
+        padding-top: 10px; /* Espaciado superior de los botones */
+    }
+    .navbar-img-left,
+    .navbar-img-right {
+        max-width: 100px; /* Tamaño máximo ajustado para dispositivos móviles */
+    }
+    .dropdown-menu {
+        position: relative; /* Ajuste de posición del menú desplegable */
+        left: auto;
+        transform: none;
+        min-width: 100%; /* Ancho completo del menú desplegable */
+        box-shadow: none; /* Eliminar sombra en pantallas pequeñas */
+    }
+}
