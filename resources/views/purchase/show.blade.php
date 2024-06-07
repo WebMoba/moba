@@ -28,6 +28,10 @@
                         <table class="table">
                             <tbody>
                                 <tr>
+                                    <th>Compra #:</th>
+                                    <td>{{ $purchase->id     }}</td>
+                                </tr>
+                                <tr>
                                     <th>Nombre del proveedor:</th>
                                     <td>{{ $purchase->user->name }}</td>
                                 </tr>

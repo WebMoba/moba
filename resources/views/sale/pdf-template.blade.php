@@ -29,6 +29,7 @@
             <thead>
                 <tr>
                     <th>N°</th>
+                    <th>Venta #</th>
                     <th>Nombre Cliente</th>
                     <th>Id Persona</th>
                     <th>Fecha venta</th>
@@ -41,6 +42,7 @@
                    
                     <tr>
                         <td>{{ ++$i }}</td>
+                        <td>{{ $sale->id }}</td>
                         <td>{{ $sale->name }}</td>
                         <td>{{ $sale->person->id_card }}</td>
                         <td>{{ $sale->date }}</td>

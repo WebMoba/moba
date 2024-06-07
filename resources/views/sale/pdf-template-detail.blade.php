@@ -24,6 +24,10 @@
         <table class="table">
             <tbody>
                 <tr>
+                    <th>Venta #:</th>
+                    <td>{{ $sale->id }}</td>
+                </tr>
+                <tr>
                     <th>Nombre del cliente:</th>
                     <td>{{ $sale->name }}</td>
                 </tr>

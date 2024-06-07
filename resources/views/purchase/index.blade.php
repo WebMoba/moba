@@ -54,6 +54,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
+                                        <th> Compra # </th>
                                         <th>Nombre del proveedor</th>
                                         <th>Documento del proveedor</th>
                                         <th>Valor de la compra</th>
@@ -71,7 +72,7 @@
                                         @foreach ($purchases as $purchase)
                                             <tr>
                                                 <td>{{ ++$i }}</td>
-
+                                                <td>{{ $purchase->id }}</td>
                                                 <td>{{ $purchase->user->name }}</td>
                                                 <td>{{ $purchase->person->id_card }}</td>
                                                 <td>{{ $purchase->total }}</td>

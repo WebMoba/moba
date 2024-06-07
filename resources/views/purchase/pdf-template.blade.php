@@ -32,6 +32,7 @@
             <thead>
                 <tr>
                     <th>No</th>
+                    <th>Compra #</th>
                     <th>Nombre de compra</th>
                     <th>Fecha de compra</th>
                     <th>Documento del proveedor</th>
@@ -53,6 +54,7 @@
 
                     <tr>
                         <td>{{ ++$i }}</td>
+                        <td>{{ $purchase->id }}</td>
                         <td>{{ $purchase->name }}</td>
                         <td>{{ $purchase->date }}</td>
                         <td>{{ $purchase->person->id_card ?: 'N/A' }} </td>

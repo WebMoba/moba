@@ -60,6 +60,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>N°</th>
+                                        <th>venta #</th>
                                         <th>Nombre Cliente</th>
                                         <th>Id Persona</th>
                                         <th>Fecha venta</th>
@@ -75,6 +76,7 @@
                                         @foreach ($sales as $sale)
                                             <tr>
                                                 <td>{{ ++$i }}</td>
+                                                <td>{{ $sale->id }}</td>
                                                 <td>{{ $sale->name }}</td>
                                                 <td>{{ $sale->person->id_card }}</td>
                                                 <td>{{ $sale->date }}</td>
