@@ -2612,6 +2612,7 @@ progress {
 }
 
 .form-control {
+  margin-bottom: 16px;
   display: block;
   width: 100%;
   padding: 0.5rem 0.75rem;
@@ -19618,7 +19619,7 @@ textarea.form-control-lg {
 }
 .card {
   box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15);
-  border: 1px solid white;
+  border: 0.5px solid white;
 }
 .card .card-header {
   padding: 1.5rem;
