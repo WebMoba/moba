@@ -16,9 +16,13 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->integer('id', true);
             $table->string('name', 50)->nullable();
-            $table->string('description', 65)->nullable();
+            $table->string('description', 600)->nullable();
             $table->date('date_start')->nullable();
             $table->date('date_end')->nullable();
+            $table->binary('logo');
+            $table->binary('imageOne')->nullable();
+            $table->binary('imageTwo')->nullable();
+            $table->binary('imageThree')->nullable();
             $table->boolean('disable')->default(false);
             $table->enum('status', ['en curso', 'finalizado', 'pausado', 'pendiente'])->nullable();
             $table->timestamps();
