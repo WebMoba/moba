@@ -213,11 +213,47 @@
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+
+            function loadCart() {
+                const cartData = JSON.parse(localStorage.getItem('cart') || '[]');
+                cartData.forEach(item => addCartItem(item.productId, item.productName, item.productPrice, item
+                    .productImage, item.productQuantity));
+                updateTotal();
+            }
+
+            function clearCart() {
+                localStorage.removeItem('cart');
+                const cartItems = document.getElementById('cartItems');
+                while (cartItems.firstChild) {
+                    cartItems.removeChild(cartItems.firstChild);
+                }
+                updateTotal();
+            }
+
+            function updateTotal() {
+                const cartItems = document.getElementById('cartItems');
+                const totalPriceElement = document.getElementById('totalPrice');
+                const cartBadge = document.querySelector('.cart-badge');
+                let total = 0;
+                const cartRows = cartItems.querySelectorAll('tr');
+                cartRows.forEach(row => {
+                    const price = parseFloat(row.querySelector('.product-price').textContent.replace('$',
+                        ''));
+                    const quantity = parseInt(row.querySelector('.product-quantity').value);
+                    total += price * quantity;
+                });
+                totalPriceElement.textContent = Math.round(total);
+                cartBadge.textContent = cartRows.length;
+                cartBadge.classList.toggle('active', cartRows.length > 0);
+            }
+
             @if (session('success'))
                 Swal.fire({
                     icon: 'success',
                     title: 'Éxito',
                     text: '{{ session('success') }}'
+                }).then(() => {
+                    clearCart(); // Limpiar el carrito cuando se muestra la alerta de éxito
                 });
             @endif
 
@@ -265,7 +301,8 @@
                                     text: 'Tu mensaje ha sido enviado.'
                                 }).then(() => {
                                     form.reset(); // Resetear el formulario después del envío
-                                    document.getElementById('mensaje').value = ''; // Limpiar el campo de mensaje
+                                    document.getElementById('mensaje').value =
+                                        ''; // Limpiar el campo de mensaje
                                     clearCart(); // Limpiar el carrito
                                 });
                             } else {
@@ -283,12 +320,14 @@
                                 text: 'Tu mensaje ha sido enviado.'
                             }).then(() => {
                                 form.reset(); // Resetear el formulario después del envío
-                                document.getElementById('mensaje').value = ''; // Limpiar el campo de mensaje
+                                document.getElementById('mensaje').value =
+                                    ''; // Limpiar el campo de mensaje
                                 clearCart(); // Limpiar el carrito
                             });
                         });
                 }
             });
+            loadCart();
         });
     </script>
     <script>
@@ -564,8 +603,8 @@
         width: 100%;
         margin-top: 7%;
 
-        }
-     
+    }
+
 
     .active-link {
         position: relative;
@@ -643,8 +682,8 @@
         background-color: #3E3E3F;
         color: white;
         height: 4vw;
-    overflow: auto;
-    font-family: sans-serif !important;
+        overflow: auto;
+        font-family: sans-serif !important;
     }
 
     #submit {
@@ -821,12 +860,12 @@
         cursor: pointer;
         color: red;
     }
-    #asunto{
+
+    #asunto {
         font-size: 1.1vw;
-    background-color: grey;
-    color: white;
-    font-family: sans-serif !important;
+        background-color: grey;
+        color: white;
+        font-family: sans-serif !important;
 
-}
-
+    }
 </style>
