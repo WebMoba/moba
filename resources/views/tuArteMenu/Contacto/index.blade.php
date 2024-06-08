@@ -485,7 +485,12 @@
             });
 
             cartButton.addEventListener('click', function(event) {
-                handleProductClick(event);
+                if (cartItems.children.length === 0) {
+                    event.preventDefault();
+                    window.location.href = "{{ route('tuArteMenu.servicios.Accesorios.index') }}";
+                } else {
+                    handleProductClick(event);
+                }
             });
 
             let inactivityTimer;
