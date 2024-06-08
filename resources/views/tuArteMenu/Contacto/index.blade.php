@@ -562,7 +562,7 @@
         justify-content: center;
         height: 70vw;
         width: 100%;
-        margin-top: 7%;
+        margin-top: 6%;
 
         }
      
