@@ -88,7 +88,7 @@
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" value="{{ auth()->check() ? auth()->user()->name : '' }}" required><br>
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" value="{{ auth()->check() ? auth()->user()->email : '' }}" required><br><br>
+                <input type="email" id="email" name="email" value="{{ auth()->check() ? auth()->user()->email : '' }}" required><br>
 
                 <ul class="option-listOne">Tipo Identificación
                     <li class="option-item">
@@ -103,7 +103,7 @@
                         <input type="radio" id="option3" name="options" value="NIT" required class="circle">
                         <label for="option3" class="option-label">NIT</label>
                     </li>
-                </ul><br>
+                </ul>
 
                 <label for="numeroId">Numero Identificación</label>
                 <input type="text" id="numeroId" name="numeroId" maxlength="10" required><br>
@@ -342,6 +342,8 @@ textarea{
     background-color: #3E3E3F;
     color: white;
     font-family: sans-serif !important;
+    height: 5vw;
+    overflow: auto;
 }
 #submit{
     background-color: #BCCCE0;

@@ -128,7 +128,7 @@
                     value="{{ auth()->check() ? auth()->user()->name : '' }}" required><br>
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email"
-                    value="{{ auth()->check() ? auth()->user()->email : '' }}" required><br><br>
+                    value="{{ auth()->check() ? auth()->user()->email : '' }}" required><br>
                 <ul class="option-listOne">Tipo Identificación
                     <li class="option-item">
                         <input type="radio" id="option1" name="options" value="Cedula Extranjeria" required
@@ -562,9 +562,10 @@
         justify-content: center;
         height: 70vw;
         width: 100%;
+        margin-top: 7%;
 
-
-    }
+        }
+     
 
     .active-link {
         position: relative;
@@ -641,6 +642,9 @@
         width: 90%;
         background-color: #3E3E3F;
         color: white;
+        height: 4vw;
+    overflow: auto;
+    font-family: sans-serif !important;
     }
 
     #submit {
