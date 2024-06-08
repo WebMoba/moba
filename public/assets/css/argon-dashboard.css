@@ -3467,7 +3467,7 @@ textarea.form-control-lg {
 
 .btn-primary {
   color: #000;
-  background-color: #26BDEF;
+  background-image: linear-gradient(310deg, #212229 0%, #26BDEF 100%);
   border-color: #26BDEF;
 }
 .btn-primary:hover {
@@ -20386,7 +20386,7 @@ label,
 }
 
 .bg-gradient-dark {
-  background-image: linear-gradient(310deg, #212229 0%, #212529 100%);
+  background-image: linear-gradient(310deg, #212229 0%, #26BDEF 100%)
 }
 
 .bg-gradient-faded-primary {
@@ -23023,6 +23023,7 @@ h4, .h4,
 h5, .h5,
 h6, .h6 {
   font-weight: 600;
+  color: white;
 }
 
 h1, .h1,

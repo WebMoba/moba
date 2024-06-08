@@ -112,7 +112,16 @@
                 <label for="departamento">Departamento</label>
                 <input type="text" id="departamento" name="departamento" required><br>
                 <label for="ciudad">Ciudad</label>
-                <input type="text" id="ciudad" name="ciudad" required><br>
+                <input type="text" id="ciudad" name="ciudad" required><br><br>
+
+                <label for="asunto">Asunto:</label>
+                <select id="asunto" name="asunto" required>
+                    <option value="Consulta General">Consulta General</option>
+                    <option value="Solicitud de Presupuesto">Solicitud de cotizacion</option>
+                    <option value="PQR">PQR</option>
+                    <option value="Otro">Otro</option>
+                </select><br><br>
+
                 <label for="mensaje">Mensaje</label><br>
                 <textarea id="mensaje" name="mensaje" rows="5"></textarea><br><br>
 
@@ -191,8 +200,9 @@
                                 title: 'Éxito',
                                 text: 'Tu mensaje ha sido enviado.'
                             }).then(() => {
-                                form.reset(); // Opcional: resetear el formulario después del envío}
-                                
+                                    form.reset(); // Resetear el formulario después del envío
+                                    document.getElementById('mensaje').value = ''; // Limpiar el campo de mensaje
+                                    clearCart(); // Limpiar el carrito
                             });
                         } else {
                             Swal.fire({
@@ -203,12 +213,16 @@
                         }
                     })
                     .catch(data => {
-                        Swal.fire({
-                            icon: 'success',
+                            Swal.fire({
+                                icon: 'success',
                                 title: 'Éxito',
                                 text: 'Tu mensaje ha sido enviado.'
-                        })
-                    });
+                            }).then(() => {
+                                form.reset(); // Resetear el formulario después del envío
+                                document.getElementById('mensaje').value = ''; // Limpiar el campo de mensaje
+                                clearCart(); // Limpiar el carrito
+                            });
+                        });
                 }
             });
         });
@@ -426,7 +440,12 @@ input.circle {
     font-family: sans-serif !important;
     /* Y cualquier otro estilo que desees */
 }
+#asunto{
+    font-size: 1.1vw;
+    background-color: grey;
+    color: white;
+    font-family: sans-serif !important;
 
-
+}
 
 </style>

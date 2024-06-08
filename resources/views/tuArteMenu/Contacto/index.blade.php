@@ -151,7 +151,16 @@
                 <label for="departamento">Departamento</label>
                 <input type="text" id="departamento" name="departamento" required><br>
                 <label for="ciudad">Ciudad</label>
-                <input type="text" id="ciudad" name="ciudad" required><br>
+                <input type="text" id="ciudad" name="ciudad" required><br><br>
+
+                <label for="asunto">Asunto:</label>
+                <select id="asunto" name="asunto" required>
+                    <option value="Consulta General">Consulta General</option>
+                    <option value="Solicitud de Pedido">Solicitud de Pedido</option>
+                    <option value="PQR">PQR</option>
+                    <option value="Otro">Otro</option>
+                </select><br><br>
+
                 <label for="mensaje">Mensaje</label><br>
                 <textarea id="mensaje" name="mensaje" rows="5" @if (isset($_GET['cartInfo'])) readonly @endif>@php
                     $cartInfo = isset($_GET['cartInfo']) ? urldecode($_GET['cartInfo']) : '';
@@ -576,7 +585,7 @@
     }
 
     .box {
-        height: 70%;
+        height: 80%;
         width: 45%;
         margin-top: 5%;
         margin-left: 5%;
@@ -808,4 +817,12 @@
         cursor: pointer;
         color: red;
     }
+    #asunto{
+        font-size: 1.1vw;
+    background-color: grey;
+    color: white;
+    font-family: sans-serif !important;
+
+}
+
 </style>

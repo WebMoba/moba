@@ -41,17 +41,17 @@ class ForgotPassword extends Notification
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-
     public function toMail($notifiable)
     {
-        $url = URL::temporarySignedRoute('change-password', now()->addHours(12) ,['id' => $this->token]);
+        $url = URL::temporarySignedRoute('change-password', now()->addHours(12), ['token' => $this->token]);
+    
         return (new MailMessage)
-                    ->line('Hi!')
-                    ->subject('Reset Password')
-                    ->line('You are receiving this email so you can reset the password for your account')
-                    ->action('Reset Password', $url )
-                    ->line("If you didn't request this, please ignore this email.")
-                    ->line('Thank you!');
+                    ->greeting('¡Hola!')
+                    ->subject('Restablecer Contraseña')
+                    ->line('Has recibido este correo electrónico para restablecer la contraseña de tu cuenta.')
+                    ->action('Restablecer Contraseña', $url)
+                    ->line("Si no solicitaste esto, por favor ignora este correo.")
+                    ->line('¡Gracias!');
     }
 
     /**
