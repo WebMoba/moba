@@ -589,8 +589,8 @@
 
     /* ---------- */
     .dropdown-menu .dropdown-item:hover {
-        background-color: transparent !important;
-        border-color: transparent !important;
+        background-color: #3E3E3F !important;
+        border-color: #3E3E3F !important;
         border: none;
         text-shadow: 0 0 5px #f80008;
     }
@@ -605,13 +605,13 @@
     }
 
     .dropdown-menu {
-        background-color: transparent !important;
+        background-color: #3E3E3F !important;
         border-color: #f80008 !important;
     }
 
     .dropdown-menu .dropdown-item {
         color: #ffffff !important;
-        background-color: transparent !important;
+        background-color: #3E3E3F !important;
         border-color: #f80008 !important;
     }
 

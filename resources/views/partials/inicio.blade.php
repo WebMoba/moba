@@ -10,7 +10,7 @@
                     <form role="form" method="post" action="{{ route('logout') }}" id="logout-form">
                         @csrf
                         <a href="{{ route('logout') }}" class="letter"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            onclick="event.preventDefault(); clearCartAndLogout();">
                              <i class="bi bi-person-circle"></i> Cerrar Sesión
                         </a>
                     </form>
@@ -24,6 +24,16 @@
         @endif
     </div>
 </div>
+
+<script>
+    function clearCartAndLogout() {
+        // Limpiar el carrito
+        localStorage.removeItem('cart');
+        
+        // Enviar el formulario de cierre de sesión
+        document.getElementById('logout-form').submit();
+    }
+</script>
 
 <style>
 

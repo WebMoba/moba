@@ -307,6 +307,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
+    <script>
+        document.querySelector('.dropdown').addEventListener('mouseenter', function() {
+            this.querySelector('.dropdown-menu').classList.add('show');
+        });
+
+        document.querySelector('.dropdown').addEventListener('mouseleave', function() {
+            this.querySelector('.dropdown-menu').classList.remove('show');
+        });
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
     <script>
@@ -522,27 +531,27 @@
 
 
     .btn-primary {
-        background-color: transparent !important;
+        background-color: #3E3E3F !important;
         color: #fff;
-        border-color: transparent !important;
+        border-color: #3E3E3F !important;
         font-size: 1.3vw;
         font-family: sans-serif !important;
     }
 
     .btn-primary:hover {
-        background-color: transparent !important;
-        border-color: transparent !important;
+        background-color: #3E3E3F !important;
+        border-color: #3E3E3F !important;
     }
 
     .btn-primary:active,
     .btn-primary:focus {
-        background-color: transparent !important;
-        border-color: transparent !important;
+        background-color: #3E3E3F !important;
+        border-color: #3E3E3F !important;
     }
 
     .dropdown-menu .dropdown-item:hover {
-        background-color: transparent !important;
-        border-color: transparent !important;
+        background-color: #3E3E3F !important;
+        border-color: #3E3E3F !important;
         border: none;
         text-shadow: 0 0 5px #f80008;
     }
@@ -557,13 +566,13 @@
     }
 
     .dropdown-menu {
-        background-color: transparent !important;
+        background-color: #3E3E3F !important;
         border-color: #73a3b6 !important;
     }
 
     .dropdown-menu .dropdown-item {
         color: #2bb9e5 !important;
-        background-color: transparent !important;
+        background-color: #3E3E3F !important;
         border-color: #2bb9e5 !important;
     }
 
@@ -787,7 +796,7 @@
 }
 .dropdown-menu .dropdown-item {
     color: #2bb9e5 !important;
-    background-color: transparent !important;
+    background-color: #3E3E3F !important;
     border-color: #2bb9e5 !important;
 }
 
