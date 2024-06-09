@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Servicios</title>
+    <link rel="shortcut icon" type="image/png" href="{{ asset('Imagenes/LogoTuArte.png') }}">
+    <title>
+        TuArte
+    </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
@@ -13,8 +16,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
-<body onload="loadCart()" class="background-image">
-
+<body onload="loadCart()">
+    <div
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{ asset('Imagenes/Fondo_TuArte3.jpg') }}'); background-size: 100% 100%; background-position: center top; background-repeat: no-repeat; opacity: 1; z-index: 0; filter: brightness(50%); -webkit-filter: brightness(50%);">
+    </div>
     <nav class="navbar">
         <!--- inicio breaddrums-->
         <div class="breadcrums">
@@ -581,10 +586,6 @@
     .container img {
         border: .2em solid #d9534f;
         border-radius: .5em;
-    }
-
-    body {
-        background-color: #333333;
     }
 
     .container img {

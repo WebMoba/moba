@@ -16,10 +16,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
-<body onload="loadCart()" class="background-image">
-
+<body onload="loadCart()">
+    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{ asset('Imagenes/Fondo_TuArte6.jpg') }}'); background-size: 100% 100%; background-position: center top; background-repeat: no-repeat; opacity: 1; z-index: -1; filter: brightness(50%); -webkit-filter: brightness(50%);">
+    </div>
     <nav class="navbar">
-
         <!--- inicio breaddrums-->
         <div class="breadcrums">
             @include('helpers.breadcrumbs', [

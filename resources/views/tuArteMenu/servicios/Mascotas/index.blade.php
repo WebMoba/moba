@@ -20,8 +20,7 @@
 </head>
 
 <body onload="loadCart()" style="position: relative;">
-    <div
-        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{ asset('Imagenes/FondoPrueba.png') }}'); background-size: cover; background-position: center top; background-repeat: no-repeat; opacity: 1; z-index: -1; filter: brightness(30%); -webkit-filter: brightness(30%);">
+    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{ asset('Imagenes/Fondo_TuArte1.jpg') }}'); background-size: 100% 100%; background-position: center top; background-repeat: no-repeat; opacity: 1; z-index: -1; filter: brightness(50%); -webkit-filter: brightness(50%);">
     </div>
     <nav class="navbar">
         <!--- inicio breaddrums-->
