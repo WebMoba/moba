@@ -8,7 +8,7 @@
             </div>
         </div>
     </div>
-    <main class="main-content  mt-0">
+    <main class="main-content mt-0">
         <section>
             <div class="page-header min-vh-100">
                 <div class="container">
@@ -20,6 +20,24 @@
                                     <p class="mb-0">Inserte su correo y espere unos segundos</p>
                                 </div>
                                 <div class="card-body">
+                                    <!-- Mostrar mensajes de éxito -->
+                                    @if(session('success'))
+                                        <div class="alert alert-success">
+                                            {{ session('success') }}
+                                        </div>
+                                    @endif
+
+                                    <!-- Mostrar mensajes de error -->
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
+
                                     <form role="form" method="POST" action="{{ route('reset.perform') }}">
                                         @csrf
                                         @method('post')
