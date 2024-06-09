@@ -726,6 +726,7 @@ progress {
 .col-auto {
   flex: 0 0 auto;
   width: auto;
+  margin-right: 4px;
 }
 
 .col-1 {
@@ -3527,7 +3528,7 @@ textarea.form-control-lg {
 
 .btn-success {
   color: #000;
-  background-color: #2dce89;
+  background-image: linear-gradient(310deg, #212229 0%, #18eb4d 100%);
   border-color: #2dce89;
 }
 .btn-success:hover {
@@ -3617,7 +3618,7 @@ textarea.form-control-lg {
 
 .btn-danger {
   color: #000;
-  background-color: #f5365c;
+  background-image: linear-gradient(310deg, #212229 0%, #f52d0a 100%);
   border-color: #f5365c;
 }
 .btn-danger:hover {
@@ -19157,6 +19158,7 @@ textarea.form-control-lg {
 }
 .btn:not([class*=btn-outline-]) {
   border: 0;
+  margin-right: 3px;
 }
 .btn:active, .btn:active:focus, .btn:active:hover {
   box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
@@ -19623,7 +19625,7 @@ textarea.form-control-lg {
 }
 .card .card-header {
   padding: 1.5rem;
-  background-color: black;
+  background-color: #3E3E3F;
 }
 .card .card-body {
   font-family: "Open Sans", sans-serif;

@@ -156,6 +156,8 @@ Route::middleware(['auth', 'admin.email', 'check.disabled'])->group(function () 
             $filePath = public_path('documentos/ManualAdministrativo.pdf');
             return response()->file($filePath);
         });
+
+     
     
     });
     
