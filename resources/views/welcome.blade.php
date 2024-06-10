@@ -33,10 +33,12 @@
 
         <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen">
             @if (Route::has('login'))
+            
                 <div class="nav" style="display:flex;justify-content: end;">
-                <a href="{{ url('documentos/ManualUsuario.pdf') }}" class="circle-btn" target="_blank">?
-            <span class="tooltiptext">Ayuda</span>
-        </a>
+                <a href="{{ url('documentos/ManualUsuario.pdf') }}" class="circle-btn" target="_blank">?</a>
+                <a href="{{ url('documentos/mapaNavegacion.pdf')}}" download="MapaNavegacion.pdf" class="mapa"> Mapa</a>
+
+              
                     @auth
 
                     <a href="{{ url('/dashboard') }}" class="letter">Inicio</a>
@@ -266,15 +268,15 @@
 
     .circle-btn {
         display: inline-block;
-        width: 20px;
-        height: 20px;
+        width: 17px;
+        height: 17px;
         border-radius: 50%;
         border: 1.5px solid;
         background-color: transparent;
         color: white;
         text-align: center;
         line-height: 18px;
-        font-size: 15px;
+        font-size: 12px;
         margin-right: 15px;
         transition: background-color 0.3s;
     }
@@ -306,6 +308,13 @@
         opacity: 1;
     }
 
+    .mapa{
+        color: white;
+        margin-right: 3%;
+        font-size: 1rem;
+        text-decoration: none;
+    }
+
     @media (max-width: 768px) {
         .logos img {
             width: 100%;
@@ -327,6 +336,7 @@
             width: 80%;
         }
     }
+
 </style>
 
 

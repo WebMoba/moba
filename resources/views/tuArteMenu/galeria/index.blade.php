@@ -484,12 +484,20 @@
                 localStorage.setItem('cart', JSON.stringify(cartData));
             }
 
-            function loadCart() {
-                const cartData = JSON.parse(localStorage.getItem('cart') || '[]');
-                cartData.forEach(item => addCartItem(item.productId, item.productName, item.productPrice, item
-                    .productImage, item.productQuantity));
-                updateTotal();
-            }
+            
+
+
+
+
+
+
+
+
+
+
+
+
+            
 
             function addCartItem(productId, productName, productPrice, productImage, productQuantity = 1) {
                 const existingItem = document.querySelector(`#cartItems tr[data-product-id="${productId}"]`);

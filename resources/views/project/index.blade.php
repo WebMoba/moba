@@ -14,31 +14,24 @@
                 <div class="card">
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-
                             <span id="card_title">
                                 {{ __('Proyectos') }}
                             </span>
                             <form action="{{ route('projects.index') }}" method="get" class="d-flex align-items-center">
                                 <div class="col-auto mr-2">
-                                    <input type="text" class="form-control" name="search" id="search"
-                                        placeholder="Buscar...">
+                                    <input type="text" class="form-control" name="search" id="search" placeholder="Buscar...">
                                 </div>
                                 <div class="col-auto">
-                                    <button type="submit" class="btn btn-primary btn-sm"><i
-                                            class="bi bi-search"></i>  <span class="tooltiptext">Buscar</span></button>
+                                    <button type="submit" class="btn btn-primary btn-sm"><i class="bi bi-search"></i> <span class="tooltiptext">Buscar</span></button>
                                 </div>
                             </form>
                             <div class="float-right">
-
                                 <a href="{{ route('excel.project') }}" class="btn btn-success btn-sm float-right">
                                     <i class="bi bi-file-earmark-excel-fill"></i><span class="tooltiptext">Excel</span>
                                 </a>
-
-                                <button type="button" class="btn btn-danger ms-2 rounded" tooltip="tooltip"
-                                title="PDF" onclick="window.location.href='{{ route('project.pdf') }}'">
+                                <button type="button" class="btn btn-danger ms-2 rounded" tooltip="tooltip" title="PDF" onclick="window.location.href='{{ route('project.pdf') }}'">
                                     <i class="bi bi-file-pdf-fill"></i><span class="tooltiptext">Pdf</span>
                                 </button>
-
                                 <a href="{{ route('projects.create') }}" class="btn btn-success" data-placement="left">
                                     <i class="bi bi-plus-circle"></i><span class="tooltiptext">Crear</span>
                                 </a>
@@ -56,6 +49,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>Id</th>
+                                        <th>Logo</th> <!-- Nueva columna para el logo -->
                                         <th>Nombre</th>
                                         <th>Descripción</th>
                                         <th>Fecha de inicio</th>
@@ -68,20 +62,22 @@
                                     @foreach ($projects as $project)
                                         <tr>
                                             <td>{{ ++$i }}</td>
+                                            <td>
+                                                @if ($project->logo)
+                                                    <img src="{{ asset('storage/' . $project->logo) }}" alt="Logo" style="width: 50px; height: 50px;">
+                                                @else
+                                                    No hay logo
+                                                @endif
+                                            </td>
                                             <td>{{ $project->name }}</td>
                                             <td>{{ $project->description }}</td>
                                             <td>{{ $project->date_start }}</td>
                                             <td>{{ $project->date_end }}</td>
                                             <td>{{ $project->status }}</td>
                                             <td>
-                                                <form class="frData" action="{{ route('projects.destroy', $project->id) }}"
-                                                    method="POST" data-disable="{{ $project->disable }}">
-                                                    <a class="btn btn-sm btn-primary {{ $project->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('projects.show', $project->id) }}"> <i
-                                                            class="bi bi-eye-fill"></i><span class="tooltiptext">Mostrar</span></a>
-                                                    <a class="btn btn-sm btn-success {{ $project->disable ? 'disabled' : '' }}"
-                                                        href="{{ route('projects.edit', $project->id) }}"><i
-                                                            class="bi bi-pencil-square"></i><span class="tooltiptext">Editar</span></a>
+                                                <form class="frData" action="{{ route('projects.destroy', $project->id) }}" method="POST" data-disable="{{ $project->disable }}">
+                                                    <a class="btn btn-sm btn-primary {{ $project->disable ? 'disabled' : '' }}" href="{{ route('projects.show', $project->id) }}"> <i class="bi bi-eye-fill"></i><span class="tooltiptext">Mostrar</span></a>
+                                                    <a class="btn btn-sm btn-success {{ $project->disable ? 'disabled' : '' }}" href="{{ route('projects.edit', $project->id) }}"><i class="bi bi-pencil-square"></i><span class="tooltiptext">Editar</span></a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm">
@@ -101,8 +97,12 @@
         </div>
     </div>
     <style>
-        th, td{
+        th, td {
             text-align: center;
+        }
+        img {
+            object-fit: cover;
+            border-radius: 50%;
         }
     </style>
     @include('layouts.footers.auth.footer')

@@ -19,7 +19,8 @@
 </head>
 
 <body onload="loadCart()" class="background-image">
-
+    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{ asset('Imagenes/Fondo_TuArte4.jpg') }}'); background-size: 100% 100%; background-position: center top; background-repeat: no-repeat; opacity: 1; z-index: -1; filter: brightness(50%); -webkit-filter: brightness(50%);">
+    </div>
     @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
@@ -485,7 +486,12 @@
             });
 
             cartButton.addEventListener('click', function(event) {
-                handleProductClick(event);
+                if (cartItems.children.length === 0) {
+                    event.preventDefault();
+                    window.location.href = "{{ route('tuArteMenu.servicios.Accesorios.index') }}";
+                } else {
+                    handleProductClick(event);
+                }
             });
 
             let inactivityTimer;
@@ -601,7 +607,7 @@
         justify-content: center;
         height: 70vw;
         width: 100%;
-        margin-top: 7%;
+        margin-top: 6%;
 
     }
 

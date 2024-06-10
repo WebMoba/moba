@@ -20,8 +20,7 @@
 </head>
 
 <body onload="loadCart()" style="position: relative;">
-    <div
-        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{ asset('Imagenes/FondoPrueba.png') }}'); background-size: cover; background-position: center top; background-repeat: no-repeat; opacity: 1; z-index: -1; filter: brightness(30%); -webkit-filter: brightness(30%);">
+    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{ asset('Imagenes/Fondo_TuArte1.jpg') }}'); background-size: 100% 100%; background-position: center top; background-repeat: no-repeat; opacity: 1; z-index: -1; filter: brightness(50%); -webkit-filter: brightness(50%);">
     </div>
     <nav class="navbar">
         <!--- inicio breaddrums-->
@@ -112,49 +111,42 @@
     <!---Carrusel--->
     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-            @php
-                $chunks = $products->chunk(4); // Divide la colección en grupos de 4 elementos
-            @endphp
-            @foreach ($chunks as $key => $chunk)
-                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                    <div class="row">
-                        @foreach ($chunk as $product)
-                            <div class="col">
-                                <a href="" class="card-link" data-product-id="{{ $product->id }}"
-                                    data-product-name="{{ $product->name }}"
-                                    data-product-price="{{ $product->price }}"
-                                    data-product-image="{{ asset('storage/' . $product->image) }}">
-                                    <div class="card">
-                                        <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top"
-                                            alt="{{ $product->name }}">
-                                        <div class="card-body">
-                                            <div class="stars">
-                                                @php
-                                                    // Genera un número aleatorio entre 4 y 5 para las estrellas amarillas
-                                                    $randomStars = rand(4, 5);
-                                                @endphp
-                                                @for ($i = 0; $i < 5; $i++)
-                                                    @if ($i < $randomStars)
-                                                        <i class="bi bi-star-fill active"></i>
-                                                    @else
-                                                        <i class="bi bi-star-fill"></i>
-                                                    @endif
-                                                @endfor
-                                            </div>
-                                            <h5 class="card-title">{{ $product->name }}</h5>
-                                            <div class="mt-auto d-flex justify-content-between align-items-center">
-                                                <p class="card-text">${{ $product->price }}</p>
-                                                <span class="check-icon" style="display: none;"><i
-                                                        class="bi bi-check-circle"></i></span>
-                                            </div>
+            <div class="carousel-item active">
+                <div class="row" id="carouselItemsContainer">
+                    @foreach ($products as $product)
+                        <div class="col">
+                            <a href="" class="card-link" data-product-id="{{ $product->id }}"
+                                data-product-name="{{ $product->name }}" data-product-price="{{ $product->price }}"
+                                data-product-image="{{ asset('storage/' . $product->image) }}">
+                                <div class="card">
+                                    <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top"
+                                        alt="{{ $product->name }}">
+                                    <div class="card-body">
+                                        <div class="stars">
+                                            @php
+                                                $randomStars = rand(4, 5);
+                                            @endphp
+                                            @for ($i = 0; $i < 5; $i++)
+                                                @if ($i < $randomStars)
+                                                    <i class="bi bi-star-fill active"></i>
+                                                @else
+                                                    <i class="bi bi-star-fill"></i>
+                                                @endif
+                                            @endfor
+                                        </div>
+                                        <h5 class="card-title">{{ $product->name }}</h5>
+                                        <div class="mt-auto d-flex justify-content-between align-items-center">
+                                            <p class="card-text">${{ $product->price }}</p>
+                                            <span class="check-icon" style="display: none;"><i
+                                                    class="bi bi-check-circle"></i></span>
                                         </div>
                                     </div>
-                                </a>
-                            </div>
-                        @endforeach
-                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
                 </div>
-            @endforeach
+            </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -205,6 +197,64 @@
 
         document.querySelector('.dropdown').addEventListener('mouseleave', function() {
             this.querySelector('.dropdown-menu').classList.remove('show');
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const carouselContainer = document.getElementById('carouselItemsContainer');
+            const products = Array.from(carouselContainer.children);
+            let itemsPerSlide = getItemsPerSlide();
+
+            function getItemsPerSlide() {
+                if (window.innerWidth >= 1200) {
+                    return 4;
+                } else if (window.innerWidth >= 992) {
+                    return 3;
+                } else if (window.innerWidth >= 768) {
+                    return 2;
+                } else {
+                    return 1;
+                }
+            }
+
+            function updateCarousel() {
+                const carouselInner = document.querySelector('.carousel-inner');
+                carouselInner.innerHTML = '';
+                let chunkedProducts = chunkArray(products, itemsPerSlide);
+
+                chunkedProducts.forEach((chunk, index) => {
+                    const carouselItem = document.createElement('div');
+                    carouselItem.classList.add('carousel-item');
+                    if (index === 0) {
+                        carouselItem.classList.add('active');
+                    }
+
+                    const rowDiv = document.createElement('div');
+                    rowDiv.classList.add('row');
+
+                    chunk.forEach(product => {
+                        rowDiv.appendChild(product);
+                    });
+
+                    carouselItem.appendChild(rowDiv);
+                    carouselInner.appendChild(carouselItem);
+                });
+            }
+
+            function chunkArray(array, size) {
+                const result = [];
+                for (let i = 0; i < array.length; i += size) {
+                    result.push(array.slice(i, i + size));
+                }
+                return result;
+            }
+
+            window.addEventListener('resize', () => {
+                itemsPerSlide = getItemsPerSlide();
+                updateCarousel();
+            });
+
+            updateCarousel();
         });
     </script>
     <script>

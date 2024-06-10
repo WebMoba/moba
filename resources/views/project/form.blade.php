@@ -52,6 +52,51 @@
                     {{ Form::select('status', ['en curso' => 'En Curso', 'finalizado' => 'Finalizado', 'pausado' => 'Pausado', 'pendiente' => 'Pendiente'], isset($project->status) ? $project->status : old('status'), ['id' => 'Estado', 'class' => 'form-control' . ($errors->has('status') ? ' is-invalid' : ''), 'required' => 'required']) }}
                     {!! $errors->first('status', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
+                
+                <div class="form-group">
+                    {{ Form::label('Logo', null, ['class' => 'required']) }}
+                    @if ($editing && $project->logo)
+                        <div>
+                            <img src="{{ asset('storage/' . $project->logo) }}" alt="Logo" style="width: 100px; height: 100px;">
+                        </div>
+                    @endif
+                    {{ Form::file('logo', ['class' => 'form-control' . ($errors->has('logo') ? ' is-invalid' : '')]) }}
+                    {!! $errors->first('logo', '<div class="invalid-feedback">:message</div>') !!}
+                </div>
+
+                <div class="form-group">
+                    {{ Form::label('Imagen Uno') }}
+                    @if ($editing && $project->imageOne)
+                        <div>
+                            <img src="{{ asset('storage/' . $project->imageOne) }}" alt="Image One" style="width: 100px; height: 100px;">
+                        </div>
+                    @endif
+                    {{ Form::file('imageOne', ['class' => 'form-control' . ($errors->has('imageOne') ? ' is-invalid' : '')]) }}
+                    {!! $errors->first('imageOne', '<div class="invalid-feedback">:message</div>') !!}
+                </div>
+
+                <div class="form-group">
+                    {{ Form::label('Imagen Dos') }}
+                    @if ($editing && $project->imageTwo)
+                        <div>
+                            <img src="{{ asset('storage/' . $project->imageTwo) }}" alt="Image Two" style="width: 100px; height: 100px;">
+                        </div>
+                    @endif
+                    {{ Form::file('imageTwo', ['class' => 'form-control' . ($errors->has('imageTwo') ? ' is-invalid' : '')]) }}
+                    {!! $errors->first('imageTwo', '<div class="invalid-feedback">:message</div>') !!}
+                </div>
+
+                <div class="form-group">
+                    {{ Form::label('Imagen Tres') }}
+                    @if ($editing && $project->imageThree)
+                        <div>
+                            <img src="{{ asset('storage/' . $project->imageThree) }}" alt="Image Three" style="width: 100px; height: 100px;">
+                        </div>
+                    @endif
+                    {{ Form::file('imageThree', ['class' => 'form-control' . ($errors->has('imageThree') ? ' is-invalid' : '')]) }}
+                    {!! $errors->first('imageThree', '<div class="invalid-feedback">:message</div>') !!}
+                </div>
+                
                 <br>
             </div>
             <div class="box-footer mt20 my-2">

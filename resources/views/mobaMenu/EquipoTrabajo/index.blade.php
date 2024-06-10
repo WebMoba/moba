@@ -14,7 +14,8 @@
 </head>
 
 <body>
-
+    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{ asset('Imagenes/Fondo_moba4.jpg') }}'); background-size: 100% 100%; background-position: center top; background-repeat: no-repeat; opacity: 1; z-index: -1; filter: brightness(10%); -webkit-filter: brightness(10%);">
+    </div>
     <!-- menu  -->
    
     <nav class="navbar">

@@ -19,7 +19,8 @@
 </head>
 
 <body onload="loadCart()" class="background-image">
-
+    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{ asset('Imagenes/Fondo_TuArte2.jpg') }}'); background-size: 100% 100%; background-position: center top; background-repeat: no-repeat; opacity: 1; z-index: 0; filter: brightness(50%); -webkit-filter: brightness(50%);">
+    </div>
     <nav class="navbar">
         <!--- inicio breaddrums-->
         <div class="breadcrums">
@@ -313,7 +314,12 @@
             });
 
             cartButton.addEventListener('click', function(event) {
-                handleProductClick(event);
+                if (cartItems.children.length === 0) {
+                    event.preventDefault();
+                    window.location.href = "{{ route('tuArteMenu.servicios.Accesorios.index') }}";
+                } else {
+                    handleProductClick(event);
+                }
             });
 
             let inactivityTimer;

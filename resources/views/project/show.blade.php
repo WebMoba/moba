@@ -38,6 +38,44 @@
                                     <th>Estado:</th>
                                     <td>{{ $project->status }}</td>
                                 </tr>
+                                <tr>
+                                    <th>Logo:</th>
+                                    <td>
+                                        @if ($project->logo)
+                                            <img src="{{ asset('storage/' . $project->logo) }}" alt="Logo" style="width: 100px; height: 100px;">
+                                        @else
+                                            No hay logo
+                                        @endif
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Imagenes:</th>
+                                    <td> 
+                                        <ul>
+                                            <li>
+                                                @if ($project->imageOne)
+                                                    <img src="{{ asset('storage/' . $project->imageOne) }}" alt="Image One" style="width: 100px; height: 100px;">
+                                                @else
+                                                    No hay imagen
+                                                @endif
+                                            </li>
+                                            <li>
+                                                @if ($project->imageTwo)
+                                                    <img src="{{ asset('storage/' . $project->imageTwo) }}" alt="Image Two" style="width: 100px; height: 100px;">
+                                                @else
+                                                    No hay imagen
+                                                @endif
+                                            </li>
+                                            <li>
+                                                @if ($project->imageThree)
+                                                    <img src="{{ asset('storage/' . $project->imageThree) }}" alt="Image Three" style="width: 100px; height: 100px;">
+                                                @else
+                                                    No hay imagen
+                                                @endif
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                         <a class="btn btn-primary" href="{{ route('projects.index') }}"><i
