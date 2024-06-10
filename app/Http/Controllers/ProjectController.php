@@ -189,6 +189,13 @@ class ProjectController extends Controller
 
     }
 
+    public function showIndex()
+    {
+        $projects = Project::all(); // Obtener todos los proyectos
+        return view('mobaMenu.index', compact('projects'));
+    }
+
+
     public function pdf()
     {
 
@@ -202,32 +209,6 @@ class ProjectController extends Controller
         return $pdf->download('Listado Proyectos.pdf');
     }
 
-    public function generatePDF(Request $request)
-    {
-        // Obtener el filtro de la solicitud
-        $filter = $request->input('findId');
-        
-        // Obtener los datos de las personas filtradas si se aplicó un filtro
-        if ($filter) {
-            $project = Project::where('id', $filter)->get();
-            
-        } else {
-            // Si no hay filtro, obtener todas las personas
-            $project = Project::all();
-        }
-        // Pasar los datos a la vista pdf-template
-        $data = [
-            'project' => $project
-        ];    
-
-        // Generar el PDF
-        $pdf = new DompdfDompdf();
-        $pdf->set_option('isRemoteEnabled', true);
-        $pdf->loadHtml(view('project.pdf-template', $data));
-        $pdf->setPaper('A4', 'portrait');
-        $pdf->render();
-        return $pdf->stream('Listado_Proyectos.pdf');
-    }
 
     public function export()
     {

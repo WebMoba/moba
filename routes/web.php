@@ -209,6 +209,7 @@ Route::view('/mobaMenu/proyectos/odontologa1', 'mobaMenu.proyectos.odontologa1')
 
 //Vistas fronted Moba
 Route::view('/mobaMenu/index', 'mobaMenu.index')->name('mobaMenu.index');
+Route::get('/mobaMenu/index', [ProjectController::class, 'showIndex'])->name('mobaMenu.index');
 Route::view('/mobaMenu/EquipoTrabajo/index', 'mobaMenu.EquipoTrabajo.index')->name('mobaMenu.EquipoTrabajo.index');
 Route::view('/mobaMenu/EquipoTrabajo/integranteUno', 'mobaMenu.EquipoTrabajo.integranteUno')->name('mobaMenu.EquipoTrabajo.integranteUno');
 Route::view('/mobaMenu/EquipoTrabajo/integranteDos', 'mobaMenu.EquipoTrabajo.integranteDos')->name('mobaMenu.EquipoTrabajo.integranteDos');
