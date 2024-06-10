@@ -22789,7 +22789,9 @@ hr.horizontal.gray-light {
 .btn.btn-slack.btn-neutral:hover, .btn.btn-slack.btn-neutral:focus, .btn.btn-slack.btn-neutral:active {
   color: #329874;
 }
-
+span #card_tittle{
+  color: #fff !important;
+}
 .table thead th {
   padding: 0.75rem 1.5rem;
   text-transform: capitalize;
@@ -22807,6 +22809,7 @@ hr.horizontal.gray-light {
 .table td,
 .table th {
   white-space: nowrap;
+  color: #fff !important;
 }
 .table.align-items-center td,
 .table.align-items-center th {
