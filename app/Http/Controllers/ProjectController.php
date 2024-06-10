@@ -57,24 +57,30 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+        // Validación de los campos
         $request->validate([
-            'name' => 'required',
-            'description' => 'required',
+            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
             'date_start' => 'required|date',
-            'date_end' => 'required|date',
-            'status' => 'required',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'imageOne' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'imageTwo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'imageThree' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'date_end' => 'required|date|after_or_equal:date_start',
+            'status' => 'required|string',
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'imageOne' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'imageTwo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'imageThree' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $project = new Project($request->all());
+        // Creación del nuevo proyecto
+        $project = new Project($request->except(['logo', 'imageOne', 'imageTwo', 'imageThree']));
 
+        // Guardar el logo
         if ($request->hasFile('logo')) {
             $project->logo = $request->file('logo')->store('logos', 'public');
+        } else {
+            return redirect()->back()->withErrors(['logo' => 'El campo logo es obligatorio'])->withInput();
         }
 
+        // Guardar las demás imágenes si están presentes
         if ($request->hasFile('imageOne')) {
             $project->imageOne = $request->file('imageOne')->store('images', 'public');
         }
@@ -87,10 +93,12 @@ class ProjectController extends Controller
             $project->imageThree = $request->file('imageThree')->store('images', 'public');
         }
 
+        // Guardar el proyecto en la base de datos
         $project->save();
 
         return redirect()->route('projects.index')->with('success', 'Proyecto creado exitosamente.');
     }
+
 
 
     /**
