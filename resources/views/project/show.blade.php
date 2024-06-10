@@ -42,9 +42,9 @@
                                     <th>Logo:</th>
                                     <td>
                                         @if ($project->logo)
-                                            <div class="form-group">
-                                                <img src="{{ $project->logo_url }}" alt="Logo" style="max-width: 100%;">
-                                            </div>
+                                            <img src="{{ asset('storage/' . $project->logo) }}" alt="Logo" style="width: 100px; height: 100px;">
+                                        @else
+                                            No hay logo
                                         @endif
                                     </td>
                                 </tr>
@@ -54,23 +54,23 @@
                                         <ul>
                                             <li>
                                                 @if ($project->imageOne)
-                                                    <div class="form-group">
-                                                        <img src="{{ $project->imageOne_url }}" alt="Imagen Uno" style="max-width: 100%;">
-                                                    </div>
+                                                    <img src="{{ asset('storage/' . $project->imageOne) }}" alt="Image One" style="width: 100px; height: 100px;">
+                                                @else
+                                                    No hay imagen
                                                 @endif
                                             </li>
                                             <li>
                                                 @if ($project->imageTwo)
-                                                    <div class="form-group">
-                                                        <img src="{{ $project->imageTwo_url }}" alt="Imagen Dos" style="max-width: 100%;">
-                                                    </div>
+                                                    <img src="{{ asset('storage/' . $project->imageTwo) }}" alt="Image Two" style="width: 100px; height: 100px;">
+                                                @else
+                                                    No hay imagen
                                                 @endif
                                             </li>
                                             <li>
                                                 @if ($project->imageThree)
-                                                    <div class="form-group">
-                                                        <img src="{{ $project->imageThree_url }}" alt="Imagen Tres" style="max-width: 100%;">
-                                                    </div>
+                                                    <img src="{{ asset('storage/' . $project->imageThree) }}" alt="Image Three" style="width: 100px; height: 100px;">
+                                                @else
+                                                    No hay imagen
                                                 @endif
                                             </li>
                                         </ul>

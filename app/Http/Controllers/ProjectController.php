@@ -57,48 +57,39 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        $msj = [
-            'date_end.after_or_equal' => 'La fecha de finalización debe ser igual o posterior a la fecha de inicio.',
-            'required' => 'El atributo es requerido',
-            'max' => 'No puede ingresar más caracteres en este campo',
-            'string' => 'El campo debe ser una cadena de texto.',
-            'date' => 'El campo no debe ser una fecha anterior al día de hoy.',
-            'logo.required' => 'El campo logo es obligatorio.',
-            'image' => 'El archivo debe ser una imagen.',
-        ];
-
         $request->validate([
-            'name' => 'required|string|max:100',
-            'description' => 'required|string|max:300',
+            'name' => 'required',
+            'description' => 'required',
             'date_start' => 'required|date',
-            'date_end' => 'required|date|after_or_equal:date_start',
-            'status' => 'required|in:en curso,finalizado,pausado,pendiente',
-            'logo' => 'required|image|max:2048', // 2MB max
-            'imageOne' => 'nullable|image|max:2048',
-            'imageTwo' => 'nullable|image|max:2048',
-            'imageThree' => 'nullable|image|max:2048',
-        ], $msj);
+            'date_end' => 'required|date',
+            'status' => 'required',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'imageOne' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'imageTwo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'imageThree' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
-        $projectData = $request->all();
-        $projectData['disable'] = 0;
+        $project = new Project($request->all());
 
         if ($request->hasFile('logo')) {
-            $projectData['logo'] = $request->file('logo')->store('logos', 'public');
+            $project->logo = $request->file('logo')->store('logos', 'public');
         }
+
         if ($request->hasFile('imageOne')) {
-            $projectData['imageOne'] = $request->file('imageOne')->store('images', 'public');
+            $project->imageOne = $request->file('imageOne')->store('images', 'public');
         }
+
         if ($request->hasFile('imageTwo')) {
-            $projectData['imageTwo'] = $request->file('imageTwo')->store('images', 'public');
+            $project->imageTwo = $request->file('imageTwo')->store('images', 'public');
         }
+
         if ($request->hasFile('imageThree')) {
-            $projectData['imageThree'] = $request->file('imageThree')->store('images', 'public');
+            $project->imageThree = $request->file('imageThree')->store('images', 'public');
         }
 
-        Project::create($projectData);
+        $project->save();
 
-        return redirect()->route('projects.index')
-            ->with('success', 'Proyecto creado con éxito.');
+        return redirect()->route('projects.index')->with('success', 'Proyecto creado exitosamente.');
     }
 
 
@@ -141,51 +132,39 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        $msj = [
-            'date_end.after_or_equal' => 'La fecha de finalización debe ser igual o posterior a la fecha de inicio.',
-            'required' => 'El atributo es requerido',
-            'max' => 'No puede ingresar más caracteres en este campo',
-            'string' => 'El campo debe ser una cadena de texto.',
-            'date' => 'El campo no debe ser una fecha anterior al día de hoy.',
-            'logo.required' => 'El campo logo es obligatorio.',
-            'image' => 'El archivo debe ser una imagen.',
-        ];
-
         $request->validate([
-            'name' => 'required|string|max:100',
-            'description' => 'required|string|max:300',
+            'name' => 'required',
+            'description' => 'required',
             'date_start' => 'required|date',
-            'date_end' => 'required|date|after_or_equal:date_start',
-            'status' => 'required|in:en curso,finalizado,pausado,pendiente',
-            'logo' => 'required|image|max:2048', // 2MB max
-            'imageOne' => 'nullable|image|max:2048',
-            'imageTwo' => 'nullable|image|max:2048',
-            'imageThree' => 'nullable|image|max:2048',
-        ], $msj);
+            'date_end' => 'required|date',
+            'status' => 'required',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'imageOne' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'imageTwo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'imageThree' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
-        $projectData = $request->all();
+        $project->fill($request->all());
 
         if ($request->hasFile('logo')) {
-            Storage::delete('public/' . $project->logo);
-            $projectData['logo'] = $request->file('logo')->store('logos', 'public');
+            $project->logo = $request->file('logo')->store('logos', 'public');
         }
+
         if ($request->hasFile('imageOne')) {
-            Storage::delete('public/' . $project->imageOne);
-            $projectData['imageOne'] = $request->file('imageOne')->store('images', 'public');
+            $project->imageOne = $request->file('imageOne')->store('images', 'public');
         }
+
         if ($request->hasFile('imageTwo')) {
-            Storage::delete('public/' . $project->imageTwo);
-            $projectData['imageTwo'] = $request->file('imageTwo')->store('images', 'public');
+            $project->imageTwo = $request->file('imageTwo')->store('images', 'public');
         }
+
         if ($request->hasFile('imageThree')) {
-            Storage::delete('public/' . $project->imageThree);
-            $projectData['imageThree'] = $request->file('imageThree')->store('images', 'public');
+            $project->imageThree = $request->file('imageThree')->store('images', 'public');
         }
 
-        $project->update($projectData);
+        $project->save();
 
-        return redirect()->route('projects.index')
-            ->with('success', 'Proyecto actualizado con éxito');
+        return redirect()->route('projects.index')->with('success', 'Proyecto actualizado exitosamente.');
     }
 
 
