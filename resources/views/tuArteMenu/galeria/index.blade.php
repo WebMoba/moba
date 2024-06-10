@@ -5,16 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Servicios</title>
+    <link rel="shortcut icon" type="image/png" href="{{ asset('Imagenes/LogoTuArte.png') }}">
+    <title>
+        TuArte
+    </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('css/StyleFooter.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
 </head>
 
-<body onload="loadCart()" class="background-image">
+<body onload="loadCart()">
 
+    <div
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{ asset('Imagenes/Fondo_TuArte3.jpg') }}'); background-size: 100% 100%; background-position: center top; background-repeat: no-repeat; opacity: 1; z-index: 0; filter: brightness(50%); -webkit-filter: brightness(50%);">
+    </div>
     <nav class="navbar">
         <!--- inicio breaddrums-->
         <div class="breadcrums">
@@ -99,6 +111,28 @@
         });
     </script>
 
+
+    @php
+        $user = Auth::user();
+        $esAdministrador = false;
+
+        if ($user) {
+            $person = $user->person; // Supongo que tienes una relación entre User y Person
+            if ($person) {
+                $rolAdministrador = 'Administrador';
+                $esAdministrador = strtolower($person->rol) === strtolower($rolAdministrador);
+            }
+        }
+    @endphp
+
+    @if ($esAdministrador)
+        <h1>Hola admi!</h1>
+    @else
+        <h1>Hola quien eres?!</h1>
+    @endif
+
+
+    <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="handleFileSelect(event)">
     <div id="carouselExampleIndicators" class="carousel slide">
         <div class="carousel-indicators ">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active "
@@ -115,28 +149,62 @@
                     <div class="lightbox" data-mdb-lightbox-init>
                         <div class="row">
                             <div class="col-lg-4">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider1/Arete1.jpg') }}"
-                                    alt="LaverosArtesanalesRecuerdos" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider1/Arete2.jpg') }}"
-                                    alt="Llaveros-Artesanales-Buhos" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                                <div class="position-relative">
+                                    <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider1/Arete1.jpg') }}"
+                                        alt="LaverosArtesanalesRecuerdos" class="w-100 mb-2 mb-md-4 shadow-1-strong"
+                                        data-id="1" />
+                                    @if ($esAdministrador)
+                                        <button type="button" class="btn btn-outline-danger bi bi-upload upload-btn"
+                                            onclick="openFileInput(this)"></button>
+                                    @endif
+                                </div>
+                                <div class="position-relative">
+
+                                    <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider1/Arete2.jpg') }}"
+                                        alt="Llaveros-Artesanales-Buhos" class="w-100 mb-2 mb-md-4 shadow-1-strong"
+                                        data-id="2" />
+                                    @if ($esAdministrador)
+                                        <button type="button" class="btn btn-outline-danger bi bi-upload upload-btn"
+                                            onclick="openFileInput(this)"></button>
+                                    @endif
+                                </div>
+
                             </div>
-                            <div class="col-lg-8">
+                            <div class="col-lg-8 position-relative">
                                 <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider1/Arete3.jpg') }}"
-                                    alt="Llaveros Artesanales Corazones" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                                    alt="Llaveros Artesanales Corazones" class="w-100 mb-2 mb-md-4 shadow-1-strong"
+                                    data-id="3" />
+                                @if ($esAdministrador)
+                                    <button type="button" class="btn btn-outline-danger bi bi-upload upload-btn"
+                                        onclick="openFileInput(this)"></button>
+                                @endif
                             </div>
-                            <div class="mt-4 mb-2 col-lg-4">
+                            <div class="mt-4 mb-2 col-lg-4 position-relative">
                                 <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider1/Arete4.jpg') }}"
                                     alt="Llaveros Artesanales Personalizados"
-                                    class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                                    class="w-100 mb-2 mb-md-4 shadow-1-strong" data-id="4" />
+                                @if ($esAdministrador)
+                                    <button type="button" class="btn btn-outline-danger bi bi-upload upload-btn"
+                                        onclick="openFileInput(this)"></button>
+                                @endif
                             </div>
-                            <div class=" ult mb-2 col-lg-4">
+                            <div class=" ult mb-2 col-lg-4 position-relative">
                                 <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider1/Arete5.jpg') }}"
-                                    alt="Llaveros Personajes Animados" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                                    alt="Llaveros Personajes Animados" class="w-100 mb-2 mb-md-4 shadow-1-strong"
+                                    data-id="5" />
+                                @if ($esAdministrador)
+                                    <button type="button" class="btn btn-outline-danger bi bi-upload upload-btn"
+                                        onclick="openFileInput(this)"></button>
+                                @endif
                             </div>
-                            <div class="ult mb-2 col-lg-4">
+                            <div class="ult mb-2 col-lg-4 position-relative">
                                 <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider1/Arete6.jpg') }}"
-                                    alt="Llaveros Personalizado sNombres"
-                                    class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                                    alt="Llaveros Personalizado sNombres" class="w-100 mb-2 mb-md-4 shadow-1-strong"
+                                    data-id="6" />
+                                @if ($esAdministrador)
+                                    <button type="button" class="btn btn-outline-danger bi bi-upload upload-btn"
+                                        onclick="openFileInput(this)"></button>
+                                @endif
                             </div>
 
                         </div>
@@ -150,26 +218,60 @@
                     <div class="lightbox" data-mdb-lightbox-init>
                         <div class="row">
                             <div class="col-lg-4">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider2/Llavero1.jpg') }}"
-                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider2/Llavero2.jpg') }}"
-                                    alt="Coconut with Strawberries" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                                <div class="position-relative">
+                                    <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider2/Llavero1.jpg') }}"
+                                        alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong"
+                                        data-id="7" />
+                                    @if ($esAdministrador)
+                                        <button type="button" class="btn btn-outline-danger bi bi-upload upload-btn"
+                                            onclick="openFileInput(this)"></button>
+                                    @endif
+                                </div>
+                                <div class="position-relative">
+                                    <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider2/Llavero2.jpg') }}"
+                                        alt="Coconut with Strawberries" class="w-100 mb-2 mb-md-4 shadow-1-strong"
+                                        data-id="8" />
+                                    @if ($esAdministrador)
+                                        <button type="button" class="btn btn-outline-danger bi bi-upload upload-btn"
+                                            onclick="openFileInput(this)"></button>
+                                    @endif
+                                </div>
                             </div>
-                            <div class="col-lg-8">
+                            <div class="col-lg-8 position-relative">
                                 <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider2/Llavero3.jpg') }}"
-                                    alt="Dark Roast Iced Coffee" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                                    alt="Dark Roast Iced Coffee" class="w-100 mb-2 mb-md-4 shadow-1-strong"
+                                    data-id="9" />
+                                @if ($esAdministrador)
+                                    <button type="button" class="btn btn-outline-danger bi bi-upload upload-btn"
+                                        onclick="openFileInput(this)"></button>
+                                @endif
                             </div>
-                            <div class="mt-4 mb-2 col-lg-4">
+                            <div class="mt-4 mb-2 col-lg-4 position-relative">
                                 <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider2/Llavero4.jpg') }}"
-                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong"
+                                    data-id="10" />
+                                @if ($esAdministrador)
+                                    <button type="button" class="btn btn-outline-danger bi bi-upload upload-btn"
+                                        onclick="openFileInput(this)"></button>
+                                @endif
                             </div>
-                            <div class=" ult mb-2 col-lg-4">
+                            <div class=" ult mb-2 col-lg-4 position-relative">
                                 <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider2/Llavero5.jpg') }}"
-                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong"
+                                    data-id="11" />
+                                @if ($esAdministrador)
+                                    <button type="button" class="btn btn-outline-danger bi bi-upload upload-btn"
+                                        onclick="openFileInput(this)"></button>
+                                @endif
                             </div>
-                            <div class="ult mb-2 col-lg-4">
+                            <div class="ult mb-2 col-lg-4 position-relative">
                                 <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider2/Llavero6.jpg') }}"
-                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong"
+                                    data-id="12" />
+                                @if ($esAdministrador)
+                                    <button type="button" class="btn btn-outline-danger bi bi-upload upload-btn"
+                                        onclick="openFileInput(this)"></button>
+                                @endif
                             </div>
 
                         </div>
@@ -183,26 +285,61 @@
                     <div class="lightbox" data-mdb-lightbox-init>
                         <div class="row">
                             <div class="col-lg-4">
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider3/Animalitos.jpg') }}"
-                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
-                                <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider3/Arboles.jpg') }}"
-                                    alt="Coconut with Strawberries" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                                <div class="position-relative">
+                                    <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider3/Animalitos.jpg') }}"
+                                        alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong"
+                                        data-id="13" />
+                                    @if ($esAdministrador)
+                                        <button type="button" class="btn btn-outline-danger bi bi-upload upload-btn"
+                                            onclick="openFileInput(this)"></button>
+                                    @endif
+                                </div>
+
+                                <div class="position-relative">
+                                    <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider3/Arboles.jpg') }}"
+                                        alt="Coconut with Strawberries" class="w-100 mb-2 mb-md-4 shadow-1-strong"
+                                        data-id="14" />
+                                    @if ($esAdministrador)
+                                        <button type="button" class="btn btn-outline-danger bi bi-upload upload-btn"
+                                            onclick="openFileInput(this)"></button>
+                                    @endif
+                                </div>
                             </div>
-                            <div class="col-lg-8">
+                            <div class="col-lg-8 position-relative">
                                 <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider3/Frida.jpg') }}"
-                                    alt="Dark Roast Iced Coffee" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                                    alt="Dark Roast Iced Coffee" class="w-100 mb-2 mb-md-4 shadow-1-strong"
+                                    data-id="15" />
+                                @if ($esAdministrador)
+                                    <button type="button" class="btn btn-outline-danger bi bi-upload upload-btn"
+                                        onclick="openFileInput(this)"></button>
+                                @endif
                             </div>
-                            <div class="mt-4 mb-2 col-lg-4">
+                            <div class="mt-4 mb-2 col-lg-4 position-relative">
                                 <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider3/Monitos.jpg') }}"
-                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong"
+                                    data-id="16" />
+                                @if ($esAdministrador)
+                                    <button type="button" class="btn btn-outline-danger bi bi-upload upload-btn"
+                                        onclick="openFileInput(this)"></button>
+                                @endif
                             </div>
-                            <div class=" ult mb-2 col-lg-4">
+                            <div class=" ult mb-2 col-lg-4 position-relative">
                                 <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider3/Perritos.jpg') }}"
-                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong"
+                                    data-id="17" />
+                                @if ($esAdministrador)
+                                    <button type="button" class="btn btn-outline-danger bi bi-upload upload-btn"
+                                        onclick="openFileInput(this)"></button>
+                                @endif
                             </div>
-                            <div class="ult mb-2 col-lg-4">
+                            <div class="ult mb-2 col-lg-4 position-relative">
                                 <img src="{{ asset('Imagenes/img-tuArte-gallery/Slider3/Topitos.jpg') }}"
-                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong" />
+                                    alt="Table Full of Spices" class="w-100 mb-2 mb-md-4 shadow-1-strong"
+                                    data-id="18" />
+                                @if ($esAdministrador)
+                                    <button type="button" class="btn btn-outline-danger bi bi-upload upload-btn"
+                                        onclick="openFileInput(this)"></button>
+                                @endif
                             </div>
 
                         </div>
@@ -222,6 +359,66 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
+
+    <script>
+        function openFileInput(button) {
+            const fileInput = document.getElementById('fileInput');
+            fileInput.click();
+            fileInput.addEventListener('change', (event) => {
+                handleFileSelect(event, button);
+            }, {
+                once: true
+            });
+        }
+
+        function handleFileSelect(event, button) {
+            const file = event.target.files[0];
+            if (file) {
+                const validFormats = ['image/jpeg', 'image/png', 'image/gif'];
+                if (!validFormats.includes(file.type)) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Formato no válido',
+                        text: 'Por favor, selecciona una imagen en formato JPG, PNG o GIF.',
+                    });
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = () => {
+                    const img = button.previousElementSibling;
+                    const imageId = img.dataset.id;
+                    img.src = reader.result;
+                    localStorage.setItem(`tuArteImage_${imageId}`, reader.result);
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function loadCart() {
+            const images = document.querySelectorAll('img[data-id]');
+            images.forEach(img => {
+                const imageId = img.dataset.id;
+                const storedImageUrl = localStorage.getItem(`tuArteImage_${imageId}`);
+                if (storedImageUrl) {
+                    img.src = storedImageUrl;
+                }
+            });
+        }
+    </script>
+
+    <style>
+        .position-relative {
+            position: relative;
+        }
+
+        .upload-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+
     <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -252,7 +449,8 @@
             </div>
         </div>
     </div>
-    <script>
+
+        <script>
         document.addEventListener("DOMContentLoaded", function() {
             const cards = document.querySelectorAll('.card-link');
             const cartBadge = document.querySelector('.cart-badge');
@@ -398,7 +596,12 @@
             });
 
             cartButton.addEventListener('click', function(event) {
-                handleProductClick(event);
+                if (cartItems.children.length === 0) {
+                    event.preventDefault();
+                    window.location.href = "{{ route('tuArteMenu.servicios.Accesorios.index') }}";
+                } else {
+                    handleProductClick(event);
+                }
             });
 
             let inactivityTimer;
@@ -503,6 +706,7 @@
         });
     </script>
     @include('partials.footerTuArte')
+    
 </body>
 
 </html>
@@ -576,10 +780,6 @@
     .container img {
         border: .2em solid #d9534f;
         border-radius: .5em;
-    }
-
-    body {
-        background-color: #333333;
     }
 
     .container img {
