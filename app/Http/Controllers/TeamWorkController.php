@@ -74,9 +74,11 @@ class TeamWorkController extends Controller
         ];
 
         $request->validate([
+            'name'=>'required|string|max:10',
             'specialty'=>'required|string|max:100',
             'assigned_work'=>'required|string|max:100',
             'assigned_date'=>'required|date',
+            'description'=>'required|string|max:1000',
             'projects_id'=>'required',
         ], $msj);
 

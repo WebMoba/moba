@@ -61,7 +61,10 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>Id</th>
+                                        <th>Nombre</th>
+                                        <th>Imagen</th>
                                         <th>Especialidad</th>
+                                        <th>Descripción</th>
                                         <th>Trabajo asignado</th>
                                         <th>Fecha asignada</th>
                                         <th>Proyecto</th>
@@ -71,8 +74,15 @@
                                 <tbody>
                                     @foreach ($teamWorks as $teamWork)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
+                                            <td>{{ $teamWork->id }}</td>
+                                            <td>{{ $teamWork->name }}</td>
+                                            <td><img src="{{ asset('storage/' . $teamWork->image) }}" width="150"
+                                                height="150"></td>
+                                            
+                                                <td>{{ $teamWork->image }}</td>
+                                            
                                             <td>{{ $teamWork->specialty }}</td>
+                                            <td>{{ $teamWork->description }}</td>
                                             <td>{{ $teamWork->assigned_work }}</td>
                                             <td>{{ $teamWork->assigned_date }}</td>
                                             <td>{{ $teamWork->project->name }}</td>

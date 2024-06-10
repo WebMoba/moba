@@ -27,9 +27,33 @@
     <div class="box box-info padding-1">
         <div class="box-body">
             <div class="form-group ">
+                {{ Form::label('Primer Nombre', null, ['class' => 'required']) }}
+                {{ Form::text('name', $teamWork->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'required']) }}
+                {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
+            </div>
+           
+            <div class="form-group">
+                {{ Form::label('Imagen', null, ['class' => 'required']) }}
+                <br>
+                @if ($teamWork->image)
+                    <img src="{{ asset('storage/' . $teamWork->image) }}" alt="Imagen actual" style="width: 150px; height: 150px;">
+                    <br><br>
+                @endif
+                <img id="image-preview" alt="Vista previa de la imagen" style="display:none; width: 150px; height: 150px;">
+                {{ Form::file('image', ['class' => 'form-control' . ($errors->has('image') ? ' is-invalid' : ''), 'onchange' => 'previewImage(event)']) }}
+                {!! $errors->first('image', '<div class="invalid-feedback">:message</div>') !!}
+            </div>
+
+            <div class="form-group ">
                 {{ Form::label('Especialidad', null, ['class' => 'required']) }}
                 {{ Form::text('specialty', $teamWork->specialty, ['class' => 'form-control' . ($errors->has('specialty') ? ' is-invalid' : ''), 'required']) }}
                 {!! $errors->first('specialty', '<div class="invalid-feedback">:message</div>') !!}
+            </div>
+
+            <div class="form-group ">
+                {{ Form::label('Descripción', null, ['class' => 'required']) }}
+                {{ Form::textarea('description', $teamWork->description, ['class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''), 'required']) }}
+                {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
             </div>
 
             <div class="form-group ">
