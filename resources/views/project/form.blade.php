@@ -25,13 +25,13 @@
             <div class="box-body">
                 <div class="form-group">
                     {{ Form::label('Nombre', null, ['class' => 'required']) }}
-                    {{ Form::text('name', $project->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : '')]) }}
+                    {{ Form::text('name', $project->name, ['maxlength' => 50, 'class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : '')]) }}
                     {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
 
                 <div class="form-group">
                     {{ Form::label('Descripción', null, ['class' => 'required']) }}
-                    {{ Form::text('description', $project->description, ['id' => 'Descripción', 'class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : '')]) }}
+                    {{ Form::text('description', $project->description, ['id' => 'Descripción', 'maxlength' => 600, 'class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : '')]) }}
                     {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
 

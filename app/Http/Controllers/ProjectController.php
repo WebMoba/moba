@@ -31,7 +31,18 @@ class ProjectController extends Controller
         $projects = Project::paginate(10);
         return view('project.index', compact('projects'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
+    public function PrincipalProjectos()
+    {
+        /* $projects = Project::paginate(18); */
+        $projects = Project::where('status', 'finalizado')->take(18)->get();
+        return view('mobaMenu.proyectos.index', compact('projects'))->with('i', (request()->input('page', 1) - 1) * 10);
+    }
 
+    public function Projectosides($id)
+    {
+        $projects = Project::findOrFail($id);
+        return view('mobaMenu.proyectos.Muestra', compact('projects'))->with('i', (request()->input('page', 1) - 1) * 10);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -64,10 +75,10 @@ class ProjectController extends Controller
             'date_start' => 'required|date',
             'date_end' => 'required|date|after_or_equal:date_start',
             'status' => 'required|string',
-            'logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'imageOne' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'imageTwo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'imageThree' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2004800',
+            'imageOne' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:204800',
+            'imageTwo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:204800',
+            'imageThree' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:204800',
         ]);
 
         // Creación del nuevo proyecto
@@ -188,13 +199,12 @@ class ProjectController extends Controller
         if (!$project) {
             return redirect()->route('projects.index')->with('error', 'El proyecto no existe');
         }
-    
+
         // Cambia el estado del proyecto
         $project->disable = !$project->disable;
         $project->save();
-    
-        return redirect()->route('projects.index')->with('success', 'Estado del proyecto cambiado con éxito');
 
+        return redirect()->route('projects.index')->with('success', 'Estado del proyecto cambiado con éxito');
     }
 
     public function showIndex()
@@ -210,7 +220,7 @@ class ProjectController extends Controller
         $project = Project::all();
 
         $pdf = Pdf::loadView('project.pdf-template', ['project' => $project])
-                    ->setPaper('a4','portrait');
+            ->setPaper('a4', 'portrait');
 
         $pdf->set_option('isRemoteEnabled', true);
 
@@ -222,6 +232,4 @@ class ProjectController extends Controller
     {
         return Excel::download(new ProjectExport, 'Listado_Proyectos.xlsx');
     }
-
 }
-

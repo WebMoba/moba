@@ -14,7 +14,9 @@
 </head>
 
 <body class="background-image">
-
+    <div
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{ asset('Imagenes/Fondo_moba2.jpg') }}'); background-size: 100% 100%; background-position: center top; background-repeat: no-repeat; opacity: 1; z-index: -1; filter: brightness(10%); -webkit-filter: brightness(30%);">
+    </div>
     <nav class="navbar">
         <!--- inicio breaddrums-->
         <div class="breadcrums">
@@ -23,12 +25,13 @@
                     ['url' => route('welcome'), 'label' => 'Bienvenido /'],
                     ['url' => route('mobaMenu.index'), 'label' => 'Moba /'],
                     ['url' => route('mobaMenu.proyectos.index'), 'label' => 'Proyectos /'],
-                    ['url' => route('mobaMenu.proyectos.ODONTOLOGIA'), 'label' => 'OdontoligiaLizethDorado'],
+                    {{--                      ['url' => route('mobaMenu.proyectos.Muestra'), 'label' => 'Proyecto'],  --}},
                 ],
             ])
         </div>
         <div class="inicioRegistro"> @include('partials.inicio')</div>
         <!--- final breaddrums-->
+
         <div class="container-fluid">
             <a href="{{ route('mobaMenu.index') }}">
                 <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba"></a>
@@ -67,48 +70,34 @@
         //inicio de proyectos
         //proyectos cuadro
         <div class="title-container">
-            <h1 class="big-title">ODONTOLOGA</h1>
-            <h1 class="big-title1">CAROLINA CAMACHO</h1>
+            <h1 class="big-title">{{ $projects->name }}</h1>
         </div>
-
         <div class="container">
             <div class="row">
                 <!-- Columna para el párrafo -->
                 <div class="col-md-6">
                     <div class="titulo mt-4 mb-4">
-                        <p>Somos una empresa dedicada a satisfacer las necesidades de nuestros clientes, principalmente
-                            en frutas, verduras y demás productos de la canasta familiar; vinculando como aliados
-                            estratégicos a proveedores; ofreciendo condiciones dignas de trabajo a personal idóneo que
-                            vive y aplica principios de integridad, honestidad y constancia, garantizando la retribución
-                            a los socios, conformando así un equipo comprometido con el desarrollo y bienestar de la
-                            comunidad. Somos una empresa dedicada a satisfacer las necesidades de nuestros clientes,
-                            principalmente
-                            en frutas, verduras y demás productos de la canasta familiar; vinculando como aliados
-                            estratégicos a proveedores; ofreciendo condiciones dignas de trabajo a personal idóneo que
-                            vive y aplica principios de integridad, honestidad y constancia, garantizando la retribución
-                            a los socios, conformando así un equipo comprometido con el desarrollo y bienestar de la
-                            comunidad.</p>
+                        <p>{{ $projects->description }}</p>
                     </div>
                 </div>
-                <!-- Columna para el carrusel -->
                 <!-- Columna para el carrusel -->
                 <div class="col-md-6">
                     <div id="carouselExample" class="carousel slide">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="{{ asset('Imagenes/imgproyectos/odontologa1.jpg') }}" alt="PARAISO1"
+                                <img src="{{ asset('storage/' . $projects->logo) }}"
                                     class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('Imagenes/imgproyectos/odontologa2.jpg') }}" alt="JAATELO"
+                                <img src="{{ asset('storage/' . $projects->imageOne) }}"
                                     class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('Imagenes/imgproyectos/odontologa3.jpg') }}" alt="ACERIAS"
+                                <img src="{{ asset('storage/' . $projects->imageTwo) }}"
                                     class="d-block w-100 carousel-img">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('Imagenes/imgproyectos/odontologa4.jpg') }}" alt="ACERIAS"
+                                <img src="{{ asset('storage/' . $projects->imageThree) }}"
                                     class="d-block w-100 carousel-img">
                             </div>
                         </div>
@@ -124,12 +113,8 @@
                         </button>
                     </div>
                 </div>
-
             </div>
         </div>
-
-
-
         <!-- navbar -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
@@ -150,24 +135,32 @@
 
             function mostrarCuadroAnterior() {
                 // Oculta el cuadro actual
-                document.getElementById(`cuadro${indiceCuadroActual}`).style.display = 'none';
+                document.getElementById(cuadro$ {
+                    indiceCuadroActual
+                }).style.display = 'none';
 
                 // Actualiza el índice al cuadro anterior
                 indiceCuadroActual = (indiceCuadroActual - 1) > 0 ? (indiceCuadroActual - 1) : 3;
 
                 // Muestra el cuadro anterior
-                document.getElementById(`cuadro${indiceCuadroActual}`).style.display = 'block';
+                document.getElementById(cuadro$ {
+                    indiceCuadroActual
+                }).style.display = 'block';
             }
 
             function mostrarCuadroSiguiente() {
                 // Oculta el cuadro actual
-                document.getElementById(`cuadro${indiceCuadroActual}`).style.display = 'none';
+                document.getElementById(cuadro$ {
+                    indiceCuadroActual
+                }).style.display = 'none';
 
                 // Actualiza el índice al cuadro siguiente
                 indiceCuadroActual = (indiceCuadroActual + 1) > 3 ? 1 : (indiceCuadroActual + 1);
 
                 // Muestra el cuadro siguiente
-                document.getElementById(`cuadro${indiceCuadroActual}`).style.display = 'block';
+                document.getElementById(cuadro$ {
+                    indiceCuadroActual
+                }).style.display = 'block';
             }
         </script>
 
@@ -175,13 +168,6 @@
             /* css de prueba*/
                 {
                 font-family: Arial, sans-serif;
-            }
-
-            .container {
-                padding-top: 50px;
-                padding-bottom: 50px;
-                position: relative;
-                /* Establece el contenedor como posición relativa para que los elementos internos puedan ser posicionados relativamente a él */
             }
 
             .title-container .big-title {
@@ -193,7 +179,7 @@
                 padding: 0 20px;
                 color: #2bb9e5;
                 font-weight: bold;
-                font-size: 60px;
+                font-size: 70px;
             }
 
             .title-container .big-title1 {
@@ -205,27 +191,27 @@
                 padding: 0 20px;
                 color: white;
                 font-weight: bold;
-                font-size: 60px;
+                font-size: 70px;
+            }
+
+            .container {
+                padding-top: 50px;
+                padding-bottom: 50px;
+                position: relative;
             }
 
             .titulo {
                 position: absolute;
-                /* Establece la posición absoluta para que el título pueda posicionarse en la esquina superior izquierda del contenedor */
-                top: 100px;
-                /* Espacio desde la parte superior del contenedor */
+                top: 80px;
                 left: 20px;
-                /* Espacio desde el lado izquierdo del contenedor */
                 width: calc(50% - 40px);
-                /* Calcula el ancho del título para ocupar la mitad del contenedor menos los márgenes */
+                /* Ajusta el ancho según sea necesario */
                 padding: 0 20px;
-                /* Espacio interno del título */
             }
 
-            .custom-title {
-                position: relative;
-                top: -10px;
-                /* Ajusta este valor según sea necesario */
-            }
+            /* Otras reglas CSS necesarias */
+
+
 
             .galeria {
                 width: calc(50% - 40px);
@@ -449,6 +435,7 @@
                 cursor: pointer;
             }
 
+
             .breadcrums {
                 display: flex;
             }
@@ -470,6 +457,7 @@
                 color: #2bb9e5;
             }
 
+            /* Estilos generales para dispositivos móviles */
             @media (max-width: 1200px) {
 
                 .title-container .big-title,
