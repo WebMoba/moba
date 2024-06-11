@@ -77,7 +77,7 @@
                 <!-- Columna para el párrafo -->
                 <div class="col-md-6">
                     <div class="titulo mt-4 mb-4">
-                        <p>{{ $projects->description }}</p>
+                        <p class="project-description">{{ $projects->description }}</p>
                     </div>
                 </div>
                 <!-- Columna para el carrusel -->
@@ -278,6 +278,20 @@
             .active-link {
                 position: relative;
                 color: #2bb9e5;
+            }
+
+            .project-description {
+                font-size: 16px;
+                /* Cambiar el tamaño de la fuente */
+                color: #333;
+                /* Cambiar el color del texto */
+                line-height: 1.5;
+                /* Cambiar la altura de línea */
+                margin: 0;
+                /* Eliminar los márgenes predeterminados */
+                padding: 10px;
+                /* Añadir relleno alrededor del texto */
+                font-family: Arial, sans-serif;
             }
 
             .active-link:after {
@@ -540,6 +554,8 @@
                     position: static;
                     text-align: center;
                 }
+
+
             }
         </style>
         <script>

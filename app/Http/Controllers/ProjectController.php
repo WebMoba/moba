@@ -70,8 +70,8 @@ class ProjectController extends Controller
     {
         // Validación de los campos
         $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
+            'name' => 'required|string|max:50',
+            'description' => 'required|string|max:600',
             'date_start' => 'required|date',
             'date_end' => 'required|date|after_or_equal:date_start',
             'status' => 'required|string',
