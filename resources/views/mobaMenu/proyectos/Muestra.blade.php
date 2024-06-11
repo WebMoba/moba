@@ -19,16 +19,16 @@
     </div>
     <nav class="navbar">
         <!--- inicio breaddrums-->
-        <div class="breadcrums">
+        {{--  <div class="breadcrums">
             @include('helpers.breadcrumbs', [
                 'breadcrumbs' => [
                     ['url' => route('welcome'), 'label' => 'Bienvenido /'],
                     ['url' => route('mobaMenu.index'), 'label' => 'Moba /'],
                     ['url' => route('mobaMenu.proyectos.index'), 'label' => 'Proyectos /'],
-                    {{--                      ['url' => route('mobaMenu.proyectos.Muestra'), 'label' => 'Proyecto'],  --}},
+                    ['url' => route('mobaMenu.proyectos.Muestra'), 'label' => 'Proyecto'],
                 ],
             ])
-        </div>
+        </div>  --}}
         <div class="inicioRegistro"> @include('partials.inicio')</div>
         <!--- final breaddrums-->
 
