@@ -2,21 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TeamWork;
-use Illuminate\Http\Request;
-use App\Models\Project;
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\DB;
-use Dompdf\Dompdf as DompdfDompdf;
 use App\Exports\TeamWorkExport;
-use Maatwebsite\Excel\Facades\Excel;
+use App\Models\Project;
+use App\Models\TeamWork;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Dompdf\Dompdf as DompdfDompdf;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 /**
  * Class TeamWorkController
  * @package App\Http\Controllers
  */
-
 
 class TeamWorkController extends Controller
 {
@@ -25,7 +22,7 @@ class TeamWorkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+
     public function project()
     {
         return $this->belongsTo(Project::class);
@@ -33,13 +30,13 @@ class TeamWorkController extends Controller
     public function index(Request $request)
     {
         $search = trim($request->get('search'));
-        $teamWorks=TeamWork::with('project')
-                    ->where('id','LIKE','%'.$search.'%')
-                    ->orWhere('specialty','LIKE','%'.$search.'%')
-                    ->orderBy('assigned_date','asc')
-                    ->paginate(10);
+        $teamWorks = TeamWork::with('project')
+            ->where('id', 'LIKE', '%' . $search . '%')
+            ->orWhere('specialty', 'LIKE', '%' . $search . '%')
+            ->orderBy('assigned_date', 'asc')
+            ->paginate(10);
 
-        return view('team-work.index', compact('teamWorks','search'))
+        return view('team-work.index', compact('teamWorks', 'search'))
             ->with('i', (request()->input('page', 1) - 1) * $teamWorks->perPage());
     }
 
@@ -51,11 +48,11 @@ class TeamWorkController extends Controller
     public function create()
     {
         $teamWork = new TeamWork();
-        $projects = Project::pluck('name','id');
-        $teamWork -> assigned_date = now()->format('Y-m-d');
+        $projects = Project::pluck('name', 'id');
+        $teamWork->assigned_date = now()->format('Y-m-d');
         $editing = false;
 
-        return view('team-work.create', compact('teamWork', 'editing','projects'));
+        return view('team-work.create', compact('teamWork', 'editing', 'projects'));
     }
 
     /**
@@ -66,28 +63,33 @@ class TeamWorkController extends Controller
      */
     public function store(Request $request)
     {
-        $msj=[
-            'required'=>'El atributo es requerido',
-            'max'=>'No puede ingresar mas caracteres en este campo',
+        $msj = [
+            'required' => 'El atributo es requerido',
+            'max' => 'No puede ingresar mas caracteres en este campo',
             'string' => 'El campo debe ser una cadena de texto.',
             'date' => 'El campo no debe ser una fecha anterior al dia de Hoy.',
         ];
 
         $request->validate([
-            'name'=>'required|string|max:10',
-            'specialty'=>'required|string|max:100',
-            'assigned_work'=>'required|string|max:100',
-            'assigned_date'=>'required|date',
-            'description'=>'required|string|max:1000',
-            'projects_id'=>'required',
+            'name' => 'required|string|max:10',
+            'specialty' => 'required|string|max:100',
+            'assigned_work' => 'required|string|max:100',
+            'assigned_date' => 'required|date',
+            'description' => 'required|string|max:1000',
+            'projects_id' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg|max:100000',
+
         ], $msj);
 
         request()->validate(TeamWork::$rules);
 
         $teamWork = TeamWork::create($request->all());
+        if ($request->hasFile('image')) {
+            $teamWork->image = $request->file('image')->store('uploads', 'public');
+        }
 
         return redirect()->route('team-works.index')
-            ->with('success', 'Equipo de trabajo creado de forma satisfactoria.');
+            ->with('success', 'Equipo de trabajo creado de forma exitosa.');
     }
 
     /**
@@ -99,8 +101,8 @@ class TeamWorkController extends Controller
     public function show($id)
     {
         $teamWork = TeamWork::find($id);
-        $projects = Project::pluck('name','id');
-        return view('team-work.show', compact('teamWork','projects'));
+        $projects = Project::pluck('name', 'id');
+        return view('team-work.show', compact('teamWork', 'projects'));
     }
 
     /**
@@ -146,18 +148,20 @@ class TeamWorkController extends Controller
             'assigned_work' => 'required|string|max:100',
             'assigned_date' => 'required|date',
             'projects_id' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg|max:100000',
         ], $msj);
 
         // Agrega depuración aquí
         \Log::info('Datos de actualización', $request->all());
+        if ($request->hasFile('image')) {
+            $teamWork->image = $request->file('image')->store('uploads', 'public');
+        }
 
         $teamWork->update($request->all());
 
         return redirect()->route('team-works.index')
             ->with('success', 'Equipo de trabajo actualizado con éxito');
     }
-
-
 
     /**
      * @param int $id
@@ -167,25 +171,25 @@ class TeamWorkController extends Controller
     public function destroy($id)
     {
         $teamWork = TeamWork::find($id);
-        
+
         if (!$teamWork) {
             return redirect()->route('team-works.index')->with('error', 'El equipo de trabajo no existe');
         }
-    
+
         // Cambia el estado del proyecto
         $teamWork->disable = !$teamWork->disable;
         $teamWork->save();
-    
+
         return redirect()->route('team-works.index')->with('success', 'Estado del equipo de trabajo cambiado con éxito');
     }
-    
+
     public function pdf()
     {
 
         $teamwork = TeamWork::all();
         $project = Project::all();
-        $pdf = Pdf::loadView('team-work.pdf-template', ['teamwork' => $teamwork],['project' => $project])
-                    ->setPaper('a4','landscape');
+        $pdf = Pdf::loadView('team-work.pdf-template', ['teamwork' => $teamwork], ['project' => $project])
+            ->setPaper('a4', 'landscape');
 
         $pdf->set_option('isRemoteEnabled', true);
 
@@ -196,19 +200,19 @@ class TeamWorkController extends Controller
     {
         // Obtener el filtro de la solicitud
         $filter = $request->input('findId');
-        
+
         // Obtener los datos de las personas filtradas si se aplicó un filtro
         if ($filter) {
             $teamwork = Teamwork::where('id', $filter)->get();
-            
+
         } else {
             // Si no hay filtro, obtener todas las personas
             $teamwork = Teamwork::all();
         }
         // Pasar los datos a la vista pdf-template
         $data = [
-            'teamwork' => $teamwork
-        ];    
+            'teamwork' => $teamwork,
+        ];
 
         // Generar el PDF
         $pdf = new DompdfDompdf();
@@ -224,5 +228,23 @@ class TeamWorkController extends Controller
         return Excel::download(new TeamWorkExport, 'Listado_Equipos-De-Trabajo.xlsx');
     }
 
-}
+    public function equipo(Request $request)
+    {
+        $search = trim($request->get('search'));
+        $teamWorks = TeamWork::with('project')
+            ->where('id', 'LIKE', '%' . $search . '%')
+            ->orWhere('specialty', 'LIKE', '%' . $search . '%')
+            ->orderBy('assigned_date', 'asc')
+            ->paginate(10);
 
+        return view('mobaMenu.EquipoTrabajo.index', compact('teamWorks', 'search'))
+            ->with('i', (request()->input('page', 1) - 1) * $teamWorks->perPage());
+    }
+
+    public function image($id)
+    {
+        $teamWork = TeamWork::find($id);
+        return asset('storage/' . $teamWork->image);
+    }
+
+}

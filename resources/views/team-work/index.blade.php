@@ -76,10 +76,14 @@
                                         <tr>
                                             <td>{{ $teamWork->id }}</td>
                                             <td>{{ $teamWork->name }}</td>
-                                            <td><img src="{{ asset('storage/' . $teamWork->image) }}" width="150"
-                                                height="150"></td>
                                             
-                                                <td>{{ $teamWork->image }}</td>
+                                            <td>
+                                                <?php
+                                                    $imagePath = asset('storage/' . $teamWork->image);
+                                                    echo $imagePath; // Verificar la ruta de la imagen
+                                                ?>
+                                                <img src="{{ $imagePath }}" width="150" height="150">
+                                            </td>
                                             
                                             <td>{{ $teamWork->specialty }}</td>
                                             <td>{{ $teamWork->description }}</td>

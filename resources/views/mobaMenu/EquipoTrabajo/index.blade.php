@@ -14,25 +14,29 @@
 </head>
 
 <body>
-    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{ asset('Imagenes/Fondo_moba4.jpg') }}'); background-size: 100% 100%; background-position: center top; background-repeat: no-repeat; opacity: 1; z-index: -1; filter: brightness(10%); -webkit-filter: brightness(10%);">
+    <div
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{ asset('Imagenes/Fondo_moba4.jpg') }}'); background-size: 100% 100%; background-position: center top; background-repeat: no-repeat; opacity: 1; z-index: -1; filter: brightness(10%); -webkit-filter: brightness(10%);">
     </div>
     <!-- menu  -->
-   
+
     <nav class="navbar">
-            <!--- inicio breaddrums-->
-            <div class="breadcrums">
-        @include('helpers.breadcrumbs', ['breadcrumbs' => [
-        ['url' => route('welcome'), 'label' => 'Bienvenido /'],
-        ['url' => route('mobaMenu.index'), 'label' => 'Moba /'],
-        ['url' => route('mobaMenu.EquipoTrabajo.index'), 'label' => 'EquipoDeTrabajo'],]])
+        <!--- inicio breaddrums-->
+        <div class="breadcrums">
+            @include('helpers.breadcrumbs', [
+                'breadcrumbs' => [
+                    ['url' => route('welcome'), 'label' => 'Bienvenido /'],
+                    ['url' => route('mobaMenu.index'), 'label' => 'Moba /'],
+                    ['url' => route('mobaMenu.EquipoTrabajo.index'), 'label' => 'EquipoDeTrabajo'],
+                ],
+            ])
         </div>
         <div class="inicioRegistro"> @include('partials.inicio')</div>
-<!--- final breaddrums-->
+        <!--- final breaddrums-->
 
 
         <div class="container-fluid">
-            
-        <a href="{{ route('mobaMenu.index')}}">
+
+            <a href="{{ route('mobaMenu.index') }}">
                 <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
             </a>
             <div class="navbar-buttons">
@@ -62,7 +66,7 @@
                 <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Tu Arte">
             </a>
         </div>
-      
+
 
     </nav>
 
@@ -192,7 +196,8 @@
                     <img src="{{ asset('Imagenes/imgs-gallery/EquipoDeTrabajo_1.jpg') }}" alt="Equipo"
                         id="equipo" class="img-equipo img-fluid">
                     <div class="text-container position-absolute bottom-0 start-50 translate-middle-x">
-                        <a class="text-1  p-1 mb-5 border-opacity-30 rounded-2 fondo-equipo" id="equipo">EQUIPO MOBA</a>
+                        <a class="text-1  p-1 mb-5 border-opacity-30 rounded-2 fondo-equipo" id="equipo">EQUIPO
+                            MOBA</a>
                     </div>
                 </div>
             </div>
@@ -226,7 +231,7 @@
 
 
         </div>
-        
+
         <div class="imagenes col-md-7">
 
             <div class="contenido col-md-3">
@@ -235,60 +240,113 @@
                 <a> Estos somos</a><br>
                 <a class="text-1"> nosotros</a>
             </div>
+            <div>
+            @foreach ($teamWorks as $teamWork)
+                <img src="{{ $teamWork->image }}" alt="{{ $teamWork->name }}" class="img-thumbnail img-fluid">
+            @endforeach
+        </div>
 
-            
-            <a target="_blank" class="imagen-contenedor javier-imagen" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Javier" >
-                <img src="{{ asset('Imagenes/imgs-gallery/javier1.jpg') }}" alt="JAVIER" id="JAVIER" name="Javier" class="img-thumbnail img-fluid" title="Javier">
+            @foreach ($teamWorks as $teamWork)
+                <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    title="{{ $teamWork->name }}">
+                    <img src="{{ asset('storage/' . $teamWork->image) }}" alt="{{ $teamWork->name }}"
+                        class="img-thumbnail img-fluid">
+                </a>
+            @endforeach
+
+            @foreach ($teamWorks as $teamWork)
+                <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    title="{{ $teamWork->name }}">
+                    <img src="{{ asset('storage/' . $teamWork->image) }}" alt="{{ $teamWork->name }}"
+                        name="{{ $teamWork->name }}" class="img-thumbnail img-fluid">
+                    <span class="tooltip">{{ $teamWork->name }}</span>
+                </a>
+            @endforeach
+            @foreach ($teamWorks as $teamWork)
+                <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    title="{{ $teamWork->name }}">
+                    <img src="{{ asset('storage/' . $teamWork->image) }}" alt="{{ $teamWork->name }}"
+                        name="{{ $teamWork->name }}" class="img-thumbnail img-fluid">
+                    <span class="tooltip">{{ $teamWork->name }}</span>
+                </a>
+            @endforeach
+
+
+
+            <a target="_blank" class="imagen-contenedor javier-imagen" data-bs-toggle="tooltip"
+                data-bs-placement="bottom" title="Javier">
+                <img src="{{ asset('Imagenes/imgs-gallery/javier1.jpg') }}" alt="JAVIER" id="JAVIER"
+                    name="Javier" class="img-thumbnail img-fluid" title="Javier">
                 <span class="tooltip">Javier</span>
             </a>
 
-            <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Canela">
-                <img src="{{ asset('Imagenes\imgs-gallery\Canela.jpg') }}" alt="Canela" name="Canela" class="img-thumbnail img-fluid">
+            <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                title="Canela">
+                <img src="{{ asset('Imagenes\imgs-gallery\Canela.jpg') }}" alt="Canela" name="Canela"
+                    class="img-thumbnail img-fluid">
                 <span class="tooltip">Canela</span>
             </a>
 
-            <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Haku">
-                <img src="{{ asset('Imagenes\imgs-gallery\Haku_.jpg') }}" alt="Haku" name="Haku" class="img-thumbnail img-fluid">
+            <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                title="Haku">
+                <img src="{{ asset('Imagenes\imgs-gallery\Haku_.jpg') }}" alt="Haku" name="Haku"
+                    class="img-thumbnail img-fluid">
                 <span class="tooltip">Haku</span>
             </a>
 
-            <a target="_blank" class="imagen-contenedor sofia-imagen" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Javier">
-                <img src="{{ asset('Imagenes\imgs-gallery\SOFIA_PEREZ12.jpg') }}" alt="SOFIA_PEREZ1" name="Sofia"id="SOFIA_PEREZ1" class="img-thumbnail img-fluid">
+            <a target="_blank" class="imagen-contenedor sofia-imagen" data-bs-toggle="tooltip"
+                data-bs-placement="bottom" title="Javier">
+                <img src="{{ asset('Imagenes\imgs-gallery\SOFIA_PEREZ12.jpg') }}" alt="SOFIA_PEREZ1"
+                    name="Sofia"id="SOFIA_PEREZ1" class="img-thumbnail img-fluid">
                 <span class="tooltip">Sofia</span>
             </a>
 
-            <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Javier">
-                <img src="{{ asset('Imagenes\imgs-gallery\Gamin_.jpg') }}" alt="Gamin" name="Gamin" class="img-thumbnail img-fluid">
+            <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                title="Javier">
+                <img src="{{ asset('Imagenes\imgs-gallery\Gamin_.jpg') }}" alt="Gamin" name="Gamin"
+                    class="img-thumbnail img-fluid">
                 <span class="tooltip">Gamin</span>
             </a>
 
-            <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Javier">
-                <img src="{{ asset('Imagenes\imgs-gallery\Mischa_.jpg') }}" alt="Mischa" name="Mischa" class="img-thumbnail img-fluid">
+            <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                title="Javier">
+                <img src="{{ asset('Imagenes\imgs-gallery\Mischa_.jpg') }}" alt="Mischa" name="Mischa"
+                    class="img-thumbnail img-fluid">
                 <span class="tooltip">Mischa</span>
             </a>
 
-            <a target="_blank" class="imagen-contenedor dayana-imagen" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Javier">
-                <img src="{{ asset('Imagenes\imgs-gallery\DAYANA_FONSECA1.jpg') }}" alt="DAYANA_FONSECA1" name="Dayana" id="DAYANA_FONSECA1" class="img-thumbnail img-fluid">
+            <a target="_blank" class="imagen-contenedor dayana-imagen" data-bs-toggle="tooltip"
+                data-bs-placement="bottom" title="Javier">
+                <img src="{{ asset('Imagenes\imgs-gallery\DAYANA_FONSECA1.jpg') }}" alt="DAYANA_FONSECA1"
+                    name="Dayana" id="DAYANA_FONSECA1" class="img-thumbnail img-fluid">
                 <span class="tooltip">Dayana</span>
             </a>
 
-            <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Javier">
-                <img src="{{ asset('Imagenes\imgs-gallery\Billu.jpg') }}" alt="Billu" name="Billu" class="img-thumbnail img-fluid">
+            <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                title="Javier">
+                <img src="{{ asset('Imagenes\imgs-gallery\Billu.jpg') }}" alt="Billu" name="Billu"
+                    class="img-thumbnail img-fluid">
                 <span class="tooltip">Billu</span>
             </a>
 
-            <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Javier">
-                <img src="{{ asset('Imagenes\imgs-gallery\Samy.jpg') }}" alt="Samy" name="Samy" class="img-thumbnail img-fluid">
+            <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                title="Javier">
+                <img src="{{ asset('Imagenes\imgs-gallery\Samy.jpg') }}" alt="Samy" name="Samy"
+                    class="img-thumbnail img-fluid">
                 <span class="tooltip">Samy</span>
             </a>
 
-            <a target="_blank" class="imagen-contenedor linda-imagen" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Javier">
-                <img src="{{ asset('Imagenes\imgs-gallery\LINDA_PEREZ_1l.JPG') }}" alt="LINDA_PEREZ" name="Linda" id="LINDA_PEREZ" class="img-thumbnail img-fluid">
+            <a target="_blank" class="imagen-contenedor linda-imagen" data-bs-toggle="tooltip"
+                data-bs-placement="bottom" title="Javier">
+                <img src="{{ asset('Imagenes\imgs-gallery\LINDA_PEREZ_1l.JPG') }}" alt="LINDA_PEREZ" name="Linda"
+                    id="LINDA_PEREZ" class="img-thumbnail img-fluid">
                 <span class="tooltip">Linda</span>
             </a>
 
-            <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Javier">
-                <img src="{{ asset('Imagenes\imgs-gallery\Tokio.jpg') }}" alt="Tokio" name="Tokio"class="img-thumbnail img-fluid">
+            <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                title="Javier">
+                <img src="{{ asset('Imagenes\imgs-gallery\Tokio.jpg') }}" alt="Tokio"
+                    name="Tokio"class="img-thumbnail img-fluid">
                 <span class="tooltip">Tokio</span>
             </a>
         </div>
@@ -320,8 +378,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        
-        
         document.addEventListener('DOMContentLoaded', function() {
             // Obtener la referencia a las imágenes y los asides correspondientes
             const imagenJavier = document.getElementById('JAVIER');
@@ -442,8 +498,10 @@
     }
 
     .aside-container {
-        max-height: 1000px; /* Establece la altura máxima para activar la barra de desplazamiento */
-        overflow-y: auto; /* Agrega una barra de desplazamiento vertical cuando sea necesario */
+        max-height: 1000px;
+        /* Establece la altura máxima para activar la barra de desplazamiento */
+        overflow-y: auto;
+        /* Agrega una barra de desplazamiento vertical cuando sea necesario */
         padding: 30px;
         right: 0;
         /* Alinear desde la derecha */
@@ -631,8 +689,8 @@
         margin-bottom: 0;
         font-size: 1.3vw;
         color: white !important;
-    font-family: sans-serif !important;
-    font-weight: normal;
+        font-family: sans-serif !important;
+        font-weight: normal;
     }
 
     .box-2 {
@@ -645,7 +703,7 @@
     }
 
     .text-1 {
-        color: #2bb9e5 ;
+        color: #2bb9e5;
         font-size: 140%;
         font-weight: bold;
         line-height: 1.5;
@@ -685,7 +743,6 @@
         padding: 1%;
         /* Espacio entre las imágenes */
         margin: 1%
-        
     }
 
 
@@ -711,19 +768,22 @@
     .imagen-contenedor {
         position: relative;
         display: inline-block;
-        margin-bottom: 20px; /* Ajusta la separación entre las imágenes */
+        margin-bottom: 20px;
+        /* Ajusta la separación entre las imágenes */
     }
-    
+
     .tooltip {
-        /* Estilos del tooltip estos estilos 
+        /* Estilos del tooltip estos estilos
         son para llamar el Nombre del integrante del Equipo*/
         position: absolute;
-        bottom: -30px; /* Ajusta la posición vertical del nombre */
+        bottom: -30px;
+        /* Ajusta la posición vertical del nombre */
         left: 50%;
         transform: translateX(-50%);
         background-color: rgba(244, 243, 243, 0.7);
         color: #000000;
-        font-weight: bold; /* Agrega negrita */
+        font-weight: bold;
+        /* Agrega negrita */
         padding: 5px 10px;
         border-radius: 5px;
         font-size: 25px;
@@ -731,17 +791,17 @@
         transition: opacity 0.3s ease;
         font-family: sans-serif !important;
     }
-    
+
     .imagen-contenedor:hover .tooltip {
         opacity: 1;
     }
-    
+
 
     .container-fluid {
         padding: 0 !important;
     }
 
-    
+
     .imagen-contenedor::after {
         content: attr(alt);
         position: absolute;
@@ -772,37 +832,34 @@
 
 
 
-    
+
     /*estilos Breadcrums*/
 
     .breadcrums {
-    display: flex;
-}
+        display: flex;
+    }
 
-.breadcrums a {
-    text-decoration: none;
-    color: white;
-    font-size: 0.9vw;
-    margin-right: 2px; /* Esto agrega un espacio entre los enlaces */
-    font-family: sans-serif !important;
-}
+    .breadcrums a {
+        text-decoration: none;
+        color: white;
+        font-size: 0.9vw;
+        margin-right: 2px;
+        /* Esto agrega un espacio entre los enlaces */
+        font-family: sans-serif !important;
+    }
 
-.breadcrumbs li {
-    display: inline;
-    padding: 0;
-}
+    .breadcrumbs li {
+        display: inline;
+        padding: 0;
+    }
 
-.breadcrumbs a:hover{
-    color:  #2bb9e5;
-}
-.dropdown-menu .dropdown-item {
-    color: #2bb9e5 !important;
-    background-color: #3E3E3F !important;
-    border-color: #2bb9e5 !important;
-}
+    .breadcrumbs a:hover {
+        color: #2bb9e5;
+    }
 
-
-
-
-    
+    .dropdown-menu .dropdown-item {
+        color: #2bb9e5 !important;
+        background-color: #3E3E3F !important;
+        border-color: #2bb9e5 !important;
+    }
 </style>

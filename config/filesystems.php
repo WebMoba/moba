@@ -28,23 +28,44 @@ return [
     |
     */
 
-    'disks' => [
+    /**  
+     * antes de hacer las pruebas de la vita de imagenes
+     'disks' => [
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
         ],
+    */
+
+        'disks' => [
+            'public' => [
+                'driver' => 'local',
+                'root' => storage_path('app/public'),
+                'url' => env('APP_URL').'/storage',
+                'visibility' => 'public',
+            ],
+        ],
+        
 
         'documentos' => [
             'driver' => 'local',
             'root' => 'C:\\Backups',
         ],
-
+    /** antes de hacer las modicicaciones de visualizar las imagenes
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
             'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],
+    */
+    'public' => [
+        'driver' => 'local',
+        'root' => storage_path('app/public'),
+        'url' => env('APP_URL').'/storage',
+        'visibility' => 'public',
+    ],
+    
 
         's3' => [
             'driver' => 's3',
@@ -57,7 +78,7 @@ return [
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
             'throw' => false,
         ],
-    ],
+    
 
     /*
     |--------------------------------------------------------------------------

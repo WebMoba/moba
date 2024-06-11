@@ -19,6 +19,14 @@
                         <table class="table">
                             <tbody>
                                 <tr>
+                                    <th>Nombre: </th>
+                                    <th>{{ $teamWork->name }}</th>
+                                </tr>
+                                <div class="form-group">
+                                    <strong>Imagen:</strong>
+                                    <img src="{{ asset('storage/' . $teamWork->image) }}" width="150" height="150">
+                                </div>
+                                <tr>
                                     <th>Especialidad:</th>
                                     <td>{{ $teamWork->specialty }}</td>
                                 </tr>

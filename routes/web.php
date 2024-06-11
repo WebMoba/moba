@@ -226,6 +226,7 @@ Route::view('/tuArteMenu/servicios/index', 'tuArteMenu.servicios.index')->name('
 Route::get('/tuArteMenu/servicios/Accesorios/index', [ProductController::class, 'indexForAccessories'])->name('tuArteMenu.servicios.Accesorios.index');
 Route::get('/tuArteMenu/servicios/Decoracion/index', [ProductController::class, 'indexForDecoration'])->name('tuArteMenu.servicios.Decoracion.index');
 Route::get('/tuArteMenu/servicios/JoditasPalRecuerdo/index', [ProductController::class, 'indexForJoditas'])->name('tuArteMenu.servicios.JoditasPalRecuerdo.index');
+Route::get('/mobaMenu/EquipoTrabajo/index', [TeamWorkController::class, 'equipo'])->name('mobaMenu.EquipoTrabajo.index');
 Route::get('/tuArteMenu/servicios/Mascotas/index', [ProductController::class, 'indexForPets'])->name('tuArteMenu.servicios.Mascotas.index');
 Route::view('/tuArteMenu/Contacto/index', 'tuArteMenu.Contacto.index')->name('tuArteMenu.Contacto.index');
 
