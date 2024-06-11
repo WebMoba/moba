@@ -83,7 +83,7 @@
                     href="{{ route('product.index') }}">
                     <div
                         class="icon icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="bi bi-basket text-back text-sm opacity-10"></i>
+                        <i class="bi bi-basket"></i>
                     </div>
                     <span class="nav-link-text ms-1">Productos</span>
                 </a>

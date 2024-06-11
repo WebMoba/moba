@@ -4,7 +4,7 @@
 
       <div class="log-in">
       
-      <a href="{{ url('documentos/ManualUsuario.pdf') }}" class="circle-btn" target="_blank">?</a>
+     
     <a href="{{ asset('/') }}" class="letter" > Principal / </a> 
         @if (Route::has('login'))
         @auth
@@ -55,26 +55,6 @@ a.letter{
 .log-in{
     display: flex;
 }
-
-.circle-btn {
-            display: inline-block;
-            width: 17px;
-            height: 17px;
-            border-radius: 50%;
-            border: 1.5px solid;
-            background-color: transparent;
-            color: white;
-            text-align: center;
-            line-height: 18px;
-            font-size: 12px;
-            margin-right: 15px;
-            transition: background-color 0.3s;
-        }
-        
-        .circle-btn:hover{
-            color: grey;
-        }
-
 
         .mapa{
         color: white;
