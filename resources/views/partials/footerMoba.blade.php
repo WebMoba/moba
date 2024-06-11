@@ -39,6 +39,7 @@
                     <li><i class="bi bi-telephone"> + 57 3133466060</i></li>
                     <li><i class="bi bi-envelope-at">  agenciamoba@gmail.com</i></li>
                     <li><i class="bi bi-browser-chrome"> teamMoba.com.co</i></li>
+                    <a href="{{ url('documentos/mapaNavegacion.pdf')}}" download="MapaNavegacion.pdf" class="mapa"><i class="bi bi-crosshair"></i> Mapa de Navegacion</a>
                 </ul>
             </div>
         </div>
@@ -69,5 +70,11 @@ ul>li i:hover {
     cursor: none;
 }
 
+.mapa{
+    color: #C5CAE9 !important;
+}
+.mapa:hover{
+    color: #C5CAE9 !important;
+}
 
 </style>

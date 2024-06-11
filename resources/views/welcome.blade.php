@@ -36,7 +36,7 @@
             
                 <div class="nav" style="display:flex;justify-content: end;">
                 <a href="{{ url('documentos/ManualUsuario.pdf') }}" class="circle-btn" target="_blank">?</a>
-                <a href="{{ url('documentos/mapaNavegacion.pdf')}}" download="MapaNavegacion.pdf" class="mapa"> Mapa</a>
+           
 
               
                     @auth
@@ -308,12 +308,7 @@
         opacity: 1;
     }
 
-    .mapa{
-        color: white;
-        margin-right: 3%;
-        font-size: 1rem;
-        text-decoration: none;
-    }
+
 
     @media (max-width: 768px) {
         .logos img {
