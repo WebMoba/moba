@@ -5,24 +5,24 @@
       <div class="log-in">
       
       <a href="{{ url('documentos/ManualUsuario.pdf') }}" class="circle-btn" target="_blank">?</a>
-    <a href="{{ asset('/') }}" class="letter" >Principal / </a> 
+    <a href="{{ asset('/') }}" class="letter" > Principal / </a> 
         @if (Route::has('login'))
         @auth
-                    <a href="{{ url('/dashboard') }}" class="letter">Inicio /   </a>
+                    <a href="{{ url('/dashboard') }}" class="letter"> &nbsp;Inicio /   </a>
                     <form role="form" method="post" action="{{ route('logout') }}" id="logout-form" >
                         @csrf
                         <a href="{{ route('logout') }}" class="letter" 
                             onclick="event.preventDefault(); clearCartAndLogout();">
-                             <i class="bi bi-person-circle"></i> Cerrar Sesión
+                            &nbsp;<i class="bi bi-person-circle"></i> Cerrar Sesión
                         </a>
                     </form>
 
                     @else
-                        <a href="{{ route('login') }}" class="letter">Ingresar /  </a>
+                        <a href="{{ route('login') }}" class="letter">&nbsp;Ingresar /  </a>
                         
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="letter">Registrarse</a>
+                            <a href="{{ route('register') }}" class="letter">&nbsp; Registrarse</a>
 
 
                         @endif
