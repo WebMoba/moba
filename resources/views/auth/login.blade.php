@@ -31,14 +31,14 @@
                                         @method('post')
                                         <div class="flex flex-col mb-3">
                                             <input type="email" name="email" class="form-control form-control-lg"
-                                                value="{{ old('email') ?? 'Moba@ejemplo.com' }}" aria-label="Email">
+                                                aria-label="Email" placeholder="Ingresa tu Email">
                                             @error('email')
                                                 <p class="text-danger text-xs pt-1"> {{ $message }} </p>
                                             @enderror
                                         </div>
                                         <div class="flex flex-col mb-3">
                                             <input type="password" name="password" class="form-control form-control-lg"
-                                                aria-label="Password" value="********">
+                                                aria-label="Password" placeholder="Ingresa tu Contraseña">
                                             @error('password')
                                                 <p class="text-danger text-xs pt-1"> {{ $message }} </p>
                                             @enderror
