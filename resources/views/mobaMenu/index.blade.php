@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Servicios</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('css/StyleFooter.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
-    <link rel="stylesheet" href="{{asset('css/mobaS.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/mobaS.css') }}">
 </head>
+
 <body class="background-image">
     <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{ asset('Imagenes/Fondo_TuArte5.jpg') }}'); background-size: 100% 100%; background-position: center top; background-repeat: no-repeat; opacity: 1; z-index: -1; filter: brightness(10%); -webkit-filter: brightness(30%);">
     </div>
     <nav class="navbar">
-        <!--- inicio breaddrums-->
         <div class="breadcrums">
             @include('helpers.breadcrumbs', ['breadcrumbs' => [
-            ['url' => route('welcome'), 'label' => 'Bienvenido /'],
-            ['url' => route('mobaMenu.index'), 'label' => 'Moba /'],
-            ['url' => route('mobaMenu.index'), 'label' => 'Nosotros'],]])
+                ['url' => route('welcome'), 'label' => 'Bienvenido /'],
+                ['url' => route('mobaMenu.index'), 'label' => 'Moba /'],
+                ['url' => route('mobaMenu.index'), 'label' => 'Nosotros'],
+            ]])
         </div>
-        <div class="inicioRegistro">@include('partials.inicio')</div>
-        <!--- final breaddrums-->
+        <div class="inicioRegistro"> @include('partials.inicio')</div>
         <div class="container-fluid">
             <a href="{{ route('mobaMenu.index')}}">
                 <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
@@ -34,7 +36,7 @@
             <div class="navbar-buttons">
                 <div class="dropdown">
                     <a href="{{route('mobaMenu.Servicios.servicios')}}">
-                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
                             Servicios
                         </button>
                     </a>
@@ -54,7 +56,6 @@
             </a>
         </div>
     </nav>
-
     <div class="content">
         <div class="vertical-line left-line">
             <hr class="linea1">
@@ -75,7 +76,6 @@
                     <br>
                     <p>Los pilares y bases de nuestro trabajo, estan regidos por la honestidad, la disiplina y la...</p>
                 </div>
-                <!-- buena onda-->
                 <div class="onda">
                     <h1>"Buena Onda"</h1>
                 </div>
@@ -92,20 +92,37 @@
             <hr class="linea2">
         </div>
     </div>
-    
+
+    <!-- Carrusel con dos filas -->
     <div class="container-slider">
-        <div class="slider-background">  
-            <div class="slider">
-                <div class="slide-track">
-                    @foreach($projects as $project)
-                        <img src="{{ asset('storage/' . $project->logo) }}" alt="Logo de {{ $project->name }}">
-                    @endforeach
+        <div class="slider-background">
+            @php
+                $projectsChunked = $projects->chunk(ceil($projects->count() / 2));
+            @endphp
+
+            @foreach($projectsChunked as $projectsRow)
+                <div class="slider">
+                    <div class="slide-track">
+                        @foreach($projectsRow as $project)
+                            <div class="slide">
+                                <img src="{{ asset('storage/' . $project->logo) }}" alt="Logo del proyecto {{ $project->name }}">
+                            </div>
+                        @endforeach
+                        <!-- Duplicate the images for infinite effect -->
+                        @foreach($projectsRow as $project)
+                            <div class="slide">
+                                <img src="{{ asset('storage/' . $project->logo) }}" alt="Logo del proyecto {{ $project->name }}">
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
     <script>
         document.querySelector('.dropdown').addEventListener('mouseenter', function() {
             this.querySelector('.dropdown-menu').classList.add('show');
@@ -116,7 +133,6 @@
         });
     </script>
 
-@include('partials.footerMoba')
+    @include('partials.footerMoba')
 </body>
 </html>
-

@@ -199,7 +199,7 @@ class ProjectController extends Controller
 
     public function showIndex()
     {
-        $projects = Project::all(); // Obtener todos los proyectos
+        $projects = Project::take(30)->get();
         return view('mobaMenu.index', compact('projects'));
     }
 

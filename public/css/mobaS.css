@@ -1,265 +1,285 @@
+/* frase y logo */
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
 
-        /* frase y logo */
-        .content{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-        }
-        .active-link {
-            position: relative;
-            color:#2bb9e5;
-        }
-        
-        .active-link:after {
-            color:#2bb9e5;
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 2px; /* Grosor de la línea */
-            background-color: blue; /* Color de la línea */
-        }
+.active-link {
+    position: relative;
+    color: #2bb9e5;
+}
 
-        .logotexto{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: row;
-            width: 80%;
-            height: 100%;
-            margin-top:15%;
-        }
-        .logotexto .texto{
-            width: 100%;
-            height: 80%;
-        }
+.active-link:after {
+    color: #2bb9e5;
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px; /* Grosor de la línea */
+    background-color: blue; /* Color de la línea */
+}
 
-        .logotexto .logomoba{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 35%;
-            height: 80%;
-            padding-bottom: 10%;
-            padding-right: 15%;
-        }
+.logotexto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 80%;
+    height: 100%;
+    margin-top: 15%;
+}
 
+.logotexto .texto {
+    width: 100%;
+    height: 80%;
+}
 
-        .logotexto .texto p{
-            font-size:larger;
-            color: white !important;
-            text-align: justify;
-            width: 80%;
-            font-family: sans-serif !important;
-            font-weight: normal;
-        }
+.logotexto .logomoba {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35%;
+    height: 80%;
+    padding-bottom: 10%;
+    padding-right: 15%;
+}
 
+.logotexto .texto p {
+    font-size: larger;
+    color: white !important;
+    text-align: justify;
+    width: 80%;
+    font-family: sans-serif !important;
+    font-weight: normal;
+}
 
-        .logotexto .logomoba img{
-            width: 410px;
-            height: 150px;
-        }
-        
-        .textonda{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 65%;
-            height: 90%;
-            flex-direction: column
-        }
-        /* buena onda */
-        .onda{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .onda h1{
-            font-size: 60px;
-            font-weight: bold;
-            color: white;
-            text-decoration: none;
-            font-family: sans-serif !important;
-        }
+.logotexto .logomoba img {
+    width: 410px;
+    height: 150px;
+}
 
-        .container-fluid{
-            padding: 0 !important;
-        }
+.textonda {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 65%;
+    height: 90%;
+    flex-direction: column
+}
 
-        /*carrousel infinito*/
-        .container-slider{
-            width:100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .slider-background{
-            width: 80%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            background-color: white;
-        }
-        .slider {
-            width: 95%;
-            height: auto;
-            overflow: hidden;
-            margin-bottom: 2%;
-            margin-top: 2%;
-        }
-        
-        .slider .slide-track {
-            display: flex;
-            animation: scroll 50s linear infinite;
-            -webkit-animation: scroll 50s linear infinite;
-            width: calc(200px * 14);
-        }
-        
-        .slider .slide-track {
-            width: 200px;
-        }
-        
-        .slider .slide-track img {
-            width: 100%;
-            padding-right: 5%;
-        }
+/* buena onda */
+.onda {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        @media screen and (max-width:1200px){
-            .logotexto .logomoba img{
-                width: 350px;
-                height: 150px;
-            }
-            .logotexto .logomoba{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 35%;
-                height: 80%;
-                padding-bottom: 10%;
-            }
-        }
+.onda h1 {
+    font-size: 60px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    font-family: sans-serif !important;
+}
 
-        @media screen and (max-width: 1000px) {
-            .logotexto{
-                flex-direction: row;
-            }
-            .logotexto .logomoba img{
-                width: 300px;
-                height: 100px;
-            }
-        }
+.container-fluid {
+    padding: 0 !important;
+}
 
-        @media screen and (max-width: 900px) {
-            
-            .logotexto{
-                flex-direction: row;
-            }
-            .logotexto .logomoba img{
-                width: 250px;
-                height: 80px;
-            }
-        }
-        
-        @media screen and (max-width: 700px){
-            .logotexto{
-                flex-direction: row;
-            }
-            .logotexto .logomoba img{
-                width: 180px;
-                height: 80px;
-            }
-            .onda h1{
-                font-size: 40px;
-                font-weight: bold;
-                color: white;
-            }
-            .logotexto .texto p{
-                font-size:10px;
-                color: white;
-                text-align: justify;
-                width: 80%;
-                padding-top: 10%;
-            }
-        } 
+/*carrousel infinito*/
+.container-slider {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        @media screen and (max-width:520px){
-            h1{
-                text-decoration: underline;
-            }
-            h1::before{
-                display: none;  
-            }
-            h1 span{
-                padding: 0;
-            }
-            .logotexto .texto p{
-                font-size:10px;
-                color: white;
-                text-align: justify;
-                width: 80%;
-                padding-top: 15%;
-            }
-            .logotexto{
-                flex-direction: column;
-            }
-            .logotexto .logomoba img{
-                width: 150px;
-                height: 60px;
-            }
-            .onda h1{
-                font-size: 30px;
-                font-weight: bold;
-                color: white;
-            }
-        }
-        
-        @media screen and (max-width:400px){
-            h1{
-                text-decoration: underline;
-            }
-            h1::before{
-                display: none;  
-            }
-            h1 span{
-                padding: 0;
-            }
-            .logotexto .texto p{
-                font-size:10px;
-                color: white;
-                text-align: justify;
-                width: 80%;
-                padding-top: 20%;
-            }
-            .logotexto{
-                flex-direction: column;
-            }
-            .logotexto .logomoba img{
-                width: 150px;
-                height: 60px;
-            }
-            .onda h1{
-                font-size: 30px;
-                font-weight: bold;
-                color: white;
-            }
-        }
-        
-        @keyframes scroll {
-            0% {
-                -webkit-transform: translateX(0);
-                transform: translateX(0);
-            }
-            100% {
-                -webkit-transform: translateX(calc(-200px * 7));
-                transform: translateX(calc(-200px * 7));
-            }
-        }
+.slider-background {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+}
 
+.slider {
+    width: 95%;
+    height: auto;
+    overflow: hidden;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
 
-        .breadcrums {
+.slider .slide-track {
+    display: flex;
+    animation: scroll 50s linear infinite;
+    -webkit-animation: scroll 50s linear infinite;
+    width: calc(200px * 28); /* Ajusta el valor basado en el número de imágenes duplicadas */
+}
+
+.slider .slide {
+    width: 200px; /* Ajusta el tamaño de las imágenes */
+}
+
+.slider .slide img {
+    width: 100%;
+    padding-right: 5%;
+}
+
+@media screen and (max-width: 1200px) {
+    .logotexto .logomoba img {
+        width: 350px;
+        height: 150px;
+    }
+
+    .logotexto .logomoba {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 35%;
+        height: 80%;
+        padding-bottom: 10%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .logotexto {
+        flex-direction: row;
+    }
+
+    .logotexto .logomoba img {
+        width: 300px;
+        height: 100px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .logotexto {
+        flex-direction: row;
+    }
+
+    .logotexto .logomoba img {
+        width: 250px;
+        height: 80px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .logotexto {
+        flex-direction: row;
+    }
+
+    .logotexto .logomoba img {
+        width: 180px;
+        height: 80px;
+    }
+
+    .onda h1 {
+        font-size: 40px;
+        font-weight: bold;
+        color: white;
+    }
+
+    .logotexto .texto p {
+        font-size: 10px;
+        color: white;
+        text-align: justify;
+        width: 80%;
+        padding-top: 10%;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    h1 {
+        text-decoration: underline;
+    }
+
+    h1::before {
+        display: none;
+    }
+
+    h1 span {
+        padding: 0;
+    }
+
+    .logotexto .texto p {
+        font-size: 10px;
+        color: white;
+        text-align: justify;
+        width: 80%;
+        padding-top: 15%;
+    }
+
+    .logotexto {
+        flex-direction: column;
+    }
+
+    .logotexto .logomoba img {
+        width: 150px;
+        height: 60px;
+    }
+
+    .onda h1 {
+        font-size: 30px;
+        font-weight: bold;
+        color: white;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    h1 {
+        text-decoration: underline;
+    }
+
+    h1::before {
+        display: none;
+    }
+
+    h1 span {
+        padding: 0;
+    }
+
+    .logotexto .texto p {
+        font-size: 10px;
+        color: white;
+        text-align: justify;
+        width: 80%;
+        padding-top: 20%;
+    }
+
+    .logotexto {
+        flex-direction: column;
+    }
+
+    .logotexto .logomoba img {
+        width: 150px;
+        height: 60px;
+    }
+
+    .onda h1 {
+        font-size: 30px;
+        font-weight: bold;
+        color: white;
+    }
+}
+
+@keyframes scroll {
+    0% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+
+    100% {
+        -webkit-transform: translateX(calc(-200px * 14));
+        transform: translateX(calc(-200px * 14));
+    }
+}
+
+.breadcrums {
     display: flex;
 }
 
@@ -276,6 +296,6 @@
     padding: 0;
 }
 
-.breadcrumbs a:hover{
-    color:  #2bb9e5;
+.breadcrumbs a:hover {
+    color: #2bb9e5;
 }
