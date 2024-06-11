@@ -78,11 +78,12 @@
                                             <td>{{ $teamWork->name }}</td>
                                             
                                             <td>
-                                                <?php
-                                                    $imagePath = asset('storage/' . $teamWork->image);
-                                                    echo $imagePath; // Verificar la ruta de la imagen
-                                                ?>
-                                                <img src="{{ $imagePath }}" width="150" height="150">
+                                                @if ($teamWork->image)
+                                                
+                                                <img src="{{ asset('storage/' . $teamWork->image) }}" width="150" height="150">
+                                                @else
+                                                    No hay Imagen
+                                                @endif
                                             </td>
                                             
                                             <td>{{ $teamWork->specialty }}</td>

@@ -40,7 +40,7 @@
                                 </tr>
                                 <tr>
                                     <th>Proyecto:</th>
-                                    <td>{{ $teamWork->projects_id }}</td>
+                                    <td>{{ $teamWork->project->name }}</td>
                                 </tr>
                             </tbody>
                         </table>

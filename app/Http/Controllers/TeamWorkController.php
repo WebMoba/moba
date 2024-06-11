@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use App\Exports\TeamWorkExport;
 use App\Models\Project;
 use App\Models\TeamWork;
@@ -34,7 +35,7 @@ class TeamWorkController extends Controller
             ->where('id', 'LIKE', '%' . $search . '%')
             ->orWhere('specialty', 'LIKE', '%' . $search . '%')
             ->orderBy('assigned_date', 'asc')
-            ->paginate(10);
+            ->paginate(5);
 
         return view('team-work.index', compact('teamWorks', 'search'))
             ->with('i', (request()->input('page', 1) - 1) * $teamWorks->perPage());
@@ -72,6 +73,7 @@ class TeamWorkController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:10',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:100000',
             'specialty' => 'required|string|max:100',
             'assigned_work' => 'required|string|max:100',
             'assigned_date' => 'required|date',
@@ -81,12 +83,15 @@ class TeamWorkController extends Controller
 
         ], $msj);
 
-        request()->validate(TeamWork::$rules);
-
-        $teamWork = TeamWork::create($request->all());
+        $teamWork = new TeamWork($request->except(['image']));
+        
         if ($request->hasFile('image')) {
             $teamWork->image = $request->file('image')->store('uploads', 'public');
+        }else {
+            return redirect()->back()->withErrors(['image' => 'El campo imagen es obligatorio'])->withInput();
         }
+        $teamWork->save();
+
 
         return redirect()->route('team-works.index')
             ->with('success', 'Equipo de trabajo creado de forma exitosa.');
@@ -142,23 +147,31 @@ class TeamWorkController extends Controller
             'string' => 'El campo debe ser una cadena de texto.',
             'date' => 'El campo no debe ser una fecha anterior al día de hoy.',
         ];
-
+    
         $request->validate([
             'specialty' => 'required|string|max:100',
             'assigned_work' => 'required|string|max:100',
             'assigned_date' => 'required|date',
             'projects_id' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg|max:100000',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:100000',
         ], $msj);
-
+    
         // Agrega depuración aquí
-        \Log::info('Datos de actualización', $request->all());
-        if ($request->hasFile('image')) {
+        //\Log::info('Datos de actualización', $request->all());
+    
+        $teamWork->fill($request->except('image'));
+    
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            // Eliminar la imagen anterior si existe
+            if ($teamWork->image && Storage::disk('public')->exists($teamWork->image)) {
+                Storage::disk('public')->delete($teamWork->image);
+            }
+    
             $teamWork->image = $request->file('image')->store('uploads', 'public');
         }
-
-        $teamWork->update($request->all());
-
+    
+        $teamWork->save();
+    
         return redirect()->route('team-works.index')
             ->with('success', 'Equipo de trabajo actualizado con éxito');
     }

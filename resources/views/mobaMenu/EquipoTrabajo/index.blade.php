@@ -241,10 +241,12 @@
                 <a class="text-1"> nosotros</a>
             </div>
             <div>
-            @foreach ($teamWorks as $teamWork)
-                <img src="{{ $teamWork->image }}" alt="{{ $teamWork->name }}" class="img-thumbnail img-fluid">
-            @endforeach
-        </div>
+                @foreach ($teamWorks as $teamWork)
+                    @if ($teamWork->specialty === 'socio')
+                        <img src="{{ asset('storage/' . $teamWork->image) }}"  class="img-thumbnail img-fluid">
+                    @endif
+                @endforeach
+            </div>
 
             @foreach ($teamWorks as $teamWork)
                 <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom"
