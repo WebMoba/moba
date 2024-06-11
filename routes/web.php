@@ -197,7 +197,6 @@
     Route::view('/mobaMenu/EquipoTrabajo/integranteTres', 'mobaMenu.EquipoTrabajo.integranteTres')->name('mobaMenu.EquipoTrabajo.integranteTres');
     Route::view('/mobaMenu/EquipoTrabajo/integranteCuatro', 'mobaMenu.EquipoTrabajo.integranteCuatro')->name('mobaMenu.EquipoTrabajo.integranteCuatro');
     Route::view('/mobaMenu/Contacto/index', 'mobaMenu.Contacto.index')->name('mobaMenu.Contacto.index');
-    Route::view('/mobaMenu/proyectos/index', 'mobaMenu.proyectos.index')->name('mobaMenu.proyectos.index');
 
     //vistas froted tu arte 
     Route::view('/tuArteMenu/index', 'tuArteMenu.index')->name('tuArteMenu.index');
