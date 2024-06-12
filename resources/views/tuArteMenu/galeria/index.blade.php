@@ -450,7 +450,7 @@
         </div>
     </div>
 
-        <script>
+    <script>
         document.addEventListener("DOMContentLoaded", function() {
             const cards = document.querySelectorAll('.card-link');
             const cartBadge = document.querySelector('.cart-badge');
@@ -484,7 +484,6 @@
                 localStorage.setItem('cart', JSON.stringify(cartData));
             }
 
-            
 
 
 
@@ -497,7 +496,13 @@
 
 
 
-            
+
+            function loadCartG() {
+                const cartData = JSON.parse(localStorage.getItem('cart') || '[]');
+                cartData.forEach(item => addCartItem(item.productId, item.productName, item.productPrice, item
+                    .productImage, item.productQuantity));
+                updateTotal();
+            }
 
             function addCartItem(productId, productName, productPrice, productImage, productQuantity = 1) {
                 const existingItem = document.querySelector(`#cartItems tr[data-product-id="${productId}"]`);
@@ -623,6 +628,7 @@
             document.onmousemove = resetInactivityTimer;
             document.onkeypress = resetInactivityTimer;
 
+            loadCartG();
             loadCart();
         });
     </script>
@@ -714,7 +720,7 @@
         });
     </script>
     @include('partials.footerTuArte')
-    
+
 </body>
 
 </html>
