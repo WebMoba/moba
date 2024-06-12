@@ -210,6 +210,7 @@ class ProjectController extends Controller
     public function showIndex()
     {
         $projects = Project::take(30)->get();
+        $projects = Project::where('status', 'finalizado')->get();
         return view('mobaMenu.index', compact('projects'));
     }
 
