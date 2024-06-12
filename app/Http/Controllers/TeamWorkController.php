@@ -79,7 +79,7 @@ class TeamWorkController extends Controller
             'assigned_date' => 'required|date',
             'description' => 'required|string|max:1000',
             'projects_id' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg|max:100000',
+            
 
         ], $msj);
 
@@ -248,7 +248,7 @@ class TeamWorkController extends Controller
             ->where('id', 'LIKE', '%' . $search . '%')
             ->orWhere('specialty', 'LIKE', '%' . $search . '%')
             ->orderBy('assigned_date', 'asc')
-            ->paginate(10);
+            ->paginate(12);
 
         return view('mobaMenu.EquipoTrabajo.index', compact('teamWorks', 'search'))
             ->with('i', (request()->input('page', 1) - 1) * $teamWorks->perPage());

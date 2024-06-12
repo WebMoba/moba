@@ -192,14 +192,22 @@
         <div class="container mt-5 mb-5 ">
 
             <div class="container ms-5">
-                <div class="equipo" style="position: relative; display: inline-block;">
-                    <img src="{{ asset('Imagenes/imgs-gallery/EquipoDeTrabajo_1.jpg') }}" alt="Equipo"
-                        id="equipo" class="img-equipo img-fluid">
-                    <div class="text-container position-absolute bottom-0 start-50 translate-middle-x">
-                        <a class="text-1  p-1 mb-5 border-opacity-30 rounded-2 fondo-equipo" id="equipo">EQUIPO
-                            MOBA</a>
-                    </div>
-                </div>
+                
+                @foreach ($teamWorks as $teamWork)
+                    @if ($teamWork->name === 'EQUIPO MOBA')
+                        <div class="equipo" style="position: relative; display: inline-block;">
+                            <img src="{{ asset('storage/' . $teamWork->image) }}"
+                                alt="{{ strtoupper($teamWork->name) }}" id="{{ strtoupper($teamWork->name) }}"
+                                name="{{ $teamWork->name }}" class="img-equipo img-fluid">
+                            <div class="text-container position-absolute bottom-0 start-50 translate-middle-x">
+                                <a class="text-1  p-1 mb-5 border-opacity-30 rounded-2 fondo-equipo"
+                                    id="{{ strtoupper($teamWork->name) }}">{{ strtoupper($teamWork->name) }}</a>
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
+
+                
             </div>
 
 
@@ -240,117 +248,24 @@
                 <a> Estos somos</a><br>
                 <a class="text-1"> nosotros</a>
             </div>
-            <div>
+
+            
                 @foreach ($teamWorks as $teamWork)
                     @if ($teamWork->specialty === 'socio')
-                        <img src="{{ asset('storage/' . $teamWork->image) }}"  class="img-thumbnail img-fluid">
+                        <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip"
+                           data-bs-placement="bottom" title="{{ $teamWork->name }}">
+                            <img src="{{ asset('storage/' . $teamWork->image) }}" alt="{{ strtoupper($teamWork->name) }}"
+                                 id="{{ strtoupper($teamWork->name) }}" name="{{ $teamWork->name }}"
+                                 class="img-thumbnail img-fluid" title="{{ $teamWork->name }}">
+                            <span class="tooltip">{{ $teamWork->name }}</span>
+                        </a>
                     @endif
                 @endforeach
-            </div>
-
-            @foreach ($teamWorks as $teamWork)
-                <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    title="{{ $teamWork->name }}">
-                    <img src="{{ asset('storage/' . $teamWork->image) }}" alt="{{ $teamWork->name }}"
-                        class="img-thumbnail img-fluid">
-                </a>
-            @endforeach
-
-            @foreach ($teamWorks as $teamWork)
-                <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    title="{{ $teamWork->name }}">
-                    <img src="{{ asset('storage/' . $teamWork->image) }}" alt="{{ $teamWork->name }}"
-                        name="{{ $teamWork->name }}" class="img-thumbnail img-fluid">
-                    <span class="tooltip">{{ $teamWork->name }}</span>
-                </a>
-            @endforeach
-            @foreach ($teamWorks as $teamWork)
-                <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    title="{{ $teamWork->name }}">
-                    <img src="{{ asset('storage/' . $teamWork->image) }}" alt="{{ $teamWork->name }}"
-                        name="{{ $teamWork->name }}" class="img-thumbnail img-fluid">
-                    <span class="tooltip">{{ $teamWork->name }}</span>
-                </a>
-            @endforeach
+            
+            
 
 
-
-            <a target="_blank" class="imagen-contenedor javier-imagen" data-bs-toggle="tooltip"
-                data-bs-placement="bottom" title="Javier">
-                <img src="{{ asset('Imagenes/imgs-gallery/javier1.jpg') }}" alt="JAVIER" id="JAVIER"
-                    name="Javier" class="img-thumbnail img-fluid" title="Javier">
-                <span class="tooltip">Javier</span>
-            </a>
-
-            <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                title="Canela">
-                <img src="{{ asset('Imagenes\imgs-gallery\Canela.jpg') }}" alt="Canela" name="Canela"
-                    class="img-thumbnail img-fluid">
-                <span class="tooltip">Canela</span>
-            </a>
-
-            <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                title="Haku">
-                <img src="{{ asset('Imagenes\imgs-gallery\Haku_.jpg') }}" alt="Haku" name="Haku"
-                    class="img-thumbnail img-fluid">
-                <span class="tooltip">Haku</span>
-            </a>
-
-            <a target="_blank" class="imagen-contenedor sofia-imagen" data-bs-toggle="tooltip"
-                data-bs-placement="bottom" title="Javier">
-                <img src="{{ asset('Imagenes\imgs-gallery\SOFIA_PEREZ12.jpg') }}" alt="SOFIA_PEREZ1"
-                    name="Sofia"id="SOFIA_PEREZ1" class="img-thumbnail img-fluid">
-                <span class="tooltip">Sofia</span>
-            </a>
-
-            <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                title="Javier">
-                <img src="{{ asset('Imagenes\imgs-gallery\Gamin_.jpg') }}" alt="Gamin" name="Gamin"
-                    class="img-thumbnail img-fluid">
-                <span class="tooltip">Gamin</span>
-            </a>
-
-            <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                title="Javier">
-                <img src="{{ asset('Imagenes\imgs-gallery\Mischa_.jpg') }}" alt="Mischa" name="Mischa"
-                    class="img-thumbnail img-fluid">
-                <span class="tooltip">Mischa</span>
-            </a>
-
-            <a target="_blank" class="imagen-contenedor dayana-imagen" data-bs-toggle="tooltip"
-                data-bs-placement="bottom" title="Javier">
-                <img src="{{ asset('Imagenes\imgs-gallery\DAYANA_FONSECA1.jpg') }}" alt="DAYANA_FONSECA1"
-                    name="Dayana" id="DAYANA_FONSECA1" class="img-thumbnail img-fluid">
-                <span class="tooltip">Dayana</span>
-            </a>
-
-            <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                title="Javier">
-                <img src="{{ asset('Imagenes\imgs-gallery\Billu.jpg') }}" alt="Billu" name="Billu"
-                    class="img-thumbnail img-fluid">
-                <span class="tooltip">Billu</span>
-            </a>
-
-            <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                title="Javier">
-                <img src="{{ asset('Imagenes\imgs-gallery\Samy.jpg') }}" alt="Samy" name="Samy"
-                    class="img-thumbnail img-fluid">
-                <span class="tooltip">Samy</span>
-            </a>
-
-            <a target="_blank" class="imagen-contenedor linda-imagen" data-bs-toggle="tooltip"
-                data-bs-placement="bottom" title="Javier">
-                <img src="{{ asset('Imagenes\imgs-gallery\LINDA_PEREZ_1l.JPG') }}" alt="LINDA_PEREZ" name="Linda"
-                    id="LINDA_PEREZ" class="img-thumbnail img-fluid">
-                <span class="tooltip">Linda</span>
-            </a>
-
-            <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                title="Javier">
-                <img src="{{ asset('Imagenes\imgs-gallery\Tokio.jpg') }}" alt="Tokio"
-                    name="Tokio"class="img-thumbnail img-fluid">
-                <span class="tooltip">Tokio</span>
-            </a>
+          
         </div>
 
     </div>
