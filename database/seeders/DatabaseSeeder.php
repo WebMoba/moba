@@ -1490,6 +1490,124 @@ class DatabaseSeeder extends Seeder
             'units_id' => 6,
             'categories_products_services_id' => 4,
         ]);
+
+        DB::table('projects')->insert([
+            'name' => 'EQUIPO DE TRABAJO',
+            'description' => '',
+            'logo'=> 'imgs-gallery/LOGO MOBA.png',            
+        ]);
+
+        DB::table('team_works')->insert([
+            'name' => 'EQUIPO MOBA',
+            'image'=> 'imgs-gallery/EquipoDeTrabajo_1.jpg',
+            'specialty' => 'EQUIPO MOBA',
+            'description' => 'EQUIPO MOBA',
+            'projects_id' => 1,
+        ]);
+
+        DB::table('team_works')->insert([
+            'name' => 'JAVIER',
+            'image'=> 'imgs-gallery/javier1.jpg',
+            'specialty' => 'Socio',
+            'assigned_work' => 'Diseñador',
+            'description' => 'EQUIPO MOBA',
+            'projects_id' => 1,
+        ]);
+        
+        DB::table('team_works')->insert([
+            'name' => 'CANELA',
+            'image'=> 'imgs-gallery/Canela.jpg',
+            'specialty' => 'Socio',
+            'assigned_work' => 'Mascota',
+            'description' => 'EQUIPO MOBA',
+            'projects_id' => 1,
+        ]);
+
+        DB::table('team_works')->insert([
+            'name' => 'HAKU',
+            'image'=> 'imgs-gallery/Haku_.jpg',
+            'specialty' => 'Socio',
+            'assigned_work' => 'Mascota',
+            'description' => 'EQUIPO MOBA',
+            'projects_id' => 1,
+        ]);
+
+        DB::table('team_works')->insert([
+            'name' => 'SOFIA',
+            'image'=> 'imgs-gallery/SOFIA.jpg',
+            'specialty' => 'Socio',
+            'assigned_work' => 'Diseñador',
+            'description' => 'EQUIPO MOBA',
+            'projects_id' => 1,
+        ]);
+
+        DB::table('team_works')->insert([
+            'name' => 'GAMIN',
+            'image'=> 'imgs-gallery/Gamin_.jpg',
+            'specialty' => 'Socio',
+            'assigned_work' => 'Mascota',
+            'description' => 'EQUIPO MOBA',
+            'projects_id' => 1,
+        ]);
+
+        DB::table('team_works')->insert([
+            'name' => 'MISCHA',
+            'image'=> 'imgs-gallery/Mischa_.jpg',
+            'specialty' => 'Socio',
+            'assigned_work' => 'Mascota',
+            'description' => 'EQUIPO MOBA',
+            'projects_id' => 1,
+        ]);
+
+        DB::table('team_works')->insert([
+            'name' => 'DAYANA',
+            'image'=> 'imgs-gallery/DAYANA.jpg',
+            'specialty' => 'Socio',
+            'assigned_work' => 'Diseñador',
+            'description' => 'EQUIPO MOBA',
+            'projects_id' => 1,
+        ]);
+
+
+        DB::table('team_works')->insert([
+            'name' => 'BILLU',
+            'image'=> 'imgs-gallery/Billu.jpg',
+            'specialty' => 'Socio',
+            'assigned_work' => 'Mascota',
+            'description' => 'EQUIPO MOBA',
+            'projects_id' => 1,
+        ]);
+
+        DB::table('team_works')->insert([
+            'name' => 'SAMY',
+            'image'=> 'imgs-gallery/Samy.jpg',
+            'specialty' => 'Socio',
+            'assigned_work' => 'Mascota',
+            'description' => 'EQUIPO MOBA',
+            'projects_id' => 1,
+        ]);
+
+        DB::table('team_works')->insert([
+            'name' => 'LINDA',
+            'image'=> 'imgs-gallery/LINDA.jpg',
+            'specialty' => 'Socio',
+            'assigned_work' => 'Diseñador',
+            'description' => 'EQUIPO MOBA',
+            'projects_id' => 1,
+        ]);
+
+        DB::table('team_works')->insert([
+            'name' => 'TOKIO',
+            'image'=> 'imgs-gallery/Tokio.jpg',
+            'specialty' => 'Socio',
+            'assigned_work' => 'Mascota',
+            'description' => 'EQUIPO MOBA',
+            'projects_id' => 1,
+        ]);
+
+
         echo 'Seeder ejecutado correctamente.';
+
+
     }
 }

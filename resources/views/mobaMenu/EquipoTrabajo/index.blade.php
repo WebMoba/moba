@@ -251,7 +251,7 @@
 
             
                 @foreach ($teamWorks as $teamWork)
-                    @if ($teamWork->specialty === 'socio')
+                    @if ($teamWork->specialty === 'Socio')
                         <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip"
                            data-bs-placement="bottom" title="{{ $teamWork->name }}">
                             <img src="{{ asset('storage/' . $teamWork->image) }}" alt="{{ strtoupper($teamWork->name) }}"
@@ -293,7 +293,7 @@
         });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Obtener la referencia a las imágenes y los asides correspondientes
@@ -301,15 +301,15 @@
             const asideJavier = document.getElementById('miAsideJavier');
             const botonCerrarJavier = document.getElementById('cerrarAsideJavier');
 
-            const imagenSofia = document.getElementById('SOFIA_PEREZ1');
+            const imagenSofia = document.getElementById('SOFIA');
             const asideSofia = document.getElementById('miAsideSofia');
             const botonCerrarSofia = document.getElementById('cerrarAsideSofia');
 
-            const imagenDayana = document.getElementById('DAYANA_FONSECA1');
+            const imagenDayana = document.getElementById('DAYANA');
             const asideDayana = document.getElementById('miAsideDayana');
             const botonCerrarDayana = document.getElementById('cerrarAsideDayana');
 
-            const imagenLinda = document.getElementById('LINDA_PEREZ');
+            const imagenLinda = document.getElementById('LINDA');
             const asideLinda = document.getElementById('miAsideLinda');
             const botonCerrarLinda = document.getElementById('cerrarAsideLinda');
 
