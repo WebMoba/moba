@@ -6,7 +6,6 @@
 /storage/*.key
 /storage/app/public/images/
 /storage/app/public/logos/
-/storage/app/public/imgs-gallery/
 /storage/app/public/uploads/
 /vendor
 .env
