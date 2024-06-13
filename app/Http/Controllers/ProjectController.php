@@ -28,9 +28,13 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::paginate(10);
+        // Ordena los proyectos por la columna 'created_at' en orden ascendente
+        $projects = Project::orderBy('created_at', 'asc')->paginate(10);
+
+        // Retorna la vista 'project.index' con los proyectos y el índice 'i'
         return view('project.index', compact('projects'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
+
     public function PrincipalProjectos()
     {
         /* $projects = Project::paginate(18); */
