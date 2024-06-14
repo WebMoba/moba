@@ -38,13 +38,19 @@ class ProjectController extends Controller
     public function PrincipalProjectos()
     {
         /* $projects = Project::paginate(18); */
-        $projects = Project::where('status', 'finalizado')->take(18)->get();
+        $projects = Project::where('status', 'finalizado')
+            ->where('disable', '!=', 1) // Agregar esta condición
+            ->take(18)
+            ->get();
+
         return view('mobaMenu.proyectos.index', compact('projects'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     public function Projectosides($id)
     {
-        $projects = Project::findOrFail($id);
+        $projects = Project::where('id', $id)
+            ->where('disable', '!=', 1) // Agregar esta condición
+            ->firstOrFail();
         return view('mobaMenu.proyectos.Muestra', compact('projects'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
@@ -213,8 +219,11 @@ class ProjectController extends Controller
 
     public function showIndex()
     {
-        $projects = Project::take(30)->get();
-        $projects = Project::where('status', 'finalizado')->get();
+        // $projects = Project::take(30)->get();  // Esta línea parece innecesaria ya que se sobrescribe en la siguiente línea.
+        $projects = Project::where('status', 'finalizado')
+            ->where('disable', '!=', 1) // Agregar esta condición
+            ->take(30) // Si necesitas limitar los resultados a 30, lo añadí aquí.
+            ->get();
         return view('mobaMenu.index', compact('projects'));
     }
 

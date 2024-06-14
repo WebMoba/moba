@@ -28,6 +28,7 @@ class TeamWorkController extends Controller
     {
         return $this->belongsTo(Project::class);
     }
+
     public function index(Request $request)
     {
         $search = trim($request->get('search'));
@@ -79,15 +80,15 @@ class TeamWorkController extends Controller
             'assigned_date' => 'required|date',
             'description' => 'required|string|max:1000',
             'projects_id' => 'required',
-            
+
 
         ], $msj);
 
         $teamWork = new TeamWork($request->except(['image']));
-        
+
         if ($request->hasFile('image')) {
             $teamWork->image = $request->file('image')->store('uploads', 'public');
-        }else {
+        } else {
             return redirect()->back()->withErrors(['image' => 'El campo imagen es obligatorio'])->withInput();
         }
         $teamWork->save();
@@ -147,7 +148,7 @@ class TeamWorkController extends Controller
             'string' => 'El campo debe ser una cadena de texto.',
             'date' => 'El campo no debe ser una fecha anterior al día de hoy.',
         ];
-    
+
         $request->validate([
             'specialty' => 'required|string|max:100',
             'assigned_work' => 'required|string|max:100',
@@ -155,23 +156,23 @@ class TeamWorkController extends Controller
             'projects_id' => 'required',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:100000',
         ], $msj);
-    
+
         // Agrega depuración aquí
         //\Log::info('Datos de actualización', $request->all());
-    
+
         $teamWork->fill($request->except('image'));
-    
+
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             // Eliminar la imagen anterior si existe
             if ($teamWork->image && Storage::disk('public')->exists($teamWork->image)) {
                 Storage::disk('public')->delete($teamWork->image);
             }
-    
+
             $teamWork->image = $request->file('image')->store('uploads', 'public');
         }
-    
+
         $teamWork->save();
-    
+
         return redirect()->route('team-works.index')
             ->with('success', 'Equipo de trabajo actualizado con éxito');
     }
@@ -217,7 +218,6 @@ class TeamWorkController extends Controller
         // Obtener los datos de las personas filtradas si se aplicó un filtro
         if ($filter) {
             $teamwork = Teamwork::where('id', $filter)->get();
-
         } else {
             // Si no hay filtro, obtener todas las personas
             $teamwork = Teamwork::all();
@@ -245,8 +245,11 @@ class TeamWorkController extends Controller
     {
         $search = trim($request->get('search'));
         $teamWorks = TeamWork::with('project')
-            ->where('id', 'LIKE', '%' . $search . '%')
-            ->orWhere('specialty', 'LIKE', '%' . $search . '%')
+            ->where('disable', '!=', 1) // Agregar esta condición
+            ->where(function ($query) use ($search) {
+                $query->where('id', 'LIKE', '%' . $search . '%')
+                    ->orWhere('specialty', 'LIKE', '%' . $search . '%');
+            })
             ->orderBy('assigned_date', 'asc')
             ->paginate(12);
 
@@ -259,5 +262,4 @@ class TeamWorkController extends Controller
         $teamWork = TeamWork::find($id);
         return asset('storage/' . $teamWork->image);
     }
-
 }
