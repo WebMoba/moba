@@ -191,16 +191,16 @@
 
         <div class="container mt-5 mb-5 ">
 
-            <div class="container ms-5">
+            <div class="container d-flex justify-content-center">
                 
                 @foreach ($teamWorks as $teamWork)
                     @if ($teamWork->name === 'EQUIPO MOBA')
                         <div class="equipo" style="position: relative; display: inline-block;">
                             <img src="{{ asset('storage/' . $teamWork->image) }}"
                                 alt="{{ strtoupper($teamWork->name) }}" id="{{ strtoupper($teamWork->name) }}"
-                                name="{{ $teamWork->name }}" class="img-equipo img-fluid">
+                                name="{{ $teamWork->name }}" class="img-equipo img-fluid"  style="width: 150%; height: auto;">
                             <div class="text-container position-absolute bottom-0 start-50 translate-middle-x">
-                                <a class="text-1  p-1 mb-5 border-opacity-30 rounded-2 fondo-equipo"
+                                <a class="text-1 p-1 mb-5 border-opacity-30 rounded-2 fondo-equipo"
                                     id="{{ strtoupper($teamWork->name) }}">{{ strtoupper($teamWork->name) }}</a>
                             </div>
                         </div>
@@ -209,7 +209,6 @@
 
                 
             </div>
-
 
 
             <div class="box-1">
@@ -397,13 +396,14 @@
     }
 
     footer {
-        margin-top: 510px;
+        margin-top: 8%;
         /*Aquí bajamos el footer para dar la posición despues de la ultima imagen */
         width: 100%;
     }
 
     .img-container {
         position: relative;
+         
     }
 
     .text-container {
@@ -412,6 +412,7 @@
         border: 1px solid #ffffff;
         /* Ajusta el estilo del borde según lo desees */
         border-radius: 5px;
+        
     }
 
     .aside-container {
@@ -475,6 +476,7 @@
         line-height: 2;
         margin-bottom: 0;
         font-family: sans-serif !important;
+        
 
     }
 
@@ -562,7 +564,6 @@
         height: 100%;
         width: 100% display inline-block;
 
-
     }
 
     .box-1 {
@@ -638,7 +639,8 @@
     }
 
     .imagenes {
-        height: 800px;
+        /** imagenes del equipo individual */
+        height: 95%;
         width: 100%;
         /* Ancho del contenedor */
         margin-left: 1%;
@@ -652,6 +654,7 @@
     }
 
     .imagenes a {
+        /**  cada imagen individual */
         color: white !important;
         max-width: 30.33%;
         /* Cada elemento ocupa un tercio del ancho disponible */
@@ -690,6 +693,7 @@
     }
 
     .tooltip {
+        
         /* Estilos del tooltip estos estilos
         son para llamar el Nombre del integrante del Equipo*/
         position: absolute;
@@ -703,7 +707,7 @@
         /* Agrega negrita */
         padding: 5px 10px;
         border-radius: 5px;
-        font-size: 25px;
+        font-size: 20px;
         opacity: 0;
         transition: opacity 0.3s ease;
         font-family: sans-serif !important;
@@ -779,4 +783,29 @@
         background-color: #3E3E3F !important;
         border-color: #2bb9e5 !important;
     }
+
+    @media (min-width: 576px) {
+        .img-equipo {
+            width: 50%;
+        }
+    }
+    @media (min-width: 768px) {
+        .img-equipo {
+            width: 30%;
+        }
+    }
+    @media (min-width: 992px) {
+        .img-equipo {
+            width: 33%;
+        }
+    }
+    @media (min-width: 1200px) {
+        .img-equipo {
+            width: 25%;
+        }
+    }
+
+
+
+
 </style>
