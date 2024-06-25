@@ -12,7 +12,7 @@
     @include('layouts.navbars.auth.topnav', ['title' => 'Equipo de Trabajo'])
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12 mx-auto">
+            <div class="col-sm-11 mx-auto">
                 <div class="card">
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -32,19 +32,22 @@
                                 </div>
                             </form>
                             <div class="float-right">
-                                <a href="{{ route('pdf.teamwork') }}" class="btn btn-danger btn-sm float-right">
-                                    <i class="bi bi-file-pdf-fill"></i><span class="tooltiptext">Pdf</span>
-                                </a>
 
                                 <a href="{{ route('excel.teamwork') }}" class="btn btn-success btn-sm float-right">
                                     <i class="bi bi-file-earmark-excel-fill"></i></i><span class="tooltiptext">Excel</span>
                                 </a>
-                            </div>
-                            <div class="float-right">
+
+                                <button type="button" class="btn btn-danger ms-2 rounded" tooltip="tooltip"
+                                title="PDF" onclick="window.location.href='{{ route('teamwork.pdf') }}'">
+                                    <i class="bi bi-file-pdf-fill"></i><span class="tooltiptext">Pdf</span>
+                                </button>
+
                                 <a href="{{ route('team-works.create') }}" class="btn btn-success" data-placement="left">
                                     <i class="bi bi-plus-circle"></i><span class="tooltiptext">Crear</span>
                                 </a>
+                                
                             </div>
+                            
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -58,7 +61,10 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>Id</th>
+                                        <th>Nombre</th>
+                                        <th>Imagen</th>
                                         <th>Especialidad</th>
+                                        <th>Descripción</th>
                                         <th>Trabajo asignado</th>
                                         <th>Fecha asignada</th>
                                         <th>Proyecto</th>
@@ -68,8 +74,20 @@
                                 <tbody>
                                     @foreach ($teamWorks as $teamWork)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
+                                            <td>{{ $teamWork->id }}</td>
+                                            <td>{{ $teamWork->name }}</td>
+                                            
+                                            <td>
+                                                @if ($teamWork->image)
+                                                
+                                                <img src="{{ asset('storage/' . $teamWork->image) }}" width="150" height="150">
+                                                @else
+                                                    No hay Imagen
+                                                @endif
+                                            </td>
+                                            
                                             <td>{{ $teamWork->specialty }}</td>
+                                            <td>{{ $teamWork->description }}</td>
                                             <td>{{ $teamWork->assigned_work }}</td>
                                             <td>{{ $teamWork->assigned_date }}</td>
                                             <td>{{ $teamWork->project->name }}</td>
@@ -101,6 +119,11 @@
             </div>
         </div>
     </div>
+    <style>
+        th, td{
+            text-align: center;
+        }
+    </style>
     @include('layouts.footers.auth.footer')
 @endsection
 

@@ -6,6 +6,7 @@ use App\Models\MaterialsRaw;
 use App\Models\Unit;
 use Illuminate\Http\Request;
 use Dompdf\Dompdf;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 use App\Exports\MaterialsRawExport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -16,6 +17,19 @@ use Maatwebsite\Excel\Facades\Excel;
  */
 class MaterialsRawController extends Controller
 {
+    public function pdf()
+    {
+
+        $materialsraw = MaterialsRaw::all();
+
+        $pdf = Pdf::loadView('materials-raw.pdf-template', ['materialsraw' => $materialsraw])
+                    ->setPaper('a4','portrait');
+
+        $pdf->set_option('isRemoteEnabled', true);
+
+        return $pdf->download('Listado Materias Primas.pdf');
+    }
+
     public function generatePDF(Request $request)
     {
         // Obtener el filtro de la solicitud

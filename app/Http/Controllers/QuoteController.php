@@ -17,6 +17,7 @@ use Dompdf\Dompdf as DompdfDompdf;
 use PhpParser\Node\Expr\New_;
 use App\Exports\QuoteExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 
 /**
@@ -34,7 +35,7 @@ class QuoteController extends Controller
     {
 
         $search = trim($request->get('search'));
-        // $quotes = Quote::orderBy('created_at', 'desc')->paginate(10);
+        $quotes = Quote::with('person');
         $quotes = Quote::select('id', 'date_issuance', 'description', 'total', 'discount', 'status', 'people_id', 'disable')
             ->where('id', 'LIKE', '%' . $search . '%')
             ->orWhere('description', 'LIKE', '%' . $search . '%')
@@ -45,11 +46,53 @@ class QuoteController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * $quotes->perPage());
     }
 
+    // public function index(Request $request)
+    // {
+    //     $search = trim($request->get('search'));
+    //     $quotes = Quote::with('person') // Cargar los datos de la persona asociada a la cotización
+    //         ->select('id', 'date_issuance', 'description', 'total', 'discount', 'status', 'people_id', 'disable')
+    //         ->where('id', 'LIKE', '%' . $search . '%')
+    //         ->orWhere('description', 'LIKE', '%' . $search . '%')
+    //         ->orderBy('created_at', 'desc')
+    //         ->paginate(10);
+
+    //     return view('quote.index', compact('quotes', 'search'))
+    //         ->with('i', (request()->input('page', 1) - 1) * $quotes->perPage());
+    // }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+    // public function create()
+    // {
+    //     $quote = new Quote();
+    //     $detailQuote = new DetailQuote();
+
+    //     $services = Service::pluck('name', 'id');
+    //     $products = Product::pluck('name', 'id');
+    //     $projects = Project::pluck('name', 'id');
+    //     $quotes = Quote::pluck('description', 'id');
+    //     $quote->date_issuance = now()->format('Y-m-d');
+
+    //     $clients = Person::where('rol', 'Cliente')
+    //         ->where('disable', false) // Agregar esta línea si es necesario
+    //         ->get();
+
+    //     $persons = User::with('person')
+    //         ->whereHas('person', function ($query) {
+    //             $query->where('rol', 'Cliente')
+    //                 ->where('users_id', '!=', null)
+    //                 ->where('disable', false);
+    //         })
+    //         ->pluck('name', 'id');
+
+    //     // $clients = Person::clients()->get();
+
+    //     return view('quote.create', compact('quote', 'clients', 'detailQuote', 'persons', 'services', 'products', 'projects', 'quotes'));
+    // }
+
     public function create()
     {
         $quote = new Quote();
@@ -63,19 +106,10 @@ class QuoteController extends Controller
 
         $clients = Person::where('rol', 'Cliente')
             ->where('disable', false) // Agregar esta línea si es necesario
-            ->get();
-
-        $persons = User::with('person')
-            ->whereHas('person', function ($query) {
-                $query->where('rol', 'Cliente')
-                    ->where('users_id', '!=', null)
-                    ->where('disable', false);
-            })
+            ->get()
             ->pluck('name', 'id');
 
-        // $clients = Person::clients()->get();
-
-        return view('quote.create', compact('quote', 'clients', 'detailQuote', 'persons', 'services', 'products', 'projects', 'quotes'));
+        return view('quote.create', compact('quote', 'clients', 'detailQuote', 'services', 'products', 'projects', 'quotes'));
     }
 
     /**
@@ -85,43 +119,89 @@ class QuoteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-{
-    $request->validate([
-        'date_issuance' => 'required|date',
-        'description' => 'required|string|max:300',
-        'total' => 'required|numeric',
-        'discount' => 'required|numeric',
-        'status' => 'required|in:aprobado,rechazado,pendiente',
-        'people_id' => 'required',
-    ]);
+    {
+        $request->validate([
+            'date_issuance' => 'required|date',
+            'description' => 'required|string|max:300',
+            'total' => 'required|numeric',
+            'discount' => 'required|numeric',
+            'status' => 'required|in:aprobado,rechazado,pendiente',
+            'people_id' => 'required',
+        ]);
 
-    // Crear la cotización
-    $quote = Quote::create($request->all());
+        $total = $request->input('total');
+        $discountPercentage = $request->input('discount');
+        $discountAmount = ($total * $discountPercentage) / 100;
+        $totalAfterDiscount = $total - $discountAmount;
 
-    // Obtener los detalles de los campos del formulario
-    $servicesIds = $request->input('services_id', []);
-    $productsIds = $request->input('products_id', []);
-    $projectsIds = $request->input('projects_id', []);
+        $quote = Quote::create([
+            'date_issuance' => $request->input('date_issuance'),
+            'description' => $request->input('description'),
+            'total' => $totalAfterDiscount,
+            'discount' => $discountPercentage, // Guardamos el porcentaje de descuento
+            'status' => $request->input('status'),
+            'people_id' => $request->input('people_id'),
+        ]);
 
-    $maxItems = max(count($servicesIds), count($productsIds), count($projectsIds));
+        // Obtener los detalles de los campos del formulario
+        $servicesIds = $request->input('services_id', []);
+        $productsIds = $request->input('products_id', []);
+        $projectsIds = $request->input('projects_id', []);
 
-    for ($i = 0; $i < $maxItems; $i++) {
-        $serviceId = $servicesIds[$i] ?? null;
-        $productId = $productsIds[$i] ?? null;
-        $projectId = $projectsIds[$i] ?? null;
+        $maxItems = max(count($servicesIds), count($productsIds), count($projectsIds));
 
-        if ($serviceId || $productId || $projectId) {
-            DetailQuote::create([
-                'services_id' => $serviceId,
-                'products_id' => $productId,
-                'projects_id' => $projectId,
-                'quotes_id' => $quote->id,
-            ]);
+        for ($i = 0; $i < $maxItems; $i++) {
+            $serviceId = $servicesIds[$i] ?? null;
+            $productId = $productsIds[$i] ?? null;
+            $projectId = $projectsIds[$i] ?? null;
+
+            if ($serviceId || $productId || $projectId) {
+                DetailQuote::create([
+                    'services_id' => $serviceId,
+                    'products_id' => $productId,
+                    'projects_id' => $projectId,
+                    'quotes_id' => $quote->id,
+                ]);
+            }
         }
+
+        return redirect()->route('quotes.index')->with('success', 'Cotización creada exitosamente');
     }
 
-    return redirect()->route('quotes.index')->with('success', 'Cotización creada exitosamente');
-}
+    public function update(Request $request, Quote $quote)
+    {
+        $msj = [
+            'required' => 'El atributo es requerido',
+            'max' => 'No puede ingresar mas caracteres en este campo',
+            'string' => 'El campo debe ser una cadena de texto.',
+            'date' => 'El campo no debe ser una fecha anterior al dia de Hoy.',
+        ];
+
+        $request->validate([
+            'date_issuance' => 'required|date',
+            'description' => 'required|string|max:300',
+            'total' => 'required|numeric',
+            'discount' => 'required|numeric',
+            'status' => 'required|in:aprobado,rechazado,pendiente',
+            'people_id' => 'required',
+        ], $msj);
+
+        $total = $request->input('total');
+        $discountPercentage = $request->input('discount');
+        $discountAmount = ($total * $discountPercentage) / 100;
+        $totalAfterDiscount = $total - $discountAmount;
+
+        $quote->update([
+            'date_issuance' => $request->input('date_issuance'),
+            'description' => $request->input('description'),
+            'total' => $totalAfterDiscount,
+            'discount' => $discountPercentage,
+            'status' => $request->input('status'),
+            'people_id' => $request->input('people_id'),
+        ]);
+
+        return redirect()->route('quotes.index')->with('success', 'Cotización actualizada exitosamente');
+    }
 
 
 
@@ -136,7 +216,8 @@ class QuoteController extends Controller
      */
     public function show($id)
     {
-        $quote = Quote::find($id);
+        $quote = Quote::with('person', 'detailQuotes')->find($id);
+        // $quote = Quote::find($id);
         // Convierte la fecha a un formato de cadena 'Y-m-d'
         // $quote->date_issuance = $quote->date_issuance ? $quote->date_issuance->format('Y-m-d') : null;
         $persons = User::with('person')
@@ -149,8 +230,13 @@ class QuoteController extends Controller
         $detailQuote = DetailQuote::where('quotes_id', $quote->id)->get();
         $detailQuote = $quote->detailQuotes;
         $quote->load('detailQuotes');
-        return view('quote.show', compact('quote', 'detailQuote'));
+        return view('quote.show', compact('quote', 'detailQuote','persons'));
     }
+    // public function show($id)
+    // {
+    //     $quote = Quote::with('person', 'detailQuotes')->find($id); // Cargar los datos de la persona asociada a la cotización y los detalles
+    //     return view('quote.show', compact('quote'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -180,32 +266,32 @@ class QuoteController extends Controller
      * @param  Quote $quote
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Quote $quote)
-    {
+    // public function update(Request $request, Quote $quote)
+    // {
 
-        $msj = [
-            'required' => 'El atributo es requerido',
-            'max' => 'No puede ingresar mas caracteres en este campo',
-            'string' => 'El campo debe ser una cadena de texto.',
-            'date' => 'El campo no debe ser una fecha anterior al dia de Hoy.',
-        ];
+    //     $msj = [
+    //         'required' => 'El atributo es requerido',
+    //         'max' => 'No puede ingresar mas caracteres en este campo',
+    //         'string' => 'El campo debe ser una cadena de texto.',
+    //         'date' => 'El campo no debe ser una fecha anterior al dia de Hoy.',
+    //     ];
 
-        $request->validate([
-            'date_issuance' => 'required|date',
-            'description' => 'required|string|max:300',
-            'total' => 'required|numeric',
-            'discount' => 'required|numeric',
-            'status' => 'required|in:aprobado,rechazado,pendiente',
-            'people_id' => 'required',
-        ], $msj);
+    //     $request->validate([
+    //         'date_issuance' => 'required|date',
+    //         'description' => 'required|string|max:300',
+    //         'total' => 'required|numeric',
+    //         'discount' => 'required|numeric',
+    //         'status' => 'required|in:aprobado,rechazado,pendiente',
+    //         'people_id' => 'required',
+    //     ], $msj);
 
-        // request()->validate(Quote::$rules);
+    //     // request()->validate(Quote::$rules);
 
-        $quote->update($request->all());
+    //     $quote->update($request->all());
 
-        return redirect()->route('quotes.index')
-            ->with('success', 'Quote updated successfully');
-    }
+    //     return redirect()->route('quotes.index')
+    //         ->with('success', 'Quote updated successfully');
+    // }
 
     /**
      * @param int $id
@@ -228,58 +314,35 @@ class QuoteController extends Controller
         return redirect()->route('quotes.index')->with('success', 'Estado de la cotización cambiada con éxito');
     }
 
-    public function generatePDF(Request $request)
+    public function pdf()
     {
-        // Obtener el filtro de la solicitud
-        $filter = $request->input('findId');
+        $quotes = Quote::with('person')->get();
+        
+        $pdf = Pdf::loadView('quote.pdf-template', ['quotes' => $quotes])
+                    ->setPaper('a4', 'portrait');
 
-        // Obtener los datos de las personas filtradas si se aplicó un filtro
-        if ($filter) {
-            $quote = Quote::where('id', $filter)->get();
-        } else {
-            // Si no hay filtro, obtener todas las personas
-            $quote = Quote::all();
-        }
-        // Pasar los datos a la vista pdf-template
-        $data = [
-            'quote' => $quote
-        ];
-
-        // Generar el PDF
-        $pdf = new DompdfDompdf();
         $pdf->set_option('isRemoteEnabled', true);
-        $pdf->loadHtml(view('quote.pdf-template', $data));
-        $pdf->setPaper('A4', 'portrait');
-        $pdf->render();
-        return $pdf->stream('Listado_Cotizaciones.pdf');
+
+        return $pdf->download('Listado Cotizaciones.pdf');
     }
 
-    public function generateDetailPDF(Request $request)
-    {
-        $filter = $request->input('findId');
 
-        // Obtener los datos de la cotización y sus detalles
-        if ($filter) {
-            $quote = Quote::with('detailQuotes.service', 'detailQuotes.product', 'detailQuotes.project')->find($filter);
-        } else {
-            // Si no hay filtro, redirigir a otra página o mostrar un error
+    public function detailPdf($id)
+    {
+        $quote = Quote::with('detailQuotes.service', 'detailQuotes.product', 'detailQuotes.project')
+            ->find($id);
+
+        if (!$quote) {
             return redirect()->back()->with('error', 'No se encontró la cotización');
         }
 
-        // Pasar los datos a la vista pdf-template
-        $data = [
-            'quote' => $quote
-        ];
+        $pdf = Pdf::loadView('quote.pdf-template-detail', ['quote' => $quote])
+            ->setPaper('a4', 'portrait');
 
-        // Generar el PDF
-        $pdf = new DompdfDompdf();
-        $pdf->set_option('isRemoteEnabled', true);
-        $pdf->loadHtml(view('quote.pdf-template-detail', $data)->render());
-        $pdf->setPaper('A4', 'portrait');
-        $pdf->render();
-        return $pdf->stream('Cotización detallada.pdf');
+        return $pdf->download('Detalle_Cotizacion.pdf');
     }
 
+  
 
     public function export()
     {

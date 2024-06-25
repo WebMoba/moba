@@ -16,20 +16,25 @@ class ResetPassword extends Controller
         return view('auth.reset-password');
     }
 
-    public function routeNotificationForMail() {
+    public function routeNotificationForMail()
+    {
         return request()->email;
     }
 
     public function send(Request $request)
     {
-        $email = $request->validate([
-            'email' => ['required']
+        $request->validate([
+            'email' => ['required', 'email']
         ]);
+
+        $email = $request->input('email');
         $user = User::where('email', $email)->first();
 
         if ($user) {
-            $this->notify(new ForgotPassword($user->id));
-            return back()->with('succes', 'An email was send to your email address');
+            $user->notify(new ForgotPassword($user->id));
+            return back()->with('success', 'Se ha enviado un correo para que puedas recuperar tu contraseña.');
         }
+
+        return back()->withErrors(['email' => 'No se ha encontrado ningún usuario con ese correo electrónico.']);
     }
 }

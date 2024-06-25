@@ -14,7 +14,8 @@
 </head>
 
 <body class="background-image">
-
+    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{ asset('Imagenes/Fondo_moba3.jpg') }}'); background-size: 100% 100%; background-position: center top; background-repeat: no-repeat; opacity: 1; z-index: -1; filter: brightness(10%); -webkit-filter: brightness(25%);">
+    </div>
     <nav class="navbar">
          <!--- inicio breaddrums-->
     <div class="breadcrums">
@@ -162,14 +163,12 @@
                                 <h2>y algo más</h2>
                             </div>
                             <div class="contenido-cuadro">
-                                <div class="textoC">
                                     <p>
                                         Nuestra empresa cuenta con servicios y productos adicionales que complementan
                                         y suman a cada uno de nuestros clientes, los cuales están elaborados con la
                                         mayor calidad
                                         y detalle posible, entregando en cada trabajo nuestro mejor
                                     </p>
-                                </div>
                             </div>
 
                         </div>
@@ -317,6 +316,16 @@
         .subtitulo h4 {
             font-weight: bold;
             padding: 1%;
+            font-family: sans-serif !important;
+        }
+        .texto::after {
+            content: '';
+            position: absolute;
+            top: 6%;
+            left: -28px;
+            width: 5px;
+            height: 80%;
+            background-color: #36baec;
         }
 
         .texto:not(:last-child)::after {
@@ -343,6 +352,7 @@
             position: relative;
             /* Establece la posición relativa para que sea la referencia para el HR */
             font-weight: normal;
+            font-family: sans-serif !important;
         }
 
         a {
@@ -372,35 +382,46 @@
 
         .creatividad p {
             text-align: left;
+            font-family: sans-serif !important;
         }
 
         .creatividad h1,
         h2 {
             text-align: justify;
+            font-family: sans-serif !important;
         }
 
         .creatividad a {
             text-align: justify;
+            font-family: sans-serif !important;
         }
 
         .creatividad .t1 {
             font-size: 35px;
-            font-weight: bold
+            font-weight: bold;
+            font-family: sans-serif !important;
+            margin-bottom: 0;
         }
 
         .creatividad .t2 {
             font-size: 30px;
+            font-family: sans-serif !important;
+            margin-bottom: 0;
         }
 
         .creatividad .t3 {
             font-size: 30px;
             color: #2bb9e5;
             font-weight: bold;
+            font-family: sans-serif !important;
+            margin-bottom: 0;
         }
 
         .creatividad .t4 {
             font-size: 30px;
             font-weight: bold;
+            font-family: sans-serif !important;
+            margin-bottom: 0;
         }
 
         .contenedor {
@@ -412,15 +433,18 @@
         .contenedor h1 {
             color: #2bb9e5;
             font-weight: bold;
+            font-family: sans-serif !important;
         }
 
         .contenedor h2 {
             color: white;
+            font-family: sans-serif !important;
         }
 
         .contenedor p {
             color: #6094b0;
             font-size: larger;
+            font-family: sans-serif !important;
         }
         
         .cuadro {
@@ -473,6 +497,7 @@
 
         .contenido-cuadro .mayme p {
             font-size: 50px;
+            font-family: sans-serif !important;
         }
 
         .contenido-cuadro .textoC {
@@ -485,6 +510,7 @@
             align-items: center;
             justify-content: center;
             height: 100%;
+            width: 400px;
             padding-bottom: 3%;
         }
 
@@ -531,6 +557,9 @@
                 width: 350px; 
                 height: 300px; 
             }
+            .cuadro .botones {
+                width: 350px;
+            }
         }
 
         @media screen and (max-width: 900px) {
@@ -538,6 +567,9 @@
                 width: 300px; 
                 height: 250px; 
                 padding-bottom:20%; 
+            }
+            .cuadro .botones {
+                width: 300px;
             }
             .creatividad{
                 width: 200px; 
@@ -571,6 +603,10 @@
                 width: 250px; 
                 height: 200px; 
                 padding-bottom:20%; 
+            }
+            
+            .cuadro .botones {
+                width: 250px;
             }
             .creatividad{
                 width: 150px; 
@@ -607,6 +643,10 @@
         }
         
         @media screen and (max-width: 580px) {
+            
+            .contenido1{
+                margin-top: 15%;
+            }
             .contenido2{
                 flex-direction: column;
                 align-items: center;
@@ -619,6 +659,10 @@
                 width: 250px; 
                 height: 200px; 
                 padding-bottom:20%; 
+            }
+            
+            .cuadro .botones {
+                width: 250px;
             }
             .creatividad{
                 width: 300px; 
@@ -680,6 +724,7 @@
     color: white;
     font-size: 0.9vw;
     margin-right: 2px; /* Esto agrega un espacio entre los enlaces */
+    font-family: sans-serif !important;
 }
 
 .breadcrumbs li {

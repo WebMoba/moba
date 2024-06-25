@@ -7,11 +7,13 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Dompdf\Dompdf as DompdfDompdf;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use App\Exports\ProjectExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 /**
  * Class ProjectController
@@ -24,18 +26,32 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $search = trim($request->get('search'));
-        $projects=DB::table('projects')
-                    ->select('id','name','description','date_start','date_end','status', 'disable')
-                    ->where('id','LIKE','%'.$search.'%')
-                    ->orWhere('name','LIKE','%'.$search.'%')
-                    ->orderBy('date_start','asc')
-                    ->paginate(4);
+        // Ordena los proyectos por la columna 'created_at' en orden ascendente
+        $projects = Project::orderBy('created_at', 'asc')->paginate(10);
 
-        return view('project.index', compact('projects','search')) 
-            ->with('i', (request()->input('page', 1) - 1) * $projects->perPage());
+        // Retorna la vista 'project.index' con los proyectos y el índice 'i'
+        return view('project.index', compact('projects'))->with('i', (request()->input('page', 1) - 1) * 10);
+    }
+
+    public function PrincipalProjectos()
+    {
+        /* $projects = Project::paginate(18); */
+        $projects = Project::where('status', 'finalizado')
+            ->where('disable', '!=', 1) // Agregar esta condición
+            ->take(18)
+            ->get();
+
+        return view('mobaMenu.proyectos.index', compact('projects'))->with('i', (request()->input('page', 1) - 1) * 10);
+    }
+
+    public function Projectosides($id)
+    {
+        $projects = Project::where('id', $id)
+            ->where('disable', '!=', 1) // Agregar esta condición
+            ->firstOrFail();
+        return view('mobaMenu.proyectos.Muestra', compact('projects'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**
@@ -62,32 +78,49 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        $msj=[
-            'date_end.after_or_equal' => 'La fecha de finalización debe ser igual o posterior a la fecha de inicio.',
-            'required'=>'El atributo es requerido',
-            'max'=>'No puede ingresar mas caracteres en este campo',
-            'string' => 'El campo debe ser una cadena de texto.',
-            'date' => 'El campo no debe ser una fecha anterior al dia de Hoy.',
-        ];
-
+        // Validación de los campos
         $request->validate([
-            'name' => 'required|string|max:100',
-            'description' => 'required|string|max:300',
+            'name' => 'required|string|max:50',
+            'description' => 'required|string|max:600',
             'date_start' => 'required|date',
             'date_end' => 'required|date|after_or_equal:date_start',
-            'status' => 'required|in:en curso,finalizado,pausado,pendiente',
-        ], $msj);
-        
-        // request()->validate(Project::$rules);
-        
-        // $proyect->disable=false;
-        $project = Project::create($request->all(), [
-            'disable' => 0,
+            'status' => 'required|string',
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2004800',
+            'imageOne' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:204800',
+            'imageTwo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:204800',
+            'imageThree' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:204800',
         ]);
 
-        return redirect()->route('projects.index')
-            ->with('success', 'Proyecto creado con éxito.');
+        // Creación del nuevo proyecto
+        $project = new Project($request->except(['logo', 'imageOne', 'imageTwo', 'imageThree']));
+
+        // Guardar el logo
+        if ($request->hasFile('logo')) {
+            $project->logo = $request->file('logo')->store('logos', 'public');
+        } else {
+            return redirect()->back()->withErrors(['logo' => 'El campo logo es obligatorio'])->withInput();
+        }
+
+        // Guardar las demás imágenes si están presentes
+        if ($request->hasFile('imageOne')) {
+            $project->imageOne = $request->file('imageOne')->store('images', 'public');
+        }
+
+        if ($request->hasFile('imageTwo')) {
+            $project->imageTwo = $request->file('imageTwo')->store('images', 'public');
+        }
+
+        if ($request->hasFile('imageThree')) {
+            $project->imageThree = $request->file('imageThree')->store('images', 'public');
+        }
+
+        // Guardar el proyecto en la base de datos
+        $project->save();
+
+        return redirect()->route('projects.index')->with('success', 'Proyecto creado exitosamente.');
     }
+
+
 
     /**
      * Display the specified resource.
@@ -128,29 +161,41 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        $msj=[
-            'date_end.after_or_equal' => 'La fecha de finalización debe ser igual o posterior a la fecha de inicio.',
-            'required'=>'El atributo es requerido',
-            'max'=>'No puede ingresar mas caracteres en este campo',
-            'string' => 'El campo debe ser una cadena de texto.',
-            'date' => 'El campo no debe ser una fecha anterior al dia de Hoy.',
-        ];
-
         $request->validate([
-            'name' => 'required|string|max:100',
-            'description' => 'required|string|max:300',
+            'name' => 'required',
+            'description' => 'required',
             'date_start' => 'required|date',
-            'date_end' => 'required|date|after_or_equal:date_start',
-            'status' => 'required|in:en curso,finalizado,pausado,pendiente',
-        ], $msj);
-        
-        // request()->validate(Project::$rules);
+            'date_end' => 'required|date',
+            'status' => 'required',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'imageOne' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'imageTwo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'imageThree' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
-        $project->update($request->all());
+        $project->fill($request->all());
 
-        return redirect()->route('projects.index')
-            ->with('success', 'Proyecto actualizado con éxito');
+        if ($request->hasFile('logo')) {
+            $project->logo = $request->file('logo')->store('logos', 'public');
+        }
+
+        if ($request->hasFile('imageOne')) {
+            $project->imageOne = $request->file('imageOne')->store('images', 'public');
+        }
+
+        if ($request->hasFile('imageTwo')) {
+            $project->imageTwo = $request->file('imageTwo')->store('images', 'public');
+        }
+
+        if ($request->hasFile('imageThree')) {
+            $project->imageThree = $request->file('imageThree')->store('images', 'public');
+        }
+
+        $project->save();
+
+        return redirect()->route('projects.index')->with('success', 'Proyecto actualizado exitosamente.');
     }
+
 
     /**
      * @param int $id
@@ -164,46 +209,41 @@ class ProjectController extends Controller
         if (!$project) {
             return redirect()->route('projects.index')->with('error', 'El proyecto no existe');
         }
-    
+
         // Cambia el estado del proyecto
         $project->disable = !$project->disable;
         $project->save();
-    
+
         return redirect()->route('projects.index')->with('success', 'Estado del proyecto cambiado con éxito');
-
     }
 
-    public function generatePDF(Request $request)
+    public function showIndex()
     {
-        // Obtener el filtro de la solicitud
-        $filter = $request->input('findId');
-        
-        // Obtener los datos de las personas filtradas si se aplicó un filtro
-        if ($filter) {
-            $project = Project::where('id', $filter)->get();
-            
-        } else {
-            // Si no hay filtro, obtener todas las personas
-            $project = Project::all();
-        }
-        // Pasar los datos a la vista pdf-template
-        $data = [
-            'project' => $project
-        ];    
-
-        // Generar el PDF
-        $pdf = new DompdfDompdf();
-        $pdf->set_option('isRemoteEnabled', true);
-        $pdf->loadHtml(view('project.pdf-template', $data));
-        $pdf->setPaper('A4', 'portrait');
-        $pdf->render();
-        return $pdf->stream('Listado_Proyectos.pdf');
+        // $projects = Project::take(30)->get();  // Esta línea parece innecesaria ya que se sobrescribe en la siguiente línea.
+        $projects = Project::where('status', 'finalizado')
+            ->where('disable', '!=', 1) // Agregar esta condición
+            ->take(30) // Si necesitas limitar los resultados a 30, lo añadí aquí.
+            ->get();
+        return view('mobaMenu.index', compact('projects'));
     }
+
+
+    public function pdf()
+    {
+
+        $project = Project::all();
+
+        $pdf = Pdf::loadView('project.pdf-template', ['project' => $project])
+            ->setPaper('a4', 'portrait');
+
+        $pdf->set_option('isRemoteEnabled', true);
+
+        return $pdf->download('Listado Proyectos.pdf');
+    }
+
 
     public function export()
     {
         return Excel::download(new ProjectExport, 'Listado_Proyectos.xlsx');
     }
-
 }
-

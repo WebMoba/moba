@@ -12,7 +12,6 @@ body::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: black;
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
@@ -53,26 +52,27 @@ body::after {
 }
 
 .btn-primary {
-    background-color: transparent !important;
+    background-color: #3E3E3F !important;
     color: #fff;
-    border-color: transparent !important;
+    border-color: #3E3E3F !important;
     font-size: 1.3vw;
+    font-family: sans-serif !important
 }
 
 .btn-primary:hover {
-    background-color: transparent !important;
-    border-color: transparent !important;
+    background-color: #3E3E3F !important;
+    border-color: #3E3E3F !important;
 }
 
 .btn-primary:active,
 .btn-primary:focus {
-    background-color: transparent !important;
-    border-color: transparent !important;
+    background-color: #3E3E3F !important;
+    border-color: #3E3E3F !important;
 }
     
     .dropdown-menu .dropdown-item:hover {
-        background-color: transparent !important;
-        border-color: transparent !important;
+        background-color: #3E3E3F !important;
+        border-color: #3E3E3F !important;
         border: none;
         text-shadow: 0 0 5px #f80008;
     }
@@ -87,13 +87,13 @@ body::after {
     }
 
     .dropdown-menu {
-        background-color: transparent !important;
+        background-color: #3E3E3F !important;
         border-color: #f80008 !important;
     }
 
     .dropdown-menu .dropdown-item {
         color: #ffffff !important;
-        background-color: transparent !important;
+        background-color: #3E3E3F !important;
         border-color: #f80008 !important;
     }
 
@@ -170,6 +170,7 @@ body::after {
     .active-link {
         position: relative;
         color:red;
+        font-family: sans-serif !important;
     }
 
     .active-link:after {
@@ -193,19 +194,27 @@ body::after {
     }
 
     .textoPresentacion {
-        color: #BCCCE0;
+        color: white !important;
         margin-top: 30%;
-        font-size: 1vw;
+        font-size: 1.3vw;
+        font-family: sans-serif !important;
+        font-weight: normal !important;
+        text-align: justify !important;
+        margin-left: 5%;
+        margin-right: 5%;
     }
 
     h4 {
-        color: #BCCCE0;
-        font-size: 3vw;
+        color: white;
+        font-size: 1.3vw;
+        font-family: sans-serif !important;
+        margin-left: 3%;
     }
 
     h1 {
         color: #BCCCE0;
         font-size: 4vw;
+        font-family: sans-serif !important;
     }
 
     .box img {

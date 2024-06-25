@@ -14,7 +14,6 @@ body::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: black;
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
@@ -55,26 +54,27 @@ body::after {
 }
 
 .btn-primary {
-    background-color: transparent !important;
+    background-color: #3E3E3F !important;
     color: #fff;
-    border-color: transparent !important;
+    border-color: #3E3E3F !important;
     font-size: 1.3vw;
+    font-family: sans-serif !important;
 }
 
 .btn-primary:hover {
-    background-color: transparent !important;
-    border-color: transparent !important;
+    background-color: #3E3E3F !important;
+    border-color: #3E3E3F !important;
 }
 
 .btn-primary:active,
 .btn-primary:focus {
-    background-color: transparent !important;
-    border-color: transparent !important;
+    background-color: #3E3E3F !important;
+    border-color: #3E3E3F !important;
 }
     
     .dropdown-menu .dropdown-item:hover {
-        background-color: transparent !important;
-        border-color: transparent !important;
+        background-color: #3E3E3F !important;
+        border-color: #3E3E3F !important;
         border: none;
         text-shadow: 0 0 5px #f80008;
     }
@@ -89,13 +89,13 @@ body::after {
     }
 
     .dropdown-menu {
-        background-color: transparent !important;
+        background-color: #3E3E3F !important;
         border-color: #f80008 !important;
     }
 
     .dropdown-menu .dropdown-item {
         color: #ffffff !important;
-        background-color: transparent !important;
+        background-color: #3E3E3F !important;
         border-color: #f80008 !important;
     }
 
@@ -186,15 +186,28 @@ body::after {
         height: 70%;
         width: 50%;
         margin-top: 5%;
+        margin-right: 5%;
+        font-weight: normal !important;
+        text-align: justify !important;
     }
 
-    h1,
+    h1{
+        color: white !important;
+        font-family: sans-serif !important;
+        font-size: 1.8vw !important;
+        margin-top: 14%;
+
+    }
     h3 {
-        color: #BCCCE0;
+        color: white !important;
+        font-family: sans-serif !important;
+        font-size: 1.3vw !important;
+        margin-top: 14%;
     }
 
     label {
-        color: #BCCCE0;
+        color: white !important;
+        font-family: sans-serif !important;
     }
 
     form {
@@ -208,6 +221,7 @@ body::after {
         margin-right: 10%;
         background-color: #3E3E3F;
         color: white;
+        font-family: sans-serif !important;
     }
 
     textarea {
@@ -215,6 +229,7 @@ body::after {
         width: 90%;
         background-color: #3E3E3F;
         color: white;
+        font-family: sans-serif !important;
     }
 
     #submit {

@@ -11,15 +11,15 @@ class ContactoController extends Controller
     {
         // Verificar si el usuario está autenticado
         if (Auth::check()) {
-            // El usuario está autenticado, procesar el formulario
-            // Lógica para enviar el correo electrónico
-
+            // Validar los datos del formulario
             $request->validate([
                 'options' => 'required', // Asegura que al menos una opción haya sido seleccionada
+                'asunto' => 'required|string|max:255', // Validar el campo asunto
             ]);
 
             $nombre = $request->input('nombre');
             $email = $request->input('email');
+            $asunto = $request->input('asunto'); // Obtener el asunto del formulario
             $tipoIdentificacion = $request->input('options');
             $numeroId = $request->input('numeroId');
             $telefono = $request->input('telefono');
@@ -30,6 +30,7 @@ class ContactoController extends Controller
             $contenidoCorreo = "
                 Nombre: $nombre
                 Email: $email
+                Asunto: $asunto
                 Tipo Identificación: $tipoIdentificacion
                 Número Identificación: $numeroId
                 Teléfono: $telefono
@@ -40,10 +41,10 @@ class ContactoController extends Controller
 
             try {
                 // Modifica el remitente y el destinatario aquí
-                Mail::raw($contenidoCorreo, function ($message) use ($email) { 
+                Mail::raw($contenidoCorreo, function ($message) use ($email, $asunto) { 
                     $message->from('agenciaMoba@gmail.com', 'Web Moba')
                             ->to('diegointernacional2017@gmail.com', 'Destinatario') // Cambia al correo deseado
-                            ->subject('Nuevo mensaje de contacto');
+                            ->subject($asunto); // Usar el asunto del formulario
                 });
 
                 return redirect()->back()->with('success', 'El correo electrónico ha sido enviado correctamente.');

@@ -8,7 +8,7 @@
     @include('layouts.navbars.auth.topnav', ['title' => 'Mostrar Equipo de Trabajo'])
     <section class="content container-fluid">
         <div class="row">
-            <div class="col-md-10 mx-auto">
+            <div class="col-md-11 mx-auto">
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
@@ -18,6 +18,14 @@
                     <div class="card-body">
                         <table class="table">
                             <tbody>
+                                <tr>
+                                    <th>Nombre: </th>
+                                    <th>{{ $teamWork->name }}</th>
+                                </tr>
+                                <div class="form-group">
+                                    <strong>Imagen:</strong>
+                                    <img src="{{ asset('storage/' . $teamWork->image) }}" width="150" height="150">
+                                </div>
                                 <tr>
                                     <th>Especialidad:</th>
                                     <td>{{ $teamWork->specialty }}</td>
@@ -32,7 +40,7 @@
                                 </tr>
                                 <tr>
                                     <th>Proyecto:</th>
-                                    <td>{{ $teamWork->projects_id }}</td>
+                                    <td>{{ $teamWork->project->name }}</td>
                                 </tr>
                             </tbody>
                         </table>

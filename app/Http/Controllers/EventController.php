@@ -10,6 +10,7 @@ use Illuminate\Validation\Rule;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use App\Exports\EventsExport;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 
 /**
@@ -162,6 +163,19 @@ class EventController extends Controller
         $event->save();
 
         return redirect()->route('events.index')->with('success', 'Estado del evento actualizado con éxito');
+    }
+
+    public function pdf()
+    {
+
+        $events =Event::all();
+
+        $pdf = Pdf::loadView('event.pdf-template', ['events' => $events])
+                    ->setPaper('a4','portrait');
+
+        $pdf->set_option('isRemoteEnabled', true);
+
+        return $pdf->download('Listado Eventos.pdf');
     }
 
     public function generatePDF(Request $request)

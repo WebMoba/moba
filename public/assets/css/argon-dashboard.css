@@ -209,6 +209,7 @@ strong {
 
 small, .small {
   font-size: 0.875em;
+  color: #fff;
 }
 
 mark, .mark {
@@ -671,7 +672,7 @@ progress {
   flex-wrap: wrap;
   margin-top: calc(-1 * var(--bs-gutter-y));
   margin-right: calc(-0.5 * var(--bs-gutter-x));
-  margin-left: 11%;
+  margin-left: 6%;
   padding-left: 10%;
 }
 .row > * {
@@ -726,6 +727,7 @@ progress {
 .col-auto {
   flex: 0 0 auto;
   width: auto;
+  margin-right: 4px;
 }
 
 .col-1 {
@@ -2612,6 +2614,7 @@ progress {
 }
 
 .form-control {
+  margin-bottom: 16px;
   display: block;
   width: 100%;
   padding: 0.5rem 0.75rem;
@@ -3466,7 +3469,7 @@ textarea.form-control-lg {
 
 .btn-primary {
   color: #000;
-  background-color: #26BDEF;
+  background-image: linear-gradient(310deg, #212229 0%, #26BDEF 100%);
   border-color: #26BDEF;
 }
 .btn-primary:hover {
@@ -3526,7 +3529,7 @@ textarea.form-control-lg {
 
 .btn-success {
   color: #000;
-  background-color: #2dce89;
+  background-image: linear-gradient(310deg, #212229 0%, #18eb4d 100%);
   border-color: #2dce89;
 }
 .btn-success:hover {
@@ -3616,7 +3619,7 @@ textarea.form-control-lg {
 
 .btn-danger {
   color: #000;
-  background-color: #f5365c;
+  background-image: linear-gradient(310deg, #212229 0%, #f52d0a 100%);
   border-color: #f5365c;
 }
 .btn-danger:hover {
@@ -5002,12 +5005,13 @@ textarea.form-control-lg {
 }
 
 .card {
+  color: #fff;
   position: relative;
   display: flex;
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  background-color: #3c3c3c;
   background-clip: border-box;
   border: 0 solid rgba(0, 0, 0, 0.125);
   border-radius: 1rem;
@@ -5043,6 +5047,7 @@ textarea.form-control-lg {
 
 .card-title {
   margin-bottom: 0.5rem;
+  color: #fff;
 }
 
 .card-subtitle {
@@ -8405,6 +8410,7 @@ textarea.form-control-lg {
 
 .mb-0 {
   margin-bottom: 0 !important;
+  color: white;
 }
 
 .mb-1 {
@@ -9015,6 +9021,7 @@ textarea.form-control-lg {
 .py-4 {
   padding-top: 1.5rem !important;
   padding-bottom: 1.5rem !important;
+  background-color: black !important;
 }
 
 .py-5 {
@@ -9461,7 +9468,7 @@ textarea.form-control-lg {
 }
 
 .bg-primary {
-  background-color: #26BDEF !important;
+  background-color: #3E3E3F !important;
 }
 
 .bg-secondary {
@@ -9505,7 +9512,7 @@ textarea.form-control-lg {
 }
 
 .bg-gray-100 {
-  background-color: #f8f9fa !important;
+  background-color: #3c3c3c !important;
 }
 
 .bg-gray-200 {
@@ -9949,7 +9956,7 @@ textarea.form-control-lg {
 }
 
 .min-height-300 {
-  min-height: 300px !important;
+  min-height: 90px !important;
 }
 
 .min-height-400 {
@@ -19154,6 +19161,7 @@ textarea.form-control-lg {
 }
 .btn:not([class*=btn-outline-]) {
   border: 0;
+  margin-right: 3px;
 }
 .btn:active, .btn:active:focus, .btn:active:hover {
   box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
@@ -19616,9 +19624,11 @@ textarea.form-control-lg {
 }
 .card {
   box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15);
+  border: 0.5px solid white;
 }
 .card .card-header {
   padding: 1.5rem;
+  background-color: #222120;
 }
 .card .card-body {
   font-family: "Open Sans", sans-serif;
@@ -20105,6 +20115,7 @@ textarea.form-control-lg {
   align-items: center;
   background-size: cover;
   background-position: 50%;
+  background-color: black;
 }
 .page-header .container {
   z-index: 1;
@@ -20316,6 +20327,7 @@ textarea.form-control-lg {
 .form-switch .form-check-label {
   margin-bottom: 0;
   margin-left: 0.5rem;
+  color: white;
 }
 
 .form-select {
@@ -20327,7 +20339,7 @@ label,
   font-size: 0.75rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  color: #344767;
+  color: #fff;
   margin-left: 0.25rem;
 }
 
@@ -20379,7 +20391,7 @@ label,
 }
 
 .bg-gradient-dark {
-  background-image: linear-gradient(310deg, #212229 0%, #212529 100%);
+  background-image: linear-gradient(310deg, #212229 0%, #26BDEF 100%)
 }
 
 .bg-gradient-faded-primary {
@@ -20693,7 +20705,8 @@ hr.horizontal.light {
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0), white, rgba(255, 255, 255, 0));
 }
 hr.horizontal.dark {
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+  background-color: #3c3c3c !important;
+  /* background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0)); */
 }
 hr.horizontal.gray-light {
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
@@ -21139,7 +21152,7 @@ hr.horizontal.gray-light {
   display: block;
   position: fixed;
   top: 0;
-  max-width: 15.625rem !important;
+  max-width: 12.625rem !important;
   overflow-y: auto;
   padding: 0;
   box-shadow: none;
@@ -21147,6 +21160,7 @@ hr.horizontal.gray-light {
   height: 90vh;
 }
 .navbar-vertical.navbar-expand-xs .navbar-collapse {
+  background-color: #3c3c3c !important;
   display: block;
   overflow: auto;
   height: calc(100vh - 360px);
@@ -21826,6 +21840,7 @@ hr.horizontal.gray-light {
 }
 
 .sidenav-header {
+  background-color: #3c3c3c !important;
   height: 4.875rem;
 }
 
@@ -22778,7 +22793,9 @@ hr.horizontal.gray-light {
 .btn.btn-slack.btn-neutral:hover, .btn.btn-slack.btn-neutral:focus, .btn.btn-slack.btn-neutral:active {
   color: #329874;
 }
-
+span #card_tittle{
+  color: #fff !important;
+}
 .table thead th {
   padding: 0.75rem 1.5rem;
   text-transform: capitalize;
@@ -22796,6 +22813,7 @@ hr.horizontal.gray-light {
 .table td,
 .table th {
   white-space: nowrap;
+  color: #fff !important;
 }
 .table.align-items-center td,
 .table.align-items-center th {
@@ -22934,6 +22952,7 @@ html * {
 body {
   font-weight: 400;
   line-height: 1.6;
+  background-color: black;
 }
 
 h1, .h1 {
@@ -23015,6 +23034,7 @@ h4, .h4,
 h5, .h5,
 h6, .h6 {
   font-weight: 600;
+  color: white;
 }
 
 h1, .h1,
@@ -23051,6 +23071,7 @@ p, .p {
 
 .text-sm {
   font-size: 0.875rem !important;
+  color: white;
 }
 
 .text-xs {
@@ -23110,6 +23131,7 @@ p {
 
 .font-weight-bolder {
   font-weight: 700 !important;
+  color: black;
 }
 
 .font-italic {

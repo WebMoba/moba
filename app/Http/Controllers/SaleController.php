@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use Dompdf\Dompdf as DompdfDompdf;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 /**
  * Class SaleController
@@ -21,9 +22,44 @@ use Dompdf\Dompdf as DompdfDompdf;
  */
 class SaleController extends Controller
 {
+    public function pdf()
+    {
+
+        $sales = Sale::all();
+
+        $pdf = Pdf::loadView('sale.pdf-template', ['sales' => $sales])
+                    ->setPaper('a4','portrait');
+
+        $pdf->set_option('isRemoteEnabled', true);
+
+        return $pdf->download('Listado Ventas.pdf');
+    }
+
+    public function detailPdf($id)
+    {
+
+        $sale = Sale::with('detailSales')
+        ->find($id);
+
+        if (!$sale) {
+            return redirect()->back()->with('error', 'No se encontró la cotización');
+        }
+
+        $pdf = Pdf::loadView('sale.pdf-template-detail', ['sale' => $sale])
+                    ->setPaper('a4','portrait');
+
+        $pdf->set_option('isRemoteEnabled', true);
+
+        return $pdf->download('Listado Ventas.pdf');
+    }
 
     public function generatePDF(Request $request)
     {
+        // Aumentar el límite de tiempo de ejecución a 120 segundos
+        set_time_limit(120);
+        // Aumentar el límite de memoria a 256MB
+        ini_set('memory_limit', '256M');
+
         //Obtener el filtro de la solicitud
         $filter = $request->input('findId');
 
@@ -51,6 +87,11 @@ class SaleController extends Controller
 
    public function generateDetailPDF(Request $request)
     {
+        // Aumentar el límite de tiempo de ejecución a 120 segundos
+        set_time_limit(120);
+        // Aumentar el límite de memoria a 256MB
+        ini_set('memory_limit', '256M');
+
         $filter = $request->input('findId');
 
         // Obtener los datos de la venta y sus detalles
@@ -142,7 +183,7 @@ class SaleController extends Controller
             });
 
         // Obtener una lista de productos para el select
-        $products = Product::pluck('name', 'id');
+        $products = Product::where('disable', false)->pluck('name', 'id');
 
         // Obtener los precios de los productos y pasarlos a la vista
         $productPrices = Product::pluck('price', 'id')->toArray();

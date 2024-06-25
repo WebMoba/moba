@@ -10,7 +10,7 @@
     @include('layouts.navbars.auth.topnav', ['title' => 'Ventas'])
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-11">
                 <div class="card">
 
                     <div class="card-header">
@@ -33,15 +33,15 @@
 
                             </form>
                             <div class="float-right">
-                                <a href="{{ route('pdf.sales') }}" class="btn btn-danger btn-sm float-right">
-                                    <i class="bi bi-file-pdf-fill"></i><span class="tooltiptext">Pdf</span>
-                                </a>
                                 <a href="{{ route('export.sales') }}" class="btn btn-success btn-sm float-right">
                                     <i class="bi bi-file-earmark-excel-fill"></i><span class="tooltiptext">Excel</span>
                                 </a>
-
-                            </div>
-                            <div class="float-right">
+                                
+                                <button type="button" class="btn btn-danger ms-2 rounded" tooltip="tooltip"
+                                title="PDF" onclick="window.location.href='{{ route('sale.pdf') }}'">
+                                    <i class="bi bi-file-pdf-fill"></i><span class="tooltiptext">Pdf</span>
+                                </button>
+                                
                                 <a href="{{ route('sales.create') }}" class="btn btn-success" data-placement="left">
                                     <i class="bi bi-plus-circle"></i><span class="tooltiptext">Crear</span>
                                 </a>
@@ -60,6 +60,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>N°</th>
+                                        <th>venta #</th>
                                         <th>Nombre Cliente</th>
                                         <th>Id Persona</th>
                                         <th>Fecha venta</th>
@@ -75,12 +76,13 @@
                                         @foreach ($sales as $sale)
                                             <tr>
                                                 <td>{{ ++$i }}</td>
+                                                <td>{{ $sale->id }}</td>
                                                 <td>{{ $sale->name }}</td>
                                                 <td>{{ $sale->person->id_card }}</td>
                                                 <td>{{ $sale->date }}</td>
                                                 <td>{{ $sale->total }}</td>
                                                 <td>
-                                                    <form class="frData" action="{{ route('sales.destroy', $sale->id) }}"
+                                                    <form class="frDataN" action="{{ route('sales.destroy', $sale->id) }}"
                                                         method="POST">
                                                         @csrf
                                                         @method('DELETE')
@@ -110,6 +112,11 @@
             </div>
         </div>
     </div>
+    <style>
+        th, td{
+            text-align: center;
+        }
+    </style>
     @include('layouts.footers.auth.footer')
 @endsection
 

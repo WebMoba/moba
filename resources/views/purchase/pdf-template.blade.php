@@ -4,23 +4,19 @@
 <head>
     <meta charset="utf-8">
     <title>Compras</title>
-
+    <link rel="stylesheet" href="{{public_path('css/pdf.css')}}" type="text/css">
 </head>
-
 <body>
-
+  
     <div class="moba">
         <div class="logo1">
-            <img src="{{ asset('logos/LogoMoba.png') }}" alt="Logo de MOBA">
+            <img src="{{ public_path('logos/LogoMoba.png') }}" alt="Logo de MOBA">
         </div>
         <div class="info">
             <h1>Moba</h1>
             <h2>agenciamoba@gmail.com</h2>
             <h3>Cl. 15a No.7A - 30, Sogamoso, Boyacá</h3>
             <h4>3112437979</h4>
-        </div>
-        <div class="logo2">
-            <img src="{{ asset('logos/LogotuArte.png') }}" alt="Logo de Tu Arte">
         </div>
     </div>
 
@@ -36,6 +32,7 @@
             <thead>
                 <tr>
                     <th>No</th>
+                    <th>Compra #</th>
                     <th>Nombre de compra</th>
                     <th>Fecha de compra</th>
                     <th>Documento del proveedor</th>
@@ -57,6 +54,7 @@
 
                     <tr>
                         <td>{{ ++$i }}</td>
+                        <td>{{ $purchase->id }}</td>
                         <td>{{ $purchase->name }}</td>
                         <td>{{ $purchase->date }}</td>
                         <td>{{ $purchase->person->id_card ?: 'N/A' }} </td>

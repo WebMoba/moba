@@ -7,6 +7,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\CategoriesExport;
 use App\Models\CategoriesProductsService;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 /**
  * Class CategoriesProductsServiceController
@@ -150,6 +151,20 @@ class CategoriesProductsServiceController extends Controller
         return redirect()->route('categories-products-service.index')
             ->with('success', 'Categoria desabilitada exitosamente');
     }
+
+    public function pdf()
+    {
+
+        $categoriesProductsService = CategoriesProductsService::all();
+
+        $pdf = Pdf::loadView('categories-products-service.pdf-template', ['categoriesProductsService' => $categoriesProductsService])
+                    ->setPaper('a4','portrait');
+
+        $pdf->set_option('isRemoteEnabled', true);
+
+        return $pdf->download('Listado Categorias.pdf');
+    }
+
     public function generatePDF(Request $request)
     {
         // Obtener el filtro de la solicitud

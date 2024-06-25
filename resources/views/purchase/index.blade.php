@@ -8,7 +8,7 @@
     @include('layouts.navbars.auth.topnav', ['title' => 'Compras'])
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-11">
                 <div class="card">
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -27,18 +27,18 @@
                                 </div>
                             </form>
                             <div class="float-right">
-                                <a href="{{ route('pdf.purchase') }}" class="btn btn-danger btn-sm float-right">
-                                    </i><i class="bi bi-file-pdf-fill"></i><span class="tooltiptext">Pdf</span>
-                                </a>
                                 <a href="{{ route('excel.purchase') }}" class="btn btn-success btn-sm float-right">
                                     <i class="bi bi-file-earmark-excel-fill"></i><span class="tooltiptext">Excel</span>
                                 </a>
 
-                            </div>
-                            <div class="float-right">
+                                <button type="button" class="btn btn-danger ms-2 rounded" tooltip="tooltip" title="PDF" onclick="window.location.href='{{ route('purchase.pdf') }}'">
+                                    <i class="bi bi-file-pdf-fill"></i><span class="tooltiptext">Pdf</span>
+                                </button>
+
                                 <a href="{{ route('purchases.create') }}" class="btn btn-success" data-placement="left">
                                     <i class="bi bi-plus-circle"></i><span class="tooltiptext">Crear</span>
                                 </a>
+
                             </div>
                         </div>
                     </div>
@@ -54,6 +54,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
+                                        <th> Compra # </th>
                                         <th>Nombre del proveedor</th>
                                         <th>Documento del proveedor</th>
                                         <th>Valor de la compra</th>
@@ -71,14 +72,14 @@
                                         @foreach ($purchases as $purchase)
                                             <tr>
                                                 <td>{{ ++$i }}</td>
-
+                                                <td>{{ $purchase->id }}</td>
                                                 <td>{{ $purchase->user->name }}</td>
                                                 <td>{{ $purchase->person->id_card }}</td>
                                                 <td>{{ $purchase->total }}</td>
                                                 <td>{{ $purchase->date }}</td>
 
                                                 <td>
-                                                    <form class="frData"
+                                                    <form class="frDataN"
                                                         action="{{ route('purchases.destroy', $purchase->id) }}"
                                                         method="POST">
                                                         @csrf
@@ -107,6 +108,11 @@
             </div>
         </div>
     </div>
+    <style>
+        th, td{
+            text-align: center;
+        }
+    </style>
     @include('layouts.footers.auth.footer')
 @endsection
 

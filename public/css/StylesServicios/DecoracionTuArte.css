@@ -1,3 +1,7 @@
+body{
+    width: fit-content;
+}
+
 .navbar {
     background-color: #3E3E3F;
     display: flex;
@@ -26,26 +30,27 @@
 }
 
 .btn-primary {
-    background-color: transparent !important;
+    background-color: #3E3E3F !important;
     color: #fff;
-    border-color: transparent !important;
+    border-color: #3E3E3F !important;
     font-size: 1.3vw;
+    font-family: sans-serif !important;
 }
 
 .btn-primary:hover {
-    background-color: transparent !important;
-    border-color: transparent !important;
+    background-color: #3E3E3F !important;
+    border-color: #3E3E3F !important;
 }
 
 .btn-primary:active,
 .btn-primary:focus {
-    background-color: transparent !important;
-    border-color: transparent !important;
+    background-color: #3E3E3F !important;
+    border-color: #3E3E3F !important;
 }
 
 .dropdown-menu .dropdown-item:hover {
-    background-color: transparent !important;
-    border-color: transparent !important;
+    background-color: #3E3E3F !important;
+    border-color: #3E3E3F !important;
     border: none;
     text-shadow: 0 0 5px #ff0000;
 }
@@ -60,13 +65,13 @@
 }
 
 .dropdown-menu {
-    background-color: transparent !important;
+    background-color: #3E3E3F !important;
     border-color: #f80008 !important;
 }
 
 .dropdown-menu .dropdown-item {
     color: #ffffff !important;
-    background-color: transparent !important;
+    background-color: #3E3E3F !important;
     border-color: #f80008 !important;
 }
 
@@ -160,46 +165,52 @@
 .big-title {
     color: red;
     font-size: 3em;
+    font-family: sans-serif !important;
 }
 
 .txt1 {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 2%;
 }
 
 .txts1 {
-    color: #BCCCE0;
+    color: white;
     font-size: 1.7em;
     font-weight: normal;
+    font-family: sans-serif !important;
 }
 
 .txt2 {
     text-align: center;
+    margin-top: 1.5%;
 }
 
 .txts2 {
     color: rgb(255, 255, 255);
-    font-size: 1.8em;
+    font-size: 1.7em;
     font-weight: bold;
+    font-family: sans-serif !important;
 }
 
 .txt3 {
     text-align: justify;
-    max-width: 1000px;
+    max-width: 58%;
     /* Ancho máximo del contenedor del texto */
-    margin: 25px auto;
+    margin: 1.5% auto;
     /* Centra el contenedor horizontalmente */
     font-weight: normal;
 }
 
 .txts3 {
-    color: #BCCCE0;
-    font-size: 24px;
+    color: white;
+    font-size: 1.7em;
     /* Tamaño de la fuente */
     position: relative;
     /* Establece la posición relativa para que sea la referencia para el HR */
     font-weight: normal;
+    font-family: sans-serif !important;
 }
+
 
 .txts3:not(:last-child)::after {
     content: '';
@@ -219,16 +230,17 @@
 }
 
 .txt3 h1:last-child {
-    margin-top: 30px;
+    margin-top: 3%;
     /* Ajusta el espacio en la parte superior del último h1 */
 }
 
 /*Carrusel*/
 .carousel {
-    max-width: 1000px;
+    max-width: 57.5%;
     /* Establece el ancho máximo del carrusel */
-    margin: 0 auto;
+    margin: 2.5% auto;
     /* Centra el carrusel horizontalmente */
+    margin-bottom: 5%;
 }
 
 .carousel-item {
@@ -289,9 +301,9 @@
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    width: 40px;
+    width: 5em;
     /* Ajusta el ancho del icono según sea necesario */
-    height: 40px;
+    height: 4em;
     /* Ajusta la altura del icono según sea necesario */
 }
 
@@ -302,6 +314,7 @@
     /* Empuja el precio hacia la parte inferior */
     font-weight: bold;
     font-size: 1rem;
+    font-family: sans-serif !important;
 }
 
 .card-body {
@@ -335,7 +348,7 @@
     /* Establecer el color verde para el icono de verificación */
     font-size: 1.3em;
     /* Ajustar el tamaño del icono según sea necesario */
-    margin-left: 5px;
+    margin-left: 1%;
     /* Agrega un espacio a la izquierda del icono */
     vertical-align: middle;
     /* Alinea verticalmente el icono con el contenido */
@@ -351,6 +364,7 @@
     text-decoration: none;
     transition: background-color 0.3s ease;
     font-size: 1.5em;
+    font-family: sans-serif !important;
     /* Ajusta el tamaño del icono según sea necesario */
 }
 
@@ -376,6 +390,11 @@
     background-color: red;
     border: 1px solid white;
     z-index: 1;
+    font-family: sans-serif !important;
+}
+
+.card-link img {
+    pointer-events: none;
 }
 
 /* Mostrar el contador solo cuando hay íconos activos */
@@ -436,27 +455,3 @@ table tbody tr td {
 .container-fluid {
     padding: 0 !important;
 }
-
-
-
-/*texto*/
-/*
-.rating-text {
-    text-align: left;
-}
-
-.rating-text p {
-    margin: 0;
-}
-
-.rating-text p {
-    color: #fff;
-    font-size: 14px;
-}
-
-.rating-text p {
-    color: #fff;
-    font-size: 16px;
-}
-
-*/

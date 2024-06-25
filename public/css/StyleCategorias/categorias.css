@@ -53,26 +53,27 @@ body::after {
 }
 
 .btn-primary {
-    background-color: transparent !important;
+    background-color: #3E3E3F !important;
     color: #fff;
-    border-color: transparent !important;
+    border-color: #3E3E3F !important;
     font-size: 1.3vw;
+    font-family: sans-serif !important
 }
 
 .btn-primary:hover {
-    background-color: transparent !important;
-    border-color: transparent !important;
+    background-color: #3E3E3F !important;
+    border-color: #3E3E3F !important;
 }
 
 .btn-primary:active,
 .btn-primary:focus {
-    background-color: transparent !important;
-    border-color: transparent !important;
+    background-color: #3E3E3F !important;
+    border-color: #3E3E3F !important;
 }
     
     .dropdown-menu .dropdown-item:hover {
-        background-color: transparent !important;
-        border-color: transparent !important;
+        background-color: #3E3E3F !important;
+        border-color: #3E3E3F !important;
         border: none;
         text-shadow: 0 0 5px #f80008;
     }
@@ -87,13 +88,13 @@ body::after {
     }
 
     .dropdown-menu {
-        background-color: transparent !important;
+        background-color: #3E3E3F !important;
         border-color: #f80008 !important;
     }
 
     .dropdown-menu .dropdown-item {
         color: #ffffff !important;
-        background-color: transparent !important;
+        background-color: #3E3E3F !important;
         border-color: #f80008 !important;
     }
 
@@ -184,11 +185,10 @@ body::after {
 
     .contenedor {
      display: flex;
-     
     height: 50vw;
     /* 100% de la altura de la ventana */
     width: 90%;
-    margin-top: 5%;
+    
 }
 
     .campo {
@@ -199,13 +199,14 @@ body::after {
     .campo a{
         text-decoration: none;
         color: white;
+        
 
 }
 
     .campo1 {
         flex-grow: 1; /* Hacer que el campo se expanda automáticamente */
         height: 38vw;
-        margin-top: 12%;
+        margin-top: 10%;
         /* 100% de altura */
         position: relative;
         border-bottom: 3.5vw solid white;
@@ -225,7 +226,7 @@ body::after {
     left: 30%;
     transform: translate(-50%, 50%) scale(0.8);
     color: white;
-    font-family: Georgia, 'Times New Roman', Times, serif, sans-serif;
+    font-family: sans-serif !important;
     font-weight: bold;
     font-size: 4vw;
     /*Tamañodeltextoenem(ajústalosegúnseanecesario)*/letter-spacing: -0.3em;

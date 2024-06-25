@@ -108,7 +108,7 @@
 
     <script>
         $(document).ready(function() {
-            $('.frData').on('submit', function(e) {
+            $('.frDataN').on('submit', function(e) {
                 e.preventDefault();
                 var form = this;
                 Swal.fire({

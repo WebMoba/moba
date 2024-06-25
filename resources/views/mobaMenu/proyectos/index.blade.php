@@ -14,7 +14,9 @@
 </head>
 
 <body class="background-image">
-
+    <div
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{ asset('Imagenes/Fondo_moba2.jpg') }}'); background-size: 100% 100%; background-position: center top; background-repeat: no-repeat; opacity: 1; z-index: -1; filter: brightness(10%); -webkit-filter: brightness(30%);">
+    </div>
     <nav class="navbar">
         <!--- inicio breaddrums-->
         <div class="breadcrums">
@@ -40,9 +42,12 @@
                             Servicios
                         </button></a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="{{route('mobaMenu.Servicios.servicios')}}">Identidad Corporativa</a></li>
-                        <li><a class="dropdown-item" href="{{route('mobaMenu.Servicios.servicios')}}">Avisos y Publicidad para interiores</a></li>
-                        <li><a class="dropdown-item" href="{{route('mobaMenu.Servicios.servicios')}}">POP y álgo más</a></li>
+                        <li><a class="dropdown-item" href="{{ route('mobaMenu.Servicios.servicios') }}">Identidad
+                                Corporativa</a></li>
+                        <li><a class="dropdown-item" href="{{ route('mobaMenu.Servicios.servicios') }}">Avisos y
+                                Publicidad para interiores</a></li>
+                        <li><a class="dropdown-item" href="{{ route('mobaMenu.Servicios.servicios') }}">POP y álgo
+                                más</a></li>
                     </ul>
                 </div>
                 <a href="{{ route('mobaMenu.index') }}" class="btn btn-primary">Nosotros</a>
@@ -101,208 +106,107 @@
             <div class="carousel-item active">
                 <div class="container">
                     <div class="row">
-                        <!-- Primera fila del carrusel 1 -->
-                        <div class="col-md-4">
-                            <div class="image-container">
-                                <a href="{{ asset('mobaMenu/proyectos/PARAISO') }}">
-                                    <img src="{{ asset('Imagenes/imgproyectos/paraiso1.jpg') }}" alt="PARAISO1">
-                                    <div class="overlay">
-                                        <div class="text">ALMACENES PARAISO</div>
+                        @foreach ($projects as $index => $project)
+                            @if ($index >= 0 && $index <= 2)
+                                <div class="col-md-4">
+                                    <div class="image-container">
+                                        <a href="{{ route('mobaMenu.proyectos.Muestra', $project->id) }}">
+                                            <img src="{{ asset('storage/' . $project->logo) }}">
+                                            <div class="overlay">
+                                                <div class="text">{{ $project->name }}</div>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="image-container">
-                                <a href="{{ asset('mobaMenu/proyectos/JAATELO') }}">
-                                    <img src="{{ asset('Imagenes/imgproyectos/jaatelo1.jpg') }}" alt="JAATELO">
-                                    <div class="overlay">
-                                        <div class="text">HELADERIA JAATELO</div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="image-container">
-                                <a href="{{ asset('mobaMenu/proyectos/ACERIAS') }}">
-                                    <img src="{{ asset('Imagenes/imgproyectos/acerias1.jpg') }}" alt="ACERIAS">
-                                    <div class="overlay">
-                                        <div class="text">ACERIAS PAZ DEL RIO</div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                                </div>
+                            @endif
+                        @endforeach
                     </div>
                     <div class="row">
-                        <!-- Segunda fila del carrusel 1 -->
-                        <div class="col-md-4">
-                            <div class="image-container">
-                                <a href="{{ asset('mobaMenu/proyectos/BIOSALUD') }}">
-                                    <img src="{{ asset('Imagenes/imgproyectos/biosalud1.jpg') }}" alt="BIOSALUD">
-                                    <div class="overlay">
-                                        <div class="text">BIOSALUD</div>
+                        @foreach ($projects as $index => $project)
+                            @if ($index >= 3 && $index <= 5)
+                                <div class="col-md-4">
+                                    <div class="image-container">
+                                        <a href="{{ route('mobaMenu.proyectos.Muestra', $project->id) }}">
+                                            <img src="{{ asset('storage/' . $project->logo) }}">
+                                            <div class="overlay">
+                                                <div class="text">{{ $project->name }}</div>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="image-container">
-                                <a href="{{ asset('mobaMenu/proyectos/CABUBARA') }}">
-                                    <img src="{{ asset('Imagenes/imgproyectos/cabubara1.jpg') }}" alt="CABUBARA">
-                                    <div class="overlay">
-                                        <div class="text">CABUBARA</div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="image-container">
-                                <a href="{{ asset('mobaMenu/proyectos/HOSPITAL') }}">
-                                    <img src="{{ asset('Imagenes/imgproyectos/hospital1.jpeg') }}" alt="HOSPITAL">
-                                    <div class="overlay">
-                                        <div class="text">HOSPITAL REGIONAL</div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                                </div>
+                            @endif
+                        @endforeach
                     </div>
                     <div class="row">
-                        <!-- Tercera fila del carrusel 1 -->
-                        <div class="col-md-4">
-                            <div class="image-container">
-                                <a href="{{ asset('mobaMenu/proyectos/JOVEN') }}">
-                                    <img src="{{ asset('Imagenes/imgproyectos/jovenpro1.jpg') }}" alt="JOVENPRO">
-                                    <div class="overlay">
-                                        <div class="text">JOVEN PRO</div>
+                        @foreach ($projects as $index => $project)
+                            @if ($index >= 6 && $index <= 8)
+                                <div class="col-md-4">
+                                    <div class="image-container">
+                                        <a href="{{ route('mobaMenu.proyectos.Muestra', $project->id) }}">
+                                            <img src="{{ asset('storage/' . $project->logo) }}">
+                                            <div class="overlay">
+                                                <div class="text">{{ $project->name }}</div>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="image-container">
-                                <a href="{{ asset('mobaMenu/proyectos/DULCES') }}">
-                                    <img src="{{ asset('Imagenes/imgproyectos/lafrez1.jpg') }}" alt="LAFREZ">
-                                    <div class="overlay">
-                                        <div class="text">LA FREZ</div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="image-container">
-                                <a href="{{ asset('mobaMenu/proyectos/ODONTOLOGIA') }}">
-                                    <img src="{{ asset('Imagenes/imgproyectos/lizethdorado1.jpg') }}"
-                                        alt="ODONTOLOGIA-LIZETH">
-                                    <div class="overlay">
-                                        <div class="text">ODONTOLOGIA LIZETH DORADO</div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                                </div>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="container">
+                    <!-- Primera fila del carrusel 2 -->
                     <div class="row">
-                        <!-- Primera fila del carrusel 2 -->
-                        <div class="col-md-4">
-                            <div class="image-container">
-                                <a href="{{ asset('mobaMenu/proyectos/odontologa1') }}">
-                                    <img src="{{ asset('Imagenes/imgproyectos/odontologa1.jpg') }}" alt="ODONTOLOGA">
-                                    <div class="overlay">
-                                        <div class="text">ODONTOLOGA CAROLINA CAMACHO</div>
+                        @foreach ($projects as $index => $project)
+                            @if ($index >= 9 && $index <= 11)
+                                <div class="col-md-4">
+                                    <div class="image-container">
+                                        <a href="{{ route('mobaMenu.proyectos.Muestra', $project->id) }}">
+                                            <img src="{{ asset('storage/' . $project->logo) }}">
+                                            <div class="overlay">
+                                                <div class="text">{{ $project->name }}</div>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="image-container">
-                                <a href="{{ asset('mobaMenu/proyectos/PUNTOCERO') }}">
-                                    <img src="{{ asset('Imagenes/imgproyectos/puntocero1.jpg') }}" alt="PUNTOCERO">
-                                    <div class="overlay">
-                                        <div class="text">COMIDAS RAPIDAS PUNTO CERO</div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="image-container">
-                                <a href="{{ asset('mobaMenu/proyectos/RASPADOS') }}">
-                                    <img src="{{ asset('Imagenes/imgproyectos/raspadosiglu1.jpg') }}" alt="RASPADOS">
-                                    <div class="overlay">
-                                        <div class="text">RASPADOS IGLU</div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                                </div>
+                            @endif
+                        @endforeach
                     </div>
+                    <!-- Segunda fila del carrusel 2 -->
                     <div class="row">
-                        <!-- Segunda fila del carrusel 2 -->
-                        <div class="col-md-4">
-                            <div class="image-container">
-                                <a href="{{ asset('mobaMenu/proyectos/CAFELATINO') }}">
-                                    <img src="{{ asset('Imagenes/imgproyectos/CAFELATINO1.jpg') }}" alt="RASPADOS">
-                                    <div class="overlay">
-                                        <div class="text">CAFE LATINO</div>
+                        @foreach ($projects as $index => $project)
+                            @if ($index >= 12 && $index <= 14)
+                                <div class="col-md-4">
+                                    <div class="image-container">
+                                        <a href="{{ route('mobaMenu.proyectos.Muestra', $project->id) }}">
+                                            <img src="{{ asset('storage/' . $project->logo) }}">
+                                            <div class="overlay">
+                                                <div class="text">{{ $project->name }}</div>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="image-container">
-                                <a href="{{ asset('mobaMenu/proyectos/CAFEMANA') }}">
-                                    <img src="{{ asset('Imagenes/imgproyectos/CAFEMANA.jpeg') }}" alt="RASPADOS">
-                                    <div class="overlay">
-                                        <div class="text">CAFE MANA BARUCH</div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="image-container">
-                                <a href="{{ asset('mobaMenu/proyectos/EMPANADASBOTI') }}">
-                                    <img src="{{ asset('Imagenes/imgproyectos/EMPANADASBOT1.jpg') }}" alt="RASPADOS">
-                                    <div class="overlay">
-                                        <div class="text">EMPANADAS DONDE BOTI</div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                                </div>
+                            @endif
+                        @endforeach
                     </div>
+                    <!-- Tercera fila del carrusel 2 -->
                     <div class="row">
-                        <!-- Tercera fila del carrusel 2 -->
-                        <div class="col-md-4">
-                            <div class="image-container">
-                                <a href="{{ asset('mobaMenu/proyectos/EMPANADASRANCHO') }}">
-                                    <img src="{{ asset('Imagenes/imgproyectos/EMPANADASRANCHO1.jpg') }}"
-                                        alt="RASPADOS">
-                                    <div class="overlay">
-                                        <div class="text">EMPANADAS RANCHO</div>
+                        @foreach ($projects as $index => $project)
+                            @if ($index >= 15 && $index <= 17)
+                                <div class="col-md-4">
+                                    <div class="image-container">
+                                        <a href="{{ route('mobaMenu.proyectos.Muestra', $project->id) }}">
+                                            <img src="{{ asset('storage/' . $project->logo) }}">
+                                            <div class="overlay">
+                                                <div class="text">{{ $project->name }}</div>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="image-container">
-                                <a href="{{ asset('mobaMenu/proyectos/EMPOWER') }}">
-                                    <img src="{{ asset('Imagenes/imgproyectos/ENPOWER1.jpg') }}" alt="RASPADOS">
-                                    <div class="overlay">
-                                        <div class="text">EMPOWER</div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="image-container">
-                                <a href="{{ asset('mobaMenu/proyectos/PALMAS') }}">
-                                    <img src="{{ asset('Imagenes/imgproyectos/PALMAS1.jpg') }}" alt="RASPADOS">
-                                    <div class="overlay">
-                                        <div class="text">PALMAS CLUB</div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                                </div>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -342,24 +246,32 @@
 
         function mostrarCuadroAnterior() {
             // Oculta el cuadro actual
-            document.getElementById(`cuadro${indiceCuadroActual}`).style.display = 'none';
+            document.getElementById(cuadro$ {
+                indiceCuadroActual
+            }).style.display = 'none';
 
             // Actualiza el índice al cuadro anterior
             indiceCuadroActual = (indiceCuadroActual - 1) > 0 ? (indiceCuadroActual - 1) : 3;
 
             // Muestra el cuadro anterior
-            document.getElementById(`cuadro${indiceCuadroActual}`).style.display = 'block';
+            document.getElementById(cuadro$ {
+                indiceCuadroActual
+            }).style.display = 'block';
         }
 
         function mostrarCuadroSiguiente() {
             // Oculta el cuadro actual
-            document.getElementById(`cuadro${indiceCuadroActual}`).style.display = 'none';
+            document.getElementById(cuadro$ {
+                indiceCuadroActual
+            }).style.display = 'none';
 
             // Actualiza el índice al cuadro siguiente
             indiceCuadroActual = (indiceCuadroActual + 1) > 3 ? 1 : (indiceCuadroActual + 1);
 
             // Muestra el cuadro siguiente
-            document.getElementById(`cuadro${indiceCuadroActual}`).style.display = 'block';
+            document.getElementById(cuadro$ {
+                indiceCuadroActual
+            }).style.display = 'block';
         }
     </script>
 
@@ -372,6 +284,10 @@
             width: 90%;
             margin-top: 10%;
             margin-left: 5%;
+        }
+
+        .txt3 {
+            width: 60%;
         }
 
         .active-link {
@@ -539,13 +455,13 @@
         }
 
         .dropdown-menu {
-            background-color: transparent !important;
+            background-color: #3E3E3F !important;
             border-color: #73a3b6 !important;
         }
 
         .dropdown-menu .dropdown-item {
             color: #2bb9e5 !important;
-            background-color: transparent !important;
+            background-color: #3E3E3F !important;
             border-color: #2bb9e5 !important;
         }
 
@@ -554,26 +470,26 @@
         }
 
         .btn-primary {
-            background-color: transparent !important;
+            background-color: #3E3E3F !important;
             color: #fff;
-            border-color: transparent !important;
+            border-color: #3E3E3F !important;
             font-size: 1.3vw;
         }
 
         .btn-primary:hover {
-            background-color: transparent !important;
-            border-color: transparent !important;
+            background-color: #3E3E3F !important;
+            border-color: #3E3E3F !important;
         }
 
         .btn-primary:active,
         .btn-primary:focus {
-            background-color: transparent !important;
-            border-color: transparent !important;
+            background-color: #3E3E3F !important;
+            border-color: #3E3E3F !important;
         }
 
         .dropdown-menu .dropdown-item:hover {
-            background-color: transparent !important;
-            border-color: transparent !important;
+            background-color: #3E3E3F !important;
+            border-color: #3E3E3F !important;
             border: none;
             text-shadow: 0 0 5px #2bb9e5;
         }
@@ -588,13 +504,13 @@
         }
 
         .dropdown-menu {
-            background-color: transparent !important;
+            background-color: #3E3E3F !important;
             border-color: #73a3b6 !important;
         }
 
         .dropdown-menu .dropdown-item {
             color: #2bb9e5 !important;
-            background-color: transparent !important;
+            background-color: #3E3E3F !important;
             border-color: #2bb9e5 !important;
         }
 
@@ -604,9 +520,7 @@
 
 
 
-        /*estilos Breadcrums*/
-
-        .breadcrums {
+        /estilos Breadcrums/ .breadcrums {
             display: flex;
         }
 

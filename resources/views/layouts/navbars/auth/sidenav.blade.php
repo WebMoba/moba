@@ -12,7 +12,6 @@
             </div>
         </a>
     </div>
-    <hr class="horizontal dark mt-0">
     <div class="collapse navbar-collapse w-auto h-auto" id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -22,7 +21,7 @@
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Menu</span>
+                    <span class="nav-link-text ms-1">Menú</span>
                 </a>
             </li>
             <li class="nav-item mt-3">
@@ -83,7 +82,7 @@
                     href="{{ route('product.index') }}">
                     <div
                         class="icon icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="bi bi-basket text-back text-sm opacity-10"></i>
+                        <i class="bi bi-basket"></i>
                     </div>
                     <span class="nav-link-text ms-1">Productos</span>
                 </a>
@@ -95,7 +94,7 @@
                         class="icon icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="bi bi-diagram-3-fill text-danger text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Categorias</span>
+                    <span class="nav-link-text ms-1">Categorías</span>
                 </a>
             </li>
             <li class="nav-item">

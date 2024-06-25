@@ -24,6 +24,11 @@ class TeamWork extends Model
 {
     static $rules = [
         'projects_id' => 'required',
+        'image' => 'image|mimes:jpeg,png,jpg|max:100000',
+        'specialty' => 'required',
+        'assigned_work' => 'required',
+        'assigned_date' => 'required',
+    
     ];
 
     protected $perPage = 20;
@@ -33,7 +38,7 @@ class TeamWork extends Model
      *
      * @var array
      */
-    protected $fillable = ['specialty', 'assigned_work', 'assigned_date', 'projects_id', 'disable'];
+    protected $fillable = ['name','image', 'specialty', 'assigned_work', 'assigned_date', 'description', 'projects_id', 'disable'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

@@ -8,16 +8,17 @@
     @include('layouts.navbars.auth.topnav', ['title' => 'Mostrar Compra'])
     <section class="content container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-11">
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
                             <span class="card-title">{{ __('Show') }} Compra</span>
                         </div>
                         <div class="float-right">
-                            <a href="{{ route('pdf.purchase-detail', ['findId' => $purchase->id]) }}" class="btn btn-danger btn-sm float-right">
-                                </i><i class="bi bi-file-pdf-fill"></i><span class="tooltiptext">Pdf</span>
-                            </a>
+                            <button type="button" class="btn btn-danger ms-2 rounded" tooltip="tooltip" title="PDF" 
+                                    onclick="window.location.href='{{ route('purchaseDetail.pdf', ['id' => $purchase->id]) }}'">
+                                <i class="bi bi-file-pdf-fill"></i><span class="tooltiptext">Pdf</span>
+                            </button>
                         </div>
                     </div>
 
@@ -26,6 +27,10 @@
                         @if ($purchase->detailPurchases->count())
                         <table class="table">
                             <tbody>
+                                <tr>
+                                    <th>Compra #:</th>
+                                    <td>{{ $purchase->id     }}</td>
+                                </tr>
                                 <tr>
                                     <th>Nombre del proveedor:</th>
                                     <td>{{ $purchase->user->name }}</td>
@@ -46,11 +51,9 @@
                                     <th>Detalles de la compra:</th>
                                     <td>
                                         <ul>
-                                            @foreach ($purchase->detailPurchases as $detail)
+                                            @foreach ($purchase->detailPurchases as $index => $detail)
                                                 <li>
-                                                    @foreach ($details as $index => $detail)
                                                     <strong>Detalle:</strong> {{ $index + 1 }}<br>
-                                                    @endforeach
                                                     <strong>Cantidad:</strong> {{ $detail->quantity }}<br>
                                                     <strong>Precio unitario:</strong> {{ $detail->price_unit }}<br>
                                                     <strong>Subtotal:</strong> {{ $detail->subtotal }}<br>

@@ -21,7 +21,9 @@
                         <div class="card-header text-center pt-4">
                             <h5>Registrarse con</h5>
                         </div>
-                        <div class="row px-xl-5 px-sm-4 px-3" style="margin-left: 0;">
+
+                        <!----   
+                           <div class="row px-xl-5 px-sm-4 px-3" style="margin-left: 0;">
                             <div class="col-3 ms-auto px-1">
                                 <a class="btn btn-outline-light w-100" href="javascript:;">
                                     <svg width="24px" height="32px" viewBox="0 0 64 64" version="1.1">
@@ -79,19 +81,23 @@
                                 </p>
                             </div>
                         </div>
+-->
+
+
+
                         <div class="card-body">
                             <form method="POST" action="{{ route('register.perform') }}">
                                 @csrf
                                 <div class="flex flex-col mb-3">
-                                    <input type="text" name="name" class="form-control" placeholder="Name" aria-label="Name" value="{{ old('Nombre de usuario') }}" >
+                                    <input type="text" name="name" class="form-control" placeholder="Nombre" aria-label="Name" value="{{ old('Nombre de usuario') }}" >
                                     @error('name') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Email" value="{{ old('Email') }}" >
+                                    <input type="email" name="email" class="form-control" placeholder="Correo" aria-label="Email" value="{{ old('Email') }}" >
                                     @error('email') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Contraseña">
+                                    <input type="password" name="password" class="form-control" placeholder="Contraseña" aria-label="Contraseña">
                                     @error('password') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-check form-check-info text-start">

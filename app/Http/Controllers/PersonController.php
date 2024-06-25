@@ -18,6 +18,7 @@ use App\Exports\PeopleExport;
 
 
 use App\Models\Person;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 /**
@@ -189,7 +190,11 @@ class PersonController extends Controller
         // Validar la solicitud
         $request->validate([
             'rol' => ['required', Rule::in(['Administrador', 'Cliente', 'Proveedor'])], // Asegúrate de que los valores de 'rol' sean válidos
-            'id_card' => 'required',
+            'id_card' => [
+                'required',
+                'max:10', // Máximo 10 caracteres
+                Rule::unique('people', 'id_card')->ignore($person->id),
+            ],
             'identification_type' => ['required', Rule::in(['cedula', 'cedula Extranjeria', 'NIT'])],
             'addres' => 'required',
             'phone_number' => 'required',
@@ -203,6 +208,7 @@ class PersonController extends Controller
 
         // Actualizar los datos de la persona
         $person->update([
+            'id_card' => $request->input('id_card'),
             'name' => $request->input('user_name'),
             'addres' => $request->input('addres'),
             'team_works_id' => $request->input('team_works_id'),
@@ -251,37 +257,20 @@ class PersonController extends Controller
         return response()->json($towns);
     }
 
-    public function generatePDF(Request $request)
+    public function pdf()
     {
-        // Obtener el filtro de la solicitud
-        $filter = $request->input('findId');
 
-        // Obtener los datos de las personas filtradas si se aplicó un filtro
-        $people = Person::query();
+        $people = Person::all();
 
-        if ($filter) {
-            $people->where('id_card', 'LIKE', "%$filter%");
-        }
+        $pdf = Pdf::loadView('person.pdf-template', ['people' => $people])
+                    ->setPaper('a4','landscape');
 
-        $people = $people->get();
-
-        // Pasar los datos filtrados a la vista pdf-template
-        $data = [
-            'people' => $people
-        ];
-
-        // Generar el PDF
-        $pdf = new Dompdf();
         $pdf->set_option('isRemoteEnabled', true);
-        $pdf->loadHtml(view('person.pdf-template', $data));
 
-        $pdf->setPaper('A4', 'portrait');
-        $pdf->render();
-
-        return $pdf->stream('Personas.pdf');
+        return $pdf->download('Listado Usuarios.pdf');
     }
 
-
+    
 
     public function export()
     {

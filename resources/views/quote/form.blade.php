@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Título de tu página</title>
     <style>
         .required::after {
@@ -18,7 +19,6 @@
             @csrf
             <div class="box">
                 <h2>Cotización</h2>
-                <!-- Contenido de la primera tabla -->
                 <div class="box-body col-mt-10">
                     <div class="form-group col-md-3">
                         {{ Form::label('Fecha de expedición', null, ['class' => 'required']) }}
@@ -33,7 +33,7 @@
                     </div>
                     <div class="form-group">
                         {{ Form::label('Descripción', null, ['class' => 'required']) }}
-                        {{ Form::text('description', old('description'), ['id' => 'Descripción', 'class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Descripción de la cotización']) }}
+                        {{ Form::text('description', old('description'), ['id' => 'Descripción', 'class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''), 'required' ,'placeholder' => 'Descripción de la cotización']) }}
                         {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
                     <div class="form-group">
@@ -42,8 +42,8 @@
                         {!! $errors->first('total', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
                     <div class="form-group">
-                        {{ Form::label('Descuento', null, ['class' => 'required']) }}
-                        {{ Form::text('discount', old('discount'), ['id' => 'Descuento', 'class' => 'form-control' . ($errors->has('discount') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Descuento en pesos']) }}
+                        {{ Form::label('Descuento (%)', null, ['class' => 'required']) }}
+                        {{ Form::number('discount', old('discount'), ['id' => 'Descuento', 'class' => 'form-control' . ($errors->has('discount') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Descuento en porcentaje', 'step' => '0.01']) }}
                         {!! $errors->first('discount', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
                     <div class="form-group">
@@ -53,7 +53,7 @@
                     </div>
                     <div class="form-group">
                         {{ Form::label('Nombre del cliente', null, ['class' => 'required-label']) }}
-                        {{ Form::select('people_id', $persons, old('people_id'), ['class' => 'form-control' . ($errors->has('people_id') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Nombre del cliente', 'id' => 'name']) }}
+                        {{ Form::select('people_id', $clients, old('people_id'), ['class' => 'form-control' . ($errors->has('people_id') ? ' is-invalid' : ''), 'required', 'placeholder' => 'Nombre del cliente', 'id' => 'name']) }}
                         {!! $errors->first('people_id', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
                 </div>
@@ -156,6 +156,58 @@
         function eliminarDetalle(div) {
             div.remove();
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Selección de campos
+            const totalField = document.getElementById('Total');
+            const discountField = document.getElementById('Descuento');
+    
+            // Función para mostrar alertas
+            function showAlert(message) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: message,
+                    confirmButtonText: 'OK'
+                });
+            }
+    
+            // Validación de entrada para el campo Total
+            totalField.addEventListener('input', function() {
+                let value = parseFloat(totalField.value);
+                if (isNaN(value) || value < 0) {
+                    totalField.value = '';
+                    showAlert('El campo Total debe ser un número positivo mayor o igual a 0.');
+                }
+            });
+    
+            // Validación de entrada para el campo Descuento
+            discountField.addEventListener('input', function() {
+                let value = parseFloat(discountField.value);
+                if (isNaN(value) || value < 0 || value > 100) {
+                    discountField.value = '';
+                    showAlert('El campo Descuento debe ser un número positivo entre 0 y 100.');
+                }
+            });
+    
+            // Validación adicional en el envío del formulario
+            document.querySelector('form').addEventListener('submit', function(event) {
+                let totalValue = parseFloat(totalField.value);
+                let discountValue = parseFloat(discountField.value);
+    
+                if (isNaN(totalValue) || totalValue < 0) {
+                    showAlert('El campo Total debe ser un número positivo mayor o igual a 0.');
+                    event.preventDefault();
+                    return;
+                }
+    
+                if (isNaN(discountValue) || discountValue < 0 || discountValue > 100) {
+                    showAlert('El campo Descuento debe ser un número positivo entre 0 y 100.');
+                    event.preventDefault();
+                    return;
+                }
+            });
+        });
     </script>
 
     @extends('layouts.alerts')

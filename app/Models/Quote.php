@@ -65,16 +65,16 @@ class Quote extends Model
 
     public function detailQuotes()
     {
-        return $this->hasMany('App\Models\DetailQuote', 'quotes_id', 'id');
+        return $this->hasMany(DetailQuote::class, 'quotes_id');
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
 
-    public function person()
+     public function person()
     {
-        return $this->belongsTo(Person::class);
+        return $this->belongsTo(Person::class, 'people_id');
     }
 
     /**

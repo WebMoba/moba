@@ -9,7 +9,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-11">
                 <div class="card">
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -29,14 +29,15 @@
                                 </div>
                             </form>
                             <div class="float-right">
-                                <a href="{{ route('pdf.product') }}" class="btn btn-danger btn-sm float-right">
-                                    <i class="bi bi-file-pdf-fill"></i><span class="tooltiptext">Pdf</span>
-                                </a>
                                 <a href="{{ route('excel.product') }}" class="btn btn-success btn-sm float-right">
                                     <i class="bi bi-file-earmark-excel-fill"></i><span class="tooltiptext">Excel</span>
                                 </a>
-                            </div>
-                            <div class="float-right">
+
+                                <button type="button" class="btn btn-danger ms-2 rounded" tooltip="tooltip"
+                                title="PDF" onclick="window.location.href='{{ route('product.pdf') }}'">
+                                    <i class="bi bi-file-pdf-fill"></i><span class="tooltiptext">Pdf</span>
+                                </button>
+
                                 <a href="{{ route('product.create') }}" class="btn btn-success" data-placement="left">
                                     <i class="bi bi-plus-circle"></i><span class="tooltiptext">Crear</span>
                                 </a>
@@ -105,6 +106,11 @@
             </div>
         </div>
     </div>
+    <style>
+        th, td{
+            text-align: center;
+        }
+    </style>
     @include('layouts.footers.auth.footer')
 @endsection
 

@@ -15,6 +15,7 @@ use App\Models\DetailSale;
 use App\Exports\ProductExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 /**
  * Class ProductController
@@ -53,11 +54,11 @@ class ProductController extends Controller
     public function indexForAccessories()
     {
         $search = request()->input('search');
-
         // Filtra los productos por la categoría "Accesorios"
         $products = Product::whereHas('categoriesProductsService', function ($query) {
             $query->where('name', 'Accesorios');
         })
+            ->where('disable', '!=', 1) // Agregar esta condición
             ->when($search, function ($query, $search) {
                 return $query->where('name', 'like', '%' . $search . '%');
             })
@@ -76,6 +77,7 @@ class ProductController extends Controller
         $products = Product::whereHas('categoriesProductsService', function ($query) {
             $query->where('name', 'Decoracion');
         })
+            ->where('disable', '!=', 1) // Agregar esta condición
             ->when($search, function ($query, $search) {
                 return $query->where('name', 'like', '%' . $search . '%');
             })
@@ -94,6 +96,7 @@ class ProductController extends Controller
         $products = Product::whereHas('categoriesProductsService', function ($query) {
             $query->where('name', 'Joditas pal Recuerdo');
         })
+            ->where('disable', '!=', 1) // Agregar esta condición
             ->when($search, function ($query, $search) {
                 return $query->where('name', 'like', '%' . $search . '%');
             })
@@ -112,6 +115,7 @@ class ProductController extends Controller
         $products = Product::whereHas('categoriesProductsService', function ($query) {
             $query->where('name', 'Mascotas');
         })
+            ->where('disable', '!=', 1) // Agregar esta condición
             ->when($search, function ($query, $search) {
                 return $query->where('name', 'like', '%' . $search . '%');
             })
@@ -246,6 +250,25 @@ class ProductController extends Controller
             ->with('success', 'Estado del producto cambiado con éxito.');
     }
 
+    public function pdf()
+    {
+        $products = Product::all();
+
+        foreach ($products as $product) {
+            $imagePath = public_path('storage/' . $product->image);
+            $product->image_exists = file_exists($imagePath);
+            $product->image_url = $product->image_exists ? url('storage/' . $product->image) : null;
+        }
+
+        $pdf = Pdf::loadView('product.pdf-template', ['products' => $products])
+            ->setPaper('a4', 'portrait');
+
+        $pdf->set_option('isRemoteEnabled', true);
+
+        return $pdf->download('Listado Productos.pdf');
+    }
+
+
     public function generatePDF(Request $request)
     {
         // Obtener el filtro de la solicitud
@@ -280,7 +303,7 @@ class ProductController extends Controller
         return $pdf->stream('Productos.pdf');
     }
 
-    
+
 
     public function export()
     {

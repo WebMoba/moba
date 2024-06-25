@@ -6,7 +6,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                 <li class="breadcrumb-item text-sm">
-                    <a class="opacity-5 text-white" href="{{ route('dashboard') }}">Menu Principal</a>
+                    <a class="opacity-5 text-white" href="{{ route('dashboard') }}">Menú Principal</a>
                 </li>
                 @if (Request::is('quotes/create'))
                     <li class="breadcrumb-item text-sm">
@@ -177,15 +177,22 @@
             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
             </div>
             <ul class="navbar-nav  justify-content-end">
+
+           
+          
+
                 <li class="nav-item d-flex align-items-center">
-                    <a href="{{ asset('/') }}" style="margin: 10px 10px;  text-decoration: underline;"
-                        class="nav-link text-white font-weight-bold px-0">Volver</a>
+                    
+                <a href="{{ url('documentos/ManualAdministrativo.pdf') }}" class="circle-btn" target="_blank">?</a> 
+
+                    <a href="{{ asset('/') }}" style="margin: 10px 10px; "
+                        class="nav-link text-white font-weight-bold px-0">Principal</a>
                     <form role="form" method="post" action="{{ route('logout') }}" id="logout-form">
                         @csrf
                         <a href="{{ route('logout') }}"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                             class="nav-link text-white font-weight-bold px-0"
-                            style="margin: 10px 10px;  text-decoration: underline;">
+                            style="margin: 10px 10px;">
                             <i class="bi bi-person-circle"></i>
                             <span class="d-sm-inline d-none">Cerrar Sesión</span>
                         </a>
@@ -196,3 +203,23 @@
     </div>
 </nav>
 <!-- End Navbar -->
+<style>
+     .circle-btn {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1.5px solid;
+            background-color: transparent;
+            color: white;
+            text-align: center;
+            line-height: 18px;
+            font-size: 15px;
+            margin-right: 15px;
+            transition: background-color 0.3s;
+        }
+        .circle-btn:hover{
+            color: cornflowerblue;
+        }
+     
+</style>
