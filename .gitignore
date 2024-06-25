@@ -11,9 +11,8 @@
 !/storage/app/public/logos/.gitignore
 !/storage/app/public/uploads/.gitignore
 /vendor
-.env
-.env.backup
-.env.production
+
+
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
