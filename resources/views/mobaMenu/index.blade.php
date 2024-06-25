@@ -138,4 +138,35 @@
 
     @include('partials.footerMoba')
 </body>
+
+<style>
+    .breadcrums {
+        display: flex;
+    }
+
+    .breadcrums a {
+        text-decoration: none;
+        color: white;
+        font-size: 0.9vw;
+        margin-right: 2px;
+        /* Esto agrega un espacio entre los enlaces */
+        font-family: sans-serif !important;
+    }
+
+    .breadcrumbs li {
+        display: inline;
+        padding: 0;
+    }
+
+    .breadcrumbs a:hover {
+        color: #2bb9e5;
+    }
+
+    .dropdown-menu .dropdown-item {
+        color: #2bb9e5 !important;
+        background-color: #3E3E3F !important;
+        border-color: #2bb9e5 !important;
+    }
+
+</style>
 </html>
