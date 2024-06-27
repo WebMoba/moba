@@ -6,16 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Equipo de trabajo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('css/StyleFooter.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body>
-    <div
-        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{ asset('Imagenes/Fondo_moba4.jpg') }}'); background-size: 100% 100%; background-position: center top; background-repeat: no-repeat; opacity: 1; z-index: -1; filter: brightness(10%); -webkit-filter: brightness(10%);">
+    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{ asset('Imagenes/Fondo_moba4.jpg') }}'); background-size: 100% 100%; background-position: center top; background-repeat: no-repeat; opacity: 1; z-index: -1; filter: brightness(10%); -webkit-filter: brightness(10%);">
     </div>
     <!-- menu  -->
 
@@ -23,11 +21,11 @@
         <!--- inicio breaddrums-->
         <div class="breadcrums">
             @include('helpers.breadcrumbs', [
-                'breadcrumbs' => [
-                    ['url' => route('welcome'), 'label' => 'Bienvenido /'],
-                    ['url' => route('mobaMenu.index'), 'label' => 'Moba /'],
-                    ['url' => route('mobaMenu.EquipoTrabajo.index'), 'label' => 'EquipoDeTrabajo'],
-                ],
+            'breadcrumbs' => [
+            ['url' => route('welcome'), 'label' => 'Bienvenido /'],
+            ['url' => route('mobaMenu.index'), 'label' => 'Moba /'],
+            ['url' => route('mobaMenu.EquipoTrabajo.index'), 'label' => 'EquipoDeTrabajo'],
+            ],
             ])
         </div>
         <div class="inicioRegistro"> @include('partials.inicio')</div>
@@ -42,8 +40,7 @@
             <div class="navbar-buttons">
                 <div class="dropdown">
                     <a href="{{ route('mobaMenu.Servicios.servicios') }}">
-                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-                            aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
                             Servicios
                         </button>
                     </a>
@@ -99,55 +96,50 @@
             <button id="cerrarAsideJavier" class="cerrarAside">X</button>
             <p class="p1">
                 Sus años en la universidad de la vida y su carrera profesional lo forjaron y mentalizaron para crear y
-                fundar a MOBA, esto lo llevo a entender que antes de llevar el timón hay que aprender a remar en equipo.
-                Ese esfuerzo y pasión por lo que cree y hace, le permiten vivir al máximo cada reto que se propone al
-                emprender una idea para sacarla a flote. Sin duda tiene el don de la palabra para llegar a las personas,
-                toca en sus corazones las fibras de la alegría y siempre logra sacar una sonrisa en el prójimo.
+                fundar a MOBA, esto lo llevo a entender que antes de llevar el timón hay que aprender a remar en
+                equipo. Ese esfuerzo y pasión por lo que cree y hace, le permiten vivir al máximo cada reto que se
+                propone al emprender una idea para sacarla a flote. Sin duda tiene el don de la palabra para llegar
+                a las personas, toca en sus corazones las fibras de la alegría y siempre logra sacar una sonrisa en el
+                prójimo.
+
 
             </p>
             <p class="p1">
-                Le encanta la música, su tercer idioma son las groserías, ama el anime en especial One Piece. Para él la
-                familia es su piedra angular en la vida, sus mascotas le dan sentido a sus días, y está enamorado de su
-                segunda familia “MOBA”. De cualquier forma, su interés está en mejorar la calidad de vida de las
-                personas,
-                tratar de hacer feliz a sus familiares, amigos y al mundo en general.
+                Le encanta la música, su tercer idioma son las groserías, ama el anime en especial One Piece. Para
+                él la familia es su piedra angular en la vida, sus mascotas le dan sentido a sus días, y está
+                enamorado de su segunda familia “MOBA”. De cualquier forma, su interés está en mejorar la
+                calidad de vida de las personas, tratar de hacer feliz a sus familiares, amigos y al mundo en general.
+
             </p>
         </aside>
 
         <aside id="miAsideSofia" style="display: none;" class="aside-container">
             <button id="cerrarAsideSofia" class="cerrarAside">X</button>
             <p class="p1">
-                "Nunca permitas que nadie borre esa sonrisa de tu rostro"
-                es lo que ella piensa cada vez que emprende algo en su vida y es la frase que usa como mantra para
-                mantener
-                la frente en alto en cada paso.
+                Nunca permitas que nadie borre esa sonrisa de tu rostro" es lo que ella piensa cada vez que
+                emprende algo en su vida y es la frase que usa como mantra para mantener la frente en alto en cada
+                paso.
+
             </p>
             <p class="p1">
 
-                Emocionada por lograr éxito para sus empresas, Sofía pone un sello de alegria y singularidad a cada una
-                de
-                sus actividades.
-                Ella gasta toda su energía en entregar lo mejor para MOBA y TU ARTE, y dia a dia la recarga con una
-                caricia
-                a sus mascotas y
-                con el compartir diario en sus entrenamientos deportivos, además de un delicioso café que se hace más
-                delicioso por estar en compañía de su familia y amigos.
-                Ama el arte y la música aunque lleva años intentando aprender a tocar guitarra. Y asi se la pasa
-                poniendo
-                color a cada Minuto de los 10.080 minutos de cada semana.
+                Emocionada por lograr éxito para sus empresas, Sofía pone un sello de alegría y singularidad a cada
+                una de sus actividades. Ella gasta toda su energía en entregar lo mejor para MOBA y TU ARTE, y día
+                a día la recarga con una caricia a sus mascotas y con el compartir diario en sus entrenamientos
+                deportivos, además de un delicioso café que se hace más delicioso por estar en compañía de su
+                familia y amigos. Ama el arte y la música, aunque lleva años intentando aprender a tocar guitarra. Y
+                así se la pasa poniendo color a cada Minuto de los 10.080 minutos de cada semana.
+
             </p>
         </aside>
 
         <aside id="miAsideDayana" style="display: none;" class="aside-container">
             <button id="cerrarAsideDayana" class="cerrarAside">X</button>
             <p class="p1">
-                Su paso por Moba nos demuestra que a veces las segundas partes sí son buenas, y es que Dayana ya trabajó
-                con
-                nosotros más de 4 años y se fue a aventurarse por otros lados.
+                Su paso por MOBA nos demuestra que a veces las segundas partes sí son buenas, y es que Dayana
+                ya trabajó con nosotros más de 4 años y se fue a aventurarse por otros lados. Allí se dio cuenta que
+                las pintas están bien, pero como una cervecita frente al mar no hay nada y tras unos meses regresó.
 
-                Allí se dió cuenta que las pintas están bien, pero como una cervecita frente al mar no hay nada y tras
-                unos
-                meses regresó.
 
             </p>
             <p class="p1">
@@ -155,34 +147,31 @@
             </p>
             <p class="p1">
                 Apasionada por la pintura y la creatividad, a veces introvertida pero cuando tiene confianza puede
-                explotar
-                en alegría,
-                amante de las cosas minimalistas y esto lo demuestra en cada cosa que hace por eso en su mente siempre
-                tiene
-                la frase " menos es más".
-                Apasionada por lo que hace y un poco malhumorada cunado las cosas no sle como las espera.
-                Es amante de las cosas pequeñas,
-                un paseo por la montaña con su hiperactiva perra, salidas con los amigos, visitas a su familia.
+                explotar en alegría, amante de las cosas minimalistas y esto lo demuestra en cada cosa que hace por
+                eso en su mente siempre tiene la frase " menos es más". Apasionada por lo que hace y un poco mal
+                humorada cuando las cosas no salen como las espera. Es amante de las cosas pequeñas, un paseo
+                por la montaña con su hiperactiva perra, salidas con los amigos, visitas a su familia.
+
             </p>
         </aside>
 
         <aside id="miAsideLinda" style="display: none;" class="aside-container">
             <button id="cerrarAsideLinda" class="cerrarAside">X</button>
             <p class="p1">
-                Hay personas que en la mirada y en su sonrisa cargan toneladas de ternura y alegría, y si,
-                ella parece ser una de esas personas. Hace parte del equipo ya hace muuuchos días, y día tras
-                día le da ese toque único a cada trabajo o actividad en la que participa.
+                Hay personas que en la mirada y en su sonrisa cargan toneladas de ternura y alegría, y si, ella parece
+                ser una de esas personas. Hace parte del equipo ya hace muuuchos días, y día tras día le da ese
+                toque único a cada trabajo o actividad en la que participa.
+
 
             </p>
             <p class="p1">
 
-                Su disposición para aprender nos hace ser mejores, nos exige mas calidad y compromiso y su Juventud
-                nos recuerda las ganas de estar vivos y lograr las metas que nos proponemos.
-                Ella tiene alma de Gato y su amor por el deporte la hace un ser completo, lleno de energía y de color
-                que
-                comparte con quienes mas quiere, de vez en cuando gruñona, la mayoría de veces alegre, y esto le da
-                equilibrio a su vida,
-                haciéndola un ser único para complementar nuestro equipo.
+                Su disposición para aprender nos hace ser mejores, nos exige más calidad y compromiso y su
+                Juventud nos recuerda las ganas de estar vivos y lograr las metas que nos proponemos. Ella tiene
+                alma de Gato y su amor por el deporte la hace un ser completo, lleno de energía y de color que
+                comparte con quienes más quiere, de vez en cuando gruñona, la mayoría de las veces alegre, y esto
+                le da equilibrio a su vida, haciéndola un ser único para complementar nuestro equipo.
+
             </p>
         </aside>
     </aside>
@@ -192,22 +181,19 @@
         <div class="container mt-5 mb-5 ">
 
             <div class="container d-flex justify-content-center">
-                
+
                 @foreach ($teamWorks as $teamWork)
-                    @if ($teamWork->name === 'EQUIPO MOBA')
-                        <div class="equipo" style="position: relative; display: inline-block;">
-                            <img src="{{ asset('storage/' . $teamWork->image) }}"
-                                alt="{{ strtoupper($teamWork->name) }}" id="{{ strtoupper($teamWork->name) }}"
-                                name="{{ $teamWork->name }}" class="img-equipo img-fluid"  style="width: 150%; height: auto;">
-                            <div class="text-container position-absolute bottom-0 start-50 translate-middle-x">
-                                <a class="text-1 p-1 mb-5 border-opacity-30 rounded-2 fondo-equipo"
-                                    id="{{ strtoupper($teamWork->name) }}">{{ strtoupper($teamWork->name) }}</a>
-                            </div>
-                        </div>
-                    @endif
+                @if ($teamWork->name === 'EQUIPO MOBA')
+                <div class="equipo" style="position: relative; display: inline-block;">
+                    <img src="{{ asset('storage/' . $teamWork->image) }}" alt="{{ strtoupper($teamWork->name) }}" id="{{ strtoupper($teamWork->name) }}" name="{{ $teamWork->name }}" class="img-equipo img-fluid" style="width: 150%; height: auto;">
+                    <div class="text-container position-absolute bottom-0 start-50 translate-middle-x">
+                        <a class="text-1 p-1 mb-5 border-opacity-30 rounded-2 fondo-equipo" id="{{ strtoupper($teamWork->name) }}">{{ strtoupper($teamWork->name) }}</a>
+                    </div>
+                </div>
+                @endif
                 @endforeach
 
-                
+
             </div>
 
 
@@ -248,23 +234,20 @@
                 <a class="text-1"> nosotros</a>
             </div>
 
-            
-                @foreach ($teamWorks as $teamWork)
-                    @if ($teamWork->specialty === 'Socio')
-                        <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip"
-                           data-bs-placement="bottom" title="{{ $teamWork->name }}">
-                            <img src="{{ asset('storage/' . $teamWork->image) }}" alt="{{ strtoupper($teamWork->name) }}"
-                                 id="{{ strtoupper($teamWork->name) }}" name="{{ $teamWork->name }}"
-                                 class="img-thumbnail img-fluid" title="{{ $teamWork->name }}">
-                            <span class="tooltip">{{ $teamWork->name }}</span>
-                        </a>
-                    @endif
-                @endforeach
-            
-            
+
+            @foreach ($teamWorks as $teamWork)
+            @if ($teamWork->specialty === 'Socio')
+            <a target="_blank" class="imagen-contenedor" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ $teamWork->name }}">
+                <img src="{{ asset('storage/' . $teamWork->image) }}" alt="{{ strtoupper($teamWork->name) }}" id="{{ strtoupper($teamWork->name) }}" name="{{ $teamWork->name }}" class="img-thumbnail img-fluid" title="{{ $teamWork->name }}">
+                <span class="tooltip">{{ $teamWork->name }}</span>
+            </a>
+            @endif
+            @endforeach
 
 
-          
+
+
+
         </div>
 
     </div>
@@ -279,8 +262,7 @@
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
     <script>
         document.querySelector('.dropdown').addEventListener('mouseenter', function() {
@@ -292,7 +274,7 @@
         });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Obtener la referencia a las imágenes y los asides correspondientes
@@ -403,7 +385,7 @@
 
     .img-container {
         position: relative;
-         
+
     }
 
     .text-container {
@@ -412,7 +394,7 @@
         border: 1px solid #ffffff;
         /* Ajusta el estilo del borde según lo desees */
         border-radius: 5px;
-        
+
     }
 
     .aside-container {
@@ -476,7 +458,7 @@
         line-height: 2;
         margin-bottom: 0;
         font-family: sans-serif !important;
-        
+
 
     }
 
@@ -693,7 +675,7 @@
     }
 
     .tooltip {
-        
+
         /* Estilos del tooltip estos estilos
         son para llamar el Nombre del integrante del Equipo*/
         position: absolute;
@@ -789,23 +771,22 @@
             width: 50%;
         }
     }
+
     @media (min-width: 768px) {
         .img-equipo {
             width: 30%;
         }
     }
+
     @media (min-width: 992px) {
         .img-equipo {
             width: 33%;
         }
     }
+
     @media (min-width: 1200px) {
         .img-equipo {
             width: 25%;
         }
     }
-
-
-
-
 </style>
