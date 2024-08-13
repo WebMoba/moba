@@ -22,15 +22,15 @@
     <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{ asset('Imagenes/Fondo_TuArte4.jpg') }}'); background-size: 100% 100%; background-position: center top; background-repeat: no-repeat; opacity: 1; z-index: -1; filter: brightness(50%); -webkit-filter: brightness(50%);">
     </div>
     @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
     @endif
 
     @if (session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
     @endif
 
     <nav class="navbar">
@@ -38,11 +38,11 @@
         <!--- inicio breaddrums-->
         <div class="breadcrums">
             @include('helpers.breadcrumbs', [
-                'breadcrumbs' => [
-                    ['url' => route('welcome'), 'label' => 'Bienvenido /'],
-                    ['url' => route('tuArteMenu.index'), 'label' => 'Tu Arte /'],
-                    ['url' => route('tuArteMenu.Contacto.index'), 'label' => 'Contactanos'],
-                ],
+            'breadcrumbs' => [
+            ['url' => route('welcome'), 'label' => 'Bienvenido /'],
+            ['url' => route('tuArteMenu.index'), 'label' => 'Tu Arte /'],
+            ['url' => route('tuArteMenu.Contacto.index'), 'label' => 'Contactanos'],
+            ],
             ])
 
         </div>
@@ -75,7 +75,7 @@
                     </ul>
                 </div>
                 <a href="{{ route('tuArteMenu.index') }}" class="btn btn-primary">Nosotros</a>
-                <a href="{{ route('tuArteMenu.categorias.index') }}"class="btn btn-primary">Categorias</a>
+                <a href="{{ route('tuArteMenu.categorias.index') }}" class="btn btn-primary">Categorias</a>
                 <a href="{{ route('tuArteMenu.galeria.index') }}" class="btn btn-primary">Galeria</a>
                 <a href="{{ route('tuArteMenu.Contacto.index') }}" class="btn btn-primary active-link">Contáctanos</a>
                 <button class="btn btn-cart position-relative" data-bs-toggle="modal" data-bs-target="#cartModal">
@@ -174,8 +174,8 @@
 
     <div class="vertical-line right-line">
         <hr class="linea2">
-        <a href="https://www.instagram.com/moba_agencia"><i class="bi bi-instagram"></i></a>
-        <a href="https://www.facebook.com/MOBAcomunicacionGrafica/"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/tuarte03"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.facebook.com/TuArte03"><i class="bi bi-facebook"></i></a>
         <hr class="linea2">
     </div>
     <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
@@ -248,22 +248,24 @@
                 cartBadge.classList.toggle('active', cartRows.length > 0);
             }
 
-            @if (session('success'))
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Éxito',
-                    text: '{{ session('success') }}'
-                }).then(() => {
-                    clearCart(); // Limpiar el carrito cuando se muestra la alerta de éxito
-                });
+            @if(session('success'))
+            Swal.fire({
+                icon: 'success',
+                title: 'Éxito',
+                text: '{{ session('
+                success ') }}'
+            }).then(() => {
+                clearCart(); // Limpiar el carrito cuando se muestra la alerta de éxito
+            });
             @endif
 
-            @if (session('error'))
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: '{{ session('error') }}'
-                });
+            @if(session('error'))
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: '{{ session('
+                error ') }}'
+            });
             @endif
 
             // Obtén el formulario
@@ -273,7 +275,11 @@
             form.addEventListener('submit', function(event) {
                 event.preventDefault(); // Evita el envío del formulario
 
-                const isAuthenticated = {{ Auth::check() ? 'true' : 'false' }};
+                const isAuthenticated = {
+                    {
+                        Auth::check() ? 'true' : 'false'
+                    }
+                };
 
                 if (!isAuthenticated) {
                     Swal.fire({
@@ -346,7 +352,11 @@
             const cartBadge = document.querySelector('.cart-badge');
             const cartItems = document.getElementById('cartItems');
             const totalPriceElement = document.getElementById('totalPrice');
-            const isAuthenticated = {{ Auth::check() ? 'true' : 'false' }};
+            const isAuthenticated = {
+                {
+                    Auth::check() ? 'true' : 'false'
+                }
+            };
             const cartButton = document.querySelector('.btn-cart');
 
             function updateTotal() {

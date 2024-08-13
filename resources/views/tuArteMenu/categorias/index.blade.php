@@ -25,11 +25,11 @@
         <!--- inicio breaddrums-->
         <div class="breadcrums">
             @include('helpers.breadcrumbs', [
-                'breadcrumbs' => [
-                    ['url' => route('welcome'), 'label' => 'Bienvenido /'],
-                    ['url' => route('tuArteMenu.index'), 'label' => 'Tu Arte /'],
-                    ['url' => route('tuArteMenu.categorias.index'), 'label' => 'Categorias'],
-                ],
+            'breadcrumbs' => [
+            ['url' => route('welcome'), 'label' => 'Bienvenido /'],
+            ['url' => route('tuArteMenu.index'), 'label' => 'Tu Arte /'],
+            ['url' => route('tuArteMenu.categorias.index'), 'label' => 'Categorias'],
+            ],
             ])
         </div>
         <div class="inicioRegistro"> @include('partials.inicio')</div>
@@ -60,7 +60,7 @@
 
 
                 <a href="{{ route('tuArteMenu.index') }}" class="btn btn-primary ">Nosotros</a>
-                <a href="{{ route('tuArteMenu.categorias.index') }}"class="btn btn-primary active-link ">Categorias</a>
+                <a href="{{ route('tuArteMenu.categorias.index') }}" class="btn btn-primary active-link ">Categorias</a>
                 <a href="{{ route('tuArteMenu.galeria.index') }}" class="btn btn-primary ">Galeria</a>
                 <a href="{{ route('tuArteMenu.Contacto.index') }}" class="btn btn-primary ">Contáctanos</a>
                 <button class="btn btn-cart position-relative" data-bs-toggle="modal" data-bs-target="#cartModal">
@@ -89,10 +89,10 @@
     <div class="container">
         <div class="contenedor">
             @foreach ($categorias->whereIn('name', ['Accesorios', 'Mascotas', 'Decoracion', 'Joditas pal Recuerdo'])->where('type', 'producto')->take(4) as $categoria)
-                <div class="campo campo1">
-                    <h1><a href="#" onclick="redirigir('{{ $categoria->name }}')">{{ $categoria->name }}</a>
-                    </h1>
-                </div>
+            <div class="campo campo1">
+                <h1><a href="#" onclick="redirigir('{{ $categoria->name }}')">{{ $categoria->name }}</a>
+                </h1>
+            </div>
             @endforeach
         </div>
 
@@ -122,8 +122,8 @@
     </div>
     <div class="vertical-line right-line">
         <hr class="linea2">
-        <a href="https://www.instagram.com/moba_agencia"><i class="bi bi-instagram"></i></a>
-        <a href="https://www.facebook.com/MOBAcomunicacionGrafica/"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/tuarte03"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.facebook.com/TuArte03"><i class="bi bi-facebook"></i></a>
         <hr class="linea2">
     </div>
     <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
@@ -174,7 +174,11 @@
             const cartBadge = document.querySelector('.cart-badge');
             const cartItems = document.getElementById('cartItems');
             const totalPriceElement = document.getElementById('totalPrice');
-            const isAuthenticated = {{ Auth::check() ? 'true' : 'false' }};
+            const isAuthenticated = {
+                {
+                    Auth::check() ? 'true' : 'false'
+                }
+            };
             const cartButton = document.querySelector('.btn-cart');
 
             function updateTotal() {

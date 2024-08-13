@@ -26,9 +26,9 @@
     <nav class="navbar">
         <div class="breadcrums">
             @include('helpers.breadcrumbs', ['breadcrumbs' => [
-                ['url' => route('welcome'), 'label' => 'Bienvenido /'],
-                ['url' => route('mobaMenu.index'), 'label' => 'Moba /'],
-                ['url' => route('mobaMenu.index'), 'label' => 'Nosotros'],
+            ['url' => route('welcome'), 'label' => 'Bienvenido /'],
+            ['url' => route('mobaMenu.index'), 'label' => 'Moba /'],
+            ['url' => route('mobaMenu.index'), 'label' => 'Nosotros'],
             ]])
         </div>
         <div class="inicioRegistro"> @include('partials.inicio')</div>
@@ -70,11 +70,11 @@
         <div class="logotexto">
             <div class="textonda">
                 <div class="texto">
-                    <p>MOBA surge como una propuesta novedosa apostándole a la creatividad y a la imaginación, 
+                    <p>MOBA surge como una propuesta novedosa apostándole a la creatividad y a la imaginación,
                         para satisfacer las necesidades de las marcas y los clientes.</p>
                     <br>
-                    <p>Con 8 años de experiencia, somos un referente en diseño, comunicación y publicidad; 
-                        contamos con talento humano capaz de crear estructuras, desarrollar e implementar campañas 
+                    <p>Con 8 años de experiencia, somos un referente en diseño, comunicación y publicidad;
+                        contamos con talento humano capaz de crear estructuras, desarrollar e implementar campañas
                         eficaces en medios impresos y digitales.</p>
                     <br>
                     <p>Los pilares y bases de nuestro trabajo, estan regidos por la honestidad, la disiplina y la...</p>
@@ -87,11 +87,11 @@
                 <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
             </div>
         </div>
-    
+
         <div class="vertical-line right-line">
             <hr class="linea2">
-            <a href="https://www.instagram.com/moba_agencia"><i class="bi bi-instagram"></i></a>
-            <a href="https://www.facebook.com/MOBAcomunicacionGrafica/"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/tuarte03"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.facebook.com/TuArte03"><i class="bi bi-facebook"></i></a>
             <hr class="linea2">
         </div>
     </div>
@@ -100,25 +100,25 @@
     <div class="container-slider">
         <div class="slider-background">
             @php
-                $projectsChunked = $projects->chunk(ceil($projects->count() / 2));
+            $projectsChunked = $projects->chunk(ceil($projects->count() / 2));
             @endphp
 
             @foreach($projectsChunked as $projectsRow)
-                <div class="slider">
-                    <div class="slide-track">
-                        @foreach($projectsRow as $project)
-                            <div class="slide">
-                                <img src="{{ asset('storage/' . $project->logo) }}" alt="Logo del proyecto {{ $project->name }}">
-                            </div>
-                        @endforeach
-                        <!-- Duplicate the images for infinite effect -->
-                        @foreach($projectsRow as $project)
-                            <div class="slide">
-                                <img src="{{ asset('storage/' . $project->logo) }}" alt="Logo del proyecto {{ $project->name }}">
-                            </div>
-                        @endforeach
+            <div class="slider">
+                <div class="slide-track">
+                    @foreach($projectsRow as $project)
+                    <div class="slide">
+                        <img src="{{ asset('storage/' . $project->logo) }}" alt="Logo del proyecto {{ $project->name }}">
                     </div>
+                    @endforeach
+                    <!-- Duplicate the images for infinite effect -->
+                    @foreach($projectsRow as $project)
+                    <div class="slide">
+                        <img src="{{ asset('storage/' . $project->logo) }}" alt="Logo del proyecto {{ $project->name }}">
+                    </div>
+                    @endforeach
                 </div>
+            </div>
             @endforeach
         </div>
     </div>
@@ -138,4 +138,5 @@
 
     @include('partials.footerMoba')
 </body>
+
 </html>

@@ -21,11 +21,11 @@
         <!--- inicio breaddrums-->
         <div class="breadcrums">
             @include('helpers.breadcrumbs', [
-                'breadcrumbs' => [
-                    ['url' => route('welcome'), 'label' => 'Bienvenido /'],
-                    ['url' => route('mobaMenu.index'), 'label' => 'Moba /'],
-                    ['url' => route('mobaMenu.proyectos.index'), 'label' => 'Proyectos'],
-                ],
+            'breadcrumbs' => [
+            ['url' => route('welcome'), 'label' => 'Bienvenido /'],
+            ['url' => route('mobaMenu.index'), 'label' => 'Moba /'],
+            ['url' => route('mobaMenu.proyectos.index'), 'label' => 'Proyectos'],
+            ],
             ])
         </div>
         <div class="inicioRegistro"> @include('partials.inicio')</div>
@@ -85,8 +85,8 @@
 
         <div class="vertical-line right-line">
             <hr class="linea2">
-            <a href="https://www.instagram.com/moba_agencia"><i class="bi bi-instagram"></i></a>
-            <a href="https://www.facebook.com/MOBAcomunicacionGrafica/"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/tuarte03"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.facebook.com/TuArte03"><i class="bi bi-facebook"></i></a>
             <hr class="linea2">
         </div>
     </div>
@@ -107,120 +107,120 @@
                 <div class="container">
                     <div class="row">
                         @foreach ($projects as $index => $project)
-                            @if ($index >= 0 && $index <= 2)
-                                <div class="col-md-4">
-                                    <div class="image-container">
-                                        <a href="{{ route('mobaMenu.proyectos.Muestra', $project->id) }}">
-                                            <img src="{{ asset('storage/' . $project->logo) }}">
-                                            <div class="overlay">
-                                                <div class="text">{{ $project->name }}</div>
-                                            </div>
-                                        </a>
+                        @if ($index >= 0 && $index <= 2)
+                            <div class="col-md-4">
+                            <div class="image-container">
+                                <a href="{{ route('mobaMenu.proyectos.Muestra', $project->id) }}">
+                                    <img src="{{ asset('storage/' . $project->logo) }}">
+                                    <div class="overlay">
+                                        <div class="text">{{ $project->name }}</div>
                                     </div>
-                                </div>
-                            @endif
-                        @endforeach
+                                </a>
+                            </div>
                     </div>
-                    <div class="row">
-                        @foreach ($projects as $index => $project)
-                            @if ($index >= 3 && $index <= 5)
-                                <div class="col-md-4">
-                                    <div class="image-container">
-                                        <a href="{{ route('mobaMenu.proyectos.Muestra', $project->id) }}">
-                                            <img src="{{ asset('storage/' . $project->logo) }}">
-                                            <div class="overlay">
-                                                <div class="text">{{ $project->name }}</div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            @endif
-                        @endforeach
-                    </div>
-                    <div class="row">
-                        @foreach ($projects as $index => $project)
-                            @if ($index >= 6 && $index <= 8)
-                                <div class="col-md-4">
-                                    <div class="image-container">
-                                        <a href="{{ route('mobaMenu.proyectos.Muestra', $project->id) }}">
-                                            <img src="{{ asset('storage/' . $project->logo) }}">
-                                            <div class="overlay">
-                                                <div class="text">{{ $project->name }}</div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            @endif
-                        @endforeach
-                    </div>
+                    @endif
+                    @endforeach
                 </div>
-            </div>
-            <div class="carousel-item">
-                <div class="container">
-                    <!-- Primera fila del carrusel 2 -->
-                    <div class="row">
-                        @foreach ($projects as $index => $project)
-                            @if ($index >= 9 && $index <= 11)
-                                <div class="col-md-4">
-                                    <div class="image-container">
-                                        <a href="{{ route('mobaMenu.proyectos.Muestra', $project->id) }}">
-                                            <img src="{{ asset('storage/' . $project->logo) }}">
-                                            <div class="overlay">
-                                                <div class="text">{{ $project->name }}</div>
-                                            </div>
-                                        </a>
-                                    </div>
+                <div class="row">
+                    @foreach ($projects as $index => $project)
+                    @if ($index >= 3 && $index <= 5)
+                        <div class="col-md-4">
+                        <div class="image-container">
+                            <a href="{{ route('mobaMenu.proyectos.Muestra', $project->id) }}">
+                                <img src="{{ asset('storage/' . $project->logo) }}">
+                                <div class="overlay">
+                                    <div class="text">{{ $project->name }}</div>
                                 </div>
-                            @endif
-                        @endforeach
-                    </div>
-                    <!-- Segunda fila del carrusel 2 -->
-                    <div class="row">
-                        @foreach ($projects as $index => $project)
-                            @if ($index >= 12 && $index <= 14)
-                                <div class="col-md-4">
-                                    <div class="image-container">
-                                        <a href="{{ route('mobaMenu.proyectos.Muestra', $project->id) }}">
-                                            <img src="{{ asset('storage/' . $project->logo) }}">
-                                            <div class="overlay">
-                                                <div class="text">{{ $project->name }}</div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            @endif
-                        @endforeach
-                    </div>
-                    <!-- Tercera fila del carrusel 2 -->
-                    <div class="row">
-                        @foreach ($projects as $index => $project)
-                            @if ($index >= 15 && $index <= 17)
-                                <div class="col-md-4">
-                                    <div class="image-container">
-                                        <a href="{{ route('mobaMenu.proyectos.Muestra', $project->id) }}">
-                                            <img src="{{ asset('storage/' . $project->logo) }}">
-                                            <div class="overlay">
-                                                <div class="text">{{ $project->name }}</div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            @endif
-                        @endforeach
-                    </div>
+                            </a>
+                        </div>
                 </div>
+                @endif
+                @endforeach
             </div>
+            <div class="row">
+                @foreach ($projects as $index => $project)
+                @if ($index >= 6 && $index <= 8)
+                    <div class="col-md-4">
+                    <div class="image-container">
+                        <a href="{{ route('mobaMenu.proyectos.Muestra', $project->id) }}">
+                            <img src="{{ asset('storage/' . $project->logo) }}">
+                            <div class="overlay">
+                                <div class="text">{{ $project->name }}</div>
+                            </div>
+                        </a>
+                    </div>
+            </div>
+            @endif
+            @endforeach
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+    </div>
+    </div>
+    <div class="carousel-item">
+        <div class="container">
+            <!-- Primera fila del carrusel 2 -->
+            <div class="row">
+                @foreach ($projects as $index => $project)
+                @if ($index >= 9 && $index <= 11)
+                    <div class="col-md-4">
+                    <div class="image-container">
+                        <a href="{{ route('mobaMenu.proyectos.Muestra', $project->id) }}">
+                            <img src="{{ asset('storage/' . $project->logo) }}">
+                            <div class="overlay">
+                                <div class="text">{{ $project->name }}</div>
+                            </div>
+                        </a>
+                    </div>
+            </div>
+            @endif
+            @endforeach
+        </div>
+        <!-- Segunda fila del carrusel 2 -->
+        <div class="row">
+            @foreach ($projects as $index => $project)
+            @if ($index >= 12 && $index <= 14)
+                <div class="col-md-4">
+                <div class="image-container">
+                    <a href="{{ route('mobaMenu.proyectos.Muestra', $project->id) }}">
+                        <img src="{{ asset('storage/' . $project->logo) }}">
+                        <div class="overlay">
+                            <div class="text">{{ $project->name }}</div>
+                        </div>
+                    </a>
+                </div>
+        </div>
+        @endif
+        @endforeach
+    </div>
+    <!-- Tercera fila del carrusel 2 -->
+    <div class="row">
+        @foreach ($projects as $index => $project)
+        @if ($index >= 15 && $index <= 17)
+            <div class="col-md-4">
+            <div class="image-container">
+                <a href="{{ route('mobaMenu.proyectos.Muestra', $project->id) }}">
+                    <img src="{{ asset('storage/' . $project->logo) }}">
+                    <div class="overlay">
+                        <div class="text">{{ $project->name }}</div>
+                    </div>
+                </a>
+            </div>
+    </div>
+    @endif
+    @endforeach
+    </div>
+    </div>
+    </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
     </div>
 
 

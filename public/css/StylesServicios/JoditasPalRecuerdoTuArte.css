@@ -151,7 +151,7 @@ body{
 }
 
 .vertical-line.right-line i {
-    color: #ff0008;
+    color: #00ff77;
     /* Color para los íconos de la derecha */
 }
 
@@ -438,7 +438,7 @@ table tbody tr td {
 }
 
 
-/*ESTRELLAS*/
+
 
 .stars {
     margin-top: 5px;
@@ -456,3 +456,4 @@ table tbody tr td {
 .container-fluid {
     padding: 0 !important;
 }
+

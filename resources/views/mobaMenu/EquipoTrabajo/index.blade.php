@@ -79,17 +79,12 @@
 
     <div class="vertical-line right-line">
         <hr class="linea2">
-        <a href="https://www.instagram.com/moba_agencia"><i class="bi bi-instagram"></i></a>
-        <a href="https://www.facebook.com/MOBAcomunicacionGrafica/"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/tuarte03"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.facebook.com/TuArte03"><i class="bi bi-facebook"></i></a>
         <hr class="linea2">
     </div>
 
-    <div class="vertical-line right-line">
-        <hr class="linea3">
-        <a href="https://www.instagram.com/moba_agencia"><i class="bi bi-instagram"></i></a>
-        <a href="https://www.facebook.com/MOBAcomunicacionGrafica/"><i class="bi bi-facebook"></i></a>
-        <hr class="linea2">
-    </div>
+  
 
     <aside>
         <aside id="miAsideJavier" style="display: none;" class="aside-container">
@@ -108,7 +103,7 @@
                 Le encanta la música, su tercer idioma son las groserías, ama el anime en especial One Piece. Para
                 él la familia es su piedra angular en la vida, sus mascotas le dan sentido a sus días, y está
                 enamorado de su segunda familia “MOBA”. De cualquier forma, su interés está en mejorar la
-                calidad de vida de las personas, tratar de hacer feliz a sus familiares, amigos y al mundo en general.
+                calidad de vida de las personas, tratar de hacer felices a sus familiares, amigos y al mundo en general.
 
             </p>
         </aside>
@@ -150,7 +145,7 @@
                 explotar en alegría, amante de las cosas minimalistas y esto lo demuestra en cada cosa que hace por
                 eso en su mente siempre tiene la frase " menos es más". Apasionada por lo que hace y un poco mal
                 humorada cuando las cosas no salen como las espera. Es amante de las cosas pequeñas, un paseo
-                por la montaña con su hiperactiva perra, salidas con los amigos, visitas a su familia.
+                por la montaña con su hiperactiva perra, salidas con los amigos o visitas a su familia.
 
             </p>
         </aside>
@@ -649,25 +644,32 @@
 
 
     .imagenes img {
-        background-color: #ccc;
-        border: solid 1px #0b0b0b;
+        /* Imagenes de forma individual del equipo de trabajo */
+        background-color: #000000;
+        border: solid 0.5px #0b0b0b;
+        /* Ajuste de borde a 0.5px */
         width: 300px;
         height: 250px;
         object-fit: cover;
         object-position: right;
-        border-radius: 10px;
-        padding-top: 0.5%;
-        padding-bottom: 0.5%;
+        border-radius: 15px;
+        padding: 0;
+        /* Elimina el padding para evitar espacio extra */
         margin: 0.5% 0.5%;
+        /* Mantén el margen si deseas separación entre imágenes */
         /* Centra horizontalmente con margen automático */
         transition: transform 0.3s ease;
+
+        
     }
+
 
     .img-thumbnail:hover {
         transform: scale(1.1);
     }
 
     .imagen-contenedor {
+        /* contenedores imagenes individuales*/
         position: relative;
         display: inline-block;
         margin-bottom: 20px;

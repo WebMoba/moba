@@ -101,8 +101,8 @@
 
     <div class="vertical-line right-line">
         <hr class="linea2">
-        <a href="https://www.instagram.com/moba_agencia"><i class="bi bi-instagram"></i></a>
-        <a href="https://www.facebook.com/MOBAcomunicacionGrafica/"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/tuarte03"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.facebook.com/TuArte03"><i class="bi bi-facebook"></i></a>
         <hr class="linea2">
     </div>
     <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">

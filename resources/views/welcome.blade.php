@@ -95,12 +95,12 @@
                     <div class="linea"></div> <!-- Línea vertical antes de los logos -->
                     <div class="columna">
                         <div class="logoRedes">
-                            <a href="https://www.facebook.com/MOBAcomunicacionGrafica/"><img
+                            <a href="https://www.facebook.com/tuarte03/"><img
                                     src="{{ asset('Imagenes/imgPrincipalView/facebookRojo.png') }}"
                                     alt="Logo de Facebook"></a>
                         </div>
                         <div class="logoRedes">
-                            <a href="https://www.instagram.com/moba_agencia"> <img
+                            <a href="https://www.instagram.com/tuarte03"> <img
                                     src="{{ asset('Imagenes/imgPrincipalView/instagramRojo.png') }}"
                                     alt="Logo de Instagram"></a>
                         </div>
@@ -169,7 +169,7 @@
         justify-content: center;
         width: 45%;
         height: 95%;
-        perspective: 1000px;
+        perspective: 4000px;
         /* Ajusta la perspectiva para el efecto 3D */
     }
 
@@ -179,7 +179,7 @@
         height: 60%;
         max-width: 100%;
         max-height: 100%;
-        transition: transform 0.7s;
+        transition: transform 0.3s;
         cursor: pointer;
     }
 
@@ -244,15 +244,15 @@
 
     @keyframes spin-horizontal {
         0% {
-            transform: rotateY(0deg);
+            transform: rotateY(20deg);
         }
 
         50% {
-            transform: rotateY(85deg);
+            transform: rotateY(45deg);
         }
 
         100% {
-            transform: rotateY(-85deg);
+            transform: rotateY(-45deg);
         }
     }
 

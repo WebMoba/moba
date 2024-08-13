@@ -73,12 +73,12 @@
         <div class="box">
             <div class="boxText">
                 <h1>Contacto</h1><br><br>
-                <h3>¡Somos el estudio de diseño y comunicación que buscabas!</h3>
+                <h3>¡Somos la Agencia de Diseño y comunicación gráfica que buscabas!</h3>
                 <h3>Las soluciones en comunicación que ofrecemos a nuestros 
                     clientes son completamente personalizadas y adaptadas a 
                     cada necesidad.</h3>
-                <h3> Haz clic al botón azul para coordinar una reunión estratégica con LA AGENCIA</h3><br>
-                <h3> Contacto: (051) 933 375 953</h3>
+                <h3> Haz clic al botón Enviar para coordinar una reunión estratégica con nuestra Agencia.</h3><br>
+                <h3> Contacto: (+57) 311 243 79 79</h3>
             </div>
         </div>
 
@@ -133,11 +133,10 @@
 
     <div class="vertical-line right-line">
         <hr class="linea2">
-        <a href="https://www.instagram.com/moba_agencia"><i class="bi bi-instagram"></i></a>
-        <a href="https://www.facebook.com/MOBAcomunicacionGrafica/"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/tuarte03"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.facebook.com/TuArte03"><i class="bi bi-facebook"></i></a>
         <hr class="linea2">
     </div>
-
     <!-- Contenido de la página aquí -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

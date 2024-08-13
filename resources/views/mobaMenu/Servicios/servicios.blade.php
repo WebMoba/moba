@@ -17,25 +17,25 @@
     <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{ asset('Imagenes/Fondo_moba3.jpg') }}'); background-size: 100% 100%; background-position: center top; background-repeat: no-repeat; opacity: 1; z-index: -1; filter: brightness(10%); -webkit-filter: brightness(25%);">
     </div>
     <nav class="navbar">
-         <!--- inicio breaddrums-->
-    <div class="breadcrums">
-        @include('helpers.breadcrumbs', ['breadcrumbs' => [
-        ['url' => route('welcome'), 'label' => 'Bienvenido /'],
-        ['url' => route('mobaMenu.index'), 'label' => 'Moba /'],
-        ['url' => route('mobaMenu.Servicios.servicios'), 'label' => 'Servicios'],]])
+        <!--- inicio breaddrums-->
+        <div class="breadcrums">
+            @include('helpers.breadcrumbs', ['breadcrumbs' => [
+            ['url' => route('welcome'), 'label' => 'Bienvenido /'],
+            ['url' => route('mobaMenu.index'), 'label' => 'Moba /'],
+            ['url' => route('mobaMenu.Servicios.servicios'), 'label' => 'Servicios'],]])
         </div>
         <div class="inicioRegistro"> @include('partials.inicio')</div>
-<!--- final breaddrums-->
+        <!--- final breaddrums-->
 
         <div class="container-fluid">
-        <a href="{{ route('mobaMenu.index')}}">
+            <a href="{{ route('mobaMenu.index')}}">
                 <img src="{{ asset('Imagenes/Logotipo_Moba.png') }}" class="navbar-img-left" alt="Logo Moba">
             </a>
             <div class="navbar-buttons">
                 <div class="dropdown">
                     <a href="{{ route('mobaMenu.Servicios.servicios') }}" class="active-link">
                         <button class="btn btn-primary active-lonk dropdown-toggle" type="button"
-                            id="dropdownMenuButton"aria-haspopup="true" aria-expanded="false">
+                            id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
                             Servicios
                         </button>
                     </a>
@@ -54,7 +54,7 @@
                 <img src="{{ asset('Imagenes/LogoTuArte.png') }}" class="navbar-img-right" alt="Logo Moba">
             </a>
         </div>
-        
+
 
     </nav>
     <div class="content">
@@ -79,14 +79,14 @@
                     </h4>
                 </div>
                 <div class="texto">
-                        <p>
-                            Como expertos en diseño y comunicación, somos el proveedor ideal para ayudarte a crear
-                            piezas de
-                            comunicación interna de alto rendimiento y brindarte la asesoría que necesitas para lograr
-                            una comunicación
-                            interna efectiva. ¡Contáctanos hoy y transforma la forma en que te comunicas con tus
-                            clientes!
-                        </p>
+                    <p>
+                        Como expertos en diseño y comunicación, somos el proveedor ideal para ayudarte a crear
+                        piezas de
+                        comunicación interna de alto rendimiento y brindarte la asesoría que necesitas para lograr
+                        una comunicación
+                        interna efectiva. ¡Contáctanos hoy y transforma la forma en que te comunicas con tus
+                        clientes!
+                    </p>
                 </div>
             </div>
 
@@ -118,7 +118,7 @@
                             <button onclick="mostrarCuadroAnterior()">
                                 <h1>
                                     <
-                                </h1>
+                                        </h1>
                             </button>
                             <button onclick="mostrarCuadroSiguiente()">
                                 <h1>
@@ -148,7 +148,7 @@
                             <button onclick="mostrarCuadroAnterior()">
                                 <h1>
                                     <
-                                </h1>
+                                        </h1>
                             </button>
                             <button onclick="mostrarCuadroSiguiente()">
                                 <h1>></h1>
@@ -163,12 +163,12 @@
                                 <h2>y algo más</h2>
                             </div>
                             <div class="contenido-cuadro">
-                                    <p>
-                                        Nuestra empresa cuenta con servicios y productos adicionales que complementan
-                                        y suman a cada uno de nuestros clientes, los cuales están elaborados con la
-                                        mayor calidad
-                                        y detalle posible, entregando en cada trabajo nuestro mejor
-                                    </p>
+                                <p>
+                                    Nuestra empresa cuenta con servicios y productos adicionales que complementan
+                                    y suman a cada uno de nuestros clientes, los cuales están elaborados con la
+                                    mayor calidad
+                                    y detalle posible, entregando en cada trabajo nuestro mejor
+                                </p>
                             </div>
 
                         </div>
@@ -176,7 +176,7 @@
                             <button onclick="mostrarCuadroAnterior()">
                                 <h1>
                                     <
-                                </h1>
+                                        </h1>
                             </button>
                             <button onclick="mostrarCuadroSiguiente()">
                                 <h1>
@@ -192,8 +192,8 @@
 
         <div class="vertical-line right-line">
             <hr class="linea2">
-            <a href="https://www.instagram.com/moba_agencia"><i class="bi bi-instagram"></i></a>
-            <a href="https://www.facebook.com/MOBAcomunicacionGrafica/"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/tuarte03"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.facebook.com/TuArte03"><i class="bi bi-facebook"></i></a>
             <hr class="linea2">
         </div>
     </div>
@@ -318,6 +318,7 @@
             padding: 1%;
             font-family: sans-serif !important;
         }
+
         .texto::after {
             content: '';
             position: absolute;
@@ -366,7 +367,8 @@
             flex-direction: row;
             width: 100%;
             padding-top: 5%;
-            overflow-x: hidden; /* Evitar desplazamiento horizontal */
+            overflow-x: hidden;
+            /* Evitar desplazamiento horizontal */
         }
 
         .creatividad {
@@ -446,16 +448,17 @@
             font-size: larger;
             font-family: sans-serif !important;
         }
-        
+
         .cuadro {
             background-color: transparent;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            width: 100% ;
-            height: 100% ;
-            margin-right: 20px; /* Espacio entre cuadros */
+            width: 100%;
+            height: 100%;
+            margin-right: 20px;
+            /* Espacio entre cuadros */
         }
 
         .cuadro:first-child {
@@ -467,8 +470,8 @@
             border: 2px solid grey;
             padding: 20px;
             overflow-y: auto;
-            width: 400px; 
-            height: 350px; 
+            width: 400px;
+            height: 350px;
         }
 
         .titulos-cuadro {
@@ -541,205 +544,228 @@
             padding: 10px 20px;
             cursor: pointer;
         }
-        .container-fluid{
+
+        .container-fluid {
             padding: 0 !important;
         }
 
         @media screen and (max-width: 1200px) {
-            .texto-cuadro{
-                width: 400px; 
-                height: 300px; 
+            .texto-cuadro {
+                width: 400px;
+                height: 300px;
             }
         }
 
         @media screen and (max-width: 1000px) {
-            .texto-cuadro{
-                width: 350px; 
-                height: 300px; 
+            .texto-cuadro {
+                width: 350px;
+                height: 300px;
             }
+
             .cuadro .botones {
                 width: 350px;
             }
         }
 
         @media screen and (max-width: 900px) {
-            .texto-cuadro{
-                width: 300px; 
-                height: 250px; 
-                padding-bottom:20%; 
+            .texto-cuadro {
+                width: 300px;
+                height: 250px;
+                padding-bottom: 20%;
             }
+
             .cuadro .botones {
                 width: 300px;
             }
-            .creatividad{
-                width: 200px; 
+
+            .creatividad {
+                width: 200px;
             }
+
             .creatividad .t1 {
                 font-size: 25px;
                 font-weight: bold
             }
-    
+
             .creatividad .t2 {
                 font-size: 20px;
             }
-    
+
             .creatividad .t3 {
                 font-size: 20px;
                 color: #2bb9e5;
                 font-weight: bold;
             }
-    
+
             .creatividad .t4 {
                 font-size: 20px;
                 font-weight: bold;
             }
+
             .texto {
                 font-size: 20px;
             }
         }
 
         @media screen and (max-width: 700px) {
-            .texto-cuadro{
-                width: 250px; 
-                height: 200px; 
-                padding-bottom:20%; 
+            .texto-cuadro {
+                width: 250px;
+                height: 200px;
+                padding-bottom: 20%;
             }
-            
+
             .cuadro .botones {
                 width: 250px;
             }
-            .creatividad{
-                width: 150px; 
+
+            .creatividad {
+                width: 150px;
             }
+
             .creatividad .t1 {
                 font-size: 20px;
                 font-weight: bold
             }
-    
+
             .creativida15.t2 {
                 font-size: 15px;
             }
-    
+
             .creatividad .t3 {
                 font-size: 15px;
                 color: #2bb9e5;
                 font-weight: bold;
             }
-    
+
             .creatividad .t4 {
                 font-size: 15px;
                 font-weight: bold;
             }
-            .titulos-cuadro h1,h2{
+
+            .titulos-cuadro h1,
+            h2 {
                 font-size: 20px;
                 font-weight: bold;
             }
+
             .contenido-cuadro p {
                 font-size: 10px;
             }
+
             .texto {
                 font-size: 14px;
             }
         }
-        
+
         @media screen and (max-width: 580px) {
-            
-            .contenido1{
+
+            .contenido1 {
                 margin-top: 15%;
             }
-            .contenido2{
+
+            .contenido2 {
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
             }
-            .contenedor{
+
+            .contenedor {
                 margin-right: 20%;
             }
-            .texto-cuadro{
-                width: 250px; 
-                height: 200px; 
-                padding-bottom:20%; 
+
+            .texto-cuadro {
+                width: 250px;
+                height: 200px;
+                padding-bottom: 20%;
             }
-            
+
             .cuadro .botones {
                 width: 250px;
             }
-            .creatividad{
-                width: 300px; 
+
+            .creatividad {
+                width: 300px;
                 margin-left: 15%;
             }
+
             .creatividad .t1 {
                 font-size: 20px;
                 font-weight: bold
             }
-    
+
             .creativida15.t2 {
                 font-size: 15px;
             }
-    
+
             .creatividad .t3 {
                 font-size: 15px;
                 color: #2bb9e5;
                 font-weight: bold;
             }
-    
+
             .creatividad .t4 {
                 font-size: 15px;
                 font-weight: bold;
             }
-            .titulos-cuadro h1,h2{
+
+            .titulos-cuadro h1,
+            h2 {
                 font-size: 20px;
                 font-weight: bold;
             }
+
             .contenido-cuadro p {
                 font-size: 10px;
             }
+
             .texto {
                 font-size: 14px;
             }
         }
 
         @media screen and (max-width: 400px) {
-            .contenido2{
+            .contenido2 {
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
             }
-            .contenedor{
+
+            .contenedor {
                 margin-right: 35%;
             }
-            .creatividad{
-                width: 300px; 
+
+            .creatividad {
+                width: 300px;
                 margin-left: 15%;
             }
         }
-           /*estilos Breadcrums*/
 
-    .breadcrums {
-    display: flex;
-}
+        /*estilos Breadcrums*/
 
-.breadcrums a {
-    text-decoration: none;
-    color: white;
-    font-size: 0.9vw;
-    margin-right: 2px; /* Esto agrega un espacio entre los enlaces */
-    font-family: sans-serif !important;
-}
+        .breadcrums {
+            display: flex;
+        }
 
-.breadcrumbs li {
-    display: inline;
-    padding: 0;
-}
+        .breadcrums a {
+            text-decoration: none;
+            color: white;
+            font-size: 0.9vw;
+            margin-right: 2px;
+            /* Esto agrega un espacio entre los enlaces */
+            font-family: sans-serif !important;
+        }
 
-.breadcrumbs a:hover{
-    color:  #2bb9e5;
-}
+        .breadcrumbs li {
+            display: inline;
+            padding: 0;
+        }
 
-
+        .breadcrumbs a:hover {
+            color: #2bb9e5;
+        }
     </style>
 
-@include('partials.footerMoba')
+    @include('partials.footerMoba')
 
 </body>
 
